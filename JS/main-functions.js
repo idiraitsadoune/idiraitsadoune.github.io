@@ -80,7 +80,6 @@ function createMenu(){
     a_contact.appendChild(fa_contact)
     a_contact.appendChild(t_contact)
 
-
     div_links.appendChild(div_nav)
     nav_element.appendChild(div_links)
     // #### The end of the links part 
@@ -110,4 +109,19 @@ function createMenu(){
     menu_element.appendChild(div_container)
 }
 
+function createDesignedBy(){
+    const section = document.getElementById("designed")
+    const div = createElement('div',{class : 'container designed'})
+    const text1 = document.createTextNode("Designed by ");
+    const a = createElement('a', {href : './index.html'})
+    const a_text = document.createTextNode("Idir AIT SADOUNE")
+    a.appendChild(a_text)
+    const text2 = document.createTextNode(" - 2023");
+    div.appendChild(text1)
+    div.appendChild(a)
+    div.appendChild(text2)
+    section.appendChild(div)
+}
+
 createMenu()
+createDesignedBy()
