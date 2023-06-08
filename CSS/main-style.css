@@ -93,3 +93,29 @@ p {
 	border-width: 2px;
 	/*margin-left: 20px;*/
 }
+
+#navbarNav .fa{
+	margin-right: 5px;
+}
+
+.navbar-nav{
+	display: flex;
+	padding: 0 10px;
+}
+
+.navbar-nav a {
+	float: right;
+	text-align: left;
+}
+
+.nav-item{
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.nav-link {
+	color: var(--cspurple) !important;
+	/*font-weight: 600;*/
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 18px !important;
+}
