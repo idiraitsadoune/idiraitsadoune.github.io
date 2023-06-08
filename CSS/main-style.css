@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/* BASIC STYLE */
+@import url(./inter-font/style.css);
+
+@font-face {
+    font-family: 'Monaco';
+    font-style: normal;
+    font-weight: normal;
+    src: url('monaco-font/Monaco.woff') format('woff');
+}
+
+/* Les variables globales */
+:root{
+	--cspurple : #847894;
+	--csred : #9c003c;
+	--container-padding: 20px;
+    --container-width: calc(100% - var(--container-padding) * 2);
+    --container-max-width: 1370px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 150%;
+}
+
+body{
+	font-family:'Inter Regular',sans-serif;
+	font-size: 20px !important;
+}
+
+a {
+	color : var(--csred) !important ;
+	text-decoration: none !important;
+	font-size: inherit !important;
+}
+
+b {
+	font-family: 'Inter Semi Bold' !important;
+	font-size: inherit !important;
+}
+
+p {
+	margin-bottom: 10px;
+	margin-top: 10px;
+	font-size: inherit !important;
+}
