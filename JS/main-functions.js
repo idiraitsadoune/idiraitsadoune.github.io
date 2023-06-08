@@ -85,6 +85,27 @@ function createMenu(){
     nav_element.appendChild(div_links)
     // #### The end of the links part 
 
+    // #### The logos of the university part 
+    const div_logos = createElement('div',{class : 'nav-logos'})
+
+    const a_lmf = createElement('a',{class : 'navbar-brand', href : 'https://lmf.cnrs.fr/', target : '_blank'})
+    const img_lmf = createElement('img', {src : './IMG/lmf-new-logo.png'})
+    a_lmf.appendChild(img_lmf)
+    div_logos.appendChild(a_lmf)
+
+    const a_cs = createElement('a',{class : 'navbar-brand', href : 'https://www.centralesupelec.fr', target : '_blank'})
+    const img_cs = createElement('img', {src : './IMG/cs.png'})
+    a_cs.appendChild(img_cs)
+    div_logos.appendChild(a_cs)
+
+    const a_ups = createElement('a',{class : 'navbar-brand', href : 'https://www.universite-paris-saclay.fr', target : '_blank'})
+    const img_ups = createElement('img', {src : './IMG/ups.png'})
+    a_ups.appendChild(img_ups)
+    div_logos.appendChild(a_ups)
+
+    nav_element.appendChild(div_logos)
+    // #### The end of the logos of the university part 
+
     div_container.appendChild(nav_element)
     menu_element.appendChild(div_container)
 }
