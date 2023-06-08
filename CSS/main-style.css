@@ -54,6 +54,14 @@ p {
 	font-size: inherit !important;
 }
 
+.section-form{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	padding: 30px 30px;	
+}
+
 .text-center{
 	text-align: center !important;
 }
@@ -131,4 +139,71 @@ p {
 	height: 40px;
 	width: auto;
 	padding-left: 15px;
+}
+
+/* ********** HERO IMAGE & TEXT **********/
+#hero-image {
+	background-color: var(--cspurple);
+}
+
+#hero-image a{
+	color:#c7bfd1 !important;
+}
+
+#hero-image .fa{
+	padding-right: 8px;
+}
+
+.hero-image-grid{
+	display: grid;
+	grid-template-columns: 30% 70%;
+	align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.hero-user {
+	/* position: absolute; */
+	border-style: solid;
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	border-color: #FFF;
+	text-align: center;
+}
+
+.hero-name{
+	color: white;
+	text-align: justify;
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 36px;
+	/*padding-top: 20px;*/
+}
+
+.hero-text {
+	color: white;
+	text-align: justify;
+	padding-top: 10px;
+	/*padding-bottom: 10px;*/
+}
+
+.hero-button{
+	padding: 10px;	
+	margin-right: 10px;
+	border-style: solid;
+	border-color: #c7bfd1 !important;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #c7bfd1 !important;
+}
+
+.hero-button-div{
+	text-align: center;
+	/*margin: 20px;*/
+	margin-top: 40px;
+	color: #c7bfd1 !important;
+	text-align: right !important;
+	padding-bottom: 20px;
 }

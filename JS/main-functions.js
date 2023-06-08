@@ -71,7 +71,7 @@ function createMenu(){
 
     // Me contacter
     const item_contact = createElement('div',{class : 'nav-item'})
-    const a_contact = createElement('a', {class : 'nav-link', href : './index.html#footer'})
+    const a_contact = createElement('a', {class : 'nav-link', href : '#footer'})
     const fa_contact = createElement('i',{class : 'fa fa-envelope'})
     const t_contact = document.createTextNode("Me contacter");
 
