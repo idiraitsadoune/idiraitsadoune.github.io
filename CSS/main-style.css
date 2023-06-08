@@ -259,6 +259,63 @@ p {
 	margin: 30px;
 }
 /************************************************************/
+/* FOOTER Section */
+#footer {
+	background-color: #333;
+	color: #fff;
+}
+
+.footer-grid{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	align-items: start ;
+}
+
+.info-title{
+	font-size: 22px !important;
+	font-family: 'Inter Semi Bold' !important;
+	text-transform: uppercase;
+	padding-bottom: 20px;
+}
+
+.info_item{
+    font-size: 18px !important;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.footer-link {
+	color:  #fff !important;
+	font-size: 18px !important;
+}
+
+.fa-linkedin-square{
+	font-size: 40px !important;
+	color: #0e76a8;
+	padding: 3px;
+}
+.fa-twitter-square{
+	font-size: 40px !important;
+	color: #00acee;
+	padding: 3px;
+}
+.fa-facebook-square{
+	font-size: 40px !important;
+	color: #3b5998;
+	padding: 3px;
+}
+.fa-github-square{
+	font-size: 40px !important;
+	color: white;
+	padding: 3px;
+}
+.fa-youtube-square{
+	font-size: 40px !important;
+	color:  #c4302b;
+	padding: 3px;
+}
+
+/************************************************************/
 /* Designed By Section */
 #designed{
 	background-color: #333;
@@ -281,3 +338,4 @@ p {
 	width: var(--container-max-width);
 	margin-top: 20px ;
 }
+
