@@ -83,7 +83,7 @@ p {
 	text-align: center;
 	padding-top: 20px ;
 }
-
+/************************************************************/
 /* MENU STYLE ***************************/
 #nav-bar {
 	background: #fff;
@@ -154,7 +154,7 @@ p {
 	width: auto;
 	padding-left: 15px;
 }
-
+/************************************************************/
 /* ********** HERO IMAGE & TEXT **********/
 #hero-image {
 	background-color: var(--cspurple);
@@ -222,6 +222,7 @@ p {
 	padding-bottom: 20px;
 }
 
+/************************************************************/
 /* My activities section ****/
 #activities {
 	background-color: #fff;
@@ -256,4 +257,27 @@ p {
 .activity-botton-div{
 	text-align: center;
 	margin: 30px;
+}
+/************************************************************/
+/* Designed By Section */
+#designed{
+	background-color: #333;
+	color: #fff;
+}
+
+#designed a {
+	color: #00acee !important;
+}
+.designed{
+	padding-top: 10px;
+    text-align: center !important;
+}
+
+.designed::before {
+	content: '';
+	background: white;
+	display: block;
+	height: 1px;
+	width: var(--container-max-width);
+	margin-top: 20px ;
 }
