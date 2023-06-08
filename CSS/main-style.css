@@ -61,3 +61,35 @@ p {
 .text-justify{
 	text-align:justify !important;
 }
+
+/* MENU STYLE ***************************/
+#nav-bar {
+	background: #fff;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	box-shadow: 0 2px 20px #000;
+}
+
+#nav-bar a:hover {
+	color:var(--csred)!important;
+}
+
+.navbar {
+	background: #fff;
+	display: flex;
+	align-items: center;
+	padding: 15px 0 15px 0;
+}
+
+.small-hero-user img {
+	/* position: absolute; */
+	border-style: solid;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border-color: var(--cspurple);
+	text-align: center;
+	border-width: 2px;
+	/*margin-left: 20px;*/
+}
