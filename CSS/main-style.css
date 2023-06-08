@@ -62,12 +62,26 @@ p {
 	padding: 30px 30px;	
 }
 
+.section-title{
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 50px;
+	color: #847894;
+	text-transform: uppercase;
+	text-align: center !important;
+	margin-bottom: 20px;
+}
+
 .text-center{
 	text-align: center !important;
 }
 
 .text-justify{
 	text-align:justify !important;
+}
+
+.home-style-bottom{
+	text-align: center;
+	padding-top: 20px ;
 }
 
 /* MENU STYLE ***************************/
@@ -206,4 +220,40 @@ p {
 	color: #c7bfd1 !important;
 	text-align: right !important;
 	padding-bottom: 20px;
+}
+
+/* My activities section ****/
+#activities {
+	background-color: #fff;
+}
+
+#activities .fa{
+	margin-right: 8px;
+}
+
+.activities-grid{
+	display:grid; 
+	grid-template-columns: repeat(3,1fr);
+	align-items: center;
+}
+
+.activity-image{
+	width: 330px;
+	height: 190px;
+	background: #FFF;
+	padding: 7px 7px 7px 7px;
+}
+
+.activity-botton{
+	padding: 10px;	
+	border-style: solid;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.activity-botton-div{
+	text-align: center;
+	margin: 30px;
 }
