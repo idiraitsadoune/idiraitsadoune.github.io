@@ -82,6 +82,13 @@ p {
 .home-style-bottom{
 	text-align: center;
 	padding-top: 20px ;
+	font-size: 20px !important;
+}
+
+.home-style-top{
+	text-align: center;
+	padding-bottom: 20px ;
+	font-size: 20px !important;
 }
 /************************************************************/
 /* MENU STYLE ***************************/
@@ -257,6 +264,15 @@ p {
 .activity-botton-div{
 	text-align: center;
 	margin: 30px;
+}
+/************************************************************/
+/* LAST PUBLICATIONS */
+#publications {
+	background-color: #efefef;
+}
+
+.publication-title{
+	font-family: 'Inter Semi Bold' !important;
 }
 /************************************************************/
 /* FOOTER Section */
