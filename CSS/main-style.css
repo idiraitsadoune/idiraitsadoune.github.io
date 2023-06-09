@@ -71,6 +71,17 @@ p {
 	margin-bottom: 20px;
 }
 
+.subsection-title{
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 32px;
+	color: #847894;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.subsection-title::before{
+	content: "\2756";
+}
+
 .text-center{
 	text-align: center !important;
 }

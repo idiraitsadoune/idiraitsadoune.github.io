@@ -23,6 +23,110 @@
         <section id="global-title"></section>
 
         <!-- ############################################### -->
+        <!-- The main content -->
+        <section class="section-form">	
+            <div class="container">
+                <div class="section-title">
+                    Outils développés
+                </div>
+                <!-- UN DEVELOPPEMENT ******************************************** -->          
+                <div class="subsection-title">
+                    OntoEventB Rodin plugin
+                </div>
+                <div class="text-justify">
+					<b>OntoEventB</b> implémente une approche de formalisation des
+					ontologies décrites par des langages de description des
+					ontologiques (OWL, OntoML, ...) en utilisant la théorie des
+					ensembles et la logique du premier ordre supportées par la méthode
+					Event-B. L’intérêt de cette formalisation est d’enrichir le
+					processus de spécification et de vérification utilisant la méthode
+					Event-B, en intégrant des modèles de données et de connaissances
+					décrits dans des ontologies. L’utilisation des ontologies dans un
+					développement Event-B va servir à annoter et/ou à typer les données
+					manipulées par le système, ce qui permet de vérifier, en plus des
+					propriétés caractéristiques du système, des propriétés liées à la
+					cohérence des données manipulées et induites par les contraintes du
+					domaine exprimées dans les ontologies
+				</div>
+                <div >
+                    <a href="https://github.com/idiraitsadoune/OntoEventB" target="_blank">
+						<i class="fa fa-github-square" style="color:black !important"></i> Le dépôt du plugin</a>
+                </div>
+                <!-- UN DEVELOPPEMENT ******************************************** -->    
+                <div class="subsection-title" style="padding-top: 20px;">
+					BPEL2B Rodin plugin
+				</div>
+                <div class="text-justify">
+					Le processus de composition de services Web est défini par une
+					chorégraphie ou une orchestration de ces services. Les langages de
+					description de la chorégraphie ou d’orchestration sont généralement
+					décrits d’une manière informelle dans les spécifications et les
+					outils associés n’offrent pas la possibilité de vérifier et de
+					valider formellement le comportement et les propriétés du service
+					composé obtenu. Dans nos travaux, on s’intéresse à la vérification
+					formelle de l’orchestration de services décrite avec le langage
+					BPEL en utilisant la méthode Event-B. L’approche proposée se base
+					sur le raffinement pour la structuration du développement d’un
+					processus BPEL, et sur la preuve de théorèmes pour l’établissement
+					de propriétés. Le plugin <b>BPEL2B</b> implémente l’approche
+					proposée.
+                </div>
+                <div>
+					<b>Update site</b> : <a href="https://wdi.centralesupelec.fr/aitsadoune/bpel2b-update-site/" target="_blank">
+                        <i class="fa fa-link"></i> https://wdi.centralesupelec.fr/aitsadoune/bpel2b-update-site/</a>
+                </div>
+                 <!-- UN DEVELOPPEMENT ******************************************** -->    
+                 <div class="subsection-title"  style="padding-top: 20px;">
+					CO2EB Rodin plugin
+				</div>
+                <div class="text-justify">
+					Our approach of modelling composition operations of a process
+					algebra in Event-B follows the formal modelling rules formally
+					defined in <a href="https://hal-supelec.archives-ouvertes.fr/hal-01103340" target="_blank">this paper</a>. 
+                    We propose to encode these
+					operators in Event-B, using an explicit variant to encode the
+					events order and successive refinements. Each process algebra
+					expression defined by the rule A_0 ::= A_1 OP A_2 is modelled by
+					two Event-B models. The first one is associated with the left hand
+					side of the rule and contains only one event evt_A0 associated with
+					the action A_0 . The second model is a refinement of the first one
+					and corresponds to the right hand side of this rule. Two new events
+					evt_A1 and evt_A2 associated with the actions A_1 and A_2 are added
+					in the refinement. These events carry the semantics of the OP
+					operator and of the right hand side of the expression. The firing
+					order of the events is determined by introducing an explicit
+					decreasing variant. The new events are fired and when they are
+					completed, the refined event evt_A0 is fired.
+                </div>
+                <div>
+					<b>Update site</b> : <a href="https://wdi.centralesupelec.fr/aitsadoune/co4eb-update-site/"target="_blank">
+                        <i class="fa fa-link"></i> https://wdi.centralesupelec.fr/aitsadoune/co4eb-update-site/</a>
+                </div>
+                <!-- UN DEVELOPPEMENT ******************************************** -->    
+                <div class="subsection-title"  style="padding-top: 20px;">
+					B2EXPRESS Event-B Animator
+				</div>
+                <div class="text-justify">
+					L’outil <b>B2EXPRESS</b> est un animateur de modèles Event-B fondé
+					sur l’instanciation de modèles de données exprimés dans le langage
+					EXPRESS. Chaque construction de modèle Event-B (substitutions,
+					invariant, ensembles, variables, etc) est transformée en une
+					construction de modèle EXPRESS (entité, attribut, regèles locales
+					et globales). L’animation consiste à définir des instances des
+					différentes entités du modèle EXPRESS obtenu et à contrôler les
+					contraintes associées.
+                </div>     
+                <div>
+                    <b>Update site</b> : <i class="fa fa-link"></i> (unavailable)
+                </div> 
+                <!-- The bottom of the page -->
+                <div class="home-style-bottom">
+                    <a href="#">Cliquez ici</a> pour revenir en haut de la page
+                </div>
+            </div>
+        </section>
+
+        <!-- ############################################### -->
         <!-- Footer section -->
         <section id="footer"></section>
 
