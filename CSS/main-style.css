@@ -354,3 +354,30 @@ p {
 	margin-top: 20px ;
 }
 
+/************************************************************/
+/* global title */
+#global-title{
+	background-color:#847894 ;
+}
+
+#global-title a{
+	color:#c7bfd1 !important;
+}
+
+.title-container {
+	padding-top: 60px;
+	padding-bottom: 20px;
+	color: #FFF;
+	font-size: 35px;
+	font-family: 'Inter Semi Bold' !important;
+}
+
+.title-menu{
+	padding-top:  15px ;
+	padding-bottom: 15px ;
+	color:#FFF;
+}
+
+.title-menu span {
+	float: right;
+}

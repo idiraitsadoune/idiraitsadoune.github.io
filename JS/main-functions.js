@@ -214,6 +214,41 @@ function createFooter(){
     div_3.appendChild(item_32)
 }
 
+
+function createTitleBare(title, sections=[], level=""){
+    const section = document.getElementById("global-title")
+    const div_container = createElement('div',{class : "container"})
+    section.appendChild(div_container)
+
+    const title_container = createElement('div',{class : "title-container"})
+    title_container.appendChild(document.createTextNode(title)) 
+    div_container.appendChild(title_container)
+
+    const title_menu = createElement('div',{class : "title-menu"})
+
+    title_menu.appendChild(createElement('i',{class : "fa fa-home"}))
+    const link = createElement('a',{href : "./index.html"})
+    link.appendChild(document.createTextNode(" Accueil"))
+    title_menu.appendChild(link)
+
+    for(let i=0; i<sections.length ; i++){
+        title_menu.appendChild(createElement('i',{class : "fa fa-folder-open-o", style : "padding-left:20px"}))
+        const link_2 = createElement('a',{href : sections[i][1]})
+        link_2.appendChild(document.createTextNode(" " + sections[i][0]))
+        title_menu.appendChild(link_2)
+    }
+
+    if(level != ""){
+        const span = createElement('span')
+        span.appendChild(createElement('i',{class : "fa fa-graduation-cap"}))
+        span.appendChild(document.createTextNode(" " + level))
+        title_menu.appendChild(span)
+    }
+    
+    div_container.appendChild(title_menu)
+}
+
 createMenu()
 createFooter()
 createDesignedBy()
+createTitleBare(title,sections,level)
