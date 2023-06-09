@@ -284,6 +284,10 @@ p {
 	padding-bottom: 5px;
 }
 
+#footer .fa{
+	padding-right: 10px;
+}
+
 .footer-link {
 	color:  #fff !important;
 	font-size: 18px !important;
@@ -292,27 +296,22 @@ p {
 .fa-linkedin-square{
 	font-size: 40px !important;
 	color: #0e76a8;
-	padding: 3px;
 }
 .fa-twitter-square{
 	font-size: 40px !important;
 	color: #00acee;
-	padding: 3px;
 }
 .fa-facebook-square{
 	font-size: 40px !important;
 	color: #3b5998;
-	padding: 3px;
 }
 .fa-github-square{
 	font-size: 40px !important;
 	color: white;
-	padding: 3px;
 }
 .fa-youtube-square{
 	font-size: 40px !important;
 	color:  #c4302b;
-	padding: 3px;
 }
 
 /************************************************************/

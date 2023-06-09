@@ -123,5 +123,97 @@ function createDesignedBy(){
     section.appendChild(div)
 }
 
+function createFooter(){
+    const section = document.getElementById("footer")
+    section.setAttribute("class","section-form")
+
+    const div_container = createElement('div',{class : "container"})
+    section.appendChild(div_container)
+
+    const div_title = createElement('div',{class : 'section-title'})
+    div_title.appendChild(document.createTextNode("Me contacter"));
+    div_container.appendChild(div_title)
+
+    const div_grid = createElement('div',{class : 'footer-grid'})
+    div_container.appendChild(div_grid)
+
+    const div_1 = createElement('div')
+    const div_2 = createElement('div')
+    const div_3 = createElement('div')
+    div_grid.appendChild(div_1)
+    div_grid.appendChild(div_2)
+    div_grid.appendChild(div_3)
+
+    // DIV 1
+    const title_1 = createElement('div',{class : "info-title"})
+    title_1.appendChild(document.createTextNode("ADRESSE DE CENTRALESUPELEC"))
+    div_1.appendChild(title_1)
+
+    const item_11 = createElement('div',{class : "info_item"})
+    item_11.appendChild(createElement('i',{class : "fa fa-map-marker"}))
+    item_11.appendChild(document.createTextNode("Bâtiment Breguet"))
+    item_11.appendChild(document.createElement("br"))
+    item_11.appendChild(document.createTextNode("3 rue Joliot-Curie, F-91192 Gif-sur-Yvette Cedex"))
+    div_1.appendChild(item_11)
+
+    const item_12 = createElement('div',{class : "info_item"})
+    item_12.appendChild(createElement('i',{class : "fa fa-phone"}))
+    item_12.appendChild(document.createTextNode("+33 (0)1 69 85 14 88"))
+    div_1.appendChild(item_12)
+
+    // DIV 2
+    const title_2 = createElement('div',{class : "info-title"})
+    title_2.appendChild(document.createTextNode("ADRESSE DU LMF"))
+    div_2.appendChild(title_2)
+
+    const item_21 = createElement('div',{class : "info_item"})
+    item_21.appendChild(createElement('i',{class : "fa fa-map-marker"}))
+    item_21.appendChild(document.createTextNode("Bât 650 Ada Lovelace"))
+    item_21.appendChild(document.createElement("br"))
+    item_21.appendChild(document.createTextNode("1, rue Raimond Castaing, 91190 Gif-sur-Yvette"))
+    div_2.appendChild(item_21)
+
+    const item_22 = createElement('div',{class : "info_item"})
+    item_22.appendChild(createElement('i',{class : "fa fa-phone"}))
+    item_22.appendChild(document.createTextNode("+33 (0)X XX XX XX XX"))
+    div_2.appendChild(item_22)
+
+    // DIV 3
+    const title_3 = createElement('div',{class : "info-title"})
+    title_3.appendChild(document.createTextNode("LIENS SUR LE WEB"))
+    div_3.appendChild(title_3)
+
+    const item_31 = createElement('div',{class : "info_item"})
+    item_31.appendChild(createElement('i',{class : "fa fa-envelope"}))
+    const mail_1 = createElement('a',{href : "mailto:idir.aitsadoune@centralesupelec.fr", class:"footer-link"})
+    mail_1.appendChild(document.createTextNode(" idir[.]aitsadoune[at]centralesupelec[.]fr")) 
+    item_31.appendChild(mail_1)
+    item_31.appendChild(document.createElement("br"))
+    item_31.appendChild(createElement('i',{class : "fa fa-envelope"}))
+    const mail_2 = createElement('a',{href : "mailto:idir.ait-sadoune@universite-paris-saclay.fr", class:"footer-link"})
+    mail_2.appendChild(document.createTextNode(" idir[.]ait-sadoune[at]universite-paris-saclay[.]fr")) 
+    item_31.appendChild(mail_2)
+    div_3.appendChild(item_31)
+
+    const item_32 = createElement('div',{class : "info_item"})
+    const git = createElement('a',{href:"https://github.com/idiraitsadoune", target:"_blank"})
+    git.appendChild(createElement('i',{class:"fa fa-github-square"}))
+    item_32.appendChild(git)
+    const linkedin = createElement('a',{href:"https://www.linkedin.com/in/idiraitsadoune/", target:"_blank"})
+    linkedin.appendChild(createElement('i',{class:"fa fa-linkedin-square"}))
+    item_32.appendChild(linkedin)
+    const twitter = createElement('a',{href:"https://twitter.com/IdirAitSadoune", target:"_blank"})
+    twitter.appendChild(createElement('i',{class:"fa fa-twitter-square"}))
+    item_32.appendChild(twitter)
+    const facebook = createElement('a',{href:"https://www.facebook.com/idir.aitsadoune", target:"_blank"})
+    facebook.appendChild(createElement('i',{class:"fa fa-facebook-square"}))
+    item_32.appendChild(facebook)
+    const youtube = createElement('a',{href:"https://www.youtube.com/channel/UCQFRgqAWu5iLenriuvpK6Zg", target:"_blank"})
+    youtube.appendChild(createElement('i',{class:"fa fa-youtube-square"}))
+    item_32.appendChild(youtube)
+    div_3.appendChild(item_32)
+}
+
 createMenu()
+createFooter()
 createDesignedBy()
