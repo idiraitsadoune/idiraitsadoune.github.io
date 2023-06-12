@@ -1,0 +1,88 @@
+{
+    "conferences" : [
+        {
+            "title" : "Using Deep Ontologies in Formal Software Engineering",
+            "conference" : "9th International Conference on Rigorous State-Based Methods, ABZ 2023",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-031-33163-3_2"
+        },
+        {
+            "title" : "OntoEventB: A Generator of Event-B contexts from Ontologies",
+            "conference" : "9th Rodin User and Developer Workshop, Rodin 2021",
+            "link" : "https://wiki.event-b.org/index.php/Rodin_Workshop_2021"
+        },
+        {
+            "title" : "Building Formal Semantic Domain Model: An Event-B Based Approach",
+            "conference" : "9th International Conference on Model and Data Engineering, MEDI 2019",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-030-32065-2_10"
+        },
+        {
+            "title" : "Using the Isabelle Ontology Framework",
+            "conference" : "11th International Conference on Intelligent Computer Mathematics, CICM 2018",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-96812-4_3"
+        },
+        {
+            "title" : "On the Importance of Explicit Domain Modelling in Refinement-Based Modelling Design. Experiments with Event-B",
+            "conference" : "6th International Conference on Abstract State Machines, Alloy, B, TLA, VDM, and Z, ABZ 2018",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-91271-4_35"
+        },
+        {
+            "title" : "...",
+            "conference" : "...",
+            "link" : "#"
+        }
+    ],
+    "chapitres" : [
+        {
+            "title" : "Formal Modelling and Verification of Transactional Web Service Composition: A Refinement and Proof Approach with Event-B",
+            "conference" : "Correct Software in Web Applications and Web Services, 2015",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-17112-8_1"
+        },
+        {
+            "title" : "A Formal Framework for Design and Validation of Multimodal Interactive Systems in Transport Domain",
+            "conference" : "Human-Computer Interactions in Transport, 2011",
+            "link" : "https://onlinelibrary.wiley.com/doi/10.1002/9781118601907.ch4"
+        },
+        {
+            "title" : "Un cadre formel pour la conception et la validation de systèmes interactifs multimodaux dans le secteur du transport",
+            "conference" : "Interaction homme-machine dans les transports : Personnalisation, Assistance et Information du voyageur, 2010",
+            "link" : "https://editions.lavoisier.fr/informatique/interaction-homme-machine-dans-les-transports/kolski/hermes-science-publications/traite-rta/livre/9782746230101"
+        }
+    ],
+    "revues" : [
+        {
+            "title" : "The role of user requirements in data repository design",
+            "conference" : "International Journal on Software Tools for Technology Transfer, 2018",
+            "link" : "https://link.springer.com/article/10.1007/s10009-016-0443-0"
+        },
+        {
+            "title" : "Formal Modelling of Ontologies : An Event-B based Approach Using the Rodin Platform",
+            "conference" : "Theoretical Computer Science, 2018",
+            "link" : "https://arxiv.org/abs/1805.05518v1"
+        },
+        {
+            "title" : "A formal model for output multimodal HCI",
+            "conference" : "Computing, 2015",
+            "link" : "https://link.springer.com/article/10.1007/s00607-015-0460-y"
+        },
+        {
+            "title" : "Modélisation formelle d’IHM multimodales en sortie avec Event-B",
+            "conference" : "Technique et science informatiques RSTI série TSI, 2015",
+            "link" : "https://editions.lavoisier.fr/informatique/technique-et-science-informatiques-rsti-serie-tsi-volume-34-n-5-septembre-octobre-2015/dubois/hermes-science-publications/livre/9782746247468"
+        },
+        {
+            "title" : "Vérification et validation formelles de systèmes interactifs fondées sur la preuve : application aux systèmes Multi-Modaux",
+            "conference" : "Journal d'Interaction Personne-Système, 2014",
+            "link" : "https://jips.episciences.org/59"
+        },
+        {
+            "title" : "Stepwise Development of Formal Models for Web Services Compositions: Modelling and Property Verification",
+            "conference" : "Transactions on Large-Scale Data and Knowledge-Centered Systems X, 2013",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-642-41221-9_1"
+        },
+        {
+            "title" : "Développements formels d'interfaces multimodales fondés sur la preuve et le raffinement. Scénarios de développement",
+            "conference" : "Ingénierie des Systèmes d'Information, 2008",
+            "link" : "https://dblp.uni-trier.de/db/journals/isi/isi13.html"
+        }
+    ]
+}
