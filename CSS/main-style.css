@@ -155,9 +155,8 @@ p {
 
 .nav-link {
 	color: var(--cspurple) !important;
-	/*font-weight: 600;*/
-	font-family: 'Inter Semi Bold' !important;
-	font-size: 18px !important;
+	/*font-family: 'Inter Semi Bold' !important;*/
+	font-size: 16px !important;
 }
 
 .nav-logos{
