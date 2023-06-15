@@ -10,7 +10,7 @@ function getLastPublications(){
     const main_div = document.getElementById("all-publications")
 
     const headers = {Accept: 'application/json'}
-    fetch("./JSON/publications.json", headers)
+    fetch("../JSON/publications.json", headers)
         .then((response) => response.json())
         .then((json) => {
             

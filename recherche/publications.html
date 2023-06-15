@@ -8,10 +8,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="./CSS/main-style.css">
+        <link rel="stylesheet" href="../CSS/main-style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link rel="icon" href="./IMG/favicon.ico">
+        <link rel="icon" href="../IMG/favicon.ico">
     </head>
     <body>
         <!-- ############################################### -->
@@ -21,6 +21,27 @@
         <!-- ############################################### -->
         <!-- The global title -->
         <section id="global-title"></section>
+
+         <!-- ############################################### -->
+        <!-- The main content -->
+        <section id=publications class="section-form">
+            <div class=container>
+
+                <div class="home-style-top">
+                    Toutes les publications sur 
+                    <a href="https://dblp.uni-trier.de/pers/hd/a/A=iuml=t=Sadoune:Idir" target="_blank">DBLP</a> -
+                    <a href="https://orcid.org/0000-0002-6484-8276" target="_blank">ORCID</a> -
+                    <a href="https://cv.archives-ouvertes.fr/idir-ait-sadoune" target="_blank">HAL Archives ouvertes</a> -
+                    <a href="https://scholar.google.com/citations?user=zoEsELoAAAAJ&hl=en" target="_blank">Google Scholar</a>
+                </div>
+    
+                <div id="all-publications"></div>
+                
+                <div class="home-style-bottom">
+                    <a href="#">Cliquez ici</a> pour revenir en haut de la page
+                </div>
+            </div>
+        </section>
 
         <!-- ############################################### -->
         <!-- Footer section -->
@@ -33,10 +54,12 @@
         <!-- ############################################### -->
         <!-- My JS scripts -->
         <script>
-            var title = "Activités d'enseignement"
-            var sections = []
+            var title = "Mes publications"
+            var sections = [["Recherche","../recherche"]]
             var level = ""
+            var path = "../"
         </script>
-        <script src="./JS/main-functions.js"></script>
+        <script src="../JS/main-functions.js"></script>
+        <script src="../JS/all-publications.js"></script>
     </body>
 </html>

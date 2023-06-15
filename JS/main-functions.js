@@ -6,15 +6,15 @@ function createElement(tagName, attributes = {}){
     return element
 }
 
-function createMenu(){
+function createMenu(path = "./"){
     const menu_element = document.getElementById("nav-bar")
     const div_container = createElement('div',{class : 'container'})
     const nav_element = createElement('nav',{class : 'navbar'})
 
     // #### The logo part 
     const div_e = createElement('div')
-    const a_link = createElement('a', {class : 'small-hero-user', href : './index.html'})
-    const img_link = createElement('img', {src:'./IMG/idir.jpg'})
+    const a_link = createElement('a', {class : 'small-hero-user', href : path + 'index.html'})
+    const img_link = createElement('img', {src: path + 'IMG/idir.jpg'})
 
     a_link.appendChild(img_link)
     div_e.appendChild(a_link)
@@ -27,7 +27,7 @@ function createMenu(){
 
     // Enseignement
     const item_enseignement = createElement('div',{class : 'nav-item'})
-    const a_enseignement = createElement('a', {class : 'nav-link', href : './enseignement.html'})
+    const a_enseignement = createElement('a', {class : 'nav-link', href : path + 'enseignement'})
     const fa_enseignement = createElement('i',{class : 'fa fa-graduation-cap'})
     const t_enseignement = document.createTextNode("Enseignement");
 
@@ -38,7 +38,7 @@ function createMenu(){
     
     // Recherche
     const item_recherche = createElement('div',{class : 'nav-item'})
-    const a_recherche = createElement('a', {class : 'nav-link', href : './recherche.html'})
+    const a_recherche = createElement('a', {class : 'nav-link', href : path + 'recherche'})
     const fa_recherche = createElement('i',{class : 'fa fa-lightbulb-o'})
     const t_recherche = document.createTextNode("Recherche");
 
@@ -49,7 +49,7 @@ function createMenu(){
 
     // Publications
     const item_publications = createElement('div',{class : 'nav-item'})
-    const a_publications = createElement('a', {class : 'nav-link', href : './publications.html'})
+    const a_publications = createElement('a', {class : 'nav-link', href : path + 'recherche/publications.html'})
     const fa_publications = createElement('i',{class : 'fa fa-book'})
     const t_publications = document.createTextNode("Publications");
 
@@ -60,7 +60,7 @@ function createMenu(){
 
     // Développement
     const item_developpement = createElement('div',{class : 'nav-item'})
-    const a_developpement = createElement('a', {class : 'nav-link', href : './developpement.html'})
+    const a_developpement = createElement('a', {class : 'nav-link', href : path + 'recherche/developpement.html'})
     const fa_developpement = createElement('i',{class : 'fa fa-code'})
     const t_developpement = document.createTextNode("Développement");
 
@@ -88,17 +88,17 @@ function createMenu(){
     const div_logos = createElement('div',{class : 'nav-logos'})
 
     const a_lmf = createElement('a',{class : 'navbar-brand', href : 'https://lmf.cnrs.fr/', target : '_blank'})
-    const img_lmf = createElement('img', {src : './IMG/lmf-new-logo.png'})
+    const img_lmf = createElement('img', {src : path + 'IMG/lmf-new-logo.png'})
     a_lmf.appendChild(img_lmf)
     div_logos.appendChild(a_lmf)
 
     const a_cs = createElement('a',{class : 'navbar-brand', href : 'https://www.centralesupelec.fr', target : '_blank'})
-    const img_cs = createElement('img', {src : './IMG/cs.png'})
+    const img_cs = createElement('img', {src : path + 'IMG/cs.png'})
     a_cs.appendChild(img_cs)
     div_logos.appendChild(a_cs)
 
     const a_ups = createElement('a',{class : 'navbar-brand', href : 'https://www.universite-paris-saclay.fr', target : '_blank'})
-    const img_ups = createElement('img', {src : './IMG/ups.png'})
+    const img_ups = createElement('img', {src : path + 'IMG/ups.png'})
     a_ups.appendChild(img_ups)
     div_logos.appendChild(a_ups)
 
@@ -109,11 +109,11 @@ function createMenu(){
     menu_element.appendChild(div_container)
 }
 
-function createDesignedBy(){
+function createDesignedBy(path = "./"){
     const section = document.getElementById("designed")
     const div = createElement('div',{class : 'container designed'})
     const text1 = document.createTextNode("Designed by ");
-    const a = createElement('a', {href : './index.html'})
+    const a = createElement('a', {href : path + 'index.html'})
     const a_text = document.createTextNode("Idir AIT SADOUNE")
     a.appendChild(a_text)
     const text2 = document.createTextNode(" - 2023");
@@ -215,7 +215,7 @@ function createFooter(){
 }
 
 
-function createTitleBare(title, sections=[], level=""){
+function createTitleBare(title="", path = "./", sections=[], level=""){
     const section = document.getElementById("global-title")
     const div_container = createElement('div',{class : "container"})
     section.appendChild(div_container)
@@ -227,7 +227,7 @@ function createTitleBare(title, sections=[], level=""){
     const title_menu = createElement('div',{class : "title-menu"})
 
     title_menu.appendChild(createElement('i',{class : "fa fa-home"}))
-    const link = createElement('a',{href : "./index.html"})
+    const link = createElement('a',{href : path + "index.html"})
     link.appendChild(document.createTextNode(" Accueil"))
     title_menu.appendChild(link)
 
@@ -248,7 +248,7 @@ function createTitleBare(title, sections=[], level=""){
     div_container.appendChild(title_menu)
 }
 
-createMenu()
+createMenu(path)
 createFooter()
-createDesignedBy()
-createTitleBare(title,sections,level)
+createDesignedBy(path)
+createTitleBare(title, path, sections, level)
