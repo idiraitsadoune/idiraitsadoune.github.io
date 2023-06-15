@@ -136,12 +136,16 @@
 
         <!-- ############################################### -->
         <!-- My JS scripts -->
+        <script src="../JS/main-functions.js"></script>
         <script>
             var title = "Activités de développement"
             var sections = [["Recherche","../recherche"]]
             var level = ""
             var path = "../"
+            createMenu(path)
+            createTitleBar(title, path, sections, level)
+            createFooter()
+            createDesignedBy(path)
         </script>
-        <script src="../JS/main-functions.js"></script>
     </body>
 </html>

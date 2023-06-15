@@ -214,8 +214,7 @@ function createFooter(){
     div_3.appendChild(item_32)
 }
 
-
-function createTitleBare(title="", path = "./", sections=[], level=""){
+function createTitleBar(title="", path="./", sections=[], level=""){
     const section = document.getElementById("global-title")
     const div_container = createElement('div',{class : "container"})
     section.appendChild(div_container)
@@ -244,11 +243,93 @@ function createTitleBare(title="", path = "./", sections=[], level=""){
         span.appendChild(document.createTextNode(" " + level))
         title_menu.appendChild(span)
     }
-    
+
     div_container.appendChild(title_menu)
 }
 
-createMenu(path)
-createFooter()
-createDesignedBy(path)
-createTitleBare(title, path, sections, level)
+function createLastPublications(){
+    const main_div = document.getElementById("last-publications")
+    const headers = {Accept: 'application/json'}
+
+    fetch("./JSON/last-pub.json", headers)
+        .then((response) => response.json())
+        .then((json) => {
+            const publications = json["publications"]
+
+            // Only the last four publications
+            for (let i=0; i<4 ; i++){
+                const div = createElement('div')
+                const a = createElement('a',{href : publications[i]["link"], target : "_blank", class : "publication-title"})
+                a.appendChild(createElement('i',{class : "fa fa-book"}))
+                a.appendChild(document.createTextNode(" " + publications[i]["title"]))
+                div.appendChild(a)
+                main_div.appendChild(div)
+                main_div.appendChild(document.createTextNode(" " + publications[i]["conference"]))
+                main_div.appendChild(document.createElement("br"))
+                if(i < 3) {
+                    main_div.appendChild(document.createElement("br"))
+                }
+            }      
+    });
+}
+
+function createAllPublications(){
+    const main_div = document.getElementById("all-publications-div")
+    const headers = {Accept: 'application/json'}
+    
+    fetch("../JSON/publications.json", headers)
+        .then((response) => response.json())
+        .then((json) => {
+            
+            const div_revue = createElement('div', {class:"section-title"})
+            div_revue.appendChild(document.createTextNode("Articles dans des journaux"))
+            main_div.appendChild(div_revue)
+    
+            var publications = json["revues"]
+            for (let i=0; i<publications.length ; i++){
+                const div = createElement('div')
+                const a = createElement('a',{href : publications[i]["link"], target : "_blank", class : "publication-title"})
+                a.appendChild(createElement('i',{class : "fa fa-book"}))
+                a.appendChild(document.createTextNode(" " + publications[i]["title"]))
+                div.appendChild(a)
+                main_div.appendChild(div)
+                main_div.appendChild(document.createTextNode(" " + publications[i]["conference"]))
+                main_div.appendChild(document.createElement("br"))
+                main_div.appendChild(document.createElement("br"))  
+            }
+    
+            const div_conf = createElement('div', {class:"section-title"})
+            div_conf.appendChild(document.createTextNode("Articles dans des conférences"))
+            main_div.appendChild(div_conf)
+    
+            publications = json["conferences"]
+            for (let i=0; i<publications.length ; i++){
+                const div = createElement('div')
+                const a = createElement('a',{href : publications[i]["link"], target : "_blank", class : "publication-title"})
+                a.appendChild(createElement('i',{class : "fa fa-book"}))
+                a.appendChild(document.createTextNode(" " + publications[i]["title"]))
+                div.appendChild(a)
+                main_div.appendChild(div)
+                main_div.appendChild(document.createTextNode(" " + publications[i]["conference"]))
+                main_div.appendChild(document.createElement("br"))
+                main_div.appendChild(document.createElement("br"))  
+            }
+    
+            const div_chap = createElement('div', {class:"section-title"})
+            div_chap.appendChild(document.createTextNode("Chapitres dans des ouvrages"))
+            main_div.appendChild(div_chap)
+    
+            publications = json["chapitres"]
+            for (let i=0; i<publications.length ; i++){
+                const div = createElement('div')
+                const a = createElement('a',{href : publications[i]["link"], target : "_blank", class : "publication-title"})
+                a.appendChild(createElement('i',{class : "fa fa-book"}))
+                a.appendChild(document.createTextNode(" " + publications[i]["title"]))
+                div.appendChild(a)
+                main_div.appendChild(div)
+                main_div.appendChild(document.createTextNode(" " + publications[i]["conference"]))
+                main_div.appendChild(document.createElement("br"))
+                main_div.appendChild(document.createElement("br"))  
+            }     
+    }); 
+}

@@ -281,6 +281,10 @@ p {
 	background-color: #efefef;
 }
 
+#all-publications {
+	background-color: #fff;
+}
+
 .publication-title{
 	font-family: 'Inter Semi Bold' !important;
 }

@@ -24,7 +24,7 @@
 
          <!-- ############################################### -->
         <!-- The main content -->
-        <section id=publications class="section-form">
+        <section id=all-publications class="section-form">
             <div class=container>
 
                 <div class="home-style-top">
@@ -35,7 +35,7 @@
                     <a href="https://scholar.google.com/citations?user=zoEsELoAAAAJ&hl=en" target="_blank">Google Scholar</a>
                 </div>
     
-                <div id="all-publications"></div>
+                <div id="all-publications-div"></div>
                 
                 <div class="home-style-bottom">
                     <a href="#">Cliquez ici</a> pour revenir en haut de la page
@@ -53,13 +53,18 @@
 
         <!-- ############################################### -->
         <!-- My JS scripts -->
+        <script src="../JS/main-functions.js"></script>
         <script>
             var title = "Mes publications"
             var sections = [["Recherche","../recherche"]]
             var level = ""
             var path = "../"
+            createMenu(path)
+            createTitleBar(title, path, sections, level)
+            createAllPublications()
+            createFooter()
+            createDesignedBy(path)
         </script>
-        <script src="../JS/main-functions.js"></script>
-        <script src="../JS/all-publications.js"></script>
+        
     </body>
 </html>
