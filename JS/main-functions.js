@@ -273,6 +273,40 @@ function createLastPublications(){
     });
 }
 
+function createLastLessons(){
+    const main_div = document.getElementById("last-lessons-div")
+    const headers = {Accept: 'application/json'}
+    fetch("./JSON/last-lessons.json", headers)
+        .then((response) => response.json())
+        .then((json) => {
+            const lessons = json["lessons"]
+
+            const grid = createElement('div',{class : 'lessons-grid'})
+            main_div.appendChild(grid)
+
+            // Only the last four lessons
+            for (let i=0; i<4 ; i++){
+                const single = createElement('div',{class : 'single-lessons'})
+                grid.appendChild(single)
+
+                const a = createElement('a',{href:lessons[i]["link"]})
+                single.appendChild(a)
+
+                const img = createElement('img',{style:"width: 100%;",src:"./IMG/"+lessons[i]["image"]})
+                a.appendChild(img)
+
+                const title = createElement('div',{class:"lesson-title"})
+                title.appendChild(document.createTextNode(lessons[i]["title"]))
+                a.appendChild(title)
+
+                const level = createElement('div',{class:"lesson-level"})
+                level.appendChild(document.createTextNode(lessons[i]["level"]))
+                a.appendChild(level)
+
+            }
+        });
+}
+
 function createAllPublications(){
     const main_div = document.getElementById("all-publications-div")
     const headers = {Accept: 'application/json'}

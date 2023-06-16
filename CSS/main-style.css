@@ -30,7 +30,7 @@ body{
 }
 
 a {
-	color : var(--csred) !important ;
+	color : var(--csred) !important;
 	text-decoration: none !important;
 	font-size: inherit !important;
 }
@@ -325,7 +325,7 @@ p {
 	margin: 30px;
 }
 /************************************************************/
-/* LAST PUBLICATIONS */
+/* LAST PUBLICATIONS SECTION */
 #publications {
 	background-color: #efefef;
 }
@@ -338,7 +338,74 @@ p {
 	font-family: 'Inter Semi Bold' !important;
 }
 /************************************************************/
-/* FOOTER Section */
+/* LAST LESSONS SECTION */
+#last-lessons {
+	background-color: #FFF;
+}
+
+.lessons-grid{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	align-items: start;
+}
+
+@media (max-width: 1470px) {
+	.lessons-grid{
+		grid-template-columns: repeat(1,1fr);
+	}
+	.single-lessons{
+	}
+}
+
+.single-lessons{
+	margin: 15px;
+	background-color: #FFF;
+	float: left;
+	transition: 0.5s;
+	border-color: #d3d3d3;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+	box-shadow: 0 2px 5px #847894;
+	padding: 15px;
+	height: 240px;
+	width: auto;
+	position:relative;
+}
+
+@media (max-width: 1470px) {
+	.lessons-grid{
+		grid-template-columns: repeat(1,1fr);
+		align-items: center;
+	}
+	.single-lessons{
+		width: 280px;
+	}
+}
+
+.single-lessons:hover{
+	box-shadow: 0 2px 10px #000;
+	border-radius: 3px;
+	border-color: #775c9b;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.lesson-title{
+	color: #775c9b;
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 17px !important;
+	padding-top: 10px;
+}
+
+.lesson-level{
+	color: #775c9b;
+	font-size: 13px !important;
+	padding-top: 5px;
+}
+
+/************************************************************/
+/* FOOTER SECTION */
 #footer {
 	background-color: #333;
 	color: #fff;
@@ -400,7 +467,7 @@ p {
 }
 
 /************************************************************/
-/* Designed By Section */
+/* Designed By SECTION */
 #designed{
 	background-color: #333;
 	color: #fff;
