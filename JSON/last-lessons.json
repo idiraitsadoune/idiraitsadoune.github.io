@@ -4,25 +4,25 @@
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "./enseignement/index.html"
+            "link" : "./enseignement/index.html#l1"
         },
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "./enseignement/index.html"
+            "link" : "./enseignement/index.html#l2"
         },
         {
             "title" : "Qualité de développement",
             "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
             "image" : "ensignement.jpg",
-            "link" : "./enseignement/index.html"
+            "link" : "./enseignement/index.html#l3"
         },  
         {
             "title" : "Systèmes d'exploitation et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "./enseignement/index.html"
+            "link" : "./enseignement/index.html#l4"
         }
     ]
 }
