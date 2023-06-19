@@ -1,0 +1,269 @@
+@font-face {
+    font-family: 'Monaco';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./monaco-font/Monaco.woff') format('woff');
+}
+/* ****************************************************** */
+/* general definitions */
+.reveal {
+	font-size: 38px !important;
+  }
+
+.reveal .slides>section {
+	padding-left: 70px !important;
+	padding-right: 70px !important;
+	width: 1140px !important;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+	font-size: 0.9em !important;
+}
+
+.reveal pre {
+	font-family: 'Monaco' !important; 
+	font-size: 0.52em !important;
+	line-height: 1.4em !important;
+}
+
+.reveal code {
+	font-family: 'Monaco' !important; 
+}
+.reveal pre code {
+	max-height: 580px !important;
+}
+
+b{
+    color: navy;
+	font-weight: bold !important; 
+}
+
+i{
+    color: navy !important;
+}
+/* ****************************************************** */
+/* main page style */
+.header-logo{
+	height: 90px; 
+	margin-bottom: 60px; 
+	display: flex; 
+	justify-content: space-between; 
+}
+
+.left-logo{
+	text-align: left;
+}
+
+.right-logo{
+	text-align: right;
+}
+
+.description{
+	margin-top: 40px;
+	font-size: 25px;
+}
+
+.description-item{
+	margin-right: 30px;
+}
+
+.hero-card-id{
+	margin-top: 40px;
+	display: flex; 
+	align-items: center; 
+	position: relative;
+}
+
+.hero-user {
+	/* position: absolute; */
+	border-style: solid;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	border-color: black;
+	text-align: center;
+	border-width: 2px;
+}
+
+.hero-desc{
+	text-align: left; 
+	line-height: 0.6em; 
+	margin-left: 10px;
+	line-height: 0.8;
+}
+
+.hero-name{
+	font-size:35px;
+}
+
+.hero-email{
+	font-size:25px;
+}
+
+/* ****************************************************** */
+/* menu style */
+.outlook{
+	padding: 40px;
+	/*box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);*/
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.item{
+	position: relative;
+	list-style: none;
+	display: table;
+	margin: 10px 0;
+	padding-left: 50px;
+	padding-right: 5px;
+}
+.item::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	background: #2a76dd;
+	border-radius: 50px;
+	border: 4px solid #2a76dd;
+	box-sizing: border-box;
+}
+.item a{
+	position: relative;
+	z-index: 10;
+	padding: 5px 10px;
+}
+
+.item::after{
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 10px;
+	width: 15px;
+	height: 15px;
+	border-top: 5px solid #fff;
+	border-right: 5px solid #fff;
+	transform: rotate(45deg);
+}
+
+.actif-item::before{
+	width: 100%;
+	background: #2a76dd;
+	
+}
+
+.actif-item a{
+	color: white !important;
+}
+
+/* ****************************************************** */
+/* custom definitions */
+
+#logo{
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	height: 10%;
+	width : auto;
+	opacity: 20%;
+}
+
+.slide-content{
+	text-align: left !important;
+}
+
+.skip{
+	margin-top: 35px !important;
+}
+
+.num{
+    color:#2a76dd !important; 
+}
+
+.listing{
+	font-family: 'Monaco' !important; 
+    font-size: 0.8em !important;
+    color:coral !important;
+}
+
+#fleche li{
+	list-style: none !important; 
+}
+
+#fleche li::before{
+	content: '\1F449';
+	display: inline-block;
+	height: 1.0em;
+	width: 1.4em;
+	margin-left: -1.4em; 
+}
+
+#ok li{
+	list-style: none; 
+}
+
+#ok li::before {
+	content: '\2714';
+	display: inline-block;
+	color: green;
+	height: 1.0em;
+	width: 1.2em;
+	margin-left: -1.2em; 	
+}
+
+#ko li{
+	list-style: none !important; 
+}
+
+#ko li::before {
+	content: '\2718';
+	display: inline-block;
+	color: red;
+	height: 1.0em;
+	width: 1.1em;
+	margin-left: -1.1em; 	
+}
+
+.default-block {
+	border: solid;
+	border-width: 5px;
+	border-color: navy;
+	background-color: rgb(218, 228, 250);
+	padding: 20px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: left;
+	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
+}
+
+.alert-block {
+	border: solid;
+	border-width: 5px;
+	border-color: red;
+	background-color: rgb(250, 237, 237);
+	padding: 20px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: left;
+	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
+}
+
+.green-block {
+	border: solid;
+	border-width: 5px;
+	border-color: green;
+	background-color: rgb(220, 245, 220);
+	padding: 20px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: left;
+	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
+}
+
