@@ -180,7 +180,7 @@ function createFooter(){
 
     // DIV 3
     const title_3 = createElement('div',{class : "info-title"})
-    title_3.appendChild(document.createTextNode("LIENS SUR LE WEB"))
+    title_3.appendChild(document.createTextNode("EMAILS ET LIENS SUR LE WEB"))
     div_3.appendChild(title_3)
 
     const item_31 = createElement('div',{class : "info_item"})
