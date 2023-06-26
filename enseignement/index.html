@@ -23,6 +23,16 @@
         <section id="global-title"></section>
 
         <!-- ############################################### -->
+        <!-- All lessons section -->
+        <section id="last-lessons" class="section-form">
+            <div class=container>
+                <div class="section-title">La liste de tous les cours</div>
+                <div id="last-lessons-div"></div>
+                <div class="home-style-bottom"><a href="#">Cliquez ici</a> pour revenir en haut de la page</div>
+            </div>
+        </section>
+
+        <!-- ############################################### -->
         <!-- Footer section -->
         <section id="footer"></section>
 
@@ -40,6 +50,7 @@
             var path = "../"
             createMenu(path)
             createTitleBar(title, path, sections, level)
+            createAllLessons()
             createFooter()
             createDesignedBy(path)
         </script>
