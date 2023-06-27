@@ -13,14 +13,32 @@
             "link" : "index.html"
         },
         {
-            "title" : "Qualité de développement",
-            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
+            "title" : "Développer des applications avec Java/Jakarta EE",
+            "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
             "link" : "index.html"
         },  
         {
             "title" : "Systèmes d'exploitation et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
+            "image" : "ensignement.jpg",
+            "link" : "index.html"
+        },  
+        {
+            "title" : "Qualité de développement",
+            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
+            "image" : "ensignement.jpg",
+            "link" : "index.html"
+        },  
+        {
+            "title" : "Apprendre à programmer avec Java",
+            "level" : "MOOC - Massive open online course",
+            "image" : "ensignement.jpg",
+            "link" : "index.html"
+        },  
+        {
+            "title" : "Conception et Programmation Orientées Objet",
+            "level" : "MOOC - Massive open online course",
             "image" : "ensignement.jpg",
             "link" : "index.html"
         }
