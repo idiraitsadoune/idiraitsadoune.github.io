@@ -6,6 +6,11 @@
 }
 /* ****************************************************** */
 /* general definitions */
+:root {
+	--r-link-color: #2a76dd;
+	--r-link-color-dark: #1a53a1;
+}
+
 .reveal {
 	font-size: 38px !important;
   }
@@ -37,12 +42,12 @@
 }
 
 b{
-    color: navy;
+    color: var(--r-link-color) ; 
 	font-weight: bold !important; 
 }
 
 i{
-    color: navy !important;
+    color: var(--r-link-color) ;
 }
 /* ****************************************************** */
 /* main page style */
@@ -178,10 +183,6 @@ i{
 
 .skip{
 	margin-top: 35px !important;
-}
-
-.num{
-    color:#2a76dd !important; 
 }
 
 .listing{

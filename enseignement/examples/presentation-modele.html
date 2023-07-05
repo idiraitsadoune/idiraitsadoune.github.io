@@ -89,14 +89,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le titre de la slide</h2>
-	<div class="slide-content">
 	<ul>
 		<li class="fragment">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Maecenas egestas</b> nulla at nibh
 			volutpat.
 			<ul>
 				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>.</li>
-				<li class="fragment">ranger des objets dans un sac, <span class="num">1991</span></li>
+				<li class="fragment">ranger des objets dans un sac, <i>1991</i></li>
 			</ul>
 		</li>
 		<li class="fragment skip">
@@ -108,10 +107,9 @@
 		</li>
 		<li class="fragment skip">
 			<code class="listing">void assertEquals(Object e, Object a)</code><br>
-			vérifie l'égalité entre deux objets $A = B$.
+			vérifie l'égalité entre deux objets : $A = B$.
 		</li>
 	</ul>
-	</div>
 	<aside class="notes">
 		Shhh, these are your private notes 📝
 	</aside>
@@ -121,7 +119,6 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemples</h2>
 	<div class="slide-content">
-
 		<ul id="fleche">
 			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
 		</ul>
@@ -137,8 +134,8 @@
 		</ul>
 		
 		<ul>
-			<li class="skip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				<a href="https://idiraitsadoune.github.io/" target="_blank">This is a link</a>
+			<li class="skip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+				(<a href="https://idiraitsadoune.github.io/" target="_blank">This is a link</a>).
 			</li>
 		</ul>
 	</div>
@@ -147,33 +144,26 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le titre de la slide</h2>
-	<div class="slide-content">
-	<div  class="default-block">
-		<b>Beast of Bodmin</b> <br> 
-		A large feline inhabiting Bodmin Moor.
+	<div>
+		<div  class="default-block">
+			<b style="color:navy">Beast of Bodmin</b> <br> 
+			A large feline inhabiting Bodmin Moor.
+		</div>
+		<div  class="alert-block">
+			<b style="color:red">Beast of Bodmin</b> <br> 
+			A large feline inhabiting Bodmin Moor.
+		</div>
+		<div class="green-block">
+			<b style="color:green">Beast of Bodmin</b> <br> 
+			A large feline inhabiting Bodmin Moor.
+		</div>
 	</div>
-	<div  class="alert-block">
-		<b style="color:red">Beast of Bodmin</b> <br> 
-		A large feline inhabiting Bodmin Moor.
-	</div>
-	<div class="green-block">
-		<b style="color:green">Beast of Bodmin</b> <br> 
-		A large feline inhabiting Bodmin Moor.
-	</div>
-</div>
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="The second chapter title"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple math</h2>
-	<div class="slide-content">
+	<div>
 		$$
 		\begin{aligned}
 		\dot{x} &amp; = \sigma(y-x) \\
@@ -181,6 +171,26 @@
 		\dot{z} &amp; = -\beta z + xy
 		\end{aligned}
 		$$
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="The second chapter : animated image"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Animated image</h2>
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./img/img-1.svg" height="auto" width="90%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/img-2.svg" height="auto" width="90%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/img-3.svg" height="auto" width="90%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/img-4.svg" height="auto" width="90%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/img-5.svg" height="auto" width="90%" alt="">
+		<img class="fragment fade-in" src="./img/img-6.svg" height="auto" width="90%" alt="">
 	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
