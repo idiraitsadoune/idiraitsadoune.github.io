@@ -158,7 +158,7 @@ function createFooter(){
 
     const item_12 = createElement('div',{class : "info_item"})
     item_12.appendChild(createElement('i',{class : "fa fa-phone"}))
-    item_12.appendChild(document.createTextNode("+33 (0)1 69 85 14 88"))
+    item_12.appendChild(document.createTextNode("+33/0 1 75 31 78 46"))
     div_1.appendChild(item_12)
 
     // DIV 2
@@ -175,7 +175,7 @@ function createFooter(){
 
     const item_22 = createElement('div',{class : "info_item"})
     item_22.appendChild(createElement('i',{class : "fa fa-phone"}))
-    item_22.appendChild(document.createTextNode("+33 (0)X XX XX XX XX"))
+    item_22.appendChild(document.createTextNode("+33/0 1 75 31 78 46"))
     div_2.appendChild(item_22)
 
     // DIV 3
