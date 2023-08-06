@@ -26,6 +26,21 @@
             "link" : "https://link.springer.com/chapter/10.1007/978-3-319-91271-4_35"
         },
         {
+            "title" : "Formal Modelling of Domain Constraints in Event-B",
+            "conference" : "7th International Conference on Model and Data Engineering, MEDI 2017",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-66854-3_12"
+        },
+        {
+            "title" : "Formal Modelling of Ontologies : An Event-B based Approach Using the Rodin Platform",
+            "conference" : "Workshop on Handling IMPlicit and EXplicit knowledge in formal system development, IMPEX 2017",
+            "link" : "https://arxiv.org/abs/1805.05518"
+        },
+        {
+            "title" : "OntoEventB : Un outil pour la modélisation des ontologies dans B Événementiel",
+            "conference" : "16èmes journées Approches Formelles dans l'Assistance au Développement de Logiciels, AFADL 2017",
+            "link" : "https://afadl2017.imag.fr/AFADL_Procs_2017.pdf"
+        },
+        {
             "title" : "...",
             "conference" : "...",
             "link" : "#"
@@ -60,7 +75,7 @@
             "link" : "https://arxiv.org/abs/1805.05518v1"
         },
         {
-            "title" : "A formal model for output multimodal HCI",
+            "title" : "A formal model for output multimodal HCI, An Event-B formalization",
             "conference" : "Computing, 2015",
             "link" : "https://link.springer.com/article/10.1007/s00607-015-0460-y"
         },
