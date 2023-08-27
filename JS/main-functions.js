@@ -316,7 +316,7 @@ function createAllPublications(){
         .then((json) => {
             
             const div_revue = createElement('div', {class:"section-title"})
-            div_revue.appendChild(document.createTextNode("Articles dans des journaux"))
+            div_revue.appendChild(document.createTextNode("Journal Articles"))
             main_div.appendChild(div_revue)
     
             var publications = json["revues"]
@@ -333,7 +333,7 @@ function createAllPublications(){
             }
     
             const div_conf = createElement('div', {class:"section-title"})
-            div_conf.appendChild(document.createTextNode("Articles dans des conférences"))
+            div_conf.appendChild(document.createTextNode("Conference and Workshop Papers"))
             main_div.appendChild(div_conf)
     
             publications = json["conferences"]
@@ -350,7 +350,7 @@ function createAllPublications(){
             }
     
             const div_chap = createElement('div', {class:"section-title"})
-            div_chap.appendChild(document.createTextNode("Chapitres dans des ouvrages"))
+            div_chap.appendChild(document.createTextNode("Part in Books or Collections"))
             main_div.appendChild(div_chap)
     
             publications = json["chapitres"]
