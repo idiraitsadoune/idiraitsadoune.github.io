@@ -289,7 +289,7 @@ function createLastLessons(){
                 const single = createElement('div',{class : 'single-lessons'})
                 grid.appendChild(single)
 
-                const a = createElement('a',{href: "./enseignement/" + lessons[i]["link"]})
+                const a = createElement('a',{href: "./enseignement/" + lessons[i]["link"], target: lessons[i]["target"]})
                 single.appendChild(a)
 
                 const img = createElement('img',{style:"width: 100%;",src:"./IMG/"+lessons[i]["image"]})
@@ -302,7 +302,6 @@ function createLastLessons(){
                 const level = createElement('div',{class:"lesson-level"})
                 level.appendChild(document.createTextNode(lessons[i]["level"]))
                 a.appendChild(level)
-
             }
         });
 }
@@ -383,7 +382,7 @@ function createAllLessons(){
                 const single = createElement('div',{class : 'single-lessons'})
                 grid.appendChild(single)
 
-                const a = createElement('a',{href:lessons[i]["link"]})
+                const a = createElement('a',{href:lessons[i]["link"], target: lessons[i]["target"]})
                 single.appendChild(a)
 
                 const img = createElement('img',{style:"width: 100%;",src:"../IMG/"+lessons[i]["image"]})
