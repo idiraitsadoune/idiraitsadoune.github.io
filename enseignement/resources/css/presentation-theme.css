@@ -49,6 +49,11 @@ b{
 i{
     color: var(--r-link-color) ;
 }
+
+em{
+    color: var(--r-link-color) ;
+	font-style: italic !important;
+}
 /* ****************************************************** */
 /* main page style */
 .header-logo{
@@ -196,7 +201,7 @@ i{
 }
 
 #fleche li::before{
-	content: '\1F449';
+	content: '\1F449' !important;
 	display: inline-block;
 	height: 1.0em;
 	width: 1.4em;
