@@ -80,9 +80,9 @@
             "link" : "https://link.springer.com/article/10.1007/s00607-015-0460-y"
         },
         {
-            "title" : "Modélisation formelle d’IHM multimodales en sortie avec Event-B",
+            "title" : "Modélisation formelle d’IHM multimodales en sortie avec B Événementiel. Approche par généralisation et instanciation",
             "conference" : "Technique et science informatiques RSTI série TSI, 2015",
-            "link" : "https://editions.lavoisier.fr/informatique/technique-et-science-informatiques-rsti-serie-tsi-volume-34-n-5-septembre-octobre-2015/dubois/hermes-science-publications/livre/9782746247468"
+            "link" : "https://tsi.revuesonline.com/article.jsp?articleId=35720"
         },
         {
             "title" : "Vérification et validation formelles de systèmes interactifs fondées sur la preuve : application aux systèmes Multi-Modaux",
