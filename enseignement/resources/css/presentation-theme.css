@@ -234,7 +234,10 @@ em{
 	margin-left: -1.1em; 	
 }
 
-.default-block {
+/* ****************************************************** */
+/* block definitions */
+
+#default-block, .default-block {
 	border: solid;
 	border-width: 5px;
 	border-color: navy;
@@ -247,7 +250,21 @@ em{
 	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
 }
 
-.alert-block {
+#default-block b{
+	color: navy ; 
+	font-weight: bold !important; 
+}
+
+#default-block i{
+    color: navy !important; 
+}
+
+#default-block em{
+    color: navy ;
+	font-style: italic !important;
+}
+
+#alert-block, .alert-block {
 	border: solid;
 	border-width: 5px;
 	border-color: red;
@@ -260,7 +277,21 @@ em{
 	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
 }
 
-.green-block {
+#alert-block b{
+	color: red ; 
+	font-weight: bold !important; 
+}
+
+#alert-block i{
+    color: red !important; 
+}
+
+#alert-block em{
+    color: red ;
+	font-style: italic !important;
+}
+
+#green-block, .green-block {
 	border: solid;
 	border-width: 5px;
 	border-color: green;
@@ -273,3 +304,16 @@ em{
 	box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);
 }
 
+#green-block b{
+	color: green ; 
+	font-weight: bold !important; 
+}
+
+#green-block i{
+    color: green !important; 
+}
+
+#green-block em{
+    color: green ;
+	font-style: italic !important;
+}
