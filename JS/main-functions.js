@@ -188,11 +188,19 @@ function createFooter(){
     const mail_1 = createElement('a',{href : "mailto:idir.aitsadoune@centralesupelec.fr", class:"footer-link"})
     mail_1.appendChild(document.createTextNode(" idir[.]aitsadoune[at]centralesupelec[.]fr")) 
     item_31.appendChild(mail_1)
+
     item_31.appendChild(document.createElement("br"))
     item_31.appendChild(createElement('i',{class : "fa fa-envelope"}))
-    const mail_2 = createElement('a',{href : "mailto:idir.ait-sadoune@universite-paris-saclay.fr", class:"footer-link"})
-    mail_2.appendChild(document.createTextNode(" idir[.]ait-sadoune[at]universite-paris-saclay[.]fr")) 
+    const mail_2 = createElement('a',{href : "mailto:idiraitsadoune@lmf.cnrs.fr", class:"footer-link"})
+    mail_2.appendChild(document.createTextNode(" idiraitsadoune[at]lmf[.]cnrs[.]fr")) 
     item_31.appendChild(mail_2)
+
+    item_31.appendChild(document.createElement("br"))
+    item_31.appendChild(createElement('i',{class : "fa fa-envelope"}))
+    const mail_3 = createElement('a',{href : "mailto:idir.ait-sadoune@universite-paris-saclay.fr", class:"footer-link"})
+    mail_3.appendChild(document.createTextNode(" idir[.]ait-sadoune[at]universite-paris-saclay[.]fr")) 
+    item_31.appendChild(mail_3)
+
     div_3.appendChild(item_31)
 
     const item_32 = createElement('div',{class : "info_item"})
