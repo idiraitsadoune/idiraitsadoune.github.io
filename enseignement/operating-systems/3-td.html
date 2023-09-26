@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>The title of the document</title>
+
+	<meta name="description" content="The title of the document">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    Synchronisation des processus
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 1 : Barrière de synchronisation
+</div>
+<p>
+    On suppose dans un premier temps que l’on ne traite que 2 threads. Ces threads obéissent au modèle suivant :
+</p>
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>Thread_1</b>
+<span class="kd">While</span> (<span class="mf">true</span>) <span class="kd">do</span>
+    calcul_1();
+    barriere_1();
+<span class="kd">end</span>
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>Thread_2</b>
+<span class="kd">While</span> (<span class="mf">true</span>) <span class="kd">do</span>
+    calcul_2();
+    barriere_2();
+<span class="kd">end</span>
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+<p>
+    <ol>
+        <li>En utilisant 2 sémaphores, dont vous préciserez les valeurs initiales, écrivez le pseudo-code des fonctions 
+            <code>barriere_1()</code> <br> et <code>barriere_2()</code>, qui doivent être telles que le <b>Thread_1</b> ne sort de 
+            <code>barriere_1()</code> que lorsque le <b>Thread_2</b> a atteint <code>barriere_2()</code> <br>
+            (et réciproquement).</li>
+        
+        <li>Généralisez au cas de <code>N</code> threads</li>
+        
+        <li>Proposez une autre solution, dans laquelle un thread auxiliaire (coordinateur) reçoit un signal quand le <b>Thread_i</b> 
+            atteint sa barrière, et débloque les <code>N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
+    </ol>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 2 - Gestion de véhicules dans un  tunnel
+</div>
+<p>
+    Une route joignant la France à l’Espagne utilise un tunnel à voie unique. En utilisant des sémaphores, 
+    vous allez synchroniser les véhicules de manière qu’à tout instant, tous les véhicules circulent dans le même sens.
+</p>
+<p>
+    <ol>
+        <li>On supposera dans un premier temps que le tunnel peut contenir un nombre quelconque de véhicules, 
+            et on tolère les attentes infinies.</li>
+        <li>Modifiez votre solution de manière à garantir que, à un instant donné, au plus <code>4</code> véhicules 
+            (dans la même direction) sont sur le tunnel.</li>
+        <li>Comment faire en sorte que les véhicules joignant la France (resp. L'Espagne) ne monopolisent pas le tunnel?</li>
+    </ol>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 3 - Diffusion de messages
+</div>
+<p>
+    On considère un système à <code>1</code> producteur et <code>C</code> consommateurs partageant une boîte à lettres pouvant contenir <code>N</code> messages. 
+    Le producteur dépose les messages dans la boîte à lettres, et les consommateurs les y récupèrent. Chaque message déposé (une fois) 
+    par le producteur doit être lu par les <code>C</code> consommateurs. On impose également que les consommateurs reçoivent les messages 
+    dans l’ordre où ils ont été déposés. Il faut noter que les consommateurs ne sont pas synchronisés, et que, par exemple, 
+    un consommateur rapide peut avoir lu jusqu’à <code>N</code> messages de plus qu’un consommateur plus lent.
+</p>
+<p>
+    <ul>
+        <li>Développez une solution à ce problème, c’est-à-dire une description du processus producteur et des processus consommateurs qui respectent 
+            les spécifications. Cette solution devra utiliser des sémaphores dont le rôle sera explicité.</li>
+    </ul>
+</p>
+<div class="default-block">
+Vous pouvez introduire toute structure de données qui vous paraît utile, sous réserve de la décrire précisément et de la justifier. 
+</div>
+
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
