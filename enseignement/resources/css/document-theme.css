@@ -2,6 +2,23 @@
 /* BASIC STYLE */
 @import url(../../../CSS/main-style.css);
 
+@font-face {
+    font-family: 'Monaco';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./monaco-font/Monaco.woff') format('woff');
+}
+
+ol, ul {
+	margin-left: 25px !important;
+}
+
+code{
+	font-family: 'Monaco' !important; 
+    font-size: 0.95em !important;
+    color:coral !important;
+}
+
 .default-block {
 	border: solid;
 	border-width: 5px;
@@ -38,4 +55,59 @@
 	text-align: left;
 }
 
+/* ************************** */
+/* listing */
+/* ************************** */
+
+.highlight pre{
+    font-family: Monaco,Consolas,Lucida Console,monospace !important; 
+    font-size: 0.9em;
+    padding: 0.5em;
+    background-color: #272822;
+    color: #f8f8f2;
+    tab-size: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    display: block;
+}
+
+/* 
+.highlight pre:first-line {
+    line-height: 0;
+}
+*/
+
+.go,.o,.na,.nc{
+    color: #fff ;
+}
+.p{
+    color: #f8f8f2;
+}
+.k,.kd, .kc{
+    color: #f92672 ;
+}
+.kt{
+    color: #66d9ef;  
+}
+.nb,.nf {
+    color: #a6e22e; 
+}
+.s2,.s{
+    color: #e6db74;
+}
+.gp, .mi, .mf{
+    color: #bf79db;
+}
+.nd, .c1, .cm{
+    color: #75715e;
+}
+.nb,.kd,.nf,.nc{
+    font-weight: bold ;
+}
+
+.kt{
+    font-style: italic;
+}
 
