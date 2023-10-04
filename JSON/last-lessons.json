@@ -4,28 +4,28 @@
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
-            "target" : "_self"
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6623",
+            "target" : "_blank"
         },
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
-            "target" : "_self"
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6643",
+            "target" : "_blank"
         },
         {
             "title" : "Développer des applications avec Java/Jakarta EE",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
-            "target" : "_self"
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6619",
+            "target" : "_blank"
         },  
         {
             "title" : "Systèmes d'exploitation et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "operating-systems/1-os-et-virtualisation-exed.html",
+            "link" : "https://csee.edunao.com/course/view.php?id=1554&section=38",
             "target" : "_blank"
         },  
         {
