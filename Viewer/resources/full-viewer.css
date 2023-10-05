@@ -1,0 +1,20 @@
+#my_pdf_viewer{
+    align-items: center;
+    text-align: center;
+}
+
+#canvas_container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #fff;
+    text-align: center;
+    align-items: center;
+    border: solid 0px;
+}
+
+#current_page{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
