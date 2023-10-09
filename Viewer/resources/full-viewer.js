@@ -46,7 +46,7 @@ function render() {
     const viewport = page.getViewport({
       scale: ratio,
     });
-    
+
     canvas.width = viewport.width;
     canvas.height = viewport.height;
 
