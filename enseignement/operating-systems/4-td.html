@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Systèmes d'exploitation : TD - Gestion de la mémoire</title>
+
+	<meta name="description" content="Systèmes d'exploitation : TD - Gestion de la mémoire">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    Gestion de la mémoire
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 1 : Algorithmes de remplacement de pages
+</div>
+<ol>
+    <li>
+        Un programme possède un espace virtuel de 600 mots. On considère la suite des adresses
+        virtuelles qui suit : 34; 123; 145; 510; 456; 345; 412; 10; 14; 12; 234; 336; 412.
+        <ul><li>Donner la suite des numéros de pages référencés, sachant qu'elles comportent 100 mots.</li></ul>
+    </li>
+    <li>
+        Le programme dispose de 300 mots en mémoire centrale.
+        <ul><li>Calculer le taux de défauts de page
+            pour les algorithmes : OPT, FIFO, LFU, NFU, LRU    (en supposant la mémoire initialement vide)  </li></ul>
+            
+    </li>
+</ol>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 2 : Pagination
+</div>
+<p>
+    Dans un système paginé, les pages font 256 mots mémoire et on autorise chaque processus à
+utiliser au plus 4 cadres de la mémoire centrale. On considère la table des pages suivante du
+processus P1 :
+</p>
+<div style="text-align: center;">
+
+
+<table style="border: 1px solid #333;">
+    <thead >
+      <tr>
+        <th style="border: 1px solid #333; padding: 5px;"><b>Page</b></th>
+        <th style="border: 1px solid #333;">0</th>
+        <th style="border: 1px solid #333;">1</th>
+        <th style="border: 1px solid #333;">2</th>
+        <th style="border: 1px solid #333;">3</th>
+        <th style="border: 1px solid #333;">4</th>
+        <th style="border: 1px solid #333;">5</th>
+        <th style="border: 1px solid #333;">6</th>
+        <th style="border: 1px solid #333;">7</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;"><b>Cadre</b></td>
+            <td style="border: 1px solid #333; padding: 5px;">011</td>
+            <td style="border: 1px solid #333; padding: 5px;">001</td>
+            <td style="border: 1px solid #333; padding: 5px;">000</td>
+            <td style="border: 1px solid #333; padding: 5px;">010</td>
+            <td style="border: 1px solid #333; padding: 5px;">100</td>
+            <td style="border: 1px solid #333; padding: 5px;">111</td>
+            <td style="border: 1px solid #333; padding: 5px;">101</td>
+            <td style="border: 1px solid #333; padding: 5px;">110</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #333; padding: 5px;"><b>Présence</b></td>
+            <td style="border: 1px solid #333;">oui</td>
+            <td style="border: 1px solid #333;">non</td>
+            <td style="border: 1px solid #333;">oui</td>
+            <td style="border: 1px solid #333;">non</td>
+            <td style="border: 1px solid #333;">non</td>
+            <td style="border: 1px solid #333;">non</td>
+            <td style="border: 1px solid #333;">oui</td>
+            <td style="border: 1px solid #333;">non</td>
+          </tr>
+    </tbody>
+  </table>
+</div>
+
+<ol style="padding-top: 20px;">
+<li>Quelle est la taille de l'espace d'adressage du processus P1 ?</li>
+<li>De combien de mémoire vive dispose ce système ?</li>
+<li>Calculez les adresses réelles correspondant aux adresses virtuelles suivantes (vous signalerez
+    éventuellement les erreurs d'adressage)
+    <ul><li>240, 546, 1578, 2072</li></ul>
+</li>
+<li>Que se passe-t-il si P1 génère l'adresse virtuelle 770 ?</li>
+<li>On considère l’adresse virtuelle suivante: 0000 0000 0000 0111. Sachant que les 4 bits de
+    poids fort désigne le numéro de page et que 12 bits suivants représentent le déplacement dans la
+    page, donnez l’adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
+</ol>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 3 : Segmentation
+</div>
+<p>On considère la table des segments suivante pour un processus P1 :</p>
+
+<table style="border: 1px solid #333;">
+    <thead >
+      <tr>
+        <th style="border: 1px solid #333; padding: 5px;"><b>segment</b></th>
+        <th style="border: 1px solid #333; padding: 5px;"><b>base</b></th>
+        <th style="border: 1px solid #333; padding: 5px;"><b>limite</b></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;">0</td>
+            <td style="border: 1px solid #333; padding: 5px;">540</td>
+            <td style="border: 1px solid #333; padding: 5px;">234</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;">1</td>
+            <td style="border: 1px solid #333; padding: 5px;">1254</td>
+            <td style="border: 1px solid #333; padding: 5px;">128</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;">2</td>
+            <td style="border: 1px solid #333; padding: 5px;">54</td>
+            <td style="border: 1px solid #333; padding: 5px;">328</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;">3</td>
+            <td style="border: 1px solid #333; padding: 5px;">2048</td>
+            <td style="border: 1px solid #333; padding: 5px;">1024</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #333; padding: 5px;">4</td>
+            <td style="border: 1px solid #333; padding: 5px;">976</td>
+            <td style="border: 1px solid #333; padding: 5px;">200</td>
+        </tr>
+    </tbody>
+</table>
+
+<ol style="padding-top: 20px;">
+<li>Calculez les adresses réelles correspondant aux adresses virtuelles suivantes (vous signalerez
+    éventuellement les erreurs d'adressage)
+    <ul><li>(0:128), (1:100), (2:465), (3:888), (4:100), (4:344)</li></ul>
+</li>
+<li>L'adresse virtuelle (4,200) est-elle valide ?</li>
+</ol>
+
+<p><b>Rappel :</b> Les adresses sont données sous la forme (segment:déplacement)</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 4 : Segmentation paginée
+</div>
+<p>
+    On considère un système avec une mémoire virtuelle segmentée paginée où la taille d’une
+    page est de 4Ko et une mémoire physique de 64Ko. L’espace d’adressage d’un processus P est
+    composé de trois segments S1, S2 et S3 de taille, respectivement 16Ko, 8Ko et 4Ko. À un moment
+    donné, pour le processus P, les pages 2 et 3 du segment S1, la page 2 du segment S2 et la page 1 du
+    segment S3 sont chargées en mémoire physique, respectivement dans les cases 2, 0, 9, 12.  
+</p>
+<p>
+    Pour une donnée située dans l’espace d’adressage du processus P à l’adresse décimale 8212,
+indiquez :
+</p>
+
+<ol>
+    <li> le segment </li>
+    <li> le numéro de page dans le segment</li>
+    <li> le déplacement dans la page</li>
+    <li> le numéro de case</li>
+    <li> le déplacement dans la case</li>
+    <li> l’adresse physique (en décimal et en binaire)  </li>
+</ol>
+
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
