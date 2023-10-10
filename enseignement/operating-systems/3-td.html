@@ -83,11 +83,104 @@
             <code>barriere_1()</code> <br> et <code>barriere_2()</code>, qui doivent être telles que le <b>Thread_1</b> ne sort de 
             <code>barriere_1()</code> que lorsque le <b>Thread_2</b> a atteint <code>barriere_2()</code> <br>
             (et réciproquement).</li>
-        
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight">
+<pre >Semaphore s1 = <span class="kd">new</span> Semaphore(0);
+Semaphore s2 = <span class="kd">new</span> Semaphore(0);
+</pre>
+</div>
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_1()</b>
+    s1.release();
+    s2.acquire();
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_2()</b>
+    s2.release();
+    s1.acquire();
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+</div>
+<!-- END CORRECTION ################# -->
+
         <li>Généralisez au cas de <code>N</code> threads</li>
-        
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight">
+<pre >Semaphore s_i = <span class="kd">new</span> Semaphore(0); <span class="cm">// i : 1..n ;</span> 
+
+<b>barriere_i()</b> 
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> (n-1) <span class="kd">do</span>
+        s_i.release();
+    <span class="kd">end</span>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        <span class="kd">if</span> (k != i) <span class="kd">the</span>
+            s_k.acquire();
+        <span class="kd">end</span>
+    <span class="kd">end</span>
+</pre>
+</div>
+
+</div>
+<!-- END CORRECTION ################# -->
+
         <li>Proposez une autre solution, dans laquelle un thread auxiliaire (coordinateur) reçoit un signal quand le <b>Thread_i</b> 
             atteint sa barrière, et débloque les <code>N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight">
+<pre >Semaphore s_c = <span class="kd">new</span> Semaphore(0);
+Semaphore s_i = <span class="kd">new</span> Semaphore(0);
+</pre>
+</div>
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_i()</b>
+    s_i.release();
+    s_c.acquire();
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>coordinateur()</b>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        s_i.acquire();
+    <span class="kd">end</span>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        s_c.release();
+    <span class="kd">end</span>
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+</div>
+<!-- END CORRECTION ################# -->    
     </ol>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -108,6 +201,87 @@
         <li>Comment faire en sorte que les véhicules joignant la France (resp. L'Espagne) ne monopolisent pas le tunnel?</li>
     </ol>
 </p>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight">
+<pre >Semaphore tunnel = <span class="kd">new</span> Semaphore(1);
+<span class="kd">int</span> nb_fr = 0;
+<span class="kd">int</span> nb_es = 0;
+Semaphore mutex_fr = <span class="kd">new</span> Semaphore(1);
+Semaphore mutex_es = <span class="kd">new</span> Semaphore(1);
+Semaphore capacite = <span class="kd">new</span> Semaphore(4); <span class="cm">// Question 2</span> 
+Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Question 3</span>
+</pre>
+</div>
+
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>vers_France()</b>
+    fifo.acquire();
+
+    mutex_fr.acquire();
+    nb_fr++;
+    <span class="kd">if</span> nb_fr = 1 <span class="kd">then</span>
+        tunnel.acquire();
+    <span class="kd">end</span>
+    mutex_fr.release();	
+
+    fifo.release();
+
+    capacite.acquire();
+    utiliser_tunnel();
+    capacite.release();
+
+    mutex_fr.acquire();
+    nb_fr--;
+    <span class="kd">if</span> nb_fr = 0 <span class="kd">then</span>
+        tunnel.release();
+    <span class="kd">end</span>
+    mutex_fr.release();
+</pre>
+</div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>vers_Espagne()</b>
+    fifo.acquire();
+
+    mutex_es.acquire();
+    nb_es++;
+    <span class="kd">if</span> nb_es = 1 <span class="kd">then</span>
+        tunnel.acquire();
+    <span class="kd">end</span>
+    mutex_es.release();	
+
+    fifo.release();
+
+    capacite.acquire();
+    utiliser_tunnel();
+    capacite.release();
+
+    mutex_es.acquire();
+    nb_es--;
+    <span class="kd">if</span> nb_es = 0 <span class="kd">then</span>
+        tunnel.release();
+    <span class="kd">end</span>
+    mutex_es.release();
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+
+</div>
+<!-- END CORRECTION ################# -->    
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="subsection-title">
@@ -129,6 +303,51 @@
 <div class="default-block">
 Vous pouvez introduire toute structure de données qui vous paraît utile, sous réserve de la décrire précisément et de la justifier. 
 </div>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight"><pre >
+<span class="kd">int</span>[] bal = <span class="kd">new</span> <span class="kd">int</span>[N]();
+<span class="kd">int</span> i_prod = 0;
+<span class="kd">int</span>[] i_cons = <span class="kd">new</span> <span class="kd">int</span>[C]();
+Semaphore[] place_dispo = <span class="kd">new</span> Semaphore[N](C); <span class="cm">// N semaphores initialisés à C ;</span>
+Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class="cm">// N semaphores initialisés à 0 ;</span>
+</pre>
+</div>
+
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre><b>producteur()</b>
+    <span class="kd">int</span> msg = produire_message();
+    place_dispo[i_prod].acquire(C);
+    bal[i_prod] = msg;
+    msg_dispo[i_prod].release(C);
+    i_prod = (i_prod +1) mod N;
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>consommateur(int i)</b>
+    msg_dispo[i_cons[i]].acquire();
+    <span class="kd">int</span> msg = bal[i_cons[i]];
+    place_dispo[i_cons[i]].release();
+    i_cons[i] = (i_cons[i] +1) mod N;	
+    utiliser_message(msg);
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+
+</div>
+<!-- END CORRECTION ################# -->  
+
 
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
