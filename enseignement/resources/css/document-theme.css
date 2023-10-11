@@ -55,6 +55,23 @@ code{
 	text-align: left;
 }
 
+#orange-block {
+	border: solid;
+	border-width: 5px;
+	border-color: orangered;
+	background-color: orange;
+	padding: 10px;
+	border-radius: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-left: 20px;
+	text-align: left;
+	font-weight: bold;
+	font-size: 32px;
+	font-family: 'Inter Semi Bold' !important;
+	font-size: 32px;
+}
+
 /* ************************** */
 /* listing */
 /* ************************** */
