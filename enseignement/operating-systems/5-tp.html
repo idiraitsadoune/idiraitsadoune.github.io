@@ -1,0 +1,565 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>TP - Système de fichiers sous UNIX</title>
+
+    <meta name="description" content="TP - Système de fichiers sous UNIX">
+    <meta name="author" content="Idir AIT SADOUNE">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../resources/css/document-theme.css">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
+        2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux Pratiques (TP)<br>
+    Système de fichiers sous UNIX
+</div>
+
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> Ce TP fait l’objet d’une notation. Vous travaillerez seul et vous devrez rendre
+    un compte-rendu. Les TP sont à remettre <b style="color: red;">pour le lundi 30 octobre 2023</b> sur EDUNAO.
+    Vous devez envoyer un fichier au format <b>PDF</b> qui devrait être nommé avec la convention
+    suivante : <b>NOM1-TP1.pdf</b>. Pour chaque question, vous devez fournir le commande tapée et la réponse
+    renvoyée par le shell.
+</div>
+
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> <b style="color:navy">Note :</b> Les étudiants possédant une machine avec <b>Windows</b> comme OS devraient utiliser une
+    des solutions
+    disponibles pour émuler un système <b>UNIX</b>.
+
+    <ul>
+        <li><b>Installer Linux sur Windows avec WSL</b> :
+            <a href="https://learn.microsoft.com/fr-fr/windows/wsl/install"
+                target="_blank">https://learn.microsoft.com/fr-fr/windows/wsl/install</a>
+        </li>
+        <li><b>Git bash</b> : <a href="https://gitforwindows.org/"
+                target="_blank">https://gitforwindows.org/</a></li>
+    </ul>
+
+</div>
+
+<div class="subsection-title">
+    Introduction
+</div>
+
+<p>
+    Le système de gestion de fichiers (SGF) d'Unix procure à l'utilisateur
+    un moyen efficace pour conserver et manipuler aisément des
+    informations. En outre, il offre un système de sécurité, notamment sur
+    les droits d'accès aux fichiers.
+</p>
+
+<p>
+    Il existe trois principaux types de fichiers :
+<ul>
+    <li>les fichiers de données (ordinary files), </li>
+    <li>les répertoires (directories), </li>
+    <li>les périphériques (devices). </li>
+</ul>
+</p>
+
+<p>
+    Ce SGF est simple et permet de manipuler de manière uniforme les
+    fichiers comme les périphériques. Sous Unix, on a coutume de dire que
+    "tout est fichier !". Par ailleurs, le SGF d'Unix ne fait aucune
+    supposition sur l'organisation interne des fichiers. Tout fichier est
+    vu comme une simple suite d'octets.
+</p>
+
+<p>
+    Le système de gestion de fichiers utilise une structure hiérarchique
+    (arborescence) composée de répertoires et de fichiers. Chaque
+    répertoire contient des fichiers ordinaires ou d'autres répertoires.
+</p>
+
+<p>
+    Voici un exemple classique d'organisation d'un SGF Unix.
+</p>
+
+<img src="./img/unix.svg" alt="">
+
+<ul>
+    <li><b>bin</b> : les programmes exécutables standards </li>
+    <li><b>etc</b> : les fichiers de configuration</li>
+    <li><b>home</b> : les utilisateurs "locaux"</li>
+    <li><b>net</b> : les utilisateurs "réseaux"</li>
+    <li><b>lib</b> : les bibliothèques standard pour la compilation</li>
+    <li><b>man</b> : les pages de manuel (aide en ligne)</li>
+    <li><b>src</b> : les sources des programmes</li>
+    <li><b>dev</b> : les fichiers spéciaux représentant les périphériques</li>
+    <li><b>tmp</b> : les fichiers temporaires</li>
+    <li> ...</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 1 : Les répertoires et les fichiers
+</div>
+
+<div class="subsection-title">
+    Les répertoires
+</div>
+
+<div>
+    Il existe un certains nombre de répertoires particuliers :
+    <ul>
+        <li><code>/</code> désigne la racine de l'arborescence,</li>
+        <li><code>.</code> désigne le répertoire courant,</li>
+        <li><code>..</code> désigne le répertoire père du répertoire courant,</li>
+        <li><code>~</code> désigne votre répertoire utilisateur (home directory).</li>
+    </ul>
+</div>
+
+<p>
+    La variable <code>$HOME</code> pointe également sur votre répertoire utilisateur,
+également appelé répertoire de connexion. Il s'agit en quelque sorte de
+votre maison, là où vous pouvez stocker vos fichiers.
+</p>
+
+<ul><li>
+    <b>question 1.1</b> : Pour afficher le contenu de la variable <code>HOME</code>, dans un terminal
+    tapez la commande : 
+<div class="highlight">
+<pre>
+<span class="kd">echo</span> $HOME              
+</pre>
+</div>
+</li></ul>
+
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> Le symbole <code>$</code> placé devant le nom de la variable signifie
+    que vous souhaitez accéder à la valeur de la variable. 
+</div>
+
+<div class="subsection-title">
+    Nom de Fichier
+</div>
+<p>
+    Les noms de fichiers sont limités à 256 caractères sous Unix. De
+préférence, n'utilisez pas d'espace mais <code>"_"</code> à la place. Evitez les
+caractères spéciaux (<code>&</code>, <code>@</code>, <code>$</code>, <code>#</code>, ...). Le plus simple est de toujours
+utiliser des lettres et des chiffres.
+</p>
+
+<p>
+    Attention le système Unix fait la différence entre majuscules et
+minuscules ! Les fichiers <code>toto</code>, <code>Toto</code> et <code>TOTO</code> ont des noms différents.
+</p>
+
+<p>
+    L'extension ou suffixe (optionnel) fait partie du nom, il commence par
+    <code>"."</code> et n'a pas de limite de taille (<code>.txt</code>, <code>.html</code>, 
+    <code>.tar.gz</code>, <code>.ps.gz</code>,
+etc.). Il permet d'indiquer le type du fichier. Il ne s'agit que d'une
+convention sous Unix.
+</p>
+
+<p>
+    Pour connaître le type d'un fichier, il faut utiliser la commande
+<code>file</code>. Par exemple :
+<div class="highlight">
+<pre>
+<span class="kd">file</span> ~/Downloads/TP1.pdf
+~/Downloads/TP1.pdf: PDF document, version 1.5            
+</pre>
+</div>
+</p>
+
+<div class="subsection-title">
+    Commandes et Aide en Ligne
+</div>
+
+<p>
+    Voici la syntaxe classique d'une commande Unix :
+</p>
+<div class="highlight">
+<pre>
+cmd [-opt1] [-opt2] ... [--] arg1 arg2 ...
+</pre>
+</div>
+
+<p>
+où:
+<ul>
+    <li><code>cmd</code> correspond au nom de la commande,</li>
+    <li><code>-opt</code> correspond à une option possible,</li>
+    <li><code>arg</code> correspond à un argument.</li>
+</ul>
+</p>
+
+<p>
+    Notons que les arguments sont le plus souvent un nom de fichier que la
+commande manipule. On peut utiliser <code>"--"</code> pour séparer explicitement
+les options des arguments quand la commande est ambiguë.
+</p>
+
+<p>
+    Pour obtenir l'aide en ligne sur une commande, il suffit d'utiliser le
+    <code>man</code>. Pour obtenir l'aide sur la commande <code>cmd</code>, il suffit de taper :    
+<div class="highlight">
+<pre>
+<span class="kd">man</span> cmd
+</pre>
+</div>
+</p>
+
+<div class="green-block">
+<i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> Attention ! L'aide est écrite en anglais et les version traduites sont
+souvent de moindre qualité. <br>
+Un conseil : s'habituer dès maintenant à
+lire la documentation en anglais ;-)
+</div>
+
+<ul>
+    <li><b>question 1.2 :</b> Demander l'aide de la commande <code>mkdir</code> <br>
+        Faire défiler avec les flèches haut/bas, utiliser <code>q</code> pour quitter.</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 2 : Gestion de l'arborescence
+</div>
+
+<ul>
+    <li><b>question 1.3 :</b> Dans un terminal, utilisez la commande <code>mkdir</code> pour créer le
+        répertoire <code>TOTO</code>. </li>
+
+    <li><b>question 1.4 :</b> Grâce à la commande <code>ls</code>, vérifiez que vous avez bien créé ce répertoire.</li>
+
+    <li><b>question 1.5 :</b> Détruisez ce répertoire en utilisant la commande <code>rmdir</code>.</li>
+
+    <li><b>question 1.6 :</b> Tapez la commande <code>cd</code>. Quel est l'effet de cette commande sans paramètre ?</li>
+</ul>
+<p>
+    Vous allez maintenant vous servir des premières commandes de base qui
+    vous permettront de gérer votre espace de travail (donc votre
+    arborescence). Pour cela, vous allez utiliser les commandes suivantes
+    : <code>pwd</code>, <code>ls</code>, <code>cd</code>, <code>mkdir</code> et <code>rmdir</code>. 
+    À vous d'utiliser ces commandes pour répondre aux questions suivantes.
+</p>
+
+<ul>
+    <li><b>question 1.7</b> : Dans quel répertoire vous trouvez-vous ?</li>
+    <li><b>question 1.8</b> : Créez le répertoire <code>$HOME/Unix/TP1</code>.</li>
+    <li><b>uestion 1.9</b> : Vérifiez qu'il a bien été créé.</li>
+    <li><b>question 1.10</b> : Toujours depuis ce répertoire, créez le répertoire <code>$HOME/Unix/TP1/rep</code>.</li>
+    <li><b>question 1.11</b> : Déplacez-vous dans le répertoire <code>TP1</code> et détruisez le répertoire <code>rep</code>.</li>
+    <li><b>question 1.12</b> : Qu'y a-t-il dans le répertoire <code>$HOME/..</code> ? </li>
+</ul>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 3 : Lister les Fichiers
+</div>
+
+<p>
+    Vous allez maintenant voir un peu plus en détail comment lister les
+fichiers contenus dans un répertoire. La commande utile pour cet
+exercice est <code>ls</code>.
+</p>
+<p>
+    Dans le répertoire <code>/bin</code> (ou <code>/usr/bin</code>)
+    <ul>
+        <li><b>question 1.13</b> : listez les fichiers ;</li>
+        <li><b>question 1.14</b> : listez tous les fichiers y compris les fichiers cachés ;</li>
+        <li><b>question 1.15</b> : listez les fichiers en format long ;</li>
+        <li><b>question 1.16</b> : listez les fichiers en format long dans l'ordre inverse de l'ordre alphabétique ;</li>
+        <li><b>question 1.17</b> : listez les fichiers du plus ancien au plus récent en format long ;</li>
+    </ul>
+</p>
+
+<p>
+    Les caractères suivants ont une signification particulière pour
+l'interpréteur de commandes (i.e. le shell) : <code>?*[]~\ </code>. Ces
+caractères peuvent néanmoins être utilisés dans des noms de fichiers
+ou répertoires (pas conseillé) en les despécialisant à l'aide du
+caractère <code>\</code>. Par exemple, si l'argument qu'on veut faire passer
+à l'interpréteur de commande est <code>]*do?re\mi[</code> on écrira
+<code>\]\*do\?re\\mi\[</code>
+</p>
+
+<ul>
+    <li>le caractère <code>?</code> permet de remplacer un caractère quelconque ; par
+exemple, la commande <code>ls fic?</code> donnera tous les noms de quatre
+lettres dont les trois premières sont <code>fic</code> ;</li>
+
+<li>le caractère <code>*</code> remplace n'importe quelle chaîne de caractères (y
+compris la chaîne vide) ; par exemple, la commande <code>ls fic*</code> donnera
+tous les noms de trois lettres ou plus, dont les trois premières
+lettres sont <code>fic</code> ;</li>
+
+<li>une suite de caractères entre crochets <code>[ ]</code> désigne un seul
+caractère de la suite ; par exemple, en supposant que vous disposiez
+dans votre répertoire courant des fichiers <code>fic1</code>, <code>fic2</code> et <code>fic3</code>, alors
+<code>ls fic[123]</code> sera équivalent à <code>ls fic1 fic2 fic3</code> ; </li>
+
+<li>  deux caractères séparés par un <code>-</code> entre crochets <code>[ ]</code> (par exemple
+<code>[a-e]</code>) désigne un seul caractère de l'intervalle de caractères ; par
+exemple, en supposant que vous disposiez dans votre répertoire
+courant des fichiers<code>fica</code>, <code>ficb</code>, <code>ficc</code>, <code>ficd</code>, et <code>fice</code>, alors la
+commande<code>ls fic[a-e]</code> est équivalente à <code>ls fica ficb ficc ficd fice</code>.</li>
+
+<li> le caractère <code>~</code> désigne le nom du répertoire utilisateur de
+l'utilisateur courant.</li>
+</ul>
+
+<p>
+    <ul>
+        <li><b>question 1.18</b> : Listez tous les fichiers dont le nom :
+            <ol>
+                <li>commence par <code>r</code> ;</li>
+                <li>finit par <code>e</code> ;</li>
+                <li>commence par <code>n</code> et finit par <code>e</code> ;</li>
+                <li>contient exactement quatre caractères quelconques ;</li>
+                <li>contient au moins quatre caractères ;</li>
+                <li>contient au moins un <code>z</code> ;</li>
+                <li>commence par un chiffre.</li>
+            </ol>
+        </li>
+
+        <li><b>question 1.19</b> : La commande <code>touch</code> permet de modifier la date de la dernière
+            modification d'un fichier. Cette commande, appliquée à un nom de
+            fichier n'existant pas, permet de créer ce fichier avec une taille de
+            <code>0</code> octets. Avec cette commande, créez un fichier de nom <code>m</code> et un
+            deuxième de nom <code>r</code>.</li>
+
+        <li><b>question 1.20</b> : Créez le fichier <code>[mr]</code>. Vérifier que le nom du fichier est
+            bien <code>[mr]</code>.</li>
+
+        <li><b>question 1.21</b> : À l'aide de la commande <code>mv</code>, 
+            renommez le fichier <code>[mr]</code> en <code>?</code>.</li>
+
+    </ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 4 : Manipulation de Fichiers
+</div>
+
+<p>
+    Les commandes <code>cp</code>, <code>rm</code>, <code>more</code>, <code>cat</code>, 
+    vous permettront de répondre aux questions suivantes.
+</p>
+
+<ul>
+    <li><b>question 1.22</b> : Revenez, s'il y a lieu, dans le répertoire <code>$HOME/Unix/TP1</code>.</li>
+
+    <li><b>question 1.23</b> : Copiez le fichier <code>/etc/hosts</code> dans le répertoire <code>$HOME</code> que vous
+        désignerez par son chemin absolu.</li>
+
+    <li><b>question 1.24</b> : Copiez le fichier <code>hosts</code> depuis votre répertoire racine vers le
+répertoire courant (<code>$HOME/Unix/TP1</code>) en utilisant cette fois des
+chemins relatifs. Détruisez le fichier <code>$HOME/hosts</code>.</li>
+
+    <li><b>question 1.25</b> : Créez un fichier de nom <code>-i</code>, et essayez de l'effacer.</li>
+
+    <li><b>question 1.26</b> : Trouvez deux commandes permettant de visualiser le contenu du
+    fichier <code>hosts</code>.</li>
+</ul>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 5 : Droit d'Accès aux Fichiers
+</div>
+
+<p>
+    A chaque fichier est associé un ensemble de permissions qui détermine
+    qui a le droit de lire, écrire, effacer ou exécuter un fichier. Ces
+    droits d'accès sont résumés par des lettres :
+    <ul>
+        <li> <code>r</code> : autorisé en lecture.</li>
+        <li> <code>w</code> : autorisé en écriture-effacement.</li>
+        <li> <code>x</code> : autorisé en exécution.</li>
+    </ul>
+</p>
+
+<p>
+    Ces trois permissions peuvent être appliquées au propriétaire du
+fichier (la personne qui l'a créé ), aux membres du groupe,
+et à tous les autres utilisateurs du système. En résumé :
+<ul>
+    <li> <code>u</code> : user (le propriétaire du fichier).</li>
+    <li> <code>g</code> : group (le groupe auquel est rattaché le fichier).</li>
+    <li> <code>o</code> : others (tous les autres utilisateurs).</li>
+    <li> <code>a</code> : all (le propriétaire, le group, et les autres)</li>
+</ul>
+</p>
+
+<p>
+    Par exemple, si on affiche les permissions associées à un fichier
+qui s'appelle <code>mon_fichier</code>, supposons qu'on obtienne
+
+<div class="highlight">
+<pre>
+-rwxrwxrwx 1 toto miage 124 2010-09-08 17:59 mon_fichier
+</pre>
+</div>
+</p>
+
+<p>
+    Cela signifie que l'utilisateur <code>toto</code> possède un fichier de <code>124</code> octets qui
+s'appelle <code>mon_fichier</code> créé le 8 septembre de l'année 2010 à 17h59 et
+qui appartient au groupe <code>miage</code>. Dans <code>-rwxrwxrwx</code>, les caractères numéro 2,3,4
+correspondent à <code>u</code>, les caractères numéro 5,6,7 à <code>g</code> et les trois derniers à <code>o</code>.
+Ainsi, <code>mon_fichier</code> est autorisé en lecture, écriture et exécution
+pour le propriétaire (<code>u=rwx</code>), le groupe (<code>g=rwx</code>) et les autres utilisateurs (<code>o=rwx</code>).
+</p>
+
+<p>
+    La commande Unix vous permettant de changer les permissions d'accès
+aux fichiers est : <code>chmod</code>. Pour changer les permissions de l'exemple
+précédent afin d'obtenir les permissions de l'exemple suivant,
+<div class="highlight">
+<pre>
+-rwxr-xr-- 1 toto miage 124 2010-09-08 17:59 mon_fichier
+</pre>
+</div>
+</p>
+
+<p>
+    l'utilisateur toto utilisera la commande :
+<div class="highlight">
+<pre>
+<span class="kd">chmod</span> g-w,o-wx mon_fichier
+</pre>
+</div>
+</p>
+
+<p>
+    signifie que <code>mon_fichier</code> est autorisé en lecture,
+écriture et exécution pour le propriétaire (<code>u=rwx</code>), en lecture et
+exécution seulement pour le groupe (<code>g=r-x</code>) et en lecture seule pour
+les autres utilisateurs (<code>o=r--</code>).
+</p>
+
+<p>
+    Pour retrouver les permissions du premier exemple, le propriétaire du
+fichier utilise la commande 
+<div class="highlight">
+<pre>
+<span class="kd">chmod</span> g+w,o+wx mon_fichier
+</pre>
+</div>
+</p>
+
+<p>
+    Il pourrait aussi utiliser la commande : 
+<div class="highlight">
+<pre>
+<span class="kd">chmod</span> u=rwx,g=rwx,o=rwx mon_fichier
+</pre>
+</div>
+</p>
+
+<p>
+    Vous pouvez aussi positionner des permissions (pour vous, le groupe et
+les autres) sur vos répertoires. Dans ce cas, les lettres <code>r</code>,<code>w</code> et <code>x</code>
+ ont la signification suivante.
+<ul>
+<li> <code>r</code> : autorisé à lister le contenu du répertoire.</li>
+<li> <code>w</code> : autorisé à créer ou détruire des fichiers dans le répertoire.</li>
+<li> <code>x</code> : autorisé à traverser ce répertoire.</li>
+</ul>
+</p>
+
+<ul>
+    <li><b>question 1.27</b> : Affichez les permissions du répertoire <code>$HOME</code>.</li>
+
+    <li><b>question 1.28</b> : Copiez le fichier <code>hosts</code> dans le fichier <code>hosts.bis</code>.</li>
+
+    <li><b>question 1.29</b> : Modifiez les protections de votre fichier <code>hosts</code> pour que vous,
+        propriétaire du fichier, puissiez le lire mais pas l'effacer.</li>
+
+    <li><b>question 1.30</b> : Essayez de l'effacer.</li>
+
+    <li><b>question 1.31</b> : Modifiez les protections de votre fichier <code>hosts.bis</code> pour que les
+        utilisateurs de votre groupe puissent le lire et le détruire.</li>
+</ul>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 6 : Les Liens Symboliques
+</div>
+<ul><li><b>question 1.32</b> : Déplacez-vous dans votre répertoire <code>~/Unix/TP1</code></li></ul>
+
+<p>
+    Créez un fichier <code>source</code> en tapant dans un terminal les commandes suivantes :
+<div class="highlight">
+<pre>
+<span class="kd">cat</span> > source
+Hello World!
+[Ctrl]-d
+</pre>
+</div>
+</p>
+<p>
+    Ce fichier est créé a l'aide de la commande <code>cat</code> et d'un mécanisme de
+redirection (<code>></code>).
+</p>
+<ul>
+<li> <b>question 1.33</b> : Lisez la page de manuel de la commande <code>ln</code>.</li>
+<li> <b>question 1.34</b> : Visualisez le contenu du fichier <code>source</code>.</li>
+<li> <b>question 1.35</b> : Créez un lien symbolique (<code>ln -s</code>) de <code>source</code> vers <code>source.sym</code>.</li>
+<li> <b>question 1.36</b> : Listez à l'aide de la commande <code>ls -l</code> le contenu du répertoire <code>~/Unix/TP1</code>.</li>
+<li> <b>question 1.37</b> : Vérifiez avec la commande <code>cat</code> que ces deux fichiers ont le même contenu.</li>
+<li> <b>question 1.38</b> : Renommez le fichier <code>source</code> en <code>source.bis</code>. Qu'en est-il du lien symbolique ?</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
+        2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+
+</html>
