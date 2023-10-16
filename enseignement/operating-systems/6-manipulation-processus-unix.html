@@ -1,0 +1,1312 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Systèmes d'exploitation : Manipulation des processus sous Unix</title>
+
+	<meta name="description" content="Systèmes d'exploitation : Manipulation des processus sous Unix">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/cs.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+<div class="slide-content">
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<h2>Systèmes d'exploitation</h2>
+	<h3>Manipulation des processus sous Unix</h3>
+	<div class="description">
+		<span class="description-item"><span class="fa fa-graduation-cap"></span> 3A - Cursus Ingénieurs</span>	
+		<span class="description-item"><span class="fa fa-university"></span> CentraleSupelec</span>
+		<span class="description-item"><span class="fa fa-calendar" aria-hidden="true"></span> 2023/2024</span>
+	</div>
+		
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Le système Unix"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes d'exploitation</h2>
+	<ul>
+        <li class="fragment">Ensemble de <b>programmes informatiques</b> servant d’<b>interface</b> entre <br>
+            le <i>matériel</i> et les <i>applications utilisateurs</i>.
+            <ul><li class="fragment"><b style="color: black;">ex.</b> : <b>Windows</b> (XP, 7, ...,10), famille <b>Unix</b> 
+                (<b>Linux</b>, <b>Mac-OS</b>, ...).</li></ul>
+        </li>
+
+        <li class="fragment skip"><b>Linux</b> domine dans le <i>calcul intensif</i>
+            <ul><li class="fragment">
+                plus de <i>97 %</i> des calculateurs du <i>TOP 500</i> $\to$ 
+                <a href="https://hpc.developpez.com/actu/266678/Linux-alimente-desormais-tous-les-500-meilleurs-supercalculateurs-du-monde-d-apres-le-TOP500-de-juin-2019/" target="_blank">Classement 2019</a>
+            </li></ul>
+        </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2>
+    <img data-id="im1" src="./img/historique-unix-1.svg" alt="" width="900px">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+    <img data-id="im1" src="./img/historique-unix-2.svg" alt="" width="900px"> 
+
+    <div class="slide-content">
+        <a href="https://fr.wikipedia.org/wiki/Multics" target="_blank"><b>MULTICS</b></a> 
+        <br>
+        <ul class="skip">
+            <li><b>MULT</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice</li>
+            <li>laboratoires <b>Bell</b>, <b>MIT</b>, <b>General Electric</b></li>
+            <li><i>temps partagé</i>, multi-utilisateurs</li>
+            <li>système de fichier hiérarchique, segmentation et mémoire virtuelle</li>
+            <li>système d'<i>invite de commande</i>, contrôle par un terminal distant</li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+    <img data-id="im1" src="./img/historique-unix-3.svg" alt="" width="900px"> 
+
+    <div class="slide-content">
+        <a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNICS</b></a> or <a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNIX</b></a> 
+        <br>
+        <ul class="skip">
+            <li><b>UN</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice </li>
+            <li><b>Ken Thompson</b>, laboratoires <b>Bell</b></li>
+            <li>portable, <i>multi-tâches</i>, multi-utilisateurs</li>
+            <li>système d'invite de commande utilisant le système de <i>pipes</i></li>
+            <li>principes publiés dans <b>The Unix Programmer’s manual</b> en <i>1971</i></li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+    <img data-id="im1" src="./img/historique-unix-4.svg" alt="" width="900px"> 
+	<div class="slide-content">
+		<a href="https://fr.wikipedia.org/wiki/Linux" target="_blank">Linux</a> ou <a href="https://fr.wikipedia.org/wiki/Linux" target="_blank">GNU/Linux</a>
+		<br>
+		<ul class="skip">
+			<li>créé en <i>1991</i> par <a href="https://fr.wikipedia.org/wiki/Linus_Torvalds" target="_blank">Linus Torvalds</a></li>
+			<li>basé sur <a href="https://fr.wikipedia.org/wiki/Minix" target="_blank">Minix</a> un clone d'<b>Unix</b> fondé sur un micro-noyau.</li>
+			<li>noyau <i>open-source</i> publié sous licence <a href="https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU" target="_blank">GNU GPL</a></li>
+			<li>plusieurs distributions : 
+				<a href="https://en.wikipedia.org/wiki/Debian" target="_blank">Debian</a>, 
+				<a href="https://en.wikipedia.org/wiki/Fedora_Linux" target="_blank">Fedora</a>, 
+				<a href="https://en.wikipedia.org/wiki/Ubuntu" target="_blank">Ubuntu</a>, ... </li>
+		</ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+    <img data-id="im1" src="./img/historique-unix-5.svg" alt="" width="900px"> 
+	<div class="slide-content">
+		<a href="https://fr.wikipedia.org/wiki/MacOS">MacOS</a>
+		<br>
+		<ul class="skip">
+			<li>fondé sur le noyau <a href="https://fr.wikipedia.org/wiki/Mach_(noyau)" target="_blank">Mach</a> 
+				 et sur l’implémentation <a href="https://fr.wikipedia.org/wiki/Berkeley_Software_Distribution" target="_blank">BSD</a> d'<b>Unix</b></li>
+			<li>adapté à l'architecture matérielle de <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Macintosh</a> ou de <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Mac</a></li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+    <img data-id="im1" src="./img/historique-unix-6.svg" alt="" width="900px"> 
+	<div class="slide-content">
+		<a href="https://fr.wikipedia.org/wiki/Android">Android</a>
+		<br>
+		<ul class="skip">
+			<li>fondé sur le noyau <b>Linux</b> </li>
+			<li>système d'exploitation pour les <i>appareils mobiles</i> </li>
+		</ul>
+	</div>
+</section>   
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-background="./img/unix-dist.png" data-background-size="80%">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Caractéristiques du système Unix</h2> 
+	<ul>
+		<li class="fragment"><b>Multi-tâches</b> (concurrentes et indépendantes)</li>
+        
+        <li class="fragment skip"><b>Multi-utilisateurs</b> (dont l’administrateur ou le <i>root</i>)
+        	<ul><li>système d’identification et droits d’accès aux fichiers</li></ul>
+		</li>
+
+        <li class="fragment skip"><b>Chaînage</b> des processus par les tubes (<b>pipes</b>)
+			<ul><li>composition d’outils élémentaires pour des tâches complexes</li></ul>
+		</li>
+
+        <li class="fragment skip"><b>Shell</b> est l’interface utilisateur du système d’exploitation.
+			<ul><li><code class="listing">bash</code> : <b>B</b>ourne <b>A</b>gain <b>SH</b>ell 
+				(<code class="listing">sh</code> : shell historique de <b>Bourne</b>)</li></ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Caractéristiques du Shell</h2> 
+	<ul>
+		<li><b>Shell</b> est l’interface utilisateur du système d’exploitation.
+			<ul><li><code class="listing">bash</code> : <b>B</b>ourne <b>A</b>gain <b>SH</b>ell 
+				(<code class="listing">sh</code> : shell historique de <b>Bourne</b>)</li></ul>
+		</li>
+
+        <li class="fragment skip">L’interpréteur de commandes (<b>Shell</b>) intègre un langage <br>
+        de programmation avec variables, structures de contrôle, fonctions ...
+        	<ul>
+				<li class="fragment"><b>programmes interprétés</b> = fichiers de commandes = shell-scripts </li>
+				<li class="fragment">création de commandes par l’utilisateur </li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de fichiers d'Unix</h2> 
+	<div class="slide-content">
+		<span class="fragment">Vu par l'utilisateur, le <b>système de fichier</b> d'<b>Unix</b>
+			est structuré hiérarchiquement en un <i>arbre unique</i> constitué de :</span>
+		<ul>
+			<li class="fragment"><b>noeuds</b> : répertoires (<i>directories</i>, dossiers (<i>folders</i>) sous <b>Windows</b>),
+				<ul><li>contiennent d’autres répertoires et des fichiers</li></ul>
+			</li>
+
+			<li class="fragment">
+				<b>feuilles</b> : fichiers (<i>files</i>),
+				<ul>
+					<li>des récipients contenant des données</li>
+					<li>les périphériques apparaissent également comme des fichiers</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="default-block" class="fragment skip" style="text-align: center;">
+		Découverte et manipulation à l'occasion du <b>TP 1</b>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Redirection"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le flux standard</h2>
+	<div class="fragment">
+		<p>
+			<b>Commande Unix</b> $\to$ trois flux standards de données :
+		</p>
+	
+		<img src="./img/7-img-01.png" alt="">
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La redirection</h2>
+	<ul>
+		<li class="fragment">Au lieu d’une saisie au clavier et d’un affichage à l’écran, <i>stocker <br>
+			de façon permanente</i> les informations d’entrée ou de sortie.
+			<ul id="fleche"><li><b>rediriger les flux standards</b> à partir ou vers des <i>fichiers</i>.</li></ul>
+		</li>
+
+		<li class="fragment skip">
+			<i>Combiner des commandes</i> pour effectuer des traitements complexes
+			<ul id="fleche"><li><b>rediriger les flux standards</b> à partir ou vers d’<i>autres commandes</i>.</li></ul>
+		</li>
+		
+		<li class="fragment skip">
+			<b>Grande souplesse</b> et puissance du système <b>Unix</b>.
+		</li>	
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Redirection vers un fichier</h2>
+
+	<img class="fragment" src="./img/7-img-02.png" alt="">
+
+	<div class="fragment" style="text-align: left;">
+		Un nouveau fichier est créé avec le contenu de la sortie
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande > fichier
+		</script></code></pre>
+	</div>
+
+	<div class="fragment" style="text-align: left;">
+		La sortie est ajoutée à la fin d'un fichier existant
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande >> fichier
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+
+	<div class="fragment" style="text-align: left;">
+		Le contenu du dossier courant dans un fichier
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ ls -l > liste.txt
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		Les 10 premières puis les 10 dernières lignes
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ head liste.txt > copy-liste.txt
+			$ tail liste.txt >> copy-liste.txt
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		Les fichiers sources <b>Java</b>, puis ceux des fichiers sources <b>C</b>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ ls *.java > new-liste.txt
+			$ ls *.c >> new-liste.txt
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Redirection vers un fichier</h2>
+
+	<div class="fragment" style="text-align: left;">
+		<b style="color: red;">Attention</b> : le <b>shell</b> interprète très tôt les redirections <br>
+		<ul id="fleche"><li>ne pas rediriger la sortie vers le fichier d’entrée </li></ul>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cat -n fichier.txt > fichier.txt
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		<b style="color: green;">Solution</b> : <br>
+		<ul id="fleche"><li>utiliser un fichier tempon   </li></ul>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cat -n fichier.txt > tmp ; mv tmp fichier.txt
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Entrée depuis un fichier</h2>
+
+	<img class="fragment" src="./img/7-img-03.png" alt="">
+
+	<div class="fragment" style="text-align: left;">
+		Le fichier doit exister au préalable
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande < fichier
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple</h2>
+
+	<div class="fragment" style="text-align: left;">
+		Lecture des données d’entrée d’un script depuis un fichier
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ ./trier.sh < entrees.txt
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La sortie d'erreurs vers un fichier</h2>
+
+	<img class="fragment" src="./img/7-img-06.png" alt="">
+
+	<div class="fragment" style="text-align: left;">
+		Un fichier est créé avec le contenu de la sortie d’erreurs
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande 2> fichier
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		La sortie d’erreurs est ajoutée à la fin d'un fichier existant
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande 2>> fichier
+		</script></code></pre>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple</h2>
+
+	<div class="fragment" style="text-align: left;">
+		Sauvegarde des diagnostics d’une compilation
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ gcc programme.c 2> erreurs.txt
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Regroupement des flux</h2>
+
+	<div class="fragment" style="text-align: left;">
+		Affiche à la console le contenu de <code class="listing">fichier_existant</code> <br> et un <b style="color: red;">message d'erreur</b>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cat fichier_existant fichier_inexistant
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		Affiche à la console un <b style="color: red;">message d'erreur</b>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cat fichier_existant fichier_inexistant > fichier.txt
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		N'affiche plus rien 
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cat fichier_existant fichier_inexistant > fichier.txt 2>&1
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Quelques fichiers spéciaux</h2>
+
+	<ul>
+		<li class="fragment">
+			Le répertoire <code class="listing">dev</code> contient des fichiers spéciaux gérant les flux entre
+    		l'UC et les périphériques (terminaux, imprimantes, disques, ...)
+		</li>
+
+		<li class="fragment skip">
+			<code class="listing">/dev/tty</code> : le terminal attaché à la connexion
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ tty
+				/dev/ttys000
+			</script></code></pre>
+		</li>
+
+		<li class="fragment skip">
+			<code class="listing">/dev/null</code> : fichier <b>poubelle</b> (vide) ou trou noir !
+			<ul><li><b style="color: black;"> Exemple</b> : empêcher le flux d’erreur de s’afficher à l’écran.</li></ul>
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ commande 2> /dev/null
+			</script></code></pre>
+		</li>
+	</ul>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Tubes ou pipes"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Tubes ou pipes</h2>
+	<div class="slide-content fragment">
+		Deux méthode pour <b>synchroniser deux processus</b> :
+		<ol>
+			<li class="fragment skip">
+				<b>Méthode séquentielle</b> avec fichier intermédiaire
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ cmd_1 > fichier
+					$ cmd_2 < fichier
+					$ rm fichier
+				</script></code></pre>
+			</li>
+
+			<li class="fragment skip">
+				<b>Traitement à la chaîne</b> en connectant les deux processus par un <b>Pipe</b>
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ cmd_1 | cmd_2
+				</script></code></pre>
+				<ul>
+					<li class="fragment">zone <i>mémoire</i></li>
+					<li class="fragment">communication <i>synchronisée</i> entre les 2 processus</li>
+					<li class="fragment">plus <i>rapide</i> que le traitement séquentiel</li>
+				</ul>
+			</li>
+		</ol>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Méthode séquentielle</h2>
+
+	<pre><code class="language-shell hljs" data-trim><script type="text/template">
+		$ cmd_1 > fichier
+		$ cmd_2 < fichier
+		$ rm fichier
+	</script></code></pre>
+
+	<img class="fragment" src="./img/7-img-04.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Chaînage avec tube</h2>
+
+	<pre><code class="language-shell hljs" data-trim><script type="text/template">
+		$ cmd_1 | cmd_2
+	</script></code></pre>
+
+	<img class="fragment" src="./img/7-img-05.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple i</h2>
+	<div class="slide-content fragment">
+		Affichage paginé de la liste des fichiers du répertoire courant <br>
+		<ol>
+			<li class="fragment skip">
+				Exemple utilisant la méthode séquentielle
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ ls -l > liste.txt
+					$ more liste.txt
+					$ rm liste.txt
+				</script></code></pre>
+			</li>
+
+			<li class="fragment skip">
+				Exemple utilisant le chaînage avec tube
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ ls -l | more 
+				</script></code></pre>
+			</li>
+		</ol>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple ii</h2>
+	<div class="slide-content fragment">
+		Affichage de la <i>12e</i> ligne du fichier <code class="listing">toto.txt</code> <br>
+		<ol>
+			<li class="fragment skip">
+				Exemple utilisant la méthode séquentielle
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ head -n 12 toto.txt > tmp
+					$ tail -n 1 tmp
+					$ rm tmp
+				</script></code></pre>
+			</li>
+
+			<li class="fragment skip">
+				Exemple utilisant le chaînage avec tube
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ head -n 12 toto.txt | tail -n 1
+				</script></code></pre>
+			</li>
+		</ol>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Cas de plusieurs redirections</h2>
+
+	<div class="fragment" style="text-align: left;">
+		Avec <i>une seule commande</i>, l’ordre des redirections est indifférent
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande < entree > sortie
+		</script></code></pre>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande > sortie < entree
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		Avec <i>deux commandes</i> et un tube, ne pas détourner le flux
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande_1 < entree | commande_2 > sortie
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Duplication de flux</h2>
+
+	<div class="fragment" style="text-align: left;">
+		<code class="listing">tee</code> <i>duplique le flux</i> de son entrée standard vers le fichier passé <br>
+		en argument et la sortie standard. 
+
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ commande | tee fichier
+		</script></code></pre>
+
+	</div>
+
+	<img class="fragment" src="./img/7-img-07.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple </h2>
+	<div class="slide-content fragment">
+		Conserver une trace du résultat intermédiaire d’un tube <br>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ cmd_1 | tee f_intermediaire | cmd_2
+		</script></code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Expressions régulières ou rationnelles"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Expressions régulières <br> ou rationnelles</h2>
+	<div class="slide-content fragment">
+		<i>Recherche</i> de chaînes de caractères qui satisfont à un certain <i>pattern</i>. <br>
+		<ul>
+			<li>syntaxe particulière pour décrire des <i>motifs génériques</i> </li> 
+        
+			<li class="fragment skip"><b>expression régulière</b> ou <b>rationnelle</b></li> 
+			<li class="fragment">utilisées par les éditeurs <b>ex</b>, <b>vi</b> et <b>sed</b>, 
+			les filtres <code class="listing">grep</code> et <code class="listing">awk</code>, <br>
+			ainsi que les langages <b>perl</b>, <b>python</b>, <b>php</b>, <b>JavaScript</b> ...</li> 
+		</ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les caractères spéciaux</h2>
+	
+	<table>
+		<tbody>
+			<tr class="fragment">
+				<td><code class="listing">.</code></td>
+				<td>représente un caractère quelconque et un seul</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">\</code></td>
+				<td>sert à protéger le caractère qui le suit pour empêcher <br> 
+					qu’il ne soit interprété</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">*</code></td>
+				<td>représente un nombre d’occurrences quelconque (zéro ou plus) <br> 
+					du caractère ou de la sous-expression qui précède</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="default-block" class="fragment skip">
+		<b>Remarque</b> <br> 
+		ne pas les confondre avec les <b>wildcards</b> pour les noms 
+		de fichiers, <br> <code class="listing">*</code> et <code class="listing">?</code> 
+			qui sont interprétés par le <b>shell</b>.
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+
+	<table>
+		<tbody>
+			<tr class="fragment">
+				<td><code class="listing">a*</code></td>
+				<td>un nombre quelconque de fois le caractère <code class="listing">a</code> <br>
+					y compris une chaîne vide</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">aa*</code></td>
+				<td>un ou plusieurs fois le caractère  <code class="listing">a</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">.*</code></td>
+				<td>un nombre quelconque de caractères quelconques <br> 
+					y compris une chaîne vide</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">..*</code></td>
+				<td>au moins un caractère</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">\..*</code></td>
+				<td>un point suivi d’un caractère quelconque</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">\\*</code></td>
+				<td>un nombre quelconque (y compris zéro) de backslash</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les ancres</h2>
+	<div class="slide-content fragment">
+		<b>Les ancres</b> (<b>anchor</b>) permettent de spécifier qu’<i>un motif</i> est situé <br>
+		en <i>début</i> ou en <i>fin de ligne</i>. 
+    </div>
+	<table class="skip">
+		<tbody>
+			<tr class="fragment">
+				<td><code class="listing">^</code></td>
+				<td>en début de motif, représente le début de ligne</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">$</code></td>
+				<td>en fin de motif, représente la fin de ligne</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+
+	<table>
+		<tbody>
+			<tr class="fragment">
+				<td><code class="listing">^a</code></td>
+				<td>une ligne commençant par un <code class="listing">a</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">^a.*b</code></td>
+				<td>une ligne commençant par un <code class="listing">a</code> et finissant par <code class="listing">b</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">^$</code></td>
+				<td>une ligne vide</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">^.*$</code></td>
+				<td>une ligne quelconque, y compris vide</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">^..*$</code></td>
+				<td>une ligne non vide</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Ensemble de caractères</h2>
+	<ul>
+		<li class="fragment"><i>Un et un seul caractère</i> choisi parmi un ensemble de caractères spécifiés 
+			<i>entre crochets</i> : <code class="listing">[ensemble_de_caracteres]</code></li>
+
+		<li class="fragment skip">
+			À l’intérieur d’un tel ensemble, les <i>caractères spéciaux</i> sont : <br>
+			<code class="listing">[-]</code> : utilisé pour définir des <i>intervalles</i><br>
+			<code class="listing">[^]</code> : en tête pour spécifier le <i>complémentaire</i> de l’ensemble<br>
+			<code class="listing">[]]</code> : délimite la <i>fin de l’ensemble</i>, sauf s’il est placé au début
+		</li>
+
+		<li class="fragment skip">
+			On peut faire référence à des <b>classes de caractères </b> <br>
+			<code class="listing">[:lower:]</code>, <code class="listing">[:upper:]</code>, 
+			<code class="listing">[:alpha:]</code>, <code class="listing">[:digit:]</code>, <code class="listing">[:alnum:]</code>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+	<table>
+		<tbody>
+			<tr class="fragment">
+				<td><code class="listing">[a0+]</code></td>
+				<td>un des caractères <code class="listing">a</code>, <code class="listing">0</code> 
+					ou <code class="listing">+</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[a-z]</code></td>
+				<td>une lettre minuscule</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[a-z:;?!]</code></td>
+				<td>une lettre minuscule ou une ponctuation double</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[0-9]</code></td>
+				<td>un chiffre</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[^0-9]</code></td>
+				<td>n’importe quel caractère qui n’est pas un chiffre</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[]-]</code></td>
+				<td>un <code class="listing">]</code> ou un signe <code class="listing">-</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[[:digit:]]</code></td>
+				<td>au lieu de <code class="listing">[0-9]</code></td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">[-+.[:digit:]]</code></td>
+				<td>un chiffre, un <code class="listing">.</code>, un <code class="listing">+</code> ou <code class="listing">-</code></td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le filtre <code class="listing">grep</code></h2>
+
+	<ul>
+		<li class="fragment"><code class="listing">grep</code> : <b>g</b>lobal <b>r</b>egular <b>e</b>xpression <b>p</b>rint</li>
+		<li class="fragment">affiche les lignes qui contiennent un motif passé en paramètre
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ grep [options] motif [liste_de_fichiers]
+			</script></code></pre>
+			où <code class="listing">motif</code> est une expression régulière
+		</li>
+		<li class="fragment skip">
+			<b style="color: black;">Principales options</b> : 
+			<ul>
+				<li class="fragment"><code class="listing">-i</code> : ignore la casse (majuscule/minuscule)</li>
+				<li class="fragment"><code class="listing">-v</code> : inverse la sélection (affiche les lignes sans le motif)</li>
+				<li class="fragment"><code class="listing">-l</code> : la liste des fichiers contenant le motif</li>
+				<li class="fragment"><code class="listing">-n</code> : les lignes contenant le motif précédées de leur numéro</li>
+				<li class="fragment"><code class="listing">-c</code> : les noms des fichiers et le nombre de lignes qui contiennent le motif</li>
+			</ul>
+			
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+	<div class="fragment" style="text-align: left;">
+		affiche la ligne de l'utilisateur <code class="listing">lefrere</code> dans le fichier de mots de passe
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ grep lefrere /etc/passwd
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		affiche les lignes commençant par <code class="listing">//</code> (commentaires)
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ grep '^//' application.java
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		affiche les lignes dont le premier caractère non blanc est <code class="listing">{</code>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ grep '^ *{' application.java
+		</script></code></pre>
+	</div>
+
+	<div class="fragment skip" style="text-align: left;">
+		affiche les lignes qui ne sont pas des commentaires 
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ grep -v '^ *//' application.java
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+	<div style="text-align: left;">
+		affiche les lignes qui ne comportent pas que des blancs
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ grep -v '^ *$' application.java
+		</script></code></pre>
+	</div>
+	<div class="fragment skip" style="text-align: left;">
+		affiche la liste des sous-répertoires du répertoire courant
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ ls -l | grep ^d
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch5" name="Gestion des processus"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Généralités</h2>
+	<ul>
+		<li class="fragment"><b>Processus</b> $\to$ <b>tâche élémentaire</b> identifiée par un <i>numéro unique</i><br>
+			(<code class="listing">pid</code> - <b>p</b>rocess <b>id</b>entifier)</li>
+
+		<li class="fragment skip">
+			<code class="listing">ps</code> afficher les processus de l’<i>utilisateur associés au terminal</i>
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ ps [options]
+			</script></code></pre>
+		</li>
+
+		<li class="fragment skip">
+			<b style="color: black;">Principales options</b> : 
+			<ul>
+				<li class="fragment"><code class="listing">-e</code> : affiche tous les processus de tous les utilisateurs</li>
+				<li class="fragment"><code class="listing">-U user_list</code> : sélectionne les processus appartenant à cette liste</li>
+				<li class="fragment"><code class="listing">-f</code> : affiche une liste complète d’informations sur chaque processus</li>
+			</ul>
+			
+		</li>
+
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Généralités</h2>
+	<div class="slide-content">
+		Principales <i>informations</i> affichées par <code class="listing">ps</code> :
+	</div>
+	<table class="fragment">
+		<thead>
+			<tr>
+				<th>UID</th>
+				<th>PID</th>
+				<th>PPID</th>
+				<th>TTY</th>
+				<th>VSZ</th>
+				<th>CMD</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>user id</td>
+				<td>processus id</td>
+				<td>parent id</td>
+				<td>terminal</td>
+				<td>taille</td>
+				<td>commande</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="slide-content fragment skip">
+		Affichage <i>interactif</i> des processus avec la commande <code class="listing">top</code>
+		<pre><code class="language-shell hljs" data-trim><script type="text/template">
+			$ top
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Contrôle et signaux</h2>
+	<div class="slide-content fragment">
+		Caractères de contrôle (<code class="listing">Ctrl ^</code>) interprétés par le <b>shell</b>
+		<ul class="fragment"><li>gestion des processus attachés au terminal et des flux d’E/S</li></ul>
+	</div>
+	<table class="fragment skip">
+		<tbody>
+			<tr>
+				<td><code class="listing">Ctrl L</code></td>
+				<td>clear</td>
+				<td>efface l’écran</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">Ctrl S</code></td>
+				<td>stop</td>
+				<td>blocage de l’affichage à l’écran</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">Ctrl Q</code></td>
+				<td>start</td>
+				<td>déblocage de l’affichage à l’écran</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">Ctrl D</code></td>
+				<td>eof</td>
+				<td>fermeture du flux d’entrée (fin de session en shell)</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">Ctrl C</code></td>
+				<td>int</td>
+				<td>interruption du processus</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">Ctrl Z</code></td>
+				<td>susp</td>
+				<td>suspension du processus en cours</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Contrôle et signaux</h2>
+	<ul>
+		<li>La commande <code class="listing">stty</code> gère l’affectation des caractères de contrôle <br>
+			à certaines fonctions
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ stty -a
+			</script></code></pre>
+		</li>
+
+		<li class="fragment skip">
+			Un caractère de contrôle ne peut agir que sur le <i>processus <br>
+			en interaction</i> avec <i>le terminal</i> auquel il est attaché. 
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La commande <code class="listing">kill</code></h2>
+	<ul>
+		<li class="fragment">Intervenir sur un autre processus (<b style="color: black;">ex.</b> application qui ne répond plus)
+			<ul id="fleche" class="fragment"><li>le désigner par son <i>numéro</i> et lui envoyer un <i>signal</i></li></ul>
+		</li>
+
+		<li class="fragment skip">
+			<code class="listing">kill</code> envoie par défaut un signal de terminaison
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ kill -s TERM pid
+			</script></code></pre>
+		</li>
+
+		<li class="fragment skip">
+			sinon un signal de mise à mort
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ kill -s KILL pid
+			</script></code></pre>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Processus en arrière plan</h2>
+	<div class="slide-content fragment">
+		Système <b>UNIX</b> <i>multi-tâches</i> : <br>
+		<ul>
+			<li class="fragment">commandes longues non-interactives <i>en arrière-plan</i> (tâche de fond)</li>
+			<li class="fragment">garder la main pour d’autres commandes (mode <i>asynchrone</i>)
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ commande &
+				</script></code></pre>
+			</li>
+		</ul>
+	</div>
+
+	<div class="slide-content fragment skip">
+		<b>Gestion</b> des processus en arrière-plan
+	</div>
+	<table class="fragment">
+		<tbody>
+			<tr>
+				<td><code class="listing">jobs</code></td>
+				<td>affiche la liste des processus en arrière-plan </td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">fg</code></td>
+				<td>passe le job courant en premier plan</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">fg num</code></td>
+				<td>passe le job <code class="listing">num</code> en premier plan</td>
+			</tr>
+			<tr class="fragment">
+				<td><code class="listing">bg</code></td>
+				<td>passe le job courant en arrière-plan</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+	<ul>
+		<li class="fragment">
+			<code class="listing">top</code> au premier plan (on <i>perd la main</i> dans la fenêtre initiale)
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ top
+			</script></code></pre>
+			<ul>
+				<li class="fragment">
+					terminer ce processus par <code class="listing">ctrl C</code>
+				</li>
+			</ul>
+		</li>
+		
+
+		<li class="fragment skip">
+			<code class="listing">top</code> en arrière plan (on <i>conserve la main</i> dans la fenêtre initiale)
+			<pre><code class="language-shell hljs" data-trim><script type="text/template">
+				$ top & 
+			</script></code></pre>
+			<ul>
+				<li class="fragment">terminer le processus <code class="listing">top</code> par <code class="listing">fg</code> puis <code class="listing">ctrl C</code></li>
+				<li class="fragment">ou par <code class="listing">kill -s KILL pid</code></li>
+			</ul>
+		</li>
+	</ul>
+
+	<div id="alert-block" class="fragment skip">
+		<b>Remarque</b> <br>
+		<span style="font-size: 26px;">
+			Si on oublie le <code class="listing">&</code>, utiliser <code class="listing">ctrl Z</code> pour suspendre le processus,
+			puis <code class="listing">bg</code> pour le passer en arrière-plan
+		</span> 
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Code de retour</h2>
+	<div class="slide-content fragment">
+		Toute commande <b>UNIX</b> renvoie en fin d’exécution <i>un code numérique</i>
+		<ul>
+			<li class="fragment">valeur de retour (cf. <code class="listing">exit()</code> 
+				dans <code class="listing">main</code> en <b>C</b>)</li>
+			<li class="fragment">statut de fin (<code class="listing">return status</code>) accessible 
+				via <code class="listing">$?</code></li>
+
+			<li class="fragment skip">
+				Code de sortie = 0 $\to$ la commande s’est bien déroulée
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ cd /bin 
+					$ echo $?
+					0 
+				</script></code></pre>
+			</li>
+
+			<li class="fragment skip">
+				Code de sortie $\neq$ 0 $\to$ la commande s’est mal déroulée
+				<pre><code class="language-shell hljs" data-trim><script type="text/template">
+					$ cd /introuvable  
+					$ echo $?
+					1 
+				</script></code></pre>
+			</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Combinaison de commandes</h2>
+
+<pre class="fragment"><code class="language-shell hljs" data-trim><script type="text/template">
+$ cmd_1 && cmd_2 
+</script></code></pre>
+
+<ul>
+	<li class="fragment skip">La première commande est exécutée.</li>
+	<li class="fragment">Si elle réussit (<code class="listing">$? = 0</code>),la seconde commande est exécutée.</li>
+</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple</h2>
+	<div class="slide-content fragment">
+		si la compilation d'un code source <b>Java</b> s’effectue sans erreurs, <br> 
+		alors on lance son exécution.
+	</div>
+	<pre class="fragment"><code class="language-shell hljs" data-trim><script type="text/template">
+		$ javac  Application.java && java Application
+	</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch6" name="Synthèse"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Ce qu'il faut retenir</h2>
+
+	<ul>
+		<li class="fragment"><b>Unix</b> est un OS multi-tâches, multi-utilisateurs</li>
+		<li class="fragment"><b>Unix</b> est à la base de plusieurs OS modernes</li>
+		<li class="fragment">Le <b>shell bash</b> est une interface utilisateur  basée <br> sur un <i>interpréteur de commandes</i></li>
+		<li class="fragment">Une grande souplesse et une puissance basées  <br> sur la <i>redirection</i> et le <b>Pipe</b></li>
+		<li class="fragment">Mécanisme de recherche basé sur <i>les expressions régulières</i></li>
+		<li class="fragment">Commandes de gestion et de <i>synchronisation</i> des processus </li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
+	<h1>Fin</h1>
+	<p>
+		- <a href="#">Retour à l'accueil</a> <br>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
+			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+		});
+	</script>
+</body>
+
+</html>
