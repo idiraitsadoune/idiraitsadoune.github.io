@@ -1,0 +1,1361 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Systèmes d'exploitation : La programmation avec le Shell/Unix</title>
+
+	<meta name="description" content="Systèmes d'exploitation : La programmation avec le Shell/Unix">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/cs.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+<div class="slide-content">
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<h2>Systèmes d'exploitation</h2>
+	<h3>La programmation avec le Shell/Unix</h3>
+	<div class="description">
+		<span class="description-item"><span class="fa fa-graduation-cap"></span> 3A - Cursus Ingénieurs</span>	
+		<span class="description-item"><span class="fa fa-university"></span> CentraleSupelec</span>
+		<span class="description-item"><span class="fa fa-calendar" aria-hidden="true"></span> 2023/2024</span>
+	</div>
+		
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Les variables"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les variables dans le shell</h2>
+
+    <ul>
+        <li class="fragment"><b>Variables</b> de l’interpréteur de commandes :
+            <ul id="fleche">
+                <li class="fragment">non déclarées</li>
+                <li class="fragment"><i>non typées</i> a priori $\to$ <b>chaînes de caractères</b></li>
+                <li class="fragment">pas d’héritage par les processus fils</li>
+            </ul>
+        </li>
+    <li class="skip fragment">Syntaxe de l’affectation (sans espace autour du signe <code class="listing">=</code>) :
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                variable=valeur 
+            </script>
+        </code></pre>
+    </li>
+        <li class="skip fragment">
+            Référence à la valeur de la variable :
+            <pre><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $variable
+                    ${variable}
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+
+    <div class="fragment" style="text-align: left;">
+    Déclaration et initialisation de variables
+    <pre><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            $ alpha=toto
+            $ b=35 
+            $ c2=3b
+        </script>
+    </code></pre>
+    </div>
+        
+    <div class="fragment skip" style="text-align: left;">
+        Affichage du contenu des variables
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ echo alpha, b, c2 contiennent ${alpha}, ${b}, ${c2}
+                alpha, b, c2 contiennent toto, 35, 3b
+            </script>
+        </code></pre>
+    </div>
+
+    <div class="fragment skip" style="text-align: left;">
+        Affichage des noms et valeurs des variables du <b>Shell</b>
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ set | grep alpha
+                alpha=toto
+            </script>
+        </code></pre>
+    </div>
+        
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Evaluation des expressions</h2>
+
+    <div class="fragment" style="text-align: left;">
+        Evaluation d'une expression ?
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ b=35 
+                $ bb=${b}+${b}
+                $ echo b vaut ${b}, bb vaut ${bb}
+                b vaut 35, bb vaut 35+35
+            </script>
+        </code></pre>
+    </div>
+
+    <div class="fragment skip" style="text-align: left;">
+        <i>Pas d’arithmétique</i> directement avec le <b>shell</b> 
+        <ul id="fleche">
+            <li class="fragment">utiliser <code class="listing">expr</code> ou <code class="listing">$(())</code></li>
+            <li class="fragment">les arguments de <code class="listing">expr</code> doivent être séparés par au moins un espace</li>
+        </ul>
+
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ expr $b + $b
+                70
+            </script>
+        </code></pre>
+        
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ bb=$(($b+$b))
+                $ echo ${bb}
+                70
+            </script>
+        </code></pre>
+    </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Étendre la portée d’une variable</h2>
+  
+    <ul>
+        <li class="fragment">
+            <code class="listing">export</code> : <i>étend la portée d’une variable</i> aux processus <br>
+            du <b>Shell</b> courant   
+        
+            <pre class="fragment"><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ export [options] [name[=value] ...] 
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment skip">
+            <b style="color: black;">Principales options</b>
+            <ul>
+                <li class="fragment"><code class="listing">-p</code> liste des variables exportées dans le shell courant </li>
+                <li class="fragment"><code class="listing">-n</code> supprime la variable de la liste exportée</li>
+                <li class="fragment"><code class="listing">-f</code> exporte une fonction</li>
+            </ul>
+        </li>
+
+        <li class="fragment skip"><b style="color: black;">Exemple</b>
+            <pre><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ export JAVA_HOME="/usr/local/jdk"
+                    $ export -p
+                    ...
+                    JAVA_HOME=/usr/local/jdk
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les variables d’environnement</h2>
+    <ul>
+        <li class="fragment">
+            Les <b>variables d’environnement</b> sont systématiquement héritées <br> 
+            par tous les processus.
+        </li>
+        <li class="fragment">
+            La commande <code class="listing">env</code> donne la <i>liste des variables d’environnement</i> <br> 
+            et leurs valeurs.
+            <pre><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ env
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment skip">
+            Quelques <b>variables d’environnement</b> :
+            <ul>
+                <li class="fragment"><code class="listing">SHELL</code> : interpréteur de commandes utilisé (<code class="listing">bash</code>, <code class="listing">zsh</code> ...)</li>
+                <li class="fragment"><code class="listing">TERM</code> : type de terminal utilisé (<code class="listing">vt100</code>, <code class="listing">xterm</code>, ...)</li>
+                <li class="fragment"><code class="listing">HOME</code> : répertoire d’accueil</li>
+                <li class="fragment"><code class="listing">USER</code> : identifiant (nom) de l’utilisateur</li>
+                <li class="fragment" data-id="line1"><code class="listing">PATH</code> : liste des chemins de recherche des commandes</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La variable PATH</h2>
+    <ul>
+        <li data-id="line1"><code class="listing">PATH</code> : liste des chemins de recherche des commandes
+            <pre class="fragment"><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ echo $PATH
+                    /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+                </script>
+            </code></pre>
+        </li>
+    
+        <li class="fragment skip">
+            Deux <b>méthodes d'exécution</b> de commandes/exécutables :
+            <ul id="fleche">
+                <li class="fragment" >par le <i>chemin explicite</i> vers le script : 
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ ./mes_bins/mon_script.sh
+                        </script>
+                    </code></pre>
+                </li>
+                <li class="fragment">par le <i>nom</i> du script: 
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ mon_script.sh
+                        </script>
+                    </code></pre>
+                    la recherche se fait dans les répertoires listés dans la variable
+                    <code class="listing">PATH</code> <br> en respectant l'ordre
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Initialisation du shell</h2>
+    <ul>
+        <li class="fragment">
+            Quelques <i>fichiers d’initialisation</i> du <b>shell</b> :
+            <ul>
+                <li class="fragment"><code class="listing">/etc/profile</code> : pour tous les utilisateurs <b>à la connexion</b></li>
+                <li class="fragment">
+                    <code class="listing">${HOME}/.zshenv</code>, 
+                    <code class="listing">${HOME}/.zprofile</code>
+                    ... : pour le <b>Shell</b> courant</li>
+            </ul>
+        </li>
+        <li class="fragment skip">
+            <b style="color: black;">Exemple</b> de modifications à mettre dans  <code class="listing">${HOME}/.zshenv</code> <br>
+            (recherche des commandes dans le répertoire <code class="listing">${HOME}/Scripts</code>)
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    ...
+                    PATH="${HOME}/Scripts:${PATH}" # le répertoire Scripts dans home
+                    PATH=".:${PATH}" # regarder aussi le répertoire courant
+                    export PATH
+                    ...
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+        
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Les caractères interprétés"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Substitution de commande</h2>
+    
+        <ul>
+            <li class="fragment">
+                Récupération du <b>résultat d’une commande</b> (sa sortie standard) <br>
+                <ul id="fleche">
+                    <li class="fragment"><i>chaîne de caractères</i> stocké dans <i>une variable</i></li>
+                    <li class="fragment">repris comme <i>argument</i> d’une autre commande</li>
+                </ul>
+                <pre class="fragment"><code class="language-bash hljs" data-trim>
+                    <script type="text/template">
+                        $(commande)
+                    </script>
+                </code></pre>
+            </li>
+            <li class="fragment skip">
+                <b style="color: black;">Utilisations</b> :
+                <ul id="fleche">
+                    <li class="fragment"><i>paramétrage</i> de <code class="listing">shell-scripts</code> </li>
+                    <li class="fragment"><i>calculs</i> sur les entiers avec la commande <code class="listing">expr</code></li>
+                </ul>
+            </li>
+        </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemples</h2>
+    <div class="slide-content fragment">
+        Récupération des résultats d'une commande
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ qui=$(whoami) 
+                $ echo ${qui} 
+                idiraitsadoune
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment">
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ echo aujourd_hui on est $(date)
+                aujourd_hui on est Mar 17 oct 2023 05:45:25 CEST
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment skip">
+        Sauvegarder le résultat d'une expression arithmétique
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ s1=$(expr 12 + 2) 
+                $ echo 12 + 2 = ${s1}
+                12 + 2 = 14
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment">
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ s2=$(($((12+2))+1))
+                $ echo ${s2}
+                15
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>L’interprétation d'une commande</h2>
+    
+    <ul>
+        <li class="fragment">
+            L'<b>interprétation d'une commande</b> passe par deux étapes
+            <ol>
+                <li class="fragment">
+                    Le <b>shell</b> interprète <i>la commande</i><br>
+                    (options, caractères jokers, redirections, variables, ...)
+                </li>
+                <li class="fragment">
+                    La <b>commande</b> interprète <i>les arguments</i><br>
+                    (paramètres, expressions régulières, ...)
+                </li>
+            </ol>
+        </li>
+
+        <li class="fragment skip">
+            Pour éviter d’exposer les <i>métacaractères à l’interprétation</i><br> par le <b>Shell</b>,
+            on peut utiliser les protections suivantes :
+            <ul>
+                <li class="fragment" >
+                    <code class="listing">\</code> : <i>protection individuelle</i> du caractère suivant (<b>backslash</b>)
+                </li>
+                <li class="fragment" >
+                    <code class="listing">'...'</code> : <i>protection forte</i> (aucune interprétation)
+                </li>
+                <li class="fragment" >
+                    <code class="listing">"..."</code> : <i>protection faible</i> (substitution de paramètres/commandes)
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemples</h2>
+    <div class="slide-content fragment">
+        Affiche les lignes de <code class="listing">fic.txt</code> comportant au moins un chiffre
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ grep '[0-9][0-9]*' fic.txt
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment skip">
+        Affectation d’une chaîne comportant des blancs à une variable
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ v1="avec blanc1" ; v2='avec blanc2' ; v3=avec\ blanc3
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment skip">
+        Lecture du contenu d'une variable
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ echo ${TERM} "${TERM}" '${TERM}'
+                xterm-256color xterm-256color ${TERM}
+            </script>
+        </code></pre>
+    </div>
+    <div class="slide-content fragment skip">
+        Lecture du résultat d'une commande 
+        <pre><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ echo Je suis $(whoami) - "Je suis $(whoami)" - 'Je suis $(whoami)'
+                Je suis idiraitsadoune - Je suis idiraitsadoune - Je suis $(whoami)
+            </script>
+        </code></pre>
+    </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Les scripts"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Fichiers de commandes</h2>
+    
+    <ul>
+        <li class="fragment"><b>Shell-scripts</b> : fichier texte contenant <i>des commandes</i></li>
+
+        <li class="fragment skip">Trois <b>méthodes d’exécution</b> :
+            <ol>
+                <li class="fragment">utiliser <b>la commande</b> <code class="listing">bash</code>
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ bash script.sh 
+                        </script>
+                    </code></pre>
+                </li>
+                <li class="fragment"><i>rendre le script exécutable</i> et utiliser le <b>chemin vers le script</b>
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ chmod +x script.sh 
+                            $ cp script.sh mes_bins/Scripts
+                            $ mes_bins/Scripts/script.sh 
+                        </script>
+                    </code></pre>
+                </li>
+                <li class="fragment"><i>rendre le script exécutable</i> et le mettre 
+                    dans un <b>dossier du <code class="listing">PATH</code></b> <br>
+                    (<code class="listing">${HOME}/Scripts</code> doit être <a href="#/9/0/4" target="_blank">ajouté au <code class="listing">PATH</code></a>)
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ chmod +x script.sh 
+                            $ cp script.sh ${HOME}/Scripts 
+                            $ script.sh
+                        </script>
+                    </code></pre>
+                    
+                </li>
+            </ol>
+        </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Le premier script</h2>
+    
+    <pre><code class="language-bash hljs" data-trim data-line-numbers>
+        <script type="text/template">
+            #!/bin/sh
+            # file name : my_script.sh
+            echo nous sommes le $(date)
+            echo mon login est $(whoami)
+            echo "le calculateur est $(hostname)"
+        </script>
+    </code></pre>
+    <pre class="fragment" ><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            $ bash my_script.sh
+            nous sommes le Mar 17 oct 2023 06:40:29 CEST
+            mon login est idiraitsadoune
+            le calculateur est MBP-de-Idir
+        </script>
+    </code></pre>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les paramètres des scripts</h2>
+    <div class="slide-content fragment">
+        
+        Les <b>variables positionnées</b> lors du <i>lancement d'une commande</i> :
+        <ul>
+            <li class="fragment">
+                <code class="listing">$0</code> : <i>nom du fichier</i> de la commande (spécifié lors de l’appel)
+            </li>
+            <li class="fragment">
+                <code class="listing">$1</code>, <code class="listing">$2</code>, ... , <code class="listing">$9</code>, 
+                <code class="listing">${10}</code>, ... <i>les paramètres</i> (arguments)
+                de la commande
+            </li>
+            <li class="fragment">
+                <code class="listing">$*</code> : <i>chaîne</i> formée par <i>les paramètres</i> 
+                d’appel (<code class="listing">"$1</code> <code class="listing">$2</code> <code class="listing">$3 ..."</code>)
+            </li>
+            <li class="fragment">
+                <code class="listing">$@</code> : <i>liste des paramètres</i> d’appel 
+                (<code class="listing">["$1",</code> <code class="listing">"$2",</code> <code class="listing">"$3", ..."]</code>)
+            </li>
+            <li class="fragment">
+                <code class="listing">$#</code> : <i>nombre de paramètres</i> lors de l’appel
+            </li>
+            <li class="fragment">
+                <code class="listing">$$</code> : <i>numéro du processus</i> lancé (<code class="listing">pid</code>)
+            </li>
+            <li class="fragment">
+                <code class="listing">$?</code> : <i>le code d’erreur</i> de la dernière commande exécutée
+            </li>
+        </ul>
+        
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple utilisant <br> les paramètres des scripts</h2>
+    <pre><code class="language-bash hljs" data-trim data-line-numbers>
+        <script type="text/template">
+            #!/bin/sh
+            # file name : prog.sh
+            echo la procedure $0
+            echo a ete appelee avec $# parametres
+            echo le premier parametre est $1
+            echo la liste des parametres est $*
+            echo le numero du processus lance est $$
+        </script>
+    </code></pre>
+    <pre class="fragment" ><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            $ ./prog.sh p1 p2 p3
+            la procedure ./prog.sh
+            a ete appelee avec 3 parametres
+            le premier parametre est p1
+            la liste des parametres est p1 p2 p3
+            le numero du processus lance est 2960
+        </script>
+    </code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Un autre Exemple</h2>
+    <div class="slide-content">
+    Concatener deux fichiers (<code class="listing">$1</code> et <code class="listing">$2</code>) dans le fichier <code class="listing">$3</code>
+    <pre><code class="language-bash hljs" data-trim data-line-numbers>
+        <script type="text/template">
+            #!/bin/sh
+            file_in1=$1
+            file_in2=$2
+            file_out=$3
+            echo '---------------------------------------' > $file_out
+            echo \| $file_in1 \| >> $file_out
+            echo '---------------------------------------' >> $file_out
+            cat $file_in1 >> $file_out
+            echo '---------------------------------------' >> $file_out
+            echo \| $file_in2 \| >> $file_out
+            echo '---------------------------------------' >> $file_out
+            cat $file_in2 >> $file_out
+            echo termine
+            exit 0
+        </script>
+    </code></pre>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Les structures de contrôle"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La commande <code class="listing">test</code></h2>
+    <ul>
+        <li class="fragment">
+            La commande <code class="listing">test</code> permet de <b>vérifier</b> les <i>attributs d’un fichier</i><br>
+                ou le <i>contenu d’une variable</i>.
+        </li>
+        <li class="fragment skip">
+            La commande <code class="listing">test</code> renvoie <i>le code 0 ou 1</i> (vrai ou faux) <br> 
+            qui est sauvegardé dans <i>la variable</i> <code class="listing">$?</code>.
+        </li>
+        <li class="fragment skip">
+            La commande <code class="listing">test</code> propose <i>deux syntaxes équivalentes</i> :
+            <pre class="fragment"><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ test expression
+                </script>
+            </code></pre>
+            <pre class="fragment"><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    $ [expression]
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+        
+    <div id="default-block" class="fragment skip" style="font-size: 30px;">
+        <ul>    
+            <li>Consultez <a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests" target="_blank">ce lien</a> 
+                pour découvrir la commande <code class="listing">test</code>
+            </li> 
+            <li>Consultez <a href="http://mywiki.wooledge.org/BashFAQ/031" target="_blank">ce lien</a> pour comparer 
+                <code class="listing">test</code> à <code class="listing">[[ ... ]]</code>
+            </li>
+        </ul>
+    </div>
+       
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Structure Structures <code class="listing">if ... fi</code></h2>
+    <ul>
+        <li class="fragment">L'instruction <code class="listing">if</code> 
+            permet d'effectuer des opérations <br> <b>si</b> <i>une condition</i> est vérifiée.
+        
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    if condition
+                        then instruction(s)
+                    fi
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment skip">
+            L'instruction <code class="listing">if</code> peut aussi inclure une instruction 
+            <code class="listing">else</code> <br>
+            dans le cas ou <i>la condition n'est pas vérifiée</i>.
+
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    if condition
+                        then instruction(s)
+                    else instruction(s)
+                    fi
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content fragment">
+        Vérifier si un utilisateur est connecté 
+        <pre><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                if who | grep "^$1 " 
+                    then
+                    echo $1 est connecte
+                fi
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh idiraitsadoune
+                idiraitsadoune   console      18 oct 07:22 
+                idiraitsadoune   ttys001      18 oct 07:40 
+                idiraitsadoune est connecte
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Un autre Exemple</h2>
+    <div class="slide-content fragment">
+        Vérifier le nombre de paramètres d'une commande
+        <pre><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                if test $# -eq 0
+                    then
+                    echo commande lancee sans parametres
+                else
+                    echo commande lancee avec au moins un parametre
+                fi
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh p1 p2 p3
+                commande lancee avec au moins un parametre
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh         
+                commande lancee sans parametres
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Structures <code class="listing">if</code> imbriquées : <code class="listing">elif</code></h2>
+
+    <ul>
+        <li class="fragment">Il est possible <i>d'imbriquer</i> des <code class="listing">if</code> 
+            dans d'autres <code class="listing">if</code>
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    if condition1
+                        then instruction(s)
+                    else
+                        if condition2
+                            then instruction(s)
+                        else
+                            if condition3
+                                ...
+                            fi
+                        fi
+                    fi
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Structures <code class="listing">if</code> imbriquées : <code class="listing">elif</code></h2>
+    
+    <ul>
+        <li>Pour permettre d'alléger ce type de code, <code class="listing">ksh</code> fournit <br> 
+            un raccourci d'écriture
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    if condition1
+                        then instruction(s)
+                    elif condition2
+                        then instruction(s)
+                    elif condition3
+                        ...
+                    fi
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content class="fragment"">
+        Vérifier si une commande a des paramètres avant de l'utiliser
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                if test $# -eq 0
+                    then
+                    echo Relancer la cmde en ajoutant un parametre
+                elif who | grep "^$1 " > /dev/null 
+                    then
+                    echo $1 est connecte
+                else
+                    echo "$1 n\'est pas connecte"
+                fi
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh               
+                Relancer la cmde en ajoutant un parametre
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh idiraitsadoune
+                idiraitsadoune est connecte
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./prog.sh marc
+                marc n'est pas connecte
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Énumération de motifs</h2>
+    
+    <ul>
+        <li class="fragment"><code class="listing">case</code> <b>compare</b> une valeur avec <i>une liste de valeurs</i> 
+            et exécute <br> des instructions si une des valeurs de la liste correspond.
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    case valeur_testee in
+                        valeur1) instruction(s);;
+                        valeur2) instruction(s);;
+                        valeur3) instruction(s);;
+                        * ) instruction_else(s);;
+                    esac
+                </script>
+            </code></pre>
+        </li>
+
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content fragment">
+        Comparer une réponse à des expressions régulières
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #! /bin/sh
+                echo ecrivez OUI
+                read reponse
+                case ${reponse} in
+                    OUI) 	          echo bravo
+                                    echo merci infiniment ;;
+
+                    [Oo][Uu][Ii]) 	echo merci beaucoup ;;
+
+                    o*|O*) 		      echo un petit effort ! ;;
+
+                    n*|N*) 		      echo vous etes contrariant ;;
+
+                    *) 	            echo "ce n'est pas malin"
+                                    echo recommencez ;;
+                esac
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La structure <code class="listing">for ... do ... done</code></h2>
+    
+    <ul>
+        <li class="fragment">
+            <b>La boucle</b> <code class="listing">for</code> permet de <i>parcourir une liste de valeurs</i>, <br>
+            elle effectue un nombre d'itérations qui est connu à l'avance.
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    for variable [in liste_valeurs]
+                        do instruction(s)
+                    done
+                </script>
+            </code></pre>
+        </li>
+     
+        <li class="fragment skip">
+            <b>La boucle</b> <code class="listing">for</code> possède une <i>deuxième syntaxe</i> :
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    for ((e1;e2;e3))
+                        do instruction(s)
+                    done
+                </script>
+            </code></pre>
+            <ul>
+                <li class="fragment">commence par exécuter <code class="listing">e1</code>, puis tant que <code class="listing">e2 $\neq$ 0 </code> <br>
+                    le bloc d'instructions est exécuté et <code class="listing">e3</code> également.
+                    </li>
+            </ul>
+        </li>
+
+        
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple I</h2>
+    <div class="slide-content fragment">
+        Parcourir une liste de valeurs
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #! /bin/sh
+                for mot in 1 5 10 2 "la fin"
+                do
+                    echo mot vaut ${mot}
+                done
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./my_prog.sh
+                mot vaut 1
+                mot vaut 5
+                mot vaut 10
+                mot vaut 2
+                mot vaut la fin
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple II</h2>
+    <div class="slide-content fragment">
+        Parcourir les paramètres d'une commande
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #! /bin/sh
+                for param in "$*"
+                do
+                    echo -${param}-
+                done
+            </script>
+        </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ ./my_prog.sh a b c d
+                -a-
+                -b-
+                -c-
+                -d-
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple III</h2>
+    <div class="slide-content fragment">
+        Parcourir une liste de fichiers correspondant à un motif
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                for fichier in *.f90
+                do
+                    echo fichier ${fichier}
+                done
+            </script>
+        </code></pre>
+        <pre class="fragment skip"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                motif=$1
+                for fic in $(grep -l ${motif} *)
+                do
+                    echo le fichier $fic contient le motif $motif
+                done
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La structure <code class="listing">while ... do ... done</code></h2>
+    
+    <ul>
+        <li class="fragment"><b>La boucle</b> <code class="listing">while</code> exécute un bloc d'instructions 
+            <i>tant qu'une certaine condition</i> est satisfaite
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    while condition
+                        do instruction(s)
+                    done
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="fragment slide-content">
+        Script qui boucle jusqu’à ce qu’un utilisateur se déconnecte
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                utilisateur=$1
+                while who | grep "^${utilisateur} " > /dev/null
+                do
+                    echo ${utilisateur} est connecte
+                    sleep 2
+                done
+                echo "${utilisateur} n'est pas connecte"
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate  data-transition="fade-in fade-out">
+    <h2>La structure <code class="listing">until ... do ... done</code></h2>
+        <ul>
+            <li class="fragment"><b>La boucle</b> <code class="listing">until</code> est exécutée 
+                <i>tant que la condition est fausse</i>.
+                <pre class="fragment"><code class="language-bash hljs" data-trim>
+                    <script type="text/template">
+                        until condition
+                            do instruction(s)
+                        done
+                    </script>
+                </code></pre>
+            </li>
+        </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate  data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content fragment">
+        Script qui boucle jusqu’à ce qu’un utilisateur se connecte
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                utilisateur=$1
+                until who | grep "^${utilisateur} " > /dev/null
+                do
+                    echo "${utilisateur} n'est pas connecte"
+                    sleep 2
+                done
+                echo ${utilisateur} est connecte
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->      
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La commande <code class="listing">exit</code></h2>
+    
+    <ul>
+        <li class="fragment">
+            <code class="listing">exit</code>
+        <i>arrête l’exécution</i> du script
+        et rend un <code class="listing">statut</code> (0 par défaut) <br>
+            à l’appelant (accessible via <code class="listing">$?</code>)
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    exit [statut]
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment" style="margin-top: 30px;">
+            Utilisé également pour <i>arrêter le traitement en cas d’erreur </i>
+            <ul id="fleche"><li>rendre alors un <code class="listing">statut $\neq$ 0</code> </li></ul>
+        </li>
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                if [ $# -lt 1 ] # test sur le nb d'arguments
+                then
+                    echo "il manque les arguments" >&2 # sur la sortie d'erreur
+                    exit 1 # sortie avec code d'erreur
+                fi
+            </script>
+        </code></pre>
+    </ul>
+  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La commande <code class="listing">break</code></h2>
+    
+    <ul>
+        <li class="fragment">
+            La commande <code class="listing">break</code> permet de <i>sortir d’une boucle</i> avant sa fin.
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    break
+                </script>
+            </code></pre>
+        </li>
+
+        <li class="fragment skip">
+            La commande <code class="listing">break n</code> permet de <i>sortir des <code class="listing">n</code> 
+            boucles</i> les plus intérieures.
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    break n
+                </script>
+            </code></pre>
+        </li>
+
+        <li class="fragment skip">
+            Nécessaire dans <i>les boucles infinies.</i>
+            <ul id="fleche">
+                <li><code class="listing">while true</code> ou <code class="listing">until false</code></li>
+                <li class="fragment">insérée dans <i>un bloc conditionnel</i> pour arrêter la boucle.</li>
+            </ul>
+            
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content fragment">
+        Répéter une boucle jusqu'à ce qu'une valeur soit lue
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                while true # boucle infinie
+                do
+                    echo "entrer un chiffre (0 pour finir)"
+                    read i
+                    if [ "$i" -eq 0 ]
+                    then
+                        echo '**' sortie de boucle par break
+                        break # sortie de boucle
+                    fi
+                    echo vous avez saisi $i
+                done
+                echo "fin du script"
+                exit 0
+            </script>
+        </code></pre>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La commande <code class="listing">continue</code></h2>
+    
+    <ul>
+        <li class="fragment">
+            La commande <code class="listing">continue</code> saute les commandes suivantes <br>
+            dans la boucle et de <i>reprendre l’exécution en début de boucle</i>
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    continue
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment skip">
+            La commande <code class="listing">continue n</code> sort des <code class="listing">n-1</code> boucles les plus intérieures <br>
+            et <i>reprend au début de la <code class="listing">n ième</code> boucle</i>.
+            <pre><code class="language-bash hljs" data-trim>
+                <script type="text/template">
+                    continue n
+                </script>
+            </code></pre>
+        </li>
+        <li class="fragment skip">
+            Utilisée dans un bloc conditionnel pour <i>court-circuiter <br> les instruction de la fin de boucle</i>.
+        </li>
+
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <div class="slide-content fragment">
+        Afficher les 4 premières lignes d'un fichier s'il est lisible
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                for fic in *.sh
+                do
+                    echo "*************************"
+                    echo "< fichier ${fic} >"
+                    if [ ! -r "${fic}" ] # tester si le fichier existe et est lisible
+                        then 
+                        echo "fichier ${fic} non lisible"
+                        continue # sauter la commande head
+                    fi
+                    head -n 4 ${fic}
+                done
+                exit 0
+            </script>
+        </code></pre>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch5" name="La synthèse"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Synthèse du cours OS</h2>
+    <div class="slide-content fragment">
+    À l'issue de ce cours, vous êtes capables de :
+    <ul>
+        <li class="fragment">Comprendre le <b>fonctionnement d'un système informatique</b></li>
+        <li class="fragment">Résoudre des problèmes de <b>gestion de processus</b> ou threads concurrents partageant des ressources</li>
+        <li class="fragment">Comprendre le fonctionnement de <b>la mémoire</b></li>
+        <li class="fragment">Comprendre le fonctionnement d'<b>un système de fichier</b></li>
+        <li class="fragment">Manipuler et <b>programmer</b> à l'aide du <b>shell Unix/Linux</b></li>
+    </ul>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
+	<h1>Fin</h1>
+	<p>
+		- <a href="#">Retour à l'accueil</a> <br>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
+			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+		});
+	</script>
+</body>
+
+</html>
