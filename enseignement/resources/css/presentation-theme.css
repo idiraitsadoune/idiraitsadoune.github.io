@@ -30,7 +30,7 @@
 
 .reveal pre {
 	font-family: 'Monaco' !important; 
-	font-size: 0.52em !important;
+	font-size: 0.55em !important;
 	line-height: 1.4em !important;
 }
 
@@ -115,7 +115,7 @@ em{
 /* ****************************************************** */
 /* menu style */
 .outlook{
-	padding: 40px;
+	padding: 20px;
 	/*box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);*/
 	display: flex;
 	flex-direction: column;
