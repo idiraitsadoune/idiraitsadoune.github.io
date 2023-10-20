@@ -231,10 +231,10 @@
 				(<code class="listing">sh</code> : shell historique de <b>Bourne</b>)</li></ul>
 		</li>
 
-        <li class="fragment skip">L’interpréteur de commandes (<b>Shell</b>) intègre un langage <br>
-        de programmation avec variables, structures de contrôle, fonctions ...
+        <li class="fragment skip">L’interpréteur de commandes (<b>Shell</b>) intègre <i>un langage <br>
+        de programmation</i> avec variables, structures de contrôle, fonctions ...
         	<ul>
-				<li class="fragment"><b>programmes interprétés</b> = fichiers de commandes = shell-scripts </li>
+				<li class="fragment"><b>programmes interprétés</b> = fichiers de commandes = <b>shell-scripts</b></li>
 				<li class="fragment">création de commandes par l’utilisateur </li>
 			</ul>
 		</li>
@@ -415,7 +415,7 @@
 		</script></code></pre>
 	</div>
 
-	<div class="fragment skip" style="text-align: left;">
+	<div class="fragment" style="text-align: left;">
 		La sortie d’erreurs est ajoutée à la fin d'un fichier existant
 		<pre><code class="language-shell hljs" data-trim><script type="text/template">
 			$ commande 2>> fichier
@@ -557,7 +557,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple i</h2>
-	<div class="slide-content fragment">
+	<div class="fragment">
 		Affichage paginé de la liste des fichiers du répertoire courant <br>
 		<ol>
 			<li class="fragment skip">
@@ -582,7 +582,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple ii</h2>
-	<div class="slide-content fragment">
+	<div class="fragment">
 		Affichage de la <i>12e</i> ligne du fichier <code class="listing">toto.txt</code> <br>
 		<ol>
 			<li class="fragment skip">
@@ -1161,15 +1161,16 @@
 				<li class="fragment">ou par <code class="listing">kill -s KILL pid</code></li>
 			</ul>
 		</li>
+		<div id="alert-block" class="fragment skip">
+			<b>Remarque</b> <br>
+			<span style="font-size: 26px;">
+				Si pas de <code class="listing">&</code>, utiliser <code class="listing">ctrl Z</code> pour suspendre le processus,
+				puis <code class="listing">bg</code> pour le passer en arrière-plan
+			</span> 
+		</div>
 	</ul>
 
-	<div id="alert-block" class="fragment skip">
-		<b>Remarque</b> <br>
-		<span style="font-size: 26px;">
-			Si on oublie le <code class="listing">&</code>, utiliser <code class="listing">ctrl Z</code> pour suspendre le processus,
-			puis <code class="listing">bg</code> pour le passer en arrière-plan
-		</span> 
-	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
