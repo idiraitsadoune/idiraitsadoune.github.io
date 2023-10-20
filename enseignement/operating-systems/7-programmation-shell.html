@@ -108,7 +108,7 @@
     </li>
         <li class="skip fragment">
             Référence à la valeur de la variable :
-            <pre><code class="language-shell hljs" data-trim>
+            <pre><code class="language-bash hljs" data-trim>
                 <script type="text/template">
                     $variable
                     ${variable}
@@ -206,9 +206,9 @@
             <code class="listing">export</code> : <i>étend la portée d’une variable</i> aux processus <br>
             du <b>Shell</b> courant   
         
-            <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <pre class="fragment"><code class="language-bash hljs" data-trim>
                 <script type="text/template">
-                    $ export [options] [name[=value] ...] 
+                    export [options] [name[=value] ...] 
                 </script>
             </code></pre>
         </li>
@@ -240,7 +240,7 @@
     <h2>Les variables d’environnement</h2>
     <ul>
         <li class="fragment">
-            Les <b>variables d’environnement</b> sont systématiquement héritées <br> 
+            Les <b>variables d’environnement</b> sont systématiquement <i>héritées</i> <br> 
             par tous les processus.
         </li>
         <li class="fragment">
@@ -267,7 +267,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>La variable PATH</h2>
+    <h2>La variable <code class="listing">PATH</code></h2>
     <ul>
         <li data-id="line1"><code class="listing">PATH</code> : liste des chemins de recherche des commandes
             <pre class="fragment"><code class="language-shell hljs" data-trim>
@@ -279,16 +279,9 @@
         </li>
     
         <li class="fragment skip">
-            Deux <b>méthodes d'exécution</b> de commandes/exécutables :
+            <b>Deux méthodes d'exécution</b> de commandes/exécutables :
             <ul id="fleche">
-                <li class="fragment" >par le <i>chemin explicite</i> vers le script : 
-                    <pre><code class="language-shell hljs" data-trim>
-                        <script type="text/template">
-                            $ ./mes_bins/mon_script.sh
-                        </script>
-                    </code></pre>
-                </li>
-                <li class="fragment">par le <i>nom</i> du script: 
+                <li class="fragment">par le <i>nom du script</i>/<i>la commande</i>: 
                     <pre><code class="language-shell hljs" data-trim>
                         <script type="text/template">
                             $ mon_script.sh
@@ -297,6 +290,14 @@
                     la recherche se fait dans les répertoires listés dans la variable
                     <code class="listing">PATH</code> <br> en respectant l'ordre
                 </li>
+                <li class="fragment" >par le <i>chemin explicite</i> vers <i>le script</i>/<i>la commande</i> : 
+                    <pre><code class="language-shell hljs" data-trim>
+                        <script type="text/template">
+                            $ ./mes_bins/mon_script.sh
+                        </script>
+                    </code></pre>
+                </li>
+                
             </ul>
         </li>
     </ul>
@@ -430,8 +431,8 @@
         </li>
 
         <li class="fragment skip">
-            Pour éviter d’exposer les <i>métacaractères à l’interprétation</i><br> par le <b>Shell</b>,
-            on peut utiliser les protections suivantes :
+            Pour éviter d’exposer les <i>métacaractères</i> à l’interprétation<br> par le <b>Shell</b>,
+            on peut utiliser les <i>protections</i> suivantes :
             <ul>
                 <li class="fragment" >
                     <code class="listing">\</code> : <i>protection individuelle</i> du caractère suivant (<b>backslash</b>)
@@ -501,7 +502,7 @@
     <ul>
         <li class="fragment"><b>Shell-scripts</b> : fichier texte contenant <i>des commandes</i></li>
 
-        <li class="fragment skip">Trois <b>méthodes d’exécution</b> :
+        <li class="fragment"><b>Trois méthodes d’exécution</b> :
             <ol>
                 <li class="fragment">utiliser <b>la commande</b> <code class="listing">bash</code>
                     <pre><code class="language-shell hljs" data-trim>
@@ -541,31 +542,35 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Le premier script</h2>
     
-    <pre><code class="language-bash hljs" data-trim data-line-numbers>
-        <script type="text/template">
-            #!/bin/sh
-            # file name : my_script.sh
-            echo nous sommes le $(date)
-            echo mon login est $(whoami)
-            echo "le calculateur est $(hostname)"
-        </script>
-    </code></pre>
-    <pre class="fragment" ><code class="language-shell hljs" data-trim>
-        <script type="text/template">
-            $ bash my_script.sh
-            nous sommes le Mar 17 oct 2023 06:40:29 CEST
-            mon login est idiraitsadoune
-            le calculateur est MBP-de-Idir
-        </script>
-    </code></pre>
+    <div class="slide-content fragment">
+        Récupérer des informations sur l'utilisateur et la machine
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                # file name : my_script.sh
+                echo nous sommes le $(date)
+                echo mon login est $(whoami)
+                echo "le calculateur est $(hostname)"
+            </script>
+        </code></pre>
+        <pre class="fragment" ><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ bash my_script.sh
+                nous sommes le Mar 17 oct 2023 06:40:29 CEST
+                mon login est idiraitsadoune
+                le calculateur est MBP-de-Idir
+            </script>
+        </code></pre>
+    </div>
+    
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Les paramètres des scripts</h2>
+
     <div class="slide-content fragment">
-        
         Les <b>variables positionnées</b> lors du <i>lancement d'une commande</i> :
         <ul>
             <li class="fragment">
@@ -665,11 +670,11 @@
             La commande <code class="listing">test</code> permet de <b>vérifier</b> les <i>attributs d’un fichier</i><br>
                 ou le <i>contenu d’une variable</i>.
         </li>
-        <li class="fragment skip">
+        <li class="fragment">
             La commande <code class="listing">test</code> renvoie <i>le code 0 ou 1</i> (vrai ou faux) <br> 
             qui est sauvegardé dans <i>la variable</i> <code class="listing">$?</code>.
         </li>
-        <li class="fragment skip">
+        <li class="fragment">
             La commande <code class="listing">test</code> propose <i>deux syntaxes équivalentes</i> :
             <pre class="fragment"><code class="language-shell hljs" data-trim>
                 <script type="text/template">
@@ -682,18 +687,17 @@
                 </script>
             </code></pre>
         </li>
+        <div id="default-block" class="fragment skip" style="font-size: 30px;">
+            <ul>    
+                <li>Consultez <a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests" target="_blank">ce lien</a> 
+                    pour découvrir la commande <code class="listing">test</code>
+                </li> 
+                <li>Consultez <a href="http://mywiki.wooledge.org/BashFAQ/031" target="_blank">ce lien</a> pour comparer 
+                    <code class="listing">test</code> à <code class="listing">[[ ... ]]</code>
+                </li>
+            </ul>
+        </div>
     </ul>
-        
-    <div id="default-block" class="fragment skip" style="font-size: 30px;">
-        <ul>    
-            <li>Consultez <a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests" target="_blank">ce lien</a> 
-                pour découvrir la commande <code class="listing">test</code>
-            </li> 
-            <li>Consultez <a href="http://mywiki.wooledge.org/BashFAQ/031" target="_blank">ce lien</a> pour comparer 
-                <code class="listing">test</code> à <code class="listing">[[ ... ]]</code>
-            </li>
-        </ul>
-    </div>
        
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -859,12 +863,6 @@
             <script type="text/template">
                 $ ./prog.sh               
                 Relancer la cmde en ajoutant un parametre
-            </script>
-        </code></pre>
-        <pre class="fragment"><code class="language-shell hljs" data-trim>
-            <script type="text/template">
-                $ ./prog.sh idiraitsadoune
-                idiraitsadoune est connecte
             </script>
         </code></pre>
         <pre class="fragment"><code class="language-shell hljs" data-trim>
