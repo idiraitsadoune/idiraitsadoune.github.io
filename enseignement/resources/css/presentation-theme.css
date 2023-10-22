@@ -36,9 +36,11 @@
 
 .reveal code {
 	font-family: 'Monaco' !important; 
+	
 }
 .reveal pre code {
 	max-height: 580px !important;
+	padding: 10px 15px 10px 15px !important;
 }
 
 b{
