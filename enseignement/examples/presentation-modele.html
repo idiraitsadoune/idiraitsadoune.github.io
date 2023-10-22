@@ -22,7 +22,8 @@
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../highlight/styles/vs2015.min.css">
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -206,27 +207,52 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple code</h2>
 	<div class="slide-content">
-	<pre data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17><script type="text/template">
-				public class Application {
+		<pre data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17><script type="text/template">
+			public class Application {
 
-					public static <T> T RandomChoice(T ob1, T ob2) {
-						if(Math.random() > 0.5) return ob1;
-						else return ob2;
-					}
+				public static <T> T RandomChoice(T ob1, T ob2) {
+					if(Math.random() > 0.5) return ob1;
+					else return ob2;
+				}
 
-					public static void main(String[] args) {
-						Integer i1 = 5;
-						Integer i2 = 7;
-						Double d1 = 0.7;
+				public static void main(String[] args) {
+					Integer i1 = 5;
+					Integer i2 = 7;
+					Double d1 = 0.7;
 
-						Integer i3 = Application.<Integer>RandomChoice(i1,i2);
-						Integer i4 = Application.RandomChoice(i1,i2);
-						Integer i5 = (Integer) Application.RandomChoice(d1,i1);
-						Double d2 = (Double) Application.RandomChoice(d1,i1);
-					}
-				}                             
-			</script></code></pre>
-		</div>
+					Integer i3 = Application.<Integer>RandomChoice(i1,i2);
+					Integer i4 = Application.RandomChoice(i1,i2);
+					Integer i5 = (Integer) Application.RandomChoice(d1,i1);
+					Double d2 = (Double) Application.RandomChoice(d1,i1);
+				}
+			}                             
+		</script></code></pre>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+    <h2>Un autre Exemple</h2>
+    <div class="slide-content fragment">
+        Afficher les 4 premières lignes d'un fichier s'il est lisible
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+            <script type="text/template">
+                #!/bin/sh
+                for fic in *.sh
+                do
+                    echo "*************************"
+                    echo "< fichier ${fic} >"
+                    if [ ! -r "${fic}" ] # tester si le fichier existe et est lisible
+                        then 
+                        echo "fichier ${fic} non lisible"
+                        continue # sauter la commande head
+                    fi
+                    head -n 4 ${fic}
+                done
+                exit 0
+            </script>
+        </code></pre>
+    </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
