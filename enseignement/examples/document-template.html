@@ -18,6 +18,10 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
+	<script type="text/JavaScript"  src="../highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../highlight/styles/vs2015.min.css">
+	
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -53,7 +57,7 @@
     Introduction
 </div>
 <div>
-    Here we put the text <b>tttt</b>
+    Here we put the text <b>tttt</b> or <code class="listing">code</code>
 </div>
 
 <div class="default-block">
@@ -65,6 +69,30 @@
 <div class="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> Here we put the text 
 </div>
+<!-- Shell code -->
+<pre><code class="language-shell"><script type="text/template">$ ls -l | more # affiche page par page
+</script></code></pre>
+
+<!-- Java code -->
+<pre><code class="language-java"><script type="text/template">public class Application {
+
+	public static <T> T RandomChoice(T ob1, T ob2) {
+		if(Math.random() > 0.5) return ob1;
+		else return ob2;
+	}
+
+	public static void main(String[] args) {
+		Integer i1 = 5;
+		Integer i2 = 7;
+		Double d1 = 0.7;
+
+		Integer i3 = Application.<Integer>RandomChoice(i1,i2);
+		Integer i4 = Application.RandomChoice(i1,i2);
+		Integer i5 = (Integer) Application.RandomChoice(d1,i1);
+		Double d2 = (Double) Application.RandomChoice(d1,i1);
+	}
+}                             
+</script></code></pre>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
