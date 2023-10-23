@@ -42,7 +42,7 @@ pre code{
 	border-width: 3px;
 	border-color: navy;
 	background-color: rgb(218, 228, 250);
-	padding: 20px;
+	padding: 15px 20px 10px 20px;
 	border-radius: 10px;
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -54,7 +54,7 @@ pre code{
 	border-width: 3px;
 	border-color: red;
 	background-color: rgb(250, 237, 237);
-	padding: 20px;
+	padding: 15px 20px 10px 20px;
 	border-radius: 10px;
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -66,7 +66,7 @@ pre code{
 	border-width: 3px;
 	border-color: green;
 	background-color: rgb(220, 245, 220);
-	padding: 20px;
+	padding: 15px 20px 10px 20px;
 	border-radius: 10px;
 	margin-top: 15px;
 	margin-bottom: 15px;
