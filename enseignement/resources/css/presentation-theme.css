@@ -202,12 +202,13 @@ em{
 }
 
 #fleche li::before{
-	/*content: '\1F449' !important;
+	content: '\1F449' !important;
 	display: inline-block;
 	height: 1.0em;
 	width: 1.4em;
-	margin-left: -1.4em; */
+	margin-left: -1.4em; 
 
+	/*
 	background-image: url('../img/128073-2.png') !important;
     background-size: 1.3em 0.65em;
 	background-repeat: no-repeat;
@@ -215,7 +216,7 @@ em{
     display: inline-block;
     width: 1.3em; 
     height: 0.65em;
-    content:"" !important;
+    content:"" !important;*/
 }
 
 #ok li{
