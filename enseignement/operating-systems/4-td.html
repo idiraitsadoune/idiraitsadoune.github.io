@@ -18,9 +18,18 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
-    <script type="text/JavaScript"  src="../highlight/highlight.min.js"></script>
+    <script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<link rel="stylesheet" href="../highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -64,6 +73,24 @@
             
     </li>
 </ol>
+<!-- CORRECTION ################# -->
+<div class="green-block">
+    <ol>
+        <li>
+            Il suffit de diviser l’adresse par 100, ce qui donne : 0, 1, 1, 5, 4, 3, 4, 0, 0, 0, 2, 3, 4.
+        </li>
+        <li style="margin-top: 20px;"> 
+            <br>
+            <img src="./img/td_4_q2_1.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_2.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_3.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_4.png" alt="">
+        </li>
+    </ol>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -132,6 +159,44 @@ processus P1 :
     poids fort désigne le numéro de page et que 12 bits suivants représentent le déplacement dans la
     page, donnez l’adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
 </ol>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+    <ol>
+        <li>
+            8 pages x 256 = 2048 mots mémoire
+        </li>
+        <li style="margin-top: 20px;"> 
+        	nombres de cadre x taille d'un cadre = taille de la RAM <br>
+            taille d'un cadre = 256 mots<br>
+            nombre de cadres = $2^3 = 8$<br>
+            taille de la RAM = 8 x 256 = 2048 mots mémoire
+        </li>
+        <li style="margin-top: 20px;">
+            adresse virtuelle = 240 = 0 x 256 + 240<br>
+            page = 0, cadre = 3 <br>
+            adresse physique = 3 x 256 + 240 = 1008<br>
+            <br>
+            adresse virtuelle =  546 = 2 x 256 + 34 <br>
+            page = 2, cadre = 0<br>
+            adresse phy = 34<br>
+            <br>
+            adresse virtuelle = 1578 = 6 x 256 + 42<br>
+            page = 6, cadre = 5<br>
+            adresse phy = 5 x 256 + 42 = 1322<br>
+            <br>
+            adresse virtuelle = 2072 > 2048 (erreur d'adressage)
+        </li>
+        <li style="margin-top: 20px;">
+            adresse vituelle = 770 = 3 x 256 + 2 <br>
+            page = 3 => défaut de page
+        </li>
+        <li  style="margin-top: 20px;">
+            adresse virtuelle = 0000 0000 0000 0111 <br>
+            adresse phy = 0011 0000 0000 0111
+        </li>
+    </ol>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -187,10 +252,32 @@ processus P1 :
 </ol>
 
 <div class="default-block">
-<b>Rappel :</b> Les adresses sont données sous la forme (segment:déplacement)
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> <b style="color: navy;">Remarque</b>
+    <p>Les adresses sont données sous la forme (segment:déplacement)</p>
 </div>
 
+<!-- CORRECTION ################# -->
+<div class="green-block">
+<ol>
+    <li>
+        L'adresse physique s'obtient en ajoutant l'adresse de base du segment au déplacement dans le
+        segment, mais à condition que le déplacement ne soit pas supérieur à la taille du segment moins 1
+        (on compte le déplacement en partant de 0) : <br>
+        <br>
+        (0:128) : déplacement valide (128<234). Adr_physique = base + limite = 540 + 128 = 668.<br>
+        (1:100) : déplacement valide (100<128). Adr_physique = base + limite = 1254+ 100 = 1354.<br>
+        (2:465) : déplacement invalide (465>328).<br>
+        (3:888) : déplacement valide (888<1024). Adr_physique = base + limite = 2048 + 888 = 2936.<br>
+        (4:100) : déplacement valide (100<200). Adr_physique = base + limite = 976+ 100 = 1076.<br>
+        (4:344) : déplacement invalide car (344>200).
+    </li>
+    <li style="margin-top: 20px;">
+        Non. <br>
+        Dans un segment de longueur 200, les déplacements valides sont dans l'intervalle [0-199].
+    </li>
+</ol>
 
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -219,6 +306,23 @@ indiquez :
     <li> l’adresse physique (en décimal et en binaire)  </li>
 </ol>
 
+<!-- CORRECTION ################# -->
+<div class="green-block">
+<img src="./img/td_4_q4.png" alt=""> <br>
+8212 = 2 *4096 + 20 avec 4 Ko = 1024 * 4 = 4096<br>
+segment = S1<br>
+page = 3<br>
+déplacement = 20<br>
+cadre = 0<br>
+déplacement = 20<br>
+l’adresse physique est donc 20 en décimal. L’adresse physique est exprimée sur 16 bits (64Ko =
+$2^{16}$), dont 4 bits pour le numéro de cadre et 12 bits pour le déplacement dans la case (4Ko = $2^{12}$ ) , ce
+qui nous donne en binaire 0000 0000 0001 0100.<br>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
