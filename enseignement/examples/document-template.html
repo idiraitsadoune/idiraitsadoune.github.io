@@ -18,9 +18,18 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
-	<script type="text/JavaScript"  src="../highlight/highlight.min.js"></script>
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<link rel="stylesheet" href="../highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 	
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -57,19 +66,22 @@
     Introduction
 </div>
 <p>
-    Here we put the text <b>tttt</b> or <code class="listing">code</code>
+    Here we put the text <b>tttt</b> or <code class="listing">code</code> or $x_i \leq y^{12}$
 </p>
 
 <div class="default-block">
-    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> <b style="color: navy;">Remarque</b>
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+	<b style="color: navy;">Remarque</b>
     <p>Here we put the text </p>	
 </div>
 <div class="alert-block">
-    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> <b style="color: red;">Remarque</b>
+    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
+	<b style="color: red;">Remarque</b>
     <p>Here we put the text </p>	 
 </div>
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b>
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Remarque</b>
     <p>Here we put the text </p>	
 </div>
 <!-- Shell code -->

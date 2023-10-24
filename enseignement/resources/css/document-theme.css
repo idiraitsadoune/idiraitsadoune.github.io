@@ -146,3 +146,6 @@ pre code{
     font-style: italic;
 }
 
+mjx-math{
+	margin: -15px 0 !important;
+}
