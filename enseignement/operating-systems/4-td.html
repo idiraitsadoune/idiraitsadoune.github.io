@@ -32,6 +32,11 @@
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
+
+    <style>
+        table, th, td {border: 1px solid #333;}
+        th, td {padding: 5px;}
+    </style>
 </head>
 
 <body>
@@ -103,49 +108,45 @@
 utiliser au plus 4 cadres de la mémoire centrale. On considère la table des pages suivante du
 processus P1 :
 </p>
-<div style="text-align: center;">
-
-
-<table style="border: 1px solid #333;">
+<table style="text-align: center;">
     <thead >
       <tr>
-        <th style="border: 1px solid #333; padding: 5px;"><b>Page</b></th>
-        <th style="border: 1px solid #333;">0</th>
-        <th style="border: 1px solid #333;">1</th>
-        <th style="border: 1px solid #333;">2</th>
-        <th style="border: 1px solid #333;">3</th>
-        <th style="border: 1px solid #333;">4</th>
-        <th style="border: 1px solid #333;">5</th>
-        <th style="border: 1px solid #333;">6</th>
-        <th style="border: 1px solid #333;">7</th>
+        <th ><b>Page</b></th>
+        <th >0</th>
+        <th >1</th>
+        <th >2</th>
+        <th >3</th>
+        <th >4</th>
+        <th >5</th>
+        <th >6</th>
+        <th >7</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;"><b>Cadre</b></td>
-            <td style="border: 1px solid #333; padding: 5px;">011</td>
-            <td style="border: 1px solid #333; padding: 5px;">001</td>
-            <td style="border: 1px solid #333; padding: 5px;">000</td>
-            <td style="border: 1px solid #333; padding: 5px;">010</td>
-            <td style="border: 1px solid #333; padding: 5px;">100</td>
-            <td style="border: 1px solid #333; padding: 5px;">111</td>
-            <td style="border: 1px solid #333; padding: 5px;">101</td>
-            <td style="border: 1px solid #333; padding: 5px;">110</td>
+            <td ><b>Cadre</b></td>
+            <td >011</td>
+            <td >001</td>
+            <td >000</td>
+            <td >010</td>
+            <td >100</td>
+            <td >111</td>
+            <td >101</td>
+            <td >110</td>
           </tr>
           <tr>
-            <td style="border: 1px solid #333; padding: 5px;"><b>Présence</b></td>
-            <td style="border: 1px solid #333;">oui</td>
-            <td style="border: 1px solid #333;">non</td>
-            <td style="border: 1px solid #333;">oui</td>
-            <td style="border: 1px solid #333;">non</td>
-            <td style="border: 1px solid #333;">non</td>
-            <td style="border: 1px solid #333;">non</td>
-            <td style="border: 1px solid #333;">oui</td>
-            <td style="border: 1px solid #333;">non</td>
+            <td ><b>Présence</b></td>
+            <td >oui</td>
+            <td >non</td>
+            <td >oui</td>
+            <td >non</td>
+            <td >non</td>
+            <td >non</td>
+            <td >oui</td>
+            <td >non</td>
           </tr>
     </tbody>
   </table>
-</div>
 
 <ol style="padding-top: 20px;">
 <li>Quelle est la taille de l'espace d'adressage du processus P1 ?</li>
@@ -206,39 +207,39 @@ processus P1 :
 </div>
 <p>On considère la table des segments suivante pour un processus P1 :</p>
 
-<table style="border: 1px solid #333;">
+<table style="text-align: center;">
     <thead >
       <tr>
-        <th style="border: 1px solid #333; padding: 5px;"><b>segment</b></th>
-        <th style="border: 1px solid #333; padding: 5px;"><b>base</b></th>
-        <th style="border: 1px solid #333; padding: 5px;"><b>limite</b></th>
+        <th ><b>segment</b></th>
+        <th ><b>base</b></th>
+        <th ><b>limite</b></th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;">0</td>
-            <td style="border: 1px solid #333; padding: 5px;">540</td>
-            <td style="border: 1px solid #333; padding: 5px;">234</td>
+            <td >0</td>
+            <td >540</td>
+            <td >234</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;">1</td>
-            <td style="border: 1px solid #333; padding: 5px;">1254</td>
-            <td style="border: 1px solid #333; padding: 5px;">128</td>
+            <td >1</td>
+            <td >1254</td>
+            <td >128</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;">2</td>
-            <td style="border: 1px solid #333; padding: 5px;">54</td>
-            <td style="border: 1px solid #333; padding: 5px;">328</td>
+            <td >2</td>
+            <td >54</td>
+            <td >328</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;">3</td>
-            <td style="border: 1px solid #333; padding: 5px;">2048</td>
-            <td style="border: 1px solid #333; padding: 5px;">1024</td>
+            <td >3</td>
+            <td >2048</td>
+            <td >1024</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #333; padding: 5px;">4</td>
-            <td style="border: 1px solid #333; padding: 5px;">976</td>
-            <td style="border: 1px solid #333; padding: 5px;">200</td>
+            <td >4</td>
+            <td >976</td>
+            <td >200</td>
         </tr>
     </tbody>
 </table>
