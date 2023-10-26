@@ -44,18 +44,19 @@
 }
 
 b{
-    color: var(--r-link-color) ; 
+    color: #2a76dd; 
 	font-weight: bold !important; 
 }
 
 i{
-    color: var(--r-link-color) ;
+    color: #2a76dd;
 }
 
 em{
-    color: var(--r-link-color) ;
+    color: #2a76dd;
 	font-style: italic !important;
 }
+
 /* ****************************************************** */
 /* main page style */
 .header-logo{
