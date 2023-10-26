@@ -517,3 +517,90 @@ p {
 .title-menu span {
 	float: right;
 }
+
+
+/************************************************************/
+/* Page d'un cours */
+#lesson-content b {
+	color:#847894;
+	font-size: 30px !important;
+}
+
+#lesson-chapters {
+	padding: 10px;
+}
+
+#lesson-chapters ul{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#lesson-chapters li{
+	list-style: none !important; 
+	font-weight:bold !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #847894;
+}
+
+#lesson-chapters li::before{
+	content: '\2630' !important;
+	display: inline-block;
+	height: 1.4em;
+	width: 1.4em;
+	color:#847894;
+}
+
+.last-item{
+	border-bottom: 0px solid !important;
+}
+
+#lesson-chapters span{
+	float: right;
+}
+
+#lesson-chapters .fa{
+	padding-right: 20px;
+	font-size: 25px !important;
+}
+
+#lesson-chapters .fa-html5{
+	color:orange;
+}
+
+#lesson-chapters .fa-file-pdf-o{
+	color:red;
+}
+
+#all-lessens-list{
+	border: 1px solid #847894;
+	border-radius: 10px;
+	padding: 25px;
+	margin-right: 20px;
+	background-color: #f3edfc;
+}
+
+#all-lessens-list ul{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#all-lessens-list li{
+	list-style: none !important; 
+	font-weight:bold !important;
+	padding-top: 15px;
+	margin-left: 30px;
+}
+
+#all-lessens-list li::before{
+	content: '\2739' !important;
+	display: inline-block;
+	height: 1.4em;
+	width: 1.4em;
+	color:#847894;
+	margin-left: -1.4em; 
+}
+
+#all-lessens-list a{
+	color:#847894 !important;
+}

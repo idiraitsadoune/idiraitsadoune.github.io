@@ -407,3 +407,25 @@ function createAllLessons(){
             }
         });
 }
+
+function createLessonsList(){
+    const main_div = document.getElementById("all-lessens-list")
+    const headers = {Accept: 'application/json'}
+    fetch("../../JSON/last-lessons.json", headers)
+        .then((response) => response.json())
+        .then((json) => {
+
+            const lessons = json["lessons"]
+            const ul_e = createElement('ul')
+            main_div.appendChild(ul_e)
+
+            for (let i=0; i<lessons.length ; i++){
+                const li_e = createElement('li')
+                ul_e.appendChild(li_e)
+
+                const a = createElement('a',{href:"../" + lessons[i]["link"], target: lessons[i]["target"]})
+                a.appendChild(document.createTextNode(lessons[i]["title"]))
+                li_e.appendChild(a)
+            }
+    });
+}
