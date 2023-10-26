@@ -4,49 +4,49 @@
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6623",
-            "target" : "_blank"
+            "link" : "operating-systems",
+            "target" : "_self"
         },
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6643",
-            "target" : "_blank"
+            "link" : "event-b",
+            "target" : "_self"
         },
         {
             "title" : "Développer des applications avec Java/Jakarta EE",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6619",
-            "target" : "_blank"
+            "link" : "jakarta-ee",
+            "target" : "_self"
         },  
         {
             "title" : "Systèmes d'exploitation et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "https://csee.edunao.com/course/view.php?id=1554&section=38",
-            "target" : "_blank"
+            "link" : "os-and-virtualisation",
+            "target" : "_self"
         },  
         {
             "title" : "Qualité de développement",
             "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
+            "link" : "qualite-dev",
             "target" : "_self"
         },  
         {
             "title" : "Apprendre à programmer avec Java",
             "level" : "MOOC - Massive open online course",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
+            "link" : "java",
             "target" : "_self"
         },  
         {
             "title" : "Conception et Programmation Orientées Objet",
             "level" : "MOOC - Massive open online course",
             "image" : "ensignement.jpg",
-            "link" : "index.html",
+            "link" : "cpoo",
             "target" : "_self"
         }
     ]
