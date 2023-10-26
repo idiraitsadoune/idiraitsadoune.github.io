@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Idir AIT SADOUNE | Apprendre à programmer avec Java</title>
+        <meta name="description" content=">Idir AIT SADOUNE | Apprendre à programmer avec Java">
+		<meta name="author" content="Idir AIT SADOUNE">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../../CSS/main-style.css">
+       <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+       <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css">
+
+        <link rel="icon" href="../../IMG/favicon.ico">
+    </head>
+    <body>
+        <!-- ############################################### -->
+        <!-- The global menu -->
+        <section id="nav-bar"></section>
+
+        <!-- ############################################### -->
+        <!-- The global title -->
+        <section id="global-title"></section>
+
+        <!-- ############################################### -->
+        <!-- Lesson section -->
+        <section class="section-form">
+            <div class=container>
+                <div id="lesson-content" style="display: flex; align-items: start;">
+                    <div id="all-lessens-list" style="width: 28%;">
+                        <b>Tous les cours</b>
+                    </div>
+
+                    <div id="lesson-chapters" style="width: 72%;">
+                        <b>Le contenu de ce cours</b>
+                        
+                    </div>
+                </div>
+                <div class="home-style-bottom"><a href="#">Cliquez ici</a> pour revenir en haut de la page</div>
+            </div>
+        </section>
+
+        <!-- ############################################### -->
+        <!-- Footer section -->
+        <section id="footer"></section>
+
+        <!-- ############################################### -->
+        <!-- Designed By section -->
+        <section id=designed></section>
+
+        <!-- ############################################### -->
+        <!-- My JS scripts -->
+        <script src="../../JS/main-functions.js"></script>
+        <script>
+            var title = "Apprendre à programmer avec Java"
+            var sections = [["Enseignement","../"]]
+            var level = ""
+            var path = "../../"
+            createMenu(path)
+            createTitleBar(title, path, sections, level)
+            createLessonsList()
+            createFooter()
+            createDesignedBy(path)
+        </script>
+    </body>
+</html>
