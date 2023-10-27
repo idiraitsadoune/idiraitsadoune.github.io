@@ -18,6 +18,20 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
+    <script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -46,12 +60,16 @@
 </div>
 
 <div class="green-block">
-    Le but de cette séance de TD est de vous familiariser avec la notion
-    de processus sous Unix. Celle-ci est importante, voire essentielle,
-    pour comprendre le mécanisme fondamental de fonctionnement de ce
-    système d'exploitation. Notamment, vous verrez que sous Unix, toute
-    commande est rattachée à un processus. Vous vous familiariserez aussi
-    avec les mécanismes de redirection.
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Objectifs du TD</b>
+    <p>
+        Le but de cette séance de TD est de vous familiariser avec la notion
+        de processus sous <b>Unix</b>. Celle-ci est importante, voire essentielle,
+        pour comprendre le mécanisme fondamental de fonctionnement de ce
+        système d'exploitation. Notamment, vous verrez que sous <b>Unix</b>, toute
+        commande est rattachée à un processus. Vous vous familiariserez aussi
+        avec les mécanismes de redirection.
+    </p>
 </div>
 
 
@@ -59,7 +77,7 @@
     Généralités
 </div>
 
-<p>Tout d'abord, vous ne devez pas oublier que le système Unix est
+<p>Tout d'abord, vous ne devez pas oublier que le système <b>Unix</b> est
     multi-utilisateurs. Vous pouvez lancer, sous une même session de
     travail, plusieurs programmes qui s'exécuteront simultanément. En
     fait, le terme "simultanément" est un abus de langage, car très
@@ -68,7 +86,7 @@
     partagé.</p>
 
 <p>Nous appellerons "processus" l'occurrence d'un programme en cours
-    d'exécution. Le noyau (kernel) du système attribue un identificateur
+    d'exécution. Le noyau (<b>kernel</b>) du système attribue un identificateur
     à chaque processus. Cet identificateur de processus, un entier, est
     appelé PID pour "process identifier".</p>
 
@@ -104,8 +122,11 @@ utiliser le <code class="listing">man</code>.
         le control de votre terminal.
         <div class="green-block">
             <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-            Si la commande <code class="listing">xeyes</code> ne marche pas, 
-            utilisez la commande <code class="listing">top</code> à sa place. 
+	        <b style="color: green;">Remarque</b>
+            <p>
+                Si la commande <code class="listing">xeyes</code> ne marche pas, 
+                utilisez la commande <code class="listing">top</code> à sa place.
+            </p>
         </div>
     </li>
 
@@ -186,23 +207,28 @@ permet de lancer le processus en arrière plan.
 
 <div class="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-    Par défaut, Unix associe l'entrée standard au clavier et la
-    sortie standard à la fenêtre dans laquelle l'ordre d'exécution a été
-    donné (généralement, un terminal). Lire le fichier entrée standard
-    équivaut donc à lire ce qui est tapé au clavier et écrire sur le
-    fichier sortie standard équivaut généralement à afficher les résultats
-    dans votre terminal. 
-    <br><br>
-    <b>Exemple</b> : La commande <code class="listing">ls</code> écrit son résultat (i.e. le contenu du
-    répertoire courant) dans le fichier de la sortie standard, qui est par
-    défaut la fenêtre dans laquelle on a tapé la commande <code class="listing">ls</code>. Néanmoins,
-    il est possible, grâce au système, d'indiquer lors de l'exécution d'un
-    programme qu'il faut "aller chercher" l'entrée standard ailleurs qu'au
-    clavier et "déposer" les résultats ailleurs qu'à l'écran. On parle
-    dans ce cas de redirection de l'entrée et de la sortie standard.
-    <br><br>
-    L'opérateur de redirection de la sortie standard dans une ligne de
-    commande est <code class="listing">></code>.
+    <b style="color: green;">Remarque</b>
+    <p>
+        Par défaut, <b>Unix</b> associe l'entrée standard au clavier et la
+        sortie standard à la fenêtre dans laquelle l'ordre d'exécution a été
+        donné (généralement, un terminal). Lire le fichier entrée standard
+        équivaut donc à lire ce qui est tapé au clavier et écrire sur le
+        fichier sortie standard équivaut généralement à afficher les résultats
+        dans votre terminal.
+    </p>
+    <p>
+        <b>Exemple</b> : La commande <code class="listing">ls</code> écrit son résultat (i.e. le contenu du
+        répertoire courant) dans le fichier de la sortie standard, qui est par
+        défaut la fenêtre dans laquelle on a tapé la commande <code class="listing">ls</code>. Néanmoins,
+        il est possible, grâce au système, d'indiquer lors de l'exécution d'un
+        programme qu'il faut "aller chercher" l'entrée standard ailleurs qu'au
+        clavier et "déposer" les résultats ailleurs qu'à l'écran. On parle
+        dans ce cas de redirection de l'entrée et de la sortie standard.
+    </p>
+    <p>
+        L'opérateur de redirection de la sortie standard dans une ligne de
+        commande est <code class="listing">></code>.
+    </p>
 </div>
 <ol>
     <li>
@@ -210,17 +236,15 @@ permet de lancer le processus en arrière plan.
     </li>
     <li>
         Réexécutez la commande en redirigeant cette fois-ci la sortie
-standard dans un fichier dont le nom est output. Pour cela,
+standard dans un fichier dont le nom est <code class="listing">output</code>. Pour cela,
 utilisez la commande : <code class="listing">ls > output</code>. Affichez le contenu du fichier
 <code class="listing">output</code>.
 <br>
 Il est possible de combiner les redirections : l'exécution d'un
 programme <code class="listing">myprog</code> par la commande,
-<div class="highlight">
-<pre>
-$ myprog < input > output
-</pre>
-</div>
+<pre><code class="language-shell"><script type="text/template">$ myprog < input > output
+</script></code></pre>
+
 ira chercher les données en entrée dans le fichier <code class="listing">input</code> et écrira les
 résultats dans le fichier <code class="listing">output</code>, "court-circuitant" ainsi
 complètement clavier et écran.
@@ -235,11 +259,8 @@ complètement clavier et écran.
     Le fichier <code class="listing">output</code> est "écrasé" à chaque exécution de la commande
     ci-dessus. Pour ajouter la sortie à la fin du fichier, il faut
     utiliser <code class="listing">>></code> à la place de <code class="listing">></code>, comme ceci : 
-<div class="highlight">
-<pre>
-$ myprog >> output
-</pre>
-</div>
+<pre><code class="language-shell"><script type="text/template">$ myprog >> output
+</script></code></pre>
 </p>
 
 <p>
@@ -248,38 +269,36 @@ autres, vous pouvez soit les taper une par une au clavier, soit les
 taper sur une seule ligne de commande en les séparant par un
 point-virgule i.e. <code class="listing">;</code>.
 </p>
-
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+    <b style="color: green;">Remarque</b>
+    <p>
+        L'enchaînement des commandes avec des
+        points-virgules est fait de façon séquentielle. <br>
+        En effet, avec une ligne de commande du type :
+<pre><code class="language-shell"><script type="text/template">$ commande 1 ; commande 2 ; ... ; commande n-1 ; commande n
+</script></code></pre>
+        Le processus associé à la commande 2 ne débute que lorsque le
+        processus associé à la commande 1 est terminé, et ainsi de suite. <br>
+        Le
+        processus associé à la commande n ne débutera que lorsque le processus
+        associé à la commande n-1 sera terminé. <br>
+         Les processus sont exécutés
+        séquentiellement et indépendamment les uns des autres en suivant
+        l'ordre dans lequel ils ont été tapés sur la ligne de commande.
+    </p>   
+</div>
 <ol>
     <li>Effacez votre fichier <code class="listing">output</code>.</li>
     <li>
         Lancez la commande : 
-<div class="highlight">
-<pre>
-$ <span class="kd">ls</span> > output ; <span class="kd">ls</span> >> output ; <span class="kd">ls</span> >> output
-</pre>
-</div>
+<pre><code class="language-shell"><script type="text/template">$ ls > output ; ls >> output ; ls >> output
+</script></code></pre>
+
 Afficher le fichier <code class="listing">output</code> pour voir ce qu'il s'est passé.
     </li>
 </ol>
-<div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-    L'enchaînement des commandes avec des
-points-virgules est fait de façon séquentielle. <br>
-En effet, avec une ligne de commande du type :
-<div class="highlight">
-<pre>
-$ commande 1 ; commande 2 ; ... ; commande n-1 ; commande n
-</pre>
-</div>
-Le processus associé à la commande 2 ne débute que lorsque le
-processus associé à la commande 1 est terminé, et ainsi de suite. <br>
-Le
-processus associé à la commande n ne débutera que lorsque le processus
-associé à la commande n-1 sera terminé. <br>
- Les processus sont exécutés
-séquentiellement et indépendamment les uns des autres en suivant
-l'ordre dans lequel ils ont été tapés sur la ligne de commande.
-</div>
+
 
 <!-- ################################################################## -->
 <!-- ################################################################## -->
@@ -295,11 +314,8 @@ processus. L'exécution des processus peut alors dépendre des messages
 qu'ils reçoivent. Pour cela analysons l'exemple suivant :
 </p>
 
-<div class="highlight">
-<pre>
-$ <span class="kd">ls</span> -l /bin > output ; <span class="kd">more</span> output ; <span class="kd">rm</span> output 
-</pre>
-</div>
+<pre><code class="language-shell"><script type="text/template">$ ls -l /bin > output ; more output ; rm output 
+</script></code></pre>
 
 <p>
     Si on regarde attentivement cette ligne de commande, on se rend
@@ -328,11 +344,8 @@ temporaire. L'opérateur de pipe est <code class="listing">|</code>.
 <p>
     Reprenons l'exemple précédent, et réécrivons-le en utilisant
 cette fois-ci un pipe :
-<div class="highlight">
-<pre>
-$ <span class="kd">ls</span> -l /bin | <span class="kd">more</span> 
-</pre>
-</div>
+<pre><code class="language-shell"><script type="text/template">$ ls -l /bin | more
+</script></code></pre>
 </p>
 
 <p>
@@ -348,12 +361,10 @@ s'exécute simultanément en se synchronisant.
 </p>
 <p>
     Un exemple de pipe utile :
-<div class="highlight">
-<pre>
-$ <span class="kd">ps</span> aux | <span class="kd">more</span> <span class="cm"># affiche page par page</span>
-$ <span class="kd">ps</span> aux | <span class="kd">grep</span> bash <span class="cm"># recherche "bash"</span>
-</pre>
-</div>   
+<pre><code class="language-shell"><script type="text/template">$ ps aux | more # affiche page par page
+$ ps aux | grep bash # recherche "bash"
+</script></code></pre>
+  
 </p>
 
 <p>
@@ -405,18 +416,12 @@ et un fichier <code class="listing">fin</code> formé des 10 dernières.
 ligne de commandes, sans utiliser les fichiers intermédiaires <code class="listing">debut</code> et
 <code class="listing">fin</code>. On utilisera les <code class="listing">()</code> pour grouper plusieurs commandes, la syntaxe est
 
-<div class="highlight">
-<pre>
-$ (cmd1 ; cmd2 ; ... ; cmdn) > fichier sortie
-</pre>
-</div>  
+<pre><code class="language-shell"><script type="text/template">$ (cmd1 ; cmd2 ; ... ; cmdn) > fichier sortie
+</script></code></pre>  
 Les parenthèse permettent d'exécuter les commandes <code class="listing">cmd1,...,cmdn</code> puis
 de rediriger l'affichage final.  C'est équivalent à
-<div class="highlight">
-<pre>
-$ cmd1 > fichier sortie ; cmd2 >> fichier sortie ; ... ; cmdn >> fichier sortie
-</pre>
-</div> 
+<pre><code class="language-shell"><script type="text/template">$ cmd1 > fichier sortie ; cmd2 >> fichier sortie ; ... ; cmdn >> fichier sortie
+</script></code></pre> 
     </li>
 </ol>
 <!-- ################################################################## -->
@@ -426,7 +431,9 @@ $ cmd1 > fichier sortie ; cmd2 >> fichier sortie ; ... ; cmdn >> fichier sortie
 </div>
 
 <div class="alert-block">
-    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> Il ne faut pas utiliser de pipe ici. 
+    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
+	<b style="color: red;">Remarque</b> : 
+    Il ne faut pas utiliser de pipe dans cet exercice. 
 </div>
 
 <p>
@@ -472,11 +479,8 @@ produisant une erreur.
     <li>
         Essayez maintenant de vous déplacer dans le répertoire pouf
         en utilisant la commande 
-<div class="highlight">
-<pre>
-$ <span class="kd">cd</span> pouf 2> erreur
-</pre>
-</div> 
+<pre><code class="language-shell"><script type="text/template">$ cd pouf 2> erreur
+</script></code></pre> 
     </li>
     <li>
         Normalement aucun message d'erreur n'apparaît à l'écran. <br>
