@@ -15,7 +15,7 @@ function main_plan() {
     section_element.setAttribute("data-transition", "fade-in fade-out");
 
     const h2_element = document.createElement("h2");
-    h2_element.appendChild(document.createTextNode("Plan"));
+    h2_element.appendChild(document.createTextNode("Outline"));
 
     section_element.appendChild(h2_element);
 
@@ -48,7 +48,7 @@ function main_plan() {
 
     const a1_element = document.createElement("a");
     a1_element.setAttribute("href", "#/plan");
-    const plan_title = document.createTextNode("Retour au plan");
+    const plan_title = document.createTextNode("Back to the outline");
     a1_element.appendChild(plan_title);
     p_element.appendChild(a1_element);
 
@@ -57,7 +57,7 @@ function main_plan() {
 
     const a2_element = document.createElement("a");
     a2_element.setAttribute("href", "#");
-    const home = document.createTextNode("Retour à l'accueil");
+    const home = document.createTextNode("Back to the begin");
     a2_element.appendChild(home);
     p_element.appendChild(a2_element);
 
@@ -80,7 +80,7 @@ function at_begin_section() {
         section_element.setAttribute("data-transition", "fade-in fade-out");
 
         const h2_element = document.createElement("h2");
-        h2_element.appendChild(document.createTextNode("Plan"));
+        h2_element.appendChild(document.createTextNode("Outline"));
 
         section_element.appendChild(h2_element);
 
@@ -114,7 +114,7 @@ function at_begin_section() {
 
         const a1_element = document.createElement("a");
         a1_element.setAttribute("href", "#/plan");
-        const plan_title = document.createTextNode("Retour au plan");
+        const plan_title = document.createTextNode("Back to the outline");
         a1_element.appendChild(plan_title);
         p_element.appendChild(a1_element);
 
@@ -123,7 +123,7 @@ function at_begin_section() {
 
         const a2_element = document.createElement("a");
         a2_element.setAttribute("href", "#");
-        const home = document.createTextNode("Retour à l'accueil");
+        const home = document.createTextNode("Back to the begin");
         a2_element.appendChild(home);
         p_element.appendChild(a2_element);
     }
