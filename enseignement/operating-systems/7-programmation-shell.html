@@ -22,7 +22,9 @@
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+    
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -280,17 +282,17 @@
     
         <li class="fragment skip">
             <b>Deux méthodes d'exécution</b> de commandes/exécutables :
-            <ul id="fleche">
-                <li class="fragment">par le <i>nom du script</i>/<i>la commande</i>: 
+            <ol>
+                <li class="fragment">par le <i>nom du script</i>/<i>la commande</i> : 
                     <pre><code class="language-shell hljs" data-trim>
                         <script type="text/template">
                             $ mon_script.sh
                         </script>
                     </code></pre>
-                    la recherche se fait dans les répertoires listés dans la variable
-                    <code class="listing">PATH</code> <br> en respectant l'ordre
+                    <ul><li>la recherche se fait dans les répertoires dans l'ordre listés dans la variable
+                        <code class="listing">PATH</code></li></ul>
                 </li>
-                <li class="fragment" >par le <i>chemin explicite</i> vers <i>le script</i>/<i>la commande</i> : 
+                <li class="fragment skip" >par le <i>chemin explicite</i> vers <i>le script</i>/<i>la commande</i> : 
                     <pre><code class="language-shell hljs" data-trim>
                         <script type="text/template">
                             $ ./mes_bins/mon_script.sh
@@ -359,10 +361,11 @@
                 </code></pre>
             </li>
             <li class="fragment skip">
-                <b style="color: black;">Utilisations</b> :
+                <b style="color: black;">Utilisations</b> 
+                <span class="fragment">$\to$ <i>sauvegardes</i> dans des <b>variables</b> des résultats de :</span>
                 <ul id="fleche">
-                    <li class="fragment"><i>paramétrage</i> de <code class="listing">shell-scripts</code> </li>
-                    <li class="fragment"><i>calculs</i> sur les entiers avec la commande <code class="listing">expr</code></li>
+                    <li class="fragment"><i>calculs arithmétiques</i> avec la commande <code class="listing">expr</code></li>
+                    <li class="fragment"><i>commandes</i> dans le <code class="listing">shell-scripts</code> </li>
                 </ul>
             </li>
         </ul>
@@ -451,15 +454,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemples</h2>
+
     <div class="slide-content fragment">
-        Affiche les lignes de <code class="listing">fic.txt</code> comportant au moins un chiffre
-        <pre><code class="language-shell hljs" data-trim>
-            <script type="text/template">
-                $ grep '[0-9][0-9]*' fic.txt
-            </script>
-        </code></pre>
-    </div>
-    <div class="slide-content fragment skip">
         Affectation d’une chaîne comportant des blancs à une variable
         <pre><code class="language-shell hljs" data-trim>
             <script type="text/template">
@@ -634,7 +630,7 @@
     <h2>Un autre Exemple</h2>
     <div class="slide-content">
     Concatener deux fichiers (<code class="listing">$1</code> et <code class="listing">$2</code>) dans le fichier <code class="listing">$3</code>
-    <pre><code class="language-bash hljs" data-trim data-line-numbers>
+    <pre><code class="language-bash hljs" data-trim data-line-numbers="|1-4|5-8|9-12|13-14">
         <script type="text/template">
             #!/bin/sh
             file_in1=$1
@@ -845,7 +841,7 @@
     <h2>Exemple</h2>
     <div class="slide-content class="fragment"">
         Vérifier si une commande a des paramètres avant de l'utiliser
-        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|2-4|5-7|8-10|">
             <script type="text/template">
                 #!/bin/sh
                 if test $# -eq 0
@@ -902,7 +898,7 @@
     <h2>Exemple</h2>
     <div class="slide-content fragment">
         Comparer une réponse à des expressions régulières
-        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|2-4|5-7|8-9|10-11|12-13|14-15|">
             <script type="text/template">
                 #! /bin/sh
                 echo ecrivez OUI
@@ -1193,7 +1189,7 @@
     <h2>Exemple</h2>
     <div class="slide-content fragment">
         Répéter une boucle jusqu'à ce qu'une valeur soit lue
-        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|5-10|">
             <script type="text/template">
                 #!/bin/sh
                 while true # boucle infinie
@@ -1213,13 +1209,6 @@
         </code></pre>
     </div>
 </section>
-
-
-
-
-
-
-
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
@@ -1228,7 +1217,7 @@
     <ul>
         <li class="fragment">
             La commande <code class="listing">continue</code> saute les commandes suivantes <br>
-            dans la boucle et de <i>reprendre l’exécution en début de boucle</i>
+            dans la boucle et <i>reprend l’exécution en début de boucle</i>
             <pre><code class="language-bash hljs" data-trim>
                 <script type="text/template">
                     continue
@@ -1237,7 +1226,7 @@
         </li>
         <li class="fragment skip">
             La commande <code class="listing">continue n</code> sort des <code class="listing">n-1</code> boucles les plus intérieures <br>
-            et <i>reprend au début de la <code class="listing">n ième</code> boucle</i>.
+            et <i>reprend au début de la <code class="listing">n$^{ième}$</code> boucle</i>.
             <pre><code class="language-bash hljs" data-trim>
                 <script type="text/template">
                     continue n
@@ -1245,7 +1234,7 @@
             </code></pre>
         </li>
         <li class="fragment skip">
-            Utilisée dans un bloc conditionnel pour <i>court-circuiter <br> les instruction de la fin de boucle</i>.
+            A Utiliser dans un bloc conditionnel pour <i>court-circuiter <br> les instruction de la fin de boucle</i>.
         </li>
 
     </ul>
@@ -1257,7 +1246,7 @@
     <h2>Exemple</h2>
     <div class="slide-content fragment">
         Afficher les 4 premières lignes d'un fichier s'il est lisible
-        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+        <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|6-10|">
             <script type="text/template">
                 #!/bin/sh
                 for fic in *.sh
