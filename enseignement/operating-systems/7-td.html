@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Systèmes d'exploitation : TD - La programmation avec le Shell/Unix</title>
+
+	<meta name="description" content="Systèmes d'exploitation : TD - La programmation avec le Shell/Unix">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	
+	
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    La programmation avec le Shell/Unix
+</div>
+
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 1 : Structures de contrôle case, boucle for
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Commandes utiles :</b>
+    <p><code class="listing">file</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank">man file</a>). </p>	
+</div>
+<p>
+    Écrire un script <code class="listing">typefic.sh</code> qui prend des noms de fichiers en arguments. Si le fichier se termine 
+    par <code class="listing">.doc</code> ou <code class="listing">.pdf</code>, afficher un message spécifique. 
+    Sinon afficher <code class="listing">"Ni DOC, ni PDF"</code>.
+</p>
+<pre><code class="language-shell"><script type="text/template">$ typefic.sh f1.doc f2.pdf f3.txt  
+f1.doc : Fichier DOC 
+f2.pdf : Fichier PDF 
+f3.txt : Ni DOC, ni PDF
+</script></code></pre>
+
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 2 : Boucle for, commande tr
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Commandes utiles :</b>
+    <p>
+        <code class="listing">tr</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/tr.1.html" target="_blank">man tr</a>). <br>
+        <code class="listing">mv</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/mv.1.html" target="_blank">man mv</a>).   
+    </p>	
+</div>
+<p>
+    Écrire un script <code class="listing">maj_min.sh</code> :
+    <ul>
+        <li>Argument facultatif : un nom de répertoire. La valeur par défaut de l’argument sera le répertoire courant.</li>
+        <li>Vérifier que l’éventuel argument est un répertoire.</li>
+        <li>Ce script renommera les noms de fichiers de ce répertoire : les noms de fichiers majuscules seront convertis en minuscules.</li>
+    </ul>   
+</p>
+
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 3 : Boucle for, arithmétique
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Commandes utiles :</b>
+    <p>
+        <code class="listing">grep</code> (utilisez ce lien 
+    <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
+    <code class="listing">wc</code> (utilisez ce lien 
+    <a href="https://man7.org/linux/man-pages/man1/wc.1.html" target="_blank">man wc</a>). <br>
+    <code class="listing">ps</code> (utilisez ce lien 
+    <a href="https://man7.org/linux/man-pages/man1/ps.1.html" target="_blank">man ps</a>). 
+    </p>	
+</div>
+<p>
+    Écrire un script <code class="listing">proc_users.sh</code> :
+    <ul>
+        <li>Arguments : un ou plusieurs noms d’utilisateurs.</li>
+        <li>Tester le nombre d’arguments reçus : il doit y avoir au moins un argument.</li>
+        <li>Pour chaque utilisateur reçu en argument, afficher à l’écran le nombre de processus appartenant à ce dernier. 
+            Si l’utilisateur n’est pas défini sur le système, il sera ignoré.</li>
+    </ul>
+</p>
+<p><b>Exemples :</b></p>
+<pre><code class="language-shell"><script type="text/template">$ proc_users.sh  
+Usage : ./proc_users.sh user1 user2 ... usern 
+</script></code></pre>
+<pre><code class="language-shell"><script type="text/template">$ proc_users.sh christie olivier daniel 
+L'utilisateur christie fait tourner 8 processus 
+L'utilisateur olivier n'a pas de processus 
+daniel n'est pas un utilisateur valide 
+</script></code></pre>
+
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 4 : Boucles for, while
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b style="color: green;">Commandes utiles :</b>
+    <p>
+        <code class="listing">grep</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
+        <code class="listing">file</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank">man file</a>). <br>
+        <code class="listing">find</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/find.1.html" target="_blank">man find</a>). 
+    </p>	
+</div>
+<p>
+    Écrire un script <code class="listing">consulte.sh</code> :
+    <ul>
+        <li>Argument facultatif : un nom de répertoire. Vérifier que l’argument reçu est un répertoire.</li>
+        <li>Si le script ne reçoit pas de nom de répertoire, traiter le répertoire courant.</li>
+        <li>Rechercher tous les fichiers ordinaires qui sont sous ce répertoire (à tous les niveaux).</li>
+        <li>Pour chaque fichier de contenu texte accessible en lecture, demander à l’utilisateur 
+            s’il veut consulter le fichier. Un fichier non texte sera ignoré.</li>
+        <li>L’utilisateur pourra saisir <code class="listing">’o’</code>, <code class="listing">’O’</code>, 
+            <code class="listing">’oui’</code>, <code class="listing">’OUI’</code> pour consulter le fichier,
+            <code class="listing">’n’</code>, <code class="listing">’N’</code>, <code class="listing">’non’</code>, 
+            <code class="listing">’NON’</code> pour ne pas le consulter, ou <code class="listing">’q’</code> pour quitter le script. 
+            Toute autre réponse engendrera une nouvelle demande de saisie.</li>
+        <li>Si l’utilisateur souhaite consulter le fichier : afficher le contenu paginé du fichier à l’écran.</li>
+        <li>Si l’utilisateur ne souhaite pas consulter le fichier : passer au fichier suivant.</li>
+    </ul>  
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
