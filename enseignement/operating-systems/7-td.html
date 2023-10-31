@@ -80,6 +80,24 @@ f2.pdf : Fichier PDF
 f3.txt : Ni DOC, ni PDF
 </script></code></pre>
 
+<div class="green-block">
+<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
+for fic in $*  
+do 
+	case $fic in   
+		*.doc|*.docx)  
+			echo "$fic : Fichier DOC" 
+			;; 
+		*.pdf)  
+			echo "$fic : Fichier PDF" 
+			;; 
+		*) 
+			echo "$fic : Ni DOC, ni PDF" 
+			;; 
+	esac 
+done
+</script></code></pre>
+</div>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 2 : Boucle for, commande tr
@@ -100,7 +118,36 @@ f3.txt : Ni DOC, ni PDF
         <li>Ce script renommera les noms de fichiers de ce répertoire : les noms de fichiers majuscules seront convertis en minuscules.</li>
     </ul>   
 </p>
+<div class="green-block">
+<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
+if test $# -eq 0
+	then
+	rep=.
+elif test $# -eq 1
+	then
+	rep = $1
+else
+	echo "Usage $0 [ repertoire ]"  
+	exit 1 
+fi
 
+if [ ! -d $rep ] 
+    then 
+    echo "Echec $rep n'est pas un repertoire" 
+    exit 1 
+fi 
+    
+echo "Traitement de $rep" 
+cd $rep 
+    
+for nomfic in $(ls) 
+do 
+    nouveauNom=$( echo -n $nomfic | tr '[A-Z]' '[a-z]' ) 
+    echo $nouveauNom 
+    mv $nomfic $nouveauNom 
+done
+</script></code></pre>
+</div>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 3 : Boucle for, arithmétique
@@ -110,11 +157,13 @@ f3.txt : Ni DOC, ni PDF
 	<b style="color: green;">Commandes utiles :</b>
     <p>
         <code class="listing">grep</code> (utilisez ce lien 
-    <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
-    <code class="listing">wc</code> (utilisez ce lien 
-    <a href="https://man7.org/linux/man-pages/man1/wc.1.html" target="_blank">man wc</a>). <br>
-    <code class="listing">ps</code> (utilisez ce lien 
-    <a href="https://man7.org/linux/man-pages/man1/ps.1.html" target="_blank">man ps</a>). 
+        <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
+        <code class="listing">wc</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/wc.1.html" target="_blank">man wc</a>). <br>
+        <code class="listing">ps</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/ps.1.html" target="_blank">man ps</a>). <br> 
+        <code class="listing">id</code> (utilisez ce lien 
+        <a href="https://man7.org/linux/man-pages/man1/id.1.html" target="_blank">man id</a>).
     </p>	
 </div>
 <p>
@@ -122,7 +171,8 @@ f3.txt : Ni DOC, ni PDF
     <ul>
         <li>Arguments : un ou plusieurs noms d’utilisateurs.</li>
         <li>Tester le nombre d’arguments reçus : il doit y avoir au moins un argument.</li>
-        <li>Pour chaque utilisateur reçu en argument, afficher à l’écran le nombre de processus appartenant à ce dernier. 
+        <li>Pour chaque utilisateur reçu en argument, afficher à l’écran le nombre 
+            de processus appartenant à ce dernier. 
             Si l’utilisateur n’est pas défini sur le système, il sera ignoré.</li>
     </ul>
 </p>
@@ -135,7 +185,38 @@ L'utilisateur christie fait tourner 8 processus
 L'utilisateur olivier n'a pas de processus 
 daniel n'est pas un utilisateur valide 
 </script></code></pre>
-
+<div class="green-block">
+<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
+if test $# -eq 0 
+	then 
+	echo "Usage : $0 user1 user2 ... usern"  
+fi 
+   
+# Boucle sur chaque utilisateur 
+for user in $* 
+do 
+	# Vérifier que l'utilisateur est défini sur le système 
+	id $user &> /dev/null
+	if test $? -ne 0
+		then  
+		echo "$user n'est pas un utilisateur valide" 
+		continue  
+	fi 
+   
+	# Nombre de lignes ramenées par la commande ps 
+	nbLignes=$( ps -u $user | wc -l ) 
+	# Ne pas compter la ligne d'en-tête 
+	nbProc=$(( $nbLignes  - 1 )) 
+   
+	if test $nbProc -eq 0 
+		then 
+		echo "L'utilisateur $user n'a pas de processus"
+	else 
+		echo "L'utilisateur $user fait tourner $nbProc processus"
+	fi 
+done
+</script></code></pre>
+</div>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 4 : Boucles for, while
@@ -169,6 +250,48 @@ daniel n'est pas un utilisateur valide
         <li>Si l’utilisateur ne souhaite pas consulter le fichier : passer au fichier suivant.</li>
     </ul>  
 </p>
+<div class="green-block">
+<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
+if test $# -eq 0
+	then
+	rep=.
+elif test $# -eq 1
+	then
+	rep = $1
+else
+	echo "Usage $0 [ repertoire ]"  
+	exit 1 
+fi
+
+listeFic=$(find $rep -type f 2> /dev/null ) 
+for fic in  $listeFic 
+do 
+	if file $fic | grep text 1> /dev/null 2>&1 && [ -r $fic ] 
+	then 
+		while true  
+		do  
+			echo -e "\nConsulter le fichier $fic ? o/n - q pour quitter \c" 
+			read reponse 
+			case $reponse in 
+				o|O|oui|OUI)  
+					more $fic 
+					break    
+					;; 
+				n|n|non|NON)  
+					break    
+					;;  
+				q|quit)  
+					exit 0  
+					;; 
+				*)  
+					echo "Reponse invalide" 
+					;; 
+			esac 
+		done 
+	fi 
+done
+</script></code></pre>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
