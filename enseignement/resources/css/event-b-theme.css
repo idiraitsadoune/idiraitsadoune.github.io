@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Monaco';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./monaco-font/Monaco.woff') format('woff');
+}
+
+#eb li{
+	font-family: 'Monaco' !important;  
+	list-style: none !important; 
+	font-size: 25px !important;
+}
+
+.eb-cl{
+	color:red;
+	font-weight: bold;
+}
+
+.eb-kw{
+	color:blue;
+	font-weight: bold;
+}
+
+.eb-ev{
+	color:green;
+	font-weight: bold;
+}
+
+.eb-cm{
+	color:green;
+}
