@@ -501,7 +501,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Une première implémentation</h2>
-    <pre style="width: 77%;"><code class="language-java hljs" data-trim data-line-numbers="|2|4-8|10-12"><script type="text/template">
+    <pre style="width: 77%;"><code class="language-java hljs" data-trim data-line-numbers="|2|4-8|10-12|"><script type="text/template">
         class Mutex1 implements Mutex{
             boolean[] est_SC = {false,false}; //pour noter qui est en SC
             
@@ -593,7 +593,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Une deuxième implémentation</h2>
-    <pre style="width: 82%;"><code class="language-java hljs" data-trim data-line-numbers="|5-9"><script type="text/template">
+    <pre style="width: 82%;"><code class="language-java hljs" data-trim data-line-numbers="|5-9|"><script type="text/template">
         //Mettre en attente la thread demandeuse si l’autre est déjà en SC
         class Mutex2 implements Mutex{
             boolean[] est_SC = {false,false}; 
@@ -675,7 +675,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Une troisième implémentation</h2>
-    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|4|6-11|13-15"><script type="text/template">
+    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|4|6-11|13-15|"><script type="text/template">
         //Ajout de tours de priorité
         class Mutex3 implements Mutex{
             boolean[] est_SC = {false,false}; 
@@ -885,7 +885,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|2|8-10|12-14"><script type="text/template">
+    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|2|8-10|12-14|"><script type="text/template">
         public class Account {
             private int value;
             
@@ -1199,10 +1199,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
-	<h1>Fin</h1>
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
 	<p>
-		- <a href="#">Retour à l'accueil</a> <br>
+		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
@@ -1247,9 +1247,10 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
-			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
 		});
+
+        Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 </body>
 
