@@ -225,34 +225,36 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple code</h2>
-	<div class="slide-content">
-		<pre data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17><script type="text/template">
-			public class Application {
+	
+	<pre><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17|>
+		<script type="text/template">
+		public class Application {
 
-				public static <T> T RandomChoice(T ob1, T ob2) {
-					if(Math.random() > 0.5) return ob1;
-					else return ob2;
-				}
+			public static <T> T RandomChoice(T ob1, T ob2) {
+				if(Math.random() > 0.5) return ob1;
+				else return ob2;
+			}
 
-				public static void main(String[] args) {
-					Integer i1 = 5;
-					Integer i2 = 7;
-					Double d1 = 0.7;
+			public static void main(String[] args) {
+				Integer i1 = 5;
+				Integer i2 = 7;
+				Double d1 = 0.7;
 
-					Integer i3 = Application.<Integer>RandomChoice(i1,i2);
-					Integer i4 = Application.RandomChoice(i1,i2);
-					Integer i5 = (Integer) Application.RandomChoice(d1,i1);
-					Double d2 = (Double) Application.RandomChoice(d1,i1);
-				}
-			}                             
-		</script></code></pre>
-	</div>
+				Integer i3 = Application.<Integer>RandomChoice(i1,i2);
+				Integer i4 = Application.RandomChoice(i1,i2);
+				Integer i5 = (Integer) Application.RandomChoice(d1,i1);
+				Double d2 = (Double) Application.RandomChoice(d1,i1);
+			}
+		}                             
+		</script>
+	</code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
     <h2>Un autre Exemple</h2>
-    <div class="slide-content fragment">
+    <div class="slide-content">
         Afficher les 4 premières lignes d'un fichier s'il est lisible
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
@@ -423,9 +425,10 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
-			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
 		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 </body>
 
