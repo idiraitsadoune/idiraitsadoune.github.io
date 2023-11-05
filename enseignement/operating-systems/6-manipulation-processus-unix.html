@@ -1255,10 +1255,10 @@ $ cmd_1 && cmd_2
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
-	<h1>Fin</h1>
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
 	<p>
-		- <a href="#">Retour à l'accueil</a> <br>
+		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
@@ -1303,9 +1303,10 @@ $ cmd_1 && cmd_2
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
-			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
 		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 </body>
 
