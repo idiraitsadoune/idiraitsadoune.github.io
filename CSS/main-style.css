@@ -550,9 +550,9 @@ p {
 	width: 1.4em;
 }
 
-#lesson-chapters li.cours::before {color:blueviolet !important;}
-#lesson-chapters li.td::before {color:orangered !important;}
-#lesson-chapters li.tp::before {color:rgb(224, 224, 55) !important;}
+#lesson-chapters li.cours::before {color:red !important;}
+#lesson-chapters li.td::before {color:orange !important;}
+#lesson-chapters li.tp::before {color: rgb(255, 225, 0) !important;}
 
 
 .last-item{
