@@ -544,12 +544,16 @@ p {
 }
 
 #lesson-chapters li::before{
-	content: '\2630' !important;
+	content: '\275A' !important;
 	display: inline-block;
 	height: 1.4em;
 	width: 1.4em;
-	color:#847894;
 }
+
+#lesson-chapters li.cours::before {color:blueviolet !important;}
+#lesson-chapters li.td::before {color:orangered !important;}
+#lesson-chapters li.tp::before {color:rgb(224, 224, 55) !important;}
+
 
 .last-item{
 	border-bottom: 0px solid !important;
