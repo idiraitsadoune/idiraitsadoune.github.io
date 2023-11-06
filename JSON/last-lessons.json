@@ -8,6 +8,13 @@
             "target" : "_self"
         },
         {
+            "title" : "Qualité de développement",
+            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
+            "image" : "ensignement.jpg",
+            "link" : "qualite-dev",
+            "target" : "_self"
+        },  
+        {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
@@ -26,13 +33,6 @@
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
             "link" : "os-and-virtualisation",
-            "target" : "_self"
-        },  
-        {
-            "title" : "Qualité de développement",
-            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
-            "image" : "ensignement.jpg",
-            "link" : "qualite-dev",
             "target" : "_self"
         },  
         {
