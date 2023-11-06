@@ -1,24 +1,24 @@
 {
     "publications" : [
         {
+            "title" : "A floating-point numbers theory for Event-B",
+            "conference" : "12th International Conference on Model and Data Engineering, MEDI 2023",
+            "link" : "https://link.springer.com/book/9783031493324"
+        },
+        {
             "title" : "Using Deep Ontologies in Formal Software Engineering",
-            "conference" : "9th International Conference on Rigorous State-Based Methods, ABZ",
+            "conference" : "9th International Conference on Rigorous State-Based Methods, ABZ 2023",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-031-33163-3_2"
         },
         {
             "title" : "OntoEventB: A Generator of Event-B contexts from Ontologies",
-            "conference" : "9th Rodin User and Developer Workshop",
+            "conference" : "9th Rodin User and Developer Workshop, Rodin 2021",
             "link" : "https://wiki.event-b.org/index.php/Rodin_Workshop_2021"
         },
         {
             "title" : "Building Formal Semantic Domain Model: An Event-B Based Approach",
-            "conference" : "9th International Conference on Model and Data Engineering",
+            "conference" : "9th International Conference on Model and Data Engineering, MEDI 2019",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-030-32065-2_10"
-        },
-        {
-            "title" : "The role of user requirements in data repository design",
-            "conference" : "International Journal on Software Tools for Technology Transfer",
-            "link" : "https://link.springer.com/article/10.1007/s10009-016-0443-0"
         }
     ]
 }

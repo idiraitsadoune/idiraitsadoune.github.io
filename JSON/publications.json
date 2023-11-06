@@ -1,6 +1,11 @@
 {
     "conferences" : [
         {
+            "title" : "A floating-point numbers theory for Event-B",
+            "conference" : "12th International Conference on Model and Data Engineering, MEDI 2023",
+            "link" : "https://link.springer.com/book/9783031493324"
+        },
+        {
             "title" : "Using Deep Ontologies in Formal Software Engineering",
             "conference" : "9th International Conference on Rigorous State-Based Methods, ABZ 2023",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-031-33163-3_2"
