@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Systèmes d'exploitation : TP - La programmation avec le Shell/Unix</title>
+
+	<meta name="description" content="Systèmes d'exploitation : TP - La programmation avec le Shell/Unix">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	
+	
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux Pratiques - TP<br> 
+    La programmation avec le Shell/Unix
+</div>
+
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+    <b style="color: navy;">Modalités de livraison</b>
+    <p>
+        Ce TP fait l’objet d’une notation. Vous travaillerez seul et vous devrez rendre un compte-rendu. 
+        Les TP sont à remettre <b style="color: red;">avant <br> le mercredi 22 novembre 2023</b> sur <b>EDUNAO</b>. 
+        Vous devez envoyer un fichier au format <code class="listing">PDF</code> qui devrait être nommé en suivant  <br>
+        la convention suivante : <code class="listing">NOM-TP2.pdf</code>.
+    </p>
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Rappel</b> 
+    <p>
+        Un script shell est un fichier texte possédant l'extension <code class="listing">.sh</code>, comme <code class="listing">toto.sh</code>. <br>
+        Un tel fichier peut être exécuté en commençant son code par une ligne précisant l’interpréteur de commande à utiliser :
+<pre><code class="language-bash"><script type="text/template">#!/bin/bash
+</script></code></pre>
+    </p>
+    <p>
+        Le fichier est ensuite rendu exécutable par la commande :
+<pre><code class="language-shell"><script type="text/template">$ chmod +x toto.sh 
+</script></code></pre>
+        
+        et puis exécuté par :
+<pre><code class="language-shell"><script type="text/template">$ ./toto.sh
+</script></code></pre>
+    </p>
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 1 : Sauvegarde automatique de fichiers
+</div>
+<p>
+    Le but de cet exercice consiste à définir un script permettant de sauvegarder 
+    tous les fichiers du répertoire courant dans un autre répertoire avec, en plus, une indication du jour où la sauvegarde est effectuée.
+</p>
+<p>
+    <ul>
+        <li>Ecrire un script <code class="listing">bash</code> copiant tous les fichiers du répertoire courant dans le sous-répertoire <code class="listing">OLD</code> 
+            en ajoutant au nom des fichiers la date du jour au format <code class="listing">"#année-mois-jour"</code>. Il faudra, au préalable, 
+            s'assurer de l'existence du répertoire <code class="listing">OLD</code> et le créer s'il n'existe pas. On vérifiera alors dans ce cas 
+            que la création du répertoire s'est bien passée.      
+        </li>
+        <li>Par exemple, si le répertoire courant comporte un fichier <code class="listing">fich.txt</code> et que le shell est lancé aujourd'hui, 
+            ce programme devra recopier le fichier <code class="listing">fich.txt</code> vers le fichier <code class="listing">OLD/fich#2020-11-04.txt</code>.
+        </li>
+    </ul>
+</p>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 2 : Gestion d'une Corbeil de fichiers
+</div>
+<p>
+    <ul>
+        <li>Écrire un script <code class="listing">jeter.sh</code> qui permet de manipuler une poubelle à fichier (un
+    répertoire nommé <code class="listing">poubelle</code> situé à votre racine). La commande 
+    <code class="listing">$ ./jeter.sh fichier1 fichier2 ... </code>
+    est utilisée pour déplacer les fichiers considérés vers la poubelle ;
+        </li>
+        <li>
+            La commande accepte trois options : 
+            <ol>
+                <li><code class="listing">-l</code> pour lister le contenu de la poubelle ;</li>
+                <li><code class="listing">-s fichier chemin</code> pour sortir le fichier de la poubelle et le placer à l’emplacement chemin ;</li>
+                <li><code class="listing">-v</code> pour vider la poubelle ;</li>
+            </ol>
+        </li>
+        <li>Si la poubelle n’existe pas, elle est créée à l’appel de la commande.</li>
+    </ul>
+</p>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 3 : Compilation de fichiers Java
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b> 
+    <p>Pour réaliser cet exercice, vous devez installer <b>Java</b> sur votre machine. 
+Vous devez également télécharger les codes <b>Java</b> à partir de <a href="./7-tp-tests.zip" target="_blank">ce lien</a> pour tester votre script.</p>
+</div>
+<p> 
+    <ul>
+        <li>Définir un script shell <code class="listing">javac_test.sh</code> qui attend un argument et teste si cet argument est un fichier <b>Java</b> compilable sans erreurs.
+        <ul>
+            <li>Si l’argument est un fichier <b>Java</b> qui se compile sans aucune erreur, il affiche sur la sortie standard <code class="listing">file.java : compilé</code>, 
+                génère un fichier <code class="listing">file.class</code>, et termine avec le code de retour <code class="listing">0</code>. </li>
+            <li>Si l’argument est un fichier <b>Java</b> qui ne se compile pas, il affiche sur la sortie standard <code class="listing">file.java : non compilé</code> et termine avec le code de retour <code class="listing">1</code>.</li>
+            <li>Dans tous les autres cas, il affiche <code class="listing">Entree incorrecte</code> sur la sortie d’erreur standard et termine avec le code de retour <code class="listing">2</code>.</li>
+        </ul>
+        </li>
+    </ul>  
+</p>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b> 
+    <p>Pour compiler un fichier <b>Java</b>, il faut exécuter la commande : </p>
+<pre><code class="language-shell"><script type="text/template">$ javac fichier.java
+</script></code></pre>	
+</div>
+<p>
+    <ul>
+        <li>Définir un script shell <code class="listing">java_compilation.sh</code> qui prend comme argument un répertoire <code class="listing">rep</code> qui contient des fichiers (<b>Java</b> ou autre), 
+            parcours le contenu du répertoire, exécute <code class="listing">javac_test.sh</code>, et sauvegarde les fichiers <code class="listing">.class</code> générés dans un répertoire <code class="listing">rep/bin</code></li>
+
+        <li>Définir un script shell <code class="listing">java_execution.sh</code> qui prend comme argument un répertoire <code class="listing">rep</code>, teste si le répertoire
+            <code class="listing">rep/bin</code> existe et exécute les fichiers <code class="listing">.class</code> générés par le script de la question précédente.</li>
+    </ul>
+</p>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b> 
+    <p>Pour exécuter un fichier <b>Java</b>, il faut exécuter la commande : </p>
+<pre><code class="language-shell"><script type="text/template">$ java fichier # sans l'extension
+</script></code></pre>	
+</div>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b> 
+    <p>les fichiers <b>Java</b> exécutables contiennent une méthode avec la signature :</p>
+<pre><code class="language-java"><script type="text/template">public static void main
+</script></code></pre>	
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
