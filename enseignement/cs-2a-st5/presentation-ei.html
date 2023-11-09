@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>ST5 - Enseignement d'intégration : Un système de commande sûr pour un ascenseur</title>
+	<title>ST5 - Enseignement d'intégration : Conception d'un système de commande sûr pour un ascenseur.</title>
 
-	<meta name="description" content="ST5 - Enseignement d'intégration : Un système de commande sûr pour un ascenseur">
+	<meta name="description" content="ST5 - Enseignement d'intégration : Conception d'un système de commande sûr pour un ascenseur.">
 	<meta name="author" content="Idir AIT SADOUNE">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,7 +52,7 @@
 	</div>
 	
 	<h2>ST5 - Enseignement d'intégration</h2>
-	<h3>Un système de commande sûr <br> pour un ascenseur</h3>
+	<h3>Conception d'un système de commande sûr pour un ascenseur.</h3>
 	<div class="description">
 		<span class="description-item"><span class="fa fa-graduation-cap"></span> 2A cursus Ingénieurs</span>	
 		<span class="description-item"><span class="fa fa-university"></span> CentraleSupelec</span>
@@ -79,6 +79,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    
+	<div class="slide-content">
+		<h3>Conception d'un système de commande sûr pour un ascenseur.</h3>
+	<h3>Designing a safe control system <br> for an elevator.</h3>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Contexte de l'étude</h2>
     <ul>
@@ -156,10 +165,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
-	<h1>Fin</h1>
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
 	<p>
-		- <a href="#">Retour à l'accueil</a>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -203,9 +213,10 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
-			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
 		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 </body>
 
