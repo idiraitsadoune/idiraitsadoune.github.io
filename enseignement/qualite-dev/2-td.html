@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD Qualité de développement : Diagramme UML d'activités</title>
+
+	<meta name="description" content="TD Qualité de développement : Diagramme UML d'activités">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    Diagramme UML d'activités
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice : Entrevue Analyste et Agent Immobilier
+</div>
+
+<p class="text-justify">
+    <b>Analyste</b> : Bonjour ! Pourriez-vous m’éclairer sur le travail d’agent immobilier ? 
+    Si on commençait par l’arrivée d’un client dans le bureau de la compagnie. Que se passe t-il lorsqu’il franchit la porte ? 
+</p>
+
+<p class="text-justify">
+<b>Agent immobilier</b> : Si c’est un nouveau client, la secrétaire la dirige vers l’agent de garde qui l’accueille et répond à ses questions. 
+Si ce n’est pas un nouveau client, la secrétaire la dirige vers son agent habituel. 
+</p>
+
+<p class="text-justify">
+<b>Analyste</b> : Est-ce que le client est habituellement seul ?
+</p>
+
+<p class="text-justify">
+    <b>Agent immobilier</b> : Non, les clients viennent souvent en couple mais un des deux sera notre contact principal. 
+</p>
+
+<p class="text-justify">
+    <b>Analyste</b> : Quelles sont les questions typiques que pose un client qui veut vendre sa maison ? 
+</p>
+
+<p class="text-justify">
+    <b>Agent immobilier</b> : 
+<ol>
+<li>  Quels sont les services offerts par un agent immobilier? Combien ça coûte? </li>
+<li> Pouvez-vous vendre notre maison ? </li>
+</ol>
+</p>
+
+<p class="text-justify">
+    <b>Analyste</b> : Commençons par les premières questions. Quels sont les services offerts par un agent immobilier ? Combien ça coûte ? 
+</p>
+
+<p class="text-justify">
+    <b>Agent immobilier</b> :  Les services offerts inclus :
+<ul>
+<li>  Les conseils pour la mise en valeur de votre maison </li>
+<li>  Une évaluation de la valeur marchande de votre maison </li>
+<li>  L’inscription de la maison dans notre catalogue</li>
+<li>  La publicité (journaux, pancartes, télévision, internet) </li>
+<li>   Les visites de la maison (par les acheteurs) </li>
+<li>  La négociation des promesses d’achat</li>
+<li>  L’agent inscripteur répond aux questions des acheteurs. </li>
+</ul>
+</p>
+
+<p class="text-justify">
+Les frais sont un pourcentage du prix de vente, payable au moment de la signature du contrat de vente. Ces frais, appelés commissions, sont par la suite partagés entre l’agent inscripteur, son agence, l’agent de l’acheteur et son agence selon les pratiques d’affaires des agences. 
+</p>
+
+<p class="text-justify">
+    <b>Analyste</b>: Très bien. Maintenant, que répondez-vous à la question "Pouvez- vous vendre notre maison ?"
+</p>
+
+<p class="text-justify">
+    <b>Agent immobilier</b> :  
+    <ul>
+<li>  Je leur explique les services inclus dans le contrat de service.</li>
+<li>  S’ils ne sont pas d’accord avec les services proposés, je leur laisse ma carte d’affaires et nous nous disons au revoir. </li>
+<li>  S’ils sont d’accord avec les services proposés, je prépare un contrat de service sur un formulaire. Le client vendeur signe. Je signe à mon tour le contrat de service. Je deviens ainsi leur agent inscripteur. </li>
+<li>  Pendant la durée du contrat, le client vendeur ne peut pas vendre sa maison lui-même, ni faire affaire avec un autre agent inscripteur. </li>
+<li>   Ensuite, je fais le tour de la maison. </li>
+<li>   Je mesure chacune des pièces de la maison. </li>
+<li>  Je note les éléments caractéristiques des cuisines, des salles de bain, des salons, etc. </li>
+<li>  Je prends des photos couleur de la maison extérieure à l’avant et à l’arrière. </li>
+<li>  Lorsque le client le permet, je prends aussi des photos intérieures des diverses pièces. C’est très pratique pour les maisons qui sont très éloignées du centre-ville. Ça évite des déplacements inutiles. C’est aussi un outil de vente indéniable pour des maisons de qualité exceptionnelle. </li>
+<li>   Pendant que je fais le tour de la maison (photo et mesure), le client ras- semble les renseignements qu’il a en sa possession. </li>
+<li>   Factures annuelles d’énergie, eau </li>
+<li>  Factures annuelles de taxes municipales et scolaires </li>
+<li>  Relevé de l’évaluation municipale </li>
+<li>   Copie du certificat de localisation (pour obtenir les dimensions du terrain) </li>
+<li>  S’il y a lieu, renseignements sur la créance hypothécaire (taux, solde, versement, échéance) </li>
+<li> Si le client vendeur le souhaite, je fais une évaluation de la valeur marchande de la maison en me basant sur les qualités de la maison et sur la valeur marchande des maisons du quartier qui se sont vendues récemment. </li>
+<li>  Nous nous entendons sur un prix demandé. </li>
+<li> Avant de quitter la maison, je pose une belle pancarte devant la maison. </li>
+<li> Avant de rentrer au bureau, je fais développer les photos dans un centre photo. </li>
+<li> Je complète une fiche pour la maison. Cette fiche contient tous les renseignements recueillis sur la maison. </li>
+<li> La secrétaire dactylographie la fiche. Elle reprographie la fiche et la dépose dans les catalogues. </li>
+<li> Elle prépare un dossier pour cette maison. Le dossier contiendra la fiche, les photos, les clés de la maison, une copie du contrat de service. Éventuellement, le dossier contiendra les promesses d’achat (et leur contre- proposition). Elle classe ce nouveau dossier dans le classeur « à vendre ». </li>
+</ul>
+</p>
+
+<p class="text-justify">
+    <b>Analyste</b> : Qui s’occupe de la publicité ? 
+</p>
+
+<p class="text-justify">
+...
+</p>
+
+<p class="text-justify">
+    <b>Analyste</b> : merci de votre collaboration. 
+</p>
+
+<div class="subsection-title">
+	Travail demandé 
+</div>
+
+<p class="text-justify">
+A partir de l’entrevue dont nous vous transmettons un extrait ci-dessous, 
+<b> formaliser les processus de travail avec le formalisme du diagramme d’activités</b> pour inscrire une maison à 
+vendre en commençant par <em>Je leur explique les services inclus dans le contrat de service</em> et en 
+terminant par <em>Elle classe ce nouveau dossier dans le classeur "à vendre"</em>. 
+</p>
+   
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
