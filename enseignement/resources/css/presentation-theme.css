@@ -60,7 +60,7 @@ em{
 /* main page style */
 .header-logo{
 	height: 90px; 
-	margin-bottom: 60px; 
+	margin-bottom: 50px; 
 	display: flex; 
 	justify-content: space-between; 
 }
@@ -74,8 +74,7 @@ em{
 }
 
 .description{
-	margin-top: 40px;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .description-item{
@@ -83,14 +82,13 @@ em{
 }
 
 .hero-card-id{
-	margin-top: 40px;
+	margin-top: 50px;
 	display: flex; 
 	align-items: center; 
 	position: relative;
 }
 
 .hero-user {
-	/* position: absolute; */
 	border-style: solid;
 	width: 110px;
 	height: 110px;
