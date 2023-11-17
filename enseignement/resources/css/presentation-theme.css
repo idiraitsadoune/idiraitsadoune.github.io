@@ -74,7 +74,7 @@ em{
 }
 
 .description{
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .description-item{
@@ -85,31 +85,31 @@ em{
 	margin-top: 50px;
 	display: flex; 
 	align-items: center; 
-	position: relative;
+	/*position: relative;*/
 }
 
 .hero-user {
 	border-style: solid;
-	width: 110px;
-	height: 110px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	border-color: black;
 	text-align: center;
-	border-width: 2px;
+	border-width: 1px;
 }
 
 .hero-desc{
 	text-align: left; 
 	margin-left: 10px;
-	line-height: 0.8;
+	line-height: 0.65;
 }
 
 .hero-name{
-	font-size:35px;
+	font-size:27px;
 }
 
 .hero-email{
-	font-size:25px;
+	font-size:20px;
 }
 
 /* ****************************************************** */
