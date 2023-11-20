@@ -75,6 +75,8 @@ em{
 
 .description{
 	font-size: 18px;
+	text-align: left !important;
+	margin-top: 30px;
 }
 
 .description-item{
