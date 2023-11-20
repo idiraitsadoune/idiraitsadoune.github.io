@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD Qualité de développement : Diagramme UML de séquence</title>
+
+	<meta name="description" content="TD Qualité de développement : Diagramme UML de séquence">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    Diagramme UML de séquence
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice : Terminal Point de Vente (TPV).
+</div>
+<p class="text-justify">
+    Cet exercice concerne un système simplifié de caisse enregistreuse de super-marché. Le déroulement normal d’utilisation de la caisse est le suivant :
+</p>
+<ul>
+    <li>Un client arrive à la caisse avec des articles à payer</li>
+    <li>Le caissier enregistre le numéro d’identification (CPU) de chaque article, ainsi que la quantité si elle est supérieure à 1.</li>
+    <li>La caisse affiche le prix de chaque article et son libellé.</li>
+    <li>Lorsque tous les achats sont enregistrés, le caissier signale la fin de la vente.</li>
+    <li>La caisse affiche le total des achats.</li>
+    <li>Le client choisit son mode de paiement :
+        <ul>
+            <li>numéraire : le caissier encaisse l’argent reçu, la caisse indique l’argent à rendre au client.</li>
+            <li>chèque : le caissier vérifie la solvabilité du client en transmettant une requête à un centre d’autorisation via la caisse.</li>
+            <li>carte de crédit : un terminal bancaire fait partie de la caisse. Il transmet une demande d’autorisation à un centre d’autorisation en fonction du type de la carte.</li>
+        </ul>
+    </li>
+    <li>La caisse enregistre la vente et imprime un ticket.</li>
+    <li>Le caissier donne le ticket de caisse au client.</li>
+</ul>
+<p class="text-justify">
+    Après la saisie des articles, le client peut présenter au caissier des coupons de réduction pour certains articles. Lorsque le paiement est terminé, la caisse transmet 
+    les informations sur le nombre d’articles vendus au système de gestion des stocks. 
+</p>
+<p class="text-justify">
+    Tous les matins, le responsable du magasin initialise les caisses pour la journée.   
+</p>
+<div class="subsection-title">
+	Travail à faire
+</div>
+<p class="text-justify">
+    Établir un diagramme de séquence système enrichi du scénario nominal <b>« Traiter le passage en caisse »</b>.
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
