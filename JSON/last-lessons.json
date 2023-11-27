@@ -1,19 +1,19 @@
 {
     "lessons" : [
         {
+            "title" : "Algorithmique et Complexité",
+            "level" : "1A - Cursus Ingénieur - CentraleSupelec",
+            "image" : "ensignement.jpg",
+            "link" : "https://wdi.centralesupelec.fr/1CC2000/",
+            "target" : "_blank"
+        }, 
+        {
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
             "link" : "operating-systems",
             "target" : "_self"
         },
-        {
-            "title" : "Qualité de développement",
-            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
-            "image" : "ensignement.jpg",
-            "link" : "qualite-dev",
-            "target" : "_self"
-        },  
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
@@ -34,21 +34,21 @@
             "image" : "ensignement.jpg",
             "link" : "jakarta-ee",
             "target" : "_self"
-        },  
+        }, 
+        {
+            "title" : "Qualité de développement",
+            "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
+            "image" : "ensignement.jpg",
+            "link" : "qualite-dev",
+            "target" : "_self"
+        },   
         {
             "title" : "Systèmes d'exploitation et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
             "link" : "os-and-virtualisation",
             "target" : "_self"
-        },  
-        {
-            "title" : "Apprendre à programmer avec Java",
-            "level" : "MOOC - Massive open online course",
-            "image" : "ensignement.jpg",
-            "link" : "java",
-            "target" : "_self"
-        },  
+        },   
         {
             "title" : "Conception et Programmation Orientées Objet",
             "level" : "MOOC - Massive open online course",
