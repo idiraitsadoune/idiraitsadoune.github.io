@@ -1,1 +1,2 @@
 1 - Supprimer le cours sur le diagramme de cas d'utilisation
+2 - Supprimer le cours sur le diagramme de séquence
