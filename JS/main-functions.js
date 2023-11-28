@@ -297,7 +297,12 @@ function createLastLessons(){
                 const single = createElement('div',{class : 'single-lessons'})
                 grid.appendChild(single)
 
-                const a = createElement('a',{href: "enseignement/"+lessons[i]["link"], target: lessons[i]["target"]})
+                if(lessons[i]["target"]=="_blank"){
+                    const a = createElement('a',{href: lessons[i]["link"], target: lessons[i]["target"]})
+                }
+                else {
+                    const a = createElement('a',{href: "enseignement/"+lessons[i]["link"], target: lessons[i]["target"]})
+                }
                 single.appendChild(a)
 
                 const img = createElement('img',{style:"width: 100%;",src:"./IMG/"+lessons[i]["image"]})

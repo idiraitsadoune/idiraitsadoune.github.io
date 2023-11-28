@@ -13,7 +13,7 @@
 
 .reveal {
 	font-size: 38px !important;
-  }
+}
 
 .reveal .slides>section {
 	padding-left: 70px !important;
@@ -36,8 +36,8 @@
 
 .reveal code {
 	font-family: 'Monaco' !important; 
-	
 }
+
 .reveal pre code {
 	max-height: 580px !important;
 	padding: 10px 15px 10px 15px !important;
@@ -56,6 +56,7 @@ em{
     color: #2a76dd;
 	font-style: italic !important;
 }
+
 /* ****************************************************** */
 /* main page style */
 .header-logo{
