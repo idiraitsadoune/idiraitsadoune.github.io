@@ -297,13 +297,16 @@ function createLastLessons(){
                 const single = createElement('div',{class : 'single-lessons'})
                 grid.appendChild(single)
 
-                if(lessons[i]["target"]=="_blank"){
-                    const a = createElement('a',{href: lessons[i]["link"], target: lessons[i]["target"]})
+                var a 
+                if(lessons[i]["target"].localeCompare("_blank")===0){
+                    a = createElement('a',{href: lessons[i]["link"], target: lessons[i]["target"]})
+                    single.appendChild(a)
                 }
                 else {
-                    const a = createElement('a',{href: "enseignement/"+lessons[i]["link"], target: lessons[i]["target"]})
+                    a = createElement('a',{href: "enseignement/"+lessons[i]["link"], target: lessons[i]["target"]})
+                    single.appendChild(a)
                 }
-                single.appendChild(a)
+                
 
                 const img = createElement('img',{style:"width: 100%;",src:"./IMG/"+lessons[i]["image"]})
                 a.appendChild(img)
@@ -428,7 +431,14 @@ function createLessonsList(){
                 const li_e = createElement('li')
                 ul_e.appendChild(li_e)
 
-                const a = createElement('a',{href:"../" + lessons[i]["link"], target: lessons[i]["target"]})
+                var a 
+                if(lessons[i]["target"].localeCompare("_blank")===0){
+                    a = createElement('a',{href: lessons[i]["link"], target: lessons[i]["target"]})
+                }
+                else {
+                    a = createElement('a',{href:"../" + lessons[i]["link"], target: lessons[i]["target"]})
+                }
+
                 a.appendChild(document.createTextNode(lessons[i]["title"]))
                 li_e.appendChild(a)
             }
