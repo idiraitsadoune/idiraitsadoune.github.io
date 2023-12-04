@@ -1,0 +1,1022 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Développement de systèmes critiques avec la méthode Event-B : Introduction à la modélisation avec Event-B</title>
+
+	<meta name="description" content="Développement de systèmes critiques avec la méthode Event-B : Introduction à la modélisation avec Event-B">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/cs.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Développement de systèmes critiques avec la méthode Event-B</h2>
+		<h3>Introduction à la modélisation avec Event-B</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>3A cursus ingénieurs - Mention Sciences du Logiciel</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Les méthodes formelles"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le logiciel informatique</h2>
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
+		<img src="./img/info1.png" height="200px" width="auto">
+		<img src="./img/info2.png" height="200px" width="auto">
+		<img src="./img/info3.jpg" height="200px" width="auto">
+  	</div>
+  	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
+    	<img src="./img/informatique2.jpg" height="200px" width="auto">
+		<img src="./img/info4.jpg" height="200px" width="auto">
+		<img src="./img/informatique3.jpg" height="200px" width="auto">
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Cycle de développement</h2>
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-1.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-3.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-4.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-5.svg" height="auto" width="900px" alt="">
+		<!--<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-1.svg" height="auto" width="1000px" alt="">-->
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-2.svg" height="auto" width="1000px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-3.svg" height="auto" width="1000px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-4.svg" height="auto" width="1000px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-5.svg" height="auto" width="1000px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-6.svg" height="auto" width="1000px" alt="">
+		<img class="fragment fade-in" src="./img/cycle-dev-6.svg" height="auto" width="900px" alt="">
+		
+	</div>
+  <div class="fragment skip">Des <b>erreurs</b> possibles <b>à toutes les étapes</b> du développement.</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Logiciels critiques</h2>
+  <ul>
+    <li class="fragment"><b>Une défaillance</b> dans un logiciel peut avoir 
+      des <i>conséquences catastrophiques</i> (humaines, financières, ...).</li>
+
+    <li class="fragment skip">Exemple du calculateur de bord d'<b>Ariane 5</b>
+      <ul><li><a href="https://fr.wikipedia.org/wiki/Ariane_5#Quatre-vingt-dix-septi%C3%A8me_vol_(vol_241_/_5101)" target="_blank">Vol 241/5101 du 25 janvier 2018</a></li></ul>
+    </li>
+  </ul>
+  <img class="fragment" src="./img/ariane.jpg" alt="" height="300px">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Situations à éviter !!!</h2>
+  <div style="display: inline-grid; grid-template-columns: auto auto;align-items:center; column-gap: 25px;">
+    <img class="fragment" src="./img/a-eviter-1.jpg" height="400px" width="auto">
+		<img class="fragment" src="./img/a-eviter-2.jpg" height="400px" width="auto">
+  </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Solutions</h2> 
+	<ul>
+		<li class="fragment">Les <strong>règles</strong> et les <strong>techniques</strong> de programmation.</li>
+		<li class="fragment">Les <strong>méthodologies de conception</strong> et de développement.</li>
+		<li class="fragment">Le <strong>support</strong> des langages de programmation.</li>
+		<li class="fragment">Le <strong>test</strong>.</li>
+		<li class="fragment fade-in"><span class="fragment highlight-blue">Les <strong>méthodes formelles</strong>.</span>
+		</li>	  
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Objectif des méthodes formelles</h2>
+    <ul id="fleche">
+        <li class="fragment">Aider les <b>ingénieurs</b> à effectuer la <b>transformation</b> suivante :</li>
+    </ul>
+
+	<img class="fragment" src="./img/transfo.svg" alt="">
+
+	<p class="fragment">
+		ne semble pas différent de <b>la programmation</b> ordinaire
+	</p>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La place des méthodes formelles</h2>
+  	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-6.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-fm.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in" src="./img/cycle-dev-fm-partout.svg" height="auto" width="1000px" alt="">
+	</div>
+  <div class="fragment skip">Utiliser les <b>méthodes formelles</b> dans <b>toutes les étapes</b>.</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Qui recommande les méthodes formelles ?</h2>
+  <ul>
+    <li class="fragment"><b>Norme européenne</b><br>
+      L'utilisation de spécifications formelles seule rend <i>les exigences <br> non ambiguës</i>. 
+    </li>
+    <li class="fragment skip"><b>Norme aéronautique</b><br>
+      L'utilisation de méthodes formelles a pour but d'<i>éliminer les erreurs de spécification</i>, 
+      de <i>conception</i> et de <i>codage</i> lors du développement.
+    </li>
+    <li class="fragment skip"><b>Norme ferroviaire</b><br>
+      Pour les spécifications, des méthodes formelles sont recommandées 
+car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>cohérence</i>.
+    </li>
+  </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples de normes</h2>
+  <ul>
+    <li class="fragment">Les <b>normes européennes</b> <i>EN 50126</i>, <i>EN 50128</i>, <i>EN 50129</i>
+      <ul id="fleche">
+        <li class="fragment">des <b>standards</b> utilisés dans le <b>domaine ferroviaire</b>.</li>
+        <li class="fragment">requises pour les fournisseurs d’<i>équipements de contrôle-commande</i>.</li>
+      </ul>
+    </li>
+  </ul>
+  <img src="./img/ferroviaire.jpg" alt="" height="300px">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes formelles <br> recommandées</h2>
+  <ul>
+    <li class="fragment">Quelques <b>méthodes formelles</b> recommandées par les <b>normes</b> :
+      <ul id="fleche">
+        <li class="fragment">"CSP, HOL, LOTOS, Temporal Logic, <b>B Method</b>, Model Checking ..."</li>
+        <li class="fragment"><i>page 103</i> de la norme <b>EN 50128</b></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Définitions</h2>
+	<ul>
+		<li class="fragment"><b>Une méthode formelle</b> est <a href="https://dicoagroecologie.fr/dictionnaire/approche-systemique/" target="_blank">une approche systématique</a> 
+            utilisée pour déterminer si <b>un programme respecte des propriétés</b> spécifiques.</li>
+
+		<li class="fragment skip">
+			Différents types de <b>méthodes formelles</b> (selon cette définition) :
+			<ul>
+				<li class="fragment"><b>Type checking</b></li>
+				<li class="fragment"><b>Static analysis</b></li>
+				<li class="fragment"><b>Model checking</b></li>
+				<li class="fragment"><b>Theorem proving</b></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Type checking</h2>
+	<ul>
+		<li class="fragment">
+			Contrôler les <b>propriétés de bas niveau</b> des variables <br> dans un programme.
+		</li>
+		<li class="fragment skip">
+			Un <b>type</b> définit :
+			<ul>
+				<li>un <b>ensemble de valeurs</b> à affecter à une <b>variable</b></li>
+				<li>les <b>opérations</b> que l'on peut effectuer sur une variable</li>
+				<li>la façon dont une variable sera <b>stockée dans la mémoire</b></li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			<b>Type checking</b> contrôle si :
+			<ul>
+				<li><b>les affectations</b> de valeur à une variable sont <b>correctes</b></li>
+				<li>la variable n'est utilisée que dans <b>les opérations autorisées</b></li>
+			</ul>
+		</li>
+		<li class="fragment skip">Cela se fait <b>automatiquement</b> dans les compilateurs.</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Static Analysis <br>(Interprétation abstraite)</h2>
+	<ul>
+		<li class="fragment">
+			C'est une <b>technique automatique</b> utilisée pour vérifier <br> qu'un programme n'aura pas certaines <b>erreurs d'exécution</b>.
+		</li>
+		<li class="fragment skip">
+			<b>Erreurs d'exécution</b> typiques détectées :
+			<ul>
+				<li>division par zéro</li>
+				<li>débordement lié au tableau</li>
+				<li>débordement arithmétique (virgule flottante)</li>
+                <li>...</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			L'analyse est effectuée en <b>abstrayant les variables du programme</b> <br>
+			et en exécutant l'<b>abstraction résultante</b>
+            <ul id="fleche">
+                <li class="fragment">
+                    l'<b>interprétation abstraite</b> peut conduire à une <b style="color: red;">fausse alerte</b>
+                </li>
+            </ul>
+		</li>
+		
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Model Checking</h2>
+	<ul>
+		<li class="fragment">
+			Les propriétés à vérifier <b>ne sont pas des propriétés du programmes</b>
+			<ul id="fleche"><li class="fragment">Ce sont des propriétés <b>du modèles du programme</b></li></ul>
+		</li>
+		<li class="fragment skip">
+			Habituellement, ces modèles désignent des <b>machines à états finis</b>
+			(<i>états</i> et <i>transitions</i>)
+		</li>
+		<li class="fragment skip">
+			Les <b>propriétés à vérifier</b> sont souvent des <b>propriétés temporelles</b>
+			(<b>accessibilité</b>)
+		</li>
+		<li class="fragment skip">
+			Les <b>Model checkers</b> fonctionnent <b>automatiquement</b>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Theorem Proving</h2>
+	<ul>
+		<li class="fragment">
+			C'est l'approche que je vais <b>développer dans ce cours</b>.
+			<ul id="fleche"><li>la méthode <b>Event-B</b></li></ul>
+		</li>
+		<li class="fragment skip">
+			Les propriétés à prouver (par <b>démonstration</b> semi-automatique) <br>
+			font partie des modèles :
+			<ul id="fleche"><li class="fragment"><b>théorèmes</b> et <b>invariants</b>.</li></ul>
+			
+		</li>
+		<li class="fragment skip">
+			La méthode <b>Event-B</b> se base sur la construction de modèles <br>
+			par <b>raffinements successifs</b>.
+		</li>
+		<li class="fragment skip">
+			A la fin du processus, le modèle le plus raffiné est
+			traduit <b>automatiquement en programme</b>.
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Coûts</h2>
+	<img src="./img/cout.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Comparaisons</h2>
+	<ul>
+		<li class="fragment">En <b>Type checking</b> et en <b>Static Analysis</b>, on travaille <br> sur des <b>programmes</b></li>
+		<li class="fragment skip">En <b>Model Checking</b> et en <b>Theorem Proving</b>, on travaille <br> sur des <b>modèles</b></li>
+		<li class="fragment skip">En <b>Type checking</b> et en <b>Theorem Proving</b>, on prouve une propriété <br> qui <b>fait partie de l'objet analysé</b></li>
+		<li class="fragment skip">En <b>Static Analysis</b> et en <b>Model Checking</b>, on prouve une propriété <br> qui est <b>proposé en externe</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Pourquoi utiliser des méthodes formelles basées sur la preuve ?</h2>
+	<ul>
+		<li class="fragment">Lorsque le <b>risque</b> est trop élevé (<strong>ex.</strong> les systèmes critiques)</li>
+		<li class="fragment skip">Quand il n'y a <b>rien de mieux disponible</b>.</li>
+		<li class="fragment skip">Quand les gens remettent en question leur <b>processus <br> de développement</b>.</li>
+		<li class="fragment skip">La décision d'utiliser des méthodes formelles est <b>toujours stratégique</b>.</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Questions à se poser sur la méthode formelle à utiliser</h2>
+	<ul>
+		<li class="fragment">Y a-t-il une <b>théorie</b> derrière la méthode formelle ?</li>
+		<li class="fragment skip">Quel type de <b>langage</b> utilise la méthode formelle choisie ?</li>
+		<li class="fragment skip">Existe-t-il un mécanisme de <b>raffinement</b> ?</li>
+		<li class="fragment skip">Y a-t-il un <b>prouveur automatique</b> efficace ?</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="L'analyse des besoins"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Avant la modélisation</h2>
+	<ul>
+		<li class="fragment">Définir les principaux <b>objectifs</b> du futur système</li>
+		<li class="fragment skip">Définir les <b>exigences</b></li>
+		<li class="fragment skip">Étude de <b>faisabilité</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le cycle de développement</h2>
+	<img src="./img/cycle-dev-en-v-6.svg" alt="">
+	<p class="fragment">
+		<b>Partie la plus faible</b> : le cahier des charges (<b>Analyse</b>)
+	</p>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le cahier des charges</h2>
+	<ul>
+		<li class="fragment"><b>Importance</b> de ce document (sa position dans le cycle de vie)</li>
+		<li class="fragment skip">Les cahiers des charges sont généralement <b>difficiles à exploiter</b></li>
+		<li class="fragment skip">D'où très souvent la nécessité de <b>le réécrire</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+	<ul>
+		<li class="fragment">Le système que nous allons construire est <b>un logiciel connecté <br>
+			à certains équipements</b>.</li>
+		<li class="fragment skip">
+			Il existe deux types d'exigences :
+			<ol>
+				<li>les exigences concernées par <b>le matériel</b>, labellisées <b>EQP</b>,</li>
+				<li>les exigences concernés par <b>la fonction du système</b>, étiquetés <b>FUN</b>.</li>
+			</ol>
+		</li>
+		<li class="fragment skip">
+			La fonction de ce système est de <b>contrôler les voitures sur un pont étroit</b>.
+			Ce pont est censé relier <b>le continent</b> à <b>une petite île</b>.
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+	<ul><li><b>FUN-1</b>
+		<ul><li>the system is controlling cars on a bridge
+			between the mainland <br> and an island</li></ul>
+		</li></ul>
+	
+	<img src="./img/bridge.svg" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+	<ul><li><b>EQP-1</b>
+		<ul>
+			<li>the system has two traffic lights with two
+				colors: green and red</li>
+			<li>one of the traffic lights is situated on the mainland and the other
+			one <br> on the island. Both are close to the bridge.</li></ul>
+	</li></ul>
+
+	<img src="./img/feux.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+
+	<ul>
+		<li><b>EQP-2</b> 
+			<ul><li>the traffic lights control the entrance to the
+				bridge at both ends of it</li></ul>
+			</li>
+
+		<li class="skip"><b>EQP-3</b> 
+			<ul><li>cars are not supposed to pass on a red traffic
+				light, only on a green one</li></ul>
+			</li>
+	</ul>
+
+	<img src="./img/feux.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+
+	<ul>
+		<li><b>EQP-4</b>
+			<ul><li>the system is equipped with four car sensors
+				each with two states: <br> on or off</li></ul>
+			</li>
+		<li class="skip"><b>EQP-5</b>
+			<ul><li>the sensors are used to detect the presence
+				of cars entering <br> or leaving the bridge</li></ul>
+			</li>
+	</ul>
+	<img src="./img/capteur.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple d'un cahier des charges</h2>
+
+	<ul>
+		<li><b>FUN-2</b> 
+			<ul><li>the number of cars on the bridge and the island
+				is limited</li></ul>
+			</li>
+		
+		<li class="skip"><b>FUN-3</b> 
+			<ul><li>the bridge is one way or the other, not both at the
+				same time</li></ul>
+			</li>
+	</ul>
+	<img src="./img/capteur.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="L'activité de modélisation"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes B et Event-B</h2>
+    <ul>
+        <li class="fragment"><b>Méthodes formelles</b> permettant le  <b>développement de logiciels sûrs</b>.</li>
+        <li class="fragment skip">Conçue par le mathématicien français <a href="https://fr.wikipedia.org/wiki/Jean-Raymond_Abrial" target="_blank">J.R Abrial</a> en <i>1996</i>.</li>
+        <li class="fragment skip">Repose sur les travaux menés à l’université d’Oxford par <a href="https://fr.wikipedia.org/wiki/Charles_Antony_Richard_Hoare" target="_blank">C.A.R. Hoare</a>.</li>
+        <li class="fragment skip"><a href="https://dl.acm.org/doi/10.5555/236705" target="_blank">The B-Book</a> et 
+            <a href="https://www.cambridge.org/core/books/modeling-in-eventb/F39FF5F1B60F0AA585718B8E6A4F9DD7" target="_blank">Modeling in Event-B</a> de J.R. Abrial sont les ouvrages fondamentaux
+            des méthodes <b>B</b> et <b>Event-B</b>.</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes B et Event-B</h2>
+
+	<ul>
+		<li class="fragment">
+			Les modèles permettent de <b>raisonner</b> sur le futur système
+		</li>
+
+		<li class="fragment skip">
+			En utilisant des <b>conventions</b>, cela devraient nous faciliter <br> le raisonnement
+		</li>
+
+		<li class="fragment skip">
+			La méthode <b>Event-B</b> utilise des conventions basées <br> sur les <b>mathématiques discrètes</b> :
+			<ul id="fleche">
+				<li><b>Logique du premier ordre</b> (calcul des prédicats)</li>
+				<li><b>Théorie des ensembles</b> (ensembles, relations et fonctions)</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples de développement</h2>
+	<ul>
+		<li class="fragment">Systèmes de trains entièrement <b>automatiques</b></li>
+		<li class="fragment skip">Ligne 14 du métro parisien (octobre 1998)</li>
+		<li class="fragment skip">Navette de  l'aéroport de Roissy CDG (mars 2007)</li>
+		<li class="fragment skip">Dans chaque cas, seule la <b>partie critique</b> pour la sécurité est 
+			réalisée avec une méthode formelle utilisant la preuve (<b>la méthode B</b>)</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Comparaison des développements</h2>
+	<table>
+		<thead>
+			<tr>
+				<th> </th>
+				<th>Paris</th>
+				<th>Roissy</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="fragment">
+				<td>Nombre de lignes <b>ADA</b> (à partir de <b>B</b>)</td>
+				<td>86 000</td>
+				<td>158 000</td>
+			</tr>
+			<tr class="fragment">
+				<td>Nombre de preuves</td>
+				<td>27 800</td>
+				<td>43 610</td>
+			</tr>
+			<tr class="fragment">
+				<td>Pourcentage de la preuve interactive</td>
+				<td>8.3 $\%$</td>
+				<td>3.3 $\%$</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="green-block" class="fragment skip" style="text-align: center;">
+		Dans les deux cas, <b>pas de tests unitaires</b> <br>
+		et <b>pas de tests d'intégration</b>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'état d'un modèle</h2>
+
+	<ul>
+		<li class="fragment"><b>Un modèle discret</b> est d'abord constitué d'un <b>état</b></li>
+		<li class="fragment skip">L'état est représenté par des <b>constantes</b> et des <b>variables</b></li>
+		<li class="fragment skip">Les <b>constantes</b> sont liées par certaines <b>propriétés</b></li>
+		<li class="fragment skip">Les <b>variables</b> sont liées par des <b>invariants</b></li>
+		<li class="fragment skip">Les <b>propriétés</b> et les <b>invariants</b> sont écrits à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les événements d'un modèle (transitions)</h2>
+	<ul>
+		<li class="fragment"><b>Un modèle discret</b> est également constitué d'un certain nombre <b>d'événements</b></li>
+		<li class="fragment skip">Un <b>événement</b> est composé <b>d'une garde</b> et <b>d'une action</b></li>
+		<li class="fragment skip">La <b>garde</b> indique la <b>condition d'activation</b> de l'événement</li>
+		<li class="fragment skip">L'<b>action</b> indique la façon dont <b>l'état est modifié</b> par l'événement</li>
+		<li class="fragment skip">Les <b>gardes</b> et les <b>actions</b> sont écrites à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Une vue schématique du modèle</h2>
+	<div style="display: flex;">
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
+                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
+                <li>&nbsp;</li>
+                <li class="fragment"><span class="eb-cl">SETS</span> $s$</li>
+                <li class="fragment"><span class="eb-cl">CONSTANTS</span> $c$</li>
+                <li class="fragment"><span class="eb-cl">AXIOMS</span>
+                    <ul>
+                        <li>$A(s,c)$</li>
+                    </ul>
+                </li>
+                <li class="fragment"><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
+                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
+                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
+                <li>&nbsp;</li>
+                <li class="fragment"><span class="eb-cl">VARIABLES</span> $v$</li>
+                <li class="fragment"><span class="eb-cl">INVARIANTS</span>
+                    <ul>
+                        <li>$I(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li class="fragment"><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li class="fragment"><span class="eb-cl">EVENTS</span>
+                    <ul>
+                        <li>$[events\_list]$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+		<div class="fragment" style="width: 33%;">
+			<ul id="eb">
+				<li>event $\mathrel{\widehat=}$ 
+					<ul>
+						<li><span class="eb-kw">any</span> $x$</li>
+						<li><span class="eb-kw">where</span>
+							<ul>
+								<li>$G(s,c,v,x)$</li>
+							</ul>
+						</li>
+						<li><span class="eb-kw">then</span>
+							<ul>
+								<li>$BA(s,c,v,x,v')$</li>
+							</ul>
+						</li>
+						<li><span class="eb-kw">end</span></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interprétation opérationnelle</h2>
+	<ul>
+		<li class="fragment">L'exécution d'un événement est censée <b>ne pas prendre de temps</b></li>
+		<li class="fragment skip">Deux événements <b>ne peuvent pas se produire simultanément</b></li>
+		<li class="fragment skip">Si tous les événements ont des gardes fausses, <b>le système s'arrête</b></li>
+		<li class="fragment skip">Si plusieurs événements ont des gardes vraies, <b>l'un d'eux est choisi</b> <br>
+			 de manière non déterministe, et <b>son action modifie l'état</b></li>
+		<li class="fragment skip">La phase précédente est <b>répétée</b> (si possible)</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interprétation opérationnelle</h2>
+	<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+		Initialize;
+		while (some events have true guards) {
+			Choose one such event;
+			Modify the state accordingly;
+		}	                            
+	</script></code></pre>
+
+	<ul>
+		<li class="fragment skip">L'arrêt n'est pas nécessaire : <b>un système discret peut s'exécuter indéfiniment</b></li>
+		<li class="fragment skip">Cette interprétation est juste donnée ici pour une <b>compréhension informelle</b></li>
+		<li class="fragment skip">L'<b>interprétation</b> d'un système discret est <b>donnée par les preuves</b> <br> qui peuvent être effectuées sur lui</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Une vue schématique du modèle</h2>
+	<div style="display: flex;">
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
+                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
+                <li>&nbsp;</li>
+                <li><span class="eb-cl">SETS</span> $s$</li>
+                <li><span class="eb-cl">CONSTANTS</span> $c$</li>
+                <li><span class="eb-cl">AXIOMS</span>
+                    <ul>
+                        <li>$A(s,c)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
+                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
+                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
+                <li>&nbsp;</li>
+                <li><span class="eb-cl">VARIABLES</span> $v$</li>
+                <li><span class="eb-cl">INVARIANTS</span>
+                    <ul>
+                        <li>$I(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">EVENTS</span>
+                    <ul>
+                        <li>$[events\_list]$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+		<div style="width: 33%;">
+			<ul id="eb">
+				<li>event $\mathrel{\widehat=}$ 
+					<ul>
+						<li><span class="eb-kw">any</span> $x$</li>
+						<li><span class="eb-kw">where</span>
+							<ul>
+								<li>$G(s,c,v,x)$</li>
+							</ul>
+						</li>
+						<li><span class="eb-kw">then</span>
+							<ul>
+								<li>$BA(s,c,v,x,v')$</li>
+							</ul>
+						</li>
+						<li><span class="eb-kw">end</span></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+    </div>
+	<div class="skip">
+		<ul id="eb">
+			<li class="fragment">$A(s,c) \mathbin\Rightarrow T(s,c) $</li>
+			<li class="fragment">$A(s,c) \land I(s,c,v) \mathbin\Rightarrow T(s,c,v)$</li>
+			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') \mathbin\Rightarrow I(s,c,v')$</li>
+			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  \mathbin\Rightarrow \exists v'.BA(s,c,v,x,v')$</li>
+			<li class="fragment">...</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Construire des systèmes complexes</h2>
+	<ul>
+		<li class="fragment">
+			La formalisation contient des modèles :
+			<ul>
+				<li>des <b>futurs composants logiciels</b></li>
+				<li>des <b>futurs équipements</b> autour de ces composants</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			La construction globale du modèle peut être <b>très complexe</b>
+		</li>
+		<li class="fragment skip">
+			Le <b>raffinement</b>  peut être utilisé pour maîtriser cette complexité
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le raffinement</h2>
+	<ul>
+		<li class="fragment">Le <b>raffinement</b> nous permet de construire un modèle <b>progressivement</b></li>
+		<li class="fragment skip">Nous construirons <b>une séquence ordonnée</b> de modèles plus précis</li>
+		<li class="fragment skip">Chaque modèle est <b>un raffinement</b> de celui qui le précède</li>
+		<li class="fragment skip">Une analogie : regarder à travers <b>un microscope</b></li>
+		<li class="fragment skip">Extensions <b>spatiales</b> et <b>temporelles</b></li>
+		<li class="fragment skip"><b>Raffinement des données</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les phases du développement formel</h2>
+	<img src="./img/cycle_ref.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les phases du développement formel</h2>
+	<ul>
+		<li class="fragment">Construction du <b>modèle abstrait </b>
+			<ul>
+				<li><b>le document d'exigences</b> logicielles est donné</li>
+				<li>les détails de ce document sont progressivement <b>extraits</b></li>
+				<li>le modèle abstrait est construit par <b>raffinements successifs</b></li>
+			</ul>
+		</li>
+		
+		<li class="fragment skip">
+			Construction du <b>modèle concret</b>
+			<ul>
+				<li>la construction du modèle concret se fait par <b>raffinements successifs</b></li>
+				<li>les <b>constructions mathématiques</b> se transforment en <b>objets informatiques</b></li>
+				<li>les <b>évènements</b> se transforment en <b>structures de programmation</b></li>
+			</ul>
+		</li>
+	
+		<li class="fragment skip">
+			Obtention du <b>code exécutable</b>
+			<ul>
+				<li>le modèle concret est vérifié par un <b>outil de traduction</b></li>
+				<li>le modèle concret est traduit en <b>un programme classique</b></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les phases du développement formel</h2>
+	<img src="./img/dev-event-b.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="En résumé ..."></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Objectifs du cours</h2>
+	<ul>
+		<li class="fragment">Donner un aperçu sur les activités de <b>modélisation</b> <br> et du <b>raisonnement formel</b></li>
+		<li class="skip fragment">Montrer que les programmes peuvent être <b>corrects par construction</b></li>
+		<li class="skip fragment">Montrer que la modélisation peut être rendue <b>pratique</b></li>
+		<li class="skip fragment">Illustrer cette approche par de nombreux <b>exemples</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Ce que vous apprendrez</h2>
+	<ul>
+		<li class="fragment">À la fin du cours, vous devriez être à l'aise avec :
+			<ul id="fleche">
+				<li class="skip fragment">La <b>modélisation</b> (versus programmation)</li>
+				<li class="fragment">L'<b>abstraction</b> et le <b>raffinement</b></li>
+				<li class="fragment">Quelques <b>techniques mathématiques</b> utilisées pour le raisonnement</li>
+				<li class="fragment">La pratique de <b>la preuve</b> comme moyen de <b>construire des programmes</b></li>
+				<li class="fragment">L'utilisation de certains <b>outils de preuve</b></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'évaluation ...</h2>
+	<ul>
+		<li class="fragment">L'étude de cas 
+			<a href="https://abz2020.uni-ulm.de/resources/files/casestudyABZ2020v1.17.pdf" target="_blank">Adaptive Exterior Light and Speed Control System</a>
+			<ul>
+				<li>l'étude de cas de la conférence internationale ABZ 2020</li>
+				<li>projet sur deux jours : $2 \times 3h$</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>

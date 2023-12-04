@@ -1,0 +1,728 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Développement de systèmes critiques avec la méthode Event-B : Modélisation, Raffinement et Preuve</title>
+
+	<meta name="description" content="Développement de systèmes critiques avec la méthode Event-B : Modélisation, Raffinement et Preuve">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/cs.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Développement de systèmes critiques avec la méthode Event-B</h2>
+		<h3>Modélisation, Raffinement et Preuve</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>3A cursus ingénieurs - Mention Sciences du Logiciel</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Introduction"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+	<ul>
+        <li class="fragment">The <b>Rodin Platform</b> is an <b>Eclipse-based IDE</b> for <b>Event-B</b> that provides effective 
+            support for refinement and mathematical proof. </li>
+
+        <li class="skip fragment">The platform is <b>open source</b>, contributes to the <b>Eclipse framework</b> 
+            and is further extendable with <b>plugins</b>.</li>
+
+        <li class="skip fragment">
+            <b>Rodin Platform and Plug-in Installation</b>: 
+            <ul>
+                <li>Requires <b>Java 11</b></li>
+                <li>Download the Core: <a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/" target="_blank">Rodin Platform file</a> for your platform.</li>
+                <li>Install the <b>Atelier B Provers plugin</b> from the Atelier B Provers Update site.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Purpose of this Lecture</h2>
+    <ul>
+        <li class="fragment">To present an <b>example of system development</b> </li>
+        <li class="skip fragment">Our approach: a series of <b>more and more accurate models</b> </li>
+        <li class="skip fragment">This approach is called <b>refinement</b> </li>
+        <li class="skip fragment">The models formalize the view of an <b>external observer</b> </li>
+        <li class="skip fragment">With each refinement <b>observer “zooms in”</b>  to see more details</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Purpose of this Lecture</h2>
+    <ul>
+        <li>Each model will be analyzed and <b>proved to be correct</b> </li>
+        <li class="skip fragment">The <b>aim</b> is to obtain a system that will be <b>correct by construction</b> </li>
+        <li class="skip fragment">The <b>correctness criteria</b>  are formulated as <b>proof obligations</b> </li>
+        <li class="skip fragment"><b>Proofs</b> will be performed by using the <b>sequent calculus</b> </li>
+        <li class="skip fragment"><b>Inference rules</b> used in the sequent calculus will be <b>reviewed</b> </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>What you will Learn</h2>
+    <ul>
+        <li class="fragment">The concepts of <b>state</b> and <b>events</b> for defining models</li>
+        <li class="skip fragment">Some <b>principles</b> of system development: <b>invariants</b> and <b>refinement</b></li>
+        <li class="skip fragment">A refresher of <b>classical logic</b> and <b>simple arithmetic foundations</b></li>
+        <li class="skip fragment">A refresher of <b>formal proofs</b></li>
+    </ul>
+
+    <div id="green-block" class="skip fragment">
+        <b>Remark</b> :  
+        <b>Theoretical background </b> provided during development.
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Presentation of the requirement document"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+	<ul>
+        <li class="fragment">The system we are going to build is a <b>piece of software</b>  connected <br>
+            to some <b>equipment</b>.</li>
+        <li class="skip fragment">There are two kinds of requirements:
+            <ul>
+                <li>those concerned with the <b>equipment</b>, labeled <b>EQP</b>,</li>
+                <li>those concerned with the <b>function</b>  of the system, labeled <b>FUN</b>.</li>
+            </ul>
+        </li>
+        <li class="skip fragment">The function of this system is to <b>control cars</b>  on a <b>narrow bridge</b>.</li>
+        <li class="skip fragment">This bridge is supposed to link the <b>mainland</b> to a small <b>island</b>.</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+    <ul>
+        <li><b>FUN-1</b>: the system is controlling cars on a bridge
+        between <br> the mainland and an island</li>
+		</li>
+    </ul>
+
+	<div class="skip">
+        <img data-id="img1"  src="./img/bridge.svg" alt="">
+    </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+    <div>
+        The controller is equipped with two traffic lights with two colors.
+    </div>
+    <ul>
+        <li class="skip"><b>EQP-1</b>: 
+            <ul>
+                <li>the system has two traffic lights with two colors: green and red. </li>
+                <li>
+                    one of the traffic lights is situated on the mainland and the other
+                    one <br> on the island. Both are close to the bridge.
+                </li>
+            </ul>
+            </li>
+        
+    </ul>
+    <div class="skip">
+	    <img data-id="img1" src="./img/feux.svg" alt=""> 
+    </div>  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+    <ul>
+		<li><b>EQP-2</b>:
+			the traffic lights control the entrance to the
+				bridge <br> at both ends of it
+			</li>
+
+		<li class="skip"><b>EQP-3</b>: 
+			cars are not supposed to pass on a red traffic
+				light, <br> only on a green one
+			</li>
+	</ul> 
+    <div class="skip">
+	    <img data-id="img1" src="./img/feux.svg" alt=""> 
+    </div> 
+   
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+
+	<ul>
+		<li><b>EQP-4</b>:
+			the system is equipped with four car sensors
+				each with two states: on or off
+			</li>
+		<li class="skip"><b>EQP-5</b>:
+			the sensors are used to detect the presence
+				of cars entering <br> or leaving the bridge
+			</li>
+	</ul>
+
+    <div class="skip"><img data-id="img1" src="./img/capteur.svg" alt=""></div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Requirements Document</h2>
+
+	<ul>
+		<li><b>FUN-2</b>:
+			the number of cars on the bridge and the island
+				is limited
+			</li>
+		
+		<li class="skip"><b>FUN-3</b>: 
+			the bridge is one way or the other, not both at the
+				same time
+			</li>
+	</ul>
+	<div class="skip"><img data-id="img1" src="./img/capteur.svg" alt=""></div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Defining the refinement strategy"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Our Refinement Strategy</h2>
+	<ul>
+        <li class="fragment"><b>Initial model</b>: Limiting the number of cars (<b>FUN-2</b>)</li>
+        <li class="skip fragment"><b>First refinement</b>: Introducing the one way bridge (<b>FUN-3</b>)</li>
+        <li class="skip fragment"><b>Second refinement</b>: Introducing the traffic lights (<b>EQP-1,2,3</b>)</li>
+        <li class="skip fragment"><b>Third refinement</b>: Introducing the sensors (<b>EQP-4,5</b>)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Development of the initial model and the refinements"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Our Refinement Strategy</h2>
+	<ul>
+        <li style="color: red;"><b style="color: red;">Initial model</b>: Limiting the number of cars (<b style="color: red;">FUN-2</b>)</li>
+        <li class="skip"><b>First refinement</b>: Introducing the one way bridge (<b>FUN-3</b>)</li>
+        <li class="skip"><b>Second refinement</b>: Introducing the traffic lights (<b>EQP-1,2,3</b>)</li>
+        <li class="skip"><b>Third refinement</b>: Introducing the sensors (<b>EQP-4,5</b>)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Initial Model</h2>
+    <ul>
+        <li class="fragment">It is <b>very simple</b></li>
+        <li class="fragment skip">We completely ignore the equipment: traffic lights and sensors</li>
+        <li class="fragment skip">We do not even consider the bridge</li>
+        <li class="fragment skip">We are just interested in the <b>pair “island-bridge”</b> </li>
+        <li class="fragment skip">We are focusing <b>FUN-2</b>: limited number of cars on island-bridge</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A Situation as Seen from the Sky</h2>
+    <img data-id="img2" src="./img/second-model.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Two Events that may be Observed</h2>
+    <img data-id="img2" src="./img/first-model.svg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formalizing the State</h2>
+    <div class="slide-content">
+        <ul>
+            <li><b>STATIC PART</b> of the state: <b>constant</b> <code class="listing">d</code> with <b>axiom</b>  
+                <code class="listing">axm0_1</code></li>
+            <div class="skip" style="display: flex;">
+                <div style="width: 50%;">
+                    <ul id="eb">
+                        <li><span class="eb-cl">CONSTANTS</span> 
+                            <ul><li>$d$</li></ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 50%;">
+                    <ul id="eb">
+                        <li><span class="eb-cl">AXIOMS</span> 
+                            <ul><li><span class="eb-cm">axm0_1:</span> $d \in \mathbb N$</li></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <li class="skip"><code class="listing">d</code> is the maximum number of cars allowed on the Island-Bridge</li>
+            <li class="skip"><code class="listing">axm0_1</code> states that <code class="listing">d</code> is a natural number</li>
+            <li class="skip">Constant <code class="listing">d</code> is a member of the set $\mathbb N = \{0,1,2,...\}$</li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formalizing the State</h2>
+    <div class="slide-content">
+        <ul>
+            <li><b>DYNAMIC PART</b>: <b>variable</b> <code class="listing">n</code> with <b>invariants</b>  
+                <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
+            <div class="skip" style="display: flex;">
+                <div style="width: 50%;">
+                    <ul id="eb">
+                        <li><span class="eb-cl">VARIABLES</span> 
+                            <ul><li>$n$</li></ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="width: 50%;">
+                    <ul id="eb">
+                        <li><span class="eb-cl">INVARIANTS</span> 
+                            <ul>
+                                <li><span class="eb-cm">inv0_1:</span> $n \in \mathbb N$</li>
+                                <li><span class="eb-cm">inv0_2:</span> $n \leq d$</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <li class="skip"><code class="listing">n</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
+            <li class="skip"><code class="listing">n</code> is a natural number (<code class="listing">inv0_1</code>)</li>
+            <li class="skip"><code class="listing">n</code> is always smaller than or equal to <code class="listing">d</code> 
+                (<code class="listing">inv0_2</code>): this is <b>FUN 2</b></li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Event ML_out</h2>
+    <ul>
+        <li>This is the <b>first transition</b>  (or event) that can be <b>observed</b> </li>
+        <li class="skip">A car is leaving the mainland and entering the Island-Bridge
+            <img src="./img/ml_out.svg" alt="">
+        </li>
+        <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>incremented</b> </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Event ML_in</h2>
+    <ul>
+        <li>We can also observe a <b>second transition</b> (or event) </li>
+        <li class="skip">A car leaving the Island-Bridge and re-entering the mainland
+            <img src="./img/ml_in.svg" alt="">
+        </li>
+        <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>decremented</b> </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formalizing the two Events (Approximation)</h2>
+    
+    <ul>
+        <li>An event is denoted by its <b>name</b>  and its <b>action</b>  (an assignment)</li>
+
+        <li class="fragment skip">Event <code class="listing">ML_out</code> <b>increments</b>  the number of cars
+        
+            <ul id="eb">
+                <li>ML_out $\mathrel{\widehat=}$
+                    <ul>
+                        <li><span class="eb-kw">then</span>
+                            <ul>
+                                <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
+                            </ul>     
+                        </li>
+                        <li><span class="eb-kw">end</span></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </li>
+
+        <li class="fragment skip">Event <code class="listing">ML_in</code> <b>decrements</b>  the number of cars
+            <ul id="eb">
+                <li>ML_in $\mathrel{\widehat=}$
+                    <ul>
+                        <li><span class="eb-kw">then</span>
+                            <ul>
+                                <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
+                            </ul>     
+                        </li>
+                        <li><span class="eb-kw">end</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Why an Approximation?</h2>
+    <ul>
+        <li>These events are approximations for <b>two reasons</b>:
+            <ol>
+                <li class="fragment">They might be <b>refined</b>  (made more precise) later</li>
+                <li class="fragment">They might be <b>insufficient</b> at this stage because <b>not consistent <br>
+                    with the invariant</b> </li>
+            </ol>
+        </li>
+
+        <li class="fragment skip">We have to perform a <b>proof</b> in order to <b>verify this consistency</b>.</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Invariants</h2>
+    <ul>
+        <li>An invariant is a <b>constraint</b>  on the allowed values of the variables</li>
+
+        <li class="skip">An invariant <b>must hold on all reachable states</b>  of a model</li>
+
+        <li class="skip">To verify that this holds we must show that
+            <ol>
+                <li>the invariant holds for <b>initial states</b>, and</li>
+                <li>the invariant is <b>preserved by all events</b> </li>
+            </ol>
+
+        </li>
+
+        <li class="skip">We will formalize these two statements as <b>proof obligations (POs)</b> </li>
+
+        <li class="skip">We need a <b>rigorous proof</b>  showing that these POs indeed hold</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Before-after Predicates</h2>
+
+    <ul>
+        <li>To each event can be associated a <b>before-after predicate</b></li>
+
+        <li class="skip">It describes the <b>relation</b>  between the <b>values</b>  of the variable(s) <br> 
+           <b>just before</b> and <b>just after</b> the event occurrence</li>
+
+        <li class="skip">The <b>before-value</b> is denoted by the <b>variable name</b>, say <code class="listing">$n$</code> </li>
+
+        <li class="skip">The <b>after-value</b> is denoted by the <b>primed variable name</b>, say <code class="listing">$n'$</code></li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Before-after Predicate Examples</h2>
+    <ul>
+        <li>The Events</li>
+        <div style="display: flex;">
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>ML_out $\mathrel{\widehat=}$
+                        <ul>
+                            <li><span class="eb-kw">then</span>
+                                <ul>
+                                    <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
+                                </ul>     
+                            </li>
+                            <li><span class="eb-kw">end</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>ML_in $\mathrel{\widehat=}$
+                        <ul>
+                            <li><span class="eb-kw">then</span>
+                                <ul>
+                                    <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
+                                </ul>     
+                            </li>
+                            <li><span class="eb-kw">end</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <li class="skip fragment">The corresponding <b>before-after predicates</b></li>
+        <div class="fragment" style="display: flex;">
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>$n' = n + 1$</li>
+                </ul>
+            </div>
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>$n' = n - 1$</li>
+                </ul>
+            </div>
+        </div>
+
+        <li class="skip fragment">These representations are equivalent.</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>About the Shape of the Before-after Predicates</h2>
+
+    <ul>
+        <li>The before-after predicates we have shown are <b>very simple</b></li>
+        <div style="display: flex;">
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>$n' = n + 1$</li>
+                </ul>
+            </div>
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li>$n' = n - 1$</li>
+                </ul>
+            </div>
+        </div>
+
+        <li class="skip fragment">The after-value <code class="listing">$n'$</code> is defined as a <b>function</b>  of the before-value  <code class="listing">$n$</code></li>
+
+        <li class="skip fragment">This is because the corresponding events are <b>deterministic</b> </li>
+
+        <li class="skip fragment">In later lectures, we shall consider some <b>non-deterministic</b>  events:
+            $$n' \in \{n + 1, n + 2\}$$
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>NEW SLIDE</h2>
+	<div class="slide-content">
+    </div>
+	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Our Refinement Strategy</h2>
+	<ul>
+        <li><b>Initial model</b>: Limiting the number of cars (<b>FUN-2</b>)</li>
+        <li class="skip" style="color: red;"><b style="color: red;">First refinement</b>: Introducing the one way bridge (<b style="color: red;">FUN-3</b>)</li>
+        <li class="skip"><b>Second refinement</b>: Introducing the traffic lights (<b>EQP-1,2,3</b>)</li>
+        <li class="skip"><b>Third refinement</b>: Introducing the sensors (<b>EQP-4,5</b>)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>NEW SLIDE</h2>
+	<div class="slide-content">
+    </div>
+	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Our Refinement Strategy</h2>
+	<ul>
+        <li><b>Initial model</b>: Limiting the number of cars (<b>FUN-2</b>)</li>
+        <li class="skip"><b>First refinement</b>: Introducing the one way bridge (<b>FUN-3</b>)</li>
+        <li class="skip" style="color: red;"><b style="color: red;">Second refinement</b>: Introducing the traffic lights (<b style="color: red;">EQP-1,2,3</b>)</li>
+        <li class="skip"><b>Third refinement</b>: Introducing the sensors (<b>EQP-4,5</b>)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>NEW SLIDE</h2>
+	<div class="slide-content">
+    </div>
+	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Our Refinement Strategy</h2>
+	<ul>
+        <li><b>Initial model</b>: Limiting the number of cars (<b>FUN-2</b>)</li>
+        <li class="skip"><b>First refinement</b>: Introducing the one way bridge (<b>FUN-3</b>)</li>
+        <li class="skip"><b>Second refinement</b>: Introducing the traffic lights (<b>EQP-1,2,3</b>)</li>
+        <li class="skip" style="color: red;"><b style="color: red;">Third refinement</b>: Introducing the sensors (<b style="color: red;">EQP-4,5</b>)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>NEW SLIDE</h2>
+	<div class="slide-content">
+    </div>
+	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan-en.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
