@@ -649,18 +649,6 @@ car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>co
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les événements d'un modèle (transitions)</h2>
-	<ul>
-		<li class="fragment"><b>Un modèle discret</b> est également constitué d'un certain nombre <b>d'événements</b></li>
-		<li class="fragment skip">Un <b>événement</b> est composé <b>d'une garde</b> et <b>d'une action</b></li>
-		<li class="fragment skip">La <b>garde</b> indique la <b>condition d'activation</b> de l'événement</li>
-		<li class="fragment skip">L'<b>action</b> indique la façon dont <b>l'état est modifié</b> par l'événement</li>
-		<li class="fragment skip">Les <b>gardes</b> et les <b>actions</b> sont écrites à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Une vue schématique du modèle</h2>
 	<div style="display: flex;">
         <div style="width: 33%;">
@@ -701,7 +689,71 @@ car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>co
                         <li>$T(s,c,v)$</li>
                     </ul>
                 </li>
-                <li class="fragment"><span class="eb-cl">EVENTS</span>
+                <li class="fragment">...</li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+		<div style="width: 33%;">
+		</div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les événements d'un modèle (transitions)</h2>
+	<ul>
+		<li class="fragment"><b>Un modèle discret</b> est également constitué d'un certain nombre <b>d'événements</b></li>
+		<li class="fragment skip">Un <b>événement</b> est composé <b>d'une garde</b> et <b>d'une action</b></li>
+		<li class="fragment skip">La <b>garde</b> indique la <b>condition d'activation</b> de l'événement</li>
+		<li class="fragment skip">L'<b>action</b> indique la façon dont <b>l'état est modifié</b> par l'événement</li>
+		<li class="fragment skip">Les <b>gardes</b> et les <b>actions</b> sont écrites à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Une vue schématique du modèle</h2>
+	<div style="display: flex;">
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
+                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
+                <li>&nbsp;</li>
+                <li><span class="eb-cl">SETS</span> $s$</li>
+                <li><span class="eb-cl">CONSTANTS</span> $c$</li>
+                <li><span class="eb-cl">AXIOMS</span>
+                    <ul>
+                        <li>$A(s,c)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">END</span></li>
+            </ul>
+        </div>
+
+        <div style="width: 33%;">
+            <ul id="eb">
+                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
+                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
+                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
+                <li>&nbsp;</li>
+                <li><span class="eb-cl">VARIABLES</span> $v$</li>
+                <li><span class="eb-cl">INVARIANTS</span>
+                    <ul>
+                        <li>$I(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">THEOREMS</span>
+                    <ul>
+                        <li>$T(s,c,v)$</li>
+                    </ul>
+                </li>
+                <li><span class="eb-cl">EVENTS</span>
                     <ul>
                         <li>$[events\_list]$</li>
                     </ul>
@@ -710,8 +762,8 @@ car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>co
             </ul>
         </div>
 
-		<div class="fragment" style="width: 33%;">
-			<ul id="eb">
+		<div style="width: 33%;">
+			<ul class="fragment" id="eb">
 				<li>event $\mathrel{\widehat=}$ 
 					<ul>
 						<li><span class="eb-kw">any</span> $x$</li>
