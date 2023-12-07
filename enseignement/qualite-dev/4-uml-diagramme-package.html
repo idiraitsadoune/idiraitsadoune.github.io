@@ -121,17 +121,17 @@
     <h2>Définitions</h2>
     <ul>
         <li class="fragment">
-            Un <b>paquetage</b> regroupe des éléments de la modélisation appelés <b>membres</b>,
+            Un <b>paquetage</b> regroupe des éléments de la modélisation appelés <i>membres</i>,
             portant sur <b>un sous-ensemble du système</b>.
         </li>
         <li class="fragment skip">
-            <b>Le découpage en paquetage</b> doit traduire un découpage logique <br>
-            du système correspondant à <b>des espaces de nommage homogènes</b>.
+            <i>Le découpage en paquetage</i> doit traduire <b>un découpage logique</b> <br>
+            du système correspondant à <i>des espaces de nommage homogènes</i>.
         </li>
         <li class="fragment skip">
-            Un <b>paquetage</b> permet de grouper <b>n'importe quelle éléments d'UML</b> 
+            Un <b>paquetage</b> permet de grouper <i>n'importe quelle éléments d'UML</i> <br>
             dans des unités de plus haut niveau. 
-            <ul id="fleche">
+            <ul>
                 <li class="fragment">classes, composants, cas d’utilisation, ..., et d’autres paquetages.
                 </li>
             </ul>
@@ -150,24 +150,30 @@
     <h2>Nom d'un paquetage</h2>
     <ul>
         <li class="fragment">
-            Chaque <b>paquetage</b> doit avoir 
-            un <b>nom différent</b> <br> (<b>espace de nommage</b>).
+            Chaque <i>paquetage</i> doit avoir 
+            un <i>nom différent</i> <br> (<b>espace de nommage</b>).
         </li>
 
         <li class="fragment skip">
             Les éléments contenus dans un paquetage se distinguent 
-            par leur <b>appartenance</b> au <b>paquetage englobant</b>.
+            par leur <i>appartenance</i> au <i>paquetage englobant</i>.
             <ul id="fleche">
-                <li class="fragment"><b>deux éléments</b> de <b>deux paquetages</b> 
-                    peuvent avoir <b>le même nom</b>.
+                <li class="fragment"><i>deux éléments</i> dans <i>deux paquetages</i> 
+                    peuvent porter <i>le même nom</i>.
                 </li>
-                <li class="fragment"><b>deux éléments</b> du <b>même paquetage</b> 
-                    doivent avoir <b>des noms différents</b>.
+                <li class="fragment"><i>deux éléments</i> dans <i>le même paquetage</i> 
+                    doivent porter <i>des noms différents</i>.
                 </li>
             </ul>
         </li>
     </ul>
-    <img height="230px" class="fragment" src="./img/15-uml-03.svg" />
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+
+    <img height="400px" src="./img/15-uml-03.svg" />
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -176,15 +182,15 @@
     <img src="./img/15-uml-04.svg" />
     <ul>
         <li class="fragment">
-            Le nom d’un élément est dit <b>simple</b> s’il est utilisé <b>seul</b>. 
+            Le <i>nom</i> d’un élément est dit <b>simple</b> s’il est utilisé <i>seul</i>. 
             <ul id="fleche">
                 <li>la classe <code class="listing">Roue</code></li>
             </ul>
         </li>
 
         <li class="fragment skip">
-            Le nom d’un élément est dit <b>complet</b> s’il est précédé par <b>les noms <br>
-                des paquetages englobants</b> (<b>name space</b>). 
+            Le <i>nom</i> d’un élément est dit <b>complet</b> s’il est précédé par <i>les noms <br>
+                des paquetages englobants</i> (<b>name space</b>). 
                 <ul id="fleche">
                 <li>la classe <code class="listing">voiture::systeme-acceleration::Roue</code></li>
             </ul>
@@ -196,10 +202,11 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>La visibilité</h2>
     <ul>
-        <li class="fragment">Les éléments d’un <b>paquetage</b> peuvent avoir une <b>visibilité</b>:
+        <li class="fragment">Les éléments d’un <i>paquetage</i> peuvent avoir une <i>visibilité</i> déclarée:
             <ul>
-                <li class="fragment">de type <b>public</b> (par défaut) </li>
-                <li class="fragment">de type <b>privé</b> (<code class="listing">private</code> : non visible à l'extérieur du paquetage).</li>
+                <li class="fragment">de type <b>public</b> (par défaut) : visible dans tout le modèle.</li>
+                <li class="fragment">de type <b>privé</b> (<code class="listing">private</code>) : non visible 
+                    à l'extérieur du paquetage.</li>
             </ul>
         </li>
     </ul>
@@ -217,12 +224,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Relation de dépendances</h2>
     <ul>
-        <li class="fragment"><b>Une relation de dépendance</b> doit exister dès que <i>deux éléments issus de deux paquetages sont associés</i>.
-            <ul><li>hormis les cas de dépendances implicites (emboîtement de paquetages)</li></ul>
+        <li class="fragment"><b>Une relation de dépendance</b> doit exister dès que 
+            <i>deux éléments issus de deux paquetages sont associés</i>.
+            <ul id="fleche"><li>hormis les cas de dépendances implicites (<i>emboîtement de paquetages</i>)</li></ul>
         </li>
 
-        <li class="fragment skip">C'est une <b>relation unidirectionnelle</b> entre <b>paquetages</b>. 
-            <ul><li>une modification de la cible peut impliquer une modification de la source</li></ul>
+        <li class="fragment skip">C'est une <i>relation unidirectionnelle</i> entre <i>paquetages</i>. 
+            <ul id="fleche"><li>une modification de la cible peut impliquer une modification de la source</li></ul>
         </li>
 
         <li class="fragment skip">Une relation de dépendance se représente par <i>une flèche en pointillé</i>. 
@@ -240,17 +248,27 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Importation de paquetage</h2>
     <ul>
-        <li>Pour <i>simplifier l'utilisation des éléments</i> contenus dans un autre paquetage, on peut utiliser l'<b>importation</b>.
-        <ul><li class="fragment">Ceci permet d’<i>importer l’espace de nommage</i> d’un autre paquetage.</li></ul>
+        <li class="fragment">Pour <i>simplifier l'utilisation des éléments</i> contenus dans un autre paquetage, 
+            on peut utiliser l'<b>importation</b>.
+            <ul id="fleche"><li class="fragment">permet d’<i>importer l’espace de nommage</i> d’un autre paquetage.</li></ul>
+        </li>
+        <li class="fragment skip">
+            Tous les membres d'un paquetage ont <i>accès à tous les membres <br> du paquetage importé</i>. 
+            <ul id="fleche"><li>sans utiliser explicitement le nom du paquetage importé.</li></ul>
         </li>
     </ul>
-    <img height="300px" class="fragment skip" src="./img/package-ex2.svg" />
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
-    On peut avoir <i>accès</i> à tous les membres du paquetage importé <i>sans utiliser le nom du paquetage importé</i>.
+    <h2>Exemple 1</h2>
+    <img height="400px" src="./img/package-ex2.svg" />
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple 2</h2>
+    
     <img height="300px" class="skip" src="./img/package-ex3.svg" />
     <div class="fragment">
         Le paquetage C a accès aux classes C1,C2 et C4.
@@ -261,16 +279,28 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Accès à un paquetage</h2>
     <ul>
-        <li>Pour <i>accéder</i> aux éléments d'un paquetage à partir d'un autre paquetage, il faut <i>utiliser le nom complet</i>.
+        <li class="fragment">Pour <i>accéder</i> aux éléments d'un paquetage à partir d'un autre paquetage, 
+            il faut <i>utiliser le nom complet</i>.
+            <ul id="fleche"><li>permet pour un paquetage d’avoir <i>accès à l’espace de nommage <br>
+                d’un autre paquetage</i>
+            </li></ul>
+        </li>
+        <li class="fragment skip">
+            L’espace de nommage n’est <i>pas importé et ne peut être transmis <br>
+                à d’autres paquetages</i> par transitivité. 
         </li>
     </ul>
-    <img height="300px" class="fragment skip" src="./img/package-ex4.svg" />
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
-    L’espace de nommage n’est <i>pas importé et ne peut être transmis <br> à d’autres paquetages</i> par transitivité.
+    <h2>Exemple 1</h2>
+    <img height="400px" src="./img/package-ex4.svg" />
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple 2</h2>
     <img height="300px" class="skip" src="./img/package-ex5.svg" />
     <div class="fragment">
         Le paquetage C a accès à la classe C4 seulement.
@@ -286,16 +316,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Définitions</h2>
+    <h2>La cohérence et l'indépendance</h2>
     <ul>
         <li class="fragment"><i>Le découpage en paquetages</i> doit traduire un <i>découpage logique</i> <br> 
-            du système correspondant à des <i>espaces de nommage homogènes</i>. </li>
+            du système à construire
+            <ul id="fleche"><li>des <i>espaces de nommage homogènes</i>.</li></ul>
+        </li>
         
-        <li class="fragment skip"><i>La structuration</i> d’un modèle dans un <i>diagramme de paquetages</i> s’appuie sur <i>deux principes</i> fondamentaux : 
+        <li class="fragment skip"><i>La structuration</i> d’un modèle dans un <i>diagramme de paquetages</i> 
+            s’appuie sur <i>deux principes</i> fondamentaux : 
         
         <ol>
-            <li class="fragment"><b>La cohérence</b> : consiste à <i>regrouper</i> les éléments de modélisation <i>proches d’un point de vue sémantique</i>.</li>
-            <li class="fragment"><b>L’indépendance</b> : consiste à renforcer ce découpage initial en s’efforçant de <i>minimiser les dépendances entre les paquetages</i>. </li>
+            <li class="fragment"><b>La cohérence</b> : <i>regrouper</i> les éléments <i>proches sémantiquement</i>.</li>
+            <li class="fragment"><b>L’indépendance</b> : <i>minimiser les dépendances</i> entre les paquetages. </li>
         </ol>
         </li>
     </ul>
@@ -305,14 +338,15 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Le principe de cohérence</h2>
     <ul>
-        <li class="fragment"><b>La cohérence</b> consiste à <i>regrouper</i> les éléments 
-            <i>proches d’un point de vue sémantique</i> en suivant les critères suivants: 
-            <ul>
-                <li class="fragment"><b>finalité</b> : les classes doivent rendre des <i>services de même nature</i>.</li>
-                <li class="fragment"><b>évolution</b> : les <i>classes stables</i> doivent être isolées de celles qui vont évoluer (<b>les classes métiers</b> 
-                    et <b>les classes applicatives</b>).</li>
-                <li class="fragment"><b>cycle de vie des objets</b> : les classes doivent être distinguées selon que leurs objets ont une <i>durée de vie</i> identique ou pas.</li>
-            </ul>
+        <li class="fragment"><b>La cohérence</b> consiste à <i>regrouper</i> les éléments   
+        <i>proches d’un point de vue sémantique</i> en suivant les critères suivants: 
+        <ul>
+            <li class="fragment skip"><b>finalité</b> : les classes doivent rendre des <i>services de même nature</i>.</li>
+            <li class="fragment skip"><b>évolution</b> : les <i>classes stables</i> doivent être isolées de celles qui vont évoluer 
+                (<i>les classes métiers</i> et <i>les classes applicatives</i>).</li>
+            <li class="fragment skip"><b>cycle de vie des objets</b> : les classes doivent être distinguées 
+                selon que leurs <i>objets</i>  ont une <i>durée de vie</i> identique ou pas.</li>
+        </ul>
         </li>
     </ul>
 </section>
@@ -320,15 +354,27 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Quel découpage ?</h2>
-    <img src="./img/example1.svg" alt="" width="100%">
+    <img data-id="decoupe" src="./img/compagnie-aerienne.svg" alt="" width="100%">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
+	<h2>Avantager la finalité</h2>
+    <img data-id="decoupe" src="./img/decoupe1.svg" alt="" width="100%">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Avantager l'évolution</h2>
+    <img data-id="decoupe" src="./img/decoupe2.svg" alt="" width="100%">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Un découpage qui avantage l'indépendance</h2>
+    <div id="default-block" style="text-align: center;">
+        Est ce qu'on peut faire mieux que le résultat obtenu à partir <br> des découpages précédents ?
     </div>
-	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -340,10 +386,56 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
+	<h2>Réduction de couplage</h2>
+
+    <img data-id="decoupe" src="./img/red-coup.svg" alt="" width="50%">
+
+    <div id="default-block" class="fragment">
+        <ul>
+            <li>Les associations qui traversent deux paquetages peuvent induire <br>
+               <i>des dépendances mutuelles</i>, si elles sont <i>bidirectionnelles</i>. </li>
+            <li class="fragment">
+                Le concepteur doit <i>réduire les dépendances mutuelles</i>, 
+                afin <i>d’augmenter la modularité et l’évolutivité</i> de son application.
+            </li>
+        </ul>
     </div>
-	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Privilégier un sens de navigation</h2>
+    <img data-id="decoupe" src="./img/red-coup-s1.svg" alt="" width="50%">
+    <ul>
+        <li class="fragment">
+            On fait un choix en <i>privilégiant un sens
+                de navigation</i>  afin d’éliminer <br> une des deux dépendances : <br>
+            <span class="fragment"> <em>"il est certain qu’une réservation est en relation forte avec 
+                le vol concerné, alors que le vol existe par lui-même, indépendamment <br> de toute réservation"</em> </span>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Inverser une dépendance</h2>
+    <div>
+        <i>L’inversion d'une dépendance</i> s'effectue, en <i>introduisant une classe abstraite</i> 
+       (ou une interface), de la façon suivante : 
+    </div>
+    <div class="skip">
+        <img class="fragment" src="./img/inv1.svg" height="auto" width="500px" alt="">
+        <img class="fragment" src="./img/inv2.svg" height="auto" width="700px" alt="">
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple</h2>
+	<div class="skip">
+        <img class="fragment" src="./img/red-coup.svg" height="auto" width="500px" alt="">
+        <img class="fragment" src="./img/red-coup-s2.svg" height="auto" width="700px" alt="">
+    </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
