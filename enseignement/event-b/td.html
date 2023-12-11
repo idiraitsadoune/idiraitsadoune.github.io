@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Développement de systèmes critiques avec la méthode Event-B - Conception d'un système de commande sûr pour un ascenseur</title>
+
+	<meta name="description" content="Développement de systèmes critiques avec la méthode Event-B - Conception d'un système de commande sûr pour un ascenseur">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Conception d'un système de commande sûr pour un ascenseur
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+   La spécification du système à étudier
+</div>
+<div style="text-align: center;">
+    <img src="./img/cover-asc.jpg" height="400px"> 
+	<img src="./img/ElevatorModel.jpg" height="400px"> 
+</div>
+
+<p class="text-justify">
+    Le logiciel étudié est un contrôleur qui pilote un ascenseur. Le système de l’ascenseur comprend les parties suivantes :
+    <ul>
+    <li> une cabine, </li>
+    <li>  une porte pour la cabine,</li>
+    <li>  un câble et un moteur pour déplacer la cabine,</li>
+    <li>  des capteurs pour détecter que la cabine a atteint un étage,</li>
+    <li>  un moteur pour ouvrir et fermer la porte de la cabine,</li>
+    <li>  des capteurs pour détecter si la porte de la cabine est ouverte ou fermée,</li>
+    <li>  $N + 1$ étages,</li>
+    <li>  un bouton sur chaque étage pour appeler la cabine,</li>
+    <li>  $N + 1$ boutons dans la cabine pour choisir les étages,</li>
+    <li>  un contrôleur qui pilote le système.</li>
+</ul>
+</p>
+
+<p class="text-justify">
+    Les entrées du système :
+   <ul>
+    <li>l’état du moteur du câble (enroulement, déroulement ou arrêt), </li>
+    <li>l’état du moteur de la porte (ouverture, fermeture ou arrêt),</li>
+    <li>l’état des capteurs d’étage (numéro de l’étage atteint par l’ascenseur ou $-1$ si l’ascenseur est
+    situé entre deux étages ; les étages sont comptés de $0$ à $N$),</li>
+    <li>l’état des capteurs de porte (complètement ouvert, à moitié ouvert ou fermé),</li>
+    <li>l’état des boutons (enfoncé ou non).</li>
+</ul>
+</p>
+<p class="text-justify">
+    Les commandes du système :
+    <ul>
+        <li>la commande du moteur à câble (enroulement, déroulement ou arrêt), </li>
+        <li>la commande du moteur de porte (ouverture, fermeture ou arrêt),</li>
+            <li>la commande des voyants des boutons (allumé ou éteint).</li>
+</ul>
+</p>
+<p class="text-justify">
+Les propriétés de sûreté : 
+<ul>
+<li>Pour que l’utilisateur sache que le système a mémorisé sa demande, un petit voyant
+est associé à tous les boutons. Cette lumière doit être allumée lorsque l’utilisateur appuie
+sur le bouton correspondant. Inversement, il devrait être désactivé une fois la demande servie.</li>
+<li>Pour éviter les accidents, l’ascenseur doit toujours se déplacer avec le moteur de la porte
+en marche vers la fermeture des portes : ceci afin d’empêcher les utilisateurs d'ouvrir les portes
+lorsque la cabine de l’ascenseur est en mouvement.</li>
+</ul>
+</p>
+
+<div class="subsection-title">
+    Méthodologie
+</div>
+<p class="text-justify">
+    Le développement Event-B doit être structuré de la façon suivante :
+    <ul>
+            <li>Développement des modèles Event-B
+                <ul>
+                    <li>Machine 1 : Modélisation du déplacement de la cabine</li>
+                    <li>Machine 2 : Gestion des demandes en intégrant les voyants associés aux boutons</li>
+                    <li>Machine 3 (optionnelle) : La gestion des demandes en FIFO</li>
+                    <li>Machine 4 : Modélisation de l'état de la porte</li>
+                </ul>
+            </li>
+            <li>Validation et vérification des modèles Event-B</li>
+ 
+</ul>
+</p>
+
+<div class="subsection-title">
+    Vérification des propriétés avec l'atelier ProB-B
+</div>
+<p class="text-justify">
+    Après animation et validation du comportement de votre modèle en utilisant le model-checker ProB, 
+    exprimez et vérifiez les propriétés LTL suivantes :
+    
+   <ul>
+    <li>Si un étage est demandé, l'ascenseur finira par le servir</li>
+    <li>La commande de la porte n'est jamais en ouverture si l'ascenseur est en mouvement</li>
+    <li> ...</li>
+</ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
