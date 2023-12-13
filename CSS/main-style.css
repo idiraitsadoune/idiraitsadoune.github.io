@@ -2,13 +2,6 @@
 /* BASIC STYLE */
 @import url(./inter-font/style.css);
 
-@font-face {
-    font-family: 'Monaco';
-    font-style: normal;
-    font-weight: normal;
-    src: url('monaco-font/Monaco.woff') format('woff');
-}
-
 /* Les variables globales */
 :root{
 	--cspurple : #847894;

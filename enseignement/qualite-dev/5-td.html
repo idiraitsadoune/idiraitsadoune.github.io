@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD Qualité de développement : UML vers Java</title>
+
+	<meta name="description" content="TD Qualité de développement : UML vers Java">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    UML vers Java
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Un mini langage de programmation
+</div>
+
+<p class="text-justify">
+    Nous allons dans cet exercice envisager la construction d'un petit langage de programmation. 
+    Notre langage sera impératif, et ne contiendra que des instructions d'affectation d'une expression dans une variable. 
+    Les variables seront toutes du type <code class="listing">double</code>, et les expressions seront constituées uniquement de nombres, 
+    de variables et d'opérations arithmétiques simples.
+</p>
+
+<pre><code class="language-shell"><script type="text/template">x = 2;
+y = x + 5;
+z = x * x / y;
+x = x - 1;                             
+</script></code></pre>
+
+<p class="text-justify">
+L'analyse syntaxique de telles expressions est un sujet à part entière, aussi nous construirons pour l'instant ces 
+instructions par l'intermédiaire de code Java. Une solution pourrait être :  
+</p>
+
+<pre><code class="language-java"><script type="text/template">Variable x = new Variable( "x" );
+x.setExpression( new Number( 2 ));
+Variable y = new Variable( "y" );
+y.setExpression( new Plus( x, new Number( 5 ));
+Variable z = new Variable( "z" );
+z.setExpression( new Divide( new Multiply( x, x ), y ));
+x.setExpression( new Minus( x, new Number( 1 )));                             
+</script></code></pre>
+
+<p class="text-justify">
+Mais nous n'avons pas ici de représentation de la notion de programme possédant des variables et une suite ordonnée d'instructions.
+ Pour expliciter ces concepts, notre programme de test sera écrit ainsi :
+</p>
+
+<pre><code class="language-java"><script type="text/template">Program p = new Program();
+// getVariable() cree la variable si elle n'existe pas encore.
+p.addAssignment( p.getVariable( "x" ),  new Number( 2 ));
+p.addAssignment( p.getVariable( "y" ),  new Plus( p.getVariable( "x" ), new Number( 5 )));
+p.addAssignment( p.getVariable( "z" ),  new Divide( 
+                                            new Multiply( p.getVariable( "x" ), p.getVariable( "x" )),
+                                            p.getVariable( "y" )));
+p.addAssignment( p.getVariable( "x" ), new Minus( p.getVariable( "x" ), new Number( 1 ))); 
+// Affiche les instructions
+System.out.println( p.toString() );
+// Une ligne blanche
+System.out.println();
+// Execute chaque instruction l'une apres l'autre, puis affiche les variables et leurs valeurs
+p.run();                            
+</script></code></pre>
+
+<p class="text-justify">
+    Le résultat attendu est donc :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">x = 2.0
+y = ( x + 5.0 )
+z = ( ( x * x ) / y )
+x = ( x - 1.0 )
+
+x = 1.0
+y = 7.0
+z = 0.5714285714285714                            
+</script></code></pre>
+
+<p class="text-justify">
+    Nous allons dans la suite concevoir en UML une solution à ce problème, puis la réaliser en Java. Nous allons utiliser 
+    une approche incrémentale pour réaliser cet exercice : dans un premier temps, les expressions ne contiendront pas d'opérateurs, 
+    mais uniquement un nombre ou une variable. La version complète sera développée après avoir obtenu une version fonctionnelle 
+    de cette première itération. 
+</p>
+
+<!-- #################################################### -->
+<div id="orange-block">
+    Première itération : uniquement des nombres et des variables
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 1 : Modélisation UML
+</div>
+
+<p class="text-justify">
+    <ul>
+        <li>
+            Créez une classe <code class="listing">Program</code> et une classe <code class="listing">Variable</code> sur votre diagramme.
+        </li>
+        <li>Les variables sont contenues dans le programme : 
+            créez un lien de composition en ajustant les multiplicités ; 
+            corrigez aussi le nom de l'extrémité côté <code class="listing">Variable</code> en ajoutant un <code class="listing">s</code> 
+            pour que le nom de rôle devienne <code class="listing">variables</code> et soit donc cohérent avec la multiplicité choisie.
+        </li>
+        <li>
+            Ajoutez un attribut <code class="listing">name</code> dans <code class="listing">Variable</code>, de type <code class="listing">String</code>. 
+Une variable a une certaine valeur qui peut changer au cours du temps : créez un attribut <code class="listing">value</code> 
+de type <code class="listing">double</code> dans <code class="listing">Variable</code>. 
+Ajoutez une méthode <code class="listing">setValue(v : double)</code> pour pouvoir modifier le contenu d'une variable.
+        </li>
+        <li>
+            Un programme contient aussi des affectations. Créez une classe <code class="listing">Assignment</code> 
+    et le lien de composition avec <code class="listing">Program</code>. L'ordre des affectations dans un 
+    programme est important : précisez cette caractéristique sur l'extrémité du côté <code class="listing">Assignment</code>. 
+    Plusieurs affectations identiques peuvent par contre figurer dans un programme : 
+    décochez la propriété d'unicité.
+        </li>
+        <li>
+            Une affectation permet de modifier la valeur d'une variable : 
+    faites une association de la classe <code class="listing">Assignment</code> vers la classe <code class="listing">Variable</code> 
+    navigable uniquement sur cette extrémité, corrigez la multiplicité.
+        </li>
+        <li>
+            À droite d'une affectation, on trouve de manière générale une expression, 
+    qui peut être pour cette itération soit un nombre, soit une variable.
+        </li>
+        <li>
+            Créez une classe abstraite <code class="listing">Expression</code> et un lien de composition avec <code class="listing">Assignment</code>, 
+    corrigez la multiplicité. Créez une sous-classe <code class="listing">Number</code> (avec un attribut <code class="listing">value</code>) ; 
+    Expression est aussi super-classe de <code class="listing">Variable</code>.
+        </li>
+        <li>
+            Tous nos objets doivent savoir s'afficher via <code class="listing">toString() : String</code>. 
+    Ajoutez cette opération aux différentes classes.
+        </li>
+        <li>
+            On peut demander la valeur d'une expression. 
+    Ajoutez les méthodes <code class="listing">getValue() : double</code> aux classes concernées.
+        </li>
+        <li>
+            Ajoutez les opérations suivantes à la classe <code class="listing">Program</code> :
+            <ul>
+                <li>
+                    Un programme est une suite ordonnée d'affectations, ces affectations seront ajoutées par l'opération <br> 
+                    <code class="listing">addAssignment( v : Variable, e : Expression )</code>. 
+                </li>
+                <li>
+                    Un programme mémorise des variables identifiées par un nom, ces variables seront accessibles via l'opération <br> 
+                    <code class="listing">getVariable( name : String ) : Variable</code>.
+                </li>
+                <li>
+                    Un programme s'exécute (évalue chaque affectation dans l'ordre puis affiche la valeur de ses variables : 
+                    ajoutez l'opération <code class="listing">run()</code>.
+                </li>
+                <li>
+                    La méthode <code class="listing">run()</code> de <code class="listing">Program</code> devra exécuter chaque affectation l'une après l'autre : 
+                    ajoutez l'opération <code class="listing">execute()</code> à la classe <code class="listing">Assignment</code>.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ajoutez les constructeurs avec leurs arguments : le constructeur de <code class="listing">Assignment</code> 
+    aura pour arguments une variable et une expression.
+        </li>
+        <li>
+            Sauvegardez votre modèle.
+        </li>
+    </ul>
+</p>
+<br>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Un peu de Git
+</div>
+
+<p class="text-justify">
+    Commencez d'abord par configurer votre profil <code class="listing">git</code>.
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git config --global user.name "Prénom Nom"
+$ git config --global user.email "prenom.nom@universite-paris-saclay.fr"                            
+</script></code></pre>
+
+<p class="text-justify">
+    Pour récupérer la solution de cette partie, vous devriez cloner le dépôt de l'enseignant.
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git clone https://git.iut-orsay.fr/idir.ait-sadoune/td1-mini-langage-de-programmation.git 
+$ cd td1-mini-langage-de-programmation                           
+</script></code></pre>
+
+<p class="text-justify">
+    Créez une nouvelle branche sur votre machine locale et basculez dans cette branche.
+    Nommez cette branche en suivant la convention <code class="listing">prenom_nom</code> :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git checkout -b prenom_nom
+</script></code></pre>
+
+<br>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 2 : Réalisation en Java
+</div>
+
+<p class="text-justify">
+    Les variables sont identifiées par leur nom, et nous souhaitons accéder directement à une variable à partir de ce nom. 
+    La structure de données classique utilisée dans ce cas est le dictionnaire (<code class="listing">Map</code> en java), 
+    nous choisirons l'implémentation <code class="listing">HashMap</code> (<code class="listing">String</code> pour <code class="listing">keyType</code>). 
+    Cette implémentation permettra à la méthode <code class="listing">getVariable</code> de renvoyer un objet de type <code class="listing">Variable</code>
+    à partir de son nom. Si la variable n'existe pas, la méthode <code class="listing">getVariable</code> va créer une nouvelle <code class="listing">Variable</code>
+    avec le nom reçu en argument.
+</p>
+
+<p class="text-justify">
+    Le programme de test sera dans le <code class="listing">main()</code> de <code class="listing">Program</code>. Ajoutez cette méthode dans votre modèle UML 
+    en la déclarant statique, ajoutez un paramètre <code class="listing">args</code> de type <code class="listing">String</code> et de multiplicité <code class="listing">*</code>. 
+    Après régénération du code, copiez/collez le programme de test suivant :   
+</p>
+
+<pre><code class="language-java"><script type="text/template">Program p = new Program();
+// x = 2
+p.addAssignment( p.getVariable( "x" ), new Number( 2 ));
+// y = x
+p.addAssignment( p.getVariable( "y" ), p.getVariable( "x" ));
+// x = -5.26
+p.addAssignment( p.getVariable( "x" ), new Number( -5.26 ));
+// Affiche les instructions
+System.out.println( p.toString() );
+// Une ligne blanche
+System.out.println();
+// Execute chaque instruction l'une apres l'autre, puis affiche les variables et leurs valeurs
+// Resultat attendu (pas obligatoirement dans cet ordre) :
+// x = -5.26
+// y = 2.0
+p.run();                           
+</script></code></pre>
+
+<p class="text-justify">
+    Vous allez incrémentalement compléter le code pour obtenir le comportement global souhaité. 
+    Commencez par écrire la méthode <code class="listing">toString() : String</code> de <code class="listing">Program</code>, 
+    puis celle d'<code class="listing">Assignment</code>, 
+    celle de <code class="listing">Variable</code>...  
+</p>
+
+<p class="text-justify">
+    Complétez le reste du code pour obtenir le comportement souhaité.
+</p>
+
+<p class="text-justify">
+    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git add --all
+$ git commit -m "Solution de l'exercice 2"
+</script></code></pre>
+
+<p class="text-justify">
+    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
+</script></code></pre>
+
+<br>
+<!-- #################################################### -->
+<div id="orange-block">
+    Seconde itération : ajout des opérateurs
+</div>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 3 : Ajouts dans le modèle UML
+</div>
+
+<p class="text-justify">
+    <ul>
+        <li>
+            Nous nous limiterons aux opérateurs arithmétiques binaires. Créez une classe abstraite
+         <code class="listing">BinaryOperator</code>, sous classes de <code class="listing">Expression</code>, 
+         et 4 sous-classes <code class="listing">Plus</code>, <code class="listing">Minus</code>, 
+         <code class="listing">Multiply</code> et <code class="listing">Divide</code>.
+        </li>
+
+        <li>
+            Un opérateur binaire a deux opérandes qui sont des expressions. Créez deux liens de composition 
+            de <code class="listing">BinaryOperator</code> 
+        vers <code class="listing">Expression</code> avec une multiplicité 
+        de <code class="listing">1</code>, nommez les extrémités <code class="listing">leftOperand</code> 
+        et <code class="listing">rightOperand</code>.
+        </li>
+
+        <li>
+            L'accès aux opérandes par les sous-classes de <code class="listing">BinaryOperator</code> 
+            est nécessaire : modifiez la protection des deux extrémités.
+        </li>
+
+        <li>
+            Pour les opérations, le comportement <code class="listing">toString() : String</code> 
+            sera défini au niveau de <code class="listing">BinaryOperator</code> qui fera 
+    appel à une méthode abstraite <code class="listing">getOperator()</code> qui sera redéfinie 
+    dans les 4 sous-classes.
+        </li>
+
+        <li>
+            Plus et les autres opérateurs sont des sous-classes d'<code class="listing">Expression</code>, 
+            et doivent donc être capable de s'évaluer : 
+        ajoutez l'opération <code class="listing">getValue() : double</code> aux 4 opérateurs.
+        </li>
+
+        <li>
+            Ajoutez les constructeurs avec leurs arguments : le constructeur 
+            de <code class="listing">BinaryOperator</code> aura 2 arguments 
+        de type <code class="listing">Expression</code>, de même pour ses sous-classes.
+        </li>
+
+        <li>
+            Sauvegardez votre modèle.
+        </li>
+    </ul>
+</p>
+
+<p class="text-justify">
+    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git add --all
+$ git commit -m "Solution de l'exercice 3"
+</script></code></pre>
+
+<p class="text-justify">
+    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
+</script></code></pre>
+
+<br>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Exercice 4 : Mise à jour du code Java et tests
+</div>
+
+<p class="text-justify">
+    <ul>
+        <li>
+            Re-générez le code Java, puis complétez-le.
+        </li>
+
+        <li>
+            Modifiez votre programme de test en reprenant, par exemple, celui donné au début du sujet.
+        </li>
+
+        <li>
+            Corrigez votre modèle UML et/ou votre code Java pour obtenir le résultat souhaité.
+        </li>
+    </ul>
+</p>
+
+<p class="text-justify">
+    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git add --all
+$ git commit -m "Solution de l'exercice 4"
+</script></code></pre>
+
+<p class="text-justify">
+    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
+</p>
+
+<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
+</script></code></pre>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
