@@ -1,0 +1,477 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Qualité de développement : UML vers Java</title>
+
+	<meta name="description" content="Qualité de développement : UML vers Java">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/iut-logo.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Qualité de développement</h2>
+		<h3>UML vers Java</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+            </a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Transcription des classes"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Transcription des classes</h2>
+    <p class="fragment">A chaque <b>classe UML</b> correspondra une <b>classe Java</b>.</p>
+    <div class="fragment" style="display: flex; align-items: center;">
+        <div style="width:50%">
+            <img src="./img/1-chap-1.svg" alt="" width="150px">
+        </div>
+        <div style="width:50%">
+            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+            class Point{
+                ...
+            }                            
+			</script></code></pre>
+        </div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des classes</h2>
+    <div class="slide-content">
+        <p>
+            A chaque <b>attribut</b> d'une <b>classe UML</b> correspondra un <b>attribut</b> <br>
+            d'une <b>classe Java</b>.  
+            <ul class="fragment">
+                <li>cardinalité $\leq$ 1 : <code class="listing">Type nomAttribut;</code></li>
+                <li>cardinalité $>$ 1 : <code class="listing">Collection&#60;Type> nomAttribut;</code></li>
+            </ul>
+        </p>    
+    </div>
+    <div class="fragment" style="display: flex; align-items: center;">
+        <div style="width:50%">
+            <img src="./img/1-chap-2.svg" alt="" width="150px">
+        </div>
+        <div style="width:50%">
+            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+            class Point{
+                private double x;
+                private double y;
+            }                            
+			</script></code></pre>
+        </div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Remarque</h2>
+    <div  class="blue-block" style="text-align:center ;">
+        Les <i>visibilités</i> des éléments de modélisation <b>UML</b> seront <br> les mêmes
+dans leurs correspondants en <b>Java</b>.
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des classes</h2>
+    <p>
+        A chaque <b>operation</b> d'une <b>classe UML</b> correspondra  une <b>méthode</b> <br>
+d'une <b>classe Java</b>.
+    </p>
+    <div class="fragment" style="display: flex; align-items: center;">
+        <div style="width:40%">
+            <img src="./img/1-chap-3.svg" alt="" width="350px">
+        </div>
+        <div style="width:60%">
+            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+                class Point{
+                    private double x;
+                    private double y;
+                    
+                    public double distanceTo(Point autre){
+                        // TO DO
+                    }
+                }                             
+			</script></code></pre>
+        </div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des classes</h2>
+	<p>
+		A chaque <b>classe UML abstraite</b> correspondra <br> une <b>classe Java abstraite</b>.
+	</p>
+	<div class="fragment" style="display: flex; align-items: center;">
+        <div style="width:50%">
+            <img src="./img/1-chap-4.svg" alt="" width="150px">
+        </div>
+        <div style="width:50%">
+            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				abstract class Shape{
+					...
+				}                             
+			</script></code></pre>
+        </div>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des classes</h2>
+	<p>A chaque <b>interface UML</b> correspondra 
+		une <b>interface Java</b>.</p>
+	<div class="fragment" style="display: flex; align-items: center;">
+		<div style="width:50%">
+			<img src="./img/1-chap-5.svg" alt="" width="250px">
+		</div>
+		<div style="width:50%">
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				interface ClosedShape{
+					public abstract double perimeter();
+				}                            
+			</script></code></pre>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Transcription des associations"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des associations</h2>
+	<div class="slide-content">
+		<ul>
+			<li class="fragment">A chaque <b>association UML</b> correspondra <b>un attribut</b> 
+				dans les <b>classes Java</b> participantes à l'association.</li>
+			<li class="fragment skip">L'<b>attribut</b> est ajouté uniquement si l'<i>association est navigable</i>.</li>
+			<li class="fragment skip">Le <b>nom de l'attribut</b> est le nom de l'<i>extrémité navigable</i>.
+				<ul class="fragment">
+					<li>cardinalité $\leq$ 1 : <code class="listing">Type nomExtremite;</code></li>
+					<li>cardinalité $>$ 1 : <code class="listing">Collection&#60;Type> nomExtremite;</code></li>
+				</ul>
+			</li>
+		</ul>
+	</div>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des associations</h2>
+	<div style="display: flex; align-items: center;">
+		<div style="width:50%">
+			<img src="./img/1-chap-6.svg" alt="" width="450px">
+		</div>
+		<div style="width:50%">
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Point{
+					... 
+				}                            
+				</script></code></pre>
+
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Circle{
+					private Point center ;
+				}                            
+			</script></code></pre>
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				abstract class Polygon{
+					private Collection<Point> vertex;
+				}                            
+			</script></code></pre>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des associations</h2>
+	<p>
+		La relation de <b>généralisation en UML</b> est traduite par une relation d'<b>héritage en Java</b>.
+	</p>
+	<div class="fragment" style="display: flex; align-items: center;">
+		<div style="width:50%">
+			<img src="./img/1-chap-7.svg" alt="" width="450px">
+		</div>
+		<div style="width:50%">
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				abstract class Shape{
+					...
+				}                             
+			</script></code></pre>
+
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Circle extends Shape{
+					...
+				}                            
+			</script></code></pre>
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Polygon extends Shape{
+					...
+				}                            
+			</script></code></pre>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des associations</h2>
+	<p>
+		La relation de <b>réalisation en UML</b> est traduite par une relation d'<b>implémentation en Java</b>.
+	</p>
+	<div class="fragment" style="display: flex; align-items: center;">
+		<div style="width:50%">
+			<img src="./img/1-chap-8.svg" alt="" width="450px">
+		</div>
+		<div style="width:50%">
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				interface ClosedShape{
+					public abstract double perimeter();
+				}                            
+			</script></code></pre>
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Circle implements ClosedShape{
+					public double perimeter(){
+						// TO DO
+					}
+				}                            
+			</script></code></pre>
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Polygon implements ClosedShape{
+					public double perimeter(){
+						// TO DO
+					}
+				}                            
+			</script></code></pre>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Transcription des collections"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les collections en Java</h2>
+	<img data-id="collec" class="fragment" src="./img/1-chap-9.svg" alt="" width="600px">
+	<div class="slide-content">
+		<ul>
+			<li class="fragment"><code class="listing">Collection</code> : interface qui gèrent toutes
+				les <i>collections</i> dynamiques.</li>
+			<li class="fragment"><code class="listing">Set</code> : interface pour
+				des <i>collections</i> qui n'autorisent <i>pas de doublons</i>.</li>
+			<li class="fragment"><code class="listing">List</code> : interface pour
+				des <i>collections</i> qui <i>autorisent des doublons</i> <br>
+				et un <i>accès direct</i> à un élément.</li>
+			<li class="fragment">...</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les collections en Java</h2>
+	<img data-id="collec" src="./img/1-chap-10.svg" alt="" width="700px">
+	<div class="slide-content">
+		<ul>
+			<li class="fragment"><code class="listing">Vector</code>: implémente l'interface <code class="listing">List</code> (synchronisé)</li>
+			<li class="fragment"><code class="listing">ArrayList</code> : implémente l'interface  <code class="listing">List</code> (non synchronisé)</li>
+			<li class="fragment"><code class="listing">LinkedList</code> : implémente l'interface  <code class="listing">List</code> (doublement chaînée)</li>
+			<li class="fragment"><code class="listing">HashSet</code> : implémente l'interface  <code class="listing">Set</code></li>
+			<li class="fragment"><code class="listing">SortedSet</code> : implémente l'interface  <code class="listing">Set</code> (ordonné)</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Transcription des collections</h2>
+	<div class="slide-content">
+		<p class="fragment">
+		Le type de la <code class="listing">Collection</code> affecté à un <i>attribut</i>
+		en <b>Java</b>, dépend <br> des <i>propriétés</i> 
+		de l'<i>attribut/association</i> <b>UML</b>:
+		<ul>
+			<li class="fragment skip">aucune propriété $\to$ à configurer manuellement.</li>
+			<li class="fragment skip"><i>ordered</i> $\to$ traduit en <code class="listing">ArrayList</code> ou <code class="listing">LinkedList</code>.</li>
+			<li class="fragment skip"><i>unique</i> $\to$ traduit en <code class="listing">HashSet</code>.</li>
+			<li class="fragment skip"><i>ordered</i>  et <i>unique</i> $\to$ traduit en <code class="listing">SortedSet</code>.</li>
+		</ul>
+		</p>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+	<div style="display: flex; align-items: center;">
+		<div style="width:50%">
+			<img src="./img/1-chap-11.svg" alt="" width="450px">
+		</div>
+		<div style="width:50%">
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Point{
+					... 
+				}                            
+				</script></code></pre>
+
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Circle{
+					private Point center ;
+				}                            
+			</script></code></pre>
+			<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				abstract class Polygon{
+					private SortedSet<Point> vertex;
+				}                            
+			</script></code></pre>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
