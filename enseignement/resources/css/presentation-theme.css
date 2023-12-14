@@ -154,7 +154,7 @@ em{
 
 .actif-item::before{
 	width: 100%;
-	color: var(--r-link-color);
+	background: var(--r-link-color);
 	
 }
 
