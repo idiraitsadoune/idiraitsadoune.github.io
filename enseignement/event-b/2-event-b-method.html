@@ -2630,6 +2630,115 @@ them as <b>proof obligations</b>.
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Applying Guard Strengthening <br> to Event <code class="listing">ML_out</code></h2>
 
+    <div style="display: flex;">
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$d \in \mathbb N$</li>
+                <li>$0 < d$</li>
+                <li>$n \in \mathbb N$ </li>
+                <li>$n \leq d$</li>
+                <li>$a \in \mathbb N$</li>
+                <li>$b \in \mathbb N$</li>
+                <li>$c \in \mathbb N$</li>
+                <li>$a + b + c = n$</li>
+                <li>$a = 0 \lor c = 0$</li>
+                <li>$a + b < d$</li>
+                <li>$c = 0$</li>
+                <li>$\vdash$</li>
+                <li>$n < d$</li>
+            </ul>
+        </div>
+
+        <div style="width: 10%;">
+            <b>MON</b>
+        </div>
+
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$a + b + c = n$</li>
+                <li>$a + b < d$</li>
+                <li>$c = 0$</li>
+                <li>$\vdash$</li>
+                <li>$n < d$</li>
+            </ul>
+        </div>
+
+        <div style="width: 10%;">
+            <b>EQ_LR</b>
+        </div>
+
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$a + b + 0 = n$</li>
+                <li>$a + b < d$</li>
+                <li>$\vdash$</li>
+                <li>$n < d$</li>
+            </ul>
+        </div>
+
+        <div style="width: 20%;">
+            <b>ARITH </b> ...
+        </div>
+
+    </div>
+
+    <div style="display: flex;">
+        <div style="width: 10%;">
+            <b>...</b>
+        </div>
+
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$a + b = n$</li>
+                <li>$a + b < d$</li>
+                <li>$\vdash$</li>
+                <li>$n < d$</li>
+            </ul>
+        </div>
+
+        <div style="width: 10%;">
+            <b>EQ_LR</b>
+        </div>
+
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$n < d$</li>
+                <li>$\vdash$</li>
+                <li>$n < d$</li>
+            </ul>
+        </div>
+
+        <div style="width: 10%;">
+            <b>HYP</b>
+        </div>
+
+    </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Applying Guard Strengthening <br> to Event <code class="listing">ML_in</code></h2>
+
+    <div style="display: flex;">
+        <div style="width: 20%; ">
+            <ul id="eb">
+                <li>$d \in \mathbb N$</li>
+                <li>$0 < d$</li>
+                <li>$n \in \mathbb N$ </li>
+                <li>$n \leq d$</li>
+                <li>$a \in \mathbb N$</li>
+                <li>$b \in \mathbb N$</li>
+                <li>$c \in \mathbb N$</li>
+                <li>$a + b + c = n$</li>
+                <li>$a = 0 \lor c = 0$</li>
+                <li>$0 < c$</li>
+                <li>$\vdash$</li>
+                <li>$0 < n$</li>
+            </ul>
+        </div>
+    
+    </div>
 </section>
 
 
