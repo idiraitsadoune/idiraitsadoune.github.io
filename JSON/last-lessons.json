@@ -11,15 +11,22 @@
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "operating-systems",
-            "target" : "_self"
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6623",
+            "target" : "_blank"
         },
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "event-b",
-            "target" : "_self"
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6643",
+            "target" : "_blank"
+        },
+        {
+            "title" : "Computer architecture and software execution process",
+            "level" : "1A - Cursus Bachelor - CentraleSupelec",
+            "image" : "ensignement.jpg",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6598",
+            "target" : "_blank"
         },
         {
             "title" : "Développer des applications avec Java/Jakarta EE",
@@ -28,13 +35,6 @@
             "link" : "jakarta-ee",
             "target" : "_self"
         }, 
-        {
-            "title" : "Computer architecture and software execution process",
-            "level" : "1A - Cursus Bachelor - CentraleSupelec",
-            "image" : "ensignement.jpg",
-            "link" : "bachelor",
-            "target" : "_self"
-        },
         {
             "title" : "Qualité de développement",
             "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
