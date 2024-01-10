@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD Qualité de développement : Le jeu 2048</title>
+
+	<meta name="description" content="TD Qualité de développement : Le jeu 2048">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    Le jeu 2048
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Le jeu 2048
+</div>
+
+<p class="text-justify">
+    2048 se joue sur une grille de taille 4*4. Le but du jeu est de faire glisser des tuiles numérotées sur cette grille 
+    pour les combiner et ainsi créer une grille portant le nombre 2048.
+</p>
+
+<div style="text-align: center;">
+    <img src="./img/2048Screenshot.png" height="400px" alt="">
+</div>
+
+<p class="text-justify">
+    A chaque étape, il y a quatre actions possibles pour le joueur, une pour chaque direction. Lorsqu'une direction est choisie, 
+    les tuiles sont déplacées dans cette direction. Si deux tuiles portant le même nombre entrent en collision, elles fusionnent 
+    pour créer une nouvelle tuile dont le nombre est la somme des précédentes. Une fois les déplacements effectués, 
+    une tuile de valeur 2 ou 4 est générée aléatoirement sur un emplacement libre.
+    Le jeu se termine lorsqu'il n'y a plus d'action possible.
+</p>
+
+<p class="text-justify">
+    Dans cette séance, nous utiliserons une architecture <b>3-tier</b> contenant les 3 packages suivants : 
+    <ol>
+        <li><code class="listing">entity</code> contenant les classes suivantes : 
+            <ul>
+                <li><code class="listing">Cell</code> qui représentera une case. Elle mémorise un entier représentant sa valeur.</li>
+                <li>
+                    <code class="listing">Engine</code> qui contiendra les attributs suivant :
+                    <ul>
+                        <li>un entier représentant la hauteur du tableau.</li>
+                        <li>un entier représentant la largeur du tableau.</li>
+                        <li>le plateau de jeu qui sera constitué d'un tableau à deux dimensions 
+                            (première dimension : hauteur, seconde dimension : largeur) de <code class="listing">Cell</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code class="listing">control</code> contenant l'interface <code class="listing">IControl</code> qui définit l'ensemble des méthodes à implémenter pour faire fonctionner le jeu. 
+        </li>
+        <li>
+            <code class="listing">boundary</code> contenant les classes de l'interface utilisateur.
+            <ul>
+                <li><code class="listing">Grid</code> qui hérite de <code class="listing">JPanel</code> et permet d'afficher le plateau.</li>
+                <li><code class="listing">MainWindow</code> qui hérite de <code class="listing">JFrame</code> et présente la fenêtre principale. </li>
+            </ul>
+        </li>
+    </ol>
+</p>
+<p class="text-justify">
+    En plus des trois packages, une classe <code class="listing">Launcher</code> contenant la méthode <code class="listing">main()</code> est fournie 
+        pour exécuter le programme et faire les tests.
+</p>
+<p class="text-justify">
+    Importer dans <b>Eclipse</b> le projet suivant <a href="./2048.zip" target="_blank">Code source</a> contant l'architecture décrite dans le paragraphe précédent.
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Etape 1
+</div>
+
+<p class="text-justify">
+    <ul>
+        <li>Ajoutez un constructeur pour la classe <code class="listing">Engine</code> qui prend un tableau d'entiers en argument et initialise le plateau avec 
+            les valeurs de ce tableau. 
+            Ce constructeur va nous permettre de faire un certain nombre de vérification. </li>
+
+        <li>
+            Créez une classe <code class="listing">Jeu2048</code> implémentant l'interface <code class="listing">IControl</code>. Cette nouvelle classe doit définir
+                 un attribut <code class="listing">engine</code> de type <code class="listing">Engine</code>
+            et un constructeur qui initialise le jeu en appelant la méthode <code class="listing">init()</code>. 
+        </li>
+
+        <li>
+            Dans un premier temps, vous allez compléter la méthode <code class="listing">init()</code> en initialisant l'attribut <code class="listing">engine</code> en utilisant 
+            le nouveau constructeur ajouté avec comme argument le tableau <br>
+            <code class="listing">vals = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};</code>
+        </li>
+
+        <li>
+            Implémentez la méthode <code class="listing">getGrid()</code> en renvoyant un tableau contenant les valeurs de <code class="listing">engine</code>.
+        </li>
+
+        <li>
+            Ajoutez la ligne <code class="listing">new MainWindow(new Jeu2048());</code> à la méthode <code class="listing">run()</code> 
+            de la classe <code class="listing">Launcher</code>
+            pour lier la classe <code class="listing">Jeu2048</code> avec le reste des classes.
+        </li>
+
+        <li>
+            Exécutez votre application et vérifiez que l'affichage de la grille marche très bien.
+        </li>
+    </ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Etape 2
+</div>
+
+<p class="text-justify">
+    Nous voulons maintenant générer une nouvelle case comme cela arrive au début du jeu et après chaque déplacement.
+
+    <ul>
+        <li>Ajoutez dans la classe <code class="listing">Engine</code> une méthode <code class="listing">getEmptyCells()</code> qui retourne 
+            une  <code class="listing">ArrayList</code> de <code class="listing">Cell</code> contenant la liste des cases vides (cases ayant la valeur 0).</li>
+
+        <li>
+            A l'aide de la méthode précédente, écrivez une méthode  <code class="listing">addNewCell()</code> qui ajoute une nouvelle case à votre grille 
+            (à choisir parmi les <code class="listing">Cell</code>s renvoyées par <code class="listing">getEmptyCells()</code> s'il existe encore au moins une case vide). 
+            Le choix de la case et de sa valeur (la nouvelle valeur a 80% de chance d'être 2 et 20% de chance d'être 4) est fait aléatoirement.
+        </li>
+
+        <li>
+            Modifiez la méthode <code class="listing">init()</code> de la classe <code class="listing">Jeu2048</code> en créant une grille $4 \times 4$ 
+            contenant deux cellules choisies à l'aide de la méthode <code class="listing">addNewCell()</code>.
+        </li>
+
+        <li>
+            Exécutez votre application et vérifiez que votre méthode <code class="listing">init()</code> marche très bien.
+        </li>
+    </ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Etape 3
+</div>
+
+<p class="text-justify">
+    Pour coder le déplacement des cases dans la grille, au lieu de coder 4 déplacements différents pour les 4 directions, nous allons coder uniquement 
+    le déplacement à droite et effectuer des rotations de la grille pour les autres directions.
+
+    <ul>
+        <li>Écrivez une méthode <code class="listing">private void rotate()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+            qui modifie votre grille en lui faisant faire un quart de tour à droite. </li>
+
+        <li>
+            Écrivez une méthode <code class="listing">private void moveRight()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+            qui effectue le déplacement des cases vers 
+            la droite (sans effectuer de fusion)
+            (Pour déplacer les cases vers la droite, il faut les parcourir de la droite vers la gauche).
+        </li>
+
+        <li>
+            Écrivez une méthode <code class="listing">private void fuseRight()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+            qui effectue la fusion des cases vers la droite
+            (Pour fusionner les cases vers la droite, il faut les parcourir de la droite vers la gauche).
+        </li>
+
+        <li>
+            La fusion peut laisser des cases qui ne sont pas à leur place. Pour terminer l'étape, il faut effectuer un nouveau déplacement. 
+            En utilisant ce principe, implémentez la méthode <code class="listing">right()</code> qui effectue l'opération bouger la grille vers la droite. 
+            N'oubliez pas de rajouter une nouvelle cellule avec <code class="listing">addNewCell()</code>.
+        </li>
+
+        <li>
+            En utilisant le même principe que dans la méthode <code class="listing">right()</code>, et à l'aide des rotations (méthode <code class="listing">rotate()</code>), 
+            implémentez les méthodes <code class="listing">up()</code>, <code class="listing">down()</code> et <code class="listing">left()</code>.
+        </li>
+
+        <li>
+            Exécutez votre application et vérifiez que vos fonctions marchent très bien.
+        </li>
+    </ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Etape 4
+</div>
+
+<p class="text-justify">
+    <ul>
+        <li>
+            Implémentez la méthode <code class="listing">isOver()</code> qui retourne <code class="listing">false</code> s'il reste des actions possibles 
+                qui modifient la grille et <code class="listing">true</code> sinon 
+            (S'il reste des cases vides, 
+            il reste des actions possibles. Sinon, il reste des actions possibles si 2 cases contiguës ont la même valeur).
+        </li>
+        <li>
+            Et pour finir, Implémentez la méthode <code class="listing">score()</code> qui permet de renvoyer à chaque coup 
+                la plus haute des valeurs parmi toutes les cases de la grille.
+        </li>
+        <li>
+            Exécutez votre application et vérifiez que vos fonctions marchent très bien.
+        </li>
+    </ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
