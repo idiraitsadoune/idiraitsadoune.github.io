@@ -100,29 +100,47 @@ function render() {
 */
 // Add event listener on keypress
 document.addEventListener('keypress', (event) => {
-  // var name = event.key;
   var code = event.code;
-  // Alert the key name and key code on keydown
-  // alert(`Key pressed ${name} \r\n Key code value: ${code}`);
 
   if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages) 
         return;
 
   else if(code == 'KeyN' && myState.currentPage < myState.pdf._pdfInfo.numPages){
     myState.currentPage += 1;
-    //document.getElementById("current_page").value = myState.currentPage;
     render();
   }
   else if(code == 'KeyP' && myState.currentPage != 1){
     myState.currentPage -= 1;
-    //document.getElementById("current_page").value = myState.currentPage;
     render();
   }
   else if (code == 'KeyF') {
       toggleFullScreen();
   }
   else{
-    alert("N for next; P for previous; F for fullscreen mode");
+    alert("N or --> for next; P or <-- for previous; F for fullscreen mode");
+  }
+
+}, false);
+
+
+
+// Add event listener on keydown
+document.addEventListener('keydown', (event) => {
+  var code = event.code;
+
+  if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages) 
+  return;
+
+  else if(code == 'ArrowRight' && myState.currentPage < myState.pdf._pdfInfo.numPages){
+  myState.currentPage += 1;
+  render();
+  }
+  else if(code == 'ArrowLeft' && myState.currentPage != 1){
+  myState.currentPage -= 1;
+  render();
+  }
+  else if (code == 'KeyF') {
+  toggleFullScreen();
   }
 
 }, false);
