@@ -64,10 +64,28 @@
     Lab session 
 </div>
 <div class="green-block">
-    Before starting this study, you must form pairs and work in pairs.
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+    <b style="color: green;">Remarks</b>
+    <p>
+        <ul>
+            <li>Before starting this study, you must form pairs and work in pairs.</li>
+            <li>You must read all the subject before starting the work.</li>
+            <li>The mark of this work counts for 30% of the final mark if it increases the average only.</li>
+            <li>At the end, you must provide a <code class="listing">.ZIP</code> archive containing all files used in your work. You must upload it on <b>EDUNOA</b>. </li>
+        </ul>
+    </p>
 </div>
 
-
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+	<b style="color: navy;">Installation process</b>
+    <p>
+        <ol>
+            <li>Install <b>Java</b> by following <a href="https://www.youtube.com/watch?v=WNfvAciOtL4" target="_blank">this video </a></li>
+            <li>Download <b>Logisim</b> available in <a href="./logisim.zip" target="_blank">this link</a>  </li>
+        </ol>
+    </p>	
+</div>
 
 <!-- #################################################### -->
 <div id="orange-block">
@@ -276,9 +294,13 @@ be deduced from an examination of the diagram - is recalled below:
 <li> HRADM: Memory Address Register Clock (RADM);</li>
 <li> HEM: clock of the memory input register (EM), which is loaded from the value located at the input of connector D (“from the bottom”);</li>
 <li> RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
-<li> U0 to U3: UAL command, </li>
+
 <li> HRI: instruction register (RI) clock;</li>
-<li> Sext: control of the sign extension for the passage of the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
+<li> Sext: control of the extension sign for the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
+<li> U0 to U3: UAL command, 
+<br>
+    <img src="./img/ual-code.png" alt="" width="350px">
+</li>
 </ul>
 </p>
 
