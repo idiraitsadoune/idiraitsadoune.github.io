@@ -271,14 +271,14 @@ The “lower” part of the diagram contains control signals to the data path el
 be deduced from an examination of the diagram - is recalled below:
 <ul>
 <li> HCO: clock of the ordinal counter register (CO);</li>   
-CCO: CO loading: determines what is loaded in the CO when a rising edge is applied to HCO: if 0, CO + 1; if 1, CO entry;</li>
-HAQ: accumulator register clock (AQ);</li>
-HRADM: Memory Address Register Clock (RADM);</li>
-HEM: clock of the memory input register (EM), which is loaded from the value located at the input of connector D (“from the bottom”);</li>
-RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
-U0 to U3: UAL command, </li>
-HRI: instruction register (RI) clock;</li>
-Sext: control of the sign extension for the passage of the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
+<li> CCO: CO loading: determines what is loaded in the CO when a rising edge is applied to HCO: if 0, CO + 1; if 1, CO entry;</li>
+<li> HAQ: accumulator register clock (AQ);</li>
+<li> HRADM: Memory Address Register Clock (RADM);</li>
+<li> HEM: clock of the memory input register (EM), which is loaded from the value located at the input of connector D (“from the bottom”);</li>
+<li> RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
+<li> U0 to U3: UAL command, </li>
+<li> HRI: instruction register (RI) clock;</li>
+<li> Sext: control of the sign extension for the passage of the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
 </ul>
 </p>
 
