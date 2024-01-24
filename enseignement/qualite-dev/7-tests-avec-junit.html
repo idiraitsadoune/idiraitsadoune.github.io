@@ -1,0 +1,1190 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Qualité de développement : Les tests unitaires en Java</title>
+
+	<meta name="description" content="Qualité de développement : Les tests unitaires en Java">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/iut-logo.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Qualité de développement</h2>
+		<h3>Les tests unitaires en Java</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+            </a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Processus de développement en V</h2>
+    <div class="r-stack skip">
+        <img class="fragment fade-in-then-out" src="./img/cycle-vie.svg" height="500px" alt="">
+        <img class="fragment fade-in" src="./img/cycle-vie-test.svg" height="500px" alt="">
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les activités de tests</h2>
+    <div class="slide-content">
+        <span class="fragment">Nous distinguons quatre types d’activités de tests :</span>
+        <ol>
+            <li class="fragment"><b>Les tests unitaires</b> : vérifier séparément le fonctionnement <br>
+                des modules d'un logiciel. </li>
+            <li class="fragment"><b>Les tests d’intégration</b> : regrouper l’ensemble des modules 
+                et valider le fonctionnement global du logiciel.</li>
+            <li class="fragment"><b>Les tests de validation</b> : valider la conformité du logiciel  par
+                rapport
+                aux spécifications. </li>
+            <li class="fragment"><b>Les tests d’acceptation</b> : vérifier avec le client que la solution
+                proposée est conforme à ses exigences. </li>
+        </ol>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Dans ce cours</h2>
+    <div class="slide-content">
+        <span>Nous distinguons quatre types d’activités de tests :</span>
+        <ol>
+            <li><span style="color: red;"><b style="color: red;">Les tests unitaires</b> : vérifier séparément le
+                    fonctionnement <br>
+                    des modules d'un logiciel.</span></li>
+            <li><b>Les tests d’intégration</b> : regrouper l’ensemble des modules 
+                et valider le fonctionnement global du logiciel.</li>
+            <li><b>Les tests de validation</b> : valider la conformité du logiciel  par rapport
+                aux spécifications. </li>
+            <li><b>Les tests d’acceptation</b> : vérifier avec le client que la solution proposée est
+                conforme à ses exigences. </li>
+        </ol>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La philosophie du Test</h2>
+ 
+        <ul>
+            <li class="fragment">Pas de différence entre test et débogage.</li>
+            <ul id="fleche">
+                <li>déboguer avec des jeux d'entrées</li>
+            </ul>
+
+            <li class="fragment skip">Le test sert à montrer que le logiciel fonctionne.</li>
+            <ul id="fleche">
+                <li>exécuter une suite de tests sans défaillance</li>
+            </ul>
+
+            <li class="fragment skip">Le test montre la présence d'erreurs mais pas leur absence.
+                <ul id="fleche"><li>permettre de diminuer le risque.</li></ul>
+            </li>
+        </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+    <h2>Les tests unitaires</h2>
+
+        <ul>
+            <li class="fragment"><b>Un test unitaire</b> est <b>un script</b> permettant de
+                <b>valider</b> <br> le fonctionnement d'une partie d'un module.
+                <ul id="fleche">
+                    <li>une méthode, une class, une interface, ...</li>
+                </ul>
+            </li>
+
+            <li class="fragment skip">En <b>Java</b>, le framework (<a href="https://junit.org/"
+                    target="_blank">JUnit</a>),
+                offre des fonctionnalités <br> permettant le développement des tests unitaires.</li>
+        </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les annotations</h2>
+    <div class="slide-content">
+        <ul>
+            <li data-id="line1" class="fragment"><b>JUnit</b> utilise un système d'annotations définissant <br>
+                le comportement d'une méthode dans <span class="mcg">une classe de test</span> :
+                <ul>
+                    <li class="fragment"><code class="listing">@Test</code> :
+                        spécifie que la méthode annotée est <span class="mc">un test</span>.
+                    </li>
+                    <li class="fragment"><code class="listing">@Before</code> ou <code
+                            class="listing">@BeforeEach</code>
+                        (<a href="https://junit.org/junit5/" target="_blank">JUnit5</a>) :
+                        spécifie que la méthode annotée sera exécutée <span class="mc">avant chaque méthode
+                            de test</span>.
+                    </li>
+                    <li class="fragment"><code class="listing">@BeforeClass</code> ou <code
+                            class="listing">@BeforeAll</code> (<a href="https://junit.org/junit5/"
+                            target="_blank">JUnit5</a>):
+                        spécifie que la méthode annotée sera exécutée une fois <span class="mc">avant toutes les
+                        méthodes de test</span>.
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les annotations</h2>
+    <div class="slide-content">
+        <ul>
+            <li data-id="line1"><b>JUnit</b> utilise un système d'annotations définissant <br>
+                le comportement d'une méthode dans <span class="mcg">une classe de test</span> :
+                <ul>
+                    <li>...
+                    </li>
+                    <li><code class="listing">@After</code> ou <code
+                            class="listing">@AfterEach</code> (<a href="https://junit.org/junit5/"
+                            target="_blank">JUnit5</a>) :
+                        spécifie que la méthode annotée sera exécutée <span class="mc">après chaque méthode
+                            de test</span>.
+                    </li>
+                    <li class="fragment"><code class="listing">@AfterClass</code> ou <code
+                            class="listing">@AfterAll</code> (<a href="https://junit.org/junit5/"
+                            target="_blank">JUnit5</a>):
+                        spécifie
+                        que la méthode annotée sera exécutée une fois <span class="mc">après toutes les
+                            méthodes de test</span>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La classe Assertions</h2>
+    <p>
+        La documentation de la classe <a
+        href="https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html"
+        target="_blank">Assertions</a>
+    </p>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La classe Assertions</h2>
+    <div class="slide-content">
+        <ul>
+            
+            <li><code class="listing">void assertTrue(boolean condition)</code><br>
+                vérifie qu'une condition est vraie.
+            </li>
+            <li class="fragment"><code class="listing">void assertFalse(boolean condition)</code><br>
+                vérifie qu'une condition est fausse.
+            </li>
+            <li class="fragment"><code class="listing">void assertNotNull(Object object)</code><br>
+                vérifie qu'un objet n'est pas null.
+            </li>
+            <li class="fragment"><code class="listing">void assertNull(Object object)</code><br>
+                vérifie qu'un objet est null.
+            </li>
+            <li class="fragment"><code
+                class="listing">void assertEquals(Object expected, Object actual)</code><br>
+            vérifie l'égalité entre deux objets ou deux types primitifs.
+        </li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>La classe Assertions</h2>
+    <div class="slide-content">
+        <ul>
+            <li>...
+            </li>
+            <li><code class="listing">void assertSame(Object expected, Object actual)</code><br>
+                vérifie l'égalité entre deux références d'objets.
+            </li>
+            <li class="fragment"><code
+                    class="listing">void assertNotSame(Object expected, Object actual)</code><br>
+                vérifie que deux références d'objets sont différentes.
+            </li>
+            <li class="fragment"><code
+                    class="listing">void assertArrayEquals(expectedArray, resultArray)</code><br>
+                vérifie que deux tableaux sont égaux.
+            </li>
+            <li class="fragment"><code class="listing">void fail(String)</code><br>
+                force un test à l'échec.
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Code Java à tester</h2>
+    <pre><code class="java" data-trim data-line-numbers="|2-10|12-18|20-26|28-34|36-39|41-44|46-59">
+<script type="text/template">
+public class Contact {
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+
+    public Contact(String firstName, String lastName, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void validateFirstName() {
+        if (this.firstName.isBlank())
+            throw new RuntimeException("First Name Cannot be null or empty");
+    }
+
+    public void validateLastName() {
+        if (this.lastName.isBlank())
+            throw new RuntimeException("Last Name Cannot be null or empty");
+    }
+
+    public void validatePhoneNumber() {
+        if (this.phoneNumber.isBlank()){
+            throw new RuntimeException("Phone Name Cannot be null or empty");
+        }
+        if (this.phoneNumber.length() != 10) {
+            throw new RuntimeException("Phone Number Should be 10 Digits Long");
+        }
+        if (!this.phoneNumber.matches("\\d+")) {
+            throw new RuntimeException("Phone Number Contain only digits");
+        }
+        if (!this.phoneNumber.startsWith("0")) {
+            throw new RuntimeException("Phone Number Should Start with 0");
+        }
+    }
+}
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Code Java à tester</h2>
+    <pre><code class="java" data-trim data-line-numbers="|7|9-14|16-18|20-23|25-29|31-33">
+<script type="text/template">
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ContactManager {
+
+    Map<String, Contact> contactList = new ConcurrentHashMap<String, Contact>();
+
+    public void addContact(String firstName, String lastName, String phoneNumber) {
+        Contact contact = new Contact(firstName, lastName, phoneNumber);
+        this.validateContact(contact);
+        this.checkIfContactAlreadyExist(contact);
+        this.contactList.put(this.generateKey(contact), contact);
+    }
+
+    public Collection<Contact> getAllContacts() {
+        return this.contactList.values();
+    }
+
+    private void checkIfContactAlreadyExist(Contact contact) {
+        if (this.contactList.containsKey(this.generateKey(contact)))
+            throw new RuntimeException("Contact Already Exists");
+    }
+
+    private void validateContact(Contact contact) {
+        contact.validateFirstName();
+        contact.validateLastName();
+        contact.validatePhoneNumber();
+    }
+
+    private String generateKey(Contact contact) {
+        return String.format("%s-%s", contact.getFirstName(), contact.getLastName());
+    }
+}
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+    <h2>Premier test JUnit5</h2>
+    <pre><code class="java" data-trim data-line-numbers>
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ContactManagerTest {
+
+@Test
+public void shouldCreateContact() {
+    ContactManager contactManager = new ContactManager();
+    contactManager.addContact("John", "Doe", "0123456789");
+
+    assertTrue(! contactManager.getAllContacts().isEmpty());
+    assertFalse(contactManager.getAllContacts().isEmpty());
+    assertEquals(1, contactManager.getAllContacts().size());
+}
+}
+</code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Cycle de vie d'un test JUnit</h2>
+    <pre>
+<code class="java" data-trim data-line-numbers="|18|20-29|31-37|153-161">
+<script type="text/template">
+    import org.junit.jupiter.api.*;
+    import org.junit.jupiter.api.condition.EnabledOnOs;
+    import org.junit.jupiter.api.condition.OS;
+    import org.junit.jupiter.params.ParameterizedTest;
+    import org.junit.jupiter.params.provider.CsvFileSource;
+    import org.junit.jupiter.params.provider.CsvSource;
+    import org.junit.jupiter.params.provider.MethodSource;
+    import org.junit.jupiter.params.provider.ValueSource;
+    
+    import java.util.Arrays;
+    import java.util.List;
+    
+    import static org.junit.jupiter.api.Assertions.assertEquals;
+    import static org.junit.jupiter.api.Assertions.assertFalse;
+    
+    public class ContactManagerTest {
+    
+        private ContactManager contactManager;
+    
+        @BeforeAll
+        public static void setupAll() {
+            System.out.println("Should Print Before All Tests");
+        }
+    
+        @BeforeEach
+        public void setup() {
+            System.out.println("Instantiating Contact Manager");
+            contactManager = new ContactManager();
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        public void shouldCreateContact() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When First Name is Null")
+        public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact(null, "Doe", "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Last Name is Null")
+        public void shouldThrowRuntimeExceptionWhenLastNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", null, "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Phone Number is Null")
+        public void shouldThrowRuntimeExceptionWhenPhoneNumberIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", "Doe", null);
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
+        public void shouldCreateContactOnMAC() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Test Contact Creation on Developer Machine")
+        public void shouldTestContactCreationOnDEV() {
+            Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Phone Number should start with 0")
+        public void shouldTestPhoneNumberFormat() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+    
+        @Nested
+        class RepeatedTests {
+            @DisplayName("Repeat Contact Creation Test 5 Times")
+            @RepeatedTest(value = 5,
+                    name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
+            public void shouldTestContactCreationRepeatedly() {
+                contactManager.addContact("John", "Doe", "0123456789");
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @Nested
+        class ParameterizedTests {
+            @DisplayName("Phone Number should match the required Format")
+            @ParameterizedTest
+            @ValueSource(strings = {"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingValueSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvSource({"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingCSVSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV File Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvFileSource(resources = "/data.csv")
+            public void shouldTestPhoneNumberFormatUsingCSVFileSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @DisplayName("Method Source Case - Phone Number should match the required Format")
+        @ParameterizedTest
+        @MethodSource("phoneNumberList")
+        public void shouldTestPhoneNumberFormatUsingMethodSource(String phoneNumber) {
+            contactManager.addContact("John", "Doe", phoneNumber);
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        private static List<String> phoneNumberList() {
+            return Arrays.asList("0123456789", "0123456798", "0123456897");
+        }
+    
+        @Test
+        @DisplayName("Test Should Be Disabled")
+        @Disabled
+        public void shouldBeDisabled() {
+            throw new RuntimeException("Test Should Not be executed");
+        }
+    
+    
+        @AfterEach
+        public void tearDown() {
+            System.out.println("Should Execute After Each Test");
+        }
+    
+        @AfterAll
+        public static void tearDownAll() {
+            System.out.println("Should be executed at the end of the Test");
+        }
+    }
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Répéter des tests avec JUnit</h2>
+
+    <pre>
+                <code class="java" data-trim data-line-numbers="90-100">
+                <script type="text/template">
+                    import org.junit.jupiter.api.*;
+                    import org.junit.jupiter.api.condition.EnabledOnOs;
+                    import org.junit.jupiter.api.condition.OS;
+                    import org.junit.jupiter.params.ParameterizedTest;
+                    import org.junit.jupiter.params.provider.CsvFileSource;
+                    import org.junit.jupiter.params.provider.CsvSource;
+                    import org.junit.jupiter.params.provider.MethodSource;
+                    import org.junit.jupiter.params.provider.ValueSource;
+                    
+                    import java.util.Arrays;
+                    import java.util.List;
+                    
+                    import static org.junit.jupiter.api.Assertions.assertEquals;
+                    import static org.junit.jupiter.api.Assertions.assertFalse;
+                    
+                    public class ContactManagerTest {
+                    
+                        private ContactManager contactManager;
+                    
+                        @BeforeAll
+                        public static void setupAll() {
+                            System.out.println("Should Print Before All Tests");
+                        }
+                    
+                        @BeforeEach
+                        public void setup() {
+                            System.out.println("Instantiating Contact Manager");
+                            contactManager = new ContactManager();
+                        }
+                    
+                        @Test
+                        @DisplayName("Should Create Contact")
+                        public void shouldCreateContact() {
+                            contactManager.addContact("John", "Doe", "0123456789");
+                            assertFalse(contactManager.getAllContacts().isEmpty());
+                            assertEquals(1, contactManager.getAllContacts().size());
+                        }
+                    
+                        @Test
+                        @DisplayName("Should Not Create Contact When First Name is Null")
+                        public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
+                            Assertions.assertThrows(RuntimeException.class, () -> {
+                                contactManager.addContact(null, "Doe", "0123456789");
+                            });
+                        }
+                    
+                        @Test
+                        @DisplayName("Should Not Create Contact When Last Name is Null")
+                        public void shouldThrowRuntimeExceptionWhenLastNameIsNull() {
+                            Assertions.assertThrows(RuntimeException.class, () -> {
+                                contactManager.addContact("John", null, "0123456789");
+                            });
+                        }
+                    
+                        @Test
+                        @DisplayName("Should Not Create Contact When Phone Number is Null")
+                        public void shouldThrowRuntimeExceptionWhenPhoneNumberIsNull() {
+                            Assertions.assertThrows(RuntimeException.class, () -> {
+                                contactManager.addContact("John", "Doe", null);
+                            });
+                        }
+                    
+                        @Test
+                        @DisplayName("Should Create Contact")
+                        @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
+                        public void shouldCreateContactOnMAC() {
+                            contactManager.addContact("John", "Doe", "0123456789");
+                            assertFalse(contactManager.getAllContacts().isEmpty());
+                            assertEquals(1, contactManager.getAllContacts().size());
+                        }
+                    
+                        @Test
+                        @DisplayName("Test Contact Creation on Developer Machine")
+                        public void shouldTestContactCreationOnDEV() {
+                            Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
+                            contactManager.addContact("John", "Doe", "0123456789");
+                            assertFalse(contactManager.getAllContacts().isEmpty());
+                            assertEquals(1, contactManager.getAllContacts().size());
+                        }
+                    
+                        @Test
+                        @DisplayName("Phone Number should start with 0")
+                        public void shouldTestPhoneNumberFormat() {
+                            contactManager.addContact("John", "Doe", "0123456789");
+                            assertFalse(contactManager.getAllContacts().isEmpty());
+                            assertEquals(1, contactManager.getAllContacts().size());
+                        }
+                    
+                    
+                        @Nested
+                        class RepeatedTests {
+                        @DisplayName("Repeat Contact Creation Test 5 Times")
+                        @RepeatedTest(value = 5,
+                        name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
+                            public void shouldTestContactCreationRepeatedly() {
+                                contactManager.addContact("John", "Doe", "0123456789");
+                                assertFalse(contactManager.getAllContacts().isEmpty());
+                                assertEquals(currentRepetition, contactManager.getAllContacts().size());
+                            }
+                        }
+                    
+                        @Nested
+                        class ParameterizedTests {
+                            @DisplayName("Phone Number should match the required Format")
+                            @ParameterizedTest
+                            @ValueSource(strings = {"0123456789", "0123456798", "0123456897"})
+                            public void shouldTestPhoneNumberFormatUsingValueSource(String phoneNumber) {
+                                contactManager.addContact("John", "Doe", phoneNumber);
+                                assertFalse(contactManager.getAllContacts().isEmpty());
+                                assertEquals(1, contactManager.getAllContacts().size());
+                            }
+                    
+                            @DisplayName("CSV Source Case - Phone Number should match the required Format")
+                            @ParameterizedTest
+                            @CsvSource({"0123456789", "0123456798", "0123456897"})
+                            public void shouldTestPhoneNumberFormatUsingCSVSource(String phoneNumber) {
+                                contactManager.addContact("John", "Doe", phoneNumber);
+                                assertFalse(contactManager.getAllContacts().isEmpty());
+                                assertEquals(1, contactManager.getAllContacts().size());
+                            }
+                    
+                            @DisplayName("CSV File Source Case - Phone Number should match the required Format")
+                            @ParameterizedTest
+                            @CsvFileSource(resources = "/data.csv")
+                            public void shouldTestPhoneNumberFormatUsingCSVFileSource(String phoneNumber) {
+                                contactManager.addContact("John", "Doe", phoneNumber);
+                                assertFalse(contactManager.getAllContacts().isEmpty());
+                                assertEquals(1, contactManager.getAllContacts().size());
+                            }
+                        }
+                    
+                        @DisplayName("Method Source Case - Phone Number should match the required Format")
+                        @ParameterizedTest
+                        @MethodSource("phoneNumberList")
+                        public void shouldTestPhoneNumberFormatUsingMethodSource(String phoneNumber) {
+                            contactManager.addContact("John", "Doe", phoneNumber);
+                            assertFalse(contactManager.getAllContacts().isEmpty());
+                            assertEquals(1, contactManager.getAllContacts().size());
+                        }
+                    
+                        private static List<String> phoneNumberList() {
+                            return Arrays.asList("0123456789", "0123456798", "0123456897");
+                        }
+                    
+                        @Test
+                        @DisplayName("Test Should Be Disabled")
+                        @Disabled
+                        public void shouldBeDisabled() {
+                            throw new RuntimeException("Test Should Not be executed");
+                        }
+                    
+                    
+                        @AfterEach
+                        public void tearDown() {
+                            System.out.println("Should Execute After Each Test");
+                        }
+                    
+                        @AfterAll
+                        public static void tearDownAll() {
+                            System.out.println("Should be executed at the end of the Test");
+                        }
+                    }
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les tests paramétrés</h2>
+    <pre>
+<code class="java" data-trim data-line-numbers="102-111|113-120|122-129|132-143">
+<script type="text/template">
+    import org.junit.jupiter.api.*;
+    import org.junit.jupiter.api.condition.EnabledOnOs;
+    import org.junit.jupiter.api.condition.OS;
+    import org.junit.jupiter.params.ParameterizedTest;
+    import org.junit.jupiter.params.provider.CsvFileSource;
+    import org.junit.jupiter.params.provider.CsvSource;
+    import org.junit.jupiter.params.provider.MethodSource;
+    import org.junit.jupiter.params.provider.ValueSource;
+    
+    import java.util.Arrays;
+    import java.util.List;
+    
+    import static org.junit.jupiter.api.Assertions.assertEquals;
+    import static org.junit.jupiter.api.Assertions.assertFalse;
+    
+    public class ContactManagerTest {
+    
+        private ContactManager contactManager;
+    
+        @BeforeAll
+        public static void setupAll() {
+            System.out.println("Should Print Before All Tests");
+        }
+    
+        @BeforeEach
+        public void setup() {
+            System.out.println("Instantiating Contact Manager");
+            contactManager = new ContactManager();
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        public void shouldCreateContact() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When First Name is Null")
+        public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact(null, "Doe", "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Last Name is Null")
+        public void shouldThrowRuntimeExceptionWhenLastNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", null, "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Phone Number is Null")
+        public void shouldThrowRuntimeExceptionWhenPhoneNumberIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", "Doe", null);
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
+        public void shouldCreateContactOnMAC() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Test Contact Creation on Developer Machine")
+        public void shouldTestContactCreationOnDEV() {
+            Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Phone Number should start with 0")
+        public void shouldTestPhoneNumberFormat() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+    
+        @Nested
+        class RepeatedTests {
+            @DisplayName("Repeat Contact Creation Test 5 Times")
+            @RepeatedTest(value = 5,
+                    name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
+            public void shouldTestContactCreationRepeatedly() {
+                contactManager.addContact("John", "Doe", "0123456789");
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @Nested
+        class ParameterizedTests {
+            @DisplayName("Phone Number should match the required Format")
+            @ParameterizedTest
+            @ValueSource(strings = {"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingValueSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvSource({"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingCSVSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV File Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvFileSource(resources = "/data.csv")
+            public void shouldTestPhoneNumberFormatUsingCSVFileSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @DisplayName("Method Source Case - Phone Number should match the required Format")
+        @ParameterizedTest
+        @MethodSource("phoneNumberList")
+        public void shouldTestPhoneNumberFormatUsingMethodSource(String phoneNumber) {
+            contactManager.addContact("John", "Doe", phoneNumber);
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        private static List<String> phoneNumberList() {
+            return Arrays.asList("0123456789", "0123456798", "0123456897");
+        }
+    
+        @Test
+        @DisplayName("Test Should Be Disabled")
+        @Disabled
+        public void shouldBeDisabled() {
+            throw new RuntimeException("Test Should Not be executed");
+        }
+    
+    
+        @AfterEach
+        public void tearDown() {
+            System.out.println("Should Execute After Each Test");
+        }
+    
+        @AfterAll
+        public static void tearDownAll() {
+            System.out.println("Should be executed at the end of the Test");
+        }
+    }
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les tests ignorés</h2>
+    <pre>
+<code class="java" data-trim data-line-numbers="145-150">
+<script type="text/template">
+    import org.junit.jupiter.api.*;
+    import org.junit.jupiter.api.condition.EnabledOnOs;
+    import org.junit.jupiter.api.condition.OS;
+    import org.junit.jupiter.params.ParameterizedTest;
+    import org.junit.jupiter.params.provider.CsvFileSource;
+    import org.junit.jupiter.params.provider.CsvSource;
+    import org.junit.jupiter.params.provider.MethodSource;
+    import org.junit.jupiter.params.provider.ValueSource;
+    
+    import java.util.Arrays;
+    import java.util.List;
+    
+    import static org.junit.jupiter.api.Assertions.assertEquals;
+    import static org.junit.jupiter.api.Assertions.assertFalse;
+    
+    public class ContactManagerTest {
+    
+        private ContactManager contactManager;
+    
+        @BeforeAll
+        public static void setupAll() {
+            System.out.println("Should Print Before All Tests");
+        }
+    
+        @BeforeEach
+        public void setup() {
+            System.out.println("Instantiating Contact Manager");
+            contactManager = new ContactManager();
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        public void shouldCreateContact() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When First Name is Null")
+        public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact(null, "Doe", "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Last Name is Null")
+        public void shouldThrowRuntimeExceptionWhenLastNameIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", null, "0123456789");
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Not Create Contact When Phone Number is Null")
+        public void shouldThrowRuntimeExceptionWhenPhoneNumberIsNull() {
+            Assertions.assertThrows(RuntimeException.class, () -> {
+                contactManager.addContact("John", "Doe", null);
+            });
+        }
+    
+        @Test
+        @DisplayName("Should Create Contact")
+        @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
+        public void shouldCreateContactOnMAC() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Test Contact Creation on Developer Machine")
+        public void shouldTestContactCreationOnDEV() {
+            Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        @Test
+        @DisplayName("Phone Number should start with 0")
+        public void shouldTestPhoneNumberFormat() {
+            contactManager.addContact("John", "Doe", "0123456789");
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+    
+        @Nested
+        class RepeatedTests {
+            @DisplayName("Repeat Contact Creation Test 5 Times")
+            @RepeatedTest(value = 5,
+                    name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
+            public void shouldTestContactCreationRepeatedly() {
+                contactManager.addContact("John", "Doe", "0123456789");
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @Nested
+        class ParameterizedTests {
+            @DisplayName("Phone Number should match the required Format")
+            @ParameterizedTest
+            @ValueSource(strings = {"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingValueSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvSource({"0123456789", "0123456798", "0123456897"})
+            public void shouldTestPhoneNumberFormatUsingCSVSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+    
+            @DisplayName("CSV File Source Case - Phone Number should match the required Format")
+            @ParameterizedTest
+            @CsvFileSource(resources = "/data.csv")
+            public void shouldTestPhoneNumberFormatUsingCSVFileSource(String phoneNumber) {
+                contactManager.addContact("John", "Doe", phoneNumber);
+                assertFalse(contactManager.getAllContacts().isEmpty());
+                assertEquals(1, contactManager.getAllContacts().size());
+            }
+        }
+    
+        @DisplayName("Method Source Case - Phone Number should match the required Format")
+        @ParameterizedTest
+        @MethodSource("phoneNumberList")
+        public void shouldTestPhoneNumberFormatUsingMethodSource(String phoneNumber) {
+            contactManager.addContact("John", "Doe", phoneNumber);
+            assertFalse(contactManager.getAllContacts().isEmpty());
+            assertEquals(1, contactManager.getAllContacts().size());
+        }
+    
+        private static List<String> phoneNumberList() {
+            return Arrays.asList("0123456789", "0123456798", "0123456897");
+        }
+    
+        @Test
+        @DisplayName("Test Should Be Disabled")
+        @Disabled
+        public void shouldBeDisabled() {
+            throw new RuntimeException("Test Should Not be executed");
+        }
+    
+    
+        @AfterEach
+        public void tearDown() {
+            System.out.println("Should Execute After Each Test");
+        }
+    
+        @AfterAll
+        public static void tearDownAll() {
+            System.out.println("Should be executed at the end of the Test");
+        }
+    }
+</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+    <h2>Tests des exceptions avec JUnit</h2>
+    Utilisation de la méthode <code class="listing">assertThrows</code>
+    <pre><code class="java" data-trim data-line-numbers>
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ContactManagerTest {
+
+@Test
+public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
+    ContactManager contactManager = new ContactManager();
+
+    Assertions.assertThrows(RuntimeException.class, () -> {
+        contactManager.addContact(null, "Doe", "0123456789");
+    });
+}
+}
+</code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
