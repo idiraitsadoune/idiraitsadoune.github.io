@@ -234,14 +234,14 @@ Present your data path to the supervisor before continuing.
 </p>
 
 <p class="text-justify">
-    The first ( <code>test_unit.mem</code> ) tests each instruction according to the two addressing modes. 
+    The first ( <code class="listing">test_unit.mem</code> ) tests each instruction according to the two addressing modes. 
     Lines labelled ERROR should not be executed by the designed processor. 
 </p>
 
 <img src="./img/test1.png" alt="">
 
 <p class="text-justify">
-    It's up to you to determine what the second one (<code>test_fct.mem</code>) 
+    It's up to you to determine what the second one (<code class="listing">test_fct.mem</code>) 
     does and whether the result obtained is correct: 
 </p>
 
@@ -262,10 +262,11 @@ Present your data path to the supervisor before continuing.
 <p class="text-justify">
     The kit used for this study is a ZIP archive in which you will find, once unzipped:
     <ul>
-        <li>the <code>logisim-2.7.1.jar</code>  file, which is the Logisim simulator.</li>
-        <li>the <code>ese1010.jar</code> file, which is the library of Logisim components necessary to carry out the study</li>
-        <li>the <code>ese1010.circ</code> file, which contains the described computer skeleton</li>
-        <li>The test files <code>test_unit.mem</code> and <code>test_fct.mem</code> contain the two test programs described above and must be loaded into the memory component. </li>
+        <li>the <code class="listing">logisim-2.7.1.jar</code>  file, which is the Logisim simulator.</li>
+        <li>the <code class="listing">ese1010.jar</code> file, which is the library of Logisim components necessary to carry out the study</li>
+        <li>the <code class="listing">ese1010.circ</code> file, which contains the described computer skeleton</li>
+        <li>The test files <code class="listing">test_unit.mem</code> and <code class="listing">test_fct.mem</code> contain the two test programs described 
+            above and must be loaded into the memory component. </li>
     </ul>
 
     <br>
@@ -286,11 +287,12 @@ The “lower” part of the diagram contains control signals to the data path el
 be deduced from an examination of the diagram - is recalled below:
 <ul>
 <li> HCO: clock of the ordinal counter register (CO);</li>   
-<li> CCO: CO loading: determines what is loaded in the CO when a rising edge is applied to HCO: if 0, CO + 1; if 1, CO entry;</li>
+<li> CCO: CO loading: determines what is loaded in the CO when HCO is activited: if 0, CO + 1; if 1, CO input;</li>
 <li> HAQ: accumulator register clock (AQ);</li>
 <li> HRADM: Memory Address Register Clock (RADM);</li>
 <li> HEM: clock of the memory input register (EM), which is loaded from the value located at the input of connector D (“from the bottom”);</li>
-<li> RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
+<li> RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available 
+    at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
 
 <li> HRI: instruction register (RI) clock;</li>
 <li> Sext: control of the extension sign for the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
