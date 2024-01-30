@@ -73,7 +73,7 @@
             <li>You must read all the subject before starting the work.</li>
             <li><b style="color: red;">The mark of this work counts for 30% of the final mark only if it increases the final exam mark.</b></li>
             <li>At the end, you must provide a <code class="listing">name1_name2.ZIP</code> archive file containing all files used in your work. You must upload it on <b>EDUNOA</b> 
-                (<b style="color: red;">One work uploaded by team</b>). </li>
+               before <b style="color: red;">Monday, 12th February at 23h59</b> (<b style="color: red;">One work uploaded by team</b>). </li>
         </ul>
     </p>
 </div>
@@ -100,8 +100,7 @@
 </div>
 
 <p class="text-justify">
-    This laboratory session aims to design a simple processor according to the principles covered in class. 
-    The processor will be created using <b>Logisim software</b>  (see below). 
+    This laboratory session aims to design a simple processor using <b>Logisim software</b>  (see below). 
 </p>
 
 <!-- #################################################### -->
@@ -119,8 +118,8 @@
            <ul>
             <li>the most significant bit (bit 15) indicates the addressing mode. Its meaning is as follows:
                 <ul>
-                    <li>0 : Immediate (called direct for jumps): The argument is the operand.</li>
-                    <li>1 : Indirect: The argument is the address of the address of the operand.</li>
+                    <li>0 : <b>Immediate</b> (called direct for jumps): The argument is the operand.</li>
+                    <li>1 : <b>Indirect</b>: The argument is the address of the address of the operand.</li>
                 </ul>
             </li>
             <li>bits 12 to 14 indicate the operation to be performed: 
@@ -137,42 +136,46 @@
                         <tr>
                             <td >000</td>
                             <td >LDA</td>
-                            <td >Load the accumulator with the operand (immediate and indirect)</td>
+                            <td >Store the content of the operand in the accumulator. 
+                                <br> (immediate and indirect addressing modes)</td>
                         </tr>
                         <tr>
                             <td >001</td>
                             <td >STA</td>
-                            <td >store the contents of the accumulator in memory (only in indirect addressing mode)</td>
+                            <td >Store the contents of the accumulator in memory 
+                                <br> (only in indirect addressing mode)</td>
                         </tr>
                         <tr>
                             <td >010</td>
                             <td >ADD</td>
-                            <td >add the operand to the contents of the accumulator and store the result in the accumulator (immediate and indirect)</td>
+                            <td >Add the operand to the contents of the accumulator and store the result in the accumulator  
+                                <br> (immediate and indirect addressing modes)</td>
                         </tr>
                         <tr>
                             <td >011</td>
                             <td >SUB</td>
-                            <td >subtract the operand from the contents of the accumulator and store the result in the accumulator (immediate and indirect)</td>
+                            <td >Subtract the operand from the contents of the accumulator and store the result in the accumulator  
+                                (immediate and indirect addressing modes)</td>
                         </tr>
                         <tr>
                             <td >100</td>
                             <td >JMP</td>
-                            <td >unconditional jump (only in direct addressing mode)</td>
+                            <td >unconditional jump (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
                         </tr>
                         <tr>
                             <td >101</td>
                             <td >JEQ</td>
-                            <td >jump if the content of the accumulator is zero (only in direct addressing mode)</td>
+                            <td >jump if the content of the accumulator is zero (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
                         </tr>
                         <tr>
                             <td >110</td>
                             <td >JLT</td>
-                            <td >jump if the content of the accumulator is strictly negative (only in direct addressing mode)</td>
+                            <td >jump if the content of the accumulator is strictly negative (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
                         </tr>
                         <tr>
                             <td >111</td>
                             <td >CLR</td>
-                            <td >putting zero in the accumulator </td>
+                            <td >putting zero in the accumulator.  <br> (You can generate zero from the UAL and send it to the accumulator) </td>
                         </tr>
                          
                     </tbody>
@@ -187,65 +190,6 @@
         </li>
     </ul>
 </p>
-
-<!-- #################################################### -->
-<div class="subsection-title">
-    Work to be done
-</div>
-
-<img src="./img/schema.png" alt="">
-
-<p class="text-justify">
-    From the generic data path provided, determine the data path specific to the requested processor.
-<br>
-It is advisable to create a timetable showing the transfer requirements between modules for all instructions 
-and the two addressing modes, if applicable, without deciding which argument bus (A1 or A2) or which result bus 
-(R1 or R2) is used. Once this table is complete, the exact choice of bus used can be made by seeking to minimize 
-the number of connections controlled by the sequencer.
-<br>
-In addition to this timetable, the result of this step must be materialized in the form of a diagram 
-of the specific data path on which appear the switches which are either always closed or sometimes 
-closed and sometimes open (the always open switches are not shown in the diagram). 
-Present your data path to the supervisor before continuing.
-</p>
-
-<div><b>
-    1 - Sequencer
-</b></div>
-
-<p class="text-justify">
-    Determine the equations to use to create the sequencer for this machine.
-</p>
-
-<div><b>
-    2 - Implementation
-</b></div>
-
-<p class="text-justify">
-    Using Logisim, create the specified machine.
-</p>
-
-<div><b>
-    3 - Tests
-</b></div>
-
-<p class="text-justify">
-    Two test programs are provided as files to load into the memory component.
-</p>
-
-<p class="text-justify">
-    The first ( <code class="listing">test_unit.mem</code> ) tests each instruction according to the two addressing modes. 
-    Lines labelled ERROR should not be executed by the designed processor. 
-</p>
-
-<img src="./img/test1.png" alt="">
-
-<p class="text-justify">
-    It's up to you to determine what the second one (<code class="listing">test_fct.mem</code>) 
-    does and whether the result obtained is correct: 
-</p>
-
-<img src="./img/test2.png" alt="">
 
 <!-- #################################################### -->
 <div class="subsection-title">
@@ -266,8 +210,11 @@ Present your data path to the supervisor before continuing.
         <li>the <code class="listing">ese1010.jar</code> file, which is the library of Logisim components necessary to carry out the study</li>
         <li>the <code class="listing">ese1010.circ</code> file, which contains the described computer skeleton</li>
         <li>The test files <code class="listing">test_unit.mem</code> and <code class="listing">test_fct.mem</code> contain the two test programs described 
-            above and must be loaded into the memory component. </li>
+            below and must be loaded into the memory component. </li>
     </ul>
+
+    <br>
+    <img src="./img/schema.png" alt="">
 
     <br>
     The skeleton of the computer is equipped with a clock component. To start the simulation, 
@@ -277,6 +224,8 @@ Present your data path to the supervisor before continuing.
         <li>Ticks Enabled is checked;</li>
         <li>In Tick Frequency, choose a frequency that is not too high (e.g. 8Hz) to start.</li>
     </ul>
+
+    
 
 <br>
 The “top” part of the diagram includes 8 generic control signals, initially called C1 to C8 on the sequencer. 
@@ -302,6 +251,58 @@ be deduced from an examination of the diagram - is recalled below:
 </li>
 </ul>
 </p>
+
+
+<!-- #################################################### -->
+<div class="subsection-title">
+    Work to be done
+</div>
+
+<div><b>
+    1 - Timetable and equations
+</b></div>
+
+<p class="text-justify">
+    <ul>
+        <li>From the provided generic data path, determine the data path (and complete the microprocessor schema) and timetable for executing all operations.</li>
+        <li>From the obtained timetable, write signal equations to be used by the sequencer.</li>
+    </ul>
+    
+</p>
+
+<div><b>
+    2 - Implementation
+</b></div>
+
+<p class="text-justify">
+    <ul>
+        <li>Using Logisim, write the obtained equations into the sequencer components.</li>
+    </ul>
+    
+</p>
+
+<div><b>
+    3 - Tests
+</b></div>
+
+<p class="text-justify">
+    Two test programs are provided as files to load into the memory component.
+</p>
+
+<p class="text-justify">
+    The first ( <code class="listing">test_unit.mem</code> ) tests each instruction according to the two addressing modes. 
+    Lines labelled ERROR should not be executed by the designed processor. 
+</p>
+
+<img src="./img/test1.png" alt="">
+
+<p class="text-justify">
+    It's up to you to determine what the second one (<code class="listing">test_fct.mem</code>) 
+    does and whether the result obtained is correct: 
+</p>
+
+<img src="./img/test2.png" alt="">
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
