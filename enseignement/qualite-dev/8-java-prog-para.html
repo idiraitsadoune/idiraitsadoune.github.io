@@ -1,0 +1,509 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Qualité de développement : La Programmation concurrente en Java</title>
+
+	<meta name="description" content="Qualité de développement : La Programmation concurrente en Java">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/iut-logo.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Qualité de développement</h2>
+		<h3>La Programmation concurrente en Java</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+            </a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Systèmes multitâches"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes multitâches</h2>
+	<div id="default-block">
+		Un système <b>multitâches</b> 
+        permet d’<i>exécuter plusieurs programmes</i> informatiques  
+        <i>en parallèle</i>. 
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes multiprocesseurs</h2>
+    <ul class="fragment">
+        <li><b>Vrai-parallélisme</b> : <br> 
+            un système 
+            <i>multiprocesseurs</i> permet un <i>parallélisme</i>,
+    où chaque tâche est exécutée par un processeur.</li>
+    </ul>
+    <div class="skip">
+        <img class="fragment" src="./img/vrai_parallele.svg" alt="">
+    </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes monoprocesseur</h2>
+    <ul>
+        <li class="fragment">
+            <b>Pseudo-parallélisme</b> : <br> les systèmes <i>monoprocesseur</i> permettent 
+            un <i>parallélisme</i>, où toutes les tâches s'exécutent sur le même processeur.
+        </li>
+        <li class="fragment skip">
+            <b>Systèmes à traitement par lots</b>
+            <img src="./img/systeme_lot.svg" alt="">
+        </li>
+
+        <li class="fragment skip">
+            <b>Systèmes à temps partagé</b>
+            <img src="./img/systeme_temps_partage.svg" alt="">
+            
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La programmation concurrente</h2>
+	<div id="default-block">
+            Un <i>paradigme de programmation</i> qui tient compte
+            de l'existence <br> de plusieurs unités d'exécution de base dans un programme : 
+        <ul class="fragment">
+            <li><i>les processus</i> et <i>les threads</i>. </li>
+        </ul>
+    </div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La notion de processus</h2>
+    <ul>
+        <li class="fragment">
+            <i>Les processus</i> sont considérés comme 
+            <i>synonymes de programmes</i>.
+            <ul id="fleche"><li>un processus est un programme en cours d'exécution.</li></ul>
+        </li>
+
+        <li class="fragment skip">
+            Un processus possède <i>un environnement d'exécution</i> autonome: 
+            <ul id="fleche"><li>chaque processus a son propre espace mémoire.</li></ul>
+        </li>
+
+        <li class="fragment skip">
+            Pour gérer <i>la communication entre les processus</i>, la plupart des OS
+                utilisent les <i>IPC</i> (Inter Process Communication) : 
+                <ul><li><i>les pipes  et les sockets</i> (<i>à étudier dans le cours suivant</i>)</li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La notion de thread</h2>
+    <ul>
+        <li class="fragment">
+            <i>Les threads</i> sont aussi appelés <i>processus légers</i> 
+            <ul id="fleche"><li>la création d'un thread nécessite moins de ressources qu'un processus.</li></ul>
+        </li>
+
+        <li class="fragment skip">
+            Les threads sont créés par des processus. 
+            <i>Les threads partagent les ressources du processus</i>, y compris la mémoire et les fichiers ouverts.
+        </li>
+
+        <li class="fragment skip">
+            Cela rend la communication efficace mais potentiellement problématique
+            <ul id="fleche"><li><i>synchronisations et gestion des ressources partagées</i></li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Processus vs Thread</h2>
+    <img src="./img/ThreadDiagram.jpg" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Les processus et les threads en Java"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les processus en Java</h2>
+    <ul>
+        <li class="fragment">
+            La description du comportement d'un processus en <b>Java</b> se fait <br>
+            en implémentant la méthode <code class="listing">main()</code> dans une classe. 
+
+            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+                public class ProcessInstanciation {
+                    public static void main(String[] args) {
+                        System.out.println("Run with main method");
+                    }
+                }                             
+			</script></code></pre>
+        </li>
+
+        <li class="fragment skip">
+            La création d'un processus se fait en exécutant la méthode <code class="listing">main()</code>.
+            <pre><code class="language-shell hljs" data-trim>
+                <script type="text/template">
+                    Run with main method
+                </script>
+            </code></pre>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les threads en Java</h2>
+    <ul>
+        <li class="fragment">
+            La <i>création</i> d'un thread se fait de deux manières:
+            <ol>
+                <li class="fragment">
+                    en dérivant
+                    <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html" target="_blank">
+                        la classe   <code class="listing">Thread</code></a> 
+                        et en <i>surchargeant</i> la méthode <code class="listing">run()</code>.
+                </li>
+                <li class="fragment">
+                    en implémentant
+                    <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Runnable.html"  target="_blank">
+                        l'interface <code class="listing">Runnable</code>
+                    </a>
+                        contenant la méthode <code class="listing">run()</code>.
+                </li>
+            </ol>
+        </li>
+
+        <li class="fragment skip">
+            L'<i>exécution</i> d'un thread se fait en utilisant la méthode <code class="listing">start()</code>. <br>
+            Le code métier (la méthode <code class="listing">run()</code>) sera exécuté en tâche de fond.
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Etendre la classe <code class="listing">Thread</code></h2>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class FromThreadClass extends Thread {
+            public FromThreadClass(String id) {
+                super(id); 
+            }
+                
+            public void run() {
+                System.out.println("[Thread "+ this.getName() +"] Run");
+            }
+        }                             
+    </script></code></pre>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class FromProcessClass {	   
+            public static void main(String[] args) {
+                FromThreadClass th1 = new FromThreadClass("TH1");
+                th1.start();
+            }
+        }                             
+    </script></code></pre>
+    <pre class="fragment"><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            [Thread TH1] Run
+        </script>
+    </code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Implémenter l'interface <code class="listing">Runnable</code></h2>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class FromRunnableInterface implements Runnable { 
+            private String name ;
+            public FromRunnableInterface(String n){
+                this.name = n;
+            }
+            
+            public void run() {
+                System.out.println("[Thread "+ this.name +"] Run");
+            }
+        }                             
+    </script></code></pre>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class FromProcessClass {
+            public static void main(String[] args) {
+                Thread th1 = new Thread(new FromRunnableInterface("TH1"));
+                th1.start();
+            }
+        }                             
+    </script></code></pre>
+    <pre class="fragment"><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            [Thread TH1] Run
+        </script>
+    </code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Quelques méthodes de la classe Thread"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class ThreadFils extends Thread {
+            public ThreadFils(String name) {
+                super(name);
+            }
+                
+            public void run() {
+                try {
+                    System.out.println("[Thread "+this.getName()+"] Debut");
+                    System.out.println("[Thread "+this.getName()+"] Sleep ...");
+                    this.sleep(2000);
+                    System.out.println("[Thread "+this.getName()+"] Fin");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }	
+        }                             
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+    <pre data-id="c1" class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Main {
+            public static void main(String[] args) {
+                try {
+                    System.out.println("[Main Process] Debut");
+                    ThreadFils f1 = new ThreadFils("f1");
+                    f1.start();
+                    f1.join();
+                    System.out.println("[Main Process] Fin");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }                            
+    </script></code></pre>
+    <pre class="fragment"><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            [Main Process] Debut
+            [Thread f1] Debut
+            [Thread f1] Sleep ...
+            [Thread f1] Fin
+            [Main Process] Fin
+        </script>
+    </code></pre>
+</section> 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+    <pre data-id="c1"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Main {
+            public static void main(String[] args) {
+                try {
+                    System.out.println("[Main Process] Debut");
+                    ThreadFils f1 = new ThreadFils("f1");
+                    f1.start();
+                    f1.join(1000);
+                    System.out.println("[Main Process] Fin");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }                            
+    </script></code></pre>
+    <pre class="fragment"><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            [Main Process] Debut
+            [Thread f1] Debut
+            [Thread f1] Sleep ...
+            [Main Process] Fin
+            [Thread f1] Fin
+        </script>
+    </code></pre>
+</section> 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La méthode <code class="listing">interrupt()</code></h2>
+    <pre  data-id="c1"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Main {
+            public static void main(String[] args) {
+                try {
+                    System.out.println("[Main Process] Debut");
+                    ThreadFils f1 = new ThreadFils("f1");
+                    f1.start();
+                    f1.join(1000);
+                    f1.interrupt();
+                    System.out.println("[Main Process] Fin");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }                           
+    </script></code></pre>
+    <pre class="fragment"><code class="language-shell hljs" data-trim>
+        <script type="text/template">
+            [Main Process] Debut
+            [Thread f1] Debut
+            [Thread f1] Sleep ...
+            [Main Process] Fin
+                java.lang.InterruptedException: sleep interrupted
+                    at java.lang.Thread.sleep(Native Method)
+                    at ThreadFils.run(ThreadFils.java:15)                   
+        </script>
+    </code></pre>
+</section> 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
