@@ -454,11 +454,11 @@
     <pre><code class="language-java hljs" data-trim data-line-numbers="|2-6|10-11|13-16|19-22|24-25|27-38|40-47|49-50"><script type="text/template">
         public class ServerThread extends Thread {
             private Socket s;
-        
+         
             public ServerThread(Socket s) {
                 this.s = s;
             }
-        
+         
             public void run() {
                 try {
                     BufferedReader readData = new BufferedReader(new InputStreamReader(this.s.getInputStream()));
@@ -468,18 +468,18 @@
                     int readValue;
                     int response = -1;
                     int total = 0;
-        
+         
                     do {
                         int v1 = rng.nextInt(100) + 1;
                         int v2 = rng.nextInt(100) + 1;
                         int op = rng.nextInt(2);
                         String ops = (op == 0) ? "+" : "-";
-        
+         
                         writeData.println(v1 + "," + ops + "," + v2);
                         writeData.flush();
-        
-                        readValue = new Integer(readData.readLine()).intValue();
-        
+         
+                        readValue = Integer.valueOf(readData.readLine()).intValue();
+         
                         if (op == 0 && readValue == (v1 + v2)) {
                             response = 1;
                             total++;
@@ -490,7 +490,7 @@
                             response = -1;
                             total--;
                         }
-        
+         
                         if (response != -1) {
                             writeData.println("OK");
                             writeData.flush();
@@ -499,7 +499,7 @@
                             writeData.flush();
                         }
                     } while (response != -1);
-        
+         
                     writeData.println("" + total);
                     writeData.flush();
                     
@@ -508,8 +508,7 @@
                     this.s.close();
                 } catch (IOException e) {e.printStackTrace();}
             }
-        }
-                                    
+        }                             
     </script></code></pre>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -542,35 +541,35 @@
             public static void main(String[] args) {
                 try {
                     Socket socket = new Socket("localhost", 5555);
-        
+         
                     PrintWriter writeData = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
                     BufferedReader buf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        
+         
                     Scanner sc = new Scanner(System.in);
-        
+         
                     String response = "";
                     do {
                         String readM = buf.readLine();
                         String[] message = readM.split(",");
-        
-                        int v1 = new Integer(message[0]).intValue();
+         
+                        int v1 = Integer.valueOf(message[0]).intValue();
                         String op = message[1];
-                        int v2 = new Integer(message[2]).intValue();
-        
+                        int v2 = Integer.valueOf(message[2]).intValue();
+         
                         System.out.print(v1 + " " + op + " " + v2 + " = ");
                         int result = sc.nextInt();
                         sc.nextLine();
-        
-                        String resultMessage = new Integer(result).toString();
+         
+                        String resultMessage = String.valueOf(result);
                         writeData.println(resultMessage);
                         writeData.flush();
-        
+         
                         response = buf.readLine();
                     } while (response.equals("OK"));
-        
+         
                     response = buf.readLine();
                     System.out.println("My Score:" + response);
-        
+         
                     sc.close();
                     writeData.close();
                     buf.close();

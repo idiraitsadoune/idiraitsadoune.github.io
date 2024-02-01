@@ -97,6 +97,156 @@
     Proposez une solution en utilisant le langage <b>Java</b> et en faisant appel aux différentes notions 
     vues en cours (La programmation concurrente, La programmation de protocoles Clients/Serveurs, ...)
 </p>
+
+<div class="green-block">
+<pre><code class="language-java"><script type="text/template">public class Server {
+	public static int[] nb_etapes = {0,0} ;
+	public static boolean[] est_fini = {false,false} ;
+	public static int nb_secret ;
+	
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(5555);
+			Server.nb_secret = (int) (Math.random()*100);
+			
+			System.out.println("Server lancé");
+			
+			Socket s1 = server.accept();
+			ServerThread th1 = new ServerThread(0,s1);
+			System.out.println("Client 1 connecté");
+			
+			Socket s2 = server.accept();
+			ServerThread th2 = new ServerThread(1, s2);
+			System.out.println("Client 2 connecté");
+			
+			th1.start();
+			th2.start();
+			
+			th1.join();
+			th2.join();
+			server.close();
+			System.out.println("Server arrêté");
+			
+		} catch (IOException | InterruptedException e) {
+			e.printStackTrace();
+			System.out.println("Probème sur le Server");
+		}
+	}
+}                             
+</script></code></pre>
+
+	<pre><code class="language-java"><script type="text/template">public class ServerThread extends Thread {
+	int id ;
+	Socket socket ;
+	
+	public ServerThread(int i, Socket socket) {
+		this.id = i;
+		this.socket = socket;
+	}
+
+	@Override
+	public void run() {
+		try {
+			int readValue;
+			
+			BufferedReader inputStream = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			PrintWriter outputStream = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()));
+			
+			outputStream.println("Go");
+			outputStream.flush();
+			
+			do {
+				readValue = Integer.valueOf(inputStream.readLine());
+				Server.nb_etapes[this.id]++ ;
+				
+				if(readValue > Server.nb_secret) {
+					outputStream.println("Plus petit");
+					outputStream.flush();
+				}
+				else if(readValue < Server.nb_secret) {
+					outputStream.println("Plus grand");
+					outputStream.flush();
+				}
+				else {
+					outputStream.println("Trouve");
+					outputStream.flush();
+					Server.est_fini[this.id] = true ;
+				}
+			}while(readValue != Server.nb_secret);
+			
+			System.out.println("Annonce du résultat coté " + this.id);
+			
+			while(Server.est_fini[1-this.id]==false) {this.sleep(500);};
+			
+			if(Server.nb_etapes[this.id] <= Server.nb_etapes[1-this.id]) {
+				outputStream.println("Gagne");
+				outputStream.flush();
+				System.out.println("Le joueur " + this.id + " a gagne" );
+			}
+			else {
+				outputStream.println("Perdu");
+				outputStream.flush();
+				System.out.println("Le joueur " + this.id + " a perdu" );
+			}
+			
+			inputStream.close();
+			outputStream.close();
+			this.socket.close();
+			
+		} catch (IOException | InterruptedException e) {
+			
+			e.printStackTrace();
+		}	
+	}
+}                             
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">public class Client {
+
+	public static void main(String[] args) {
+		try {
+			Socket socket = new Socket("localhost", 5555);
+			System.out.println("Connecté en attente de Go");
+			
+			PrintWriter outputStream = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+			BufferedReader inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			Scanner sc = new Scanner(System.in);
+			String input ;
+			
+			// réception de GO
+			input = inputStream.readLine();
+			System.out.println(input);
+			
+			do {
+				System.out.print("Prochaine valeur : ");
+				int result = sc.nextInt();
+				
+				String data = String.valueOf(result);
+				outputStream.println(data);
+				outputStream.flush();
+				
+				input = inputStream.readLine();
+				System.out.println(input);
+				
+			}while(! "Trouve".equals(input));
+
+			System.out.println("Le resultat du jeux : ");
+			input = inputStream.readLine();
+			System.out.println(input);
+			
+			inputStream.close();
+			outputStream.close();
+			socket.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}                             
+</script></code></pre>
+</div>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 2 : Gestion des profiles des clients
