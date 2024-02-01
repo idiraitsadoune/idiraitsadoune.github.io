@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD Qualité de développement : La programmation réseau</title>
+
+	<meta name="description" content="TD Qualité de développement : La programmation réseau">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux dirigés - TD<br> 
+    La programmation réseau
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 1 : Le nombre secret
+</div>
+
+<p>
+    Nous souhaitons développer avec <b>Java</b> un jeu sur réseau basé sur une architecture <b>Client/Serveur</b>.  
+    Le but du jeu est de permettre à deux joueurs de s'affronter en ligne.
+</p>
+<div class="subsection-title">
+	Déroulement d'un partie du jeu
+</div>
+<ul>
+    <li>Le <code class="listing">Serveur</code> commence par générer un nombre aléatoire entre <code class="listing">0</code> et <code class="listing">100</code>.</li>
+
+    <li>Le <code class="listing">Serveur</code> attend que deux joueurs (<code class="listing">Clients</code>) se connectent.</li>
+
+    <li>Une fois que les deux joueurs sont connectés, le serveur leurs envoie un message <code class="listing">"GO"</code> pour leur permettre de commencer le jeu.</li>
+
+    <li>Chaque joueur va essayer de trouver le nombre aléatoire généré par le <code class="listing">Serveur</code>.
+        <ul>
+            <li>Le joueur envoie un nombre au serveur</li>
+            <li>Le serveur répond par : <code class="listing">"plus grand"</code>, <code class="listing">"plus petit"</code>, ou <code class="listing">"trouvé"</code>.</li>
+        </ul>
+	</li>
+
+    <li>
+        A la fin du jeu (les deux joueurs ont réussi à trouver le nombre aléatoire généré par le serveur), 
+        les deux joueurs reçoivent un message de la part du serveur contenant le nombre de tentatives et <code class="listing">"Vous avez gagné"</code> 
+        si le joueur a réussi à trouver le nombre caché avec moins de tentatives que son adversaire, <code class="listing">"Vous avez perdu"</code> sinon.
+    </li>
+</ul>
+<div class="subsection-title">
+	Travail à faire.
+</div>
+<p>
+    Proposez une solution en utilisant le langage <b>Java</b> et en faisant appel aux différentes notions 
+    vues en cours (La programmation concurrente, La programmation de protocoles Clients/Serveurs, ...)
+</p>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercice 2 : Gestion des profiles des clients
+</div>
+<p>
+    Une entreprise souhaite sauvegarder les profiles des clients qui se connectent sur son serveur. Pour cela,
+le protocole suivant a été implémenté : 
+</p>
+<ul>
+    <li>
+        A chaque connexion sur le serveur, le client envoie les informations suivantes au serveur :
+        <ul>
+           <li>Le nom du client</li>  
+           <li>L'adresse IP du client</li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+Le code <code class="listing">Java</code> suivant permet de collecter le nom et l'adresse IP d'une machine :
+</p>
+<pre><code class="language-java"><script type="text/template">import java.net.*;
+
+public class Test {
+	public static void main(String[] args) {
+		try {
+			InetAddress localMachine = InetAddress.getLocalHost();
+			System.out.println(localMachine.getHostName());
+			System.out.println(localMachine.getHostAddress());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+}                             
+</script></code></pre>
+<p>
+	<ul>
+		<li>à chaque connexion d'un client, un thread est lancé pour collecter les informations envoyées.</li>
+		<li>Après reception des informations, elles sont stockées dans une liste gérée par le serveur et un message <code class="listing">"ACK"</code> est envoyé au client.</li>
+		<li>Après la réception du message <code class="listing">"ACK"</code> par le client, il renvoie à son tour un message <code class="listing">"ACK"</code> au Thread du Serveur qui peut s'arrêter.</li>
+		</ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+	Travail demandé
+</div>
+<p>
+
+<ul>
+    <li>
+        Proposez en <code class="listing">Java</code> un protocole client/serveur pour réaliser ce service. 
+    </li>
+</ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>

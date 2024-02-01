@@ -1,0 +1,644 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Qualité de développement : La programmation réseau avec Java</title>
+
+	<meta name="description" content="Qualité de développement : La programmation réseau avec Java">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/iut-logo.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Qualité de développement</h2>
+		<h3>La programmation réseau avec Java</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+            </a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Networking Basics"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A socket</h2>
+	<ul>
+        <li class="fragment">
+            At the core of <b>Java</b>’s networking support is the concept of a <b>socket</b>. <br>
+            <ul id="fleche"><li>A <b>socket</b> identifies an endpoint in a network.</li></ul>
+        </li>
+
+        <li class="fragment skip">
+            <b>Socket</b> allows a single computer to serve many <i>different
+                clients</i><br> at once, as well as to serve many <i>different types of information</i>. 
+        </li>
+        <li class="fragment skip">
+            This is accomplished through the use of a <i>port</i>, which is a numbered socket on a particular machine. 
+            <ul id="fleche"><li>A server process is said to <i>listen</i> to a port until a client connects to it. </li></ul>
+        </li>
+        <li class="fragment skip">
+            A server is allowed to <i>accept multiple clients connected to the same port number</i>, although each session is unique. 
+            <ul id="fleche"><li>To manage multiple client connections, a <i>server process must be multithreaded</i>.</li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>IP and TCP protocols</h2>
+
+    Socket communication takes place via a protocol. 
+
+    <img src="./img/OSI-TCPIP.png" height="400px" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>IP and TCP protocols</h2>
+
+    <ul>
+        <li> <i>Internet Protocol (IP)</i> is a low-level
+        routing protocol that breaks data into small packets and sends them to <i>an address</i> across a
+        network. 
+        </li>
+        
+        <li class="fragment skip"> <i>Transmission Control Protocol (TCP)</i> is a higher-level protocol that manages to robustly string together
+        these packets, sorting and retransmitting them as necessary to reliably transmit data. 
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>An Internet Address</h2>
+    <ul>
+        <li class="fragment">A key component of the <i>Internet</i> is the <i>address</i>.
+            An <i>Internet address</i> <br> is a number that <i>uniquely identifies</i> 
+            each computer on the <i>Net</i>.</li>
+        
+        <li class="fragment skip">All Internet addresses consisted of 32-bit values, organized as four <br> 
+            8-bit values (<b>IPv4</b>, Internet Protocol version 4). 
+            <ul><li><code class="listing">192.54.12.68</code></li></ul>
+        </li>
+        
+        <li class="fragment skip">A new addressing scheme, called <b>IPv6</b> has come into play <br> 
+            (128-bit values organized into eight 16-bit chunks). 
+            <ul><li><code class="listing">2001:0db8:0000:85a3:0000:0000:ac1f:8001</code></li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The name of an Internet Address</h2>
+    <ul>
+        <li class="fragment">The name of an Internet address, called its <i>domain name</i>, describes
+            <br> a <i>machine’s location</i> in a name space.</li>
+
+        <li class="fragment skip">For example, <a href="www.HerbSchildt.com" target="_blank">www.HerbSchildt.com</a> is in the COM top-level 
+            domain (reserved for U.S. commercial sites);
+            <ul><li>it is called <i>HerbSchildt</i>, and <i>www</i> identifies the server for web requests.</li></ul>
+        </li>
+
+        <li class="fragment skip">An Internet domain name is <i>mapped to an IP address</i> by the Domain Naming Service (<b>DNS</b>).</li>
+
+        <li class="fragment skip">This enables users to work with domain names, but the Internet operates on IP addresses.</li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Port number</h2> 
+    <ul>
+        <li class="fragment"> Once a connection has been established, a <i>higher-level protocol</i> ensues, which is
+        dependent on which <i>port</i> you are using. 
+        </li>
+
+        <li class="fragment skip"> <i>TCP/IP</i> reserves the lower 1,024 ports for specific
+        protocols : 
+        <ul><li>21 is for FTP; 23 is for Telnet; 25 is for e-mail; 80 is
+            for HTTP; ...  </li></ul>
+        
+        </li>
+
+        <li class="fragment skip"> It is up to <i>each protocol</i> to determine
+            <i>how a client should interact with the port</i>. 
+        </li>
+	
+        <li class="fragment skip"> For example, <i>HTTP</i> is the protocol that web browsers and servers use to transfer
+        hypertext pages and images.
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Network programming</h2> 
+    <ul>
+        <li class="fragment">
+            <i>TCP/IP sockets</i> are used to implement reliable, bidirectional, persistent, point-to-point,
+            stream-based connections between hosts on the Internet.
+        </li>
+        <li class="fragment skip">
+            A <i>socket</i> can be used to connect
+                <b>Java’s I/O system</b> to other programs that may reside either on the local machine or on any
+            other machine on the Internet.
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Java and network programming</h2>
+    <ul>
+        <li>One of the most important reasons that <b>Java</b> is the premier
+            language for network programming are the classes defined in the 
+            <a href="https://docs.oracle.com/javase/7/docs/api/java/net/package-summary.html" target="_blank"><code class="listing">java.net</code></a>
+             package.</li>
+
+        <li class="fragment skip">
+            There are two kinds of <i>TCP sockets</i> in <b>Java</b>.
+            <ol>
+                <li class="fragment">The <code class="listing">ServerSocket</code> class is designed to be a "listener," 
+                    which waits for clients to connect
+                    before doing anything. 
+                    <ul id="fleche"><li>Thus, <code class="listing">ServerSocket</code> is for servers.</li></ul>
+                     
+                </li>
+                <li class="fragment">The <code class="listing">Socket</code> class is for clients. It is
+                    designed to connect to server sockets and initiate protocol exchanges.</li>
+            </ol>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="TCP/IP Client Sockets"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>TCP/IP Client Socket</h2>
+    <ul>
+        <li class="fragment">
+            The creation of a <code class="listing">Socket</code> object implicitly establishes a connection between the client
+            and server.
+        </li>
+       
+		<li class="fragment skip">Here are two constructors used to create client sockets:
+            <table class="skip" style="font-size: 0.7em !important;">
+                <tbody>
+                    <tr  class="fragment">
+                        <td><code class="listing">Socket(String hostName, int port)</code></td>
+                        <td>Creates a socket connected <br> to the named host and port.</td>
+                    </tr>
+                    <tr  class="fragment">
+                        <td><code class="listing">Socket(InetAddress ipAddress, int port)</code></td>
+                        <td>Creates a socket using a preexisting <br> InetAddress object and a port.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>TCP/IP Client Socket</h2>
+    <ul>
+        <li>
+            A <code class="listing">Socket</code> can be examined for the address and port information associated with it, 
+			by use of the following methods:
+            <table class="skip" style="font-size: 0.7em !important;">
+                <tbody>
+                    <tr  class="fragment">
+                        <td><code class="listing">InetAddress getInetAddress()</code></td>
+                        <td>Returns the InetAddress associated with<br> the Socket object. It returns null if the socket <br> is not connected.</td>
+                    </tr>
+                    <tr  class="fragment">
+                        <td><code class="listing">int getPort()</code></td>
+                        <td>Returns the remote port to which the invoking <br> Socket object is connected. It returns 0 if the socket <br> is not connected.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>TCP/IP Client Socket</h2>
+    <ul>
+        <li>
+            You can access to the input and output streams associated with <br> a <code class="listing">Socket</code>.
+
+            <table class="skip" style="font-size: 0.7em !important;">
+                <tbody>
+                    <tr  class="fragment">
+                        <td><code class="listing">InputStream getInputStream()</code></td>
+                        <td>Returns the InputStream associated with <br>the invoking socket.</td>
+                    </tr>
+                    <tr  class="fragment">
+                        <td><code class="listing">OutputStream getOutputStream()</code></td>
+                        <td>Returns the OutputStream associated with <br>the invoking socket.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Whois {
+            public static void main(String[] args) throws IOException {
+                int c;
+                // Create a socket connected to internic.net, port 43.
+                Socket s = new Socket("whois.internic.net", 43);
+                // Obtain input and output streams.
+                InputStream in = s.getInputStream();
+                OutputStream out = s.getOutputStream();
+                // Construct a request string.
+                String str = (args.length == 0 ? "MHProfessional.com" : args[0]) + "\n";
+                byte buf[] = str.getBytes();
+                // Send request.
+                out.write(buf);
+                // Read and display response.
+                while ((c = in.read()) != -1) {
+                    System.out.print((char) c);
+                }
+                s.close();
+            }
+        }                             
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="TCP/IP Server Sockets"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>TCP/IP Server Sockets</h2>
+    <ul>
+        <li class="fragment">The <code class="listing">ServerSocket</code> class is used to create servers that listen for either local or
+        remote client programs to connect to them on published ports. </li>
+                
+        <li class="fragment skip">When you create a <code class="listing">ServerSocket</code>, it will register itself with
+        the system as having an interest in client connections.</li>
+    </ul>
+    <table class="skip" style="font-size: 0.7em !important;">
+        <tbody>
+            <tr  class="fragment">
+                <td><code class="listing">ServerSocket(int port)</code></td>
+                <td>Creates server socket on the specified port<br>with a queue length of 50.</td>
+            </tr>
+            <tr  class="fragment">
+                <td><code class="listing">ServerSocket(int port, int maxQueue)</code></td>
+                <td>Creates a server socket on the specified port<br>with a maximum queue length of <code class="listing">maxQueue</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Serveur {
+            public static void main(String[] args) throws Exception {
+                ServerSocket s = new ServerSocket(9999);
+                Socket soc = s.accept();
+        
+                ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
+                ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
+        
+                int[] tableauAEmettre = { 7, 8, 9 };
+                out.flush();
+                out.writeObject(tableauAEmettre);
+                out.flush();
+        
+                Object objetRecu = in.readObject();
+                int[] tableauRecu = (int[]) objetRecu;
+        
+                in.close();
+                out.close();
+                soc.close();
+            }
+        }                             
+    </script></code></pre>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Client {
+            public static void main(String[] args) throws Exception {
+                Socket socket = new Socket("localhost", 9999);
+        
+                ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+        
+                int[] tableauAEmettre = { 1, 2, 3 };
+                out.flush();
+                out.writeObject(tableauAEmettre);
+                out.flush();
+        
+                Object objetRecu = in.readObject();
+                int[] tableauRecu = (int[]) objetRecu;
+        
+                in.close();
+                out.close();
+                socket.close();
+            }
+        }                            
+    </script></code></pre>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Example"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers="|2-6|10-11|13-16|19-22|24-25|27-38|40-47|49-50"><script type="text/template">
+        public class ServerThread extends Thread {
+            private Socket s;
+        
+            public ServerThread(Socket s) {
+                this.s = s;
+            }
+        
+            public void run() {
+                try {
+                    BufferedReader readData = new BufferedReader(new InputStreamReader(this.s.getInputStream()));
+                    PrintWriter writeData = new PrintWriter(new OutputStreamWriter(this.s.getOutputStream()));
+                    
+                    Random rng = new Random();
+                    int readValue;
+                    int response = -1;
+                    int total = 0;
+        
+                    do {
+                        int v1 = rng.nextInt(100) + 1;
+                        int v2 = rng.nextInt(100) + 1;
+                        int op = rng.nextInt(2);
+                        String ops = (op == 0) ? "+" : "-";
+        
+                        writeData.println(v1 + "," + ops + "," + v2);
+                        writeData.flush();
+        
+                        readValue = new Integer(readData.readLine()).intValue();
+        
+                        if (op == 0 && readValue == (v1 + v2)) {
+                            response = 1;
+                            total++;
+                        } else if (op == 1 && readValue == (v1 - v2)) {
+                            response = 1;
+                            total++;
+                        } else {
+                            response = -1;
+                            total--;
+                        }
+        
+                        if (response != -1) {
+                            writeData.println("OK");
+                            writeData.flush();
+                        } else {
+                            writeData.println("KO");
+                            writeData.flush();
+                        }
+                    } while (response != -1);
+        
+                    writeData.println("" + total);
+                    writeData.flush();
+                    
+                    readData.close();
+                    writeData.close();
+                    this.s.close();
+                } catch (IOException e) {e.printStackTrace();}
+            }
+        }
+                                    
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        public class Server {
+            public static void main(String[] args) {
+                try {
+                    ServerSocket server = new ServerSocket(5555);
+                    int cpt = 0;
+                    do {
+                        Socket client = server.accept();
+                        ServerThread c = new ServerThread(client);
+                        c.start();
+                        cpt++;
+                    } while (cpt<50);
+                } catch (IOException e) {e.printStackTrace();}
+            }
+        }                             
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example</h2>
+    <pre><code class="language-java hljs" data-trim data-line-numbers="|4-7|9|13-21|24-26|28-29|31-32"><script type="text/template">
+        public class Client {
+            public static void main(String[] args) {
+                try {
+                    Socket socket = new Socket("localhost", 5555);
+        
+                    PrintWriter writeData = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+                    BufferedReader buf = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        
+                    Scanner sc = new Scanner(System.in);
+        
+                    String response = "";
+                    do {
+                        String readM = buf.readLine();
+                        String[] message = readM.split(",");
+        
+                        int v1 = new Integer(message[0]).intValue();
+                        String op = message[1];
+                        int v2 = new Integer(message[2]).intValue();
+        
+                        System.out.print(v1 + " " + op + " " + v2 + " = ");
+                        int result = sc.nextInt();
+                        sc.nextLine();
+        
+                        String resultMessage = new Integer(result).toString();
+                        writeData.println(resultMessage);
+                        writeData.flush();
+        
+                        response = buf.readLine();
+                    } while (response.equals("OK"));
+        
+                    response = buf.readLine();
+                    System.out.println("My Score:" + response);
+        
+                    sc.close();
+                    writeData.close();
+                    buf.close();
+                    socket.close();
+                } catch (IOException e) {e.printStackTrace();}
+            }
+        }                             
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
