@@ -301,6 +301,108 @@ public class Test {
     </li>
 </ul>
 </p>
+<div class="green-block">
+<pre><code class="language-java"><script type="text/template">public class ClientProfile implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private String hostName ;
+	private String hostAddress ;
+	
+	public ClientProfile(String hostName, String hostAddress) {
+		this.hostName = hostName;
+		this.hostAddress = hostAddress;
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public String getHostAddress() {
+		return hostAddress;
+	}	
+}                            
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">public class Serveur {
+	public static Vector<ClientProfile> clients = new Vector<ClientProfile>();
+	
+	public static void main(String[] args) throws IOException {
+		ServerSocket server = new ServerSocket(5555);
+		int cpt = 0;
+		do {
+			Socket s = server.accept();
+			(new ServeurThread(s)).start();
+			cpt ++;
+		}while(cpt < 50);
+
+	}
+}                             
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">public class ServeurThread extends Thread {
+	private Socket s ;
+
+	public ServeurThread(Socket s) {
+		this.s = s;
+	}
+	
+	public void run() {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+			ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+			
+			Object objetRecu = in.readObject();
+			ClientProfile obj_recu = (ClientProfile) objetRecu;
+			Serveur.clients.add(obj_recu);
+			
+			System.out.println("Profile reçu par le serveur");
+			System.out.println(obj_recu.getHostName());
+			System.out.println(obj_recu.getHostAddress());
+			
+			out.flush();
+            out.writeObject("ACK");
+            out.flush();
+            
+            Object ack = in.readObject();
+			System.out.println((String) ack);
+			System.out.println("ACK par le serveur");
+            
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}    
+	}	
+}                             
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">public class Client {
+	public static void main(String[] args) {
+		Socket socket;
+		try {
+			socket = new Socket("localhost", 5555);
+			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+	        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+	        
+	        InetAddress localMachine = InetAddress.getLocalHost();
+	        ClientProfile c = new ClientProfile(localMachine.getHostName(), localMachine.getHostAddress());
+			
+	        out.flush();
+            out.writeObject(c);
+            out.flush();
+            
+            Object ack = in.readObject();
+			System.out.println((String) ack);
+			
+            out.flush();
+            out.writeObject("ACK");
+            out.flush();
+            System.out.println("ACK par le client");
+            
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+}                            
+</script></code></pre>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

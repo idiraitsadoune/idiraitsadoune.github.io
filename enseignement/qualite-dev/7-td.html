@@ -248,6 +248,106 @@ Créez des méthodes dans la classe <code class="listing">DoubleLinkedListTest</
     <li>Lister en inverse le contenu de la liste [1, 4, 5] renvoie bien le tableau [5, 4, 1]</li>
 </ul>
 </p>
+
+<div class="green-block">
+<pre><code class="language-java"><script type="text/template">class DoubleLinkedListTests {
+
+	@Test
+	@DisplayName("La taille de la liste [] renvoie bien 0")
+	void test1() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertEquals(0, list.size());
+	}
+	
+	@Test
+	@DisplayName("La taille de la liste [1] renvoie bien 1")
+	void test2() {
+		DoubleLinkedList list = new DoubleLinkedList(1);
+		assertEquals(1, list.size());
+	}
+	
+	@Test
+	@DisplayName("La taille de la liste [1, 4, 5] renvoie bien 3")
+	void test3() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(3, list.size());
+	}
+	
+	@Test
+	@DisplayName("Le test de liste vide de la liste [] renvoie bien true")
+	void test4() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertTrue(list.isEmpty());
+	}
+
+	@Test
+	@DisplayName("Le test de liste vide de la liste [1, 4, 5] renvoie bien false")
+	void test5() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertFalse(list.isEmpty());
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 1 dans la liste [] renvoie bien false")
+	void test6() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertFalse(list.contains(1));
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 1 dans la liste [1, 4, 5] renvoie bien true")
+	void test7() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertTrue(list.contains(1));
+		assertTrue(list.contains(4));
+		assertTrue(list.contains(5));
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 8 dans la liste [1, 4, 5] renvoie bien false")
+	void test8() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertFalse(list.contains(8));
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 4 dans la liste [] renvoie bien la liste [4].")
+	void test9() {
+		DoubleLinkedList list1 = new DoubleLinkedList();
+		list1.add(4);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {4});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 4 dans la liste [1,5] renvoie bien la liste [1, 4, 5].")
+	void test10() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 5});
+		list1.add(4);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 1 dans la liste [4,5] renvoie bien la liste [1, 4, 5].")
+	void test11() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {4, 5});
+		list1.add(1);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 5 dans la liste [1,4] renvoie bien la liste [1, 4, 5].")
+	void test12() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4});
+		list1.add(5);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+}                             
+</script></code></pre>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
