@@ -1,0 +1,674 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Computer Architecture and Software Execution Process : Operating systems - OS</title>
+
+	<meta name="description" content="Computer Architecture and Software Execution Process : Operating systems - OS">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/cs-essec.jpg" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+	
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr/fr/bachelor-artificial-intelligence-data-and-management-sciences" target="_blank">
+				<img src="../resources/img/cs.png" alt=""><img style="margin-left: 10px;" height="90%" src="./img/essec_1.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Computer Architecture <br> and Software Execution Process</h2>
+		<h3>Operating systems - OS</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>Bachelor in Artificial Intelligence, Data and Management Sciences</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>How does the computer work?</h2>
+
+	<div class="skip r-stack">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_2.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_3.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_2.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_4.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_5.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_6.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+	</div>
+
+	<div class="fragment">
+		It's all just electrical wires... <br>
+		<span class="fragment">... that we turn <b>ON</b> and <b>OFF</b>.</span>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="What is an Operating System?"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formerly: <a href="https://fr.wikipedia.org/wiki/ENIAC" target="_blank">ENIAC</a></h2>
+	<img style="float: right; margin-bottom: 10px; margin-left: 10px;" src="./img/Eniac.jpg"
+		height="auto" width="300px">
+	<ul style="display: block;">
+		<li class="fragment">
+			First <b>fully electronic</b> computer. 
+        </li>
+		<li class="fragment skip">
+			<b>Programming</b> was done directly <b>in machine language</b>.
+		</li>
+		<li class="fragment skip">
+			<b>Only one program</b> can run at a time.
+		</li>
+		<li class="fragment skip">
+			The lack of an operating system forced the programmer to <b>manually load the program</b>.
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formerly: <a href="https://fr.wikipedia.org/wiki/IBM_RAMAC_305" target="_blank">IBM RAMAC
+			305</a></h2>
+	<img style="float: left; margin-bottom: 10px; margin-right: 60px;" src="./img/ibm_ramac_305.jpg"
+		height="auto" width="300px">
+	<ul style="display: block;">
+		<li class="fragment">
+			The <b>First hard disk computer</b> (the <b>IBM 350</b>) was marketed in <i>September 1956</i> by <b>IBM</b>.
+		</li>
+		<li class="fragment skip">
+			It consists of the following elements: <br> processing unit, printer, console, power supply, hard drive, and 5MB memory.
+		</li>
+		<li class="fragment skip">
+			<b>The processing unit</b> is based on a magnetic drum where the program is stored. 
+		</li>
+		<li class="fragment skip">
+			<b>An operator</b> programs using <b>punched cards</b> and writes the data onto the drum. 
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Automate tasks</h2>
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/ibm_ramac_305.jpg" height="170px" width="auto">
+		<img src="./img/Eniac.jpg" height="170px" width="auto">
+	</div>
+	<ul>
+		<li class="fragment">How to <b>automate the tasks</b> of operators <br> and programmers?
+		</li>
+		<li class="fragment skip">Write a <b>computer program</b> that: 
+			<ul id="fleche">
+				<li class="fragment">decides who does what and when. </li>
+				<li class="fragment">bridges software applications and hardware</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Definition</h2>
+	<div id="default-block">
+		<em>&ldquo;<b>An operating system</b> is a set of programs providing the interface between hardware and users.&rdquo;</em>
+	</div>
+	<div style="display: flex; align-items: center; margin-top:50px;">
+		<ul style="width:60%">
+			<li class="fragment">manages the hardware part. </li>
+			<li class="fragment">serves as a base for software applications</li>
+		</ul>
+		<img style="width:40%" src="./img/os-schema.svg" width="80%" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_1.svg" height="auto" width="70%" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_2.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<ul>
+		<li class="fragment"><b>Batch systems</b> are based on two programs:
+			<ol>
+				<li class="fragment"><i>the loader</i>: loads the programs into the main memory <br> from punch cards.</li>
+				<li class="fragment"><i>the processing monitor</i>: executes the sequence of tasks <br> one by one in place of the operator.</li>
+			</ol>
+		</li>
+	</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_3.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<p class="fragment">
+		Use multiple components in parallel, which requires:
+	<ul>
+		<li class="fragment"><b>Priority management</b> (<em>which process can use the resource</em>)
+			<ul id="fleche">
+				<li>scheduling</li>
+			</ul>
+		</li>
+		<li class="fragment">
+			<b>Shared memory</b> (<em>manage information from multiple processes</em>)
+			<ul id="fleche">
+				<li>addressing and memory</li>
+			</ul>
+		</li>
+	</ul>
+	</p>
+	<p class="fragment">
+		<b>Example</b> : <a href="https://fr.wikipedia.org/wiki/Multics" target="_blank">MULTICS</a>
+	</p>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_4.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<p class="fragment">
+		<b>Multiple active processes</b> alternating on the processor
+	<ul>
+		<li class="fragment">Interrupt management</li>
+		<li class="fragment">Process synchronization and concurrent programming</li>
+	</ul>
+	</p>
+	<p class="fragment">
+		<b>Example</b> : <a href="https://en.wikipedia.org/wiki/Unix" target="_blank">UNICS</a>
+		or <a href="https://en.wikipedia.org/wiki/Unix" target="_blank">UNIX</a>
+	</p>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_5.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<ul>
+		<li class="fragment"><b>Deadline management</b>: <b>response time</b> constraint
+			<ul id="fleche">
+				<li>processes must respond quickly</li>
+			</ul>
+		</li>
+		<li class="fragment skip">Development of <b>microcomputers</b> 
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Control_Program/Monitor" target="_blank">CP/M</a>
+					$\rightarrow$
+					<a href="https://fr.wikipedia.org/wiki/IBM_PC" target="_blank">IBM PC</a>
+					(<a href="https://fr.wikipedia.org/wiki/MS-DOS" target="_blank">MSDOS</a>)
+				</li>
+			</ul>
+		</li>
+		<li class="fragment">
+			Appearance of <b>graphical user interfaces</b> 
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Xerox" target="_blank">Xerox</a>
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Apple
+						Macintosh</a> 1984,
+					<a href="https://fr.wikipedia.org/wiki/Windows_95" target="_blank">Windows 95</a>,
+					<a href="https://fr.wikipedia.org/wiki/Linux" target="_blank">Linux</a> 1991
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_6.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<ul>
+		<li class="fragment"><b>Computers communicate</b> to exchange data!
+			<ul>
+				<li class="fragment skip"><a href="https://fr.wikipedia.org/wiki/ARPANET"
+						target="_blank">Arpanet</a> (1967) designed by
+					<a href="https://fr.wikipedia.org/wiki/Defense_Advanced_Research_Projects_Agency"
+						target="_blank">DARPA</a></li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/Courrier_%C3%A9lectronique"
+						target="_blank">E-mail</a> (1972)
+                        designed by <a href="https://fr.wikipedia.org/wiki/Ray_Tomlinson" target="_blank">Ray
+						Tomlinsonn</a></li>
+				<li class="fragment"><a
+						href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet" target="_blank">TCP/IP</a>(1972)
+				</li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/Client-serveur"
+						target="_blank">Client-server</a> $\rightarrow$
+					<a href="https://fr.wikipedia.org/wiki/Network_File_System" target="_blank">NFS - Network File System</a>
+					(<a href="https://fr.wikipedia.org/wiki/Sun_Microsystems" target="_blank">Sun</a>, 1984)
+				</li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/ARPANET"
+						target="_blank">Arpanet</a> opened late 80s
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/World_Wide_Web"
+						target="_blank">Web</a> early 90s
+					(<a href="https://fr.wikipedia.org/wiki/Organisation_europ%C3%A9enne_pour_la_recherche_nucl%C3%A9aire"
+						target="_blank">CERN</a> ,
+					<a href="https://fr.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank">Tim
+						Berners-Lee</a>)
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>History/Types of OS</h2>
+	<img data-id="hh" src="./img/history_7.svg" height="auto" width="70%" alt="">
+	<div class="slide-content">
+	<ul>
+		<li class="fragment"><b>Mobile devices</b> (or handheld computers) have existed since the 80s.
+			<ul>
+				<li class="fragment skip"><i>1986</i> : <a
+						href="https://fr.wikipedia.org/wiki/Assistant_personnel" target="_blank">PDA</a>
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/Palm_OS" target="_blank">
+						PalmOS</a></li>
+
+				<li class="fragment"><i>2007</i> : <a href="https://fr.wikipedia.org/wiki/Smartphone"
+						target="_blank">smartphones</a> $\rightarrow$ <a
+						href="https://fr.wikipedia.org/wiki/Android" target="_blank">android OS</a></li>
+				<li class="fragment"><i>2007</i> : <a href="https://fr.wikipedia.org/wiki/IPhone"
+						target="_blank">iPhone</a> $\rightarrow$ <a href="https://fr.wikipedia.org/wiki/IOS"
+						target="_blank">iOS</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Operating System roles"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Operating system roles</h2>
+	<div style="display: flex; align-items: center;">
+
+		<ol style="width: 60%;">
+			<li class="fragment"><b>The kernel-hardware interface</b> supports the management and sharing of machine resources.</li>
+			<li class="fragment skip"><b>The kernel-user interface</b> provides an easier-to-use and more user-friendly virtual machine.</li>
+			<li class="fragment skip"><b>The kernel</b> provides several significant functionalities.</li>
+		</ol>
+
+		<img data-id="box1" src="./img/os-components.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The kernel-hardware interface</h2>
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li class="fragment"><b>Manage access and sharing</b> of hardware resources.
+				<ul>
+					<li>processor</li>
+					<li>memory</li>
+					<li>peripheral devices</li>
+					<li>...</li>
+				</ul>
+			</li>
+			<li class="fragment skip">This management must ensure:
+				<ul>
+					<li class="fragment"><b>equity</b> of access to hardware</li>
+					<li class="fragment"><b>protecting</b> access to hardware</li>
+					<li class="fragment"><b>consistency</b> of hardware states</li>
+				</ul>
+			</li>
+		</ul>
+
+		<img data-id="box1" src="./img/interface-noyau-mat.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The kernel-user interface</h2>
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li class="fragment">Provide an <b>interface</b>  between hardware and software applications.
+				<ul id="fleche">
+					<li>a <b>simplified and unified interface</b>.</li>
+				</ul>
+			</li>
+
+			<li class="fragment skip">
+				Present above the physical machine, a more straightforward and more user-friendly <b>virtual machine</b>.
+
+			</li>
+			<li class="fragment skip">Create <b>the illusion of real physical resources</b> (processor, memory, peripheral...).</li>
+		</ul>
+
+		<img data-id="box1" src="./img/interface-noyau-user.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Command Interpreter (shell)</h2>
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li class="fragment">
+				<b>Command language</b>: <br> the user interface with the operating system.
+			</li>
+
+			<li class="skip fragment">
+				<b>Command Interpreter</b>: <br> Execute <i> user commands</i> by calling the proper <b>system routine</b>.
+			</li>
+		</ul>
+
+		<img src="./img/shell-schema.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Command Interpreter (shell)</h2>
+	<ul>
+		<li>Each operating system has its <b> own command language</b>:
+			<ul>
+				<li class="fragment"><b>MSDOS/Unix</b> : console + keyboard</li>
+				<li class="fragment"><b>Mac/Windows</b> : mouse + keyboard</li>
+				<li class="fragment"><b>iOS/Android</b> : buttons + touch screen</li>
+			</ul>
+		</li>
+	</ul>
+	<div style="display: inline-grid; grid-template-columns: auto auto auto; align-items:center; column-gap: 20px;">
+		<img src="./img/f14-ligne-cmd.png" height="300px">
+		<img src="./img/f14-windows.jpg" height="300px">
+	</div>
+</section>
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Kernel of an operating system</h2>
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+
+			<li class="fragment">
+				<b>Process management</b>
+				<ul>
+					<li>scheduling, synchronization, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Memory management</b>
+				<ul>
+					<li>allocation, space management, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Secondary storage management</b>
+				<ul>
+					<li>file system, ...</li>
+				</ul>
+			</li>
+
+            <li class="skip fragment">
+				<b>Input/output management (I/O)</b>
+				<ul>
+					<li>controllers, drivers, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Security management</b>
+			</li>
+		</ul>
+
+		<img src="./img/noyau-os.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Structure of an Operating System"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>General Structure of an OS</h2>
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 65%;">
+			<li class="fragment">
+              <b>System Calls</b>: functions allowing user applications to request kernel services.
+            </li>
+
+            <li class="fragment">
+				<b>Kernel</b>: a set of programs providing general services.
+			</li>
+
+            <li class="fragment">
+				<b>Drivers</b>: programs allowing the kernel to interact with external devices.
+			</li>
+
+			<li class="fragment"> 
+				<b>Interruptions</b> : events produced by the hardware and triggering kernel services.
+			</li>
+
+			<li class="fragment">
+				<b>Exceptions</b> : events produced by the processor and triggering kernel services.
+			</li>
+			
+		</ul>
+
+		<img src="./img/f16-noyau-os.svg" height="100%"
+			style="width: 35%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Loading an Operating System"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Loading an OS</h2>
+	<ul>
+		<li class="fragment">
+			The <b>OS</b> is the <i>first program executed</i> when the computer is turned <b>ON</b> after booting (<b>boot</b>).
+		</li>
+		<li class="skip fragment">
+            The <b>boot</b> (<b>bootstrap</b>) defines the <i>successive stages of startup</i>.
+		</li>
+	</ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The boot steps</h2>
+	<ol>
+		<li class="fragment">the <b>POST</b> test - <b>Power On Self Test</b>
+			<ul>
+				<li class="fragment">
+                    after a start or a reset operation, the processor 
+                    loads the <b>first instructions</b>  located at the address <i>FFFF0</i> from the <b>BIOS</b> <b>ROM</b> memory. 
+				</li>
+				<li class="fragment">
+                    instructions for <i>triggering</i>  a <b>BIOS</b> program that <i>initializes and tests hardware functions</i>.
+				</li>
+			</ul>
+		</li>
+		<li class="skip fragment">loading the <b>MBR</b> - <b>Master Boot Record</b>
+			<ul>
+				<li class="fragment">if the <b>POST</b> test succeeds, it will consult <a href="https://en.wikipedia.org/wiki/Nonvolatile_BIOS_memory" target="_blank">RAM
+						CMOS</a> to identify the <b>system disk</b> whose first sector is called <b>MBR</b>.
+				</li>
+				<li id="fleche" class="fragment">the <b>MBR</b> code tests the partition table to load the partition containing the boot sector with <b>IPL</b> - <b>Initial Program
+							Load</b>.
+
+					<ul>
+						<li class="fragment">the <b>IPL</b> loads the <b>OS</b> or <b>bootmanager</b> into RAM.</li>
+						<li class="fragment">the <b>OS</b> is launched</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ol>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan-en.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
