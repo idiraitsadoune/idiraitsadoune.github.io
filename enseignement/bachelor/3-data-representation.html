@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Computer Architecture and Software Execution Process : Data representation</title>
+
+	<meta name="description" content="Computer Architecture and Software Execution Process : Data representation">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/cs-essec.jpg" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+	
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr/fr/bachelor-artificial-intelligence-data-and-management-sciences" target="_blank">
+				<img src="../resources/img/cs.png" alt=""><img style="margin-left: 10px;" height="90%" src="./img/essec_1.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div class="slide-content">
+		<h2>Computer Architecture <br> and Software Execution Process</h2>
+		<h3>Data representation</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>Bachelor in Artificial Intelligence, Data and Management Sciences</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2023/2024</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>What data to encode?</h2>
+
+    <ul>
+       <li class="fragment">Characters and strings</li> 
+       <li class="fragment">Natural, integers and fixed point numbers</li>   
+       <li class="fragment">Floating point numbers</li>  
+       <li class="fragment">Pictures, sounds, videos...</li>  
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Character Encoding "></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>ASCII character encoding</h2>
+
+    <ul>
+        <li><b>American Standard Code for Information Interchange</b>  - <b>ASCII</b> 
+            <ul><li><b>ASCII</b> is a character encoding standard for electronic communication.</li></ul>
+        </li>
+        <li class="skip fragment"><b>ASCII</b> codes represent text in computers, telecommunications equipment, and other devices. </li>
+        <li class="skip fragment">The first edition of the <b>ASCII standard</b>  was published in <i>1963</i>. </li>
+        <li class="skip fragment"><b>ASCII</b> has just 128 code points (7 bits + 1 as parity bit).
+            <ul><li>Of the $2^7$=128 codes, 33 were used for controls, and 95 for printable characters</li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>ASCII character encoding</h2>
+    <img src="./img/ASCII.png" alt="" height="500px">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Extended ASCII</h2>
+    <ul>
+        <li class="fragment"><b>Extended ASCII</b> is a repertoire of character encodings that include <br> the original <b>ASCII</b>  
+            character set, plus up to 128 additional characters.</li>
+
+        <li class="skip fragment">In <i>1987</i> , the <b>ISO</b>  published a set of standards for <b>8-bit ASCII</b>  extensions, <b>ISO 8859</b> 
+            <ul>
+                <li class="fragment"><b>ISO 8859-1</b>: for the most common Western European languages.</li>
+                <li class="fragment"><b>ISO 8859-2</b>: for Eastern European languages.</li>
+                <li class="fragment"><b>ISO 8859-xxx</b>: ...</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Unicode Standard</h2>
+
+    <ul>
+        <li class="fragment"><b>Unicode</b> is a text encoding standard maintained by the <b>Unicode Consortium</b>  designed 
+            to support the use of text written in all <br> of the world's major writing systems.</li>
+
+        <li class="skip fragment"><b>Unicode</b> is used to encode the vast majority of text 
+            on the <i>Internet</i>, including most <i>web pages</i>. </li>
+
+        <li class="skip fragment">149 813 code points in the last published version.<br> (15.1, September 2023)</li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Unicode Standard</h2>
+
+    <table style="font-size: 35px;">
+        <thead>
+            <tr>
+                <th>Forme</th>
+                <th>Used bits</th>
+                <th>Code points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0xxxxxxx</td>
+                <td>7</td>
+                <td>0 to 127</td>
+            </tr>
+            <tr>
+                <td>110xxxxx 10xxxxxx</td>
+                <td>11</td>
+                <td>128 to 2 047</td>
+            </tr>
+            <tr>
+                <td>1110xxxx 10xxxxxx 10xxxxxx</td>
+                <td>16</td>
+                <td>2 048 to 65 535</td>
+            </tr>
+            <tr>
+                <td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+                <td>21</td>
+                <td>65 536 to 1 114 111</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Strings encoding</h2>
+
+    <ul>
+        <li class="fragment">The most used representation is a <b>character array</b>.
+            <ul><li class="fragment">but an array is not directly manipulated by the processor.</li></ul>
+        </li>
+        <li class="fragment skip">
+            The processor needs to know the address of <i>the beginning</i> <br> 
+            of the array and <i>the index</i> of the element it wants to access.
+            <ul>
+                <li class="fragment">the first memory word contains the number of characters, </li>
+                <li class="fragment">or the <b>ASCII</b> code 0 (<b>NULL</b>) indicates the end of the string (like in <b>C</b>)</li>
+            </ul>
+        </li>
+    </ul>
+
+</section> 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Number Encoding "></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Natural numbers</h2>
+    <ul>
+        <li class="fragment"><b>Classic binary representation</b>: generally used.</li>
+        <li class="fragment"><strong>Example:</strong> case of using 32-bit encoding
+            <ul><li>214 = 00000000 00000000 00000000 11010110</li></ul>
+        </li>
+
+        <li class="fragment skip"><b>BCD, Binary-Coded Decimal</b> : <br>
+            a class of binary encodings of decimal numbers where each digit <br> is represented by a fixed number of bits (4 or 8).
+        </li>
+        <li class="fragment"><strong>Example:</strong> case of using 32-bit encoding
+            <ul><li>214 = 00000000 00000010 00000001 00000100</li></ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Integer numbers</h2>
+
+    <ul>
+        <li><b>Signed number representation</b>
+            <ul>
+                <li class="fragment"><b>the sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
+                <li class="fragment">number = sign bit + absolute value</li>
+                <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
+            </ul>
+            <ul id="ko">
+                <li class="skip fragment">Two representations of 0</li>
+                <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Integer numbers</h2>
+    <ul>
+        <li class="fragment"><b>Two's complement</b>
+            <ul>
+                <li>the most common method of representing signed integers</li>
+            </ul>
+        </li>
+
+        <li class="skip fragment">
+            The <b>two's complement</b> of an integer is computed by:
+            <ol>
+                <li class="fragment">starting with the binary representation of the number;</li>
+                <li class="fragment">inverting all bits – changing every 0 to 1, and every 1 to 0;</li>
+                <li class="fragment">adding 1 to the entire inverted number, ignoring any overflow</li>
+            </ol>
+        </li>
+
+        <li class="skip fragment">
+            <strong>Example</strong>: to calculate the number -6 in binary from the number 6
+            <ol>
+                <li class="fragment">6 in decimal is 00000110 in binary (using 8-bit encoding)</li>
+                <li class="fragment">flip all bits in 00000110, giving 11111001.</li>
+                <li class="fragment">add the value 1 to the obtained number 11111001, giving 11111010.</li>
+            </ol>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+
+    <ul>
+        <li><b>Fixed-point arithmetic</b>
+            <ul>
+                <li class="fragment"><b>A fixed-point</b> representation of a fractional number is essentially 
+                    an integer that is to be implicitly multiplied by a <b>fixed scaling factor</b>.</li>
+                <li class="skip fragment">
+                    18.625 = 10010.101 (with 8 as a fixed scaling factor) $\to$ 10010101
+                    <ul>
+                        <li>$2^4 + 2^1 = 18$</li>
+                        <li>$2^{-1} + 2^{-3} = 0.625$</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+    <ul>
+        <li data-id="d1">
+            <b>floating-point arithmetic</b>
+            <ul>
+                <li class="fragment">is arithmetic that represents real numbers using an integer with a <i>fixed precision</i> (<i>significand</i>), 
+                   scaled by an integer <i>exponent</i> of a fixed <i>base</i>. 
+                   $$
+                   x = 3.14159265359 = 
+                   \underset{\text{significand}}{\underbrace{314159265359}} \times 
+                   \underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
+               $$
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+    <ul>
+        <li data-id="d1">
+            <b>floating-point arithmetic</b>
+            <ul>
+                <li>
+                    <b>IEEE 754 standard</b>: <b>binary32</b>
+                    <ul>
+                        <li>Sign bit: 1 bit</li>
+                        <li>Exponent width: 8 bits</li>
+                        <li>Significand precision: 24 bits (23 explicitly stored)</li>
+                        <img class="fragment" src="./img/float.png" alt="">
+                        <li class="fragment">$(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$</li>
+                        <li class="fragment">$exponent = 124$ and $fraction = 25$</li>
+                        <li class="fragment">$2^{124 - 127} \times 1.25 = 0.15625$</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	<script src="../resources/js/plan-en.js"></script>
+
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/search/search.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+
+</body>
+
+</html>
