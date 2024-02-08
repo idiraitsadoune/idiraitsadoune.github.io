@@ -1,0 +1,179 @@
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Examen Qualité de développement - 2022/2023</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="../../CSS/main-style.css"/>
+<link rel="stylesheet" href="../../CSS/cours-style.css"/>
+<link rel="stylesheet" href="../../CSS/code-style.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="icon" href="../../IMG/favicon.ico" />
+
+</head>
+<body>
+	<section id="body-content">
+		<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2022/2023</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="text-center section-title">
+	<img style="margin-top: 20px; margin-bottom: 60px;" src="../ressources/logo-iutorsay-lineaire.png" alt="" height="100px" width="auto"> <br>
+    Examen Qualité de développement <br> Session 2022/2023 <br> Durée : 2H15
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="alert-block">
+	<span class="alert-title">&#9757; Modalités de livraison</span> : 
+    Les copies sont à remettre par email à l'adresse 
+    <a href="mailto:idir.aitsadoune@centralesupelec.fr">idir.aitsadoune@centralesupelec.fr</a> avec comme objet <b>[QD-DS]</b>. 
+    <ul>
+        <li>
+            <b>Partie UML</b> : Vous devez envoyer un fichier au format <b>PDF</b> qui devra être nommé avec la convention suivante : 
+            <code>NOM-QD-DS-UML.pdf</code>.
+        </li>
+        <li>
+            <b>Partie Java</b>: Vous devez envoyer un fichier au format <b>ZIP</b> qui devra être nommé avec la convention suivante : 
+            <code>NOM-QD-DS-JAVA.zip</code>.
+        </li>
+    </ul>
+    
+</div>	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<div class="chapter-tite">
+	Partie UML 
+</div>
+<p>
+    Un client souhaitant acheter un billet de train doit le faire à partir du site web de la compagnie de train. 
+    Une réservation doit être effectuée plus de 2 jours à l'avance. Il choisit sur la page d'accueil les villes de départ et d'arrivée, 
+    la date de départ, les heures de départ et d'arrivée et la classe désirée (1ère ou 2nde classe).
+</p>
+<p>
+    S'il ne reste pas de place libre correpondant au choix effectué, un message est affiché à l'écran. 
+    Ce message reprend les informations communiquées par le client et précise qu'il n'y a pas de place libre pour ce train.
+</p>
+<p>
+    Si la réservation est possible, un numéro de réservation est communiqué au client, 
+    qui s'en servira pour payer puis retirer son billet.
+</p>
+<p>
+    Le client dispose d'un délai de deux jours pour payer son billet. 
+    Il doit payer à partir du site web, en communiquant le numéro de réservation, et le numéro et la date de validité de sa carte bancaire. 
+    Un message indiquant les formalités pour le retrait du billet est alors affiché.
+</p>
+<p>
+    Le client peut payer de cette manière à tout moment pendant ces deux jours.
+</p>
+<p>
+    Si le client ne paie pas dans les deux jours, la réservation est annulée mais pas détruite, 
+    car on souhaite faire des statistiques sur le nombre d'annulations. Le client n'en est pas informé.
+</p>
+<p>
+    Le retrait du billet se fait à partir d'une borne interactive durant la journée du départ. 
+    Le client communique son numéro de réservation. S'il a payé son billet, le billet et un reçu sont édités à partir de la borne 
+    interactive et le client peut les retirer. Sinon, un message indiquant que sa réservation a été annulée est affiché
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Simplifications
+</div>
+<ul>
+    <li>On suppose que l'achat concerne un aller simple pour un seul parcours et une seule personne.</li>
+
+    <li>On suppose que le client ne fait pas d'erreurs lorsqu'il tape son numéro de réservation et que le paiement est toujours correct : 
+        le montant exact, le numéro et la date de validité de la carte bancaire sont corrects et que le client a payé à temps.</li>
+    
+    <li>On ne gère pas le débit du compte bancaire suite au paiement du billet, ni la verification de la carte bancaire.</li>
+    
+    <li>On ne modélise pas l'IHM (l'interface utilisateur).</li>
+    
+    <li>Le client vient toujours prendre son billet dans les temps.</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Travail demandé
+</div>
+<ul>
+    <li><b>[5 points]</b> Décrire le scénario global du déroulement du processus d'achat d'un billet en utilisant le diagramme d’activités.</li>
+    
+    <li><b>[5 points]</b> Utiliser un diagramme de séquence pour décrire le scénario global du système.  </li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<div class="chapter-tite">
+	Partie Java 
+</div>
+<p>
+    Une entreprise souhaite sauvegarder les profiles des clients qui se connectent sur son serveur. Pour cela,
+le protocole suivant a été implémenté : 
+</p>
+<ul>
+    <li>
+        A chaque connexion sur le serveur, le client envoie les informations suivantes au serveur :
+        <ul>
+           <li>Le nom du client</li>  
+           <li>L'adresse IP du client</li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+Le code <code>Java</code> suivant permet de collecter le nom et l'adresse IP d'une machine :
+</p>
+<div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nn">java.net.*</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">InetAddress</span> <span class="n">localMachine</span> <span class="o">=</span> <span class="n">InetAddress</span><span class="p">.</span><span class="na">getLocalHost</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">localMachine</span><span class="p">.</span><span class="na">getHostName</span><span class="p">());</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">localMachine</span><span class="p">.</span><span class="na">getHostAddress</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">UnknownHostException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li>à chaque connexion d'un client, un thread est lancé pour collecter les informations envoyées.</li>
+<li>Après reception des informations, elles sont stockées dans une liste gérée par le serveur et un message <code>"ACK"</code> est envoyé au client.</li>
+<li>Après la réception du message <code>"ACK"</code> par le client, il renvoie à son tour un message <code>"ACK"</code> au Thread du Serveur qui peut s'arrêter.</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Travail demandé
+</div>
+<ul>
+    <li>
+        <b>[10 points]</b> Proposez en <code>Java</code> un protocole client/serveur pour réaliser ce service. 
+    </li>
+    <li>
+        <b>[+2 points bonus]</b> pour un code <code>Java</code> sans erreurs syntaxiques.
+    </li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2022/2023</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+			</div>
+		</section>
+	</body>
+</html>
