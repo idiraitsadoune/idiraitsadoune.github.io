@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Computer Architecture and Software Execution Process : Data representation tutorial</title>
+
+	<meta name="description" content="Computer Architecture and Software Execution Process : Data representation tutorial">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+
+    <style>
+        table, th, td {border: 1px solid #333;}
+        th, td {padding: 5px;}
+    </style>
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Data representation <br> 
+    tutorial
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercise 1 : Signed number and Two's complement
+</div>
+<p class="text-justify">
+    <ol>
+        <li>
+            We consider a 16-bit representation of integer numbers. Give the internal representation of:
+            <ul>
+                <li>$(+ 1 032)_{10}$ in signed number and in Two's complement</li>
+                <li>$(- 721)_{10}$ in signed number and in Two's complement</li>
+            </ul>
+        </li>
+        <li>
+            We consider a 16-bit representation of integer numbers. Give the decimal value of the following binary strings, 
+            successively considering that it is a signed value representation, then in Two's complement. 
+            <ul>
+                <li>$(0101 0000 1100 1101)_2$</li>
+                <li>$(1010 0001 0011 0011)_2$</li>
+            </ul>
+        </li>
+    </ol>
+    
+</p>
+<!--
+<div class="green-block">
+    $(+ 1 032)_{10} =(0000010000001000)_2$ (signed number and in Two's complement)<br>
+    $(- 721)_{10} = (1000001011010001)_2$ (signed number) or $(- 721)_{10} = (1111110100101111)_2$ (Two's complement)<br><br>
+    $(0101 0000 1100 1101)_2 = (20 685)_{10}$ (signed number and in Two's complement) <br>
+    $(1010 0001 0011 0011)_2 = (- 8 499)_{10}$ (signed number) <br>
+    $(1010 0001 0011 0011)_2 = (- 24 269)_{10}$ (Two's complement) 
+</div>
+-->
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercise 2 : Fixed-point arithmetic
+</div>
+
+<p class="text-justify">
+    Perform the following conversions (with 256 as a fixed scaling factor):
+    <ul>
+        <li>$(1 432.45)_{10}$ in the binary representation (base $2$)</li>
+        <li>$(1 432.45)_{10}$ in the hexadecimal representation (base $16$)</li>
+    </ul>
+</p>
+<!--
+<div class="green-block">
+    $1432 \div 2 = 716$ <br>
+    $716 \div 2 = 358$ <br>
+    $358 \div 2 = 179$ <br>
+    $179 \div 2 = 89.5$ <br>
+    $89 \div 2 = 44.5$ <br>
+    $44 \div 2 = 22$ <br>
+    $22 \div 2 = 11$ <br>
+    $11 \div 2 = 5.5$ <br>
+    $5 \div 2 = 2.5$ <br>
+    $2 \div 2 = 1$ <br>
+    $1 \div 2 = 0.5 $ <br>
+    $(1432)_{10} = (101 1001 1000)_2 = (598)_{16}$<br> <br>
+
+    $0.45 \times 2=0.90; $ <br>
+    $0.90 \times 2=1.8; $ <br>
+    $0.8 \times 2=1.6; $ <br>
+    $0.6 \times 2=1.2; $ <br>
+    $0.2 \times 2=0.4; $ <br>
+    $0.4 \times 2=0.8;$ <br>
+    $0.8 \times 2=1.6; $ <br>
+    $0.6 \times 2=1.2; $ <br>
+    $0.45 = (0111 0011)_2 = (73)_{16}$ <br>
+    $(1 432.45)_{10} = (10110011000.01110011)_2 = (598.73)_{16}$
+</div>
+-->
+<!-- #################################################### -->
+<div id="orange-block">
+    Exercise 3 : Floating-point arithmetic
+</div>
+<p class="text-justify">
+    <ol>
+        <li>
+            We consider a representation of floating point numbers according to the IEEE 754 binary32 standard. 
+            What is the internal representation of the following numbers?
+            <ul>
+                <li>$(1 432.45)_{10}$</li>
+                <li>$(- 721.25)_{10}$</li>
+            </ul>
+        </li>
+        <li>
+            We consider a representation of floating point numbers according to the IEEE 754 binary32 standard. 
+            What is the decimal value of the following numbers?
+            <ul>
+                <li>$(1~~10001100~~10101110000000000000000)_2$</li>
+                <li>$(0~~10000101~~11011111001000100000000)_2$</li>
+            </ul>
+        </li>
+    </ol>
+    
+</p>
+<!--
+<div class="green-block">
+    $(1 432.45)_{10} = (10110011000.0111001100)_2 = 101100110000111001100 \times 2^{10}$ <br>
+    the exponent : $10 + 127 = 137 = (10001001)_2$ <br>
+    $(1 432.45)_{10} = (0~~10001001~~01100110000111001100000)_2$ <br><br>
+
+    $(- 721.25)_{10} = $ <br> 
+    $(721.25)_{10} = (1011010001.01)_2 = 101101000101 \times 2^9$ <br>
+    the exponent : $9 + 127 = 136 = (10001000)_2$ <br>
+    $(- 721.25)_{10} = (1~~10001000~~01101000101000000000000)_2$ <br><br>
+
+    $(1~~10001100~~10101110000000000000000)_2 = $ <br>
+    exponent : $(10001100)_2 = 140 \to 140 – 127 = 13$ <br>
+    $-1 \times 1.1010111 \times 2^{13} = -1 \times (11010111000000)_2 = (-13760)_{10}$ <br><br>
+
+    $(0~~10000101~~11011111001000100000000)_2 = $ <br>
+    exponent : $(10000101)_2 = 133 \to 133 – 127 = 6$ <br>
+    $1.110111110010001 \times 2^6 = (1110111.110010001)_2 = (119.783203125)_{10}$
+</div>
+-->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+    1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
