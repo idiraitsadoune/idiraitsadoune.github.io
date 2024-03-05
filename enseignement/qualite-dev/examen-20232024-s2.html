@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+    <title>Examen Qualité de développement - 2023/2024</title>
+
+	<meta name="description" content="Examen Qualité de développement - 2023/2024">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Examen Qualité de développement <br>Session 2 - 2023/2024 <br> Durée : 1h30
+</div>
+<!-- #################################################### -->
+<div class="alert-block">
+    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
+	<b style="color: red;">Modalités de livraison</b> 
+    <p>
+        L’examen se déroulera sur machine avec la possibilité d’accéder aux supports du cours et la liberté
+        d’utiliser n’importe quel outils ou environnement de développement (IDE). A la fin du temps dédié
+        à l’examen (1h30), vous devrez envoyer vos codes <b>Java</b> par email à l’adresse
+    <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr">idir.ait-sadoune@universite-paris-saclay.fr</a> avec comme objet <b>[QD-DS]</b>. 
+    <ul>
+        <li>
+            Vous devez envoyer un fichier au format <b>ZIP</b> contenant tous vos sources et nommé avec la convention suivante : 
+            <code class="listing">NOM-QD-DS.zip</code>.
+        </li>
+    </ul>
+    </p>	 
+</div>
+<!-- #################################################### -->
+<div id="orange-block">
+    Description du problème : Système producteurs - consommateurs
+</div>
+
+<p class="text-justify">
+<ul>
+    <li>On considère un ensemble de <code class="listing">P producteurs</code> et <code class="listing">C consommateurs</code>, 
+        communiquant par des messages 
+        de longueur fixe à travers une zone de mémoire partagée (<b>boîte à lettres</b>) gérée en  <b>FIFO</b> par un <b>serveur</b>. 
+        Les producteurs y déposent des messages ; les consommateurs en retirent (ou extraient) des messages.
+    </li>
+
+    <li style="padding-top: 20px;">
+        Cette boîte à lettres est réalisée à l’aide d’un <b>tableau circulaire</b> de taille <code class="listing">N</code>, 
+        noté <code class="listing">boiteALettre</code>. 
+        Chaque élément de ce tableau est susceptible de contenir un <b>message</b> de type <code class="listing">Integer</code>.
+    </li>
+
+    <li style="padding-top: 20px;">
+        On désignera par <code class="listing">finDepot</code> (resp. <code class="listing">debutRetrait</code>) 
+        l’indice dans ce tableau de la prochaine place libre pour un dépôt
+        (resp. du prochain message à extraire). <code class="listing">finDepot</code> et <code class="listing">debutRetrait</code> 
+        sont initialisés à <code class="listing">0</code> 
+        et sont incrémentés (modulo <code class="listing">N</code>) après chaque opération de dépôt (resp. retrait).
+    </li>
+
+    <li style="padding-top: 20px;">
+        Les protocoles à mettre en œuvre doivent garantir :
+        <ol>
+            <li>
+                qu’un producteur se bloque quand il tente de déposer un message dans une boîte à lettres pleine ;
+            </li>
+            <li>
+                qu’il est réactivé dès que de la place devient libre (c’est-à-dire dès qu’un consommateur a prélevé un message) ;
+            </li>
+            <li>
+                que plusieurs producteurs tentant de déposer simultanément des messages n’utilisent pas la même place dans la boîte à lettres ;
+            </li>
+            <li>
+                que le fonctionnement symétrique est garanti pour les consommateurs ;
+            </li>
+            <li>
+                qu’un consommateur ne peut prélever un message qu’une fois son dépôt, par le producteur, terminé.
+            </li>
+        </ol>
+    </li>
+</ul>
+</p>
+<div class="subsection-title">
+    Travail demandé
+</div>
+<p class="text-justify">
+    En utilisant les différents outils vus en cours, proposez une solution en \mcg{Java} qui implémente 
+    le système producteurs - consommateurs (<code class="listing">clients</code>) / Boite à Lettres (<code class="listing">Serveur</code>). 
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
