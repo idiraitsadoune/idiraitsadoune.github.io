@@ -115,12 +115,12 @@
             <pre>
                 <code class="language-html" data-trim data-line-numbers>
                         &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-                        &lt;head&gt;	
-                            <title>Le titre de la fenetre</title>
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                            <p>Voici ma premiere page</p>
-                        &lt;/body&gt;
+                            &lt;head&gt;	
+                                <title>Le titre de la fenetre</title>
+                            &lt;/head&gt;
+                            &lt;body&gt;
+                                <p>Voici ma premiere page</p>
+                            &lt;/body&gt;
                         &lt;/html&gt;                               
                 </code>
             </pre>
@@ -144,10 +144,10 @@
 	<h3>Sous-section</h3>
 	<img src="help.png" alt="Ampoule"/>
 	<p>
-	Un nouveau paragraphe avec un
-	<a href="http://www.exemple.fr">
-		lien hypertexte
-	</a>.
+        Un nouveau paragraphe avec un
+        <a href="http://www.exemple.fr">
+            lien hypertexte
+        </a>.
 	</p>
 &lt;/body&gt;
 ...
@@ -165,7 +165,7 @@
             <ul style="width: 70%;">
                 <li class="fragment" >
                     Attribut de définition de style
-                    <pre>
+                    <pre style="line-height: 0.8em !important;">
                         <code class="language-html" data-trim>
                             <h1 style="color:purple;">Gros titre</h1>
                         </code>
@@ -173,7 +173,7 @@
                 </li>
                 <li class="fragment" >
                     Surcharge de style par défaut
-                    <pre>
+                    <pre  style="line-height: 0.8em !important;">
                         <code class="language-html" data-trim>
                             <h2>Section</h2>
                         </code>
@@ -184,7 +184,7 @@
                 </li>
                 <li class="fragment" >
                     Identifiant
-                    <pre>
+                    <pre  style="line-height: 0.8em !important;">
                         <code class="language-html" data-trim>
                             <img id="ampoule" src="help.png" alt="Ampoule"/>
                         </code>
@@ -195,10 +195,10 @@
                 </li>
                 <li class="fragment" >
                     Classe de style
-                    <pre>
+                    <pre  style="line-height: 0.8em !important;">
                         <code class="language-html" data-trim>
                             <p class="myp">Voici mon paragraphe</p>
-                        </code>
+                  im5      </code>
                         <code class="language-css" data-trim>
                             .myp { font-style: italic; }
                         </code>
@@ -226,8 +226,8 @@
     <div class="slide-content fragment">
         <b>Interaction</b> avec l’utilisateur
         <ul>
-            <li class="fragment">Requête = envoi de données</li>
-            <li class="fragment">Réponse = résultat du traitement des données</li>
+            <li class="fragment"><i>Requête</i> = envoi de données</li>
+            <li class="fragment"><i>Réponse</i> = résultat du traitement des données</li>
         </ul>
     </div>
     <img class="fragment" src="./img/im6.png" height="400px" alt="">
@@ -352,16 +352,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Composants et architectures N-tiers</h2>
-    <ul>
-        <li class="fragment">
-            3 niveaux types de responsabilités pour les composants
-            <img src="./img/im10.png" height="150px"  alt="">
-        </li>
-        <li class="fragment">
-            N tiers sur lesquels sont distribuées les composants
-            <img src="./img/im11.png" height="200px"  alt="">
-        </li>
-    </ul>
+    <div class="slide-content">
+        <ul><li class="fragment">3 niveaux types de <b>responsabilités</b> pour les composants</li></ul>
+    </div>
+    <img class="fragment" src="./img/im10.png" height="150px"  alt="">
+    <div class="slide-content">
+        <ul><li class="fragment"><b>N tiers</b> sur lesquels sont distribuées les composants</li></ul>
+    </div>
+    <img class="fragment" src="./img/im11.png" height="200px"  alt="">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -400,14 +398,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de JavaBeans</h2>
-    <pre><code class="language-java hljs" data-trim data-line-numbers=|3|4-5|7|9-15|17-23><script type="text/template">
+    <pre style="font-size: 0.40em !important;">
+        <code class="language-java hljs" data-trim data-line-numbers=|3|4-5|7|9-15|17-23><script type="text/template">
         import java.io.Serializable;
 
         public class PersonBean implements Serializable {
             private String name;
             private boolean deceased;
         
-            public PersonBean() { }
+            public PersonBean() { ... }
         
             public String getName() {
                 return this.name;
@@ -458,8 +457,8 @@
         <li class="fragment skip">
             <b>Une implémentation</b> de référence
             <ul id="fleche">
-                <li>le Serveur d’Applications <b>GlassFish</b> version <i>7.0.2</i> (certifiée <b>Jakarta 10</b>) </li>
-                <li>développé par <b>Eclipse Foundation</b> (<i>Février 2023</i>)</li>
+                <li>le Serveur d’Applications <b>GlassFish</b> version <i>7.0.13</i> (certifiée <b>Jakarta EE 10</b>) </li>
+                <li>développé par <b>Eclipse Foundation</b> (<i>Février 2024</i>)</li>
             </ul>
         </li>
     </ul>
@@ -474,15 +473,15 @@
     </div>
     <ul style="display: block;">
         <li>
-            Des <i>composants</i> pour embarquer le code <br> 
+            Des <b>composants</b> pour embarquer le code <br> 
             des éléments d’une application
             <ul>
-                <li>Composants web</li>
-                <li>Composant métiers</li>
+                <li>composants web</li>
+                <li>composant métiers</li>
             </ul>
         </li>
         <li class="fragment skip">
-            Des <i>conteneurs</i> pour héberger les composants
+            Des <b>conteneurs</b> pour héberger les composants
             d’une application
             <ul>
                 <li>conteneur web</li>
@@ -490,11 +489,11 @@
             </ul>
         </li>
         <li class="fragment skip">
-            Des <i>services</i> support pour les aspects transverses
+            Des <b>services</b> support pour les aspects transverses
             <ul><li>Sécurité, transactions ... </li></ul>
         </li>
         <li class="fragment skip">
-            Des <i>infrastructures</i> de communication
+            Des <b>infrastructures</b> de communication
         </li>
     </ul>
 </section>
@@ -569,7 +568,7 @@
 	<h2>Partie web de Java EE</h2>
     <div class="r-stack skip">
         <img class="fragment fade-in-then-out" src="./img/im16.png" height="170px" alt="">
-        <img class="fragment fade-in" src="./img/im17.png" height="210px" alt="">
+        <img class="fragment fade-in" src="./img/im17.png" height="170px" alt="">
     </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -579,11 +578,11 @@
     <ul>
         <li class="fragment"><b>Servlet</b> = composant <b>Java</b>, 
             accessible à une <b>URL</b> donnée, destiné à :
-            <ul>
+            <ol>
                 <li class="fragment"><i>Récupérer les requêtes HTTP</i> de l’utilisateur</li>
                 <li class="fragment"><i>Invoquer les traitements applicatifs</i> <b>Java</b> correspondants</li>
                 <li class="fragment"><b>Construire la page HTML de réponse</b> pour l’utilisateur</li>
-            </ul>
+            </ol>
         </li>
     </ul>
     <img class="fragment" src="./img/im18.png" height="300px" alt="">
@@ -674,11 +673,11 @@
         </li>
         <li class="fragment skip"><b>Vue = page JSF</b> = arbre de composants
             <ul>
-                <li><i>Composants prédéfinis</i> avec un rendu HTML</li>
+                <li><i>Composants prédéfinis</i> avec un rendu <b>HTML</b></li>
                 <li><i>Modèles de navigation</i>
-                    <ul>
-                        <li>Statique : liens hypertextes entre vues</li>
-                        <li>Dynamique : règles de navigation s’appuyant sur un bean</li>
+                    <ul id="fleche">
+                        <li><b>Statique</b> : liens hypertextes entre vues</li>
+                        <li><b>Dynamique</b> : règles de navigation s’appuyant sur un bean</li>
                     </ul>
                 </li>
                 <li>Outils : convertisseur et validateurs</li>
@@ -738,10 +737,10 @@
                 <li>Gestion par le <b>conteneur</b> (création, cycle de vie…)</li>
             </ul>
         </li>
-        <li class="fragment skip">Services basiques
+        <li class="fragment skip"><b>Services basiques</b>
             <ul>
                 <li>Identification unique, <i>utilisation dans les composants JSF</i>
-                    <ul><li>Expression Language (EL)</li></ul>
+                    <ul><li>Expression Language (<b>EL</b>)</li></ul>
                 </li>
                 <li>Gestion du <i>scope</i> (durée de conservation de l'état)</li>
                 <li>Gestion du cycle de vie via des <i>callbacks</i></li>
@@ -814,7 +813,9 @@
                     private String name;
                     private String fName;
     
-                    public CatalogBean(){...}
+                    public CatalogBean(){
+                        ...
+                    }
                     ...
                     public String createAccount(){
                         ...
@@ -830,13 +831,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>JSF et navigation web</h2>
     <ul>
-        <li class="fragment">A l'aide de <i>règles de navigation</i> décrites dans <code class="listing">faces-config.xml</code>, 
+        <li class="fragment">A l'aide de <b>règles de navigation</b> décrites dans <code class="listing">faces-config.xml</code>, 
         <br>on déterminer, en fonction de la page courante, la page cible.</li>
-        <li class="fragment"><i>Outcome =</i>
+        <li class="fragment"><b>Outcome =</b>
             <ul>
                 <li>Chaine de caractère représentant le <i>résultat d'un traitement</i><br>
-                    (Ex : fail, pass, success, case5, caseTruc…)</li>
-                <li>Peut conditionner l'activation d'une règle de navigation</li>
+                    (<strong>Ex</strong> : fail, pass, success, case5, caseTruc…)</li>
+                <li class="fragment">Peut conditionner l'activation d'une règle de navigation</li>
             </ul>
         </li>
     </ul>
@@ -857,11 +858,11 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Types de navigation</h2>
     <ul>
-        <li class="fragment">Navigation <i>statique</i> = navigation par identifiant de vue/outcome</li>
-        <li class="fragment skip">Navigation <i>dynamique</i> =
-            <ul>
-                <li>Méthode d'un backing bean rendant plusieurs outcomes possibles</li>
-                <li>Règles de navigation différentes suivant les outcomes</li>
+        <li class="fragment"><b>Navigation statique</b> = navigation par identifiant de vue/outcome</li>
+        <li class="fragment skip"><b>Navigation dynamique</b> =
+            <ul id="fleche">
+                <li>méthode d'un backing bean rendant plusieurs outcomes possibles</li>
+                <li>règles de navigation différentes suivant les outcomes</li>
             </ul>
         </li>
     </ul>
@@ -875,11 +876,11 @@
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
                 <from-outcome>outcom1</from-outcome>
-                   <to-view-id>/action1.jsp</to-view-id>
+                <to-view-id>/action1.jsp</to-view-id>
             </navigation-case>
             <navigation-case>
                 <from-outcome>outcom2</from-outcome>
-                   <to-view-id>/action2.jsp</to-view-id>
+                <to-view-id>/action2.jsp</to-view-id>
             </navigation-case>
         </navigation-rule>
     </code></pre>
@@ -899,11 +900,11 @@
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
                 <from-outcome>outcom1</from-outcome>
-                   <to-view-id>/action1.jsp</to-view-id>
+                <to-view-id>/action1.jsp</to-view-id>
             </navigation-case>
             <navigation-case>
                 <from-outcome>outcom2</from-outcome>
-                   <to-view-id>/action2.jsp</to-view-id>
+                <to-view-id>/action2.jsp</to-view-id>
             </navigation-case>
         </navigation-rule>
     </code></pre>
@@ -928,11 +929,11 @@
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
                 <from-outcome>outcom1</from-outcome>
-                   <to-view-id>/action1.jsp</to-view-id>
+                <to-view-id>/action1.jsp</to-view-id>
             </navigation-case>
             <navigation-case>
                 <from-outcome>outcom2</from-outcome>
-                   <to-view-id>/action2.jsp</to-view-id>
+                <to-view-id>/action2.jsp</to-view-id>
             </navigation-case>
         </navigation-rule>
     </code></pre>
@@ -946,14 +947,14 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Sessions et composants web</h2>
     <ul>
-        <li class="fragment">Session web = maintient d'un <i>état conversationnel
-            avec un client <br> à travers plusieurs couples requête/réponse</i>
-            <ul>
-                <li>Permet de stocker des informations alors que l’utilisateur change
+        <li class="fragment"><b>Session web</b> = maintient d'un <i>état conversationnel
+            avec un client</i> <br> à travers plusieurs couples requête/réponse
+            <ul id="fleche" class="fragment">
+                <li>permet de stocker des informations alors que l’utilisateur change
                     plusieurs fois de pages web</li>
             </ul>
         </li>
-        <li class="fragment skip">Session JSF = session web
+        <li class="fragment skip"><b>Session JSF</b> = <b>Session web</b>
             <ul><li>Mettre des données en sessions avec un <code class="listing">ManagedBean</code>
             </li></ul>
             <pre><code class="language-java hljs" data-trim data-line-numbers>
@@ -976,8 +977,8 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Partie persistance de Jakarta EE</h2>
     <div class="r-stack skip">
-        <img class="fragment fade-in-then-out" src="./img/im16.png" height="170px" alt="">
-        <img class="fragment fade-in" src="./img/im24.png" height="220px" alt="">
+        <img class="fragment fade-in-then-out" src="./img/im24-bis.png" height="170px" alt="">
+        <img class="fragment fade-in" src="./img/im24.png" height="170px" alt="">
     </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -985,14 +986,14 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Bases de données</h2>
     
-    <img style="float: right; margin-bottom: 20px; margin-right: 60px;" src="./img/im25.png" height="200px" alt="">
+    <img style="float: right; margin-bottom: 20px; margin-right: 60px;" src="./img/im25.png" height="150px" alt="">
     <ul style="display: block;">
         <li class="fragment">Ensemble de tables
             <ul>
-                <li><b>Table</b> = colonnes * lignes
+                <li><b>Table</b> = colonnes $\times$ lignes
                     <ul>
                         <li><i>Colonnes</i> = propriétés</li>
-                        <li><i>Ligne</i> = ensemble de valeurs
+                        <li><i>Ligne</i> = ensemble de valeurs <br>
                             pour les différentes propriété</li>
                     </ul>
                 </li>
@@ -1009,7 +1010,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Persistance en base de données</h2>
     <ul>
-        <li class="fragment">Besoin = <i>Create + Read + Update + Delete</i> (CRUD)</li>
+        <li class="fragment">Besoin = <i>Create + Read + Update + Delete</i> (<b>CRUD</b>)</li>
         <li class="fragment">Problème = <i>mapping relationnel/objet</i> des données</li>
     </ul>
     <img class="fragment" src="./img/im26.png" height="400px" alt="">
@@ -1019,16 +1020,17 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Java Persistence API (JPA)</h2>
     <ul>
-        <li class="fragment"><b>JPA</b> = spécification d’un <b>mapping relationnel/objet</b><br>(Object Relational Mapping – ORM) 
+        <li class="fragment"><b>JPA</b> = spécification d’un <b>mapping relationnel/objet</b><br>
+            (Object Relational Mapping – <b>ORM</b>) 
             <ul>
-                <li>Composant pour <i>accéder à la base de données = EntityManager</i>
-                    <ul>
-                        <li>Prédéfini (pas besoin de l’écrire)</li>
-                        <li>Générique</li>
+                <li class="fragment">Composant pour <i>accéder à la base de données = <b>EntityManager</b></i>
+                    <ul id="fleche">
+                        <li>prédéfini (pas besoin de l’écrire)</li>
+                        <li>générique</li>
                     </ul>
                 </li>
-                <li>Composants pour <i>stocker les données = EJB Entity</i></li>
-                <li>Langage de requêtes = Java Persistence Query Language (JPQL)</li>
+                <li class="fragment">Composants pour <i>stocker les données = <b>EJB Entity</b></i></li>
+                <li class="fragment">Langage de requêtes = Java Persistence Query Language (<b>JPQL</b>)</li>
             </ul>
         </li>
         <li class="fragment skip">Plusieurs implémentations
@@ -1037,7 +1039,8 @@
                 <li>JBoss Hibernate...</li>
             </ul>
         </li>
-        <li class="fragment skip">S'appuie sur un <i>connecteur</i> de base de données <br><b>Ex</b> : JDBC</li>
+        <li class="fragment skip">S'appuie sur un <i>connecteur</i> de base de données <br>
+            <strong>Ex</strong> : <b>JDBC</b></li>
     </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1054,19 +1057,19 @@
         <li class="fragment">Composant <i>persistant</i> partagé par plusieurs clients
             <ul>
                 <li class="fragment">Représente des données métiers stockées dans une base de données
-                    <ul>
-                        <li>Une <i>classe</i> correspond à une <i>table</i></li>
-                        <li>Les <i>attributs</i> définis dans la classe correspondent aux <i>colonnes de la table</i></li>
-                        <li>Une <i>instance</i> de la classe (= un objet) représente une <i>ligne de la table</i></li>
+                    <ul id="fleche">
+                        <li>une <i>classe</i> correspond à une <i>table</i></li>
+                        <li>les <i>attributs</i> définis dans la classe correspondent aux <i>colonnes de la table</i></li>
+                        <li>une <i>instance</i> de la classe (= un objet) représente une <i>ligne de la table</i></li>
                     </ul>
                 </li>
-                <li class="fragment">Possède une <i>identité explicite</i> (clé primaire)</li>
+                <li class="fragment">Possède une <i>identité explicite</i> (<b>clé primaire</b>)</li>
             </ul>
         </li>
-        <li class="fragment skip">EJB Entity $\approx$ JavaBean mais
-            <ul>
-                <li>Avec des <i>annotations</i> qui définissent le <i>mapping relationnel/objet</i></li>
-                <li>Gestion par le conteneur (création, cycle de vie...)</li>
+        <li class="fragment skip"><b>EJB Entity</b> $\approx$ <b>JavaBean</b> mais ...
+            <ul id="fleche">
+                <li>avec des <i>annotations</i> qui définissent le <i>mapping relationnel/objet</i></li>
+                <li>gestion par le conteneur (création, cycle de vie...)</li>
             </ul>
         </li>
     </ul>
