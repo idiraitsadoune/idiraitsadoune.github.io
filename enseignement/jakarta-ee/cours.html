@@ -384,9 +384,7 @@
                     Méthodes d’interception d’<i>événements</i>
                     <ul>
                         <li>Utilisation d’écouteurs et génération d’événements</li>
-                        <li>
-                            Ex: <code class="listing">implements PropertyChangeListener</code>
-                        </li>
+                        <li>Ex: <code class="listing">implements PropertyChangeListener</code></li>
                     </ul>
                     
                 </li>
@@ -416,7 +414,7 @@
                 this.name = name;
             }
         
-            public boolean isDeceased() {
+            public boolean getDeceased() {
                 return this.deceased;
             }
         
@@ -449,7 +447,7 @@
                 <li class="fragment">Basées sur <b>Java SE</b> avec
                     <ul>
                         <li>les spécifications du Serveur d’Applications</li>
-		                <li>des bibliothèques pour le développement d'applications d’entreprises (API)</li>
+		                <li>des bibliothèques pour le développement d'applications d’entreprises (<b>API</b>)</li>
                     </ul>
                 </li>
             </ul>
@@ -754,10 +752,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Managed Beans (backing beans)</h2>
-    <pre><code class="language-java hljs" data-trim data-line-numbers>
-        @ManagedBean @SessionScoped
+    <pre style="font-size: 0.45em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+        import jakarta.enterprise.context.SessionScoped;
+        import jakarta.inject.Named;
+        import jakarta.annotation.PostConstruct;
+
+        @SessionScoped
+        @Named
         public class MyManagedBean implements Serializable {
-            @NotNull @Size(max=50)
             private String name;
         
             public MyManagedBean (){...}
@@ -769,7 +771,7 @@
         
             public String getName(){return name;}
             public void setName(String n){this.name = n;}
-            ...
+            
             public String sayHello() {
                 return "Hello, I'm " + this.name;
             }
@@ -807,8 +809,8 @@
         </div>
         <div style="width: 50%;">
             <pre style="font-size: 0.40em !important;"><code class="language-java hljs" data-trim data-line-numbers>
-                @ManagedBean
                 @SessionScoped
+                @Named
                 public class PersonBean implements Serializable {
                     private String name;
                     private String fName;
@@ -909,7 +911,6 @@
         </navigation-rule>
     </code></pre>
     <pre style="font-size: 0.50em !important;" class="fragment"><code class="language-java hljs" data-trim data-line-numbers>
-        @ManagerdBean @SessionScoped
         public class MyBean implements Serializable {
             ...
             public String allerEtapeSuivante(){
@@ -955,11 +956,11 @@
             </ul>
         </li>
         <li class="fragment skip"><b>Session JSF</b> = <b>Session web</b>
-            <ul><li>Mettre des données en sessions avec un <code class="listing">ManagedBean</code>
+            <ul><li>Mettre des données en sessions avec un <b>ManagedBean</b>
             </li></ul>
             <pre><code class="language-java hljs" data-trim data-line-numbers>
-                @ManagedBean
                 @SessionScoped
+                @Named
                 public class PersonBean implements Serializable {...}
             </code></pre>
         </li>
