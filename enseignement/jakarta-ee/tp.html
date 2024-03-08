@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TP : Développement d'applications Web avec Jakarta EE</title>
+
+	<meta name="description" content="TP : Développement d'applications Web avec Jakarta EE">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: {load: ['ui/lazy']}
+		  };
+	  </script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2023/2024</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-title">
+    Travaux Pratiques - TP<br> 
+    Développement d'applications Web <br> avec Jakarta EE
+</div>
+
+<div class="alert-block">
+    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
+	<b style="color: red;">Livraison</b>
+    <p>Le TP est faire en binôme et à rendre avant <b>le 19/03/2024 à 23h59</b> sur EDUNAO 
+        sous la forme d'un fichier <b>NOM1-NOM2.zip</b>.</p>	 
+</div>
+
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">
+    L'application eMarket
+</div>
+
+<p class="text-justify">
+    Une société appelée $eMarket$ vend des produits assemblés à base de composants qu'elle achète chez des fournisseurs.
+</p>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	Ces produits peuvent être de la nature que vous souhaitez : ordinateurs, vêtements, alimentation traiteur, fleurs...	
+</div>
+<p class="text-justify">
+    $eMarket$ souhaite vendre ses produits en ligne aux internautes. Elle souhaite que ses commerciaux puissent 
+    également gérer le catalogue en ligne. Le schéma suivant montre le principe général de l'application $eMarket$ :
+</p>
+<div>
+    <img src="./img/tp/eMarket.png" style="display: block; margin-left: auto; margin-right: auto;" alt="">
+</div>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">
+    Installer et utiliser l'environnement de développement
+</div>
+<p class="text-justify">
+    L'environnement d'exécution utilisé pour l'application $eMarket$ est composé d'un 
+    <b>serveur d'applications et d'un serveur de bases de données</b>. Vous installerez ces deux éléments 
+    sur votre propre machine afin de pouvoir tester vos développements progressivement. Pour la programmation, 
+    vous utiliserez un <b>IDE (environnement de développement intégré)</b> qui vous permettra de développer 
+    les différents composants nécessaires à l'application et de déployer ces composants facilement sur les serveurs. 
+    Les étapes à réaliser sont les suivantes : 
+</p>
+<!-- #################################################### -->
+<div class="subsection-title">
+    Installation de l'environnement de développement
+</div>
+
+<p class="text-justify">
+    L'environnement de développement utilisé dans ce TP est composé de :
+    <ul>
+    <li> <b>NetBeans</b> : l'IDE qui permet notamment d'éditer et compiler du code ;</li>
+    <li> <b>GlassFish</b> : le serveur d'application qui permet de déployer l'application afin de la tester tout au long du développement ;</li>
+    <li> <b>Java DB</b> : le serveur de bases de données qui permet d'héberger les données liées à l'application.</li>
+    </ul> 
+    L'objectif des manipulations décrites ici est <b>d'installer l'ensemble de ces logiciels</b> de manière à obtenir un environnement de développement complet et fonctionnel.
+</p>
+<p class="text-justify">
+    Vous devez commencer par installer un <b>JDK</b> (<b>Java Development Kit</b>) de <b>Java</b> Standard Edition.   
+</p>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+    Si vous avez déjà un <b>JDK</b> sur votre machine, vérifiez que vous avez la version 17 au minimum.	
+</div>
+<p class="text-justify">
+    <ul>
+        <li>Télécharger et installer <b>Apache NetBeans 21</b> à partir du lien suivant 
+            <a href="https://netbeans.apache.org/" target="_blank">https://netbeans.apache.org/</a>.</li>
+        <li>Télécharger <b>GlassFish 7.0.13, Jakarta EE Platform, 10</b> à partir du lien 
+            <a href="https://glassfish.org/download"  target="_blank">https://glassfish.org/download</a> 
+            et décompresser le zip dans un dossier de travail.</li>
+    </ul>
+</p>
+<!-- #################################################### -->
+<div class="subsection-title">
+    Prise en main de l'environnement de développement
+</div>
+<p class="text-justify">
+    L'objectif des manipulations décrites ici sont de démarrer et prendre en main <b>NetBeans</b> et <b>GlassFish</b>  
+    de manière à obtenir un environnement de développement fonctionnel.
+     La prise en main du serveur de bases de données sera vue plus tard.
+</p>
+
+<h3>Démarrage du serveur d'applications GlassFish</h3>
+<p class="text-justify">
+    NetBeans dispose nativement d'une interface d'interaction avec le serveur d'application GlassFish. 
+    C'est cette interface que nous allons utiliser le plus souvent.
+</p>
+<img src="./img/tp/im1.png" alt="">
+<ul>
+    <li>Lancer NetBeans.</li>
+    <li>Dans l'onglet <b>Services</b>, lancer la commande <b>Add Server...</b> avec un clique droit 
+        sur l'icône <b>Servers</b> et suivre les étapes suivantes.</li>
+</ul>
+<img src="./img/tp/im2.png" alt="">
+<img src="./img/tp/im3.png" alt="">
+<img src="./img/tp/im4.png" alt="">
+
+<ul><li>Dans l'onglet <b>Services</b>, lancer la commande <b>start</b> avec un clique droit 
+    sur l'icône <b>Servers > GlassFish Server</b>.</li></ul>
+
+<p class="text-justify">
+    Vous pouvez observer que deux onglets sont apparus dans la fenêtre <b>Output</b> de Netbeans: 
+    L'onglet <b>GlassFish Server</b> vous donne des informations sur l'état d'avancement du lancement du serveur. 
+    C'est également dans cet onglet que seront affichées les erreurs rencontrées 
+    lors de l'exécution des applications déployées sur le serveur. <br>
+    L'onglet <b>Java DB Database Process</b> contient les affichages générés par le serveur de bases de données Java DB 
+    qui est automatiquement installé avec GlassFish.
+</p>
+
+<h3>Administration du serveur d'applications GlassFish</h3>
+<ul>
+    <li>Toujours dans l'onglet <b>Services</b>, lancer la commande <b>View Domain Admin Console</b>.
+        Dans le navigateur web qui est lancé automatiquement, vous pouvez alors accéder à l'interface 
+        web d'administration du serveur GlassFish. Le chargement de la page peut prendre un peu de temps 
+        mais vous devez obtenir quelque-chose qui ressemble à la figure ci-dessous.
+    </li>
+</ul>
+<img src="./img/tp/im5.png" alt="" width="100%">
+
+<p class="text-justify">
+    Cette console d'administration permet de réaliser les opérations de configuration et de maintenance du serveur 
+    d'application.
+</p>
+<ul>
+    <li>
+        Dans l'arborescence à gauche, cliquer sur <b>Applications</b>. Cette fenêtre liste l'ensemble des applications 
+        qui ont été déployées sur le serveur. Pour le moment cette liste est vide. Nous verrons par la suite 
+        comment déployer puis executer une application.  
+    </li>
+</ul>
+
+<h3>Initialisation du projet NetBeans</h3>
+
+<p class="text-justify">
+    NetBeans est basé sur la notion de <b>projet</b>. Un projet correspond à tout ou partie d'une application 
+    que l'on souhaite développer. Il contient à la fois les sources, c'est-à-dire les fichiers contenant le code, 
+    et l'ensemble des informations de configuration de l'application. Pour ce TP, nous devons 
+    créer un projet de type <b>Web Application</b> dans NetBeans.   
+</p>
+<ul>
+    <li>
+        Aller dans le menu <b>File > New Project</b>. Choisir <b>Web serApplication</b> dans la catégorie 
+        <b>Java Web</b> sous <b>Java with Ant</b>.    
+        <img src="./img/tp/im6.png" alt="">
+    </li>
+
+    <li>
+        Dans l'écran <b>Name and Location</b>, nommer le projet $eMarket$
+        <img src="./img/tp/im7.png" alt="">
+    </li>
+
+    <li>
+        Dans l'écran <b>Server and settings</b>, laisser les valeurs par défaut (Server : GlassFish Server).
+        <img src="./img/tp/im8.png" alt="">
+    </li>
+
+    <li>
+        Dans l'écran <b>Frameworks</b>, cocher <b>Java Server Faces</b> puis aller dans l'onglet <b>Library</b> 
+        et cocher l'option <b>Server Library</b>, puis dans l'onglet <b>Configuration</b> et modifier 
+        le champ <b>JSF Servlet URL Pattern</b>, comme indiqué sur les figures ci-dessous. Puis, cliquer sur <b>Finish</b>.
+        <img src="./img/tp/im9.png" alt="">
+        <img src="./img/tp/im10.png" alt="">
+    </li>
+</ul>
+<p class="text-justify">
+    Cette dernière étape de configuration est nécessaire afin de pouvoir utiliser <b>JavaServer Faces (JSF)</b>
+    pour le développement des pages web de l'application.  
+</p>
+
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">
+    Développement : les étapes fondamentales
+</div>
+<!-- #################################################### -->
+<div class="subsection-title">
+    Premières pages web
+</div>
+<p class="text-justify">
+    Les étapes qui vont vous permettre de commencer votre site sont les suivantes :   
+</p>
+
+<h3>Création des premières pages</h3>
+
+<p class="text-justify">
+    L'application de commande en ligne $eMarket$ est une application web. Elle dispose donc de plusieurs pages web 
+    liées les unes autres autres par des liens de navigation. L'objectif de cette étape est de réaliser 
+    le squelette des premières pages de l'application et de mettre en place les liens de navigations entre elles. 
+    La technologie utilisée pour l'ensemble de l'interface web est <b>Java Server Faces (JSF)</b>.    
+</p>
+
+<h3>Page d'accueil</h3>
+
+<p class="text-justify">
+    La toute première page que voit l'utilisateur lorsqu'il utilise une application web est la page d'accueil. 
+    Il est nécessaire de définir de quelle page il s'agit pour l'application $eMarket$.   
+</p>
+
+<ul>
+    <li>
+        Dans le répertoire <b>Configuration files</b> de votre projet, ouvrir le fichier <code class="listing">web.xml</code>. <br>
+        Ce fichier est très important pour la configuration de votre application web. Nous allons voir progressivement comment l'utiliser. 
+        NetBeans peut l'afficher de deux manières :
+        <ol>
+            <li>sous la forme d'onglets avec des formulaires;</li>
+            <li>en <b>XML</b> brut (son format réel).</li>
+        </ol>
+        Le fichier <code class="listing">web.xml</code> permet notamment de définir la page qui sert de page d'accueil à l'application.
+    </li>
+</ul>
+<p class="text-justify">
+    Par défaut, lors de la création du projet, NetBeans crée une page <code class="listing">index.xhtml</code> 
+    dans le répertoire <b>Web Pages</b> 
+    et la définit comme page d'accueil dans le fichier <code class="listing">web.xml</code>.  
+</p>
+<ul>
+    <li>Ouvrir le fichier <code class="listing">index.xhtml</code>. <br>
+        Cette page ne fait qu'afficher le texte <code class="listing">"Hello from Facelets"</code>
+    
+<pre><code class="language-html"><script type="text/template"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+      <title>Facelet Title</title>
+  </h:head>
+  <h:body>
+      Hello from Facelets
+  </h:body>
+</html>                             
+</script></code></pre>
+Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'application eMarket"</code>.
+</li>
+
+<li>
+    Dans le dossier <b>Web Pages/WEB-INF</b>, créer un fichier <code class="listing">beans.xml</code> 
+    contenant le code suivant 
+    <pre><code class="language-html"><script type="text/template"><?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                            http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+        bean-discovery-mode="annotated" version="2.0">
+        
+</beans>
+</script></code></pre>
+</li>
+</ul>
+<p class="text-justify">
+    Pour vérifier que cette modification est bien prise en compte, nous allons déployer l'application et l'exécuter.
+</p>
+
+<h3>Déploiement et exécution</h3>
+
+<ul>
+    <li>Sélectionner le projet de votre $eMarket$ puis choisir <b>Run</b> dans le menu contextuel (clic droit). <br>
+        Cette action déclenche :
+        <ul>
+            <li>la compilation du code de l'ensemble du projet et la génération 
+                d'une archive <code class="listing">.war</code> <br>
+                (équivalent à <b>Clean and Build</b> dans le menu contextuel) ;
+            </li>
+            
+            <li>
+                le déploiement de cette archive sur le serveur GlassFish <br>
+                (équivalent de <b>Deploy</b> dans le menu contextuel) ;
+            </li>
+
+            <li>
+                l'affichage de la page d'accueil de l'application dans un navigateur.
+            </li>
+        </ul>
+        Vous devez obtenir une page telle que celle-ci :
+        <img src="./img/tp/index.png" alt="">
+    </li>
+
+    <li>
+        Dans le menu <b>Applications</b> de la <b>console d'administration de GlassFish</b>, 
+        vérifier que l'application est bien déployée.
+    </li>
+</ul>
+
+<h3>Contenu statique</h3>
+
+<p class="text-justify">
+    Les balises HTML servent à structurer le contenu d'une page web. 
+    Grâce à l'import de la bibliothèque des balises standard de HTML dans votre fichier, 
+    toutes les balises HTML existantes peuvent être utilisées pour structurer son contenu. 
+    Pour une liste des balises HTML 
+    et leur utilisation, consulter ce lien <a href="https://www.w3schools.com/html/" target="_blank">https://www.w3schools.com/html/</a>.   
+</p>
+
+<ul>
+    <li>Ajouter un peu de contenu à votre page d'accueil avec HTML.</li>
+</ul>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	le contenu d'une page doit toujours se trouver entre les balises 
+    <code class="listing">h:body</code>, jamais en dehors !
+</div>
+<p>
+    Exemple de contenu :
+<pre><code class="language-html"><script type="text/template">...
+<h:head>
+    <title>eMarket - Accueil</title>
+</h:head>
+<h:body>
+    <h1>Accueil</h1>
+    <p>Bienvenue sur l'application de commande en ligne eMarket.</p>
+    <p>N'hesitez pas a visiter <a href="http://www.centralesupelec.fr" target="_blank">
+    le site de CentraleSupelec</a>, notre partenaire.</p>
+</h:body>
+...
+</script></code></pre>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2023/2024</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+</body>
+</html>
