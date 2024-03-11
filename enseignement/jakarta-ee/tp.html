@@ -339,15 +339,15 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
 <h3>Contenu statique</h3>
 
 <p class="text-justify">
-    Les balises HTML servent à structurer le contenu d'une page web. 
-    Grâce à l'import de la bibliothèque des balises standard de HTML dans votre fichier, 
-    toutes les balises HTML existantes peuvent être utilisées pour structurer son contenu. 
-    Pour une liste des balises HTML 
+    Les balises <b>HTML</b> servent à structurer le contenu d'une page web. 
+    Grâce à l'import de la bibliothèque des balises standard de <b>HTML</b> dans votre fichier, 
+    toutes les balises <b>HTML</b> existantes peuvent être utilisées pour structurer son contenu. 
+    Pour une liste des balises <b>HTML</b> 
     et leur utilisation, consulter ce lien <a href="https://www.w3schools.com/html/" target="_blank">https://www.w3schools.com/html/</a>.   
 </p>
 
 <ul>
-    <li>Ajouter un peu de contenu à votre page d'accueil avec HTML.</li>
+    <li>Ajouter un peu de contenu à votre page d'accueil avec <b>HTML</b>.</li>
 </ul>
 <div class="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
@@ -355,7 +355,7 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
     <code class="listing">h:body</code>, jamais en dehors !
 </div>
 <p>
-    Exemple de contenu :
+    <b>Exemple de contenu</b> :
 <pre><code class="language-html"><script type="text/template">...
 <h:head>
     <title>eMarket - Accueil</title>
@@ -363,12 +363,837 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
 <h:body>
     <h1>Accueil</h1>
     <p>Bienvenue sur l'application de commande en ligne eMarket.</p>
-    <p>N'hesitez pas a visiter <a href="http://www.centralesupelec.fr" target="_blank">
-    le site de CentraleSupelec</a>, notre partenaire.</p>
+    <p>N'hesitez pas a visiter 
+        <a href="http://www.centralesupelec.fr" target="_blank"> le site de CentraleSupelec</a>, 
+    notre partenaire.</p>
 </h:body>
 ...
 </script></code></pre>
 </p>
+
+<h3>Apparence avec CSS</h3>
+
+<p class="text-justify">
+    L'apparence donnée par le navigateur aux balises <b>HTML</b> est définie par un ensemble de styles <b>CSS</b> 
+    (Cascading Style Sheet) par défaut. Il est possible de personnaliser cette apparence en définissant des styles <b>CSS</b>. 
+    Pour une liste des propriétés <b>CSS</b>  utilisables suivant les balises <b>HTML</b> ainsi que des exemples d'utilisation, 
+    consulter ce lien <a href="https://www.w3schools.com/css/" target="_blank">https://www.w3schools.com/css/</a>.
+
+    <ul>
+        <li>Personnalisez l'apparence de votre page d'accueil en utilisant une feuille de styles <b>CSS</b>. Pour cela, vous devez :
+        <ol>
+            <li>créer un fichier <code class="listing">monstyle.css</code> dans le répertoire <b>Web Pages</b> de votre projet ;</li>
+            <li>ajouter un lien vers cette feuille de style dans l'en-tête de votre page d'accueil :</li>
+<pre><code class="language-html"><script type="text/template">...
+<h:head>
+    <link href="monstyle.css" rel="stylesheet" type="text/css" />
+    <title>eMarket - Accueil</title>
+</h:head>
+...
+</script></code></pre>
+            <li>définir les styles à utiliser pour les balises <b>HTML</b> présente dans votre page d'accueil.</li>
+        </ol>
+        </li>
+    </ul>
+</p>
+
+<p>
+    <b>Exemple de feuille de style</b> :
+<pre><code class="language-css"><script type="text/template">body {
+	background-color: white;
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h1 {
+    color: purple;
+    font-family: Arial Black, sans-serif;
+    border-bottom: 1px solid purple;
+}
+p {
+	font-size: 11pt;
+	text-align: justify;
+}
+</script></code></pre>
+</p>
+
+<h3>Composants JSF</h3>
+
+<p class="text-justify">
+    Les composants JSF de la bibliothèque standard <b>JSF</b> disposent d'un rendu <b>HTML</b>. Cela veut dire que tout composant 
+    de cette bibliothèque peut être visualisé dans une page web. <br>
+
+    Le principal intérêt des composants <b>JSF</b> c'est qu'ils permettent d'obtenir un rendu <b>HTML</b> pour du code <b>Java</b> embarqué 
+    dans un <i>"backing bean"</i> (un objet <b>Java</b>). Ce rendu est dit <i>"dynamique"</i> : comme l'état du backing bean peut évoluer au 
+    cours du temps selon le comportement défini dans ses méthodes, son rendu <b>HTML</b> via le composant <b>JSF</b> pourra donc 
+    également varier au cours du temps. <br>
+
+    Dans un premier temps nous n'allons utiliser que des <b>composants simples</b>, c'est-à-dire des <b>composants qui ne nécessitent pas d'utiliser un backing bean</b>.
+</p>
+
+<h3>Composants simples</h3>
+
+<p class="text-justify">
+    Voici quelques exemples de composants simples :
+
+<pre><code class="language-html"><script type="text/template">...
+<h:body>
+    <h:outputText value="Voila du texte"/>
+    <h:outputLink value="http://www.centralesupelec.fr">Voila un lien</h:outputLink>
+</h:body>
+...
+</script></code></pre>
+
+Cette documentation liste les composants visuels simples disponibles avec des exemples d'utilisation.
+<a href="https://javaweb.developpez.com/faq/jsf?page=Les-composants-visuels" target="_blank">https://javaweb.developpez.com/faq/jsf?page=Les-composants-visuels</a>
+</p>
+<ul><li>Remplacer les éléments <b>HTML</b> de votre page d'accueil par des composants <b>JSF</b> simples.</li></ul>
+
+<h3>Personnalisation de l'apparence</h3>
+
+<p class="text-justify">
+    Il est possible de personnaliser l'apparence de tous les composants <b>JSF</b> à l'aide de styles <b>CSS</b>. 
+    Trois moyens permettent de modifier l'apparence des composants <b>JSF</b> :
+</p>
+<ol>
+    <li>
+        en définissant un style pour les balises <b>HTML</b> générées. <br>
+        Exemple pour le composant <code class="listing">h:outputLink</code> qui génère la balise <b>HTML</b>
+        <code class="listing">a</code> :
+<pre><code class="language-html"><script type="text/template"><h:outputLink value="http://www.centralesupelec.fr">Voila un lien</h:outputLink>
+</script></code></pre>
+<pre><code class="language-css"><script type="text/template">a {
+	font-weight: bold;
+	color: orange;
+}
+</script></code></pre>
+    </li>
+
+    <li>
+        en définissant un style pour un ensemble de composants <b>JSF</b> : il faut utiliser la notion de classe de style <b>CSS</b>. <br>
+        Exemple :
+<pre><code class="language-html"><script type="text/template"><h:outputText value="Voila du texte" styleClass="orangetext"/>
+<h:outputLink value="http://www.centralesupelec.fr" styleClass="orangetext">
+    Voila un lien
+</h:outputLink>
+</script></code></pre>
+<pre><code class="language-css"><script type="text/template">.orangetext {
+	font-weight: bold;
+	color: orange;
+}
+</script></code></pre>
+    </li>
+
+    <li>
+        en définissant un style pour un seul composant en particulier : il faut utiliser la notion d'identifiant <b>CSS</b>. <br>
+        Exemple: 
+<pre><code class="language-html"><script type="text/template"><h:outputText value="Voila un texte particulier" id="onebluetext"/>
+</script></code></pre>
+<pre><code class="language-css"><script type="text/template">#onebluetext {
+	font-weight: bold;
+	color: blue;
+}
+</script></code></pre>
+    </li>
+
+</ol>
+
+<ul><li>Personnaliser l'apparence des composants <b>JSF</b> que vous avez utilisés dans votre page d'accueil.</li></ul>
+
+<h3>Vue JSF</h3>
+
+<p class="text-justify">
+    De manière simplifiée, une vue <b>JSF</b> est un conteneur pour les différents composants <b>JSF</b> d'une page. <br>
+
+    Le composant <code class="listing">f:view</code> permet de définir une vue. Pour pouvoir l'utiliser il faut importer 
+        la bibliothèque <b>code</b> de <b>JSF</b>, qui contient l'ensemble des composants non visuels (c'est-à-dire sans rendu) de <b>JSF</b>.
+</p>
+
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	<b>Toute page JSF doit contenir une, et une seule, vue</b>. Cette vue contient toujours tout le reste du contenu de la page. 
+    Donc, la balise ouvrante <code class="listing">f:view</code> doit toujours se placer juste après <code class="listing">h:body</code> et la balise 
+    fermante <code class="listing">f:view</code> doit toujours se placer juste avant la balise fermante <code class="listing">h:body</code>. <br>
+        
+    Toutes les autres balises (correspondant à des composants <b>JSF</b> ou à du code <b>HTML</b>) doivent 
+    se trouver entre les balises <code class="listing">f:view</code>.
+</div>
+
+<p class="text-justify">
+    Toutes les pages <b>JSF</b> doivent donc avoir la structure de base suivante :
+</p>
+
+<pre><code class="language-html"><script type="text/template"><html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+      <title>Facelet Title</title>
+  </h:head>
+  <h:body>
+      <f:view>
+          ...balises correspondant a des composants JSF et balises HTML...
+      </f:view>
+  </h:body>
+</html>
+</script></code></pre>
+
+<ul><li>Créer une vue <b>JSF</b> dans votre page d'accueil.</li></ul>
+
+<h3>Navigation</h3>
+
+<p class="text-justify">
+    L'application web $eMarket$ est constituée de plusieurs pages. L'internaute naviguera d'une page à l'autre.
+</p>
+<br>
+<b>Pages de l'application</b> <br>
+
+<ul>
+    <li>Créer deux nouvelles pages pour votre application :
+        <ol>
+            <li>une page <code class="listing">catalog.xhtml</code> destinée à afficher le catalogue des produits 
+                disponibles à la vente ;</li>
+            <li>une page <code class="listing">shoppingCart.xhtml</code> destinée à afficher le panier de l'internaute, 
+                contenant les produits qu'il a sélectionnés pour son achat.
+            </li>
+        </ol>
+    </li>
+    <li>Créer un contenu statique pour ces deux pages à l'aide de HTML, des composants simples JSF et des styles CSS.</li>
+</ul>
+
+<br>
+<b>Règles de navigation</b> <br>
+
+<p class="text-justify">
+    JSF permet de définir des règles de navigation, c'est-à-dire un ensemble de relations directionnelles entre 
+    des pages pouvant être activées dans différents cas, 
+    via un fichier de configuration appelé <code class="listing">faces-config.xml</code>.
+</p>
+<ul><li>
+    Sélectionner votre projet puis, dans le menu <b>File</b> de NetBeans, choisir <b>new File</b>. 
+    Dans la catégorie <b>JavaServer Faces</b>, choisir <b>JSF Faces Configuration</b>.
+</li></ul>
+
+<p class="text-justify">
+    NetBeans permet de visualiser le contenu de ce fichier sous une forme graphique ou sous une forme XML (son format réel). 
+    Sous la forme graphique (<b>PageFlow</b>), les différentes pages de l'application apparaissent dans des rectangles. 
+    Il est possible d'établir des liens de navigation en tirant des relations entre ces rectangles à partir du petit 
+    point bleu situé sur leur droite. La figure ci-dessous montre un lien de navigation entre 
+    la page <code class="listing">index.xhtml</code> et la page <code class="listing">shoppingCart.xhtml</code>. 
+    Ce lien se déclenche lorsque l'événement <code class="listing">case1</code> est produit <br> (nous allons voir juste après comment gérer 
+    les différents événements de navigation).
+</p>
+<img src="./img/tp/8.png" alt="">
+
+<pre><code class="language-html"><script type="text/template"><faces-config ...>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/shoppingCart.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
+</script></code></pre>
+
+<ul>
+    <li>Créer des liens de navigation permettant :
+        <ul>
+            <li>d'aller de la page d'accueil à la page du catalogue et inversement ;</li>
+            <li>d'aller de la page d'accueil à la page du panier et inversement.</li>
+        </ul>
+    </li>
+    <li>
+        Donner des noms distincts et parlants aux différents événements de déclenchement de ces liens de navigation. 
+        Par exemple, pour le lien montré sur la figure ci-dessus, 
+        l'événement pourra être appelé <code class="listing">"toshoppingcart"</code> au lieu de <code class="listing">case1</code>.
+    </li>
+</ul>
+<br>
+<b>Menu et liens de navigation</b>
+<br>
+<p class="text-justify">
+    Après avoir défini le modèle de navigation, il faut créer les différents liens permettant à l'utilisateur de déclencher 
+    les événements correspondant aux différents liens de navigation. Pour cela, il faut utiliser 
+    les composants JSF <code class="listing">h:form</code> et <code class="listing">h:commandLink</code>. <br>
+    Ces composants permettent de créer respectivement un formulaire HTML et un lien hypertexte générant 
+    un événement permettant de déclencher un lien de navigation. 
+<br>
+Exemple :
+</p>
+
+<pre><code class="language-html"><script type="text/template"><h:form>
+	<h:commandLink action="toshoppingcart">
+  		<h:outputText value="Lien vers le panier"/>
+	</h:commandLink>
+</h:form>
+</script></code></pre>
+
+<ul><li>
+    Dans la page <code class="listing">index.xhtml</code>, créer des liens vers les différentes pages de l'application en utilisant 
+    les composants JSF <code class="listing">h:form</code> et <code class="listing">h:commandLink</code>.
+</li></ul>
+
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+    Vous pouvez mettre en forme ces liens en utilisant une liste HTML :
+<pre><code class="language-html"><script type="text/template"><ul>
+	<li>un item</li>
+	<li>un autre item</li>
+</ul>
+</script></code></pre>
+</div>
+
+<ul><li>
+    Dans les pages <code class="listing">catalog.xhtml</code> et <code class="listing">shoppingCart.xhtml</code>, créer de la même manière des liens 
+    permettant de retourner à la page d'accueil de l'application.
+</li></ul>
+
+<h3>Création des premiers beans</h3>
+
+<p class="text-justify">
+    L'application de commande en ligne $eMarket$ dispose maintenant de quelques pages web et de règles de navigation, 
+    mais son contenu est purement statique. L'objectif de cette étape est de <b>rendre le contenu des pages dynamique</b> 
+    en utilisant des <b>Beans</b>, c'est-à-dire des <b>composants Java</b>.
+</p>
+
+<h3>Représentation des produits : JavaBean</h3>
+
+<p>Notre objectif est de peupler la page du catalogue <code class="listing">catalog.xhtml</code> avec des produits.</p>
+
+<p class="text-justify">
+    Pour le moment, nous allons faire comme si la base de données $eMarket$ n'existait pas et fonctionner avec 
+    des produits qui ne seront pas persistants (pas sauvegardés en base). Les produits seront simplement représentés
+     par des <b>JavaBeans</b>. Nous verrons un peu plus tard comment gérer la persistances des produits.
+</p>
+
+<ul>
+    <li>Dans le répertoire <code class="listing">Source Packages</code> de votre projet, créer un package 
+        Java <code class="listing">model</code>.</li>
+    
+    <li>Dans ce package, créer une classe Java <code class="listing">Product</code> disposant de :
+        <ul>
+            <li>un identifiant de type <code class="listing">Integer</code> ;</li>
+            <li>un nom de type <code class="listing">String</code> ;</li>
+            <li>un prix de vente de type <code class="listing">Double</code>.</li>
+        </ul>
+    </li>
+
+    <li>
+        Transformer cette classe <b>Java</b> en <b>JavaBean</b> en suivant les conventions liées aux JavaBeans : rendre la classe sérialisable, 
+        créer un constructeur par défaut, créer des accesseurs pour chacun des attributs 
+        (méthodes <code class="listing">getX</code> et <code class="listing">setX</code> pour chaque attribut <code class="listing">X</code>) !
+    </li>
+</ul>
+
+<h3>Gestion du catalogue : ManagedBean</h3>
+
+<p class="text-justify">
+    Il est maintenant nécessaire de faire le lien entre la page <code class="listing">catalog.xhtml</code> et les objets de type 
+    <code class="listing">Product</code>. 
+    Pour cela, nous allons utiliser la notion de <b>ManagedBean</b> de JSF.
+    <br><br>
+    En effet, une propriété intéressante d'un <b>ManagedBean</b> est que ses attributs et ses méthodes sont accessibles et 
+    utilisables directement dans les pages JSF (fichiers <b>XHTML</b>).
+</p>
+
+<br>
+<b>Création du bean</b>
+<br>
+<ul>
+    <li>Dans le répertoire <code class="listing">Source Packages</code> de votre projet, 
+        créer un package <code class="listing">logic</code>.</li>
+    
+    <li>Créer une classe Java <code class="listing">CatalogManager</code> dans ce package, avec un attribut permettant de stocker le catalogue, 
+        c'est-à-dire une liste d'objets de type <code class="listing">Product</code>.
+        Vous pouvez utiliser le type <code class="listing">ArrayList</code>.</li>
+
+    <li>Transformer votre classe Java en <b>JavaBean</b> en suivant les conventions liées aux <b>JavaBean</b>.</li>
+
+    <li>Ajouter les annotations :
+        <ul>
+            <li><code class="listing">@Named</code> (importer le package <code class="listing">jakarta.inject.Named;</code>)</li>
+            <li><code class="listing">@ApplicationScoped</code> (importer le package <code class="listing">jakarta.enterprise.context.ApplicationScoped;</code>)</li>
+        </ul>
+    </li>
+</ul>
+
+<pre><code class="language-java"><script type="text/template">...
+import jakarta.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+
+@Named
+@ApplicationScoped
+public class MyManagedBean implements Serializable{
+    ...
+}
+</script></code></pre>
+
+<br>
+<b>Utilisation du bean dans la page "catalog.xhtml"</b>
+<br>
+
+<p class="text-justify">
+    Une fois le ManagedBean créé, il est possible de l'utiliser dans n'importe quelle page JSF en utilisant l'<b>EL</b> (<b>Expression Language</b>).
+    <br>
+    L'Expression Language (EL) de JSF est un mini-langage qui permet d'accéder aux attributs et méthodes d'un ManagedBean depuis une page JSF. 
+    Dans une page JSF, toute expression écrite avec l'EL est mise entre <code class="listing">#{</code> et <code class="listing">}</code>. <br> <br>
+    Voici les règles à suivre :
+    <ul>
+        <li>
+            Pour faire appel à un ManagedBean dans une expression EL, il faut mettre la première lettre de son nom en minuscule. <br>
+            Exemple : 
+            si la classe de votre ManagedBean s'appelle <code class="listing">"MyManagedBean"</code>, 
+            vous devez utiliser <code class="listing">"myManagedBean"</code>.
+        </li>
+
+        <li>
+            Pour faire appel à un attribut dans une expression EL, il faut que l'attribut dispose d'un getter et d'un setter. 
+            Puis pour faire appel à cet attribut il faut utiliser le nom du getter privé du préfixe <code class="listing">"get"</code> 
+            et avec la première lettre en minuscule. <br>
+            Exemple : si l'attribut dispose d'un getter appelé <code class="listing">"getChoseMachin"</code> 
+            et d'un setter appelé <code class="listing">"setChoseMachin"</code>, 
+            vous devez utiliser <code class="listing">"choseMachin"</code> (quel que soit le nom réel de l'attribut).
+        </li>
+    </ul>
+</p>
+
+<p class="text-justify">
+    Ici l'objectif est d'afficher le contenu du catalogue, donc la liste des produits, 
+    dans la page <code class="listing">catalog.xhtml</code>. Le composant JSF permettant d'afficher une liste d'objets 
+    est la <code class="listing">DataTable</code>. 
+    Un exemple d'utilisation est donné ci-dessous. Dans cet exemple, le ManagedBean contient une liste d'objets de type Truc ayant 
+    deux attributs <code class="listing">"x"</code> et <code class="listing">"y"</code> :
+</p>
+
+<pre><code class="language-java"><script type="text/template">...
+@Named
+@ApplicationScoped
+public class MyManagedBean implements Serializable{
+    private ArrayList<Truc> myList;
+    ...	
+    public ArrayList<Truc> getMyList(){...}
+    public void setMyList(ArrayList<Truc> l){...}
+    ...
+}
+</script></code></pre>
+
+<pre><code class="language-html"><script type="text/template"><h:dataTable value="#{myManagedBean.myList}" var="item">
+	<h:column>
+		<h:outputText value="#{item.x}" />
+	</h:column>
+	<h:column>
+		<h:outputText value="#{item.y}" />
+	</h:column>
+</h:dataTable>
+</script></code></pre>
+
+<ul><li>Utiliser le composant JSF <code class="listing">DataTable</code> pour afficher l'identifiant, le nom et le prix de vente des produits 
+    contenus dans le catalogue dans la page <code class="listing">catalog.xhtml</code>.</li></ul>
+
+<br>
+<b>Ajout de produits</b>
+<br>
+
+<p class="text-justify">
+    Le catalogue est vide pour le moment. Nous allons donc créer quelques produits et les ajouter au catalogue.
+</p>
+
+<ul>
+    <li>
+        Créer une méthode <code class="listing">initCatalog</code> dans la classe <code class="listing">CatalogManager</code> 
+        qui créée quelques produits et les ajoute au catalogue.
+Pour que cette méthode soit appelée juste après la création du bean, il faut l'annoter <code class="listing">@PostConstruct</code> 
+(importer le package <code class="listing">jakarta.annotation.PostConstruct;</code>).
+    </li>
+
+    <li>
+        Vérifier que les produits ainsi créés apparaissent bien dans la page <code class="listing">catalog.xhtml</code> 
+        en redéployant l'application sur le serveur.
+    </li>
+</ul>
+
+<h3>Création des premiers formulaires</h3>
+
+<p class="text-justify">
+    L'application de commande en ligne $eMarket$ dispose maintenant de vues JSF dont le contenu est géré par des ManagedBean. 
+    L'objectif de cette étape est de permettre à l'utilisateur de modifier les données stockées dans un ManagedBean
+     (et donc de modifier les données affichées par la vue JSF correspondante) en utilisant des <b>formulaires</b>.
+
+</p>
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+	Si vous n'êtes pas à l'aise avec les formulaires HTML, consulter le lien suivant : <br>
+    <a href="https://developer.mozilla.org/fr/docs/Learn/Forms/Your_first_form" target="_blank">https://developer.mozilla.org/fr/docs/Learn/Forms/Your_first_form</a>
+</div>
+
+<h3>Page d'ajout de produits au catalogue</h3>
+
+<p class="text-justify">
+    Nous allons créer une des pages permettant de gérer le catalogue de eMarket. Cette page a pour objectif de permettre 
+    à un commercial d'ajouter un produit au catalogue.
+</p>
+
+<div class="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+    Il est possible de faire en sorte que les internautes ne puissent pas accéder aux pages de l'application de gestion depuis 
+    l'application de commande en ligne en mettant en place un mécanisme de contrôle d'accès. Cela pourra être fait plus tard.	
+</div>
+
+<ul>
+    <li>
+        Créer une page <code class="listing">product-create.xhtml</code>.
+    </li>
+
+    <li>
+        Dans la page <code class="listing">index.xhtml</code>, ajouter un lien de navigation vers <code class="listing">product-create.xhtml</code>. 
+        Il pourra être intitulé <code class="listing">Ajouter un nouveau produit au catalogue</code>.
+    </li>
+
+    <li>
+        Dans le fichier <code class="listing">faces-config.xml</code>, créer une règle de navigation allant 
+        de la page <code class="listing">index.xhtml</code> à la page 
+        <code class="listing">product-create.xhtml</code>.
+    </li>
+</ul>
+
+<h3>Formulaire de création de produit</h3>
+
+<ul>
+    <li>
+        Dans la page <code class="listing">product-create.xhtml</code>, créer un formulaire en utilisant le tag <code class="listing">h:form</code>. 
+        Donner un identifiant à ce formulaire, par exemple <code class="listing">product-create</code>. <br>
+        Il faut maintenant peupler ce formulaire avec des champs de saisie. 
+        <br><br>
+        Voici un exemple avec le composant <code class="listing">"h:inputText"</code> 
+        qui définit un champ de saisie de texte, associé au composant <code class="listing">"h:outputLabel"</code> permettant d'associer un titre au champ.
+    </li>
+</ul>
+
+<pre><code class="language-html"><script type="text/template"><h:outputLabel id="fieldLabelID" for="fieldID" value="Voici un champ : " />
+<h:inputText id="fieldID" value="..." />
+</script></code></pre>
+
+<ul>
+    <li>
+        Ajouter au formulaire des champs de saisie pour les informations nécessaire à la création d'un produit. 
+        Pour le moment, laisser l'attribut <code class="listing">"value"</code> vide. Les champs nécessaires sont :
+        <ul>
+            <li>un champ pour la saisie de la référence du produit (identifiant) ;</li>
+            <li>un champ pour la saisie du nom du produit.</li>
+            <li>un champ pour la saisie du prix du produit.</li>
+        </ul>
+
+        <br>
+        La soumission d'un formulaire se fait via un bouton ou un lien dont l'action déclenche le traitement des données. 
+        Par exemple, le bouton de type <code class="listing">"h:commandButton"</code> permet de soumettre des données d'un formulaire. 
+        Par défaut, le mode de transmission des données utilisé est le mode <b>POST</b>.
+    </li>
+</ul>
+
+<pre><code class="language-html"><script type="text/template"><h:commandButton value="Valider" action="..." />
+</script></code></pre>
+
+<ul>
+    <li>Ajouter un bouton de soumission au formulaire. Laisser l'attribut <code class="listing">"action"</code> vide pour le moment.</li>
+</ul>
+
+<h3>Bean de traitement du formulaire</h3>
+
+<p class="text-justify">
+    Avec JSF, tout formulaire est associé à un ManagedBean chargé de récupérer les valeurs saisies par l'utilisateur et de les traiter.
+     Pour cela, il a deux règles à respecter :
+</p>
+
+<ol>
+    <li>
+        Chaque champ du formulaire doit être associé à un attribut du ManagedBean qui doit disposer d'un getter et d'un setter (accesseurs) : 
+        l'attribut <code class="listing">"value"</code> du champ doit référencer l'attribut correspondant du bean via l'<b>EL</b>.
+    </li>
+<pre><code class="language-html"><script type="text/template"><h:inputText id="field" value="#{bean.oneField}" />
+</script></code></pre>
+
+    <li>
+        L'action du bouton de soumission du formulaire doit être associée à une méthode du ManagedBean qui ne prend aucun 
+        argument et renvoie une chaine de caractère correspondant à un événement de navigation : 
+        l'attribut <code class="listing">"action"</code> du bouton doit référencer la méthode correspondante du bean via l'<b>EL</b>.
+    </li>
+<pre><code class="language-html"><script type="text/template"><h:commandButton value="Valider" action="#{bean.submitForm()}" />
+</script></code></pre>
+</ol>
+
+<p class="text-justify">
+    Ici, comme le catalogue est stocké dans le bean <code class="listing">"CatalogManager"</code>, c'est donc ce bean qui va être chargé 
+    de traiter le formulaire de création de produit.
+</p>
+
+<ul>
+    <li>
+        Dans le bean <code class="listing">"CatalogManager"</code>, créer les attributs et accesseurs correspondant aux champs du formulaire 
+        de création de produit. Utiliser ces attributs du bean pour remplir les attributs <code class="listing">"value"</code> des champs du formulaire.
+    </li>
+
+    <li>
+        Toujours dans le bean <code class="listing">"CatalogManager"</code>, créer une méthode 
+        <code class="listing">"createProduct"</code> sans argument et rendant une chaîne de caractère. 
+        Utiliser cette méthode pour remplir l'attribut <code class="listing">"action"</code> du bouton de soumission du formulaire.
+    </li>
+
+    <li>
+        Dans la méthode <code class="listing">"createProduct"</code>, utiliser les accesseurs des attributs 
+        correspondant aux champs du formulaire pour 
+        créer un nouveau produit. Puis, ajouter ce produit au catalogue.
+    </li>
+
+    <li>
+        Créer une règle de navigation dans le fichier <code class="listing">"faces-config.xml"</code> qui va de la page 
+        <code class="listing">"product-create.xhtml"</code> vers la page <code class="listing">"catalog.xhtml"</code>.
+    </li>
+
+    <li>
+        Renvoyer l'événement de navigation qui correspond à cette règle à la fin de la méthode <code class="listing">"createProduct"</code>.
+    </li>
+
+    <li>
+        Tester l'ajout d'un produit au catalogue avec votre navigateur web !
+    </li>
+</ul>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="subsection-title">
+    Utilisation de la session : gestion d'un panier
+</div>
+
+<p class="text-justify">
+    Dans les étapes suivantes, vous allez mettre des données en session et permettre à l'utilisateur de les modifier par 
+    l'intermédiaire d'un ManagedBean et de formulaires. L'exemple pris ici est la gestion du panier de l'utilisateur :
+</p>
+
+<h3>Affichage du panier de l'utilisateur</h3>
+
+<p class="text-justify">
+    Notre objectif maintenant est de peupler la page du panier <code class="listing">shoppingcart.xhtml</code>
+    avec des produits que l'utilisateur aura sélectionnés.
+</p>
+
+<h3>Représentation des éléments du panier : JavaBean</h3>
+
+<p class="text-justify">
+    Dans un premier temps nous allons volontairement ignorer le mécanisme permettant à l'utilisateur de sélectionner ces produits.
+</p>
+
+<ul>
+    <li>Créer un JavaBean <code class="listing">ShoppingCartItem</code> disposant de :
+        <ul>
+            <li>un identifiant de type <code class="listing">Integer</code> ;</li>
+            <li>une quantité de type <code class="listing">Integer</code> ;</li>
+            <li>un produit de type <code class="listing">Product</code> ;</li>
+        </ul>
+        N'oubliez pas de respecter les conventions liées aux JavaBeans : sérialisation, constructeur(s), accesseurs !
+    </li>
+</ul>
+
+<h3>Gestion du panier : ManagedBean</h3>
+
+<p class="text-justify">
+    Il est maintenant nécessaire de faire le lien entre la page <code class="listing">shoppingcart.xhtml</code> et les objets de 
+    type <code class="listing">ShoppingCartItem.</code> Pour cela, nous allons de nouveau utiliser la notion 
+    de <code class="listing">ManagedBean</code> de JSF.
+</p>
+
+<br>
+<b>Création du bean</b>
+<br>
+
+<ul>
+    <li>
+        Pour commencer, créer un JavaBean <code class="listing">ShoppingCartManager</code> disposant d'un attribut permettant de stocker le panier, 
+        c'est-à-dire une liste d'objets de type <code class="listing">ShoppingCartItem</code>. <br>
+        Vous pouvez utiliser le type <code class="listing">ArrayList</code>. N'oubliez pas d'initialiser cette liste 
+            dans le constructeur, et de créer les accesseurs correspondants.
+    </li>
+
+    <li>
+        Transformer votre JavaBean en ManagedBean (ajouter les annotations utiles)
+        <ul>
+            <li><code class="listing">@Named</code> (importer le package <code class="listing">jakarta.inject.Named;</code>)</li>
+            <li><code class="listing">@SessionScoped</code> (importer le package <code class="listing">jakarta.enterprise.context.SessionScoped;</code>)</li>
+        </ul>
+    </li>
+</ul>
+
+<br>
+<b>Utilisation du bean et ajout d'éléments factices au panier</b>
+<br>
+
+<ul>
+    <li>
+        Utiliser le composant JSF <code class="listing">DataTable</code> pour afficher la quantité et le nom du produit 
+        de chacun des elements contenus dans le panier 
+        (il n'est pas nécessaire d'afficher l'identifiant de l'élément, qui servira uniquement pour la persistance).
+    </li>
+
+    <li>
+        Ajouter des éléments au panier en utilisant une méthode <code class="listing">"initCart"</code> 
+        annotée <code class="listing">@PostConstruct</code> dans 
+        le <code class="listing">ShoppingCartManager</code>.
+    </li>
+
+</ul>
+
+<h3>Ajout de produits dans le panier par l'utilisateur</h3>
+
+<p class="text-justify">
+    Pour que l'utilisateur puisse ajouter un produit au panier, il doit disposer d'un bouton situé à côté de chaque 
+    produit listé dans la page <code class="listing">catalog.xhtml</code>. Ce bouton a pour objectif de soumettre 
+    un formulaire désignant le produit sélectionné. Le code appelé lors de la soumission 
+    du formulaire ajoute alors le produit sélectionné au panier.
+</p>
+
+<h3>Création du formulaire d'ajout de produit au panier</h3>
+
+<b>Action de soumission du formulaire</b>
+<br>
+<p class="text-justify">
+    C'est le <code class="listing">"ShoppingCartManager"</code> qui doit être chargé de récupérer et traiter le formulaire. 
+    Pour cela, il doit disposer d'une méthode qui va être appelée lors de la soumission du formulaire.
+</p>
+
+<ul>
+    <li>
+        Dans le bean <code class="listing">"ShoppingCartManager"</code>, ajouter une méthode <code class="listing">"addToCart"</code> 
+        sans argument ayant pour type de retour une chaîne de caractères. Nous verrons son contenu un peu plus loin
+    </li>
+</ul>
+
+<br>
+<b>Création du formulaire</b>
+<br>
+
+<ul>
+    <li>Ajouter une colonne à la DataTable de la page <code class="listing">catalog.xhtml</code></li>
+
+    <li>Dans cette colonne, ajouter un formulaire.</li>
+
+    <li>Dans le formulaire, placer un bouton de type <code class="listing">"h:commandButton"</code> dont 
+        l'action doit être un appel à la méthode <code class="listing">"addToCart"</code> du <code class="listing">ShoppingCartManager</code>.</li>
+</ul>
+
+<h3>Récupération du produit sélectionné</h3>
+
+<p class="text-justify">
+    Le formulaire doit désigner le produit sélectionné par l'utilisateur. 
+    Ce produit sera récupéré par le <code class="listing">"ShoppingCartManager"</code>. Il faut donc créer un attribut pour cela.
+</p>
+
+<ul>
+    <li>
+        Dans le <code class="listing">ShoppingCartManager</code>, créer un attribut <code class="listing">"prodToAdd"</code> 
+        avec les accesseurs correspondants. 
+        C'est cet attribut qui va recevoir le produit à ajouter dans le panier lors de la soumission du formulaire.
+    </li>
+</ul>
+
+<p class="text-justify">
+    Il faut maintenant donner une valeur à <code class="listing">"prodToAdd"</code> dans le formulaire. 
+    Nous savons que, pour chaque ligne de la <code class="listing">DataTable</code>, le produit courant est stocké par la variable 
+    d'itération <code class="listing">"var"</code> de la table et c'est la valeur de cette variable qui désigne le produit choisi 
+    par l'utilisateur et que nous devons récupérer pour l'ajout dans le panier. Une première approche consiste 
+    donc à placer la valeur de cette variable dans un champ de formulaire (un champ caché par exemple). 
+<br>
+Cela donne quelque-chose comme :
+</p>
+<pre><code class="language-html"><script type="text/template"><h:form>
+	<h:inputHidden id="prodToAdd" value="#{item}" />
+	<h:commandButton value="Ajouter au panier" action="..." />
+</h:form>
+</script></code></pre>
+
+<p class="text-justify">
+    Malheureusement, cette approche n'est pas utilisable dans notre cas car l'attribut <code class="listing">"value"</code> 
+    d'un champ de formulaire doit toujours pointer sur un attribut du ManagedBean qui va traiter le formulaire. 
+    En effet, cet attribut reçoit automatiquement la valeur saisie par l'utilisateur lors de la soumission du formulaire. 
+    Or ici <code class="listing">#{item}</code> est la variable qui est gérée par le composant JSF <code class="listing">DataTable</code> qui 
+    est associé au <code class="listing">CatalogManager</code>. Elle ne peut donc pas recevoir sa propre valeur, 
+    et qui plus est elle se trouve dans le <code class="listing">CatalogManager</code> 
+    et non dans le <code class="listing">ShoppingCartManager</code> ! <br><br>
+
+    Ce que l'on cherche à faire est donc récupérer la valeur de <code class="listing">"#{item}"</code> pour pouvoir la stocker 
+    dans un attribut du <code class="listing">ShoppingCartManager</code>. Pour cela, il faut utiliser 
+    un <code class="listing">"setPropertyActionListener"</code>.  <br>
+    Son rôle est de s'assurer qu'un attribut d'un ManagedBean, noté <code class="listing">"target"</code> reçoit une valeur donnée 
+    notée <code class="listing">"value"</code> avant la soumission du formulaire :
+</p>
+<pre><code class="language-html"><script type="text/template"><h:commandButton action="#{bean.doSomething()}" value="Do something" >
+	<f:setPropertyActionListener value="..." target="#{bean.attrSomething}" />
+</h:commandButton>
+</script></code></pre>
+
+<ul>
+    <li>Utiliser un <code class="listing">"setPropertyActionListener"</code> pour donner à l'attribut <code class="listing">"prodToAdd"</code>
+        la valeur de la variable d'itération de la table des produits.</li>
+</ul>
+
+<h3>Ajout du produit dans le panier</h3>
+
+<p class="text-justify">
+    Dans la méthode <code class="listing">"addToCart"</code> du <code class="listing">ShoppingCartManager</code>, il est maintenant possible 
+    de récupérer le produit sélectionné par l'utilisateur puisqu'il se trouve dans 
+    l'attribut <code class="listing">"prodToAdd"</code>. Il faut ensuite l'ajouter au panier, puis émettre un outcome 
+    de navigation afin de rediriger l'utilisateur vers la page du panier.
+</p>
+<ul>
+    <li>
+        Dans la méthode <code class="listing">"addToCart"</code>, créer un nouvel objet de type <code class="listing">ShoppingCartItem</code>
+         à partir du produit 
+        se trouvant dans <code class="listing">"prodToAdd"</code> et d'une quantité égale à 1. 
+        Puis ajouter cet item à la liste des items du panier.
+    </li>
+    <li>
+        Créer dans <code class="listing">faces-config.xml</code> une règle de navigation allant 
+        de la vue <code class="listing">catalog.xhtml</code> à la vue <code class="listing">shoppingcart.xhtml</code>.
+    </li>
+    <li>
+        Renvoyer l'outcome correspondant à la fin de la méthode <code class="listing">"addToCart"</code>.
+    </li>
+    <li>
+        Tester l'ajout d'un produit au panier !
+    </li>
+</ul>
+
+<p class="text-justify">
+    Vous pouvez ensuite améliorer cette gestion de panier en implémentant des fonctionnalités telles que :
+    <ul>
+        <li>suppression de produits se trouvant déjà dans le panier</li>
+        <li>modification de la quantité d'un produit se trouvant dans le panier</li>
+        <li>calcul du prix total du panier à partir des quantités et des prix des produits</li>
+        <li>...</li>
+    </ul>
+</p>
+
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+	Une fois cette étape réalisée, vous avez les connaissances suffisantes pour développer une première 
+    application web avec <b>Java/Jakarta EE</b> !	
+</div>
+
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">
+    Développement : les étapes avancées (BONUS)
+</div>
+<!-- #################################################### -->
+<div class="subsection-title">
+    Utilisation de la base de données
+</div>
+
+<p class="text-justify">
+    Dans cette étape, vous allez connecter votre application à la base de données, utiliser les données 
+    qui se trouvent dans la base et également modifier le contenu de la base :
+</p>
+
+<div class="alert-block">
+    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
+	Si vous êtes toujours motivé, contactez moi par email pour avoir la suite du sujet !	 
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
