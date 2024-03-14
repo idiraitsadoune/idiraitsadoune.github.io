@@ -1178,11 +1178,11 @@ Cela donne quelque-chose comme :
 <!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">
-    Développement : les étapes avancées (BONUS)
+    Développement : Utilisation de la base de données (Partie Optionnelle)
 </div>
 <!-- #################################################### -->
 <div class="subsection-title">
-    Utilisation de la base de données
+    Préparation de la base de données
 </div>
 
 <p class="text-justify">
@@ -1190,9 +1190,402 @@ Cela donne quelque-chose comme :
     qui se trouvent dans la base et également modifier le contenu de la base :
 </p>
 
-<div class="alert-block">
-    <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
-	Si vous êtes toujours motivé, contactez moi par email pour avoir la suite du sujet !	 
+<h3>Démarrage du serveur de bases de données Java DB</h3>
+
+<ul>
+    <li>Télécharger <b>Java DB (Apache Derby version 10.17.1.0)</b> à partir du lien 
+        <a href="https://db.apache.org/derby/derby_downloads.html"  target="_blank">https://db.apache.org/derby/derby_downloads.html</a> 
+        et décompresser le zip dans un dossier de travail.</li>
+    <li>Dans l'onglet <b>Services</b>, sélectionner <b>Java DB</b> dans le dossier <b>Databases</b> avec un clique droit. 
+        Lancer la commande <i>Properties ...</i> et pointer la propriété <b>Java DB Installation</b> vers le dossier précédent.</li>
+    <li>Cliquer sur <b>Java DB</b> puis avec le clic-droit de la souris choisir <b>Start Server</b> dans le menu contextuel (si le
+        serveur est déjà démarré, cette option apparaîtra en grisé).</li>
+</ul>
+
+<p class="text-justify">
+    Vous avez ainsi accès au serveur <b>Java DB</b> qui tourne sur votre machine : en cliquant sur la croix (ou la flèche) qui se
+    trouve à gauche de <b>Java DB</b>, vous accédez à une vue de l'ensemble des bases de données hébergées par le serveur.
+    <br>
+    Assurez vous d'avoir la configuration suivante sous le dossier <b>Drivers > Java DB (Network)</b> (clique droit puis <b>Customize ...</b>)
+    <img src="./img/tp/11.png" width="60%" alt="">
+    <br>
+    Pour le moment la base de données de l'application $eMarket$ n'existe pas, nous allons la créer.
+</p>
+
+<h3>
+    Création de la base de données $eMarket$ et import de données
+</h3>
+
+<ul>
+    <li>
+        Aller à <b>Databases  > Java DB</b> et choisir <b>Create Sample Database ...</b>
+         dans le menu contextuel (clic-droit avec la souris).
+    </li>
+    <li>
+        Saisir $eMarket$ pour le nom de la base de données.
+    </li>
+</ul>
+
+<p class="text-justify">
+    Cette opération créée la base de données sur le serveur et créée une connexion entre 
+    NetBeans et cette base. Celle-ci apparaît sous la forme <code class="listing">jdbc:derby://localhost:1527/eMarket</code>  
+    dans la liste des bases de données, un peu plus bas dans l'onglet <b>Services > Databases</b>.
+</p>
+
+<ul>
+    <li>
+        Cliquer sur <code class="listing">jdbc:derby://localhost:1527/eMarket</code> et choisir 
+        <b>Execute Command...</b> dans le menu contextuel.
+    </li>
+    <li>
+        Dans l'éditeur de commandes SQL qui s'est ouvert, coller le contenu du script automatique 
+        (<a href="./eMarket.sql">à télécharger ici</a>) de création des tables 
+        et des données que nous avons réalisé pour vous. Puis cliquer sur l'icône de la commande <b>Run SQL</b>.
+    </li>
+</ul>
+
+<p class="text-justify">
+    Ce script créée toutes les tables nécessaires à l'application $eMarket$ et importe également 
+    des données qui vous permettront de tester votre application.
+</p>
+
+<h3>Affichage du contenu de la base de données $eMarket$</h3>
+
+<ul>
+    <li>
+        Cliquer sur la croix (ou sur la flèche) à gauche de <b>APP</b> dans <code class="listing">jdbc:derby://localhost:1527/eMarket</code>
+         pour faire apparaître son contenu, puis faire apparaître de la même manière le contenu de <b>APP</b> puis <b>Tables</b>. <br>
+         Le répertoire <b>Tables</b> contient les tables de la base. En développant 
+         les items vous pouvez voir les différentes colonnes de chaque table.
+    </li>
+
+    <li>
+        Choisir la table <code class="listing">PRODUCT</code>, puis choisir <b>View Data ...</b> dans le menu contextuel (clic droit). <br>
+        Cette commande à pour effet de faire exécuter par NetBeans une commande SQL de sélection de l'ensemble des
+        données sur la table choisie
+    </li>
+</ul>
+
+<!-- #################################################### -->
+<div class="subsection-title">
+    Configuration de l'accès à la base de données
+</div>
+
+<p class="text-justify">
+    L'application de commande en ligne $eMarket$ dispose de pages web dynamiques avec lesquelles l'utilisateur peut interagir. 
+    Cependant, l'application repose uniquement sur des JavaBeans qui ne sont pas persistants, ce qui veut dire que 
+    les données créés par l'utilisateur ne sont pas sauvegardées. <b>JPA</b> permet de rendre les données d'une application 
+    persistantes dans une base de données relationnelle telle que celle configurée à l'étape précédente (<b>Java DB</b>).
+    <br><br>
+    La première étape pour utiliser <b>JPA</b> consiste à configurer l'accès à la base de données 
+    (<b>JPA</b> est l'API de persistance dans une base de données relationnelle utilisée dans Jakarta EE).
+    Pour accéder à la base de données, <b>JPA</b> utilise un connecteur. Pour les bases de données relationnelles, 
+    le connecteur utilisé est <b>JDBC</b>.
+</p>
+
+<h3>Création d'une source de données JDBC</h3>
+
+<p class="text-justify">
+    Nous allons commencer par configurer le connecteur <b>JDBC</b> permettant d'accéder à la base de données.
+    <ol>
+        <li>
+            Aller dans le menu <b>File > New File > GlassFish</b>  puis choisir l'assistant <b>JDBC Resource</b> :
+            <img src="./img/tp/bd1.png" width="60%" alt="">
+        </li>
+
+        <li>
+            Sélectionner <b>Create New JDBC Connection Pool</b> et donner un nom <b>JNDI</b>
+             à la source de donnée (par exemple <code class="listing">"jdbc/eMarket"</code>).
+             <img src="./img/tp/bd2.png" width="60%" alt="">
+        </li>
+
+        <li>
+            Laisser l'écran <b>Additional Properties</b> vide : <br>
+            <img src="./img/tp/bd3.png" width="60%" alt="">
+        </li>
+
+        <li>
+            Donner un nom au pool de connexion JDBC (par exemple <code class="listing">"eMarketPool"</code>). 
+            Sélectionner <b>Extract from Existing Connection</b>
+            et choisir la connexion <code class="listing">jdbc:derby://localhost:1527/eMarket</code> dans la liste déroulante :
+            <img src="./img/tp/bd44.png" width="60%" alt="">
+        </li>
+        <li>
+            NetBeans pré-remplit les propriétés nécessaires à la configuration de la source de données. 
+            Vérifiez simplement qu'elles sont correctes. Les principales informations à vérifier son que 
+            le nom de la base de données est $eMarket$, 
+            l'utilisateur est <code class="listing">"app"</code> et le mot de passe est <code class="listing">"app"</code> également : <br>
+            <img src="./img/tp/bd4.png" width="60%" alt="">
+        </li>
+        <li>
+            Laisser les valeurs par défaut dans l'écran <b>"Optional Properties for Connection Pool"</b> et cliquer sur <b>"Finish"</b> :
+            <img src="./img/tp/bd5.png" width="60%" alt="">
+        </li>
+    </ol>
+    <br>
+    Les informations de configuration qui ont été générées se trouvent dans le fichier <code class="listing">glassfish-resources.xml</code>
+    qui se trouve dans le répertoire <b>Configuration Files</b> de votre projet.
+</p>
+
+<h3>Création d'une unité de persistance</h3>
+
+<p class="text-justify">
+    Nous allons maintenant créer une unité de persistance qui sera utilisée par l'<i>EntityManager</i> de <b>JPA</b>.
+    <ul>
+        <li>
+            Aller dans le menu <b>File > New File > Persistence</b> puis choisir l'assistant <b>Persistence Unit</b>.
+            <img src="./img/tp/bd6.png" width="60%" alt="">
+        </li>
+
+        <li>
+            Donner un nom à l'unité de persistance (<code class="listing">eMarket_warPU</code> par exemple), sélectionner la source de données <b>JDBC</b>
+            que vous avez créé à l'étape précédente et sélectionner <code class="listing">none</code> pour la <b>Table Generation Strategy</b> comme 
+            indiqué ci-dessous. Puis cliquez sur <b>"Finish"</b>.
+            <img src="./img/tp/bd7.png" width="60%" alt="">
+        </li>
+    </ul>
+    <br>
+    La configuration de l'unité de persistance ainsi générée se trouve dans le fichier 
+    <code class="listing">persistence.xml</code> dans le répertoire <b>Configuration Files</b> du projet. 
+    Modifier la version du tag <code class="listing">persistence</code> dans le fichier 
+    <code class="listing">persistence.xml</code> à la <code class="listing">version="3.0"</code> 
+</p>
+
+<!-- #################################################### -->
+<div class="subsection-title">
+    Persistance des données et premiers EJBs
+</div>
+
+<p>
+    Vous venez de configurer l'accès à la base de données en définissant une source de données <b>JDBC</b> et une unité de persistance 
+    pour l'<i>EntityManager</i> de <b>JPA</b>. Vous allez maintenant pouvoir utiliser <b>JPA</b> pour rendre les données de votre application persistantes. 
+    Cela se fera en deux étapes :
+    <ol>
+        <li>
+            Création des <i>EJBs Entity</i> qui servent à stocker les données et à indiquer 
+            la correspondance entre les objets <br> et les données dans la base ;
+        </li>
+        <li>
+            Utilisation de l'<i>EntityManager</i> qui permet d’interroger la base de données.
+        </li>
+    </ol>
+</p>
+
+<h3>Création d'un EJB Entity à partir d'un JavaBeans</h3>
+<p>
+    Dans cette étape, nous allons transformer le <b>JavaBean</b> <code class="listing">Product</code> en <b>EJB Entity</b>
+    <ul>
+        <li>
+            Annoter la classe <code class="listing">Product</code> <code class="listing">@Entity</code> pour indiquer que c'est un <b>EJB Entity</b>. 
+        </li>
+        <li>
+            Indiquer avec l'annotation <code class="listing">@Table(name = "nom_de_la_table")</code> 
+            dans quelle table sont stockées les données concernant les produits.
+        </li>
+    </ul>
+    <br>
+    Vous devez maintenant annoter votre classe <code class="listing">Product</code> de manière à établir une correspondance 
+    entre les attributs de cette classe et les colonnes de la table <code class="listing">PRODUCT</code>
+    <ul>
+        <li>
+            Vérifier si les noms des attributs de votre classe <code class="listing">Product</code> correspondent aux noms des colonnes de la table. 
+            Si ce n'est pas le cas, vous devez obligatoirement ajouter des annotations <code class="listing">@Column(name = "nom_colonne")</code>
+             sur tous ces attributs afin 
+            que le serveur puisse faire automatiquement la correspondance et stocker les données dans les bonnes colonnes.
+        </li>
+        <li>
+            Ajouter une annotation <code class="listing">@Id</code> sur l'attribut identifiant les produits dans la classe <code class="listing">Product</code>. 
+            Cette annotation assure la correspondance avec la clé primaire de la table.
+        </li>
+        
+    </ul>
+</p>
+
+<pre><code class="language-java"><script type="text/template">...
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+
+@Entity 
+@Table( name="PRODUCT" )
+public class Product implements Serializable {
+    @Id 
+    @Column( name = "ID" )
+    private Integer id ;
+    @Column( name = "NAME" )
+    private String name;
+    @Column( name = "SELLING_PRICE" )
+    private Double price; 
+    ...
+}                             
+</script></code></pre>
+
+<h3>Création d'un EJB Session Facade</h3>
+
+<p class="text-justify">
+    Un principe de bonne conception général en génie logiciel consiste à ne jamais faire appel directement 
+    à la couche d'accès aux données dans les objets métier. Concrètement, dans le cadre de ce tutoriel, 
+    cela signifie qu'il est déconseillé d'utiliser l'<i>EntityManager</i> directement dans les autres composants 
+    de l'application (<b>ManagedBeans JSF</b>, <b>JavaBeans</b>...). <br>
+    Pour faire appel à l'<i>EntityManager</i>, nous allons appliquer le patron <b>"façade"</b> et passer par un <b>EJB Session Stateless </b>
+    qui jouera le rôle d'intermédiaire (le rôle de <b>"façade"</b> donc).
+</p>
+
+<ul class="text-justify">
+    <li>
+        Créer un package <b>Java</b> <code class="listing">"facade"</code> dans le répertoire <b>"Source Packages"</b> du projet.
+    </li>
+    <li>
+        Ajouter les deux classes <b>Java</b> suivantes 
+    </li>
+</ul>
+
+<pre><code class="language-java"><script type="text/template">package facade;
+
+import jakarta.persistence.EntityManager;
+import java.util.List;
+
+
+public abstract class AbstractFacade<T> {
+    private final Class<T> entityClass ;
+    
+    public AbstractFacade(Class<T> entityClass){
+        this.entityClass = entityClass ;
+    }
+    
+    protected abstract EntityManager getEntityManager();
+    
+    public T find(Object id){
+        return getEntityManager().find(entityClass, id) ;
+    }
+    
+    public List<T> findAll() { 
+        jakarta.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList(); 
+    }
+    
+    public void create(T entity) {
+        getEntityManager().persist(entity);
+    }
+    
+}                            
+</script></code></pre>
+
+<p class="text-justify">
+    <code class="listing">AbstractFacade</code> : une classe abstraite qui contient les opérations permettant l'accès à la base, 
+    quelle que soit l'<b>EJB Entity</b> que l'on veuille manipuler. 
+    Voici quelques-unes des opérations les plus utiles : 
+    <ul>
+        <li><code class="listing">"find"</code> permet de trouver une entité dans la base 
+            à partir de son identifiant,</li>
+        <li>
+            <code class="listing">"findAll"</code> permet d'obtenir la liste complète des entités 
+            contenues dans une table 
+        </li>
+        <li>
+            <code class="listing">"create"</code> permet de sauvegarder une entité dans la base.
+        </li>
+    </ul>
+</p>
+
+<pre><code class="language-java"><script type="text/template">package facade;
+
+import jakarta.ejb.Stateless;
+import model.Product ;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
+@Stateless
+public class ProductFacade extends AbstractFacade<Product> {
+    @PersistenceContext( unitName = "eMarket_warPU")
+    private EntityManager em ;
+    
+    @Override
+    protected EntityManager getEntityManager(){
+        return em;
+    }
+    
+    public ProductFacade() {
+        super(Product.class);
+    }  
+}                             
+</script></code></pre>
+
+<p class="text-justify">
+    <code class="listing">ProductFacade</code> : l'<b>EJB façade</b> que vous utiliserez pour accéder à la base de données. 
+    Il contient une référence à la <b>PersistenceUnit</b> qui a été créée précédemment, et il 
+    contient également une référence à l'<b>EntityManager</b> qui réalise les opérations d'accès à la base.
+</p>
+
+<!-- #################################################### -->
+<div class="subsection-title">
+    Requêtes en utilisant l'EJB Session Facade dans un ManagedBean
+</div>
+
+<h3>Récupération des produits stockés dans la base de données</h3>
+
+<ul>
+    <li>
+        Injecter l'<b>EJB</b> <code class="listing">ProductFacade</code> dans 
+        le <code class="listing">CatalogManager</code> en utilisant l'annotation <code class="listing">@EJB</code>. <br>
+        Ne pas oublier de créer les accesseurs pour ce nouvel attribut.
+    </li>
+<pre><code class="language-java"><script type="text/template">...
+import jakarta.ejb.EJB;
+
+...
+public class CatalogManager implements Serializable{
+    ...
+    @EJB
+    private ProductFacade productFacade;  
+    ...
+}                           
+</script></code></pre>
+<li>
+    Dans la méthode <code class="listing">@PostConstruct</code> du <code class="listing">CatalogManager</code>, 
+    utiliser la méthode <code class="listing">findAll</code> du <code class="listing">ProductFacade</code> 
+    pour récupérer les produits existants en base et ajouter les produits ainsi récupérés dans 
+    le catalogue (c'est-à-dire dans la liste des produits).
+</li>
+<pre><code class="language-java"><script type="text/template">@PostConstruct
+public void initCatalog(){
+    products.addAll(productFacade.findAll());
+}
+</script></code></pre>
+<li>
+    Vérifier que les produits s'affichent bien sur la page <code class="listing">"catalog.xhtml"</code>.
+</li>
+</ul>
+
+<h3>
+    Sauvegarde d'un nouveau produit dans la base de données
+</h3>
+
+<ul>
+    <li>
+        Dans la méthode <code class="listing">createProduct</code> du <code class="listing">CatalogManager</code>, 
+        utiliser la méthode <code class="listing">create</code>
+        du <code class="listing">ProductFacade</code> pour sauvegarder le produit qui doit être ajouté
+         au catalogue dans la base de données.
+    </li>
+<pre><code class="language-java"><script type="text/template">public String createProduct(){
+    Product entity = new Product(products.size()+1, this.c_name, this.c_price);
+    products.add(entity) ; 
+    productFacade.create(entity);
+    return "toindex3" ;
+}
+</script></code></pre>
+<li>
+    Testez l'ajout d'un produit et vérifier que le produit ajouté est bien sauvegardé en base. 
+</li>
+</ul>
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+	Dans cette partie du TP vous avez appris à gérer la persistance des données de votre application 
+    en accédant à la base avec <b>JPA</b>. Ce TP est maintenant terminé. 
+    A vous d'utiliser les techniques montrées dans ce TP pour développer votre propre application !	
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
