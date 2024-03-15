@@ -224,7 +224,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Formulaires</h2>
     <div class="slide-content fragment">
-        <b>Interaction</b> avec l’utilisateur
+        <b>Interaction</b> avec l’utilisateur <br>
         <ul>
             <li class="fragment"><i>Requête</i> = envoi de données</li>
             <li class="fragment"><i>Réponse</i> = résultat du traitement des données</li>
@@ -280,7 +280,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple</h2>
     <div style="display: flex; align-items: center;">
-        <pre class="fragment" style="width: 49%; font-size: 0.45em !important">
+        <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
             <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
             public class Person {
                 private String name;
@@ -305,7 +305,7 @@
             }                             
         </script></code></pre>
     
-        <pre class="fragment" style="width: 49%; font-size: 0.45em !important">
+        <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
             <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
             public class AutreClasse {
                 private Integer oneNumber;
@@ -396,8 +396,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de JavaBeans</h2>
-    <pre style="font-size: 0.40em !important;">
-        <code class="language-java hljs" data-trim data-line-numbers=|3|4-5|7|9-15|17-23><script type="text/template">
+    <pre style="font-size: 0.49em !important;">
+        <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         import java.io.Serializable;
 
         public class PersonBean implements Serializable {
@@ -428,7 +428,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Java/Jakarta Enterprise Edition</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-right: 60px;">
+    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
         <img height="100px" src="./img/jakarta.png" alt="">
         <img height="100px" src="./img/glassfish.png" alt="">
     </div>
@@ -445,7 +445,7 @@
                     </ul>
                 </li>
                 <li class="fragment">Basées sur <b>Java SE</b> avec
-                    <ul>
+                    <ul id="fleche">
                         <li>les spécifications du Serveur d’Applications</li>
 		                <li>des bibliothèques pour le développement d'applications d’entreprises (<b>API</b>)</li>
                     </ul>
@@ -465,13 +465,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Ce que définit Jakarta EE</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-right: 60px;">
+    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
         <img height="100px" src="./img/jakarta.png" alt="">
         <img height="100px" src="./img/glassfish.png" alt="">
     </div>
     <ul style="display: block;">
         <li>
-            Des <b>composants</b> pour embarquer le code <br> 
+            Des <b>composants</b> pour embarquer le code  
             des éléments d’une application
             <ul>
                 <li>composants web</li>
@@ -499,7 +499,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le serveur d'application Jakarta EE</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-right: 60px;">
+    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
         <img height="100px" src="./img/jakarta.png" alt="">
         <img height="100px" src="./img/glassfish.png" alt="">
     </div>
@@ -511,7 +511,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Jakarta EE Web Profile</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-right: 60px;">
+    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
         <img height="100px" src="./img/jakarta.png" alt="">
         <img height="100px" src="./img/glassfish.png" alt="">
     </div>
@@ -589,7 +589,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de Servlets</h2>
-    <pre style="font-size: 0.50em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+    <pre><code class="language-java hljs" data-trim data-line-numbers>
         @WebServlet(name="PremiereServlet", urlPatterns={"/premiereServlet"})
         public class PremiereServlet extends HttpServlet {
             public void doGet(HttpServletRequest requete, 
@@ -752,7 +752,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Managed Beans (backing beans)</h2>
-    <pre style="font-size: 0.45em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+    <pre style="font-size: 0.5em !important;"><code class="language-java hljs" data-trim data-line-numbers>
         import jakarta.enterprise.context.SessionScoped;
         import jakarta.inject.Named;
         import jakarta.annotation.PostConstruct;
@@ -784,7 +784,7 @@
 	<h2>Managed Beans et Composants JSF</h2>
     <div style="display: flex; align-items: center;">
         <div style="width: 50%;">
-            <pre style="font-size: 0.40em !important;"><code class="language-html hljs" data-trim data-line-numbers>  
+            <pre style="font-size: 0.45em !important;"><code class="language-html hljs" data-trim data-line-numbers>  
                 &lt;f:view&gt;
                     &lt;h:form&gt;
                     &lt;h1&gt;Creation d'un compte&lt;/h1&gt;
@@ -808,10 +808,10 @@
             </code></pre> 
         </div>
         <div style="width: 50%;">
-            <pre style="font-size: 0.40em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+            <pre style="font-size: 0.45em !important;"><code class="language-java hljs" data-trim data-line-numbers>
                 @SessionScoped
                 @Named
-                public class PersonBean implements Serializable {
+                public class PersonBean implements Serializable{
                     private String name;
                     private String fName;
     
@@ -873,7 +873,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de Navigation statique</h2>
-    <pre style="font-size: 0.50em !important;" class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
+    <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
         <navigation-rule>
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
@@ -887,7 +887,7 @@
         </navigation-rule>
     </code></pre>
 
-    <pre style="font-size: 0.50em !important;" class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
+    <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
 <!-- Dans index.jsp -->
 &lt;h:commandLink action="outcom1" value="Exemple Outcom 1"/&gt;
 &lt;h:commandLink action="outcom2" value="Exemple Outcom 2"/&gt;
@@ -897,7 +897,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de Navigation dynamique</h2>
-    <pre style="font-size: 0.50em !important;"><code class="language-html hljs" data-trim data-line-numbers>
+    <pre><code class="language-html hljs" data-trim data-line-numbers>
         <navigation-rule>
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
@@ -910,7 +910,7 @@
             </navigation-case>
         </navigation-rule>
     </code></pre>
-    <pre style="font-size: 0.50em !important;" class="fragment"><code class="language-java hljs" data-trim data-line-numbers>
+    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers>
         public class MyBean implements Serializable {
             ...
             public String allerEtapeSuivante(){
@@ -925,7 +925,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple de Navigation dynamique</h2>
-    <pre style="font-size: 0.50em !important;"><code class="language-html hljs" data-trim data-line-numbers>
+    <pre><code class="language-html hljs" data-trim data-line-numbers>
         <navigation-rule>
             <from-view-id>/index.jsp</from-view-id>
             <navigation-case>
@@ -938,7 +938,7 @@
             </navigation-case>
         </navigation-rule>
     </code></pre>
-    <pre style="font-size: 0.50em !important;"><code class="language-html hljs" data-trim data-line-numbers>
+    <pre><code class="language-html hljs" data-trim data-line-numbers>
         <!-- Dans index.jsp -->
         &lt;h:commandLink action="#{myBean.allerEtapeSuivante()}" value="étape suivante" /&gt;
     </code></pre>
