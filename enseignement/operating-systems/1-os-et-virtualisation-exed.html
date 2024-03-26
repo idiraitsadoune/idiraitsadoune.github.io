@@ -22,7 +22,8 @@
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -49,13 +50,14 @@
 			</a>
 		</div>
 	</div>
+
+	<div class="slide-content">
+		<h2>Systèmes d'exploitation <br> et Virtualisation</h2>
+	</div>
 	
-	<h2>Architecte des Systèmes d'Information</h2>
-	<h3>Systèmes d'exploitation et Virtualisation</h3>
 	<div class="description">
-		<span class="description-item"><span class="fa fa-graduation-cap"></span> Mastère Spécialisé</span>
-		<span class="description-item"><span class="fa fa-university"></span> CentraleSupelec Exed</span>
-		<span class="description-item"><span class="fa fa-calendar" aria-hidden="true"></span> 2023/2024</span>
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>Mastère Spécialisé Architecte des Systèmes d'Information</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec Executive Education - 2023/2024</span>
 	</div>
 		
 	<div class="hero-card-id">
@@ -72,7 +74,7 @@
 			</a>
 		</div>
 	</div>
-</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -208,8 +210,8 @@
 			est la science du <b>traitement automatique <br>de l’information</b>.
 		</li>
 		<li class="skip fragment">
-			Le traitement automatique de l'information s'effectue <br>
-			avec des <b>programmes informatiques</b> exécutés par des <b>machines</b>
+			Le traitement automatique de l'information s'effectue avec <br>
+			des <b>programmes informatiques</b> exécutés par des <b>machines</b>
 			<ul>
 				<li class="fragment"><b>les programmes</b> (<i>software</i>) décrivent le traitement à réaliser,</li>
 				<li class="fragment"><b>les machines</b> (<i>hardware</i>) exécutent <b>les programmes</b>.</li>
@@ -273,7 +275,7 @@
 				<li class="fragment">Le <b>mini-ordinateur</b> a été une innovation <br> des
 					années <i>1970</i>. </li>
 				<li class="fragment skip">L'intégration de <b>circuits intégrés
-						à grande échelle</b>
+						à grande <br> échelle</b>
 					conduisit au développement <br> des <b>micro-processeurs</b>.</li>
 			</ul>
 		</div>
@@ -501,13 +503,13 @@
 			</ul>
 		</li>
 		<li class="fragment skip">
-			<b>La programmation</b> se faisait directement <b>en langage machine</b>
+			<b>La programmation</b> se faisait directement <br> <b>en langage machine</b>
 		</li>
 		<li class="fragment skip">
 			<b>Un seul programme</b> à la fois pouvait s'exécuté.
 		</li>
 		<li class="fragment skip">
-			L’absence d'un OS obligeait le programmeur à <b>charger manuellement
+			L’absence d'un <b>OS</b> obligeait le programmeur à <b>charger manuellement <br>
 				le programme</b>
 		</li>
 	</ul>
@@ -517,8 +519,9 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Autrefois : <a href="https://fr.wikipedia.org/wiki/IBM_RAMAC_305" target="_blank">IBM RAMAC
 			305</a></h2>
-	<img style="float: left; margin-bottom: 10px; margin-right: 60px;" src="./img/ibm_ramac_305.jpg"
+	<img style="float: right; margin-bottom: 10px; margin-left: 10px;" src="./img/ibm_ramac_305.jpg"
 		height="auto" width="300px">
+
 	<ul style="display: block;">
 		<li class="fragment">
 			<b>Premier ordinateur à disque dur</b> (l’<b>IBM 350</b>) commercialisé en <i>septembre 1956</i>
@@ -529,7 +532,7 @@
 			disque dur, mémoire 5Mo.
 		</li>
 		<li class="fragment skip">
-			<b>L'unité de traitement</b> est basée sur un tambour magnétique sur lequel est
+			<b>L'unité de traitement</b> est basée sur un tambour magnétique sur lequel <br> est
 			stocké le programme.
 		</li>
 		<li class="fragment skip">
@@ -561,7 +564,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Définition</h2>
-	<div  class="default-block">
+	<div  id="default-block">
 		<em>&ldquo;<b>Un système d'exploitation</b> est un ensemble de programmes
 			réalisant l’interface entre le matériel et les utilisateurs.&rdquo;</em>
 	</div>
@@ -814,11 +817,11 @@
 		<li class="fragment skip">
 			L'<b>IRQ</b> est <b>un signal</b> (<i>code</i>) permettant à un dispositif externe
 			d’interrompre le processeur pour lancer un traitement particulier.
-			<ul>
-				<li class="fragment">À chaque code correspond <b>une routine de traitement</b> de l’OS.</li>
-				<li class="fragment">Les adresses des routines sont dans <b>une table</b> placée en
+			<ul id="fleche">
+				<li class="fragment">à chaque code correspond <b>une routine de traitement</b> de l’OS.</li>
+				<li class="fragment">les adresses des routines sont dans <b>une table</b> placée en
 					mémoire <br> (<b>la table des vecteurs d’interruptions</b>).</li>
-				<li class="fragment"><b>Les routines d’interruptions</b> sont chargées
+				<li class="fragment"><b>les routines d’interruptions</b> sont chargées
 					en mémoire au moment <br> du chargement de l'OS et exécutées en <b>mode
 						superviseur</b>.
 				</li>
@@ -914,7 +917,7 @@
 				<li class="fragment"><code class="listing">sys_fork</code> : créer un processus</li>
 				<li class="fragment"><code class="listing">sys_wait</code> : attendre la terminaison d’un processus</li>
 				<li class="fragment"><code class="listing">sys_exit</code> : terminer l’exécution d’un processus</li>
-				<li class="fragment"><code class="listing">sys_kill</code> : Envoyer un signal à un processus</li>
+				<li class="fragment"><code class="listing">sys_kill</code> : envoyer un signal à un processus</li>
 			</ul>
 		</li>
 		<li class="fragment skip">
@@ -941,7 +944,7 @@
 	<h2>Exemple sous UNIX</h2>
 	<ul>
 		<li class="fragment">L'instruction <code  class="listing">os.chdir(path)</code> permet
-			de <i>changer le répertoire courant</i> d'un programme <b>Python</b> en cours d’exécution.
+			de <i>changer le répertoire courant</i> <br> d'un programme <b>Python</b> en cours d’exécution.
 		</li>
 		<li class="skip fragment">La commande <code  class="listing">cd path</code> permet
 			de <i>changer le répertoire courant</i> depuis l’<b>interpréteur de commandes</b> (<b>Shell</b>).
@@ -1016,7 +1019,7 @@
 		<img src="./img/causes-c-c.png" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
 	</div>
-	<div class="default-block fragment" style="font-size: 80%;">
+	<div id="default-block" class="fragment" style="font-size: 80%;">
 		<b>Trappes et appels systèmes</b> sont parfois qualifiés <b>d’interruptions logicielles</b> <br> par
 			opposition aux interruptions matérielles.
 	</div>
@@ -1035,7 +1038,7 @@
 			</li>
 
 			<li class="skip fragment">
-				<b>Interpréteur de commandes</b> : exécuter <i>
+				<b>Interpréteur de commandes</b> : <br> exécuter <i>
 					des commandes <br> de l'utilisateur</i>
 				en appellant <br> <b>la routine système</b> appropriée.
 			</li>
@@ -1144,9 +1147,9 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Structure des OS</h2>
 	<ul class="fragment">
-		<li>Comment organiser les différentes fonctions d’un OS ?
+		<li>Comment organiser les différentes fonctions d’un <b>OS</b> ?
 			<ul id="fleche">
-				<li class="fragment">Qu’est-ce qui est dans le noyau (en mode Superviseur) ?</li>
+				<li class="fragment">Qu’est-ce qui est dans le noyau (en <b>mode Superviseur</b>) ?</li>
 				<li class="fragment">Comment interagissent les différents composants ?</li>
 			</ul>
 		</li>
@@ -1222,7 +1225,7 @@
 	<div style="display: flex; align-items: center;">
 		<ul style="width: 75%;">
 			<li class="fragment">
-				Reprendre des concepts des noyaux <b> monolithiques</b> et des <b>micro-noyaux</b> <br>
+				Reprendre des concepts des noyaux <b> monolithiques</b> et des <b>micro-noyaux</b> 
 				pour combiner <b>les avantages des deux</b>.
 			</li>
 
@@ -1240,7 +1243,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Conclusions</h2>
+	<h2>En résumé ...</h2>
 	<ul>
 		<li class="fragment">
 			Les OS <b>monolithiques</b> sont rapides mais délicats à maintenir.
@@ -1252,7 +1255,7 @@
 			Les OS à <b>micro-noyaux</b> pur sont trop lents.
 		</li>
 	</ul>
-	<div class="default-block fragment" style="margin-top: 60px;">
+	<div id="default-block" class="fragment" style="margin-top: 60px;">
 		<ul>
 			<li>
 				<b>Les tendances :</b>
@@ -1308,7 +1311,7 @@
 						Load</b>.
 					<ul class="fragment">
 						<li>l'<b>IPL</b> charge l'<b>OS</b>
-							ou le <b>bootmanager</b> en RAM.</li>
+							ou le <b>bootmanager</b> en <b>RAM</b>.</li>
 						<li>l'<b>OS</b> est lancé</li>
 					</ul>
 				</li>
@@ -4615,10 +4618,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section style="text-align: left;" data-auto-animate data-transition="fade-in fade-out">
-	<h1>Fin</h1>
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
 	<p>
-		- <a href="#">Retour à l'accueil</a> <br>
+		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
@@ -4663,9 +4666,10 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch],
-			dependencies: [{ src: '//cdn.jsdelivr.net/npm/reveal-plantuml' },]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
 		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 </body>
 
