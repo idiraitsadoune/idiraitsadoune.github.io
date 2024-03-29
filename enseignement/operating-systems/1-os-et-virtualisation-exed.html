@@ -111,6 +111,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Démarche pour aborder ce sujet</h2>
 	<ul>
@@ -189,11 +194,6 @@
 			Gianluca Quercini, Nicolas Sabouret, Marc-Antoine Weisser, ...&rdquo;</i></em>
 	</div>
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="plan"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1254,19 +1254,20 @@
 		<li class="fragment">
 			Les OS à <b>micro-noyaux</b> pur sont trop lents.
 		</li>
+		<div id="default-block" class="fragment d-skip">
+			<ul>
+				<li>
+					<b>Les tendances :</b>
+					<ul id="fleche">
+						<li class="fragment">OS à <b>noyaux hybrides</b>.</li>
+						<li class="fragment">un micro-noyau étendus en fonctionnalités par d’autres composants.
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</ul>
-	<div id="default-block" class="fragment" style="margin-top: 60px;">
-		<ul>
-			<li>
-				<b>Les tendances :</b>
-				<ul id="fleche">
-					<li class="fragment">OS à <b>noyaux hybrides</b>.</li>
-					<li class="fragment">un micro-noyau étendus en fonctionnalités par d’autres composants.
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1378,17 +1379,18 @@
 			</ul>
 		</li>
 		<li class="fragment skip"><b>Un programme</b> peut donner <i>naissance à plusieurs processus</i>.</li>
-		<li class="fragment skip"><b>Un processus</b> est forcément <i>créé par un autre processus</i>
+		<li class="fragment skip"><b>Un processus</b> est forcément <i>créé par un autre processus</i> <br>
 			(le système d'exploitation par exemple)</li>
+		<div id="green-block" class="fragment d-skip" >
+			<b>Exemples de processus</b>
+			<ul>
+				<li>Logiciel de traitement de texte</li>
+				<li>Compilation de code source</li>
+				<li>Tâche système (envoi de données vers l'imprimante)</li>
+			</ul>
+		</div>
 	</ul>
-	<div class="green-block fragment skip">
-		<b style="color:green">Exemples de processus</b>
-		<ul>
-			<li>Logiciel de traitement de texte</li>
-			<li>Compilation de code source</li>
-			<li>Tâche système (envoi de données vers l'imprimante)</li>
-		</ul>
-	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1397,7 +1399,7 @@
 	<ul>
 		<li class="fragment">Dans <b>un OS moderne</b>, plusieurs processus <i>s'exécutent en parallèle</i> :
 			<ul>
-				<li class="fragment"><b>Les processus de l'OS</b> (gestion du réseau, gestion des
+				<li class="fragment skip"><b>Les processus de l'OS</b> (gestion du réseau, gestion des
 					utilisateurs, ...)</li>
 				<li class="fragment">Le <b>shell</b> (toute <i>l'interface graphique</i> $\rightarrow$ plusieurs
 					processus).</li>
@@ -1405,18 +1407,19 @@
 				<li class="fragment">Le navigateur <b>Chrome</b> qui me permet de visualiser ce cours.</li>
 			</ul>
 		</li>
+		<pre class="fragment d-skip"><code class="shell" data-trim><script type="text/template">
+			$ top -stats command,pid,ppid,cpu,pstate  
+										
+			COMMAND             PID     PPID    %CPU   STATE
+			com.docker.hyper    674     667     34.9   sleeping
+			launchd             1       0       8.5    sleeping
+			top                 74562   34386   3.7    running
+			Terminal            34311   1       3.0    sleeping
+			WindowServer        169     1       2.5    sleeping
+			...
+		</script></code></pre>
 	</ul>
-	<pre class="fragment skip"><code class="shell" data-trim><script type="text/template">
-		$ top -stats command,pid,ppid,cpu,pstate  
-									
-		COMMAND             PID     PPID    %CPU   STATE
-		com.docker.hyper    674     667     34.9   sleeping
-		launchd             1       0       8.5    sleeping
-		top                 74562   34386   3.7    running
-		Terminal            34311   1       3.0    sleeping
-		WindowServer        169     1       2.5    sleeping
-		...
-	</script></code></pre>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1474,13 +1477,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Création de processus</h2>
-	<div class="alert-block fragment">
-		<b style="color:red">Rappel</b> :
-		un processus est forcément créé par un autre processus
-	</div>
+	
 
 	<ul>
-		<li class="fragment skip">
+		<div id="alert-block" class="fragment">
+			<b>Rappel</b> :
+			un processus est forcément créé par un autre processus
+		</div>
+		<li class="fragment d-skip">
 			<b>Sous UNIX</b> $\rightarrow$ 2 appels système
 			<ol>
 				<li class="fragment"><code class="listing">fork</code> pour créer un processus à partir du processus
@@ -1513,9 +1517,9 @@
 		<ul style="width: 70%;">
 			<li class="fragment"><b>Code exécutable</b> en lecture seule <br> (taille connue)</li>
 			<li class="fragment skip"><b>Variables/Constantes globales</b> <br> (taille connue)</li>
-			<li class="fragment skip"><b>Pile</b> pour gérer les contextes et les variables temporaires
+			<li class="fragment skip"><b>Pile</b> pour gérer les contextes et les variables temporaires <br>
 				(taille inconnue)</li>
-			<li class="fragment skip"><b>Le TAS</b> ou la <b>Zone d'allocation dynamique de mémoire</b>
+			<li class="fragment skip"><b>Le TAS</b> ou la <b>Zone d'allocation dynamique <br> de mémoire</b> <br>
 				(taille inconnue)</li>
 		</ul>
 	</div>
@@ -1756,14 +1760,14 @@
 	<ul>
 		<li class="fragment"><b>Les processus</b> sont <i>répartis sur les ressources</i> :
 			<ul>
-				<li class="fragment"><b>Plusieurs processus</b> peuvent vouloir la <b>même ressource</b>
+				<li class="fragment"><b>plusieurs processus</b> peuvent vouloir la <b>même ressource</b>
 					en même temps</li>
-				<li class="fragment"><i>File d'attente</i> de <b>PCB</b></li>
-				<li class="fragment"><i>Choisir un processus</i> parmi tous les processus dans <i>la file d'attente</i></li>
+				<li class="fragment"><i>file d'attente</i> de <b>PCB</b></li>
+				<li class="fragment"><i>choisir un processus</i> parmi tous les processus dans <i>la file d'attente</i></li>
 			</ul>
 		</li>
 		
-		<li class="fragment skip"><b>Exemple</b>
+		<li class="fragment skip"><strong>Exemple</strong>
 			<ul>
 				<li class="fragment"><b>le processeur</b> est <b>une ressource hautement critique</b>.</li>
 				<li class="fragment">l’<b>OS</b> est en charge de sa <i>répartition entre les processus</i>
@@ -1787,7 +1791,7 @@
 				<li class="fragment">jusqu'à ce que l'<b>OS</b> décide que <i>ce n'est plus son tour</i></li>
 			</ul>
 		</li>
-		<li class="fragment skip"><b>Le remplacement d'un processus</b> en exécution a un coût
+		<li class="fragment skip"><b>Le remplacement d'un processus</b> en exécution a un coût <br>
 			(<b>commutation de contexte</b>)
 			<ul>
 				<li class="fragment">exécution de la <i>routine d'ordonnancement</i></li>
@@ -1802,7 +1806,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Objectifs possibles <br> de l’ordonnancement</h2>
-	<ul>
+	<ul id="fleche">
 		<li class="fragment">être <b>équitable</b> (<b>fairness</b>) vis-à-vis des processus ;</li>
 		<li class="fragment">maximiser l’utilisation globale du processeur (<b>efficace</b>) ;</li>
 		<li class="fragment">avoir un comportement le plus <b>prévisible</b> possible ;</li>
@@ -1825,7 +1829,8 @@
 		</li>
 
 		<li class="fragment skip">
-			Ordonnancement <b>préemptif</b> (<b>avec réquisition</b>) $\to$ l'OS <i>peut interrompre</i> un processus si :
+			Ordonnancement <b>préemptif</b> (<b>avec réquisition</b>) $\to$ l'OS <i>peut interrompre</i> <br>
+			un processus si :
 			<ul id="fleche">
 				<li class="fragment">le <b>quantum</b> (le temps d’utilisation maximum consécutif) est
 					atteint</li>
@@ -1855,141 +1860,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> <span class="fragment">FIFO sans préemption</span></h2>
+	<h2>De nombreuses stratégies d'Ordonnancement préemptif</h2>
 
-	<img src="./img/f27-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>: 
-			<ul id="fleche"><li>premier arrivé, premier servi.</li></ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: green;">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Simple à implémenter
-				</li>
-				<li class="fragment">Équitable dans l'ordre d'arrivée
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: red;">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Peu efficace $\to$ des processus ont "longtemps" le processeur
-				</li>
-				<li class="fragment">Peu réactif $\to$ des processus peuvent attendre longtemps
-				</li>
-			</ul>	
-		</li>
-	</ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Plus court d’abord</h2>
-
-	<img src="./img/f26-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>: 
-			<ul id="fleche"><li>priorité au processus le plus court</li></ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: green;">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Réactif: avantage aux petits processus
-				</li>
-				<li class="fragment">Optimal sur le temps d'attente moyen
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:red">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Pas efficace: les processus ont moins le processeur s'il y a beaucoup d'E/S
-				</li>
-				<li class="fragment">Non équitable: on peut avoir une <span style="color:red">famine</span> des gros processus
-				</li>
-			</ul>	
-		</li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Round-Robin (FIFO préemptif)</h2>
-
-	<img src="./img/f28-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>:
-			<ul id="fleche"><li><b>FIFO</b> avec <b>quantum</b> de temps</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:green">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Équitable: tout le monde<br> a le processeur
-				</li>
-				<li class="fragment">Réactif: les processus n'attendent pas
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:red">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Temps d'attente moyen plus élevé
-				</li>
-				<li class="fragment">Beaucoup de commutations $\rightarrow$ surcoût!
-				</li>
-			</ul>
-		</li>
-	</ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Files de priorités</h2>
-
-	<img src="./img/f29-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-	<div style="display: block;" class="slide-content">
-		<ul style="display: block;">
-			<li class="fragment">
-				Plusieurs files d’attente
-			</li>
-			<li class="fragment">La durée des quantums peut dépendre de la file</li>
-		</ul>
-		<ul id="ok" style="display: block;" class="fragment skip"><li>favorise le temps de réponse <br> des processus systèmes</li></ul>
-		<ul id="ko" style="display: block;" class="fragment"><li>Comment choisir la priorité ?</li></ul>
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Files de priorités dynamiques</h2>
-
-	<img src="./img/f30-ordonnancement.png" width="400px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-	<ul style="display: block;">
-		<li class="fragment">
-			La priorité d’un processus peut être modifié par l’OS
-			<ul>
-				<li class="fragment">Par exemple sortie d’attente I/O</li>
-				<li class="fragment">Attente longue en file basse priorité</li>
-			</ul>
-		</li>
-		<li class="fragment skip"><b>Utilité</b> : Windows NT, OS X, Linux </li>
-		<li class="fragment">Notion de <b>classe de priorités</b></li>
+	<ul>
+		<li class="fragment">FIFO sans préemption</li>
+		<li class="fragment">Plus court d’abord</li>
+		<li class="fragment">Round-Robin (FIFO préemptif)</li>
+		<li class="fragment">Files de priorités</li>
+		<li class="fragment">Files de priorités dynamiques</li>
 	</ul>
 
 </section>
@@ -2197,101 +2075,161 @@
 				</li>
 			</ul>
 		</li>
-
-		<li class="fragment skip">
-			<b>Résultat attendu:</b> <code class="listing">balance = 9&#8364;</code>
-		</li>
-		<li class="fragment">
-			<b>Résultat obtenu:</b> <code class="listing">balance = -98599&#8364;</code>
-		</li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Comment expliquer ce calcul?</h2>
-
-	<div class="default-block fragment">
-		<ul>
-			<li>Les entrelacements se font au niveau du code binaire!
-				<ul id="fleche">
-					<li>couper <em>entre chaque instruction assembleur!</em></li>
-				</ul>
+		<ul id="ok">
+			<li class="fragment skip">
+				<b>Résultat attendu:</b> <code class="listing">balance = 9&#8364;</code>
 			</li>
 		</ul>
-	</div>
-
-	<div class="fragment" style="display: flex; align-items: center;">
-
-		<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-			mov eax, balance 
-			add eax, 1
-			mov balance, eax
-		</script></code></pre>
-
-		<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-			mov eax, balance 
-			sub eax, 1
-			mov balance, eax
-		</script></code></pre>
-	</div>
-
-	<div style="display: flex; align-items: center;">
-
-		<pre class="fragment" style="width: 45%; margin-bottom: -18px !important;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 9, eax = 9
-		</script></code></pre>
-
-		<pre class="fragment" style="width: 45%; margin-bottom: -18px !important;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 9, eax = 9
-		</script></code></pre>
-	</div>
-
-	<div style="display: flex; align-items: center;">
-
-		<pre class="fragment" style="width: 45%; margin-bottom: -18px !important;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 9, eax = 10
-		</script></code></pre>
-
-		<pre class="fragment" style="width: 45%; margin-bottom: -18px !important;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 9, eax = 8
-		</script></code></pre>
-	</div>
-
-	<div style="display: flex; align-items: center;">
-
-		<pre class="fragment" style="width: 45%;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 10, eax = 10
-		</script></code></pre>
-
-		<pre class="fragment" style="width: 45%;"><code class="language-x86asm hljs" data-trim ><script type="text/template">
-			balance = 8, eax = 8
-		</script></code></pre>
-	</div>
-
-	<div class="alert-block fragment" style="text-align: center;">
-		<span>Après une itération</span> $\rightarrow$ <code class="listing fragment">balance = 8</code>
-	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Problème de la concurrence</h2>
-	<ul>
-		<li><b>Situation de compétition</b> : <span style="color: red;">erreur</span> dépendant de l’<i>enchaînement temporel
-			d’événements</i> impliquant une ressource partagée
-			<ul id="fleche">
-				<li class="fragment">non déterministe</li>
-				<li class="fragment">difficile à détecter (<b>tests</b>)</li>
-				<li class="fragment">difficile à corriger (<b>debug</b>)</li>
-			</ul>
-		</li>
+		<ul id="ko">
+			<li class="fragment">
+				<b>Résultat obtenu:</b> <code class="listing">balance = -98599&#8364;</code>
+			</li>
+		</ul>
+		
 	</ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Problème de la concurrence</h2>
 
+    <div style="display: flex; align-items: center;">
+
+        <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+            ;balance = balance + 1
+            mov eax, balance 
+            add eax, 1
+            mov balance, eax
+        </script></code></pre>
+
+        <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+            ;balance = balance - 1
+            mov eax, balance 
+            sub eax, 1
+            mov balance, eax
+        </script></code></pre>
+    </div>
+
+    <ul>
+        <li>Comment expliquer ces erreurs de calcul ?</li>
+            <ul id="fleche">
+                <li class="fragment">les entrelacements se font au niveau du code binaire
+                <li class="fragment">couper <b>entre chaque instruction assembleur</b></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="skip r-stack">
+        <div class="fragment fade-in-then-out">
+            <img src="./img/error-1.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:145px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-2.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:145px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-3.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:145px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-2.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-4.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-5.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-6.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-7.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-8.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-9.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-10.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-11.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-12.svg" alt="">
+        </div>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:205px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-13.svg" alt="">
+        </div>
+        <div class="fragment fade-in">
+            <span style="position:absolute;top:205px;left:630px;font-size: 30px;">&#128073;</span>
+            <img src="./img/error-14.svg" alt="">
+        </div>
+    </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Problème de la concurrence</h2>
+
+    <div style="display: flex; align-items: center;">
+
+        <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+            ;balance = balance + 1
+            mov eax, balance 
+            add eax, 1
+            mov balance, eax
+        </script></code></pre>
+
+        <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+            ;balance = balance - 1
+            mov eax, balance 
+            sub eax, 1
+            mov balance, eax
+        </script></code></pre>
+    </div>
+
+	<div id="alert-block" style="text-align: center; width: 80% !important;margin-left: auto; margin-right: auto;">
+		<ul id="ko"><li><b>Après une itération</b> $\rightarrow$ <code class="listing">balance = 8</code></li></ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Problème de la concurrence</h2>
+    <ul>
+        <li><b>Situation de compétition</b> 
+            <ul id="fleche">
+                <li><b>erreur</b> dépendant de l’<u>enchaînement</u> temporel d’événements <br>
+                        impliquant une <u>ressource partagée</u></li>
+                <li class="fragment skip">non déterministe</li>
+            </ul>
+            <ul id="ko">
+                <li class="fragment">difficile à détecter (<b>tests</b>)</li>
+                <li class="fragment">difficile à corriger (<b>debug</b>)</li>
+            </ul>
+        </li>
+    </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Section critique</h2>
 
@@ -2299,7 +2237,7 @@
 		<li>Lorsqu'il y a des <b>variables partagées</b>,
 			il existe des <b>portions <br> de code</b> qu'on ne veut pas pouvoir interrompre.
 			<ul id="fleche">
-				<li class="fragment">ce sont les <b>zones du code</b> qui manipulent des <b>ressources partagées</b></li>
+				<li class="fragment">des <b>zones du code</b> qui manipulent des <b>ressources partagées</b></li>
 				<li class="fragment">ces zones sont appelées <b>sections critiques</b></li>
 			</ul>
 		</li>
@@ -2327,6 +2265,32 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Les propriétés à respecter</h2>
+    <ol>
+        <li class="fragment">
+            <b>Exclusion mutuelle</b> :
+            si une thread effectue sa section critique, <br> alors <b>aucune autre
+            thread</b> ne peut entrer en section critique.
+        </li>
+
+        <li class="fragment skip">
+            <b>Déroulement</b> : une thread qui souhaite entrer en section critique <br> <b>ne
+            peut pas décider</b> qui doit rentrer en section critique.
+        </li>
+
+        <li class="fragment skip">
+            <b>Vivacité</b> : une thread qui souhaite entrer en section critique <br> <b>y
+            rentre en temps borné</b>.
+        </li>
+		<div id="alert-block" class="fragment d-skip" style="text-align: center;">
+			Définir des <b>mécanismes</b> qui garantissent ces trois propriétés <br>
+		</div>
+    </ol>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Systèmes de verrou</h2>
 	<ol>
 		<li class="fragment">
@@ -2348,54 +2312,109 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les moniteurs</h2>
+    <h2>Moniteur</h2>
 
-	<ul>
-		<li class="fragment">
-			<b>Un moniteur</b> est un module constitué de:
-			<ul>
-				<li class="fragment">variables <b>inaccessibles</b> de l’extérieur</li>
-				<li class="fragment">fonctions exécutées en <b>exclusion mutuelle</b></li>
-			</ul>
-		</li>
-
-		<li class="fragment skip">
-			Dans la <b>machine virtuelle Java</b>, on peut définir que certaines
-			<b>méthodes</b> d’une même classe sont en <b>exclusion mutuelle</b>
-			<ul id="listing">
-				<li class="fragment">mot clé <code class="listing">synchronized</code> $\rightarrow$ utilisation d’un
-					verrou</li>
-				<li class="fragment">utilisé pour de <b>très courtes sections critiques</b></li>
-			</ul>
-		</li>
-	</ul>
+    <ul>
+        <li class="fragment">
+            <b>Un moniteur</b> est un module constitué de:
+            <ul>
+                <li>objets <u>inaccessibles</u> de l’extérieur</li>
+                <li><u>fonctions</u> manipulant l'objet en <u>exclusion mutuelle</u></li>
+            </ul>
+        </li>
+        <li class="fragment skip">
+            Dans la <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle_Java" target="_blank">JVM</a> de <b>Java</b>, on peut définir que des <u>méthodes</u> <br> 
+            d’une classe sont en <u>exclusion mutuelle</u>.
+            <ul><li>mot clef <code class="listing">synchronized</code> : utilisation d’un verrou (lock)</li></ul>
+            <ul id="fleche"><li class="fragment">une seule thread dans un bloc <code class="listing">synchronized</code> pour un objet donné</li></ul>
+        </li>
+    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les moniteurs</h2>
+    <h2>Moniteurs en Java</h2>
+    <ul>
+        <li class="fragment">
+            Une thread qui possède un verrou peut rentrer <br> dans n'importe quelle méthode (<b>verrou récursif</b>).
+        </li>
+        <li class="fragment skip">
+            Une thread peut <b>verrouiller plusieurs objets</b><br> (risque d'interblocage).
+        </li>
+        <li class="fragment skip">
+            Tout bloc <b>non</b> <code class="listing">synchronized</code> peut être appelé <br> par n'importe qui n'importe quand.
+        </li>
+    </ul>
 
-	<pre style="font-size: 0.4em" data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|2-3|8,12,16><script type="text/template">
-		public class Account {
-			private int balance;
-			
-			public Account(int balance) {
-				this.balance = balance;
-			}
-			
-			synchronized public void add(int v){
-				this.balance = this.balance + v;
-			}
-			
-			synchronized public void sub(int v){
-				this.balance = this.balance - v;
-			}
-		
-			synchronized public int getBalance() {
-				return balance;
-			}
-		}                             
-	</script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Exemple</h2>
+    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|2|8-10|12-14|"><script type="text/template">
+        public class Account {
+            private int value;
+            
+            public Account(int i) {
+                this.value = i;
+            }
+            
+            synchronized public void add(int v){
+                this.value = this.value + v;
+            }
+            
+            synchronized public void sub(int v){
+                this.value = this.value - v;
+            }
+        }
+    </script></code></pre>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2><a href="https://fr.wikipedia.org/wiki/S%C3%A9maphore_(informatique)#:~:text=Le%20s%C3%A9maphore%20a%20%C3%A9t%C3%A9%20invent%C3%A9,les%20interblocages%20(ou%20deadlocks)." target="_blank">Sémaphore</a> - 
+    <a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra" target="_blank">Dijkstra - 1962</a></h2>
+
+    <ul>
+        <li class="fragment"><b>Un sémaphore</b> définit un objet <u>partagé</u>
+            <ul>
+                <li class="fragment">Qu'on peut <u>acquérir</u>;</li>
+                <li class="fragment">Qui <u>met en attente</u> ceux qui le demandent;</li>
+                <li class="fragment">Qui donne la main dans <u>l'ordre des demandes</u>.</li>
+            </ul>
+        </li>
+        <li class="fragment skip">
+            Toutes les threads en <b>concurrence sur une ressource</b><br> partagent <b>un même sémaphore</b>
+            <ul>
+                <li class="fragment">On <b>acquiert</b> le sémaphore <u>avant d'entrer</u> en SC;</li>
+                <li class="fragment">On <b>relâche</b> le sémaphore <u>en sortant</u> de la SC.</li>
+            </ul>
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Utilisation du Sémaphore</h2>
+    <pre style="width: 50%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        Semaphore s = new Semaphore();
+        // ... code non-critique ...
+        s.acquire();
+        // ... code critique ...
+        s.release();
+        // ... code non-critique ...
+    </script></code></pre>
+
+    <ul>
+        <li class="fragment"><b>Vivacité</b> : on veut passer la main dans le bon ordre
+            <ul id="fleche"><li>utilisation d'une <u>file d'attente</u></li></ul>
+        </li>
+        <li class="fragment">
+            <code class="listing">acquire</code> et <code class="listing">release</code> doivent être atomiques !
+            <ul id="fleche"><li>elles sont elles-même des SC pour le sémaphore ...</li></ul>
+        </li>
+    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2407,7 +2426,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Les sémaphores</h2>
-	<pre style="font-size: 0.4em" data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|3|10-12|16-18><script type="text/template">
+	<pre style="font-size: 0.4em; width: 60%;" data-id="code1"><code class="language-java hljs" data-trim data-line-numbers=|3|10-12|16-18><script type="text/template">
 		public class Account {
 			private int balance;
 			private Semaphore mutex = new Semaphore(1);
@@ -2439,13 +2458,57 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La mémoire pour qui et pour quoi ?</h2>
+	<div class="slide-content">
+		<b>Pour le système d'exploitation</b> <br>
+		<ul>
+			<li class="fragment skip">
+				Au lancement d'une machine, l'<b>OS</b> est le <b>premier programme</b> <br>
+				chargé en mémoire
+			</li>
+			<li class="fragment skip">L'OS aussi a besoin d'espace mémoire 
+				<ul id="fleche">
+					<li class="fragment">Code de son <b>Noyau</b> </li>
+					<li class="fragment">La table des <b>interruptions</b></li>
+					<li class="fragment">La table des <b>processus</b></li>
+					<li class="fragment">Des structures de données (<b>PCBs</b> et autres )</li>
+					<li class="fragment">...</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La mémoire pour qui et pour quoi ?</h2>
+	<div class="slide-content">
+		<b>Pour les processus</b> <br>
+		<ul>
+			<li class="fragment skip">A la création d’un processus, l’OS crée
+				un <b>PCB</b> et <i>alloue <br> de la mémoire</i> pour le processus</li>
+
+			<li class="fragment skip"> Pour des raisons de <b>sécurité</b>, chaque <b>processus</b> doit utiliser <br>
+				<em>une zone mémoire  distincte</em> (<i>un espace d'adresses</i>).
+				<ul id="fleche">
+					<li class="fragment">Quel mécanisme d'<b>allocation</b> de cet espace ?</li>
+					<li class="fragment">Comment assurer la <b>protection</b> de cette zone ?</li>
+					<li class="fragment">Comment assurer la <b>transparence</b> de cet espace ?</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Espace de stockage</h2>
 	<ul>
 		<li class="fragment">Ensemble ordonné de <b>cases</b> indexée par leur <b>adresse</b> <br>
 				(<i>numéro de la case</i>) et contenant:
 			<ul>
-				<li class="fragment">Des <b>instructions</b> $\rightarrow$ registre <b>PC</b> dans le processeur</li>
-				<li class="fragment">Des <b>données</b> $\rightarrow$ registre <b>RADM</b> dans le processeur</li>
+				<li class="fragment">des <b>instructions</b> $\rightarrow$ registre <b>PC</b> dans le processeur</li>
+				<li class="fragment">des <b>données</b> $\rightarrow$ registre <b>RADM</b> dans le processeur</li>
 			</ul>
 		</li>
 	</ul>
@@ -2463,59 +2526,12 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>La mémoire pour qui et pour quoi ?</h2>
-	<div class="slide-content">
-	<ul>
-		<li class="fragment"><b>Pour les processus</b>
-			<ul>
-				<li class="fragment">A la création d’un processus, l’OS crée
-					un <b>PCB</b> et <i>alloue de la mémoire</i> <br> pour le processus</li>
-
-				<li class="fragment"> Pour des raisons de <b>sécurité</b>, chaque <b>processus</b> doit utiliser 
-					<em>une zone mémoire  distincte</em> (<i>un espace d'adresses</i>).
-					<ul id="fleche">
-						<li class="fragment">Quel mécanisme d'<b>allocation</b> de cet espace ?</li>
-						<li class="fragment">Comment assurer la <b>protection</b> de cette zone ?</li>
-						<li class="fragment">Comment assurer la <b>transparence</b> de la position de cet espace 
-						 <br>	vis à vis d'un programme ?</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>La mémoire pour qui et pour quoi ?</h2>
-	<div class="slide-content">
-	<ul>
-		<li><b>Pour le système d'exploitation</b>
-		<ul>
-			<li class="fragment">L'OS aussi a besoin d'espace mémoire 
-				<ul id="fleche">
-					<li class="fragment">Code de son <b>Noyau</b> </li>
-					<li class="fragment">La table des <b>interruptions</b></li>
-					<li class="fragment">La table des <b>processus</b></li>
-					<li class="fragment">Des structures de données (<b>PCBs</b> et autres )</li>
-					<li class="fragment">...</li>
-				</ul>
-			</li>
-		</ul>
-		</li>
-	</ul>
-</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>D'où viennent les programmes?</h2>
 	<ul>
 		<li class="fragment">
 			Un programme (<i>code + données</i>) est chargé depuis le <b>disque</b> <br> vers la <b>mémoire</b> 
 			<span class="fragment">... il est placé à un endroit donné dans la mémoire</span>
-			<ul id="fleche"><li class="fragment"><b>Problème</b> : quelles sont les adresses des variables?</li></ul>
+			<ul id="fleche"><li class="fragment"><b>Problème</b> : quelles sont les adresses des variables en mémoire?</li></ul>
 		</li>
 		<li class="fragment skip">
 			L’<b>adresse virtuelle</b> (<i>adresse logique</i>) est une adresse  utilisée  <br> à l’intérieur d’un programme.
@@ -2545,9 +2561,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Intérêt des adresses virtuelles</h2>
 	<ul>
-		<li class="fragment">Possibilité d’utiliser des <b>adresses virtuelles</b> d’une <i>taille différente</i> <br> de celle des <b>adresses physiques</b>.</li>
+		<li class="fragment">Possibilité d’utiliser des <b>adresses virtuelles</b> d’une <i>taille différente</i> <br> 
+			de celle des <b>adresses physiques</b>.</li>
+
 		<li class="fragment skip"><i>Partage</i> efficace de l’<i>espace mémoire</i> entre processus.</li>
-		<li class="fragment skip">Traduction par le <b>MMU</b> des <b>adresses virtuelles</b> de plusieurs processus en <i>une même</i> <b>adresse physique</b> : 
+
+		<li class="fragment skip">Traduction par le <b>MMU</b> des <b>adresses virtuelles</b> de plusieurs processus <br> 
+			en <i>une même</i> <b>adresse physique</b> : 
 			<ul class="fragment"><li>variables partagées, librairie partagée, ...</li></ul>
 		</li>
 		<li class="fragment skip">Possibilité de <i>masquer la réalité</i> de la <b>mémoire physique</b>
@@ -2559,7 +2579,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Stratégies d’allocation de mémoire</h2>
+	<h2>Stratégies d’allocation <br> de mémoire</h2>
 	<ul>
 		<li class="fragment">Il faut choisir une stratégie pour <b>allouer et libérer la
 			mémoire</b> <br> en fonction des besoins des processus.</li>
@@ -2567,8 +2587,8 @@
 		<li class="fragment skip">
 			Deux stratégies possibles:
 			<ol>
-				<li class="fragment"><b>Allocation contiguë</b> de cases mémoire (<b>par partition</b>)</li>
-				<li class="fragment"><b>Allocation non contiguë</b> (<b>par pagination</b>)</li>
+				<li class="fragment"><b>Allocation contiguë</b> de cases mémoire (<strong>par partition</strong>)</li>
+				<li class="fragment"><b>Allocation non contiguë</b> (<strong>par pagination</strong>)</li>
 			</ol>
 		</li>
 	</ul>
@@ -2577,12 +2597,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Allocation par partition</h2>
-	<div class="default-block">
-		<ul>
-			<li><b style="color:navy">Principe</b> : Multiprogrammation et temps partagé <br>
-				<ul id="fleche"><li>placer les processus dans la mémoire</li></ul></li>
-		</ul>
-	</div>
+	
+	<p>
+		Les processus constituent <b>un seul bloc</b> non décomposable
+	</p>
 
 	<div class="skip r-stack">
 		<img class="fragment fade-in-then-out" src="./img/alloc-part-0.svg" width="60%" alt="">
@@ -2596,10 +2614,12 @@
 		<img class="fragment fade-in" src="./img/alloc-part-7.svg" width="60%" alt="">
 	</div>
 
-	<div data-id="uc1" class="fragment alert-block" style="margin-top: 50px;">
+	<div id="alert-block" data-id="uc1" class="fragment" style="margin-top: 50px;">
 		<div data-id="uc1">
-			<b style="color: red;">Problèmes</b> : <br>
-			Des trous apparaissent $\rightarrow$ <b style="color: red;">fragmentation</b>
+			<b>Problèmes</b> : <br>
+			<ul id="ko">
+				<li>des trous apparaissent $\rightarrow$ <b>fragmentation</b></li>
+			</ul>
 		</div>
 	</div>
 </section>
@@ -2608,12 +2628,15 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Allocation par partition</h2>
 
-	<div data-id="uc1" class="alert-block">
+	<div id="alert-block" data-id="uc1">
 		<div data-id="uc1">
-			<b style="color: red;">Problèmes</b> : <br>
-			Des trous apparaissent $\rightarrow$ <b style="color: red;">fragmentation</b>
+			<b>Problèmes</b> : <br>
+			<ul id="ko">
+				<li>des trous apparaissent $\rightarrow$ <b>fragmentation</b></li>
+				<li>les processus trop gros ne peuvent pas rentrer $\rightarrow$ <b>défragmenter</b></li>
+			</ul>
 		</div>
-		<span class="fragment">Les processus trop gros ne peuvent pas rentrer $\rightarrow$ <b style="color: red;">défragmenter</b></span> 
+		
 	</div>
 
 	<div class="skip r-stack">
@@ -2623,39 +2646,31 @@
 		<img class="fragment fade-in-then-out" src="./img/alloc-part-10.svg" width="60%"  alt="">
 		<img class="fragment fade-in" src="./img/alloc-part-11.svg" width="60%" alt="">
 	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Allocation par partition</h2>
-	<ul>
-		<li><b style="color: green;">Avantages</b>  
-			<ul id="ok"><li class="fragment">Simplicité matérielle</li></ul>
-		</li>
-		<li class="skip fragment"><b style="color: red;">Inconvénients</b> 
-			<ul id="ko">
-				<li class="fragment">Fragmentation</li>
-				<li class="fragment">Taille fixe des espaces mémoire (taille max à ne pas dépasser)</li>
-			</ul>
-		</li>
+
+	<ul id="fleche">
+		<li class="fragment d-skip">réduire la <b>fragmentation</b></li>
+		<li class="fragment">limiter les opérations de <b>défragmentation</b></li>
+		<li class="fragment">taille fixe des espaces mémoire (taille max à ne pas dépasser)</li>
 	</ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Allocation par pagination</h2>
-	<div class="default-block">
-		<b style="color:navy">Principe</b> : 
+
 		<ul>
 			<li class="fragment">Découper <b>la mémoire physique</b> en <b style="color: red;">blocs</b> (<b>frame</b>) 
 				de taille $T_c$, appelés <b style="color: red;">cadres de pages</b>.
 			</li>
-			<li class="fragment skip">Découper l'espace mémoire utilisé par un processus (<b>espace logique</b>) 
+			<li class="fragment skip">Découper l'espace mémoire utilisé par un processus (<b>espace logique</b>) <br>
 				en paquets de $x$ <b style="color: red;">pages</b> de taille $T_c$.
 				<ul class="fragment"><li>chaque page a la même taille qu'un bloc</li></ul>
 			</li>
+			<li class="fragment skip">
+				Placer les pages dans les cadres
+			</li>
 		</ul>
-	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2673,30 +2688,39 @@
 		<img class="fragment fade-in" src="./img/alloc-page-8.svg" width="80%" alt="">
 	</div>
 
-	<div data-id="ad" class="alert-block fragment" style="margin-top: 40px;">
-		<b style="color:red">Adressage</b> : <br>
-		Déterminer l'adresse <b style="color:red">physique</b> à partir de l'adresse <b style="color:red">logique</b>
+	<div id="alert-block" data-id="ad" class="fragment d-skip">
+		<b>Adressage</b> : <br>
+		<ul>
+			<li>Déterminer l'adresse <b>physique</b> à partir de l'adresse <b>logique</b></li>
+		</ul>
 	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Allocation par pagination</h2>
-	<div data-id="ad" class="alert-block">
-		<b style="color:red">Adressage</b> : <br>
-		Déterminer l'adresse <b style="color:red">physique</b> à partir de l'adresse <b style="color:red">logique</b>
-	</div>
-	<div class="green-block fragment">
+
+	<div id="alert-block" data-id="ad">
+		<b>Adressage</b> : <br>
 		<ul>
-			<li><b style="color:green">Adresse logique</b> 
+			<li>Déterminer l'adresse <b>physique</b> à partir de l'adresse <b>logique</b></li>
+		</ul>
+	</div>
+
+	<div id="green-block">
+		<ul>
+			<li><b>Adresse logique</b> 
 				<ul><li>Numéro de page ($n$ bits) + décalage ($m$ bits)</li></ul>
 			</li>
-			<li class="fragment">
-				<b style="color:green">Table des pages</b> <br>
-				Chaque processus maintient une liste:
+			<li class="fragment skip">
+				<b>Table des pages</b> <br>
 				<ul>
-					<li>numéro de page $\leftrightarrow$ numéro de cadre</li>
-					<li>c'est la <b style="color:red">table des pages</b></li>
+					<li>
+						Chaque processus maintient une liste:
+						<ul id="fleche">
+							<li>numéro de page $\leftrightarrow$ numéro de cadre</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -2720,10 +2744,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Résolution d'adresse</h2>
-	<div class="green-block">
-		<b style="color:green">Memory Management Unit</b> <br>
+	<div id="green-block">
+		
 		<ul>
-			<li class="fragment">En pratique, géré au niveau matériel : la <b style="color:green">MMU</b>
+			<li>Géré au niveau matériel : la <b>MMU</b> (<b>Memory Management Unit</b>)
 				<ul>
 					<li class="fragment">L'OS charge <b style="color:green">la table des pages du processus</b> dans la <b style="color:green">MMU</b></li>
 					<li class="fragment">Pas de calcul d'adresse au niveau de l'OS</li>
@@ -2731,14 +2755,14 @@
 			</li>
 		</ul>
 	</div>
-	<div class="alert-block fragment">
-		<b style="color:red">Allocation des cadres</b> <br>
+	<div id="alert-block" class="fragment">
+		<b>Allocation des cadres</b> <br>
 		<ul>
 			<li class="fragment">
 				Ne pas allouer le même cadre à deux processus différents
 				<ul>
 					<li class="fragment">L'OS doit savoir quel processus utilise quel cadre</li>
-					<li class="fragment"><b style="color:red">Table des cadres de pages libres</b></li>
+					<li class="fragment"><b>Table des cadres de pages libres</b></li>
 				</ul>
 			</li>
 		</ul>
@@ -2747,24 +2771,24 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Pagination hiérarchique</h2>
+	<h2>Gestion de l'espace d'adressage</h2>
 	<div class="alert-block fragment">
-		<b style="color:red">Problème $\rightarrow$ Grand espace d'adressage (ex: 32 bits)</b> <br>
+		<b style="color:red">Problème $\rightarrow$ Grand espace d'adressage (ex: $32$ bits)</b> <br>
 		<ul>
 			<li class="fragment">
-				Trop de pages (ex: $n=20$, $m=12$)
+				<em>Trop de pages</em> (ex: $n=20$, $m=12$)
 				<ul>
 					<li class="fragment">Grande table des pages $\rightarrow$ place mémoire perdue</li>
-					<li class="fragment">$2^{20}$ lignes de $20$ bits = 2,5 Mo par processus</li>
+					<li class="fragment">$2^{20}$ lignes de $20$ bits $\approx$ $2.5$ Mo par processus</li>
 					<li class="fragment">Allocation et commutation plus coûteuse en temps</li>
 				</ul>
 			</li>
 			<li class="fragment skip">
-				Pages trop grosses (ex: $n=10$, $m=22$)
+				<em>Pages trop grosses</em> (ex: $n=10$, $m=22$)
 				<ul>
-					<li class="fragment">Fragmentation = $2^{m-1}$ $\rightarrow$ place mémoire perdue</li>
+					<li class="fragment">Fragmentation $\approx$ $2^{m-1}$ $\rightarrow$ place mémoire perdue</li>
+					<li class="fragment">$2^{21}$ octets $\approx$ 2 Mo par processus</li>
 					<li class="fragment">Pas gérable au niveau du MMU</li>
-					<li class="fragment">$2^{21}$ octets = 2 Mo par processus</li>
 				</ul>
 			</li>
 		</ul>
@@ -2773,20 +2797,17 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Pagination hiérarchique</h2>
-	<div class="green-block">
-		<b style="color:green">Pagination à 2 niveaux (ou plus)</b> <br>
+	<h2>Pagination hiérarchique <br>2 niveaux (ou plus)</h2>
+
+	<div id="green-block">
+		<b>Paginer la table des pages</b> <br>
 		<ul>
-			<li class="fragment">
-				Paginer la table des pages (et ne charger que les tables utiles)
-				<ul>
-					<li class="fragment">Réduire la fragmentation due aux pages</li>
-					<li class="fragment">Réduire l'espace mémoire utilisé par le système d'adressage</li>
-				</ul>
-			</li>
+			<li class="fragment skip">ne charger que les tables utiles</li>
+			<li class="fragment">réduire l'espace mémoire utilisé par le système d'adressage</li>
+			<li class="fragment">réduire la fragmentation due aux pages</li>
 		</ul>
-		
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2806,21 +2827,27 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Allocation par pagination</h2>
+	<h2>Exemple</h2>
 	<ul>
-		<li class="fragment"><b style="color:green">Avantages</b> 
-			<ul id="ok">
-				<li class="fragment">Pas de fragmentation</li>
-				<li class="fragment">Il peut y avoir plus (ou moins) de blocs que de pages</li>
-				<li class="fragment">Un bloc peut être partagé par plusieurs processus (code, variables)</li>
-				<li class="fragment">Les blocs peuvent être protégés (lecture seule pour les codes)</li>
-				<li class="fragment">Possibilité d'agrandir un espace mémoire</li>
-			</ul>
-			
+		<li class="fragment">
+			Adressage sur $32$ bits et cadre de $4$ Ko $\to$ $m = 12$
 		</li>
-		<li class="skip fragment">
-			<b style="color:red">Inconvénients</b>
-			<ul id="ko"><li>Plus coûteux</li></ul>
+
+		<li class="fragment skip">
+			Pagination à $1$ niveau ($n = 20$ et $m = 12$)
+			<ul>
+				<li class="fragment">Table des pages $= 2^n$ ligne de $n$ bites</li>
+				<li class="fragment">Total $= 2^{20} \times 20 \approx 2.5$ Mo par processus</li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">
+			Pagination à $2$ niveaux ($n_1 = 10$, $n_2 = 10$ et $m = 12$)
+			<ul>
+				<li class="fragment">Répertoire (niveau $1$) $= 2^{10}$ lignes de $32$ bits $\approx 4$ Ko</li>
+				<li class="fragment">Table de page (niveau $2$) $= 2^{10}$ lignes de $20$ bits $\approx 2.5$ Ko</li>
+				<li class="fragment">Total entre $6.5$ Ko et $2.5$ Mo par processus</li>
+			</ul>
 		</li>
 	</ul>
 </section>
