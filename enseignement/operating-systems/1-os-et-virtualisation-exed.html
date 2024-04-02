@@ -37,7 +37,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
-<div class="slide-content">
+
 	<div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
@@ -45,11 +45,12 @@
 			</a>
 		</div>
 		<div class="right-logo">
-			<a href="https://exed.centralesupelec.fr/" target="_blank">
+			<a href="https://www.centralesupelec.fr" target="_blank">
 				<img src="../resources/img/logo-CS-Exed.png" alt="">
 			</a>
 		</div>
 	</div>
+
 
 	<div class="slide-content">
 		<h2>Systèmes d'exploitation <br> et Virtualisation</h2>
@@ -1860,7 +1861,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies d'Ordonnancement préemptif</h2>
+	<h2>De nombreuses stratégies <br> d'Ordonnancement préemptif</h2>
 
 	<ul>
 		<li class="fragment">FIFO sans préemption</li>
@@ -2861,8 +2862,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Nombre et taille des processus</h2>
-	<div class="skip fragment alert-block">
-		<b style="color:red">Problème</b> <br>
+	<div id="alert-block" class="skip fragment">
+		<b>Problème</b> <br>
 		
 		<ul>
 			<li>Entre 200 et 500 processus en parallèle sur un PC</li>
@@ -2881,19 +2882,19 @@
 		<li class="fragment">Données du jeu $\rightarrow$ pas tout en même temps</li>
 		<li class="fragment">Données d'un tableau $\rightarrow$ pas tout en même temps</li>
 		<li class="fragment">Bibliothèque $\rightarrow$ très variable!</li>
+		<div id="green-block" class="fragment d-skip">
+			<ul>
+				<li><b>Solution</b>
+					<ul id="fleche">
+						<li class="fragment">ne charger que les <i>pages utiles</i> (laisser le reste sur le disque)</li>
+						<li class="fragment">la <b>mémoire physique</b> sera un <b>cache</b> pour la <b>mémoire virtuelle</b></li>
+					</ul>
+	
+				</li>
+			</ul>	
+		</div>
 	</ul>
-
-	<div class="fragment green-block" style="margin-top: 50px;">
-		<ul>
-			<li><b style="color:green">Solution</b>
-				<ul id="fleche">
-					<li class="fragment">ne charger que les <i>pages utiles</i> (laisser le reste sur le disque)</li>
-					<li class="fragment">la <b>mémoire physique</b> sera un <b style="color:green">cache</b> pour la <b>mémoire virtuelle</b></li>
-				</ul>
-
-			</li>
-		</ul>	
-	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2904,8 +2905,8 @@
 			Extension des mécanismes de pagination
 			<ul>
 				<li class="fragment">
-					la mémoire paginée peut représenter 
-					des <i>espaces non présents en RAM</i>, (en <b>mémoire auxiliaire</b>) : <b>mémoire virtuelle</b>
+					la mémoire paginée peut représenter des <i>espaces non présents en RAM</i>, <br>
+					 (en <b>mémoire auxiliaire</b>) : <b>mémoire virtuelle</b>
 				</li>
 				<li class="fragment">
 					les pages sont soit en <b>RAM</b>, soit en <b>mémoire auxiliaire</b> (notion de <b>swap</b>)
@@ -2934,9 +2935,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Schéma du principe</h2>
-	<div class="fragment green-block">
-		<b style="color:green">Mémoire virtuelle</b> :
-		chaque processus peut <b>adresser</b> plus d'espace qu'il n'a effectivement en <b>mémoire physique</b>
+	<div id="green-block" class="fragment">
+		<b>Mémoire virtuelle</b> $\to$
+		chaque processus peut <b>adresser</b> plus d'espace <br> qu'il n'a effectivement en <b>mémoire physique</b>
 	</div>
 
 	<div class="r-stack">
@@ -2966,10 +2967,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Remplacement des pages</h2>
-	<div class="fragment default-block">
-		<b style="color:navy">Mémoire virtuelle</b>
+	<div id="default-block" class="fragment">
 		<ul>
-			<li id="fleche" class="fragment">Chaque processus dispose d'un <b style="color:navy">nombre de cadres limité</b>
+			<li id="fleche" class="fragment">Chaque processus dispose d'un <b>nombre de cadres limité</b>
 				<ul>
 					<li class="fragment">selon la politique d'allocation</li>
 					<li class="fragment">libérer un cadre lorsqu'on a besoin d'une nouvelle page</li>
@@ -2977,13 +2977,13 @@
 			</li>
 		</ul>
 	</div>
-	<div class="fragment alert-block">
-		<b style="color:red">Problème</b> <br>
+	<div id="alert-block" class="fragment">
+		<b>Problème</b> <br>
 		<ul>
-			<li class="fragment"><b style="color:red">Temps d'exécution</b> proportionnel au <b style="color:red">nombre de défaut de page</b>
+			<li class="fragment"><b>Temps d'exécution</b> proportionnel au <b>nombre de défaut de page</b>
 				<ul id="fleche"><li class="fragment">réduire le nombre de défauts de page</li></ul>
 			</li>
-			<li class="fragment skip">Quelle <b style="color:red">stratégie</b> pour choisir les pages à supprimer de la RAM ?	</li>
+			<li class="fragment skip">Quelle <b>stratégie</b> pour choisir les pages à supprimer de la RAM ?	</li>
 		</ul>
 	</div>
 </section>
@@ -2991,25 +2991,20 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Remplacement des pages</h2>
-	<div class="default-block">
-		<b style="color:navy">Algorithme de remplacement</b> <br>
-		Définir une <b style="color:navy">fonction</b> qui, étant donné l'état actuel (occupation <br> des cadres par des pages), 
-		décide <b style="color:navy">quel cadre doit être libéré</b>.
-	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Classes d'algorithmes</h2>
 	<ul>
-		<li class="fragment"><b>First In, First Out (FIFO)</b>
+		<div id="default-block">
+			<b>Algorithme de remplacement</b> <br>
+			Définir une <b>fonction</b> qui, étant donné l'état actuel (occupation <br> des cadres par des pages), 
+			décide <b>quel cadre doit être libéré</b>.
+		</div>
+		<li class="fragment d-skip">Algorithme <b>First In, First Out (FIFO)</b>
 			<ul>
 				<li class="fragment">retirer les pages les plus anciennes</li>
 				<li class="fragment">seconde chance</li>
 			</ul>
 		</li>
 		<li class="fragment skip">
-			<b>Basés sur l'utilisation des pages</b>
+			Algorithmes <b>basés sur l'utilisation des pages</b>
 				<ul>
 					<li class="fragment">la page la moins utilisée (<b>Least Frequently Used</b>)</li>
 					<li class="fragment">une page pas récemment utilisée (<b>Not Recently Used</b>)</li>
@@ -3096,15 +3091,15 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>La vue logique</h2>
 
-	<div  class="default-block">
-		<b style="color:navy">Fichier</b>  <br>
-		<ul><li>une <b>collection nommée</b> d'information accessibles <br> via un périphérique.</li></ul>
+	<div  id="default-block">
+		<b>Fichier</b>  <br>
+		<ul><li>une <b>collection nommée</b> d'information accessibles via un périphérique.</li></ul>
 	</div>
 	
 
-	<div  class="default-block fragment skip">
-		<b style="color:navy">Système de fichiers</b> (<b style="color:navy">File System - FS)</b> <br>
-		<ul><li>un ensemble de <b>structures de données</b> et de <b>fonctions</b> permettant
+	<div id="default-block"  class="fragment skip">
+		<b>Système de fichiers</b> (<b>File System - FS)</b> <br>
+		<ul><li>un ensemble de <b>structures de données</b> et de <b>fonctions</b> permettant <br>
 			à un OS de manipuler des fichiers.
 		</li></ul>
 	</div>
@@ -3181,13 +3176,7 @@
 					<li class="fragment">$1$ partition = $1$ ou $N$ disques (selon les OS)</li>
 				</ul>
 			</li>
-		<li class="skip fragment">
-			<b>Répertoire</b> (cas de structure à un niveau)
-			<ul>
-				<li class="fragment">un répertoire par partition $\rightarrow$ l'ensemble des FCB</li>
-				<li class="fragment">entrée : nom/identifiant $\rightarrow$ FCB</li>
-			</ul>
-		</li>
+		
 		</ul>
 	
 </section>
@@ -3198,18 +3187,19 @@
 
 	<img src="./img/rep-1.svg" width="70%"  alt="">
 
-	<div class="green-block fragment">
-		<b style="color:green">Exemples</b> <br>
-		<ul>
-			<li class="fragment"><b>MSDOS</b> et <b>Windows</b> : Taille limitée à 11 caractères
-				<ul id="fleche">
-					<li>8 noms + 3 extensions</li>
-					<li>$50^{11}$ fichiers max par répertoire ($\simeq$ $5.10^{18}$)</li>
-				</ul>
-			</li>
-			<li class="fragment"><b>Unix</b> et <b>Mac</b> : Taille limitée à 255 octets</li>
-		</ul>
-	</div>
+	<ul>
+		<li class="fragment">un répertoire par partition $\rightarrow$ l'ensemble des FCB</li>
+		<li class="fragment">entrée : nom/identifiant $\rightarrow$ FCB</li>
+
+		<div id="green-block" class="fragment">
+			<b>Exemples</b> <br>
+			<ul>
+				<li class="fragment"><b>MSDOS</b> et <b>Windows</b> : Taille limitée à 11 octets (8 noms + 3 extensions)</li>
+				<li class="fragment"><b>Unix</b> et <b>Mac</b> : Taille limitée à 255 octets</li>
+			</ul>
+		</div>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3217,13 +3207,15 @@
 	<h2>Structure à un niveau</h2>
 
 	<img src="./img/rep-1.svg" width="70%"  alt="">
-	<div class="slide-content">
-		<ul id="ok"><li class="skip">Nom $\rightarrow$ FCB</li></ul>
+
+	<ul>
+		<ul id="ok"><li>Identification simple (Nom $\rightarrow$ FCB)</li></ul> 
+
 		<ul id="ko">
 			<li class="fragment skip">Taille du répertoire proportionnelle au nombre de fichiers</li>
 			<li class="fragment">Utilisateur : organiser les fichiers, unicité de nom, ...</li>
 		</ul>
-	</div>
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3232,8 +3224,8 @@
 	<h2>Structure à deux niveaux</h2>
 	<img src="./img/rep-2.svg" width="70%"  alt="">
 
-	<div class="default-block fragment">
-		<b style="color:navy">Principe</b> <br>
+	<div id="default-block" class="fragment">
+		<b>Principe</b> <br>
 		<ul>
 			<li class="fragment">Répertoire des utilisateurs: <b>Master File Directory</b> (<b>MFD</b>)
 				<ul id="fleche"><li>Identifiant $\rightarrow$ User File Directory (UFD)</li></ul>
@@ -3248,8 +3240,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Structure à deux niveaux</h2>
+
 	<img src="./img/rep-2.svg" width="70%"  alt="">
-	<div class="slide-content skip">
+
+	<ul>
 		<ul id="ok">
 			<li>User + Nom $\rightarrow$ FCB</li>
 			<li class="fragment">Pas beaucoup plus coûteux en taille</li>
@@ -3259,15 +3253,17 @@
 			<li class="fragment skip">Taille des répertoires proportionnelle au nombre de fichiers</li>
 			<li class="fragment">Partage de fichiers</li>
 		</ul>
-	</div>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Structure arborescente</h2>
 	<img src="./img/rep-3.svg" width="45%"  alt="">
-	<div class="default-block fragment">
-		<b style="color:navy">Principe</b> : généralisation de la structure à 2 niveaux<br>
+
+	<div id="default-block" class="fragment">
+		<b>Principe</b> : généralisation de la structure à 2 niveaux<br>
 		<ul>
 			<li class="fragment"><b>Répertoire racine</b> (<b>MFD</b>)</li>
 			<li class="fragment"><b>Sous-répertoires</b>, pouvant à leur tour jouer le rôle de <b>MFD</b></li>
@@ -3278,15 +3274,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>implémentation</h2>
-	<div class="default-block fragment">
-		<b style="color:navy">Fichiers</b> <br>
+	<div id="default-block" class="fragment">
+		<b>Fichiers</b> <br>
 		<ul>
 			<li class="fragment"><b>Bit</b> «<em>répertoire</em>» dans le <b>FCB</b></li>
 			<li class="fragment"><b>Nom unique</b> = chemin depuis la racine (<b>chemin absolu</b>)</li>
 		</ul>
 	</div>
-	<div class="default-block fragment" style="margin-top:40px;">
-		<b style="color:navy">OS</b> <br>
+	<div id="default-block" class="fragment d-skip">
+		<b>OS</b> <br>
 		<ul>
 			<li class="fragment">
 				Répertoire courant (par processus)
@@ -3303,8 +3299,9 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Structure en graphe</h2>
 	<img src="./img/rep-4.svg" width="45%"  alt="">
-	<div class="default-block fragment">
-		<b style="color:navy">Principe</b> : généralisation de l'arbre avec des <b>liens</b><br>
+
+	<div id="default-block" class="fragment">
+		<b>Principe</b> : généralisation de l'arbre avec des <b>liens</b><br>
 		<ul>
 			<li class="fragment">Graphe <b>acyclique</b></li>
 		</ul>
@@ -3313,40 +3310,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Structure en graphe : liens</h2>
-	<ul>
-		<li class="fragment">
-			<b>Référencer</b> un fichier décrit dans un autre répertoire
-			<ul id="fleche"><li class="fragment"><b>bit</b> «<em>lien</em>» dans le répertoire + chemin absolu</li></ul>
-		</li>
-
-		<li class="fragment skip">
-			<b>Extension</b> : <b>duplication</b>
-			<ul id="fleche">
-				<li class="fragment"><b>FCB</b> recopié $\rightarrow$ copie et original indiscernables</li>
-				<li class="fragment">Compteur de liens (savoir quand libérer l'espace sur le support physique)</li>
-			</ul>
-		</li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Opérations sur un fichier</h2>
 		<ul>
 			<li class="fragment">
-				<b>Appels systèmes de base</b> <br>
-					<ul>
-						<li class="fragment"><code class="listing">Création</code> : allocation espace + entrée <b>répertoire</b></li>
-						<li class="fragment"><code class="listing">Lecture</code> : pointeur de lecture</li>
-						<li class="fragment"><code class="listing">Écriture</code> : pointeur d'écriture</li>
-						<li class="fragment"><code class="listing">Repositionnement</code> : déplacer un pointeur</li>
-						<li class="fragment"><code class="listing">Suppression</code> : retrait de l'entrée dans le répertoire</li>
-						<li class="fragment"><code class="listing">Troncature</code> : vider mais garder l'entrée</li>
-					</ul>
+				<b>Appels systèmes de base</b> 
+				<ul>
+					<li class="fragment"><code class="listing">Création</code> : allocation espace + entrée <b>répertoire</b></li>
+					<li class="fragment"><code class="listing">Lecture</code> : pointeur de lecture</li>
+					<li class="fragment"><code class="listing">Écriture</code> : pointeur d'écriture</li>
+					<li class="fragment"><code class="listing">Repositionnement</code> : déplacer un pointeur</li>
+					<li class="fragment"><code class="listing">Suppression</code> : retrait de l'entrée dans le répertoire</li>
+					<li class="fragment"><code class="listing">Troncature</code> : vider mais garder l'entrée</li>
+				</ul>
 			</li>
 			<li class="skip fragment ">
-				<b>Opérations composées</b> <br>
+				<b>Opérations composées</b>
 				<ul>
 					<li  class="fragment">
 						<b>Ex:</b> copie, renommage $\rightarrow$ effectuées à partir des appels systèmes de base
@@ -3359,8 +3337,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Ouverture de fichier</h2>
-	<div class="alert-block fragment">
-		<b style="color:red">Problème</b> <br>
+	<div id="alert-block" class="fragment">
+		<b>Problème</b> <br>
 		<ul>
 			<li  class="fragment">Nécessité d'accéder au <b>FCB</b> à chaque opération sur le fichier.</li>
 			<li  class="fragment">Le <b>FCB</b> est stocké dans le répertoire du périphérique.
@@ -3372,8 +3350,8 @@
 		
 	</div>
 
-	<div class="green-block fragment skip">
-		<b style="color:green">Solution</b> <br>
+	<div id="green-block" class="fragment skip">
+		<b>Solution</b> <br>
 		<ul>
 			<li>
 				L'appel système <code class="listing">open</code> permet de charger le <b>FCB</b> en mémoire.
@@ -3388,26 +3366,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Table des fichiers ouverts</h2>
-	<div class="default-block fragment">
-		<b style="color:navy">Stockage des <b>FCB</b> en RAM</b> <br>
+	<div id="default-block" class="fragment">
+		<b>Stockage des <b>FCB</b> en RAM</b> <br>
 		<ul>
 			<li class="fragment">
 				La <b>table des fichiers ouverts</b> de l'OS contient l'ensemble <br> des <b>FCB</b> des fichiers ouverts.
 				<ul>
 					<li class="fragment">Ouverture $\rightarrow$ chargement du <b>FCB</b> + ajout dans la table</li>
 					<li class="fragment">Fermeture $\rightarrow$ retrait de la table</li>
-					<li class="fragment">Pas d'impact sur le fichier!</li>
 				</ul>
 			</li>
 		</ul>
 	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Table des fichiers ouverts</h2>
-	<div class="default-block">
-		<b style="color:navy">Gestion par l'OS</b> <br>
+
+	<div id="default-block" class="fragment">
+		<b>Gestion par l'OS</b> <br>
 		<ul>
 			<li class="fragment"><b>Implicite</b> : <code  class="listing">open</code> au premier accès</li>
 			<li class="fragment"><b>Explicite</b> : <b style="color:red">exception</b>  si le fichier n'a pas été ouvert avant</li>
@@ -3430,25 +3403,21 @@
 	<ul>
 		<li class="fragment">
 			<b>La protection</b> permet de spécifier pour chaque fichier 
-			la liste <br> des sujets autorisés à effectuer un type d’accès : 
+			la liste des sujets autorisés <br> à effectuer un type d’accès : 
 			<ul id="fleche"><li><b style="color:red">ACL</b> 
 				(<b style="color:red">Access control list</b>).</li></ul>
 		</li>
 
 		<li class="skip fragment">
 			Dans les systèmes <a href="https://fr.wikipedia.org/wiki/POSIX" target="_blank">POSIX</a> on distingue :
-			<ul>
+			<ul id="fleche">
 				<li class="fragment"><b>3 modes</b> (lecture, écriture, exécution)</li>
 				<li class="fragment"><b>3 catégories</b> de sujets (le propriétaire, son groupe et le reste des sujets)</li>
 			</ul>
 		</li>
 	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Protections</h2>
-	<table class="skip" style="font-size: 0.8em;">
+
+	<table class="fragment d-skip" style="font-size: 0.8em;">
 		<thead>
 			<tr style="background-color: #92DBFA;">
 				<th></th>
@@ -3484,10 +3453,10 @@
 			est installé
 		</li>
 		<li class="fragment skip">L’<b>OS</b> rend disponible les divers <b>FS</b> déclarés dans 
-			<b>la table <br> de montage</b> (on parle aussi de <b>Volumes</b>)
+			<b>la table  de montage</b> <br> (on parle aussi de <b>Volumes</b>)
 		</li>
 		<li class="fragment skip">L’<b>OS</b> présente une <b>vue unifiée</b> des différents Volumes 
-			(<b>FS</b>) disponibles (<b>Virtual File System</b> - <b>VFS</b>)
+			(<b>FS</b>) disponibles <br> (<b>Virtual File System</b> - <b>VFS</b>)
 		</li>
 	</ul>
 </section>
@@ -3525,35 +3494,32 @@
 			style="margin-right: 60px;">
 		</div>
 	</div>
-	<div class="fragment alert-block" style="font-size: 0.7em;">
-		Le découpage en blocs génère de <b style="color:red">la fragmentation interne</b> 
-		(l’espace inutilisé du dernier bloc).
-	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Système de fichier</h2>
-	<div class="fragment alert-block">
-		<b style="color:red">Questions !</b> <br>
+	<div id="alert-block" class="fragment">
+		<b>Questions !</b> <br>
 		<ul>
 			<li>Comment stocker les données et les programmes sur le disque
 				<ul id="fleche">
-					<li class="fragment">Comment les <b>organiser</b> ?</li>
-					<li class="fragment">Comment y <b>accéder</b> ?</li>
+					<li class="fragment">comment les <b>organiser</b> ?</li>
+					<li class="fragment">comment y <b>accéder</b> ?</li>
 				</ul>
 			</li>	
 		</ul>
 	</div>
 
-	<div class="green-block fragment skip">
-		<b style="color:green;">Réponse !</b> <br>
+	<div id="green-block" class="fragment skip">
+		<b>Réponse !</b> <br>
 		<ul>
 			<li>
-				Définir une <b>norme</b> de gestion (<b>Ex:</b> <b>FAT</b>, <b>NTFS</b>, <b>EXT4FS</b>, <b>NFS</b> ...)
+				Définir une <b>norme</b> de gestion (<strong>Ex:</strong> <b>FAT</b>, <b>NTFS</b>, <b>EXT4FS</b>, <b>NFS</b> ...)
 				<ul id="fleche">
 					<li class="fragment">Organisation de l'ensemble des données et des périphériques</li>
-					<li class="fragment"><b>Ex:</b> <b>Linux</b> $\rightarrow$ chaque <b>périphérique</b> est représenté par un <b>fichier</b></li>
+					<li class="fragment"><strong>Ex:</strong> <b>Linux</b> $\rightarrow$ chaque <b>périphérique</b> est représenté par un <b>fichier</b></li>
 				</ul>
 			</li>
 		</ul>
@@ -3562,7 +3528,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Structure d'un système de fichiers</h2>
+	<h2>Structure d'un système <br> de fichiers</h2>
 	<ul>
 		<li class="fragment"><b>Système logique</b>
 			<ul>
@@ -3578,9 +3544,12 @@
 			</ul>
 		</li>
 		<li class="fragment skip"><b>Lien : pilote de périphérique</b>
-			<ul><li class="fragment"><i>Appel système</i> (<b>ex</b>: chargement bloc <i>456</i>) $\rightarrow$ instruction matériel</li></ul>
+			<ul>
+				<li class="fragment"><i>Appel système</i> (<b>ex</b>: chargement bloc <i>456</i>)</li>
+			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3597,60 +3566,19 @@
 			<b>Montage de répertoire</b> 
 			<ul><li>consiste à positionner un répertoire dans le système de fichier</li></ul>
 		</li>
+		<div id="default-block" class="fragment skip">
+			<b>Principe</b> <br>
+			<ul>
+				<li class="fragment"><b>Cas 1</b> : chargement du <b>FCB</b> par l'<b>OS</b> (disque $\rightarrow$ <b>RAM</b>)
+					<ul id="fleche"><li class="fragment">attribué à l'utilisateur du processus</li></ul>
+				</li>
+				<li class="fragment"><b>Cas 2</b> : association dans le <b>MFD</b> au niveau <b>logique</b>
+					<ul id="fleche"><li class="fragment">les fichiers deviennent accessibles</li></ul>
+				</li>
+			</ul>
+		</div>
 	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Montage de répertoire</h2>
-	<div class="default-block">
-		<b style="color:navy;">Principe</b> <br>
-		<ul>
-			<li class="fragment"><b>Cas 1</b> : chargement du <b>FCB</b> par l'<b>OS</b> (disque $\rightarrow$ <b>RAM</b>)
-				<ul id="fleche"><li class="fragment">attribué à l'utilisateur du processus</li></ul>
-			</li>
-			<li class="fragment"><b>Cas 2</b> : association dans le <b>MFD</b> au niveau <b>logique</b>
-				<ul id="fleche"><li class="fragment">les fichiers deviennent accessibles</li></ul>
-			</li>
-		</ul>
-	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Implémentation</h2>
-	<div class="default-block">
-		<b style="color:navy;">Sur le disque</b> <br>
-		<ul>
-			<li class="fragment"><b>Bloc de démarrage</b> (<b>Boot Control Block</b>) 
-				<ul id="fleche"><li>chargement de l'OS depuis une partition</li></ul>	
-			</li>
 
-			<li class="fragment"><b>Bloc de contrôle de partition</b> (<b>Volume Control Block</b>)
-				<ul id="fleche">
-					<li>nombre de blocs, leur taille,</li>
-					<li>les blocs libres, les structures de descriptions de fichiers libres, ...</li>
-				</ul>
-			</li>
-
-			<li class="fragment"><b>Bloc de contrôle de répertoire ou de fichier</b> (<b>FCB</b>)</li>
-		</ul>
-	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Implémentation</h2>
-	<div class="default-block">
-		<b style="color:navy;">Au niveau de l'OS</b> <br>
-		<ul>
-			<li class="fragment">Table des partitions/répertoires montés</li>
-			<li class="fragment">Cache des répertoires</li>
-			<li class="fragment">Table des fichiers ouverts (copie des <b>FCB</b>)</li>
-			<li class="fragment">Blocs logiques</li>
-		</ul>
-
-	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3678,89 +3606,45 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Structures sur disque</h2>
-	<ul>
-		<li class="fragment">
-			Suivant le <b>support physique</b> et le <b>critère que l’on souhaite optimiser</b>, 
-			différentes stratégies de stockage sont possibles.
-			<ul>
-				<li class="fragment">
-					<b>Supports physiques</b>
-					<ul id="fleche">
-						<li class="fragment">CD-R (pas de modification) </li>
-						<li class="fragment">bande (lecture séquentielle) </li>
-						<li class="fragment">disque dur (lecture séquentielle à privilégier)</li>
-						<li class="fragment">disque flash (lecture directe rapide)</li>
-					</ul>
-				</li>
-				<li class="fragment">
-					<b>Critères d’optimisation</b>
-					<ul id="fleche">
-						<li class="fragment">temps d’accès séquentiel </li>
-						<li class="fragment">temps d’accès direct</li>
-						<li class="fragment">espace</li>
-						<li class="fragment">évolution des fichiers (changement de taille, suppression, ajout)</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Allocation</h2>
-	<div class="fragment alert-block">
-		<b style="color:red">Problème</b> <br>
+	<div id="alert-block">
+		<b>Problème</b> <br>
 		<ul>
-			<li class="fragment"><b>Fichiers</b> $\rightarrow$ <b>blocs logiques</b> $\rightarrow$ <b>blocs physiques</b>
+			<li><b>Fichiers</b> $\rightarrow$ <b>blocs logiques</b> $\rightarrow$ <b>blocs physiques</b>
 				<ul id="fleche"><li class="fragment">choix des blocs physiques pour 1 fichier donné</li></ul>
 			</li>
 		</ul>
 	</div>
-	<div class="r-stack" style="margin-top: 70px;">
+
+	<div class="r-stack d-skip">
 		<img class="fragment fade-in-then-out" src="./img/alloc-0.svg" width="80%"  alt="">
 		<img class="fragment fade-in" src="./img/alloc-1.svg" width="80%" alt="">
 	</div>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Allocation</h2>
-	<div class="green-block">
-		<ul>
-			<li><b>Trois méthodes d'allocation possibles</b>: 
-				<ol>
-					<li class="fragment">allocation contiguë</li>
-					<li class="fragment">allocation chaînée</li>
-					<li class="fragment">allocation indexée</li>
-				</ol>
-			</li>
-			<li class="fragment skip">Chaque méthode a ses <b>avantages</b> 
-				et ses <b>inconvénients</b> !</li>
-		</ul>
+
+	<div id="green-block" class="fragment">
+		<b>Trois méthodes d'allocation possibles</b>: <br>
+		<ol>
+			<li class="fragment">allocation contiguë</li>
+			<li class="fragment">allocation chaînée</li>
+			<li class="fragment">allocation indexée</li>
+		</ol>
 	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>File Allocation Table (FAT)</h2>
-	<div class="fragment default-block">
-		<b style="color:navy;">Principe</b> <br>
+
+	<div id="default-block">
 		<ul>
 			<li class="fragment">Allocation <b>indexée</b></li>
 			<li class="fragment">Liste chaînée des <b>index</b> des blocs en <b>début de partition</b></li>
 			<li class="fragment">Utilisé sous <b>MSDOS</b> (<b>Intel</b>) et <b>OS/2</b> (<b>IBM</b>)</li>
 		</ul>
 	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>File Allocation Table (FAT)</h2>
 
-	<div class="r-stack" style="margin-top: 50px;">
+	<div class="r-stack skip">
 		<img class="fragment fade-in-then-out" src="./img/fat-0.svg" width="100%"  alt="">
 		<img class="fragment fade-in-then-out" src="./img/fat-1.svg" width="100%"  alt="">
 		<img class="fragment fade-in-then-out" src="./img/fat-2.svg" width="100%"  alt="">
@@ -3800,8 +3684,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Schéma combiné</h2>
-	<div class="fragment default-block">
-		<b style="color:navy;">Principe</b> <br>
+	<div id="default-block" class="fragment">
 		<ul>
 			
 			<li class="fragment">Combine l'<b>allocation chaînée</b> et l'<b>allocation indexée</b></li>
@@ -3814,13 +3697,8 @@
 			<li class="fragment">Utilisé par <b>Linux</b> (<b>EXTFS</b>)</li>
 		</ul>
 	</div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Schéma combiné</h2>
 
-	<div class="r-stack" style="margin-top: 50px;">
+	<div class="r-stack skip">
 		<img class="fragment fade-in-then-out" src="./img/extfs-0.svg" width="100%"  alt="">
 		<img class="fragment fade-in-then-out" src="./img/extfs-1.svg" width="100%"  alt="">
 		<img class="fragment fade-in-then-out" src="./img/extfs-2.svg" width="100%"  alt="">
@@ -3882,7 +3760,7 @@
 	<div class="slide-content">
 		<div data-id="t1">Les systèmes de fichiers récents peuvent offrir des services supplémentaires:</div> 
 		<ul>
-			<li><b>Déduplication</b>
+			<li class="skip"><b>Déduplication</b>
 				<ul><li><b style="color: black;">Exemple</b> : <b>BrtFS</b>, <b>SDFS</b>, <b>ZFS</b></li></ul>
 			</li>
 		</ul>
@@ -3902,7 +3780,7 @@
 	<div class="slide-content">
 		<div data-id="t1">Les systèmes de fichiers récents peuvent offrir des services supplémentaires:</div> 
 		<ul>
-			<li><b>Clichés instantanés (snapshots)</b>
+			<li class="skip"><b>Clichés instantanés (snapshots)</b>
 				<ul>
 					<li>Technologie de <b>Copy-On-Write</b></li>
 						<ul><li><b style="color: black;">Exemple</b> : <b>NTFS</b> (Volume Shadow Copy), Linux <b>LVM</b></li></ul>
@@ -3925,15 +3803,20 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Volume Logique</h2>
-	<div class="slide-content">
-		La gestion par <b>volume logique</b> (<b>LVM</b>), est une méthode 
+
+	<img src="./img/f36-LVM.png" width="400px"  alt="" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+
+	<div class="slide-content" style="display: block;">
+		La gestion par <b>volume logique</b> (<b>LVM</b>) est une méthode 
 		d’allocation d’espace disque plus flexible que le partitionnement classique.
 		<ul>
-			<li class="fragment">Les <b>volumes physiques</b> sont regroupés en groupe de volumes 
+			<li class="fragment skip">regroupés en groupe de volumes 
 				équivalent à des pseudo disques durs.</li>
-			<li class="fragment">Ils sont alors découpé en <b>volume logique</b> 
-				qui seront formatés <br> et montés dans le <b>FS</b>.</li>
-			<li class="fragment">C’est l’une des manière de <b>virtualiser le stockage</b> 
+
+			<li class="fragment skip">découpé en <b>volume logique</b> 
+				qui seront formatés et montés dans le <b>FS</b>.</li>
+
+			<li class="fragment skip">une manière de <b>virtualiser le stockage</b> 
 				qui permet beaucoup de flexibilité :
 				<ul id="fleche">
 					<li class="fragment">redimensionnement</li>
@@ -3947,18 +3830,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Volume Logique</h2>
-	<img src="./img/f36-LVM.png" width="45%"  alt="">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Volume Logique  (RAID)</h2>
-	<ul class="fragment">
+	<h2>Volume Logique  <br> (RAID)</h2>
+
+	<img src="./img/f37-RAID.png" width="35%"  alt="" style="float: right; margin-bottom: 20px; margin-left: 20px;">
+
+	<ul style="display: block;" class="fragment">
 		<li>Le <b>RAID</b> est un ensemble de <b>techniques de virtualisation</b> 
 		permettant de <em>répartir des données sur plusieurs disques durs</em> 
 		</li>
-		<li class="fragment"> Le <b>RAID</b> permet d'améliorer :
+		<li class="fragment skip"> Le <b>RAID</b> permet d'améliorer :
 			<ul id="fleche">
 				<li class="fragment">les performances, </li>
 				<li class="fragment">la sécurité </li>
@@ -3966,21 +3846,23 @@
 			</ul>
 		</li>
 	</ul>
-	<img src="./img/f37-RAID.png" width="35%"  alt="">
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les systèmes de fichier en réseau</h2>
+	<h2>Les systèmes de fichier <br> en réseau</h2>
 
 	<img src="./img/f38-cloud.jpg" height="250px"
-		style="float: right; margin-bottom: 20px; margin-right: 80px;">
+		style="float: right; margin-bottom: 20px; margin-left: 20px;">
 		
 	<ul style="display: block;">
-		<li class="fragment">Présentent des <b>ressources <br> de stockage réparties sur un réseau</b>. </li>
+		<li class="fragment">Présentent des <b>ressources  de stockage réparties <br> sur un réseau</b>. </li>
+
 		<li class="fragment skip">Masquent les <b>FS</b> sous-jacent <br> (<b style="color: black;">Ex.</b> : 
 			<b>NFS</b> de <b>Unix</b>, <b>CIFS</b> de <b>Microsoft</b>)</li>
-		<li class="fragment skip">Les nouvelles versions sont orientées <b>Cluster/Cloud</b>
+
+		<li class="fragment skip">Les nouvelles versions sont orientées <b>Cluster/Cloud</b> <br>
 			(<b style="color: black;">Ex.</b> : <b>Ceph</b>, <b>GlusterFS</b>, <b>GoogleFS/HadoopFS</b>, <b>RozoFS</b>)
 		</li>
 	</ul>
@@ -4000,11 +3882,12 @@
 	<ul>
 		<li class="fragment">Seul l’<b>OS</b> peut exécuter des <i>instructions privilégiées</i><br>
 			(mode <b>Superviseur</b> du <b>CPU</b>)
-			<ul><li class="fragment"><b style="color: black;">Ex.</b> : instructions de <i>bas niveau</i> (lecture/écritures de périphériques)</li></ul>
+			<ul><li class="fragment"><b style="color: black;">Ex.</b> : instructions de <i>bas niveau</i> 
+				(lecture/écritures de périphériques)</li></ul>
 		</li>
 
 		<li class="fragment skip">Les <i>espaces mémoires</i> de chaque processus et du
-			noyau sont <i>isolés</i> (<b>pagination</b>, <b>segmentation</b>)</li>
+			noyau sont <i>isolés</i> <br> (<b>pagination</b>, <b>segmentation</b>)</li>
 
 		<li class="fragment skip">Un processus monopolisant le <b>CPU</b> ne bloque pas le
 			système
@@ -4038,30 +3921,6 @@
 			</li>
 			<li class="fragment skip"><b>Droits sur des objets (DAC)</b>
 				<ul><li class="fragment">possibilité de positionner des droits sur les fichiers</li></ul>
-			</li>
-		</ul>
-	</div>
-	
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Autres mécanismes</h2>
-	<div class="slide-content">
-		<ul>
-			<li>
-				<b>Contrôle d’accès Obligatoire (MAC)</b>
-				<ul>
-					<li class="fragment">implémente des règles gérées par un administrateur
-						<ul id="fleche" class="fragment"><li><b style="color: black;">Exemple</b>: Selinux, Apparmor</li></ul>
-					</li>
-					
-				</ul>
-			</li>
-	
-			<li class="skip fragment">
-				<b>NameSpaces</b>, <b>Cgroups</b>, ...
-				<ul><li class="fragment">On va en reparler très prochainement...</li></ul>
 			</li>
 		</ul>
 	</div>
@@ -4106,7 +3965,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Avant la virtualisation</h2>
 	<div class="fragment slide-content">
-		<b class="mc">Deux approches</b> :
+		<b class="mc">Deux approches</b> : <br>
 		<ol>
 			<li class="fragment"><b>Un gros serveur</b> portant de nombreuses applications
 				<ul id="ko">
@@ -4176,7 +4035,8 @@
 	<img src="./img/vir7.png" width="50%" >
 	<ul>
 		<li class="fragment"><b>Un hyperviseur</b> est un composant logiciel 
-			qui gère les <b>interactions</b> entre les <b>machines virtuelles</b> et le <b>matériel sous-jacent</b>.</li>
+			qui gère les <b>interactions</b> <br> entre les <b>machines virtuelles</b> 
+			et le <b>matériel sous-jacent</b>.</li>
 	</ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4194,8 +4054,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Comment le CPU est virtualisé</h2>
+
 	<img src="./img/vir9.png" width="50%" >
-	<div class="fragment slide-content">
+
+	<div class="fragment">
 		L'<b>hyperviseur</b> planifie des <i>tranches de temps</i> sur la <b>CPU physique</b> <br> pour exécuter 
 		les instructions des <b>CPU virtuelles</b>.
 	</div>
@@ -4204,23 +4066,20 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Comment le CPU est virtualisé</h2>
-	<div class="slide-content">
-		<ul>
-			<li class="fragment">Les serveurs : <b>plusieurs processeurs</b> avec <b>plusieurs cœurs</b>.</li>
+	<ul>
+		<li class="fragment">Les serveurs : <b>plusieurs processeurs</b> avec <b>plusieurs cœurs</b>.</li>
 
-			<li class="fragment skip">Chaque <b>VM</b> peut avoir plusieurs <b>vCPU</b>.</li>
+		<li class="fragment skip">Chaque <b>VM</b> peut avoir plusieurs <b>vCPU</b>.</li>
 
-			<li class="fragment skip">L'<b>hyperviseur</b> ne mappe pas statiquement <b>vCPU</b> à un cœur.
-				<ul id="fleche">
-					<li class="fragment">une <b>VM</b> ne peut pas avoir plus de <b>vCPU</b> que le nombre total <br> 
-						de cœurs physiques.</li>
-					<li class="fragment">le nombre de <b>vCPU</b> sur toutes les <b>VM</b> 
-						peut dépasser le nombre total <br> de cœurs physiques.</li>
-				</ul></li>
-		</ul>
-		
-	</div>
-	
+		<li class="fragment skip">L'<b>hyperviseur</b> ne mappe pas statiquement <b>vCPU</b> à un cœur.
+			<ul id="fleche">
+				<li class="fragment">une <b>VM</b> ne peut pas avoir plus de <b>vCPU</b> que le nombre total <br> 
+					de cœurs physiques.</li>
+				<li class="fragment">le nombre de <b>vCPU</b> sur toutes les <b>VM</b> 
+					peut dépasser le nombre total <br> de cœurs physiques.</li>
+			</ul></li>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4273,7 +4132,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Pourquoi la conteneurisation ?</h2>
-	<div class="alert-block fragment" style="font-size: 30px; margin-top: 40px;">
+	<div id="alert-block" class=" fragment" style="font-size: 30px;">
 		<i>Gabriel N. Schenker</i> : 
 		Utiliser une <b>VM</b> pour packager une seule application revient <br> à utiliser 
 		<em>« un bateau gigantesque pour transporter un camion chargé de bananes ».</em>
@@ -4300,35 +4159,35 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Pourquoi la conteneurisation ?</h2>
-	<img src="./img/vir11.png" width="60%" >
-	<ul id="ko">
-		<li class="fragment">Chaque <b>application</b> est livrée avec un <b>"package différent"</b>.</li>
-		<li class="fragment"><b>Déploiement</b> dépend de l'application.</li>
-		<li class="fragment">Gestion de <b>dépendance</b> difficile en production.</li>
+	<img src="./img/vir11.png" width="50%" >
+
+	<ul >
+		<ul id="ko">
+			<li class="fragment">Chaque <b>application</b> est livrée avec un <b>"package différent"</b>.</li>
+			<li class="fragment"><b>Déploiement</b> dépend de l'application.</li>
+			<li class="fragment">Gestion de <b>dépendance</b> difficile en production.</li>
+		</ul>
+		
+
+		<div id="green-block" class="fragment">
+			<b>Solution</b> <br>
+			<ul id="fleche">
+				<li class="fragment"><b>Les conteneurs</b> standardisent le <b>développement</b> et le <b>déploiement</b>.</li>
+				<li class="fragment">Une excellente solution dans <b>un environnement cloud</b>.</li>
+			</ul>
+		</div>
 	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Pourquoi la conteneurisation ?</h2>
-	<div class="green-block">
-		<b style="color: green;">Solution</b> <br>
-	<ul>
-		<li class="fragment"><b>Les conteneurs</b> standardisent le <b>développement</b> <br> et le <b>déploiement</b> d'applications.</li>
-		<li class="fragment">Une excellente solution dans <b>un environnement cloud</b>.</li>
-	</ul>
-</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>C'est quoi un conteneur ?</h2>
 	<img class="fragment" src="./img/vir12.png" width="60%" >
-	<div class="default-block fragment">
+
+	<div id="default-block" class=" fragment" style="font-size: 0.9em;">
 		
-	<b>Une unité logicielle</b> qui regroupe le <b>code</b> et <b>toutes 
-			ses dépendances </b>
-			afin que l'application <b>s'exécute</b> rapidement et de manière fiable <b>d'un environnement à un autre</b>.
+		<b>Une unité logicielle</b> regroupant le <b>code</b> et <b>toutes ses dépendances </b>
+		pour une <b>exécution</b> rapide et fiable <b> de l'application d'un environnement à un autre</b>.
 	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4342,12 +4201,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Docker</h2>
 	<img src="./img/vir14.png" width="30%" >
-	<div class="default-block fragment">
+
+	<div id="default-block" class="fragment" style="font-size: 0.9em;">
 		<ul>
-			<li class="fragment"><b>Une plate-forme</b> ouverte pour le <b>développement</b>, la <b>livraison</b> <br> 
+			<li class="fragment"><b>Une plate-forme</b> ouverte pour le <b>développement</b>, la <b>livraison</b>  
 				et l'<b>exécution</b> d'applications. </li>
 			<li class="fragment">Il offre la possibilité de <b>packager</b> et d'<b>exécuter</b> 
-				une application dans un <b>environnement isolé</b> appelé <b>conteneur</b></li>
+				une application dans <br> un <b>environnement isolé</b> appelé <b>conteneur</b></li>
 		</ul>
 	</div>
 </section>
@@ -4358,10 +4218,10 @@
 	<img src="./img/vir14.png" width="30%" >
 	<ul>
 		<li><b>Docker</b> crée et exécute <i>un conteneur</i> à partir d'une <b>image</b>.</li>
-		<li class="skip fragment"><b>Image</b> : <b>modèle</b> en lecture seule avec <b>des instructions</b><br>  pour <b>créer</b> 
-			et <b>exécuter</b> un conteneur.</li>
-		<li class="skip fragment"><b>Image</b> contient tous <i>les fichiers nécessaires</i> pour exécuter <br> 
-			une application dans un conteneur.</li>
+		<li class="skip fragment"><b>Image</b> : <b>modèle</b> en lecture seule avec <b>des instructions</b>  
+			pour <b>créer</b> <br> et <b>exécuter</b> un conteneur.</li>
+		<li class="skip fragment"><b>Image</b> contient tous <i>les fichiers nécessaires</i> pour exécuter  <br>
+			une application <br> dans un conteneur.</li>
 	</ul>
 
 </section>
@@ -4385,7 +4245,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Les inconvénients</h2>
-	<div class="slide-content">
+
 	<ul id="ko">
 		<li class="fragment">Le <b>code</b> est <i>difficile à maintenir</i>.
 		</li>
@@ -4400,10 +4260,10 @@
 		</li>
 		
 	</ul>
-	<ul class="fragment"><li style="margin-top: 100px ; font-size: 0.8em !important;">
+	<ul class="fragment"><li style="margin-top: 100px ; font-size: 0.6em !important;">
 		<b class="mc">DevOps</b> : modularité, livraison, déploiement continus, isolation des pannes ...
 	</li></ul>
-</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4445,7 +4305,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Déployer des microservices</h2>
-	<div class="slide-content">
+
 	<ul>
 		<li class="fragment"><b>Sans virtualisation</b>
 			<ul>
@@ -4453,7 +4313,7 @@
 					<ul id="fleche"><li>chaque <b>hôte physique</b> exécute <i>plusieurs instances</i> de service.</li></ul>
 				</li>
 				<li class="fragment"><i>une seule instance</i> de service par <b>hôte</b>.
-					<ul id="fleche"><li>Chaque <b>hôte physique</b> exécute <i>une seule instance</i> de service.</li></ul>
+					<ul id="fleche"><li>chaque <b>hôte physique</b> exécute <i>une seule instance</i> de service.</li></ul>
 				</li>
 			</ul>
 		</li>
@@ -4472,7 +4332,7 @@
 			</ul>
 		</li>
 	</ul>
-</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4480,7 +4340,7 @@
 	<h2>Plusieurs instances par hôte</h2>
 
 	<img src="./img/vir3.png" width="50%" >
-	<div class="slide-content">
+	<ul>
 		<ul id="ok">
 			<li class="fragment"><b>Utilisation efficace</b> des ressources.</li>
 		</ul>
@@ -4493,7 +4353,7 @@
 				les services sont écrits dans <i>différents langages</i> et <i>frameworks</i>.
 			</li>
 		</ul>
-	</div>
+	</ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4501,7 +4361,7 @@
 	<h2>Instance de service par hôte</h2>
 
 	<img src="./img/vir4.png" width="50%" >
-	<div class="slide-content">
+	<ul>
 		<ul id="ok">
 			<li class="fragment"><b>Isolement</b> entre les instances de service.
 			</li>
@@ -4516,7 +4376,7 @@
 				<i>toutes les ressources</i> d'un hébergeur sont <i>dédiées à un seul service</i>.
 			</li>
 		</ul>
-	</div>
+	</ul>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4539,7 +4399,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Instance de service par VM</h2>
-	<div class="slide-content">
+	<ul>
 		<ul id=ok>
 			<li class="fragment"><b>Isolement</b> complet.
 			</li>
@@ -4560,7 +4420,7 @@
 				</ul>
 			</li>
 		</ul>
-	</div>
+	</ul>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
