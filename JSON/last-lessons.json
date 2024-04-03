@@ -43,11 +43,11 @@
             "target" : "_self"
         },   
         {
-            "title" : "Systèmes d'exploitation et virtualisation",
+            "title" : "Systèmes d'exploitation <br> et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "os-and-virtualisation",
-            "target" : "_self"
+            "link" : "https://csee.edunao.com/course/view.php?id=1656",
+            "target" : "_blank"
         },   
         {
             "title" : "Conception et Programmation Orientées Objet",
