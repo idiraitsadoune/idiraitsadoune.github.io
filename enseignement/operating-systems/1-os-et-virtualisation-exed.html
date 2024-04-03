@@ -3403,7 +3403,7 @@
 	<ul>
 		<li class="fragment">
 			<b>La protection</b> permet de spécifier pour chaque fichier 
-			la liste des sujets autorisés <br> à effectuer un type d’accès : 
+			la liste des sujets autorisés à effectuer un type d’accès : 
 			<ul id="fleche"><li><b style="color:red">ACL</b> 
 				(<b style="color:red">Access control list</b>).</li></ul>
 		</li>
@@ -3621,7 +3621,6 @@
 		<img class="fragment fade-in" src="./img/alloc-1.svg" width="80%" alt="">
 	</div>
 
-
 	<div id="green-block" class="fragment">
 		<b>Trois méthodes d'allocation possibles</b>: <br>
 		<ol>
@@ -3805,27 +3804,25 @@
 	<h2>Volume Logique</h2>
 
 	<img src="./img/f36-LVM.png" width="400px"  alt="" style="float: right; margin-bottom: 20px; margin-left: 40px;">
-
-	<div class="slide-content" style="display: block;">
+	
+	<ul style="display: block;">	
 		La gestion par <b>volume logique</b> (<b>LVM</b>) est une méthode 
 		d’allocation d’espace disque plus flexible que le partitionnement classique.
-		<ul>
-			<li class="fragment skip">regroupés en groupe de volumes 
-				équivalent à des pseudo disques durs.</li>
+		<li class="fragment skip">regroupés en groupe de volumes 
+			équivalent à des pseudo disques durs.</li>
 
-			<li class="fragment skip">découpé en <b>volume logique</b> 
-				qui seront formatés et montés dans le <b>FS</b>.</li>
+		<li class="fragment skip">découpé en <b>volume logique</b> 
+			qui seront formatés et montés dans le <b>FS</b>.</li>
 
-			<li class="fragment skip">une manière de <b>virtualiser le stockage</b> 
-				qui permet beaucoup de flexibilité :
-				<ul id="fleche">
-					<li class="fragment">redimensionnement</li>
-					<li class="fragment">tolérance aux pannes</li>
-				</ul>
+		<li class="fragment skip">une manière de <b>virtualiser le stockage</b> 
+			qui permet beaucoup de flexibilité :
+			<ul id="fleche">
+				<li class="fragment">redimensionnement</li>
+				<li class="fragment">tolérance aux pannes</li>
+			</ul>
+		</li>
+	</ul>
 
-			</li>
-		</ul>
-	</div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -4221,7 +4218,7 @@
 		<li class="skip fragment"><b>Image</b> : <b>modèle</b> en lecture seule avec <b>des instructions</b>  
 			pour <b>créer</b> <br> et <b>exécuter</b> un conteneur.</li>
 		<li class="skip fragment"><b>Image</b> contient tous <i>les fichiers nécessaires</i> pour exécuter  <br>
-			une application <br> dans un conteneur.</li>
+			une application  dans un conteneur.</li>
 	</ul>
 
 </section>
