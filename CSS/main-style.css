@@ -18,7 +18,8 @@
 }
 
 body{
-	font-family:'Inter Regular';
+	font-family: 'Inter Regular';
+	font-weight: normal;
 	font-size: 20px !important;
 }
 
@@ -30,6 +31,7 @@ a {
 
 b {
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	font-size: inherit !important;
 }
 
@@ -57,6 +59,7 @@ p {
 
 .section-title{
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	font-size: 50px;
 	color: #847894;
 	text-transform: uppercase;
@@ -66,6 +69,7 @@ p {
 
 .subsection-title{
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	font-size: 32px;
 	color: #847894;
 	margin-top: 10px;
@@ -148,7 +152,8 @@ p {
 
 .nav-link {
 	color: var(--cspurple) !important;
-	/*font-family: 'Inter Semi Bold' !important;*/
+	font-family: 'Inter Medium' !important;
+	font-weight: normal !important;
 	font-size: 16px !important;
 }
 
@@ -224,6 +229,7 @@ p {
 	color: white;
 	text-align: left;
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	font-size: 36px;
 	/*padding-top: 20px;*/
 }
@@ -329,6 +335,7 @@ p {
 
 .publication-title{
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 }
 /************************************************************/
 /* LAST LESSONS SECTION */
@@ -387,6 +394,7 @@ p {
 .lesson-title{
 	color: #775c9b;
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	font-size: 17px !important;
 	padding-top: 10px;
 }
@@ -419,6 +427,7 @@ p {
 .info-title{
 	font-size: 22px !important;
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	text-transform: uppercase;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -499,6 +508,7 @@ p {
 	color: #FFF;
 	font-size: 35px;
 	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 }
 
 .title-menu{
@@ -530,7 +540,8 @@ p {
 
 #lesson-chapters li{
 	list-style: none !important; 
-	font-weight:bold !important;
+	font-family: 'Inter Semi Bold' !important;
+	font-weight: normal !important;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #847894;
@@ -584,7 +595,8 @@ p {
 
 #all-lessens-list li{
 	list-style: none !important; 
-	font-weight:bold !important;
+	font-family: 'Inter Semi Bold'!important; 
+	font-weight: normal !important;
 	padding-top: 15px;
 	margin-left: 30px;
 }

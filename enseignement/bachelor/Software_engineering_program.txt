@@ -1,0 +1,7 @@
+# Software engineering
+1 - Introduction (différents paradigmes de programmation, POO)
+2 - UML - Diagramme de classes
+3 - UML - Quelques autres Diagrammes (cas d'utilisation, d'activités, de séquences)
+4 - Programmation OO avec Python 
+5 - Quelques patrons de conceptions
+6 - Cycles de développements
