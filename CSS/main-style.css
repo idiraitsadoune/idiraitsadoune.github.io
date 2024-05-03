@@ -61,6 +61,7 @@ h2, .subsection-title{
 }
 h2::before, .subsection-title::before{
 	content: "\2756";
+	margin-right: 10px;
 }
 
 h3{
