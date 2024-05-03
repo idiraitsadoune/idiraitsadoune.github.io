@@ -9,14 +9,6 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
-h3{
-	padding-top: 15px;
-	padding-bottom: 15px;
-	font-family: 'Inter Semi Bold';
-	font-style: italic;
-	color : var(--cspurple);
-}
-
 ol, ul {
 	margin-left: 25px !important;
 }
@@ -33,13 +25,17 @@ pre code{
 	margin-bottom: 5px !important;
 }
 
+mjx-math{
+	margin: -15px 0 !important;
+}
+
 .listing{
 	font-family: 'Monaco' !important; 
     font-size: 0.95em !important;
 	color:coral !important;
 }
 
-.default-block {
+#default-block, .default-block {
 	border: solid;
 	border-width: 3px;
 	border-color: navy;
@@ -51,7 +47,7 @@ pre code{
 	text-align: left;
 }
 
-.alert-block {
+#alert-block, .alert-block {
 	border: solid;
 	border-width: 3px;
 	border-color: red;
@@ -63,7 +59,7 @@ pre code{
 	text-align: left;
 }
 
-.green-block {
+#green-block, .green-block {
 	border: solid;
 	border-width: 3px;
 	border-color: green;
@@ -75,7 +71,7 @@ pre code{
 	text-align: left;
 }
 
-#orange-block {
+#orange-block, .orange-block{
 	border: solid;
 	border-width: 5px;
 	border-color: orangered;
@@ -90,64 +86,4 @@ pre code{
 	font-size: 32px;
 	font-family: 'Inter Semi Bold' !important;
 	font-size: 32px;
-}
-
-/* ************************** */
-/* listing */
-/* ************************** */
-
-.highlight pre{
-    font-family: Monaco,Consolas,Lucida Console,monospace !important; 
-    font-size: 0.9em;
-    padding: 0.5em;
-    background-color: #272822;
-    color: #f8f8f2;
-    tab-size: 2em;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    line-height: 1.5em;
-    word-wrap: break-word;
-    display: block;
-}
-
-/* 
-.highlight pre:first-line {
-    line-height: 0;
-}
-*/
-
-.go,.o,.na,.nc{
-    color: #fff ;
-}
-.p{
-    color: #f8f8f2;
-}
-.k,.kd, .kc{
-    color: #f92672 ;
-}
-.kt{
-    color: #66d9ef;  
-}
-.nb,.nf {
-    color: #a6e22e; 
-}
-.s2,.s{
-    color: #e6db74;
-}
-.gp, .mi, .mf{
-    color: #bf79db;
-}
-.nd, .c1, .cm{
-    color: #75715e;
-}
-.nb,.kd,.nf,.nc{
-    font-weight: bold ;
-}
-
-.kt{
-    font-style: italic;
-}
-
-mjx-math{
-	margin: -15px 0 !important;
 }

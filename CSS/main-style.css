@@ -41,23 +41,7 @@ p {
 	font-size: inherit !important;
 }
 
-.container{
-	width: var(--container-width);
-    max-width: var(--container-max-width);
-    margin-left: auto;
-    margin-right: auto;
-	font-size: inherit !important;
-}
-
-.section-form{
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
-	padding: 30px 30px;	
-}
-
-.section-title{
+h1, .section-title{
 	font-family: 'Inter Semi Bold' !important;
 	font-weight: normal !important;
 	font-size: 50px;
@@ -67,7 +51,7 @@ p {
 	margin-bottom: 20px;
 }
 
-.subsection-title{
+h2, .subsection-title{
 	font-family: 'Inter Semi Bold' !important;
 	font-weight: normal !important;
 	font-size: 32px;
@@ -75,8 +59,16 @@ p {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-.subsection-title::before{
+h2::before, .subsection-title::before{
 	content: "\2756";
+}
+
+h3{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Inter Semi Bold';
+	font-style: italic;
+	color : var(--cspurple);
 }
 
 .text-center{
@@ -98,6 +90,23 @@ p {
 	padding-bottom: 20px ;
 	font-size: 20px !important;
 }
+
+.container{
+	width: var(--container-width);
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+	font-size: inherit !important;
+}
+
+.section-form{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	padding: 30px 30px;	
+}
+
 /************************************************************/
 /* MENU STYLE ***************************/
 #nav-bar {
