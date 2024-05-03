@@ -14,7 +14,6 @@ export const MathJax3 = () => {
         tex: {
             inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ]  ]
         },
-        loader: {load: ['ui/lazy']},
         options: {
             skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
         },
@@ -22,7 +21,7 @@ export const MathJax3 = () => {
             ready: () => {
                 MathJax.startup.defaultReady();
                 MathJax.startup.promise.then(() => {
-                    Reveal.layout();
+                    deck.layout();
                 });
             }
         }
@@ -60,14 +59,14 @@ export const MathJax3 = () => {
             options.options = {...defaultOptions.options, ...revealOptions.options}
             options.startup = {...defaultOptions.startup, ...revealOptions.startup}
 
-            let url = options.mathjax || '../../enseignement/resources/MathJax/es5/tex-mml-chtml.js' // 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+            let url = options.mathjax || '../../enseignement/resources/MathJax/es5/tex-mml-chtml.js' //'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
             options.mathjax = null;
 
             window.MathJax = options;
 
             loadScript( url, function() {
                 // Reprocess equations in slides when they turn visible
-                Reveal.addEventListener( 'slidechanged', function( event ) {
+                deck.addEventListener( 'slidechanged', function( event ) {
                     MathJax.typeset();
                 } );
             } );
