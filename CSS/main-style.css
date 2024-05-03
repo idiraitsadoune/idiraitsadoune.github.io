@@ -72,6 +72,10 @@ h3{
 	color : var(--cspurple);
 }
 
+ol, ul {
+	margin-left: 25px !important;
+}
+
 .text-center{
 	text-align: center !important;
 }

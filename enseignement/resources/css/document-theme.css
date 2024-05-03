@@ -9,10 +9,6 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
-ol, ul {
-	margin-left: 25px !important;
-}
-
 pre code{
 	font-family: 'Monaco' !important; 
     font-size: 0.95em !important;
