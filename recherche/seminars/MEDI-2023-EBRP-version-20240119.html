@@ -84,30 +84,12 @@
 		</div>
 	</div>
 
-<!-- What I want to say. -->
-<aside class="notes">
-Hello everybody... <br>
-Before starting my presentation, I'd like to thank the MEDI conference organizers for allowing me to present my paper virtually. <br><br>
-
-So, I am Idir AIT SADOUNE, an associate professor at the Formal Method Laboratory and CentraleSupelec Engineers school, 
-a member of Paris-Saclay University. <br><br>
-
-In this talk, I will present my work using the theory plugin to extend the Event-B formal method to support floating-point numbers.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="plan">
-<!-- What I want to say. -->
-<aside class="notes">
-This presentation will follow the following outline.<br>
-I start my speech by giving a motivating example to illustrate why there is a need to use floating-point arithmetic <br>
-In the next part, I will detail the proposed approach and then show how the proposed theories improve the motivating example. <br>
-And at the end of my presentation, I will give a Conclusion and some future works.
-</aside>
-</section>
+<section id="plan"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -145,20 +127,6 @@ And at the end of my presentation, I will give a Conclusion and some future work
 			</ul>
 		</div>
 	</div>
-<!-- What I want to say. -->
-<aside class="notes">
-To illustrate our approach for extending the Event-B core with the floating-point numbers data type, we propose to model a system 
-that continuously calculates a moving object's speed. <br><br>
-
-The proposed Event-B model formalises two functional properties:
-PROP~1 specifying that the speed of the moving object is equal to the <i>traveled_distance</i> divided by the <i>measured_time</i>, and <br>
-PROP~2 specifying that when the <i>traveled_distance</i> is strictly positive, the <i>speed</i> of the moving object must also 
-be strictly positive <br> 
-In other words, the object moves when its speed differs from zero. <br><br>
-
-The main objective of this example is to show some modelling and validation problems that we can face when we analyse physical phenomena, 
-mainly when we use integer variables to handle small values and expressions that come from the physics laws.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -193,14 +161,7 @@ mainly when we use integer variables to handle small values and expressions that
 				</ul>
 			</li>
 		</ul>
-	</div>
-<!-- What I want to say. -->
-<aside class="notes">
-<i>traveled_distance</i>, <i>measured_time</i> and <i>speed</i> variables are used to formalise the properties of the moving object. <br>
-<i>starting_position</i> and <i>starting_time</i> variables are used to capture the starting point properties of the moving object. <br>
-the sixth invariant formalises the PROP 1 of our specification <br>
-when the seventh invariant formalises the PROP 2.
-</aside>	
+	</div>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -236,13 +197,6 @@ when the seventh invariant formalises the PROP 2.
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-<!-- What I want to say. -->
-<aside class="notes">	
-The proposed Event-B model contains two main events : <br><br>
-
-The first event, named <i>get_starting_point</i>, allows the capture of the starting point properties 
-of the moving object by initializing the <i>starting_position</i> and <i>starting_time</i> variables. 
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -278,15 +232,7 @@ of the moving object by initializing the <i>starting_position</i> and <i>startin
 			</li>
 			<li><span class="eb-cl">END</span></li>
 		</ul>
-	</div>
-<!-- What I want to say. -->
-<aside class="notes">	
-The second event of the proposed Event-B model is called <i>get_speed</i>. <br>
-It captures the new position of the moving object and calculates the new values of the <i>measured_time</i>, <i>traveled_distance</i>, 
-and $speed$ variables. <br>
-These new values depend on the initial position stored in the <i>starting_time</i> and <i>starting_position</i> variables captured 
-by the <i>get_starting_point$ event</i>.
-</aside>	
+	</div>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -314,20 +260,6 @@ by the <i>get_starting_point$ event</i>.
 		</li>
 	</ul>
 
-<aside class="notes">	
-From the model validation point of view, all the POs are green except the one maintaining the <i>@inv7</i> 
-invariant by the <i>get_speed</i> event. <br><br>
-
-For recall, this invariant formalises the  PROP~2 property of our system, specifying that 
-if the value of the <i>traveled_distance</i> variable is strictly positive, the <i>speed</i> variable must also be strictly positive. <br><br>
-
-However, in the <i>get_speed</i> event, the value of the expression <i>p - starting_position</i> can be less than 
-that of <i>t - starting_time</i>. <br>
-In this case, the new value of the <i>speed</i> variable becomes equal to zero while the one of the <i>traveled_distance</i> variable is not 
-because all variables of our model are integer variables, and the <i>division</i> Event-B operator makes an integer division. <br><br>
-
-For these reasons, this PO cannot be proved. 
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -338,22 +270,12 @@ For these reasons, this PO cannot be proved.
 		<b>The basic types and operators of the Event-B language <br> are not adapted to our needs</b> <br> 
 	</div>
 
-<aside class="notes">
-Conceptually, our model correctly specifies our requirements. <br>
-but the basic types and operators of the Event-B language are not adapted to our needs and do not allow us 
-to validate continuous behaviour requirements and manipulate small and big values simultaneously.
-</aside>
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="The proposed approach">
-<aside class="notes">
-For these reasons and others, we propose to develop a floating-point numbers theory using the theory plugin 
-to extend the Event-B type-checking system with the possibility of handling floating-point numbers.
-</aside>
-</section>
+<section id="ch2" name="The proposed approach"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -379,16 +301,7 @@ to extend the Event-B type-checking system with the possibility of handling floa
 			<li>The <b>operators</b> defined in the theory involve <b>no precision loss</b>.</li>
 		</ul>
 	</div>
-<aside class="notes">
-As known, the floating point is the most used method for representing and approximating real numbers in computer-based arithmetic. <br>
-Therefore, we propose to represent real numbers by using floating-point arithmetic. <br>
-This approach represents floating-point numbers using an integer called the <i>significand</i>, scaled by an integer <i>exponent</i>
-of a fixed <i>base</i>. <br><br>
-
-We have chosen that the <i>base</i> always equals ten in our models. <br>
-The proposed theory does not model limited precision floating point numbers. This implies that the operators 
-defined in the theory involve no precision loss.
-</aside>	
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -413,16 +326,7 @@ defined in the theory involve no precision loss.
 			</li>
 		</ol>
 	</div>
-<aside class="notes">
-To allow the Event-B language to embed this floating-point representation, 
-we need to define two theories: <br><br>
 
-the first one formalises the power operator that isn't included in the Event-B language 
-(the "^" caret Event-B operator is not implemented in the automated proofs supported by the Rodin platform, besides power 0 and 1), <br><br>
-
-and the second one formalises floating-point numbers by specifying the corresponding data type, the supported arithmetic operators, 
-and some axioms and theorems that characterise the proposed modelling.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -462,19 +366,7 @@ and some axioms and theorems that characterise the proposed modelling.
 		</li>
 		<li><span class="eb-cl">END</span></li>
 	</ul>
-<aside class="notes">
-In this theory, we have defined a power operator that uses natural exponents. The power operation with natural 
-exponents may be expressed with multiplication operations. <br><br>
-
-The definition of exponentiation as an iterated multiplication can be formalized using induction. 
-The base case is <i>x^0=1</i> and the recurrence is <i>x^n = x * x^(n-1)</i>.  <br><br>
 	
-For the case <i>0^0</i>, in contexts where only natural powers are considered, 0 to the power 0 is undefined 
-as specified in the  <i>wd</i> <i>condition</i> of the <i>pow</i> operator.<br><br>
-
-The proposed theory also contains some proven theorems formalising some exponent rules like the product rule, 
-the power rule, and the multiplying exponents rule.
-</aside>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -490,14 +382,7 @@ the power rule, and the multiplying exponents rule.
 		<li class="fragment skip">We have chosen to define the <span class="listing">pow</span> operator in a <b>single theory</b><br>
 			to offer the possibility of <b>reusing it</b> in other <b>Event-B</b> <i>components</i>.</li>
 	</ul>
-<aside class="notes">
-	Now, By using this theory, it becomes possible to prove, for example, that <i>5 pow 3 = 125</i>. <br><br>
-
-	The proofs of all theorems were made by induction following the rules defined by Cervelle and Gervais in the ABZ 2023 conference. <br><br> 
 	
-	Notice that we have chosen to define the $pow$ operator in a single theory to offer the possibility of reusing this operator in other Event-B 
-	components using the theory path mechanism available in the theory plugin.
-</aside>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -535,29 +420,7 @@ the power rule, and the multiplying exponents rule.
 			</li>
 		</ul>
 	</div>
-<aside class="notes">
-Let us describe the floating-point numbers theory. <br><br>
 
-The proposed theory formalizes a floating-point number by defining a new data type called <i>FLOAT_Type</i>. 
-This new data type provides the <i>NEW_FLOAT</i> 
-constructor that allows creating a floating-point number by giving the <i>significand</i> part and the <i>exponent</i> part.<br><br>
-
-Using the <i>NEW_FLOAT</i> constructor, we have defined constants like <i>F0</i> for the value 0 
-and <i>F1</i> for the value 1.<br><br>
-
-We have defined a set <i>FLOAT1_Type</i> containing all float numbers that differ from zero.  <br><br>
-
-This theory also provides the <i>FLOAT</i> operator that translates any Event-B integer value into the <i>FLOAT_Type</i>. <br><br>
-
-The floating-point theory redefines all essential numeric operators (comparison and calculation operators), 
-and the operator we have to define to overload 
-all the numeric operators is the left shift operator. This operator uses a positive offset to perform
- a left shift by multiplying the significand part by powers of ten.<br><br>
-
-To compare two numbers, we left-shift the number containing the biggest exponent to have the same exponent 
-as the other number. Then, when two numbers have the same exponents, 
-it's possible to compare them by comparing their significand parts. 
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -595,12 +458,7 @@ it's possible to compare them by comparing their significand parts.
 			</li>
 		</ul>
 	</div>
-<aside class="notes">
-In this way, we have defined the operators (=, >, >=, <, <=) comparing two floating-point numbers. <br><br>
 
-Using the same reasoning for the comparison, we have generalized the idea to the addition and subtraction operators. 
-A left shift of one of the two operands is necessary to perform the addition and subtraction operations. 
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -636,15 +494,7 @@ A left shift of one of the two operands is necessary to perform the addition and
 			</li>
 		</ul>
 	</div>
-<aside class="notes">
-However, the multiplication operation is performed by multiplying the significand parts of the two operands, and the resulting 
-exponent is obtained by adding the exponent parts of the two operands. <br><br> 
 
-The <i>f_pow</i> operator generalizes the <i>pow</i> operator for the floating-point numbers.  <br><br> 
-
-Finally, the floating-point data type is often used in laws of physics and scientific calculations. 
-Functions calculating the integer part, the fractional part, the floor function and the ceiling function are very useful.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -686,18 +536,7 @@ Functions calculating the integer part, the fractional part, the floor function 
 			</li>
 		</ul>
 	</div>
-<aside class="notes">
-While the proposed theory involves no precision loss for multiplication and addition, division sometimes induces a precision loss. 
-For example, we cannot precisely represent the result of 1/3 or 2/3. <br><br>
 
-That is why, for the case of the division and inverse operators, we have first defined the well-defined conditions. <br><br>
-To calculate the inverse of x, we must find a z, which we multiply by the significand part of x to obtain a power of ten. 
-(The value of z corresponds to the significand part of the result of the inverse of x). <br><br>
-
-For example, to calculate the inverse of 2.5, 4 corresponds to z, which does not exist for the inverse of 3. <br><br>
-
-The same reasoning is done for the division operator.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -740,14 +579,7 @@ The same reasoning is done for the division operator.
 			</li>
 		</ul>
 	</div>
-<aside class="notes">
-	These two well-definedness conditions are defined by the <i>inv_WD</i> and <i>div_WD</i> operators. <br><br>
 
-	Axiomatic definitions formalize <i>inverse</i> and <i>division</i> operators, and both 
-	are invocable if their well-defined conditions are true <br><br>
-	
-	The inverse of x is y if and only if y is the number we multiply by x to obtain <i>F1</i> <br><br>
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -792,9 +624,6 @@ The same reasoning is done for the division operator.
 		</ul>
 	</div>
 
-<aside class="notes">
-	and the result of dividing x by y is z, if and only if z is the number we multiply by y to obtain x
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -825,14 +654,6 @@ The same reasoning is done for the division operator.
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-
-<aside class="notes">
-The last part of the proposed theory contains a set of theorems that we have proved, 
-and that correspond to laws defining properties of arithmetic operators (equality, addition, and multiplication 
-are commutative, the order is total, 
-reflexive, anti-symmetric and transitive, addition and multiplication have an inverse, ...) 
-and others theorems combining the comparison operators and the arithmetic operators. 
-</aside>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -878,25 +699,12 @@ and others theorems combining the comparison operators and the arithmetic operat
 		</li>
 	</ul>
 
-<aside class="notes">
-Due to our choice to formalise unlimited precision floating-point numbers, 
-we can deduce some properties that are not true in the floating-point numbers world 
-(the associativity of addition and multiplication, for example).  <br><br>
-
-When this theory is refined towards any implementation (the IEEE Standard 754, for example), the developer must pay attention to this point.
-</aside>
-	
-
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="Revisiting the motivating example">
-	<aside class="notes">
-		So, now I will show how our moving object model is updated with the new theory plugin. 
-	</aside>
-</section>
+<section id="ch3" name="Revisiting the motivating example"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -918,9 +726,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 		<li class="skip">All <span class="listing">NATURAL</span> variables are typed by 
 			<span class="listing">PFLOAT_Type</span> set containing <i>positive floating-point numbers</i>.</li>
 	</ul>
-	<aside class="notes">
-		Since all our variables are Natural integers, we have defined a set called <i>PFLOAT_Type</i> containing all positive floating-point numbers.
-	</aside>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -945,10 +751,8 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		Here, we have the invariants clause of the initial Event-B model using integers and their associated arithmetic operators.
-	</aside>
-	</section>
+	
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
@@ -972,10 +776,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		Now, The obtained model is adapted using the equivalent operators from the proposed theory. <br>
-		The obtained Event-B machine contains almost the same invariants and the same events. 
-	</aside>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1001,10 +802,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		The only difference is the addition of the invariant concerning the well-definedness condition 
-		of the division operator used to formalise the speed of the moving object.	
-	</aside>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1041,10 +839,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		The same thing for the <i>get_speed</i> event <br>
-		Here, we have also the initial event using integers and their associated arithmetic operators.
-	</aside>
+
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1081,9 +876,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		Now, The obtained event is adapted using the equivalent operators from the floating-point numbers theory. 
-	</aside>
+
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1121,10 +914,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<li><span class="eb-cl">END</span></li>
 		</ul>
 	</div>
-	<aside class="notes">
-		As for the INVARIANTS clause, the only difference is the addition of the guard 
-		concerning the well-definedness condition of the division operator used to calculate the speed of the moving object.	
-	</aside>
+
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1149,33 +939,13 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			</div>
 		</div>
 	</div>
-	<aside class="notes">
-		From the model validation point of view, contrary to the initial model, all generated proof obligations have been proven. <br><br>
-
-		The problem with the invariant linked to the integer division operator no longer arises. <br>
-		The associated PO becomes green, and it has been proven using the interactive prover. 
-		As we have said, the <i>@inv8</i> formalises the following property: if the value of the <i>traveled_distance</i> variable 
-		is strictly positive, the <i>speed</i> variable must also be strictly positive. 
-		Even if in the <i>get_speed</i> event, the value of the <i>traveled_distance</i> can 
-		be less than that of <i>measured_time</i>, the new value of the $speed$ variable is never equal to zero because the value 
-		of <i>traveled_distance</i>
-		is also never equal to zero. All this is possible thanks to the new division operator specification, 
-		which acts on the floating-point numbers. 
-		<br><br>
-
-		This is one of the reasons that allow us to conclude that our floating-point numbers theory is more suitable 
-		than the basic integers of Event-B in modelling hybrid systems and continuous behaviors.
-	</aside>	
+	
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch4" name="Conclusion and futur works">
-	<aside class="notes">
-		After this small conclusion, I will continue with the general conclusion.
-	</aside>
-</section>
+<section id="ch4" name="Conclusion and future works"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1196,19 +966,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			</ul>
 		</li>
 	</ul>
-<aside class="notes">
-	In this work, we have proposed an approach using the theory plugin to extend the Event-B type-checking 
-	system with the possibility of handling floating-point numbers. <br><br>
 
-	We have developed a floating-point numbers theory that formalises a floating-point number using 
-	an integer <i>significand</i>, scaled by an integer <i>exponent</i> of a fixed <i>base</i> <br><br> 
-	
-	Our proposition includes an extension of the Event-B power operator to handle powers of ten more than 0 and 1. <br>
-	We have proposed an abstract representation of the floating-point numbers to offer the possibility to refine the proposed 
-	theory to any more concrete implementation. <br>
-	And finally, the proposed theory contains a set of theorems and associated rewrite and inference rules that 
-	can assist developers in the proving activities.
-</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1226,13 +984,6 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			</ul>
 		</li>
 	</ul>
-<aside class="notes">
-For the next step of our work, we plan to refine the proposed theory to the IEEE standard 754 of floating-point numbers representation. <br><br>
-
-Then, We consider the floating-point numbers theory the first step before developing a more general theory that will 
-formalise the standard units of measurement defined by the International System of Units. <br>
-I think that such theories will help many Event-B developers to model cyber-physical systems using the Event-B formal method. 
-</aside>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
