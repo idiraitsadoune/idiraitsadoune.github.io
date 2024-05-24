@@ -60,6 +60,8 @@ function render() {
     //console.log(vide);
     document.getElementById('pdf_renderer').style.marginTop = vide.toString().concat("px");
     document.getElementById('pdf_renderer').style.marginBottom = vide.toString().concat("px");
+
+    
   });
 }
 
