@@ -10,6 +10,7 @@
 :root {
 	--r-main-font-size: 35px;
 	--r-code-font: 'Monaco';
+	--r-link-color: #0271FF;
 }
 
 .reveal .slides>section {
@@ -187,7 +188,7 @@ em{
 }
 
 .listing{
-    font-size: 0.8em !important;
+    font-size: 0.9em !important;
     color:coral !important;
 }
 
@@ -198,7 +199,7 @@ em{
 #fleche li::before{
 	content: '\27A0';
 	display: inline-block;
-	color: #2a76dd;
+	color: var(--r-link-color);
 	height: 1.0em;
 	width: 1.2em;
 	margin-left: -1.2em;
