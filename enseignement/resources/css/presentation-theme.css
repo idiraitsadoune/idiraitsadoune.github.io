@@ -8,7 +8,7 @@
 /* ****************************************************** */
 /* general definitions */
 :root {
-	--r-main-font-size: 35px;
+	--r-main-font-size: 32px;
 	--r-code-font: 'Monaco';
 	--r-link-color: #0271FF;
 }
@@ -120,9 +120,11 @@ em{
 	position: relative;
 	list-style: none;
 	display: table;
-	margin: 10px 0;
+	margin: 10px 30px;
 	padding-left: 50px;
-	padding-right: 5px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 .item::before{
 	content: '';
@@ -138,7 +140,8 @@ em{
 .item a{
 	position: relative;
 	z-index: 10;
-	padding: 5px 10px;
+	padding: 5px 10px ;
+	margin-top: 10px !important;
 }
 
 .item::after{
@@ -156,7 +159,6 @@ em{
 .actif-item::before{
 	width: 100%;
 	background: var(--r-link-color);
-	
 }
 
 .actif-item a{
