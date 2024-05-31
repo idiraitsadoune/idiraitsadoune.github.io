@@ -29,3 +29,8 @@
 .eb-cm{
 	color:green;
 }
+
+.eb-code{
+	tab-size: 2 !important ;
+	padding: 3px 10px !important;
+}

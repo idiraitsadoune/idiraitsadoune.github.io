@@ -24,6 +24,7 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -277,7 +278,7 @@ public class Application {
 <section data-transition="fade-in fade-out">
 	<h2>Un autre Exemple</h2>
 
-	<pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
+<pre><code class="language-bash hljs" data-trim data-line-numbers>
 <script type="text/template">
 #!/bin/sh
 for fic in *.sh
@@ -346,7 +347,81 @@ exit 0
 		  );
 		}
 	</script></code></pre>
+
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Event-B code</h2>
+	
+<pre class="eb-code" data-id="eventb">
+<span class="eb-cl">MACHINE</span> mch_integer_version
+	...
+<span class="eb-cl">EVENTS</span>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<span class="eb-kw">any</span> p t
+			<span class="eb-cm">grd1:</span> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<span class="eb-cm">grd2:</span> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<span class="eb-kw">then</span>
+			<span class="eb-cm">act1:</span> traveled_distance $:=$ p $-$ starting_position
+			<span class="eb-cm">act2:</span> measured_time $:=$ t $-$ starting_time
+			<span class="eb-cm">act3:</span> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<span class="eb-kw">end</span>
+	...
+<span class="eb-cl">END</span>
+</pre>
+
+</section>	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Event-B code</h2>
+	
+<pre class="eb-code" data-id="eventb">
+<span class="eb-cl">MACHINE</span> mch_floating_point_version
+	...
+<span class="eb-cl">EVENTS</span>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<span class="eb-kw">any</span> p t
+			<span class="eb-cm">grd1:</span> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<span class="eb-cm">grd2:</span> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+		<span class="eb-kw">then</span>
+			<span class="eb-cm">act1:</span> traveled_distance $:=$ p minus starting_position
+			<span class="eb-cm">act2:</span> measured_time $:=$ t minus starting_time
+			<span class="eb-cm">act3:</span> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<span class="eb-kw">end</span>
+	...
+<span class="eb-cl">END</span>
+</pre>
+
+</section>	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Event-B code</h2>
+	
+<pre class="eb-code" data-id="eventb">
+<span class="eb-cl">MACHINE</span> mch_floating_point_version
+	...
+<span class="eb-cl">EVENTS</span>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<span class="eb-kw">any</span> p t
+			<span class="eb-cm">grd1:</span> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<span class="eb-cm">grd2:</span> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+			<span class="eb-cm">grd3:</span> div_WD(p minus starting_position, t minus starting_time)
+		<span class="eb-kw">then</span>
+			<span class="eb-cm">act1:</span> traveled_distance $:=$ p minus starting_position
+			<span class="eb-cm">act2:</span> measured_time $:=$ t minus starting_time
+			<span class="eb-cm">act3:</span> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<span class="eb-kw">end</span>
+	...
+<span class="eb-cl">END</span>
+</pre>
+
+</section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
