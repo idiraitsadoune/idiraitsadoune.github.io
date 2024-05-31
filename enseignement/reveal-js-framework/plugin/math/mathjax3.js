@@ -15,7 +15,8 @@ export const MathJax3 = () => {
             inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ]  ]
         },
         options: {
-            skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+            //skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+            skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea' ]
         },
         startup: {
             ready: () => {
