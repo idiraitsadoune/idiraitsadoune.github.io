@@ -5,20 +5,32 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
+#eb, .eb-code{
+	tab-size: 2 !important ;
+	padding: 3px 10px !important;
+	margin-left: auto; 
+	margin-right: auto;
+}
+
 #eb li{
 	font-family: 'Monaco' !important;  
 	list-style: none !important; 
 	font-size: 25px !important;
 }
 
-.eb-cl{
+.eb-cl, #eb b{
 	color:red;
 	font-weight: bold;
 }
 
-.eb-kw{
+.eb-kw, #eb i{
 	color:blue;
 	font-weight: bold;
+}
+
+.eb-cm, #eb u{
+	color:green;
+	text-decoration: none;
 }
 
 .eb-ev{
@@ -26,11 +38,3 @@
 	font-weight: bold;
 }
 
-.eb-cm{
-	color:green;
-}
-
-.eb-code{
-	tab-size: 2 !important ;
-	padding: 3px 10px !important;
-}

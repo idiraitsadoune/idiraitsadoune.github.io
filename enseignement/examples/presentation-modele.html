@@ -354,22 +354,22 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Event-B code</h2>
 	
-<pre class="eb-code" data-id="eventb">
-<span class="eb-cl">MACHINE</span> mch_integer_version
+<pre id="eb" data-id="eventb">
+<b>MACHINE</b> mch_integer_version
 	...
-<span class="eb-cl">EVENTS</span>
+<b>EVENTS</b>
 	...
 	get_speed $\mathrel{\widehat=}$ 
-		<span class="eb-kw">any</span> p t
-			<span class="eb-cm">grd1:</span> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
-			<span class="eb-cm">grd2:</span> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
-		<span class="eb-kw">then</span>
-			<span class="eb-cm">act1:</span> traveled_distance $:=$ p $-$ starting_position
-			<span class="eb-cm">act2:</span> measured_time $:=$ t $-$ starting_time
-			<span class="eb-cm">act3:</span> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
-		<span class="eb-kw">end</span>
+		<i>any</i> p t
+			<u>grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<u>grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<i>then</i>
+			<u>act1:</u> traveled_distance $:=$ p $-$ starting_position
+			<u>act2:</u> measured_time $:=$ t $-$ starting_time
+			<u>act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<i>end</i>
 	...
-<span class="eb-cl">END</span>
+<b>END</b>
 </pre>
 
 </section>	
@@ -378,22 +378,22 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Event-B code</h2>
 	
-<pre class="eb-code" data-id="eventb">
-<span class="eb-cl">MACHINE</span> mch_floating_point_version
+<pre id="eb" data-id="eventb">
+<b>MACHINE</b> mch_floating_point_version
 	...
-<span class="eb-cl">EVENTS</span>
+<b>EVENTS</b>
 	...
 	get_speed $\mathrel{\widehat=}$ 
-		<span class="eb-kw">any</span> p t
-			<span class="eb-cm">grd1:</span> p $\in$ PFLOAT_Type $\land$ p gt starting_position
-			<span class="eb-cm">grd2:</span> t $\in$ PFLOAT_Type $\land$ t gt starting_time
-		<span class="eb-kw">then</span>
-			<span class="eb-cm">act1:</span> traveled_distance $:=$ p minus starting_position
-			<span class="eb-cm">act2:</span> measured_time $:=$ t minus starting_time
-			<span class="eb-cm">act3:</span> speed $:=$ (p minus starting_position) div (t minus starting_time)
-		<span class="eb-kw">end</span>
+		<i>any</i> p t
+			<u>grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<u>grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+		<i>then</i>
+			<u>act1:</u> traveled_distance $:=$ p minus starting_position
+			<u>act2:</u> measured_time $:=$ t minus starting_time
+			<u>act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<i>end</i>
 	...
-<span class="eb-cl">END</span>
+<b>END</b>
 </pre>
 
 </section>	
@@ -402,23 +402,23 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Event-B code</h2>
 	
-<pre class="eb-code" data-id="eventb">
-<span class="eb-cl">MACHINE</span> mch_floating_point_version
+<pre id="eb" data-id="eventb">
+<b>MACHINE</b> mch_floating_point_version
 	...
-<span class="eb-cl">EVENTS</span>
+<b>EVENTS</b>
 	...
 	get_speed $\mathrel{\widehat=}$ 
-		<span class="eb-kw">any</span> p t
-			<span class="eb-cm">grd1:</span> p $\in$ PFLOAT_Type $\land$ p gt starting_position
-			<span class="eb-cm">grd2:</span> t $\in$ PFLOAT_Type $\land$ t gt starting_time
-			<span class="eb-cm">grd3:</span> div_WD(p minus starting_position, t minus starting_time)
-		<span class="eb-kw">then</span>
-			<span class="eb-cm">act1:</span> traveled_distance $:=$ p minus starting_position
-			<span class="eb-cm">act2:</span> measured_time $:=$ t minus starting_time
-			<span class="eb-cm">act3:</span> speed $:=$ (p minus starting_position) div (t minus starting_time)
-		<span class="eb-kw">end</span>
+		<i>any</i> p t
+			<u>grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<u>grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+			<u>grd3:</u> div_WD(p minus starting_position, t minus starting_time)
+		<i>then</i>
+			<u>act1:</u> traveled_distance $:=$ p minus starting_position
+			<u>act2:</u> measured_time $:=$ t minus starting_time
+			<u>act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<i>end</i>
 	...
-<span class="eb-cl">END</span>
+<b>END</b>
 </pre>
 
 </section>	
