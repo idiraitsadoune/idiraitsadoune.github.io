@@ -22,8 +22,6 @@
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
-	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/vs2015.min.css">
     <link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
 
 	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
@@ -304,6 +302,7 @@ of using operators and the correctness of refinement.
 				<li>theorems,</li>
 				<li>associated rewrite and inference rules.</li>
 			</ul>
+		</li>
 	</ul>
 <!-- What I want to say. -->
 <aside class="notes">
@@ -342,7 +341,7 @@ and associated rewrite and inference rules.
 						</li>
 						<li><span class="eb-kw">axioms</span>
 							<ul>
-								<li>A</li>
+								<li>$A$</li>
 							</ul>
 						</li>
 					</ul>
@@ -1574,11 +1573,7 @@ I think that such theories will help many Event-B developers to model cyber-phys
 	<script src="../../enseignement/resources/js/plan-en.js"></script>
 
 	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/zoom/zoom.js"></script>
 	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
 	<script src="../../enseignement/reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
@@ -1606,7 +1601,7 @@ I think that such theories will help many Event-B developers to model cyber-phys
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealMath.MathJax3, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false }); 	

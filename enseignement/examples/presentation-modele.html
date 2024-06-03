@@ -300,61 +300,10 @@ exit 0
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2 data-id="code-title">Pretty Code</h2>
-	<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-		import React, { useState } from 'react';
-
-		function Example() {
-		  const [count, setCount] = useState(0);
-
-		  return (
-			...
-		  );
-		}
-	</code></pre>
-	<p>Code syntax highlighting courtesy of <a href="https://highlightjs.org/usage/">highlight.js</a>.</p>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2 data-id="code-title">With Animations</h2>
-	<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|4,8-11|17|22-24"><script type="text/template">
-		import React, { useState } from 'react';
-
-		function Example() {
-		  const [count, setCount] = useState(0);
-
-		  return (
-			<div>
-			  <p>You clicked {count} times</p>
-			  <button onClick={() => setCount(count + 1)}>
-				Click me
-			  </button>
-			</div>
-		  );
-		}
-
-		function SecondExample() {
-		  const [count, setCount] = useState(0);
-
-		  return (
-			<div>
-			  <p>You clicked {count} times</p>
-			  <button onClick={() => setCount(count + 1)}>
-				Click me
-			  </button>
-			</div>
-		  );
-		}
-	</script></code></pre>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
     <h2>Event-B code</h2>
-	
-<pre id="eb" data-id="eventb">
+
+<div class="eb-code">
+<pre id="eb">
 <b>MACHINE</b> mch_integer_version
 	...
 <b>EVENTS</b>
@@ -371,55 +320,7 @@ exit 0
 	...
 <b>END</b>
 </pre>
-
-</section>	
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Event-B code</h2>
-	
-<pre id="eb" data-id="eventb">
-<b>MACHINE</b> mch_floating_point_version
-	...
-<b>EVENTS</b>
-	...
-	get_speed $\mathrel{\widehat=}$ 
-		<i>any</i> p t
-			<u>grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
-			<u>grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
-		<i>then</i>
-			<u>act1:</u> traveled_distance $:=$ p minus starting_position
-			<u>act2:</u> measured_time $:=$ t minus starting_time
-			<u>act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
-		<i>end</i>
-	...
-<b>END</b>
-</pre>
-
-</section>	
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Event-B code</h2>
-	
-<pre id="eb" data-id="eventb">
-<b>MACHINE</b> mch_floating_point_version
-	...
-<b>EVENTS</b>
-	...
-	get_speed $\mathrel{\widehat=}$ 
-		<i>any</i> p t
-			<u>grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
-			<u>grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
-			<u>grd3:</u> div_WD(p minus starting_position, t minus starting_time)
-		<i>then</i>
-			<u>act1:</u> traveled_distance $:=$ p minus starting_position
-			<u>act2:</u> measured_time $:=$ t minus starting_time
-			<u>act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
-		<i>end</i>
-	...
-<b>END</b>
-</pre>
+</div>
 
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
