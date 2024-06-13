@@ -44,7 +44,7 @@ function main_plan() {
 
     const p_element = document.createElement("p");
     section_element.appendChild(p_element);
-    p_element.setAttribute("style", "font-size: 30px !important  ;");
+    p_element.setAttribute("style", "font-size: 25px !important  ;");
 
     const a1_element = document.createElement("a");
     a1_element.setAttribute("href", "#/plan");
@@ -110,7 +110,7 @@ function at_begin_section() {
 
         const p_element = document.createElement("p");
         section_element.appendChild(p_element);
-        p_element.setAttribute("style", "font-size: 30px !important  ;");
+        p_element.setAttribute("style", "font-size: 25px !important  ;");
 
         const a1_element = document.createElement("a");
         a1_element.setAttribute("href", "#/plan");
