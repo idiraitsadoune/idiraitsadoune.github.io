@@ -76,10 +76,9 @@
 <!-- What I want to say. -->
 <aside class="notes">
 	Hello everybody... <br><br>
-
-	I am Idir AIT SADOUNE, associate professor at CentraleSupelec Engineers School and member of the LMF Laboratory. <br><br>
 	
-	In this talk, I present my work about extending the Event-B method type-checking system to support floating-point numbers using the Theory plugin.
+	In this talk, I present my work about extending the Event-B method type-checking system to support floating-point 
+	numbers using the Theory plugin.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -153,7 +152,8 @@
 	<h2>Using Event-B method</h2>
 	<ul>
 		<li>
-			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support the construction and verification of <b>Event-B models</b>.
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support the construction and verification 
+			of <b>Event-B models</b>.
 		</li>
 		<li class="fragment skip">The use of the <b>Event-B method</b> has continued to increase.
 			<ul>
@@ -167,12 +167,14 @@
 	</ul>
 <!-- What I want to say. -->
 <aside class="notes">
-	The Rodin platform is the most used IDE to develop with the Event-B method. It offers the possibility to write models, generate proof obligations and prove them.
+	The Rodin platform is the most used IDE to develop with the Event-B method. It offers the possibility to write models, 
+	generate proof obligations and prove them.
 	<br><br>
 	Since its invention, the use of Event-B has continued to increase, and it has been applied to various applications 
 	and domains like railway, automotive, aeronautics, cybersecurity, nuclear-energy,  ... 
 	<br><br>
-	So, the Event-B method is practical and adapted to analyse discrete systems, and its typing system offers the possibility of modelling discrete behaviours.
+	So, the Event-B method is practical and adapted to analyse discrete systems, and its typing system offers 
+	the possibility of modelling discrete behaviours.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -253,7 +255,7 @@ $event$ $\mathrel{\widehat=}$
 <!-- What I want to say. -->
 <aside class="notes">
 	An Event-B model is made of two component types: machines and contexts. <br>
-	The machines contain the dynamic parts of the model that can correspond to a set of states and transitions. 
+	The machines contain the dynamic parts of the model, formalising a state of a system that evolves thanks to a set of events. <br>
 	In contrast, the contexts contain the static parts defined by axiomatisations and theories. <br>
 	A machine can refine another machine, and a context can be extended by another context. <br>
 	Moreover, a machine can see one or several contexts. <br><br>
@@ -272,14 +274,18 @@ $event$ $\mathrel{\widehat=}$
 	As for the CONTEXT, the THEOREMS clause is used to define properties that can be deduced from the invariants.<br>
 	Finally, the model's behaviour is defined in the EVENTS clause by a set of events that occur in a given model. <br><br>
 
-	In Event-B, each event is characterized by its guard and the actions performed when the guard is true. <br>
-	One of the important concepts when modelling by Event-B is the refinement process. The refinement operation offered by 
-	Event-B encodes model decomposition. A system is decomposed into another system with more and more design decisions while 
+	In Event-B, an event can be parametrised. An event is characterised by its guard and actions executed when the guard is true. <br>
+	Here, the action is expressed by what we call the before-after predicate, which gives us the relation between the current state 
+	and the next after executing the event.
+	<br><br>
+	One of the important concepts when modelling with Event-B is the refinement process. 
+	The refinement encodes model decomposition. A system is decomposed into another system with more and more design decisions while 
 	moving from an abstract level to a concrete one. <br>
 	Since refinement is not used in the proposed approach, I prefer not to give more details about this process. <br><br>
 
 
-	From a verification point of view, proof obligations are associated with any Event-B model. They define the formal semantics associated with each Event-B component. <br>
+	From a verification point of view, proof obligations are associated with any Event-B model. They define the formal 
+	semantics associated with each Event-B component. <br>
 	Briefly, I give here a list of the most generated and used PO rules: <br>
 	These two POs ensure that the theorems of a context or machine are provable.  <br><br>
 
@@ -296,7 +302,9 @@ $event$ $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>The theory plugin</h2>
 	<ul>
-		<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <b>the Event-B mathematical language</b> and <b>the Rodin proving infrastructure</b>.</li>
+		<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <b>the Event-B mathematical language</b> and <b>
+			the Rodin proving infrastructure</b>.</li>
+
 		<li class="fragment skip">An <b>Event-B theory</b> can contain : 
 			<ul>
 				<li>new datatype definitions,</li>
@@ -306,10 +314,12 @@ $event$ $\mathrel{\widehat=}$
 				<li>associated rewrite and inference rules.</li>
 			</ul>
 		</li>
+
 		<li style="font-size: 15px; margin-top: 80px;">
 			Michael J. Butler and Issam Maamria. <br> <span style="font-style: italic;">Practical theory extension in Event-B.</span> 
 			<a href="https://link.springer.com/chapter/10.1007/978-3-642-39698-4_5" target="_blank">Theories of Programming and Formal Methods. 2013</a>.
 		</li>
+
 		<li style="font-size: 15px;">
 			Thai Son Hoang, Laurent Voisin, Asieh Salehi, Michael J. Butler, Toby Wilkinson, and Nicolas Beauger. <br>
 			<span style="font-style: italic;">Theory plug-in for Rodin 3.x. </span> 
@@ -322,9 +332,11 @@ $event$ $\mathrel{\widehat=}$
 <aside class="notes">
 	Since The Rodin platform is an Eclipse-based IDE and is extensible by plugins, the Theory plugin was developed by Issam Maamria during his PHD. 
 	<br><br>
-	This plug-in enables modellers to extend the mathematical modelling notation for Event-B, with accompanying support for reasoning about the extended language. 
+	This plug-in enables modellers to extend the mathematical modelling notation for Event-B, with accompanying support for reasoning 
+	about the extended language. 
 	<br><br>
-	In other words, the theory plugin extends the Rodin platform by providing a new syntax to define mathematical and prover extensions with the theory component.
+	In other words, the theory plugin extends the Rodin platform by providing a new syntax to define mathematical and prover extensions 
+	with the theory component.
 	<br><br>
 	A theory is used to define new data-types, polymorphic operators, axioms, theorems and associated rewrite and inference rules.
 </aside>
@@ -427,9 +439,12 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	
 <!-- What I want to say. -->
 <aside class="notes">
-	########################## <br>
 	To illustrate our approach for extending the Event-B core with the floating-point numbers data type, we propose to model a system 
 	that continuously calculates a moving object's speed. 
+	<br><br>
+	As we can see in this picture, in our system, we have two moments that can correspond to two main events : <br>
+	In the first moment, we capture the initial information about time and position.<br>
+	and In the second moment, we capture new information about the time and the distance travelled.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -438,11 +453,11 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	<h2>A simple example</h2>
 
 	<ul>
-		<li>Analyzing <b>two functional properties</b>:
+		<li>Analysing <b>two functional properties</b>:
 			<ul>
-				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$traveled\_distance$</code> <br>
+				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$distance\_travelled$</code> <br>
 					divided by the <code class="listing">$measured\_time$</code>  (<code class="listing">$v = d/t$</code>).</li>
-				<li class="fragment"><strong>PROP-2</strong> : when the <code class="listing">$traveled\_distance$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
+				<li class="fragment"><strong>PROP-2</strong> : when the <code class="listing">$distance\_travelled$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
 					of the moving object must also be <i>strictly positive</i>.
 					<ul><li> <b>the object moves</b> when its <code class="listing">$speed$</code> is different from zero.</li></ul>
 				</li>
@@ -453,7 +468,7 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	<div id="green-block" class="d-skip fragment" style="width: 80%;">
 		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <b style="color: red;">problems</b> :<br> 
 		<ul>
-			<li class="fragment">analyzing <b>physical phenomena</b>.
+			<li class="fragment">analysing <b>physical phenomena</b>.
 				<ul><li>expressions that come from <i>the physics laws</i>.</li></ul>
 			</li>
 			<li  class="fragment">using <b>integer</b> variables to handle <b>small values</b>.</li>
@@ -462,13 +477,13 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	
 <!-- What I want to say. -->
 <aside class="notes">
-The proposed Event-B model formalises two functional properties:
-PROP~1 specifying that the speed of the moving object is equal to the "traveled_distance" divided by the "measured_time", and <br>
-PROP~2 specifying that when the "traveled_distance" is strictly positive, the "speed" of the moving object must also 
+The target Event-B model will formalise two main functional properties: <br>
+The first property called -PROP~1- and specifying that the speed of the moving object is equal to the "distance_travelled" divided by the "measured_time",<br>
+And the second property called -PROP~2- and specifying that when the "distance_travelled" is strictly positive, the "speed" of the moving object must also 
 be strictly positive <br> 
-In other words, the object moves when its speed differs from zero. <br><br>
-
-The main objective of this example is to show some modelling and validation problems that we can face when we analyse physical phenomena, 
+In other words, the object moves when its speed differs from zero. 
+<br><br>
+The main objective of this example is to show some modelling and verification problems that we can face when we analyse physical phenomena, 
 mainly when we use integer variables to handle small values and expressions that come from the physics laws.
 </aside>
 </section>
@@ -478,11 +493,11 @@ mainly when we use integer variables to handle small values and expressions that
 	<h2>The Event-B model</h2>
 
 	<ul>
-		<li>Analyzing <b>two functional properties</b>:
+		<li>Analysing <b>two functional properties</b>:
 			<ul>
-				<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$traveled\_distance$</code> <br>
+				<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$distance\_travelled$</code> <br>
 					divided by the <code class="listing">$measured\_time$</code>  (<code class="listing">$v = d/t$</code>).</li>
-				<li><strong>PROP-2</strong> : when the <code class="listing">$traveled\_distance$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
+				<li><strong>PROP-2</strong> : when the <code class="listing">$distance\_travelled$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
 					of the moving object must also be <i>strictly positive</i>.
 					<ul><li> <b>the object moves</b> when its <code class="listing">$speed$</code> is different from zero.</li></ul>
 				</li>
@@ -495,22 +510,24 @@ mainly when we use integer variables to handle small values and expressions that
 <b>MACHINE</b> mch_integer_version
 ...
 <b>INVARIANTS</b>
-	<u>@inv1:</u> traveled_distance $\in$ $\mathbb N$
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
 	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
 	<u>@inv3:</u> speed $\in$ $\mathbb N$
 	<u>@inv4:</u> starting_position $\in$ $\mathbb N$
 	<u>@inv5:</u> starting_time $\in$ $\mathbb N$
 </pre>
 <pre id="eb" class="fragment">
-	<u>@inv6:</u> speed $=$ traveled_distance $\div$ measured_time <u>// PROP-1</u>
-	<u>@inv7:</u> traveled_distance $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$ <u>// PROP-2</u>
+	<u>@inv6:</u> speed $=$ distance_travelled $\div$ measured_time <u>// PROP-1</u>
+	<u>@inv7:</u> distance_travelled $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$ <u>// PROP-2</u>
 </pre>
 </div>
 	
 <!-- What I want to say. -->
 <aside class="notes">
-"traveled_distance", "measured_time" and "speed" variables are used to formalise the properties of the moving object. <br>
-"starting_position" and "starting_time" variables are used to capture the starting point properties of the moving object. <br>
+We define a model that contains the following state variables : <br>
+"starting_position" and "starting_time" variables used to capture the starting point information of the moving object. <br>
+and, "distance_travelled", "measured_time" and "speed" variables used to formalise the state of the moving object after performing a movement. <br>
+<br>
 the sixth invariant formalises the PROP 1 of our specification <br>
 when the seventh invariant formalises the PROP 2.
 </aside>	
@@ -552,7 +569,7 @@ when the seventh invariant formalises the PROP 2.
 			<u>@grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
 			<u>@grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
 		<i>then</i>
-			<u>@act1:</u> traveled_distance $:=$ p $-$ starting_position
+			<u>@act1:</u> distance_travelled $:=$ p $-$ starting_position
 			<u>@act2:</u> measured_time $:=$ t $-$ starting_time
 			<u>@act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
 		<i>end</i>
@@ -565,14 +582,13 @@ when the seventh invariant formalises the PROP 2.
 <aside class="notes">	
 The proposed Event-B model contains two main events : <br><br>
 
-The first event, named "get_starting_point", allows the capture of the starting point properties 
-of the moving object by initializing the "starting_position" and "starting_time" variables. <br><br>
+The first event, called "get_starting_point", allows the capture of the starting point information 
+of the moving object by initialising the "starting_position" and "starting_time" variables. <br><br>
 
-The second event of the proposed Event-B model is called "get_speed". <br>
-It captures the new position of the moving object and calculates the new values of the "measured_time", "traveled_distance", 
-and "speed" variables. <br>
+And the second event of the proposed Event-B model, called "get_speed", that captures the new position of the moving 
+object and calculates the new values of the "measured_time", "distance_travelled", and "speed" variables. <br>
 These new values depend on the initial position stored in the "starting_time" and "starting_position" variables captured 
-by the "get_starting_point" event.
+by the previous event.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -588,19 +604,20 @@ by the "get_starting_point" event.
 			invariant by the <code class="listing">$get\_speed$</code> event.</li>
 
 		<li class="fragment skip">This invariant formalises the <b>PROP 2</b> property.
-			<ul><li><b>the object moves</b> (<code class="listing">$traveled\_distance \neq 0$</code>) <br> when <code class="listing">$speed \neq 0$</code>.</li></ul>
+			<ul><li><b>the object moves</b> (<code class="listing">$distance\_travelled \neq 0$</code>) <br> 
+				when <code class="listing">$speed \neq 0$</code>.</li></ul>
 		</li>
 
 		<li class="fragment skip">The <code class="listing">$get\_speed$</code> event calculates the new value <br> 
-			of <code class="listing">$traveled\_distance$</code>
+			of <code class="listing">$distance\_travelled$</code>
 				that can be <code class="listing">$\lt$</code> the new value <br> 
 				of <code class="listing">$measured\_time$</code>.
 			<ul id="fleche" class="fragment">
 				<li>the new value of <code class="listing">$speed$</code> <br>
-					(<code class="listing">$traveled\_distance$ $\div$ $measured\_time$</code>) <br> 
-					can be	<code class="listing">$=$ $0$</code> while <code class="listing">$traveled\_distance \neq 0$</code> 
+					(<code class="listing">$distance\_travelled$ $\div$ $measured\_time$</code>) <br> 
+					can be	<code class="listing">$=$ $0$</code> while <code class="listing">$distance\_travelled \neq 0$</code> 
 				</li>
-				<li>
+				<li class="fragment">
 					<code class="listing">$\div$</code> makes <b>an integer division</b>
 				</li>
 			</ul>
@@ -608,18 +625,18 @@ by the "get_starting_point" event.
 	</ul>
 
 <aside class="notes">	
-From the model validation point of view, all the POs are green except the one maintaining the "@inv7" 
+From the model verification point of view, all the POs are green except the one maintaining the "@inv7" 
 invariant by the "get_speed" event. <br><br>
 
 For recall, this invariant formalises the  PROP~2 property of our system, specifying that 
-if the value of the "traveled_distance" variable is strictly positive, the "speed" variable must also be strictly positive. <br><br>
+if the value of the "distance_travelled" variable is strictly positive, the "speed" variable must also be strictly positive. <br><br>
 
 However, in the "get_speed" event, the value of the expression "p - starting_position" can be less than 
 that of "t - starting_time". <br>
-In this case, the new value of the "speed" variable becomes equal to zero while the one of the "traveled_distance" variable is not 
+In this case, the new value of the "speed" variable becomes equal to zero while the one of the "distance_travelled" variable is not 
 because all variables of our model are integer variables, and the "division" Event-B operator makes an integer division. <br><br>
 
-For these reasons, this PO cannot be proved. 
+For these reasons, this PO cannot be proven. 
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -634,7 +651,7 @@ For these reasons, this PO cannot be proved.
 <aside class="notes">
 Conceptually, our model correctly specifies our requirements. <br>
 but the basic types and operators of the Event-B language are not adapted to our needs and do not allow us 
-to validate continuous behaviour requirements and manipulate small and big values simultaneously.
+to verify continuous behaviour requirements and manipulate small and big values simultaneously.
 </aside>
 </section>	
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -678,9 +695,11 @@ Therefore, we propose to represent real numbers by using floating-point arithmet
 This approach represents floating-point numbers using an integer called the "significand", scaled by an integer "exponent"
 of a fixed "base". <br><br>
 
-We have chosen that the "base" always equals ten in our models. <br>
-The proposed theory does not model limited precision floating point numbers. This implies that the operators 
-defined in the theory involve no precision loss.
+We have chosen that the "base" always equals ten in our models. 
+<br><br>
+
+The proposed theory does not model floating point numbers with limited precision. 
+This implies that the operators defined in the theory involve no precision loss. We will discuss the impact of this choice later.
 </aside>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -693,13 +712,13 @@ defined in the theory involve no precision loss.
 			To allow the <b>Event-B language</b> to <i>embed</i> this <b>FP representation</b>, <br>
 			we need to define two theories:
 			<ol>
-				<li class="fragment skip">the first one formalises <b>the power operator</b>. 
+				<li class="fragment skip">the first theory formalises <b>the power operator</b>. 
 					<ul id="ko">
 						<li class="fragment"><i><span class="listing">^</span> operator</i> is <b style="color: red;">not implemented</b> 
-							in the automated proofs besides <span class="listing">^0</span> and <span class="listing">^1</span>.</li>
+							in the provers besides <span class="listing">^0</span> and <span class="listing">^1</span>.</li>
 					</ul>
 				</li>
-				<li class="fragment skip">the second one formalises <b>floating-point numbers</b> by specifying: 
+				<li class="fragment skip">the second theory formalises <b>floating-point numbers</b> by specifying: 
 					<ul id="fleche">
 						<li>the corresponding <i>data type</i>,</li>
 						<li>the supported <i>arithmetic operators</i>,</li>
@@ -715,10 +734,11 @@ defined in the theory involve no precision loss.
 To allow the Event-B language to embed this floating-point representation, 
 we need to define two theories: <br><br>
 
-the first one formalises the power operator that isn't included in the Event-B language 
-(the "^" caret Event-B operator is not implemented in the automated proofs supported by the Rodin platform, besides power 0 and 1), <br><br>
+the first theory formalises the power operator that isn't included in the Event-B language 
+(the "^" caret operator available in Event-B language is not implemented in the provers 
+supported by the Rodin platform, besides power 0 and 1), <br><br>
 
-and the second one formalises floating-point numbers by specifying the corresponding data type, the supported arithmetic operators, 
+and the second theory formalises floating-point numbers by specifying the corresponding data type, the supported arithmetic operators, 
 and some axioms and theorems that characterise the proposed modelling.
 </aside>
 </section>
@@ -766,7 +786,7 @@ The definition of exponentiation as an iterated multiplication can be formalized
 The base case is "x^0=1" and the recurrence is "x^n = x * x^(n-1)".  <br><br>
 	
 For the case "0^0", in contexts where only natural powers are considered, 0 to the power 0 is undefined 
-as specified in the  wd condition of the "pow" operator.<br><br>
+as specified in the  well definedness condition of the "pow" operator.<br><br>
 
 The proposed theory also contains some proven theorems formalising some exponent rules like the product rule, 
 the power rule, and the multiplying exponents rule.
@@ -785,6 +805,13 @@ the power rule, and the multiplying exponents rule.
 
 		<li class="fragment skip">We have chosen to define the <span class="listing">pow</span> operator in a <b>single theory</b><br>
 			to offer the possibility of <b>reusing it</b> in other <b>Event-B</b> <i>developments</i>.</li>
+
+		
+		<li style="font-size: 15px; margin-top: 100px;">
+			Julien Cervelle and Frédéric Gervais.<br>
+			<span style="font-style: italic;">Introducing Inductive Construction in B with the Theory Plugin</span>. 
+			<a href="https://link.springer.com/chapter/10.1007/978-3-031-33163-3_4" target="_blank">ABZ, 2023</a>.
+		</li>
 	</ul>
 <aside class="notes">
 	Now, By using this theory, it becomes possible to prove, for example, that "5 pow 3 = 125". <br><br>
@@ -846,7 +873,8 @@ Let us describe the floating-point numbers theory. <br><br>
 
 The proposed theory formalizes a floating-point number by defining a new data type called FLOAT_Type. 
 This new data type provides the NEW_FLOAT 
-constructor that allows creating a floating-point number by giving the "significand" part and the "exponent" part.<br><br>
+constructor that allows creating a floating-point number by giving the "significand" part "s" and the "exponent" part "e".
+<br><br>
 
 Using the NEW_FLOAT constructor, we have defined constants like F0 for the value 0 
 and F1 for the value 1.<br><br>
@@ -855,16 +883,16 @@ We have defined a set FLOAT1_Type containing all float numbers that differ from 
 
 This theory also provides the FLOAT operator that translates any Event-B integer value into the FLOAT_Type. <br><br>
 
-The floating-point theory redefines all essential numeric operators (comparison and calculation operators), 
-and the operator we have to define to overload 
-all the numeric operators is the left shift operator. This operator uses a positive offset to perform
-	a left shift by multiplying the significand part by powers of ten.<br><br>
+The floating-point theory redefines all essential arithmetic operators, essentially comparison and calculation operators. <br>
+The operator we have to define to overload 
+all arithmetic operators is the left shift operator. This operator uses a positive offset to perform
+a left shift by multiplying the significand part by a power of ten corresponding to an offset.<br><br>
 
-To compare two numbers, we left-shift the number containing the biggest exponent to have the same exponent 
+So, to compare two numbers, we left-shift the number containing the biggest exponent to have the same exponent 
 as the other number. Then, when two numbers have the same exponents, 
-it's possible to compare them by comparing their significand parts. <br><br>
+it's possible to compare them only by comparing their significand parts. <br><br>
 
-In this way, we have defined the operators (=, >, >=, <, <=) comparing two floating-point numbers. 
+By this way, we have defined the operators (=, >, >=, <, <=) comparing two floating-point numbers. 
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -907,16 +935,16 @@ In this way, we have defined the operators (=, >, >=, <, <=) comparing two float
 	</div>
 
 <aside class="notes">
-Using the same reasoning for the comparison, we have generalized the idea to the addition and subtraction operators. 
-A left shift of one of the two operands is necessary to perform the addition and subtraction operations. <br><br>
+Using the same reasoning for the comparison, we have generalised the idea to the addition and substraction operators. 
+A left shift of one of the two operands is necessary to perform the addition and substraction operations. <br><br>
 
 However, the multiplication operation is performed by multiplying the significand parts of the two operands, and the resulting 
 exponent is obtained by adding the exponent parts of the two operands. <br><br> 
 
-The "f_pow" operator generalizes the "pow" operator for the floating-point numbers.  <br><br> 
+Also, the "f_pow" operator generalises the defined "pow" operator for the floating-point numbers.  <br><br> 
 
-Finally, the floating-point data type is often used in laws of physics and scientific calculations. 
-Functions calculating the integer part, the fractional part, the floor function and the ceiling function are very useful.
+Finally, the floating-point data type is often used in physics laws and scientific calculations. 
+So, functions calculating the integer part, fractional part, the floor function and the ceiling function are very useful.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -933,7 +961,7 @@ Functions calculating the integer part, the fractional part, the floor function 
 			</ul>
 		</li>
 		<li class="fragment skip">For the case of <code class="listing">inv</code> and <code class="listing">div</code> operators,
-			we have defined <br> <b>the Well-definedness conditions</b>. 
+			we have defined <br> <b>the well-definedness conditions</b>. 
 			<ul>
 				<li class="fragment">
 					To calculate <code class="listing">$inv(x)$</code>, we must find a <code class="listing">$z$</code>, 
@@ -963,9 +991,9 @@ Functions calculating the integer part, the fractional part, the floor function 
 While the proposed theory involves no precision loss for multiplication and addition, division sometimes induces a precision loss. 
 For example, we cannot precisely represent the result of 1/3 or 2/3. <br><br>
 
-That is why, for the case of the division and inverse operators, we have first defined the well-defined conditions. <br><br>
+That is why, for the case of the division and inverse operators, we have first defined the well-definedness conditions. <br><br>
 To calculate the inverse of x, we must find a z, which we multiply by the significand part of x to obtain a power of ten. 
-(The value of z corresponds to the significand part of the result of the inverse of x). <br><br>
+Here, the value of z corresponds to the significand part of the result of calculating the inverse of x. <br><br>
 
 For example, to calculate the inverse of 2.5, 4 corresponds to z, which does not exist for the inverse of 3. <br><br>
 
@@ -1024,12 +1052,15 @@ The same reasoning is done for the division operator.
 <aside class="notes">
 	These two well-definedness conditions are defined by the "inv_WD" and "div_WD" operators. <br><br>
 
-	Axiomatic definitions formalize "inverse" and "division" operators, and both 
-	are invocable if their well-defined conditions are true <br><br>
+	So, We use axiomatic definitions to formalise "inverse" and "division" operators. Both 
+	are invocable if their well-definedness conditions are true <br><br>
 	
-	The inverse of x is y if and only if y is the number we multiply by x to obtain F1 <br><br>
+	The inverse of x is y if and only if y is the number we multiply by x to obtain F1. We define the case of exact equality and also 
+	the case of equality after performing a left-shift operation.<br><br>
 
-	and the result of dividing x by y is z, if and only if z is the number we multiply by y to obtain x
+	Also, the result of dividing x by y is z, if and only if z is the number we multiply by y to obtain x. We have the case of exact equality 
+	and also the case of equality after performing a left-shift operation. We have also defined the axiom defining the relation between
+	the inverse operator and the division operator. 
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1067,10 +1098,16 @@ The same reasoning is done for the division operator.
 </div>
 	
 <aside class="notes">
-The last part of the proposed theory contains a set of theorems that we have proved, 
-and that correspond to laws defining properties of arithmetic operators (equality, addition, and multiplication 
-are commutative, the order is total, 
-reflexive, anti-symmetric and transitive, addition and multiplication have an inverse, ...) 
+The last part of the proposed theory contains a set of theorems that we have proven, 
+and that correspond to properties of arithmetic operators. 
+<br><br>
+For example: equality, addition, and multiplication 
+commutativity, 
+<br><br>
+the order is total, reflexive, anti-symmetric and transitive, 
+<br><br>
+addition and multiplication have an inverse, ...
+<br><br>
 and others theorems combining the comparison operators and the arithmetic operators. 
 </aside>
 	
@@ -1095,8 +1132,8 @@ and others theorems combining the comparison operators and the arithmetic operat
 
 <aside class="notes">
 Due to our choice to formalise unlimited precision floating-point numbers, 
-we can deduce some properties that are not true in the floating-point numbers world 
-(the associativity of addition and multiplication, for example).  <br><br>
+some properties,that are not true in the floating-point numbers world, can be deduced from our definitions. <br><br>
+For example, the associativity of addition and multiplication, for example.  <br><br>
 
 When this theory is refined towards any implementation (the IEEE Standard 754, for example), the developer must pay attention to this point.
 </aside>
@@ -1107,7 +1144,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section id="ch4" name="Revisiting the motivating example">
 	<aside class="notes">
-		So, now I will show how our moving object model is updated with the new theory plugin. 
+		So, now I will show how our moving object model is updated with the new developed theory. 
 	</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1134,7 +1171,9 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 </div>
 
 <aside class="notes">
-	Since all our variables are Natural integers, we have defined a set called PFLOAT_Type containing all positive floating-point numbers.
+	Since all state variables of the initial model are Natural integers, 
+	we have defined a set called PFLOAT_Type containing all positive floating-point numbers. <br><br>
+	We have also defined a set called PFLOAT1_Type containing strictly positive floating-point numbers.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1149,13 +1188,13 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 <b>MACHINE</b> mch_integer_version 
 ...
 <b>INVARIANTS</b>
-	<u>@inv1:</u> traveled_distance $\in$ $\mathbb N$
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
 	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
 	<u>@inv3:</u> speed $\in$ $\mathbb N$  
 	<u>@inv4:</u> starting_position $\in$ $\mathbb N$ 
 	<u>@inv5:</u> starting_time $\in$ $\mathbb N$ 
-	<u>@inv6:</u> speed = traveled_distance $\div$ measured_time 
-	<u>@inv7:</u> traveled_distance $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$
+	<u>@inv6:</u> speed = distance_travelled $\div$ measured_time 
+	<u>@inv7:</u> distance_travelled $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$
 ...
 <b>END</b>
 </pre>
@@ -1166,13 +1205,13 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 <b>MACHINE</b> mch_floating_point_version 
 ...
 <b>INVARIANTS</b>
-	<u>@inv1:</u> traveled_distance $\in$ PFLOAT_Type
+	<u>@inv1:</u> distance_travelled $\in$ PFLOAT_Type
 	<u>@inv2:</u> measured_time $\in$ PFLOAT1_Type 
 	<u>@inv3:</u> speed $\in$ PFLOAT_Type 
 	<u>@inv4:</u> starting_position $\in$ PFLOAT_Type 
 	<u>@inv5:</u> starting_time $\in$ PFLOAT_Type
-	<u>@inv7:</u> speed eq traveled_distance div measured_time
-	<u>@inv8:</u> traveled_distance gt F0 $\mathbin\Rightarrow$ speed gt F0
+	<u>@inv7:</u> speed eq distance_travelled div measured_time
+	<u>@inv8:</u> distance_travelled gt F0 $\mathbin\Rightarrow$ speed gt F0
 ...
 <b>END</b>
 </pre>
@@ -1183,14 +1222,14 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 <b>MACHINE</b> mch_floating_point_version 
 ...
 <b>INVARIANTS</b>
-	<u>@inv1:</u> traveled_distance $\in$ PFLOAT_Type
+	<u>@inv1:</u> distance_travelled $\in$ PFLOAT_Type
 	<u>@inv2:</u> measured_time $\in$ PFLOAT1_Type 
 	<u>@inv3:</u> speed $\in$ PFLOAT_Type 
 	<u>@inv4:</u> starting_position $\in$ PFLOAT_Type 
 	<u>@inv5:</u> starting_time $\in$ PFLOAT_Type
-	<span style="color: orangered;">@inv6: div_WD(traveled_distance, measured_time)</span>
-	<u>@inv7:</u> speed eq traveled_distance div measured_time
-	<u>@inv8:</u> traveled_distance gt F0 $\mathbin\Rightarrow$ speed gt F0
+	<span style="color: orangered;">@inv6: div_WD(distance_travelled, measured_time)</span>
+	<u>@inv7:</u> speed eq distance_travelled div measured_time
+	<u>@inv8:</u> distance_travelled gt F0 $\mathbin\Rightarrow$ speed gt F0
 ...
 <b>END</b>
 </pre>
@@ -1226,7 +1265,7 @@ of the division operator used to formalise the speed of the moving object.
 			<u>@grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
 			<u>@grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
 		<i>then</i>
-			<u>@act1:</u> traveled_distance $:=$ p $-$ starting_position
+			<u>@act1:</u> distance_travelled $:=$ p $-$ starting_position
 			<u>@act2:</u> measured_time $:=$ t $-$ starting_time
 			<u>@act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
 		<i>end</i>
@@ -1246,7 +1285,7 @@ of the division operator used to formalise the speed of the moving object.
 			<u>@grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
 			<u>@grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
 		<i>then</i>
-			<u>@act1:</u> traveled_distance $:=$ p minus starting_position
+			<u>@act1:</u> distance_travelled $:=$ p minus starting_position
 			<u>@act2:</u> measured_time $:=$ t minus starting_time
 			<u>@act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
 		<i>end</i>
@@ -1267,7 +1306,7 @@ of the division operator used to formalise the speed of the moving object.
 			<u>@grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
 			<span style="color: orangered;">@grd3: div_WD(p minus starting_position, t minus starting_time)</span>
 		<i>then</i>
-			<u>@act1:</u> traveled_distance $:=$ p minus starting_position
+			<u>@act1:</u> distance_travelled $:=$ p minus starting_position
 			<u>@act2:</u> measured_time $:=$ t minus starting_time
 			<u>@act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
 		<i>end</i>
@@ -1298,7 +1337,8 @@ concerning the well-definedness condition of the division operator used to calcu
 		<div  style="width: 70%;">
 			<ul>
 				<li>All generated POs have been proven.</li>
-				<li class="fragment skip">The <span style="color: green;">$get\_speed/inv8/INV$</span> PO becomes <span style="color: green;">&#10004;</span>.
+				<li class="fragment skip">The <span style="color: green;">$get\_speed/inv8/INV$</span> 
+					PO becomes <span style="color: green;">&#10004;</span>.
 					<ul id="fleche">
 						<li>thanks to handling small values (<span class="listing">$]0..1[$</span>),</li>
 						<li>and to the new <span class="listing">div</span> operator specification.</li>
@@ -1311,16 +1351,17 @@ concerning the well-definedness condition of the division operator used to calcu
 		</div>
 	</div>
 	<aside class="notes">
-		From the model validation point of view, contrary to the initial model, all generated proof obligations have been proven. <br><br>
+		From the model verification point of view, contrary to the initial model, all generated proof obligations have been proven. <br><br>
 
 		The problem with the invariant linked to the integer division operator no longer arises. <br>
-		The associated PO becomes green, and it has been proven using the interactive prover. 
-		As we have said, the "@inv8" formalises the following property: if the value of the "traveled_distance" variable 
+		The associated PO becomes green, and it has been proven using the interactive prover. <br><br>
+		As we have said, the "@inv8" formalises the property specifying that if the value of the "distance_travelled" variable 
 		is strictly positive, the "speed" variable must also be strictly positive. 
-		Even if in the "get_speed" event, the value of the "traveled_distance" can 
+		Even if in the "get_speed" event, the value of the "distance_travelled" can 
 		be less than that of "measured_time", the new value of the "speed" variable is never equal to zero because the value 
-		of "traveled_distance"
-		is also never equal to zero. All this is possible thanks to the new division operator specification, 
+		of "distance_travelled"
+		is also never equal to zero. <br>
+		All this is possible thanks to the new division operator specification, 
 		which acts on the floating-point numbers. 
 		<br><br>
 
@@ -1369,7 +1410,7 @@ concerning the well-definedness condition of the division operator used to calcu
 	We have proposed an abstract representation of the floating-point numbers to offer the possibility to refine the proposed 
 	theory to any more concrete implementation. <br>
 	And finally, the proposed theory contains a set of theorems and associated rewrite and inference rules that 
-	can assist developers in the proving activities.
+	can assist developers in the proof activity.
 </aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1393,7 +1434,7 @@ For the next step of our work, we plan to refine the proposed theory to the IEEE
 
 Then, We consider the floating-point numbers theory the first step before developing a more general theory that will 
 formalise the standard units of measurement defined by the International System of Units. <br>
-I think that such theories will help many Event-B developers to model cyber-physical systems using the Event-B formal method. 
+I think that such theories will help many Event-B developers to model and verify cyber-physical systems. 
 </aside>
 	
 </section>
@@ -1406,7 +1447,10 @@ I think that such theories will help many Event-B developers to model cyber-phys
 	<p>
 		<a href="#">Back to the begin</a>
 		- <a href="#/plan">Back to the outline</a>
-	</p>	
+	</p>
+	<aside class="notes">
+		Thank you very much for your attention. 
+	</aside>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
