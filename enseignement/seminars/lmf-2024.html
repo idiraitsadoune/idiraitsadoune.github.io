@@ -14,17 +14,17 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
-	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
-	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
-	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
+	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 	<div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
+				<img  src="../resources/img/logo-aff.png" alt="">
 			</a>
 		</div>
 		<div class="right-logo">
@@ -61,7 +61,7 @@
 
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
+			<img src="../resources/img/idir.png" class="hero-user">
 		</a>
 		<div class="hero-desc">
 			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
@@ -614,8 +614,8 @@ by the previous event.
 				of <code class="listing">$measured\_time$</code>.
 			<ul id="fleche" class="fragment">
 				<li>the new value of <code class="listing">$speed$</code> <br>
-					(<code class="listing">$distance\_travelled$ $\div$ $measured\_time$</code>) <br> 
-					can be	<code class="listing">$=$ $0$</code> while <code class="listing">$distance\_travelled \neq 0$</code> 
+					(<code class="listing">$distance\_travelled \div measured\_time$</code>) <br> 
+					can be	<code class="listing">$= 0$</code> while <code class="listing">$distance\_travelled \neq 0$</code> 
 				</li>
 				<li class="fragment">
 					<code class="listing">$\div$</code> makes <b>an integer division</b>
@@ -1183,7 +1183,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 
 <div class="r-stack">
 
-<div class="eb-code fragment fade-in-then-out">
+<div class="eb-code fragment fade-out" data-fragment-index="0">
 <pre id="eb">
 <b>MACHINE</b> mch_integer_version 
 ...
@@ -1200,7 +1200,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 </pre>
 </div>
 
-<div class="eb-code fragment fade-in-then-out">
+<div class="eb-code fragment current-visible" data-fragment-index="0">
 <pre id="eb" >
 <b>MACHINE</b> mch_floating_point_version 
 ...
@@ -1217,7 +1217,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 </pre>
 </div>
 
-<div class="eb-code fragment fade-in">
+<div class="eb-code fragment">
 <pre id="eb">
 <b>MACHINE</b> mch_floating_point_version 
 ...
@@ -1253,7 +1253,7 @@ of the division operator used to formalise the speed of the moving object.
 	<h2>Revisiting our example II</h2>
 		
 <div class="r-stack">
-<div class="eb-code fragment fade-in-then-out">
+<div class="eb-code fragment fade-out" data-fragment-index="0">
 <pre id="eb">
 <b>MACHINE</b> mch_integer_version
 ...
@@ -1273,7 +1273,7 @@ of the division operator used to formalise the speed of the moving object.
 </pre>	
 </div>
 
-<div class="eb-code fragment fade-in-then-out">
+<div class="eb-code fragment current-visible" data-fragment-index="0">
 <pre id="eb">
 <b>MACHINE</b> mch_floating_point_version
 ...
@@ -1293,7 +1293,7 @@ of the division operator used to formalise the speed of the moving object.
 </pre>
 </div>
 
-<div class="eb-code fragment fade-in">
+<div class="eb-code fragment">
 <pre id="eb">
 <b>MACHINE</b> mch_floating_point_version
 ...
@@ -1459,10 +1459,10 @@ I think that such theories will help many Event-B developers to model and verify
 		</div>
 	</div>
 
-	<script src="../../enseignement/resources/js/plan-en.js"></script>
-	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../../enseignement/reveal-js-framework/plugin/math/math.js"></script>
+	<script src="../resources/js/plan-en.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
