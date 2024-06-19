@@ -168,7 +168,7 @@ em{
 /* ****************************************************** */
 /* custom definitions */
 
-#logo{
+#logo, .logo{
 	position: absolute;
 	bottom: 30px;
 	left: 30px;
