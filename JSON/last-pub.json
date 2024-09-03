@@ -11,14 +11,14 @@
             "link" : "https://link.springer.com/chapter/10.1007/978-3-031-33163-3_2"
         },
         {
-            "title" : "OntoEventB: A Generator of Event-B contexts from Ontologies",
-            "conference" : "9th Rodin User and Developer Workshop, Rodin 2021",
-            "link" : "https://wiki.event-b.org/index.php/Rodin_Workshop_2021"
-        },
-        {
             "title" : "Building Formal Semantic Domain Model: An Event-B Based Approach",
             "conference" : "9th International Conference on Model and Data Engineering, MEDI 2019",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-030-32065-2_10"
+        },
+        {
+            "title" : "Using the Isabelle Ontology Framework : Linking the Formal with the Informal",
+            "conference" : "11th International Conference on Intelligent Computer Mathematics, CICM 2018",
+            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-96812-4_3"
         }
     ]
 }
