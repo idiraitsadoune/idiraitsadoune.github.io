@@ -43,6 +43,7 @@ b{
 
 i{
     color: var(--r-link-color);
+	font-style: italic !important;
 }
 
 em{

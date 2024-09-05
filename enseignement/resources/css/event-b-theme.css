@@ -40,6 +40,7 @@
 .eb-kw, #eb i{
 	color:blue;
 	font-weight: bold;
+	font-style: normal !important;
 }
 
 .eb-cm, #eb u{
