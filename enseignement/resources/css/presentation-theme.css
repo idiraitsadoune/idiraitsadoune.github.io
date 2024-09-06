@@ -14,9 +14,9 @@
 }
 
 .reveal .slides>section {
-	padding-left: 70px !important;
-	padding-right: 70px !important;
-	width: 1140px !important;
+	padding-left: 80px !important;
+	padding-right: 80px !important;
+	width: 1120px !important;
 }
 
 .reveal ul ul,
@@ -43,7 +43,6 @@ b{
 
 i{
     color: var(--r-link-color);
-	font-style: italic !important;
 }
 
 em{
