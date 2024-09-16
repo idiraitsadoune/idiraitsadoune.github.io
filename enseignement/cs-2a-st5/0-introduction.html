@@ -105,19 +105,21 @@
         </li>
     </ul>
 
-    <div id="alert-block" class="skip fragment" style="width: 82%;">
+    <div id="alert-block" class="skip fragment" style="width: 80%;">
         <b>Critical Software</b> <br>
-        For which a failure can be catastrophic: <i>fatal or/and extremely costly</i>
+        For which a failure can be catastrophic: 
+        <ul>
+            <li><i>fatal or/and extremely costly</i></li>
+        </ul>
     </div>
 
     <ul class="skip fragment">
         <li>
             Some spectacular failures of critical softwares : 
             <ul>
-                <li class="fragment">Crash of Ariane 5</li>
-                <li class="fragment">Crash of Airbus A320 at the air show</li>
-                <li class="fragment">Crash of London Ambulance CAD service</li>
-                <li class="fragment">7 deaths of cancer patients due to overdoses of radiation</li>
+                <li class="fragment"><a href="https://en.wikipedia.org/wiki/Ariane_flight_V88" target="_blank">Crash of Ariane 5</a></li>
+                <li class="fragment"><a href="https://en.wikipedia.org/wiki/LASCAD" target="_blank">LASCAD : </a>Crash of London Ambulance CAD service</li>
+                <li class="fragment"><a href="https://en.wikipedia.org/wiki/Therac-25" target="_blank">Therac-25 : </a> 7 deaths of cancer patients due to overdoses of radiation</li>
             </ul>
         </li>
     </ul>
@@ -128,11 +130,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Control Software Verification</h2>
 
-    <ol>
-        <li class="fragment">Take the software</li>
-        <li class="fragment">Determine what the software is supposed to do</li>
-        <li class="fragment">Prove that the software does what it is supposed to do</li>
-    </ol>
+    <div id="default-block"  class="fragment">
+        <ol>
+            <li>Take the software</li>
+            <li class="fragment">Determine what the software is supposed to do</li>
+            <li class="fragment">Prove that the software does what it is supposed to do</li>
+        </ol>
+    </div>
 
     <div id="alert-block" class="skip fragment">
         <b>Software verification</b> <br>
@@ -159,7 +163,7 @@
         <li>Testing is a common dynamic technique where the system is executed</li>
 
         <li class="fragment skip">
-            Testing procedure:
+            <b>Testing procedure</b>:
             <ul>
                 <li>take an implementation</li>
                 <li>stimulate it with certain inputs, i.e., the tests</li>
@@ -168,7 +172,7 @@
         </li>
 
         <li class="fragment skip">
-            Testing drawbacks:
+            <b>Testing drawbacks</b>:
             <ul>
                 <li>number of possible behaviors is very large (or even infinite)</li>
                 <li>unexplored behaviors may contain the fatal bug</li>
@@ -197,15 +201,13 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>On the need of Formal Methods</h2>
 
-    <ul>
-        <li>
-            Verification has to be <b>provable</b>!
-        </li>
-    </ul>
+    <p>
+        Verification has to be <b>provable</b>!
+    </p>
 
     <div id="green-block" class="fragment skip" style="width: 85%;">
         <b>Definition of Formal Methods</b> <br>
-        Formal Methods are the applied mathematics for modeling, analyzing and <b>verifying</b> systems
+        Formal Methods are the applied mathematics for <b>modeling</b>, <b>analyzing</b> and <b>verifying</b> systems
     </div>
 
     <ul>
@@ -353,7 +355,7 @@
         <ul class="fragment fade-in">
             <li class="d-skip">
                 Post-Condition : <br>
-                <span style="float:right;">$~~~~~~~ \forall n,m \in [1..N],~n < m \Longrightarrow T[n] \nleq T[m]$ </span>
+                <span style="float:right;">$~~~~~~~ \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
             </li>
             <li>
                 Most general Pre-Condition : <br> <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
@@ -471,18 +473,6 @@ res = 0;
 </div>
 
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Demo</h2>
-
-    <div>
-        Let's do some automatic program proof <br>
-        prover : <b>Atelier B</b> <br>
-        program : <b>Selection Sort</b>
-    </div>
-
-</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -544,8 +534,8 @@ res = 0;
             <b>Rules</b>
             $$
             \begin{aligned}
-            (mp)~ & A,~ A \Rightarrow B & \vdash & ~B \\
-            (par)~ & A \Rightarrow B    & \vdash & ~\exists x.A \Rightarrow B\\
+            (r1)~ & A,~ A \Rightarrow B & \vdash & ~B \\
+            (r2)~ & A \Rightarrow B    & \vdash & ~\exists x.A \Rightarrow B\\
             \end{aligned}
             $$
         </div>
