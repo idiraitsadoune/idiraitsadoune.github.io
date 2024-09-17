@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Systèmes d'exploitation : TD - Manipulation des processus sous Unix</title>
+	<title>Systèmes d'exploitation : TD - Synchronisation des processus</title>
 
-	<meta name="description" content="Systèmes d'exploitation : TD - Manipulation des processus sous Unix">
+	<meta name="description" content="Systèmes d'exploitation : TD - Synchronisation des processus">
 	<meta name="author" content="Idir AIT SADOUNE">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,6 @@
 		  };
 	  </script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
-	
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -51,445 +50,322 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-form">
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-title">
     Travaux dirigés - TD<br> 
-    Manipulation des processus sous Unix
+    Synchronisation des processus
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 1 : Barrière de synchronisation
+</div>
+<p>
+    On suppose dans un premier temps que l’on ne traite que 2 threads. Ces threads obéissent au modèle suivant :
+</p>
+
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>Thread_1</b>
+<span class="kd">While</span> (<span class="mf">true</span>) <span class="kd">do</span>
+    calcul_1();
+    barriere_1();
+<span class="kd">end</span>
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>Thread_2</b>
+<span class="kd">While</span> (<span class="mf">true</span>) <span class="kd">do</span>
+    calcul_2();
+    barriere_2();
+<span class="kd">end</span>
+</pre>
+</div>
+<div style="width: 10%;"></div>
 </div>
 
+<p>
+    <ol>
+        <li>En utilisant 2 sémaphores, dont vous préciserez les valeurs initiales, écrivez le pseudo-code des fonctions 
+            <code class="listing">barriere_1()</code> <br> et <code class="listing">barriere_2()</code>, qui doivent être telles que le <b>Thread_1</b> ne sort de 
+            <code class="listing">barriere_1()</code> que lorsque le <b>Thread_2</b> a atteint <code class="listing">barriere_2()</code> <br>
+            (et réciproquement).</li>
+
+<!-- CORRECTION ################# -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Objectifs du TD</b>
-    <p>
-        Le but de cette séance de TD est de vous familiariser avec la notion
-        de processus sous <b>Unix</b>. Celle-ci est importante, voire essentielle,
-        pour comprendre le mécanisme fondamental de fonctionnement de ce
-        système d'exploitation. Notamment, vous verrez que sous <b>Unix</b>, toute
-        commande est rattachée à un processus. Vous vous familiariserez aussi
-        avec les mécanismes de redirection.
-    </p>
+
+<div class="highlight">
+<pre >Semaphore s1 = <span class="kd">new</span> Semaphore(0);
+Semaphore s2 = <span class="kd">new</span> Semaphore(0);
+</pre>
 </div>
 
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
 
-<div class="subsection-title">
-    Généralités
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_1()</b>
+    s1.release();
+    s2.acquire();
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_2()</b>
+    s2.release();
+    s1.acquire();
+</pre>
+</div>
+<div style="width: 10%;"></div>
 </div>
 
-<p>Tout d'abord, vous ne devez pas oublier que le système <b>Unix</b> est
-    multi-utilisateurs. Vous pouvez lancer, sous une même session de
-    travail, plusieurs programmes qui s'exécuteront simultanément. En
-    fait, le terme "simultanément" est un abus de langage, car très
-    souvent les ordinateurs ne possèdent qu'un seul processeur de calcul,
-    ce qui implique que les différents programmes s'exécutent en temps
-    partagé.</p>
-
-<p>Nous appellerons "processus" l'occurrence d'un programme en cours
-    d'exécution. Le noyau (<b>kernel</b>) du système attribue un identificateur
-    à chaque processus. Cet identificateur de processus, un entier, est
-    appelé PID pour "process identifier".</p>
-
-<p>Les processus ont en quelque sorte une vie ; ils naissent (lorsque
-    vous lancez un programme ou tapez une commande), ils vivent
-    (lorsqu'ils s'exécutent) et meurent (lorsqu'ils ont terminé leur
-    exécution). A leur naissance, chaque processus se voit attribuer par
-    le système un PID unique. Ainsi, à un instant donné, tous les
-    processus vivants ont un PID différent, qui permet de les identifier
-    sans ambiguïté. Enfin, lorsqu'un processus meurt, son pid redevient
-    disponible et pourra être réattribué par le système à un nouveau
-    processus.</p>
-
-<!-- ################################################################## -->
-<!-- ################################################################## -->
-<div id="orange-block">
-    Exercice 1 : Première vision des processus
 </div>
+<!-- END CORRECTION ################# -->
 
-<p>
-    Dans cette partie, vous allez commencer à manipuler les processus à
-travers divers exemples. Les commandes à utiliser pour répondre aux
-questions suivantes sont : <code class="listing">ps</code>, <code class="listing">kill</code>, <code class="listing">jobs</code>, 
-<code class="listing">fg</code>, <code class="listing">bg</code>, <code class="listing">top</code>. Pensez à
-utiliser le <code class="listing">man</code>.
-</p>
+        <li>Généralisez au cas de <code class="listing">N</code> threads</li>
 
-<p>Un job est un programme initié de manière interactive,
-    ne libérant pas le terminal.</p>
-
-<ol>
-    <li>Tapez la commande <code class="listing">xeyes</code>. Normalement vous n'avez plus
-        le control de votre terminal.
-        <div class="green-block">
-            <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	        <b style="color: green;">Remarque</b>
-            <p>
-                Si la commande <code class="listing">xeyes</code> ne marche pas, 
-                utilisez la commande <code class="listing">top</code> à sa place.
-            </p>
-        </div>
-    </li>
-
-    <li>
-        Pressez maintenant <code class="listing">Ctrl+z</code> dans votre terminal.
-            <code class="listing">xeyes</code> vient d'être suspendu.
-    </li>
-    <li>
-        Testez la commande <code class="listing">jobs</code>. Elle permet de lister les jobs en cours,
-et de donner leur statut.
-    </li>
-    <li>
-        Testez la commande <code class="listing">fg</code>. Elle permet de relancer un processus
-qui a été suspendu.
-    </li>
-    <li>
-        Interrompez à nouveau le processus avec <code class="listing">Ctrl+z</code>. Testez la
-commande <code class="listing">bg</code>. Elle permet de faire tourner un processus en arrière plan, <br>
-ce qui libère le terminal.
-    </li>
-    <li>
-        Lancez à nouveau la commande <code class="listing">xeyes</code>. Utilisez <code class="listing">Ctrl+c</code>,
-cette combinaison de touches permet de d'interrompre un processus
-en cours d'exécution.
-    </li>
-
-    <li>
-        Lancez à nouveau la commande <code class="listing">xeyes</code>, puis <code class="listing">Ctrl+z</code>, 
-puis <code class="listing">jobs</code>.
-On peut voir que les deux processus se sont vu attribuer les nombres <br>
-1 et 2.
-    </li>
-    <li>
-        Tapez la commande <code class="listing">ps -e</code> pour récupérer les <code class="listing">pid</code> 
-de vos processus
-Puis tapez la commande <code class="listing">kill -9 n</code>, où <code class="listing">n</code> correspond 
-au <code class="listing">pid</code> <br> d'un job.
-
-        À la prochaine commande que vous taperez, vous serez informé
-de ce qui vient de se passer. <br>
- Retaper <code class="listing">jobs</code> pour vérifier.
-    </li>
-    <li>
-        Quel est le numéro du processus <code class="listing">xeyes</code> restant ?
-    </li>
-    <li>
-        En utilisant <code class="listing">kill</code> et le <code class="listing">PID</code> 
-du <code class="listing">xeyes</code> restant, tuez ce processus.
-
-    </li>
-    <li>
-        Lancez la commande <code class="listing">xeyes &</code>. 
-L'ajout de <code class="listing">&</code> à la fin de la commande
-permet de lancer le processus en arrière plan.
-    </li>
-    <li>
-        Faites passer le processus en "avant-plan" puis en "arrière-plan".
-    </li>
-</ol>
-<!-- ################################################################## -->
-<!-- ################################################################## -->
-<div id="orange-block">
-    Exercice 2 : Les Mécanismes de Redirection
-</div>
-
-<p>
-    Un programme, lorsqu'il s'exécute, a généralement besoin de données en
-    entrée et doit produire des résultats (sinon il n'est pas très
-    utile). Lors de l'élaboration d'un programme, il est donc nécessaire
-    de préciser d'où proviennent les données et où iront les
-    résultats. Sous Unix, ce sont les fichiers qui sont utilisés comme
-    support pour contenir ces données et ces résultats. Chaque fichier est
-    identifié par un nom. Parmi ces fichiers, il en est trois qui ont un
-    statut particulier ; on les appelle l'entrée standard (<code class="listing">stdin</code>), la
-    sortie standard (<code class="listing">stdout</code>), et la sortie d'erreur standard
-    (<code class="listing">stderr</code>).
-</p>
-
+<!-- CORRECTION ################# -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-    <b style="color: green;">Remarque</b>
-    <p>
-        Par défaut, <b>Unix</b> associe l'entrée standard au clavier et la
-        sortie standard à la fenêtre dans laquelle l'ordre d'exécution a été
-        donné (généralement, un terminal). Lire le fichier entrée standard
-        équivaut donc à lire ce qui est tapé au clavier et écrire sur le
-        fichier sortie standard équivaut généralement à afficher les résultats
-        dans votre terminal.
-    </p>
-    <p>
-        <b>Exemple</b> : La commande <code class="listing">ls</code> écrit son résultat (i.e. le contenu du
-        répertoire courant) dans le fichier de la sortie standard, qui est par
-        défaut la fenêtre dans laquelle on a tapé la commande <code class="listing">ls</code>. Néanmoins,
-        il est possible, grâce au système, d'indiquer lors de l'exécution d'un
-        programme qu'il faut "aller chercher" l'entrée standard ailleurs qu'au
-        clavier et "déposer" les résultats ailleurs qu'à l'écran. On parle
-        dans ce cas de redirection de l'entrée et de la sortie standard.
-    </p>
-    <p>
-        L'opérateur de redirection de la sortie standard dans une ligne de
-        commande est <code class="listing">></code>.
-    </p>
-</div>
-<ol>
-    <li>
-        Exécutez la commande <code class="listing">ls</code> depuis votre répertoire utilisateur.
-    </li>
-    <li>
-        Réexécutez la commande en redirigeant cette fois-ci la sortie
-standard dans un fichier dont le nom est <code class="listing">output</code>. Pour cela,
-utilisez la commande : <code class="listing">ls > output</code>. Affichez le contenu du fichier
-<code class="listing">output</code>.
-<br>
-Il est possible de combiner les redirections : l'exécution d'un
-programme <code class="listing">myprog</code> par la commande,
-<pre><code class="language-shell"><script type="text/template">$ myprog < input > output
-</script></code></pre>
 
-ira chercher les données en entrée dans le fichier <code class="listing">input</code> et écrira les
-résultats dans le fichier <code class="listing">output</code>, "court-circuitant" ainsi
-complètement clavier et écran.
-    </li>
-</ol>
-<!-- ################################################################## -->
-<!-- ################################################################## -->
-<div id="orange-block">
-    Exercice 3 : Enchaînement des Processus
-</div>
-<p>
-    Le fichier <code class="listing">output</code> est "écrasé" à chaque exécution de la commande
-    ci-dessus. Pour ajouter la sortie à la fin du fichier, il faut
-    utiliser <code class="listing">>></code> à la place de <code class="listing">></code>, comme ceci : 
-<pre><code class="language-shell"><script type="text/template">$ myprog >> output
-</script></code></pre>
-</p>
+<div class="highlight">
+<pre >Semaphore s_i = <span class="kd">new</span> Semaphore(0); <span class="cm">// i : 1..n ;</span> 
 
-<p>
-    Si vous désirez exécuter plusieurs commandes les unes à la suite des
-autres, vous pouvez soit les taper une par une au clavier, soit les
-taper sur une seule ligne de commande en les séparant par un
-point-virgule i.e. <code class="listing">;</code>.
-</p>
+<b>barriere_i()</b> 
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> (n-1) <span class="kd">do</span>
+        s_i.release();
+    <span class="kd">end</span>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        <span class="kd">if</span> (k != i) <span class="kd">the</span>
+            s_k.acquire();
+        <span class="kd">end</span>
+    <span class="kd">end</span>
+</pre>
+</div>
+
+</div>
+<!-- END CORRECTION ################# -->
+
+        <li>Proposez une autre solution, dans laquelle un thread auxiliaire (coordinateur) reçoit un signal quand le <b>Thread_i</b> 
+            atteint sa barrière, et débloque les <code class="listing">N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
+
+<!-- CORRECTION ################# -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-    <b style="color: green;">Remarque</b>
-    <p>
-        L'enchaînement des commandes avec des
-        points-virgules est fait de façon séquentielle. <br>
-        En effet, avec une ligne de commande du type :
-<pre><code class="language-shell"><script type="text/template">$ commande 1 ; commande 2 ; ... ; commande n-1 ; commande n
-</script></code></pre>
-        Le processus associé à la commande 2 ne débute que lorsque le
-        processus associé à la commande 1 est terminé, et ainsi de suite. <br>
-        Le
-        processus associé à la commande n ne débutera que lorsque le processus
-        associé à la commande n-1 sera terminé. <br>
-         Les processus sont exécutés
-        séquentiellement et indépendamment les uns des autres en suivant
-        l'ordre dans lequel ils ont été tapés sur la ligne de commande.
-    </p>   
+
+<div class="highlight">
+<pre >Semaphore s_c = <span class="kd">new</span> Semaphore(0);
+Semaphore s_i = <span class="kd">new</span> Semaphore(0);
+</pre>
 </div>
-<ol>
-    <li>Effacez votre fichier <code class="listing">output</code>.</li>
-    <li>
-        Lancez la commande : 
-<pre><code class="language-shell"><script type="text/template">$ ls > output ; ls >> output ; ls >> output
-</script></code></pre>
 
-Afficher le fichier <code class="listing">output</code> pour voir ce qu'il s'est passé.
-    </li>
-</ol>
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
 
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>barriere_i()</b>
+    s_i.release();
+    s_c.acquire();
+</pre></div>
 
-<!-- ################################################################## -->
-<!-- ################################################################## -->
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>coordinateur()</b>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        s_i.acquire();
+    <span class="kd">end</span>
+    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+        s_c.release();
+    <span class="kd">end</span>
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+</div>
+<!-- END CORRECTION ################# -->    
+    </ol>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div id="orange-block">
-    Exercice 4 : Les Tubes entre Processus
+    Exercice 2 - Gestion de véhicules dans un  tunnel
+</div>
+<p>
+    Une route joignant la France à l’Espagne utilise un tunnel à voie unique. En utilisant des sémaphores, 
+    vous allez synchroniser les véhicules de manière qu’à tout instant, tous les véhicules circulent dans le même sens.
+</p>
+<p>
+    <ol>
+        <li>On supposera dans un premier temps que le tunnel peut contenir un nombre quelconque de véhicules, 
+            et on tolère les attentes infinies.</li>
+        <li>Modifiez votre solution de manière à garantir que, à un instant donné, au plus <code class="listing">4</code> véhicules 
+            (dans la même direction) sont sur le tunnel.</li>
+        <li>Comment faire en sorte que les véhicules joignant la France (resp. L'Espagne) ne monopolisent pas le tunnel?</li>
+    </ol>
+</p>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+
+<div class="highlight">
+<pre >Semaphore tunnel = <span class="kd">new</span> Semaphore(1);
+<span class="kd">int</span> nb_fr = 0;
+<span class="kd">int</span> nb_es = 0;
+Semaphore mutex_fr = <span class="kd">new</span> Semaphore(1);
+Semaphore mutex_es = <span class="kd">new</span> Semaphore(1);
+Semaphore capacite = <span class="kd">new</span> Semaphore(4); <span class="cm">// Question 2</span> 
+Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Question 3</span>
+</pre>
 </div>
 
-<p>
-    Nous avons dit au début de ce TD que les processus s'exécutaient
-indépendamment les uns des autres. Néanmoins, vous allez maintenant
-voir qu'il est possible de créer des communications entre
-processus. L'exécution des processus peut alors dépendre des messages
-qu'ils reçoivent. Pour cela analysons l'exemple suivant :
-</p>
 
-<pre><code class="language-shell"><script type="text/template">$ ls -l /bin > output ; more output ; rm output 
-</script></code></pre>
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
 
-<p>
-    Si on regarde attentivement cette ligne de commande, on se rend
-compte que :
-<ul>
-    <li><code class="listing">ls -l /bin > output</code> écrit dans le fichier output par redirection
-        de la sortie standard la liste des fichiers du répertoire <code class="listing">/bin</code> ;</li>
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>vers_France()</b>
+    fifo.acquire();
 
-    <li>
-        <code class="listing">more</code> lit dans le fichier <code class="listing">output</code> 
-        et affiche le résultat page par page ;
-    </li>
-    <li>
-        <code class="listing">output</code> sert de fichier temporaire et peut être supprimé à l'issue du <code class="listing">more</code>.
-    </li>
-</ul>
-</p>
-<p>
-    Il est possible de simplifier l'écriture de l'exemple précédent. Pour
-ce faire, Unix met à votre disposition un mécanisme particulier appelé
-tube (pipe en anglais). C'est un opérateur permettant de connecter
-directement la sortie standard d'un premier programme à l'entrée
-standard d'un second sans devoir spécifier de fichier
-temporaire. L'opérateur de pipe est <code class="listing">|</code>.
-</p>
-<p>
-    Reprenons l'exemple précédent, et réécrivons-le en utilisant
-cette fois-ci un pipe :
-<pre><code class="language-shell"><script type="text/template">$ ls -l /bin | more
-</script></code></pre>
-</p>
+    mutex_fr.acquire();
+    nb_fr++;
+    <span class="kd">if</span> nb_fr = 1 <span class="kd">then</span>
+        tunnel.acquire();
+    <span class="kd">end</span>
+    mutex_fr.release();	
 
-<p>
-    Le processus <code class="listing">ls -l /bin</code> envoie son résultat sur l'entrée standard du
-processus <code class="listing">more</code>, ainsi, il n'est plus nécessaire d'utiliser un fichier
-temporaire comme dans l'exemple précédent (fichier <code class="listing">output</code>). Un tube
-offre un mécanisme de communication puissant qui permet d'échanger des
-informations entre processus. Il faut bien comprendre que,
-contrairement à l'enchaînement séquentiel des processus, lors de
-l'exécution de <code class="listing">commande 1 | commande 2</code>, deux processus sont créés qui
-s'exécute simultanément en se synchronisant.
+    fifo.release();
 
-</p>
-<p>
-    Un exemple de pipe utile :
-<pre><code class="language-shell"><script type="text/template">$ ps aux | more # affiche page par page
-$ ps aux | grep bash # recherche "bash"
-</script></code></pre>
-  
-</p>
+    capacite.acquire();
+    utiliser_tunnel();
+    capacite.release();
 
-<p>
-    Les questions suivantes vont vous permettre d'utiliser les mécanismes
-de redirection et d'enchaînement des processus (<code class="listing"><</code>, <code class="listing">></code>, 
-<code class="listing">|</code>, <code class="listing">>></code>, ...)
-avec quelques commandes Unix simples (<code class="listing">cat</code>, <code class="listing">wc</code>, 
-<code class="listing">tail</code>,<code class="listing">head</code>). 
-</p>
-<ol>
-    <li>
-        Copiez le fichier <code class="listing">/etc/services</code> dans le répertoire <code class="listing">~/Unix</code> et
-        placez-vous dans ce répertoire. <br> Si le répertoire <code class="listing">Unix</code> n'existe pas,
-        créez-le.       
-    </li>
-    <li>
-        Trouvez le nombre de caractères/mots/lignes que comporte ce fichier.
-    </li>
-    <li>
-        A quoi sert la commande <code class="listing">tac</code> (<code class="listing">cat</code> en verlan) ? Aller dans le dossier
-        <code class="listing">/bin</code>, puis utilisez <code class="listing">tac</code> 
-        sur la sortie de <code class="listing">ls -l</code>. <br> Revenez dans le répertoire
-        <code class="listing">~/Unix</code>.
-    </li>
-    <li>
-        Affichez les 50 premières lignes du fichier services.
-    </li>
-    <li>
-        Affichez les lignes 40 à 50 du fichier services. Pour cela, il
-faut combiner <code class="listing">head</code> et <code class="listing">tail</code> avec un <code class="listing">pipe</code>.
-    </li>
-    <li>
-        Combien de mots y-a-t-il entre les lignes 40 et 50 ? On écrira
-une seule ligne de commande.
-    </li>
-    <li>
-        Créez un fichier <code class="listing">debut</code> formé des 10 premières lignes de services
-et un fichier <code class="listing">fin</code> formé des 10 dernières.
-    </li>
-    <li>
-        Créez un fichier <code class="listing">extremes</code> constitué de la concaténation
-         de <code class="listing">debut</code> et <code class="listing">fin</code>.
-    </li>
-    <li>
-        Renommez le fichier <code class="listing">extremes</code> en <code class="listing">extremes.old</code>.
-    </li>
-    <li>
-        Essayez de reconstruire le fichier <code class="listing">extremes</code>, mais en une seule
-ligne de commandes, sans utiliser les fichiers intermédiaires <code class="listing">debut</code> et
-<code class="listing">fin</code>. On utilisera les <code class="listing">()</code> pour grouper plusieurs commandes, la syntaxe est
+    mutex_fr.acquire();
+    nb_fr--;
+    <span class="kd">if</span> nb_fr = 0 <span class="kd">then</span>
+        tunnel.release();
+    <span class="kd">end</span>
+    mutex_fr.release();
+</pre>
+</div>
 
-<pre><code class="language-shell"><script type="text/template">$ (cmd1 ; cmd2 ; ... ; cmdn) > fichier sortie
-</script></code></pre>  
-Les parenthèse permettent d'exécuter les commandes <code class="listing">cmd1,...,cmdn</code> puis
-de rediriger l'affichage final.  C'est équivalent à
-<pre><code class="language-shell"><script type="text/template">$ cmd1 > fichier sortie ; cmd2 >> fichier sortie ; ... ; cmdn >> fichier sortie
-</script></code></pre> 
-    </li>
-</ol>
-<!-- ################################################################## -->
-<!-- ################################################################## -->
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>vers_Espagne()</b>
+    fifo.acquire();
+
+    mutex_es.acquire();
+    nb_es++;
+    <span class="kd">if</span> nb_es = 1 <span class="kd">then</span>
+        tunnel.acquire();
+    <span class="kd">end</span>
+    mutex_es.release();	
+
+    fifo.release();
+
+    capacite.acquire();
+    utiliser_tunnel();
+    capacite.release();
+
+    mutex_es.acquire();
+    nb_es--;
+    <span class="kd">if</span> nb_es = 0 <span class="kd">then</span>
+        tunnel.release();
+    <span class="kd">end</span>
+    mutex_es.release();
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+
+</div>
+<!-- END CORRECTION ################# -->    
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div id="orange-block">
-    Exercice 5 : Sortie d'Erreur
+    Exercice 3 - Diffusion de messages
+</div>
+<p>
+    On considère un système à <code class="listing">1</code> producteur et <code class="listing">C</code> consommateurs partageant une boîte à lettres pouvant contenir <code class="listing">N</code> messages. 
+    Le producteur dépose les messages dans la boîte à lettres, et les consommateurs les y récupèrent. Chaque message déposé (une fois) 
+    par le producteur doit être lu par les <code class="listing">C</code> consommateurs. On impose également que les consommateurs reçoivent les messages 
+    dans l’ordre où ils ont été déposés. Il faut noter que les consommateurs ne sont pas synchronisés, et que, par exemple, 
+    un consommateur rapide peut avoir lu jusqu’à <code class="listing">N</code> messages de plus qu’un consommateur plus lent.
+</p>
+<p>
+    <ul>
+        <li>Développez une solution à ce problème, c’est-à-dire une description du processus producteur et des processus consommateurs qui respectent 
+            les spécifications. Cette solution devra utiliser des sémaphores dont le rôle sera explicité.</li>
+    </ul>
+</p>
+<div class="default-block">
+<i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> <b style="color: navy;">Remarque</b>
+<p>
+Vous pouvez introduire toute structure de données qui vous paraît utile, sous réserve de la décrire précisément et de la justifier. 
+</p>
 </div>
 
-<p>
-    Vous avez vu qu'il était possible de rediriger l'entrée standard
-(<code class="listing">stdin</code>) ainsi que la sortie standard (<code class="listing">stdout</code>). Nous allons maintenant
-nous pencher sur la sortie d'erreur standard (<code class="listing">stderr</code>).
-</p>
+<!-- CORRECTION ################# -->
+<div class="green-block">
 
-<p>
-    Un programme, s'il est correctement écrit doit intégrer un système de
-gestion d'erreurs. En effet, au cas où une erreur interviendrait
-durant l'exécution d'un programme, ce dernier se doit d'en informer au
-mieux l'utilisateur. Pour cela, un moyen efficace est de renvoyer <br> un
-message d'erreur. Il existe sous Unix un fichier particulier dans
-lequel un programme peut y écrire ses messages d'erreur, c'est la
-sortie d'erreur standard (<code class="listing">stderr</code>).
-</p>
+<div class="highlight"><pre >
+<span class="kd">int</span>[] bal = <span class="kd">new</span> <span class="kd">int</span>[N]();
+<span class="kd">int</span> i_prod = 0;
+<span class="kd">int</span>[] i_cons = <span class="kd">new</span> <span class="kd">int</span>[C]();
+Semaphore[] place_dispo = <span class="kd">new</span> Semaphore[N](C); <span class="cm">// N semaphores initialisés à C ;</span>
+Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class="cm">// N semaphores initialisés à 0 ;</span>
+</pre>
+</div>
 
-<p>
-    Par défaut, les erreurs envoyées sur la sortie d'erreur s'affichent au
-même endroit que les résultats envoyés sur sortie standard, <br>
-c'est-à-dire votre terminal. Néanmoins, il vous est aussi possible de
-rediriger cette sortie d'erreur dans un fichier.
-</p>
 
-<p>
-    Le symbole utilisé pour rediriger la sortie d'erreur sur un nouveau
-fichier est <code class="listing">2></code> ; le symbole utilisé pour rediriger la sortie d'erreur <br>
-sur un fichier existant (concaténation) est <code class="listing">2>></code>.
-</p>
+<div style="display: flex; align-items: center;">
+<div style="width: 10%;"></div>
 
-<p>
-    Pour mieux comprendre, nous allons exécuter une commande sous Unix
-produisant une erreur.
-</p>
-<ol>
-    <li>
-        Placez-vous dans votre répertoire utilisateur. Essayez de vous
-        déplacer dans le répertoire pouf en utilisant la commande <code class="listing">cd pouf</code>. <br>
-        (le dossier <code class="listing">pouf</code> ne doit pas exister.)     <br>
-        Normalement, un message d'erreur est apparu dans votre terminal.
-    </li>
-    <li>
-        Essayez maintenant de vous déplacer dans le répertoire pouf
-        en utilisant la commande 
-<pre><code class="language-shell"><script type="text/template">$ cd pouf 2> erreur
-</script></code></pre> 
-    </li>
-    <li>
-        Normalement aucun message d'erreur n'apparaît à l'écran. <br>
-Visualisez le contenu du fichier <code class="listing">erreur</code>
-    </li>
-    <li>
-        Re-exécutez la commande <code class="listing">cd pouf 2> erreur</code>. Visualisez le contenu
-du fichier <code class="listing">erreur</code>.
-    </li>
-    <li>
-        Exécutez la commande <code class="listing">cd pouf 2>> erreur</code>. Visualisez le contenu
-du fichier <code class="listing">erreur</code>.
-    </li>
-</ol>
+<div style="width: 35%;" class="highlight">
+<pre><b>producteur()</b>
+    <span class="kd">int</span> msg = produire_message();
+    place_dispo[i_prod].acquire(C);
+    bal[i_prod] = msg;
+    msg_dispo[i_prod].release(C);
+    i_prod = (i_prod +1) mod N;
+</pre></div>
+
+<div style="width: 10%;"></div>
+
+<div style="width: 35%;" class="highlight">
+<pre>
+<b>consommateur(int i)</b>
+    msg_dispo[i_cons[i]].acquire();
+    <span class="kd">int</span> msg = bal[i_cons[i]];
+    place_dispo[i_cons[i]].release();
+    i_cons[i] = (i_cons[i] +1) mod N;	
+    utiliser_message(msg);
+</pre>
+</div>
+<div style="width: 10%;"></div>
+</div>
+
+
+</div>
+<!-- END CORRECTION ################# -->  
+
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

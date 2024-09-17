@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Systèmes d'exploitation : TD - La programmation avec le Shell/Unix</title>
+	<title>Systèmes d'exploitation : TD - Gestion de la mémoire</title>
 
-	<meta name="description" content="Systèmes d'exploitation : TD - La programmation avec le Shell/Unix">
+	<meta name="description" content="Systèmes d'exploitation : TD - Gestion de la mémoire">
 	<meta name="author" content="Idir AIT SADOUNE">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,7 +18,7 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
+    <script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
@@ -31,9 +31,13 @@
 		  };
 	  </script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
-	
-	
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
+
+    <style>
+        table, th, td {border: 1px solid #333;}
+        th, td {padding: 5px;}
+    </style>
 </head>
 
 <body>
@@ -51,247 +55,271 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-form">
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-title">
     Travaux dirigés - TD<br> 
-    La programmation avec le Shell/Unix
+    Gestion de la mémoire
 </div>
-
-<!-- #################################################### -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div id="orange-block">
-    Exercice 1 : Structures de contrôle case, boucle for
+    Exercice 1 : Algorithmes de remplacement de pages
 </div>
+<ol>
+    <li>
+        Un programme possède un espace virtuel de 600 mots. On considère la suite des adresses
+        virtuelles qui suit : 34; 123; 145; 510; 456; 345; 412; 10; 14; 12; 234; 336; 412.
+        <ul><li>Donner la suite des numéros de pages référencés, sachant qu'elles comportent 100 mots.</li></ul>
+    </li>
+    <li>
+        Le programme dispose de 300 mots en mémoire centrale.
+        <ul><li>Calculer le taux de défauts de page
+            pour les algorithmes : OPT, FIFO, LFU, NFU, LRU    (en supposant la mémoire initialement vide)  </li></ul>
+            
+    </li>
+</ol>
+<!-- CORRECTION ################# -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Commandes utiles :</b>
-    <p><code class="listing">file</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank">man file</a>). </p>	
+    <ol>
+        <li>
+            Il suffit de diviser l’adresse par 100, ce qui donne : 0, 1, 1, 5, 4, 3, 4, 0, 0, 0, 2, 3, 4.
+        </li>
+        <li style="margin-top: 20px;"> 
+            <br>
+            <img src="./img/td_4_q2_1.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_2.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_3.png" alt="">
+            <br>
+            <img src="./img/td_4_q2_4.png" alt="">
+        </li>
+    </ol>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 2 : Pagination
 </div>
 <p>
-    Écrire un script <code class="listing">typefic.sh</code> qui prend des noms de fichiers en arguments. Si le fichier se termine 
-    par <code class="listing">.doc</code> ou <code class="listing">.pdf</code>, afficher un message spécifique. 
-    Sinon afficher <code class="listing">"Ni DOC, ni PDF"</code>.
+    Dans un système paginé, les pages font 256 mots mémoire et on autorise chaque processus à
+utiliser au plus 4 cadres de la mémoire centrale. On considère la table des pages suivante du
+processus P1 :
 </p>
-<pre><code class="language-shell"><script type="text/template">$ typefic.sh f1.doc f2.pdf f3.txt  
-f1.doc : Fichier DOC 
-f2.pdf : Fichier PDF 
-f3.txt : Ni DOC, ni PDF
-</script></code></pre>
+<table style="text-align: center;">
+    <thead >
+      <tr>
+        <th ><b>Page</b></th>
+        <th >0</th>
+        <th >1</th>
+        <th >2</th>
+        <th >3</th>
+        <th >4</th>
+        <th >5</th>
+        <th >6</th>
+        <th >7</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td ><b>Cadre</b></td>
+            <td >011</td>
+            <td >001</td>
+            <td >000</td>
+            <td >010</td>
+            <td >100</td>
+            <td >111</td>
+            <td >101</td>
+            <td >110</td>
+          </tr>
+          <tr>
+            <td ><b>Présence</b></td>
+            <td >oui</td>
+            <td >non</td>
+            <td >oui</td>
+            <td >non</td>
+            <td >non</td>
+            <td >non</td>
+            <td >oui</td>
+            <td >non</td>
+          </tr>
+    </tbody>
+  </table>
 
+<ol style="padding-top: 20px;">
+<li>Quelle est la taille de l'espace d'adressage du processus P1 ?</li>
+<li>De combien de mémoire vive dispose ce système ?</li>
+<li>Calculez les adresses réelles correspondant aux adresses virtuelles suivantes (vous signalerez
+    éventuellement les erreurs d'adressage)
+    <ul><li>240, 546, 1578, 2072</li></ul>
+</li>
+<li>Que se passe-t-il si P1 génère l'adresse virtuelle 770 ?</li>
+<li>On considère l’adresse virtuelle suivante: 0000 0000 0000 0111. Sachant que les 4 bits de
+    poids fort désigne le numéro de page et que 12 bits suivants représentent le déplacement dans la
+    page, donnez l’adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
+</ol>
+
+<!-- CORRECTION ################# -->
 <div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-for fic in $*  
-do 
-	case $fic in   
-		*.doc|*.docx)  
-			echo "$fic : Fichier DOC" 
-			;; 
-		*.pdf)  
-			echo "$fic : Fichier PDF" 
-			;; 
-		*) 
-			echo "$fic : Ni DOC, ni PDF" 
-			;; 
-	esac 
-done
-</script></code></pre>
+    <ol>
+        <li>
+            8 pages x 256 = 2048 mots mémoire
+        </li>
+        <li style="margin-top: 20px;"> 
+        	nombres de cadre x taille d'un cadre = taille de la RAM <br>
+            taille d'un cadre = 256 mots<br>
+            nombre de cadres = $2^3 = 8$<br>
+            taille de la RAM = 8 x 256 = 2048 mots mémoire
+        </li>
+        <li style="margin-top: 20px;">
+            adresse virtuelle = 240 = 0 x 256 + 240<br>
+            page = 0, cadre = 3 <br>
+            adresse physique = 3 x 256 + 240 = 1008<br>
+            <br>
+            adresse virtuelle =  546 = 2 x 256 + 34 <br>
+            page = 2, cadre = 0<br>
+            adresse phy = 34<br>
+            <br>
+            adresse virtuelle = 1578 = 6 x 256 + 42<br>
+            page = 6, cadre = 5<br>
+            adresse phy = 5 x 256 + 42 = 1322<br>
+            <br>
+            adresse virtuelle = 2072 > 2048 (erreur d'adressage)
+        </li>
+        <li style="margin-top: 20px;">
+            adresse vituelle = 770 = 3 x 256 + 2 <br>
+            page = 3 => défaut de page
+        </li>
+        <li  style="margin-top: 20px;">
+            adresse virtuelle = 0000 0000 0000 0111 <br>
+            adresse phy = 0011 0000 0000 0111
+        </li>
+    </ol>
 </div>
-<!-- #################################################### -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div id="orange-block">
-    Exercice 2 : Boucle for, commande tr
+    Exercice 3 : Segmentation
 </div>
+<p>On considère la table des segments suivante pour un processus P1 :</p>
+
+<table style="text-align: center;">
+    <thead >
+      <tr>
+        <th ><b>segment</b></th>
+        <th ><b>base</b></th>
+        <th ><b>limite</b></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td >0</td>
+            <td >540</td>
+            <td >234</td>
+        </tr>
+        <tr>
+            <td >1</td>
+            <td >1254</td>
+            <td >128</td>
+        </tr>
+        <tr>
+            <td >2</td>
+            <td >54</td>
+            <td >328</td>
+        </tr>
+        <tr>
+            <td >3</td>
+            <td >2048</td>
+            <td >1024</td>
+        </tr>
+        <tr>
+            <td >4</td>
+            <td >976</td>
+            <td >200</td>
+        </tr>
+    </tbody>
+</table>
+
+<ol style="padding-top: 20px;">
+<li>Calculez les adresses réelles correspondant aux adresses virtuelles suivantes (vous signalerez
+    éventuellement les erreurs d'adressage)
+    <ul><li>(0:128), (1:100), (2:465), (3:888), (4:100), (4:344)</li></ul>
+</li>
+<li>L'adresse virtuelle (4,200) est-elle valide ?</li>
+</ol>
+
+<div class="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> <b style="color: navy;">Remarque</b>
+    <p>Les adresses sont données sous la forme (segment:déplacement)</p>
+</div>
+
+<!-- CORRECTION ################# -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Commandes utiles :</b>
-    <p>
-        <code class="listing">tr</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/tr.1.html" target="_blank">man tr</a>). <br>
-        <code class="listing">mv</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/mv.1.html" target="_blank">man mv</a>).   
-    </p>	
+<ol>
+    <li>
+        L'adresse physique s'obtient en ajoutant l'adresse de base du segment au déplacement dans le
+        segment, mais à condition que le déplacement ne soit pas supérieur à la taille du segment moins 1
+        (on compte le déplacement en partant de 0) : <br>
+        <br>
+        (0:128) : déplacement valide (128<234). Adr_physique = base + limite = 540 + 128 = 668.<br>
+        (1:100) : déplacement valide (100<128). Adr_physique = base + limite = 1254+ 100 = 1354.<br>
+        (2:465) : déplacement invalide (465>328).<br>
+        (3:888) : déplacement valide (888<1024). Adr_physique = base + limite = 2048 + 888 = 2936.<br>
+        (4:100) : déplacement valide (100<200). Adr_physique = base + limite = 976+ 100 = 1076.<br>
+        (4:344) : déplacement invalide car (344>200).
+    </li>
+    <li style="margin-top: 20px;">
+        Non. <br>
+        Dans un segment de longueur 200, les déplacements valides sont dans l'intervalle [0-199].
+    </li>
+</ol>
+
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+    Exercice 4 : Segmentation paginée
 </div>
 <p>
-    Écrire un script <code class="listing">maj_min.sh</code> :
-    <ul>
-        <li>Argument facultatif : un nom de répertoire. La valeur par défaut de l’argument sera le répertoire courant.</li>
-        <li>Vérifier que l’éventuel argument est un répertoire.</li>
-        <li>Ce script renommera les noms de fichiers de ce répertoire : les noms de fichiers majuscules seront convertis en minuscules.</li>
-    </ul>   
+    On considère un système avec une mémoire virtuelle segmentée paginée où la taille d’une
+    page est de 4Ko et une mémoire physique de 64Ko. L’espace d’adressage d’un processus P est
+    composé de trois segments S1, S2 et S3 de taille, respectivement 16Ko, 8Ko et 4Ko. À un moment
+    donné, pour le processus P, les pages 2 et 3 du segment S1, la page 2 du segment S2 et la page 1 du
+    segment S3 sont chargées en mémoire physique, respectivement dans les cases 2, 0, 9, 12.  
 </p>
-<div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-if test $# -eq 0
-	then
-	rep=.
-elif test $# -eq 1
-	then
-	rep = $1
-else
-	echo "Usage $0 [ repertoire ]"  
-	exit 1 
-fi
-
-if [ ! -d $rep ] 
-    then 
-    echo "Echec $rep n'est pas un repertoire" 
-    exit 1 
-fi 
-    
-echo "Traitement de $rep" 
-cd $rep 
-    
-for nomfic in $(ls) 
-do 
-    nouveauNom=$( echo -n $nomfic | tr '[A-Z]' '[a-z]' ) 
-    echo $nouveauNom 
-    mv $nomfic $nouveauNom 
-done
-</script></code></pre>
-</div>
-<!-- #################################################### -->
-<div id="orange-block">
-    Exercice 3 : Boucle for, arithmétique
-</div>
-<div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Commandes utiles :</b>
-    <p>
-        <code class="listing">grep</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
-        <code class="listing">wc</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/wc.1.html" target="_blank">man wc</a>). <br>
-        <code class="listing">ps</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/ps.1.html" target="_blank">man ps</a>). <br> 
-        <code class="listing">id</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/id.1.html" target="_blank">man id</a>).
-    </p>	
-</div>
 <p>
-    Écrire un script <code class="listing">proc_users.sh</code> :
-    <ul>
-        <li>Arguments : un ou plusieurs noms d’utilisateurs.</li>
-        <li>Tester le nombre d’arguments reçus : il doit y avoir au moins un argument.</li>
-        <li>Pour chaque utilisateur reçu en argument, afficher à l’écran le nombre 
-            de processus appartenant à ce dernier. 
-            Si l’utilisateur n’est pas défini sur le système, il sera ignoré.</li>
-    </ul>
+    Pour une donnée située dans l’espace d’adressage du processus P à l’adresse décimale 8212,
+indiquez :
 </p>
-<p><b>Exemples :</b></p>
-<pre><code class="language-shell"><script type="text/template">$ proc_users.sh  
-Usage : ./proc_users.sh user1 user2 ... usern 
-</script></code></pre>
-<pre><code class="language-shell"><script type="text/template">$ proc_users.sh christie olivier daniel 
-L'utilisateur christie fait tourner 8 processus 
-L'utilisateur olivier n'a pas de processus 
-daniel n'est pas un utilisateur valide 
-</script></code></pre>
-<div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-if test $# -eq 0 
-	then 
-	echo "Usage : $0 user1 user2 ... usern"  
-fi 
-   
-# Boucle sur chaque utilisateur 
-for user in $* 
-do 
-	# Vérifier que l'utilisateur est défini sur le système 
-	id $user &> /dev/null
-	if test $? -ne 0
-		then  
-		echo "$user n'est pas un utilisateur valide" 
-		continue  
-	fi 
-   
-	# Nombre de lignes ramenées par la commande ps 
-	nbLignes=$( ps -u $user | wc -l ) 
-	# Ne pas compter la ligne d'en-tête 
-	nbProc=$(( $nbLignes  - 1 )) 
-   
-	if test $nbProc -eq 0 
-		then 
-		echo "L'utilisateur $user n'a pas de processus"
-	else 
-		echo "L'utilisateur $user fait tourner $nbProc processus"
-	fi 
-done
-</script></code></pre>
-</div>
-<!-- #################################################### -->
-<div id="orange-block">
-    Exercice 4 : Boucles for, while
-</div>
-<div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Commandes utiles :</b>
-    <p>
-        <code class="listing">grep</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
-        <code class="listing">file</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank">man file</a>). <br>
-        <code class="listing">find</code> (utilisez ce lien 
-        <a href="https://man7.org/linux/man-pages/man1/find.1.html" target="_blank">man find</a>). 
-    </p>	
-</div>
-<p>
-    Écrire un script <code class="listing">consulte.sh</code> :
-    <ul>
-        <li>Argument facultatif : un nom de répertoire. Vérifier que l’argument reçu est un répertoire.</li>
-        <li>Si le script ne reçoit pas de nom de répertoire, traiter le répertoire courant.</li>
-        <li>Rechercher tous les fichiers ordinaires qui sont sous ce répertoire (à tous les niveaux).</li>
-        <li>Pour chaque fichier de contenu texte accessible en lecture, demander à l’utilisateur 
-            s’il veut consulter le fichier. Un fichier non texte sera ignoré.</li>
-        <li>L’utilisateur pourra saisir <code class="listing">’o’</code>, <code class="listing">’O’</code>, 
-            <code class="listing">’oui’</code>, <code class="listing">’OUI’</code> pour consulter le fichier,
-            <code class="listing">’n’</code>, <code class="listing">’N’</code>, <code class="listing">’non’</code>, 
-            <code class="listing">’NON’</code> pour ne pas le consulter, ou <code class="listing">’q’</code> pour quitter le script. 
-            Toute autre réponse engendrera une nouvelle demande de saisie.</li>
-        <li>Si l’utilisateur souhaite consulter le fichier : afficher le contenu paginé du fichier à l’écran.</li>
-        <li>Si l’utilisateur ne souhaite pas consulter le fichier : passer au fichier suivant.</li>
-    </ul>  
-</p>
-<div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-if test $# -eq 0
-	then
-	rep=.
-elif test $# -eq 1
-	then
-	rep = $1
-else
-	echo "Usage $0 [ repertoire ]"  
-	exit 1 
-fi
 
-listeFic=$(find $rep -type f 2> /dev/null ) 
-for fic in  $listeFic 
-do 
-	if file $fic | grep text 1> /dev/null 2>&1 && [ -r $fic ] 
-	then 
-		while true  
-		do  
-			echo -e "\nConsulter le fichier $fic ? o/n - q pour quitter \c" 
-			read reponse 
-			case $reponse in 
-				o|O|oui|OUI)  
-					more $fic 
-					break    
-					;; 
-				n|n|non|NON)  
-					break    
-					;;  
-				q|quit)  
-					exit 0  
-					;; 
-				*)  
-					echo "Reponse invalide" 
-					;; 
-			esac 
-		done 
-	fi 
-done
-</script></code></pre>
+<ol>
+    <li> le segment </li>
+    <li> le numéro de page dans le segment</li>
+    <li> le déplacement dans la page</li>
+    <li> le numéro de case</li>
+    <li> le déplacement dans la case</li>
+    <li> l’adresse physique (en décimal et en binaire)  </li>
+</ol>
+
+<!-- CORRECTION ################# -->
+<div class="green-block">
+<img src="./img/td_4_q4.png" alt=""> <br>
+8212 = 2 *4096 + 20 avec 4 Ko = 1024 * 4 = 4096<br>
+segment = S1<br>
+page = 3<br>
+déplacement = 20<br>
+cadre = 0<br>
+déplacement = 20<br>
+l’adresse physique est donc 20 en décimal. L’adresse physique est exprimée sur 16 bits (64Ko =
+$2^{16}$), dont 4 bits pour le numéro de cadre et 12 bits pour le déplacement dans la case (4Ko = $2^{12}$ ) , ce
+qui nous donne en binaire 0000 0000 0001 0100.<br>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
