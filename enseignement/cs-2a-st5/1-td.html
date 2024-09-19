@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<title>TD - Modélisation et logique temporelle CTL-LTL</title>
+
+	<meta name="description" content="TD - Modélisation et logique temporelle CTL-LTL">
+	<meta name="author" content="Idir AIT SADOUNE">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script>
+		MathJax = {
+			tex: {
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
+			},
+			loader: { load: ['ui/lazy'] }
+		};
+	</script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2024/2025</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1>
+	Travaux dirigés - TD<br>
+	Modélisation et logique temporelle <br> CTL-LTL
+</h1>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Modélisation</h2>
+<div class="orange-block">Exercice 1 : Modélisation - Autocommutateur</div>
+
+<p>
+    Soit un système alimenté par 3 batteries. Entre chaque batterie et le système se trouve un interrupteur. 
+    Un programme <i>commutateur</i> permet de jouer sur ces 3 interrupteurs à intervalles réguliers pour commuter 
+    ou non les batteries et éviter qu'une même batterie ne débite trop longtemps mais aussi pour éviter 
+    les surcharges si plusieurs batteries débitaient en même temps (court-circuit).
+</p>
+
+<ul>
+    <li><b>Question 1.</b> Faire un dessin du système.</li>
+
+    <li><b>Question 2.</b> En vous basant sur 3 propriétés booléennes (une par interrupteur), 
+        exprimez les propriétés suivantes : 
+        <ul>
+            <li>pas de court-circuit,</li>
+            <li>continuité de l'alimentation, </li>
+            <li>changement de batterie d'un état à l'état suivant.</li>
+        </ul>
+    </li>
+
+     <li><b>Question 3.</b> En étiquetant les états avec les propriétés (i.e. un état est défini par 
+        la valeur booléenne de chacun des interrupteurs), donner un système de transition du commutateur 
+        qui en respecte les propriétés.</li>
+</ul>
+
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Logique temporelle</h2>
+<div class="orange-block">Exercice 2 : LTL</div>
+
+<div class="green-block">
+	<i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i>
+	<b style="color: green;">Remarque</b>
+	<p>Dans cet exercice, nous avons adopté des notations différentes de celles utilisées dans le cours avec les équivalences suivantes</p>
+    <ul>
+        <li>$X ~ \equiv ~ \bigcirc$</li>
+        <li>$G ~ \equiv ~ \square$</li>
+        <li>$F ~ \equiv ~ \Diamond$</li>
+        <li>$U ~ \equiv ~ \bigcup$</li>
+    </ul>
+</div>
+
+<!-- ############## -->
+<h3>Question 1</h3>
+<p>Ecrire les formules LTL caractérisant les 2 phrases suivantes :
+    <ul>
+        <li><b>Equité faible.</b> : "Si une action $a$ est continûment possible, alors elle sera prise en compte un jour"</li>
+        <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent possible, alors elle sera prise en compte un jour"</li>
+    </ul>
+    On dénotera le fait qu'une action $a$ est possible par la variable propositionnelle $enabled_a$ et le fait 
+qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
+</p>
+
+<!-- ############## -->
+<h3>Question 2</h3>
+
+<p>
+    On va voir que certains connecteurs sont redondants.
+    <ul>
+        <li>Exprimer le connecteur $G$ en fonction des connecteurs $\neg$, et $F$.</li>
+        <li>Exprimer le connecteur $F$ en fonction du connecteur $U$.</li>
+    </ul>
+</p>
+
+<!-- ############## -->
+<h3>Question 3</h3>
+
+<p>
+    On ajoute à la logique LTL les connecteurs  supplémentaires suivants :
+    <ul>
+        <li>$\varphi_1~W~\varphi_2$ (weak until) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
+soit vraie, mais $\varphi_2$ n'est pas forcément vraie à un moment. Dans ce cas-là, $\varphi_1$ doit être vraie 
+tout le long de l'exécution.</li> 
+
+<li>$F^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
+
+<li>$G^\infty~\varphi$ (presque toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
+
+<li>$\varphi_1~U_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
+soit vraie, et $\varphi_2$ est vraie dans au plus $k$ états consécutifs de l'exécution.</li>
+
+<li>$\varphi_1~R~\varphi_2$ (release) signifie que $\varphi_2$ est vraie jusqu'au (et inclus) premier état où 
+$\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jour. </li>
+    </ul>
+    Exprimer ces nouveaux connecteurs en fonction des connecteurs de LTL.
+</p>
+
+
+<!-- ############## -->
+<h3>Question 4</h3>
+
+<p>
+    Dans cet exercice, on va exprimer des propriétés dans la logique LTL où les formules élémentaires seront de simples 
+    variables propositionnelles (i.e. des variables dont les valeurs sont vrai ou faux) choisies dans l'ensemble $\{p,q,p_1,p_2,q_1,q_2\}$. 
+    Ainsi pour exprimer la propriété en LTL "Un jour il y aura $p$", on écrit la formule $F p$. Exprimer en LTL les propriétés suivantes :
+    <ul>
+<li>Il y a toujours $p$.</li>
+<li>Il y a $p$ une infinité de fois.</li>
+<li>Il n'y a jamais $p$ et $q$ simultanément.</li>
+<li>Après chaque occurrence de $p$ il y a au moins une occurrence de $q$.</li>
+<li>S'il y a une infinité de $p_1$ et une infinité de $p_2$ alors toute occurrence de $q_1$ est suivie d'une occurrence de $q_2$.</li>
+<li>Avant chaque occurrence de $p$ il y a au moins une occurrence de $q$.</li>
+<li>Entre chaque paire d'occurrence de $p$ il y a au moins une occurrence de $q$.</li>
+    </ul>
+</p>
+
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div class="orange-block">Exercice 3 : CTL</div>
+
+<p>En cours de construction</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2024/2025</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	</div>
+</body>
+
+</html>
