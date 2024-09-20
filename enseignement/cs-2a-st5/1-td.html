@@ -90,18 +90,6 @@
 <h2>Logique temporelle</h2>
 <div class="orange-block">Exercice 2 : LTL</div>
 
-<div class="green-block">
-	<i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i>
-	<b style="color: green;">Remarque</b>
-	<p>Dans cet exercice, nous avons adopté des notations différentes de celles utilisées dans le cours avec les équivalences suivantes</p>
-    <ul>
-        <li>$X ~ \equiv ~ \bigcirc$</li>
-        <li>$G ~ \equiv ~ \square$</li>
-        <li>$F ~ \equiv ~ \Diamond$</li>
-        <li>$U ~ \equiv ~ \bigcup$</li>
-    </ul>
-</div>
-
 <!-- ############## -->
 <h3>Question 1</h3>
 <p>Ecrire les formules LTL caractérisant les 2 phrases suivantes :
@@ -119,8 +107,8 @@ qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
 <p>
     On va voir que certains connecteurs sont redondants.
     <ul>
-        <li>Exprimer le connecteur $G$ en fonction des connecteurs $\neg$, et $F$.</li>
-        <li>Exprimer le connecteur $F$ en fonction du connecteur $U$.</li>
+        <li>Exprimer le connecteur $\square$ en fonction des connecteurs $\neg$, et $\Diamond$.</li>
+        <li>Exprimer le connecteur $\Diamond$ en fonction du connecteur $\bigcup$.</li>
     </ul>
 </p>
 
@@ -134,11 +122,11 @@ qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
 soit vraie, mais $\varphi_2$ n'est pas forcément vraie à un moment. Dans ce cas-là, $\varphi_1$ doit être vraie 
 tout le long de l'exécution.</li> 
 
-<li>$F^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
+<li>$\Diamond^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
 
-<li>$G^\infty~\varphi$ (presque toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
+<li>$\square^\infty~\varphi$ (presque toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
 
-<li>$\varphi_1~U_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
+<li>$\varphi_1~\bigcup_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
 soit vraie, et $\varphi_2$ est vraie dans au plus $k$ états consécutifs de l'exécution.</li>
 
 <li>$\varphi_1~R~\varphi_2$ (release) signifie que $\varphi_2$ est vraie jusqu'au (et inclus) premier état où 
@@ -154,7 +142,7 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
 <p>
     Dans cet exercice, on va exprimer des propriétés dans la logique LTL où les formules élémentaires seront de simples 
     variables propositionnelles (i.e. des variables dont les valeurs sont vrai ou faux) choisies dans l'ensemble $\{p,q,p_1,p_2,q_1,q_2\}$. 
-    Ainsi pour exprimer la propriété en LTL "Un jour il y aura $p$", on écrit la formule $F p$. Exprimer en LTL les propriétés suivantes :
+    Ainsi pour exprimer la propriété en LTL "Un jour il y aura $p$", on écrit la formule $\Diamond p$. Exprimer en LTL les propriétés suivantes :
     <ul>
 <li>Il y a toujours $p$.</li>
 <li>Il y a $p$ une infinité de fois.</li>
