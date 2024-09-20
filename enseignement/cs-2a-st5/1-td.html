@@ -94,8 +94,8 @@
 <h3>Question 1</h3>
 <p>Ecrire les formules LTL caractérisant les 2 phrases suivantes :
     <ul>
-        <li><b>Equité faible.</b> : "Si une action $a$ est continûment possible, alors elle sera prise en compte un jour"</li>
-        <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent possible, alors elle sera prise en compte un jour"</li>
+        <li><b>Equité faible.</b> : "Si une action $a$ est finalement pour toujours activée, alors elle sera infiniment souvent exécutée"</li>
+        <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent activée, alors elle sera infiniment souvent exécutée"</li>
     </ul>
     On dénotera le fait qu'une action $a$ est possible par la variable propositionnelle $enabled_a$ et le fait 
 qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
@@ -124,7 +124,7 @@ tout le long de l'exécution.</li>
 
 <li>$\Diamond^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
 
-<li>$\square^\infty~\varphi$ (presque toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
+<li>$\square^\infty~\varphi$ (presque toujours ou finalement pour toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
 
 <li>$\varphi_1~\bigcup_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
 soit vraie, et $\varphi_2$ est vraie dans au plus $k$ états consécutifs de l'exécution.</li>
