@@ -155,7 +155,106 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
 <!-- #################################################### -->
 <div class="orange-block">Exercice 3 : CTL</div>
 
-<p>En cours de construction</p>
+<!-- ############## -->
+<h3>Question 1</h3>
+
+<p>
+    Exprimer en tenant compte des quantificateurs $A$ et $E$ sur les chemins les propriétés d'accessibilité, 
+d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
+<ul>
+    <li><b>Accessibilité.</b> Une certaine situation peut être atteinte, e.g.
+        <ul>
+            <li>le compteur $x$ peut prendre la valeur $0$ (i.e. il existe un état atteignable où $x = 0$)</li>
+            <li>le point final du programme peut être atteint.</li>
+        </ul>
+    </li>
+
+    <li><b>Sureté. </b> Quelque chose de mauvais n'arrive jamais, e.g. 
+        <ul>
+            <li>chaque fois que j'utilise un <i>unlock</i>, j'ai utilisé un <i>lock</i> avant;</li>
+            <li>Chaque fois que j'accède à mon compte, j'ai entré le bon code au préalable;</li>
+            <li>Quand la pré-condition du programme est respectée et que le programme termine 
+                alors la post-condition est respectée.</li>
+        </ul>
+    </li>
+
+    <li><b>Vivacité.</b> Quelque chose de bon finira par arriver, e.g.
+        <ul>
+            <li>Quand une impression est lancée, elle finira par s'achever;</li>
+            <li>Quand un message est envoyé, il finira par être reçu;</li>
+            <li>Quand la pré-condition du programme est respectee, alors le programme 
+                termine et la post-condition est respectée.</li>
+        </ul>
+    </li>
+    <li><b>Equité.</b> Quelque chose se répétera infiniment souvent, e.g., si 
+        un processus demande son exécution, il finira par l'avoir.</li>
+</ul>
+</p>
+
+
+<!-- ############## -->
+<h3>Question 2</h3>
+
+<p>
+    On rappelle pour cet exercice qu'un modèle de Kripke est défini par un ensemble d'états $S$, 
+    une relation binaire $R \subseteq S \times S$ (il n'y a pas d'actions) et une application $\lambda : S \to 2^P$ où 
+    $P$ est un ensemble de variables propositionnelles. Ainsi, étant donné un état $s \in S$, $\lambda(s)$ contient 
+    l'ensemble des variables propositionnelles qui sont vraies pour cet état. 
+
+    <ol>
+        <li>Soit $P = \{p\}$ un ensemble de variables propositionnelles. 
+            Donner un modèle de Kripke non trivial (i.e. non réduit à un état) comme défini ci-dessus pour chacune des formules CTL suivantes :
+
+            $$AGp,\ EGp,\ AFp, \ EFp, AGEXp, \ EGEFp$$
+        </li>
+        <li>
+            Donner une formule CTL exprimant la propiété suivante : <br>
+            <i>Quoique je fasse maintenant (i.e. quelque soit la transition que je passe), je garde la possibilité de vérifier $p$ dans le futur.</i>
+        </li>
+    </ol>
+</p>
+
+<!-- ############## -->
+<h3>Question 3</h3>
+
+<p>
+    Soient $p$,$q$,$r$ des propositions atomiques. Exprimer les propriétés suivantes.
+    <ol>
+        <li>Tous les états satisfont $p$. </li>
+        <li>On peut atteindre $p$ par un chemin où $q$ est toujours vrai. </li>
+        <li>Quelque soit l'état, on finit par atteindre un état qui satisfait $p$. </li>
+        <li>Quelque soit l'état, on peut atteindre un état qui satisfait $p$. </li>
+        <li>Quoique je fasse maintenant, je garde la possibilité de faire $p$ dans le futur. </li>
+        <li>Quelque soit l'exécution, tout $p$ sera inévitablement suivi d'un $q$. </li>
+        <li>Quelque soit l'exécution, tout $p$ sera inévitablement suivi d'un $q$ dans un futur strict. </li>
+        <li>Chaque $q$ impose que $p$ devienne vrai avant une éventuelle occurrence de $r$.</li>
+    </ol>
+</p>
+
+<!-- ############## -->
+<h3>Question 4</h3>
+
+<p>Soit le système de transitions de la figure suivante représentant le fonctionnement d'un four électrique.</p>
+
+<img src="./img/ctl-exo.png" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;">
+
+<p>(A : allumé; E : erreur; F : fermé; C : chauffé; all : allumage; ouv : ouverture; fer : fermeture; 
+    fin : fin; cuire : cuire; raz : remise à zero.)</p>
+
+<p>
+    On veut vérifier, si ce système satisfait la propriété (si le four est allumé alors il finira par être chauffé).
+    $$  AG~(A ~\Rightarrow~ AF ~C) \equiv \neg (EF ~(A \land EG~ \neg C))$$ 
+
+    On procède de la façon suivante : on marque tous les états qui satisfont les sous-formules 
+    en commençant à l'intérieur.
+    <ul>
+        <li>Marquer tous les états qui satisfont $\neg C$. </li>
+        <li>Marquer tous les états qui satisfont $EG~ \neg C$. </li>
+        <li>Marquer tous les états qui satisfont $A \land EG~ \neg C$. </li>
+        <li>Marquer tous les états qui satisfont $EF ~(A \land EG~ \neg C)$. </li>
+        <li>Marquer enfin tous les états qui satisfont toute la propriété.</li>
+    </ul>
+</p>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
