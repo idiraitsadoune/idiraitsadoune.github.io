@@ -191,20 +191,20 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le titre de la slide <span style="text-transform: lowercase;">vs</span> box</h2>
-	<div>
-		<div id="default-block">
-			<b>Beast of Bodmin</b> <br>
-			A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
-		</div>
-		<div id="alert-block">
-			<b>Beast of Bodmin</b> <br>
-			A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
-		</div>
-		<div id="green-block">
-			<b>Beast of Bodmin</b> <br>
-			A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
-		</div>
+
+	<div id="default-block">
+		<b>Beast of Bodmin</b> <br>
+		A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
 	</div>
+	<div id="alert-block">
+		<b>Beast of Bodmin</b> <br>
+		A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
+	</div>
+	<div id="green-block">
+		<b>Beast of Bodmin</b> <br>
+		A large <i>feline</i> inhabiting <b>Bodmin Moor</b>.
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -345,8 +345,7 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Image dans le texte</h2>
 
-	<img src="../resources/img/cs.png" height="200px"
-		style="float: right; margin-bottom: 20px; margin-left: 60px;">
+	<img src="../resources/img/cs.png" height="200px" style="float: right; margin-bottom: 20px; margin-left: 20px;">
 
 	<ul style="display: block;">
 		<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
@@ -356,28 +355,35 @@ exit 0
 		<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par l'OMG en
 			juillet 2005.</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Deux colonnes</h2>
+
 	<div style="display: flex; align-items: center;">
-		<img src="../resources/img/cs.png" height="100%"
-			style="width: 25%; margin-bottom: 20px; margin-right: 60px;">
-		<ul style="width: 75%;">
-			<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
-				est un langage de modélisation graphique à base de pictogrammes. </li>
-			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
-				Booch, OMT, OOSE.</li>
-			<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par
-				l'OMG en juillet 2005.</li>
-		</ul>
+		<div style="width: 25%;">
+			<img src="../resources/img/cs.png" >
+		</div>
+		<div style="width: 75%; margin-left: 30px;">
+			<ul>
+				<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
+					est un langage de modélisation graphique à base de pictogrammes. </li>
+				<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
+					Booch, OMT, OOSE.</li>
+				<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par
+					l'OMG en juillet 2005.</li>
+			</ul>
+		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>grille</h2>
+
 	<div style="display:grid; grid-template-columns: repeat(4,1fr);">
 		<img src="../resources/img/cs.png" width="80%">
 		<img src="../resources/img/cs.png" width="80%">
@@ -387,17 +393,19 @@ exit 0
 		<img src="../resources/img/cs.png" width="80%">
 		<img src="../resources/img/cs.png" width="80%">
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Photos parallèle</h2>
-	<div
-		style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto; align-items:center; column-gap: 50px;">
 		<img src="../resources/img/cs.png" height="170px" width="auto">
 		<img src="../resources/img/cs.png" height="170px" width="auto">
 		<img src="../resources/img/cs.png" height="170px" width="auto">
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
