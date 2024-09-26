@@ -66,6 +66,7 @@
 		<li><a href="#q9">Quelques items personnalisés</a></li>
 		<li><a href="#q10">Centrer le contenu d'une slide</a></li>
 		<li><a href="#q11">Couper une slide en plusieurs colonnes</a></li>
+		<li><a href="#q12">Différents types de bloques</a></li>
     </ul>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -76,7 +77,26 @@
 <h2 id="q1">Template de départ</h2>
 
 <pre><code class="language-latex"><script type="text/template">\documentclass[aspectratio=169]{beamer}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main declarations for this slides
 \usepackage{../../0-beamer-templates-v3/theme}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\csfullname{Idir AIT SADOUNE}
+\def\cswebsite{https://idiraitsadoune.com}
+\def\cspicture{../../0-beamer-templates-v3/Figs/idir.png}
+\def\csaffectation{../../0-beamer-templates-v3/Figs/logo-aff.pdf}
+\def\csemail{idir.aitsadoune@centralesupelec.fr}
+
+\def\csmaintitle{The main title of the lecture \break in two lines}
+\def\cssubtitle{The title of the chapter in one line}
+
+\def\cslogo{../../0-beamer-templates-v3/Figs/cs.png}
+\def\csprogramname{The program name}
+\def\csuniversityname{The university name - 2024/2025}
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The main document 
@@ -84,18 +104,8 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The main frame 
-\myframetitle
-{../../0-beamer-templates-v3/Figs/cs.pdf} 
-{The main title of the lecture} 
-{The title of the chapter} 
-{The program name}
-{The university name - 2023/2024}
-{email@example.fr}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The main logo
-\mylogo
-{../../0-beamer-templates-v3/Figs/cs.png}
+\csmainframe 
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The main plan
@@ -235,6 +245,25 @@
 }
 </script></code></pre>
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2 id="q12">Différents types de bloques</h2>
+
+<pre><code class="language-latex"><script type="text/template">\begin{defaultnote}
+\mcg{Beast of Bodmin} \\
+A large feline inhabiting Bodmin Moor.
+\end{defaultnote}
+
+\begin{rednote}
+\redmcg{Beast of Bodmin}\\
+A large feline inhabiting Bodmin Moor.
+\end{rednote}
+
+\begin{greennote}
+\greenmcg{Beast of Bodmin}\\
+A large feline inhabiting Bodmin Moor.
+\end{greennote}
+</script></code></pre>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
