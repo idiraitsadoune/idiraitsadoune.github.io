@@ -82,6 +82,31 @@
         qui en respecte les propriétés.</li>
 </ul>
 
+<div class="green-block">
+	<b style="color: green;">Correction</b>
+    <ul>
+        <li><b>Question 1.</b></li>
+        <li><b>Question 2.</b>
+            <ul>
+                <li>
+                    pas de court-circuit, <br>
+                    $\bigvee_{i \neq j \neq k \in \{1,2,3\}} (b_i \wedge \neg b_j \wedge \neg b_k)$ <br>
+                    $(b_1 \land \neg b_2 \land \neg b_3) \vee (\neg b_1 \land b_2 \land \neg b_3) \vee (\neg b_1 \land \neg b_2 \land b_3)$
+                </li>
+                <li>
+                    continuité de l'alimentation, <br>
+                    $b_1 \vee b_2 \vee b_3$
+                </li>
+                <li>
+                    changement de batterie d'un état à l'état suivant. <br>
+                    <i>pas possible avec une formule propositionnelle</i> <br>
+                    $\bigvee_{i \neq j \neq k \in \{1,2,3\}} (b_i \wedge \neg b_j \wedge \neg b_k) \Rightarrow \bigcirc (\neg b_i \wedge  b_j \wedge \neg b_k)$
+                </li>
+            </ul>
+        </li>
+        <li><b>Question 3.</b></li>
+    </ul>
+</div>
 <!-- #################################################### -->
 <!-- #################################################### -->
 <h2>Logique temporelle</h2>
@@ -95,9 +120,16 @@
         <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent activée, alors elle sera infiniment souvent exécutée"</li>
     </ul>
     On dénotera le fait qu'une action $a$ est possible par la variable propositionnelle $enabled_a$ et le fait 
-qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
+qu'elle sera prise en compte, par la variable propositionnelle $executed_a$.
 </p>
 
+<div class="green-block">
+	<b style="color: green;">Correction</b>
+    <ul>
+        <li><b>Equité faible.</b> : $\Diamond \square(enabled_a) \Rightarrow \square \Diamond(executed_a)$</li>
+        <li><b>Equité forte.</b> : $\square \Diamond(enabled_a)  \Rightarrow \square \Diamond(executed_a)$</li>
+    </ul>
+</div>
 <!-- ############## -->
 <h3>Question 2</h3>
 
@@ -109,6 +141,13 @@ qu'elle sera prise en compte, par la variable propositionnelle $taken_a$.
     </ul>
 </p>
 
+<div class="green-block">
+	<b style="color: green;">Correction</b>
+    <ul>
+        <li>$\square ~\phi \equiv \neg \Diamond ~ \neg \phi$</li>
+        <li>$\Diamond ~ \phi \equiv True ~ \bigcup ~ \phi$</li>
+    </ul>
+</div>
 <!-- ############## -->
 <h3>Question 3</h3>
 
@@ -132,6 +171,16 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     Exprimer ces nouveaux connecteurs en fonction des connecteurs de LTL.
 </p>
 
+<div class="green-block">
+	<b style="color: green;">Correction</b>
+    <ul>
+        <li>$\varphi_1~W~\varphi_2 \equiv \square \varphi_1 \vee (\varphi_1~\bigcup~\varphi_2)$</li>
+        <li>$\Diamond^\infty \varphi \equiv \square \Diamond \varphi$</li>
+        <li>$\square^\infty \varphi \equiv \Diamond \square \varphi$</li>
+        <li>$\varphi_1~\bigcup_{\leq k}~\varphi_2 \equiv (\varphi_1~\bigcup~\varphi_2) \wedge (\square \neg (\bigwedge_{i \leq k} \bigcirc^{i} \varphi_2)) $</li>
+        <li>$\varphi_1~R~\varphi_2 \equiv \varphi_2~W~(\varphi_1 \wedge \varphi_2)$</li>
+    </ul>
+</div>
 
 <!-- ############## -->
 <h3>Question 4</h3>
@@ -151,6 +200,28 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     </ul>
 </p>
 
+<div class="green-block">
+	<b style="color: green;">Correction</b>
+    <ul>
+        <li>Il y a toujours $p$ : <br> 
+            $\square ~ p$</li>
+        <li>Il y a $p$ une infinité de fois : <br>
+            $\square \Diamond ~ p$</li>
+        <li>Il n'y a jamais $p$ et $q$ simultanément : <br> 
+            $\square \neg (p \land q)$</li>
+        <li>Après chaque occurrence de $p$ il y a au moins une occurrence de $q$ : <br> 
+            $\square (p \Rightarrow \Diamond ~q)$</li>
+        <li>S'il y a une infinité de $p_1$ et une infinité de $p_2$ alors toute occurrence de $q_1$ est suivie d'une occurrence de $q_2$ :  <br>
+            $\square \Diamond ~ p_1 \wedge \square \Diamond ~ p_2 \Rightarrow \square(q_1 \Rightarrow \Diamond ~ q_2)$</li>
+        <li>Avant chaque occurrence de $p$ il y a au moins une occurrence de $q$ : <br> 
+            $\square(\neg (\neg q~\bigcup~p))$</li>
+        <li>Entre chaque paire d'occurrence de $p$ il y a au moins une occurrence de $q$ : <br>
+            $\square (p \Rightarrow \bigcirc(\neg p~W~q))$<br>
+            $\square (p \wedge \bigcirc \Diamond ~ p \Rightarrow \bigcirc(\neg p~\bigcup~q))$<br>
+            $\square (p \Rightarrow \bigcirc(\square \neg p \vee (\Diamond ~p \Rightarrow \bigcirc(\neg p~\bigcup~q))))$
+        </li>
+    </ul>
+</div>
 <!-- #################################################### -->
 <!-- #################################################### -->
 <div class="orange-block">Exercice 3 : CTL</div>
