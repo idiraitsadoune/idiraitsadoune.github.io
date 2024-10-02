@@ -1,27 +1,415 @@
+<!doctype html>
 <html>
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Systèmes d'exploitation : Systèmes de fichiers</title>
-  <link rel="stylesheet" href="../resources/Viewer/resources/full-viewer.css" />
-  <!--<script src="./pdf.js/pdf.min.js"></script>-->
-  <script src="../resources/Viewer/pdf.js/pdf.js"></script>
-  <link rel="icon" href="../resources/img/favicon.ico" />
+	<meta charset="utf-8">
+	<title>Systèmes d'exploitation : Les Systèmes de fichiers</title>
+
+	<meta name="description" content="Systèmes d'exploitation : Les Systèmes de fichiers">
+	<meta name="author" content="Idir AIT SADOUNE">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
-<body id="body">
-  
-  <div id="my_pdf_viewer">
-    <div id="canvas_container">
-      <canvas id="pdf_renderer"></canvas>
-    </div>
+<body>
+	<img id="logo" src="../resources/img/cs.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
+	</div>
+
+	<div class="slide-content">
+		<h2>Systèmes d'exploitation</h2>
+		<h3>Les Systèmes de fichiers</h3>
+	</div>
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2024/2025</span>
+	</div>
+		
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Le stockage secondaire</h2>
+
+  <ul>
+    <li>
+      <b>Le stockage secondaire</b> conserve des <i>programmes</i> et des <i>données</i>.
+    </li>
+
+    <li class="skip fragment">
+      L'<b>OS</b> masque la <i>complexité</i> et la <i>diversité</i> des unités de stockage <br>
+      (matériel, système de fichiers, ...) grâce à:
+      <ul>
+        <li class="fragment">
+          Une <b>vue logique</b> des données :
+          <ul id="fleche">
+            <li><strong>fichiers</strong>: unité de stockage logique</li>
+            <li><strong>répertoires</strong>: classement arborescent</li>
+            <li><strong>volumes montés</strong>: vue globale des systèmes de fichiers</li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          Une <b>organisation physique</b> des espaces de stockage :
+          <ul id="fleche">
+            <li>découpage en <strong>blocs</strong></li>
+            <li>affectation et libération de <strong>blocs</strong></li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          Un <b>système d'entrées/sorties</b> (<b style="color: red;">non traité dans ce cours</b>) :
+          <ul id="fleche">
+            <li>gestion du caches, algorithmes d'optimisation des accès,</li>
+            <li>pilotes gérant les communications avec les périphériques</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="La notion de fichier"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La notion de fichier</h2>
+
+  <ul>
+    <li>
+      <b>Fichier</b>
+      <ul>
+        <li>une <strong>collection nommée</strong> d'information accessibles via un périphérique.</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Unité logique</b>
+      <ul>
+        <li>indépendante du support physique (périphérique)</li>
+        <li>abstraction des propriétés physiques</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Type de fichier</b>
+      <ul>
+        <li>code source, données, bibliothèque, exécutable, ...</li>
+        <li>généralement indiqué par son <i>extension</i></li>
+        <li class="fragment"> un type de fichier $\to$ une <i>structure spécifique</i></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples</h2>
+
+  <ul>
+    <li>
+      <b>Fichiers texte</b>: <code class="listing">.txt</code>
+      <ul>
+        <li><i>données textuelles</i> à l'usage de l'utilisateur humain</li>
+        <li>succession de <i>caractères</i> ...</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Fichiers source</b>: <code class="listing">.c</code>, <code class="listing">.java</code>, ...
+      <ul>
+        <li>fourni par un humain pour être traité par la machine</li>
+        <li>composés d'<i>instructions</i> ...</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Exécutable</b>: <code class="listing">.exe</code>, ...
+      <ul>
+        <li>construits par <i>un compilateur</i> à partir d'un fichier source</li>
+        <li>succession d'<i>octets</i> ...</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>File Control Block - FCB</h2>
+
+  <div id="default-block" style="text-align: center; width: 88%;">
+    <b>Structure de données</b> de l'<b>OS</b> pour stocker 
+    les informations nécessaires <br> à la <i>gestion des fichiers</i>
   </div>
 
-  <script>
-    const file = "./2-systemes-de-fichiers.pdf"
-    var currentPage = 1
-  </script>
-  <script src="../resources/Viewer/resources/full-viewer.js"></script>
+  <table class="d-skip fragment" style="font-size: 25px;">
+    <tbody>
+      <tr>
+        <td><b>Nom</b></td>
+        <td>indépendant de l'OS, lisible</td>
+      </tr>
+      <tr>
+        <td><b>Identifiant</b></td>
+        <td>numérique, unique, pour l'OS</td>
+      </tr>
+      <tr>
+        <td><b>Type</b></td>
+        <td>extension ou en-tête de fichier</td>
+      </tr>
+      <tr>
+        <td><b>Emplacement</b></td>
+        <td>pointeur sur un périphérique</td>
+      </tr>
+      <tr>
+        <td><b>Taille</b></td>
+        <td>en octets ou en blocs</td>
+      </tr>
+      <tr>
+        <td><b>Protection</b></td>
+        <td>lecture, écriture, exécution ...</td>
+      </tr>
+      <tr>
+        <td><b>Date(s)</b></td>
+        <td>création, modification, accès ...</td>
+      </tr>
+      <tr>
+        <td><b>Utilisateur</b></td>
+        <td>propriétaire du fichier</td>
+      </tr>
+      <tr>
+        <td><b>...</b></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Protection</h2>
+
+  <ul>
+    <li>
+      <b>Partage de fichiers</b>
+      <ul>
+        <li>rendre <i>accessible</i> à un <strong>utilisateur B</strong> un fichier de l'<strong>utilisateur A</strong>.</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Politique de protection</b>
+      <ul>
+        <li class="fragment">
+          définir qui peut accéder à quel(s) fichier(s)
+          <ul id="fleche">
+            <li>identifiant utilisateur $\to$ identifiant processus</li>
+            <li>contrôle d'accès dans le <b>FCB</b></li>
+          </ul>
+        </li>
+        <li class="skip fragment">
+          spécifier pour chaque fichier la liste des <i>sujets</i> autorisés à effectuer <br>
+          un <i>type d'accès</i>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Techniques de protection</h2>
+
+  <ul>
+    <li><b>Liste de contrôle d'accès (ACL)</b>
+      <ul>
+        <li> utilisateur $\to$ droits</li>
+        <li>l'ensemble des utilisateurs doit être connu a priori</li>
+      </ul>
+    </li>
+    <ul id="ko" class="fragment">
+      <li>taille du <b>FCB</b> grossit avec le nombre d'utilisateurs</li>
+    </ul>
+
+    <li class="skip fragment">
+      <b>Mot de passe</b>
+      <ul>
+        <li>1 mot de passe par fichier $\times$ type d'accès (<code class="listing">r</code>, <code class="listing">w</code>, ...)</li>
+      </ul>
+    </li>
+    <ul id="ko" class="fragment">
+      <li>pas très pratique $\to$ peu utilisé</li>
+    </ul>
+
+    <li class="skip fragment">
+      <b>Classes d'utilisateurs</b>
+      <ul>
+        <li><strong>Exemple</strong>: Propriétaires <i>vs</i> Autres</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Techniques de protection</h2>
+
+  <ul>
+    <li>
+      <b>Notion de groupe</b>
+      <ul>
+        <li class="fragment">
+          Ensemble de groupes définis a priori
+          <ul>
+            <li><strong>Ex</strong>: <code class="listing">admin</code>, <code class="listing">dev-disque</code>, 
+              <code class="listing">user-disque</code>, <code class="listing">dev-ram</code>, <code class="listing">user-ram</code></li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          <b>FCB</b>: 1 utilisateur + 1 groupe (propriétaires)
+          <ul>
+            <li><strong>Ex</strong>: <code class="listing">toto.c</code>, <code class="listing">u=batman</code>, 
+              <code class="listing">g=dev-disque</code></li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          Utilisateur $\to$ liste de groupes
+          <ul>
+            <li><strong>Ex</strong>: <code class="listing">robin</code>, <code class="listing">g=[user-disque,dev-ram]</code></li>
+          </ul>
+        </li>
+        <ul id="fleche" class="fragment"><li><code class="listing">robin</code> n'a pas accès à <code class="listing">toto.c</code></li></ul>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      Dans les systèmes <a href="https://fr.wikipedia.org/wiki/POSIX" target="_blank">POSIX</a> on distingue :
+      <ul>
+        <li><b>3 modes</b> (lecture, écriture, exécution)</li>
+        <li><b>3 catégories de sujets</b> (le propriétaire, son groupe et le reste des sujets)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="./2-systemes-de-fichiers.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.MathJax3]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
 </body>
 </html>
-
