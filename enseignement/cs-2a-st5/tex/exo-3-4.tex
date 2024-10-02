@@ -1,0 +1,67 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/home/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{tikz}
+\usetikzlibrary {arrows.meta,automata,positioning}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tikzpicture}
+  [shorten >=1pt,>={Stealth[round]},initial text=,node distance = 2cm, on grid]
+
+  \node[state,fill = red!30]         (q_2) {\tiny $F$};
+  \node[state, initial,fill = red!30] (q_0) [above =of q_2]       {};
+  \node[state,fill = red!30]          (q_1) [left  =of q_2] {\tiny $A, ~E$};
+  \node[state,fill = red!30]          (q_3) [right =of q_2] {\tiny $F, ~C$};
+  \node[state,fill = red!30]          (q_4) [below =of q_1] {\tiny $A, ~E, ~F$};
+  \node[state,fill = red!30]          (q_5) [below =of q_2] {\tiny $A, ~F$};
+  \node[state,fill = red!30]          (q_6) [below =of q_3] {\tiny $A, ~C, ~F$};
+
+  \path[->] (q_0) edge                 node [above] {\tiny all} (q_1)
+                  edge [bend left=25]  node [right] {\tiny fer} (q_2)
+                  
+            (q_1) edge [bend left=25]  node [right] {\tiny ouv} (q_4)
+            	   
+            (q_2) edge [bend left=25]  node [right] {\tiny ouv} (q_0)
+                  edge                 node [right] {\tiny all} (q_5)
+            
+            (q_3) edge                 node [above] {\tiny fin} (q_2)
+                  edge [loop right]    node [right]  {\tiny cuire} ()
+                  edge                 node [right]  {\tiny ouv} (q_0)
+                  
+            (q_4) edge [bend left=25]  node [right] {\tiny fer} (q_1)
+                  edge                 node [right] {\tiny raz} (q_2) 
+                  
+            (q_5) edge                 node [below] {\tiny chau} (q_6)
+            (q_6) edge                 node [left] {\tiny cuire} (q_3);
+            
+\end{tikzpicture}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

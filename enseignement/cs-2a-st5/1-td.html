@@ -244,7 +244,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
         </ul>
     </li>
 
-    <li><b>Sureté. </b> Quelque chose de mauvais n'arrive jamais, e.g. 
+    <li><b>Sûreté. </b> Quelque chose de mauvais n'arrive jamais, e.g. 
         <ul>
             <li>chaque fois que j'utilise un <i>unlock</i>, j'ai utilisé un <i>lock</i> avant;</li>
             <li>Chaque fois que j'accède à mon compte, j'ai entré le bon code au préalable;</li>
@@ -261,7 +261,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
                 termine et la post-condition est respectée.</li>
         </ul>
     </li>
-    <li><b>Equité.</b> Quelque chose se répétera infiniment souvent, e.g., si 
+    <li><b>Équité.</b> Quelque chose se répétera infiniment souvent, e.g., si 
         un processus demande son exécution, il finira par l'avoir.</li>
 </ul>
 </p>
@@ -269,10 +269,10 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 <div class="green-block">
 	<b style="color: green;">Correction</b>
     <ul>
-        <li><b>Accessibilité.</b> $E F \varphi$</li>
-        <li><b>Sureté.</b> $A G \neg \varphi$</li>
-        <li><b>Vivacité.</b> $A F \varphi$</li>
-        <li><b>Equité.</b> $A G A F \varphi$</li>
+        <li><b>Accessibilité.</b><br> $E F \varphi$</li>
+        <li><b>Sûreté.</b><br> $A G \neg \varphi$</li>
+        <li><b>Vivacité.</b><br> $A F \varphi$</li>
+        <li><b>Équité.</b><br> $A G A F \varphi$</li>
     </ul>
 </div>
 <!-- ############## -->
@@ -322,14 +322,23 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 
 <div class="green-block">
 	<b style="color: green;">Correction</b>
-    TO DO
+    <ol>
+        <li>Tous les états satisfont $p$. <br> $AG~p$ </li>
+        <li>On peut atteindre $p$ par un chemin où $q$ est toujours vrai. <br> $E(G~q \land F(q \land p))$ </li>
+        <li>Quelque soit l'état, on finit par atteindre un état qui satisfait $p$. <br> $AGAF~p$ </li>
+        <li>Quelque soit l'état, on peut atteindre un état qui satisfait $p$. <br> $AGEF~p$ </li>
+        <li>Quoique je fasse maintenant, je garde la possibilité de faire $p$ dans le futur. <br> $AXEF~p$  </li>
+        <li>Quelque soit l'exécution, tout $p$ sera inévitablement suivi d'un $q$. <br> $AG (p ~\Rightarrow~ AF ~q) $ </li>
+        <li>Quelque soit l'exécution, tout $p$ sera inévitablement suivi d'un $q$ dans un futur strict. <br> $AG (p ~\Rightarrow~ AXAF ~q) $</li>
+        <li>Chaque $q$ impose que $p$ devienne vrai avant une éventuelle occurrence de $r$. <br> $AG(q ~\Rightarrow~ A(\neg r ~U~ p)) $</li>
+    </ol>
 </div>
 <!-- ############## -->
 <h3>Question 4</h3>
 
 <p>Soit le système de transitions de la figure suivante représentant le fonctionnement d'un four électrique.</p>
 
-<img src="./img/ctl-exo.png" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="./img/exo-3-4-step0.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;">
 
 <p>(A : allumé; E : erreur; F : fermé; C : chauffé; all : allumage; ouv : ouverture; fer : fermeture; 
     fin : fin; cuire : cuire; raz : remise à zero.)</p>
@@ -351,7 +360,18 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 
 <div class="green-block">
 	<b style="color: green;">Correction</b>
-    TO DO
+    <ul>
+        <li>Marquer tous les états qui satisfont $\neg C$. <br>
+            <img src="./img/exo-3-4-step1.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></li>
+        <li>Marquer tous les états qui satisfont $EG~ \neg C$. <br>
+            <img src="./img/exo-3-4-step2.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></li>
+        <li>Marquer tous les états qui satisfont $A \land EG~ \neg C$. <br>
+            <img src="./img/exo-3-4-step3.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></li>
+        <li>Marquer tous les états qui satisfont $EF ~(A \land EG~ \neg C)$. <br>
+            <img src="./img/exo-3-4-step4.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></li>
+        <li>Marquer enfin tous les états qui satisfont  $\neg (EF ~(A \land EG~ \neg C))$.<br>
+            <img src="./img/exo-3-4-step0.svg" alt="" width="50%" style="display: block; margin-left: auto; margin-right: auto;"></li>
+    </ul>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

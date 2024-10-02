@@ -1,0 +1,56 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/home/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary {arrows.meta,automata,positioning}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[->,>={Stealth[round]},shorten >=1pt,
+                    auto,node distance=2cm,on grid,semithick,
+                    inner sep=2pt,bend angle=45]
+  \node[state]         (A)              {\faBattery[3]};
+  \node[state]         (B) [right=of A] {\faBattery[3]};
+  \node[state]         (D) [left=of A] {\faBattery[3]};
+  \node[state]         (C) [below=of A] {\faLightbulbO};
+
+
+  \path [every node/.style={font=\footnotesize}]
+        (A) edge              node {$b_1$} (C)
+        (B) edge              node {$b_2$} (C)
+        (D) edge              node {$b_3$} (C);
+        
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
