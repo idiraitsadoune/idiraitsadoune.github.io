@@ -119,7 +119,7 @@ document.addEventListener('keypress', (event) => {
       toggleFullScreen();
   }
   else{
-    alert("N or --> for next; P or <-- for previous; F for fullscreen mode");
+    alert("N or --> for next; \nP or <-- for previous; \nF for fullscreen mode; \nReplace the .html with .pdf in the URL to get the PDF file");
   }
 
 }, false);
