@@ -18,6 +18,10 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
+  <!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -355,6 +359,79 @@
   </ul>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Techniques de protection</h2>
+
+  <ul>
+    <li>
+      Dans les systèmes <a href="https://fr.wikipedia.org/wiki/POSIX" target="_blank">POSIX</a> on distingue :
+      <ul>
+        <li><b>3 modes</b> (lecture, écriture, exécution)</li>
+        <li><b>3 catégories de sujets</b> (le propriétaire, son groupe et le reste des sujets)</li>
+      </ul>
+    </li>
+
+    <li class="skip">
+      <strong>Exemple</strong> $\to$ <b>Unix</b>
+      <ul>
+        <li>3 $\times$ 3 bits par fichier</li>
+      </ul>
+    </li>
+    <pre class="d-skip fragment">
+      <code class="language-shell hljs" data-trim><script type="text/template">
+        $ ls -l
+  
+  
+  
+  
+  
+  
+        ...
+      </script></code>
+      <code class="language-shell hljs fragment" data-trim><script type="text/template">
+        $ ls -l
+        total 248
+        drwx------ 6 nico prof     4096 nov.  20 12:06 private
+        -rw------- 1 nico prof     2356 dec.   5 15:30 notes.ods
+        drwxrwx--- 8 nico prof     4096 dec.   4 17:31 doc
+        -rw-rw-r-- 1 joe  student    36 jan.  21 16:49 programme.c
+        -rwxrwxr-x 1 joe  student   996 jan.  28 10:53 programme
+        ...
+      </script></code>
+    </pre>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Opérations sur un fichier</h2>
+
+  <ul>
+    <li>
+      <b>Appels systèmes de base</b>
+      <ul class="fragment">
+        <li><strong>Création</strong>: allocation espace + entrée <i>répertoire</i></li>
+        <li><strong>Lecture</strong>: pointeur de lecture</li>
+        <li><strong>Écriture</strong>: pointeur d'écriture</li>
+        <li><strong>Repositionnement</strong>: déplacer un pointeur</li>
+        <li><strong>Suppression</strong>: retrait de l'entrée dans le répertoire</li>
+        <li><strong>Troncature</strong>: vider mais garder l'entrée</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Opérations composées</b>
+      <ul>
+        <li><strong>Ex</strong>: copie, renommage</li>
+      </ul>
+    </li>
+    <ul id="fleche" class="fragment"><li>effectuées à partir des appels systèmes de base</li></ul>
+  </ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -375,9 +452,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	
+
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
@@ -405,7 +483,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3]
+			plugins: [RevealMath.MathJax3, RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
