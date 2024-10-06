@@ -1,0 +1,79 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}
+
+    \tikzstyle{disque}=[draw, cylinder, shape border rotate=45, color=darkgray!80, fill=lightgray!50,  text=black, minimum height=2.5cm, minimum width=1.8cm, very thick]
+    \tikzstyle{fcb}=[draw, rectangle, color=orange!70, fill=orange!20, text=black, align=left, text width=3.0cm, very thick]
+    \tikzstyle{process}=[draw, rectangle, color=brown!70, fill=brown!20, text=black, align=left, text width=3.0cm, very thick]
+    \tikzstyle{tfcb}=[draw, rectangle, color=violet!70, fill=violet!20, minimum height=5.0cm, minimum width=3.8cm, very thick]
+    \tikzstyle{tpcb}=[draw, rectangle, color=red!70, fill=red!20, minimum height=4.2cm, minimum width=3.8cm, very thick]
+
+
+    \node[disque] (d)  at (-5,-1.5) {\scriptsize Disque};
+    
+    \node[tfcb] at (0,-1.2) {};
+    \node at (0,1.0) {{\scriptsize \bf Table des Fichiers ouverts}};
+    
+    \node[fcb] (f1) at (0,0) {\scriptsize {\bf Fichier A}\\ Emplacement: 0x034EA\\ Compteur: 2\\};
+    \node[fcb] (f2) at (0,-1.4) {\scriptsize {\bf Fichier B}\\ Emplacement: 0x12D3\\ Compteur: 1\\};
+    \node[fcb] (f3) at (0,-2.8) {\scriptsize {\bf Fichier C}\\ Emplacement: 0x000FE\\ Compteur: 0\\};
+    
+    \draw[-Stealth, ultra thick] (f1)--(d);
+    \draw[-Stealth, ultra thick] (f2)--(d);
+    \draw[-Stealth, ultra thick] (f3)--(d);
+    
+    \node[tpcb] at (6,-1.0) {};
+    \node at (6,0.8) {{\scriptsize \bf Table des PCBs}};
+
+    \node[process] (p1) at (6,0) {\scriptsize {\bf Processus P1}\\Fichier A, Position 102\\};
+    \node[process] (p2) at (6,-1.2) {\scriptsize {\bf Processus P2}\\Fichier A, Position 9\\ Fichier B Position 0\\};
+    \node[process] (p3) at (6,-2.4) {\scriptsize {\bf Processus P3}\\Fichier C, Position 102\\};
+    
+    \draw[-Stealth, ultra thick] (p1)--(f1) node [midway, above] {\scriptsize open};
+    \draw[-Stealth, ultra thick] (p2)--(f1) node [midway, above] {\scriptsize open};
+    \draw[-Stealth, ultra thick] (p2)--(f2) node [midway, above] {\scriptsize open};
+    \draw[-Stealth, ultra thick] (p3)--(f3) node [midway, above] {\scriptsize \textcolor{red}{close}};
+    
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

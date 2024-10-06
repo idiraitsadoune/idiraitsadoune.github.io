@@ -181,6 +181,11 @@ em{
 	text-align: left !important;
 }
 
+.left-content{
+	text-align: left !important;
+	display: inline-block !important;
+}
+
 .skip{
 	margin-top: 25px !important;
 }
