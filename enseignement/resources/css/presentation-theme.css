@@ -177,13 +177,15 @@ em{
 	opacity: 20%;
 }
 
-.slide-content{
-	text-align: left !important;
-}
-
 .left-content{
 	text-align: left !important;
 	display: inline-block !important;
+}
+
+.center-content{
+	display: block !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 
 .skip{

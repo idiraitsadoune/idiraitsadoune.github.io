@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	
-	<div class="slide-content">
+	<div style="text-align: left">
 		<h2>Conception et vérification <br> de systèmes critiques</h2>
 		<h3>Introduction aux méthodes formelles</h3>
 	</div>
@@ -204,25 +204,28 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>On the need of Formal Methods</h2>
 
-    <p>
-        Verification has to be <b>provable</b>!
-    </p>
-
-    <div id="green-block" class="fragment skip" style="width: 85%;">
-        <b>Definition of Formal Methods</b> <br>
-        Formal Methods are the applied mathematics for <b>modeling</b>, <b>analyzing</b> and <b>verifying</b> systems
+    <div class="left-content">
+        <p>
+            Verification has to be <b>provable</b>!
+        </p>
+    
+        <div id="green-block" class="fragment skip">
+            <b>Definition of Formal Methods</b>: <br>
+            Formal Methods are the applied mathematics <br>
+            for <b>modeling</b>, <b>analyzing</b> and <b>verifying</b> systems
+        </div>
+    
+        <ul>
+            <li class="fragment skip">
+                The formal form of the verification problem is <b>$M \models^? \varphi$</b> where:
+                <ul>
+                    <li><b>$M$</b> is the formal representation of the system under observation</li>
+                    <li><b>$\varphi$</b> is the formal representation of the property to be verified</li>
+                </ul>
+            </li>
+        </ul>
     </div>
-
-    <ul>
-        <li class="fragment skip">
-            The formal form of the verification problem is <b>$M \models^? \varphi$</b> where:
-            <ul>
-                <li><b>$M$</b> is the formal representation of the system under observation</li>
-                <li><b>$\varphi$</b> is the formal representation of the property to be verified</li>
-            </ul>
-        </li>
-    </ul>
-
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -275,7 +278,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>6 myths on Formal Methods</h2>
     
-    <div class="slide-content">
+    <div style="text-align: left;">
         <ol start="4">
             <li>Only mathematicians can use formal methods
                 <ul class="fragment">
@@ -852,7 +855,7 @@ res = 0;
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Interleaving $~~~~TS_1 \parallel TS_2$ <br> Formal definition </h2>
 
-    <div class="slide-content">
+    <div class="left-content">
         <div>
             Let $~~TS_i = (S_i, \delta_i, I_i, AP_i, \mathcal{L}_i), i=1,2~~$ be two transition systems.
         </div>

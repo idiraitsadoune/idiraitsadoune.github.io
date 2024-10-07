@@ -48,7 +48,7 @@
 		</div>
 	</div>
 
-	<div class="slide-content">
+	<div style="text-align: left">
 		<h2>Systèmes d'exploitation</h2>
 		<h3>La programmation avec le Shell/Unix</h3>
 	</div>
@@ -374,42 +374,39 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemples</h2>
-    <div class="slide-content fragment">
-        Récupération des résultats d'une commande
-        <pre><code class="language-shell hljs" data-trim>
+
+    <div class="left-content fragment">
+        <p>Récupération des résultats d'une commande</p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ qui=$(whoami) 
                 $ echo ${qui} 
                 idiraitsadoune
             </script>
         </code></pre>
-    </div>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ echo aujourd_hui on est $(date)
+                aujourd_hui on est Mar 17 oct 2023 05:45:25 CEST
+            </script>
+        </code></pre>
 
-    <pre class="fragment"><code class="language-shell hljs" data-trim>
-        <script type="text/template">
-            $ echo aujourd_hui on est $(date)
-            aujourd_hui on est Mar 17 oct 2023 05:45:25 CEST
-        </script>
-    </code></pre>
- 
-    <div class="slide-content fragment skip">
-        Sauvegarder le résultat d'une expression arithmétique
-        <pre><code class="language-shell hljs" data-trim>
+        <p class="fragment skip">Sauvegarder le résultat d'une expression arithmétique</p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ s1=$(expr 12 + 2) 
                 $ echo 12 + 2 = ${s1}
                 12 + 2 = 14
             </script>
         </code></pre>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ s2=\$(($((12+2))+1))
+                $ echo ${s2}
+                15
+            </script>
+        </code></pre>
     </div>
- 
-    <pre class="fragment"><code class="language-shell hljs" data-trim>
-        <script type="text/template">
-            $ s2=\$(($((12+2))+1))
-            $ echo ${s2}
-            15
-        </script>
-    </code></pre>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -455,26 +452,28 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemples</h2>
 
-    <div class="slide-content fragment">
-        Affectation d'une chaîne comportant des blancs à une variable
-        <pre><code class="language-shell hljs" data-trim>
+    <div class="left-content">
+        <p>
+            Affectation d'une chaîne comportant des blancs à une variable 
+        </p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ v1="avec blanc1" ; v2='avec blanc2' ; v3=avec\ blanc3
             </script>
         </code></pre>
-    </div>
-    <div class="slide-content fragment skip">
-        Lecture du contenu d'une variable
-        <pre><code class="language-shell hljs" data-trim>
+        <p class="fragment skip"> 
+            Lecture du contenu d'une variable
+        </p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ echo ${TERM} "${TERM}" '${TERM}'
                 xterm-256color xterm-256color ${TERM}
             </script>
         </code></pre>
-    </div>
-    <div class="slide-content fragment skip">
-        Lecture du résultat d'une commande 
-        <pre><code class="language-shell hljs" data-trim>
+        <p class="fragment skip">
+            Lecture du résultat d'une commande 
+        </p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ echo Je suis $(whoami) - "Je suis $(whoami)" - 'Je suis $(whoami)'
                 Je suis idiraitsadoune - Je suis idiraitsadoune - Je suis $(whoami)
@@ -538,8 +537,8 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Le premier script</h2>
     
-    <div class="slide-content fragment">
-        Récupérer des informations sur l'utilisateur et la machine
+    <div class="left-content fragment">
+        <p>Récupérer des informations sur l'utilisateur et la machine</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -559,15 +558,15 @@
         </code></pre>
     </div>
     
-
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Les paramètres des scripts</h2>
 
-    <div class="slide-content">
-        Les <b>variables positionnées</b> lors du <i>lancement d'une commande</i> :
+    <div class="left-content">
+        <p>Les <b>variables positionnées</b> lors du <i>lancement d'une commande</i> :</p>
+
         <ul>
             <li class="fragment">
                 <code class="listing">$0</code> : <i>nom du fichier</i> de la commande (spécifié lors de l'appel)
@@ -628,27 +627,31 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Un autre Exemple</h2>
-    <div class="slide-content">
-    Concatener deux fichiers (<code class="listing">$1</code> et <code class="listing">$2</code>) dans le fichier <code class="listing">$3</code>
-    <pre><code class="language-bash hljs" data-trim data-line-numbers="|1-4|5-8|9-12|13-14|">
-        <script type="text/template">
-            #!/bin/sh
-            file_in1=$1
-            file_in2=$2
-            file_out=$3
-            echo '---------------------------------------' > $file_out
-            echo \| $file_in1 \| >> $file_out
-            echo '---------------------------------------' >> $file_out
-            cat $file_in1 >> $file_out
-            echo '---------------------------------------' >> $file_out
-            echo \| $file_in2 \| >> $file_out
-            echo '---------------------------------------' >> $file_out
-            cat $file_in2 >> $file_out
-            echo termine
-            exit 0
-        </script>
-    </code></pre>
-</div>
+
+    <p>Concatener deux fichiers (<code class="listing">$1</code> et <code class="listing">$2</code>) 
+    dans le fichier <code class="listing">$3</code></p>
+
+    <div class="left-content" style="width: 70%;">
+        <pre><code class="language-bash hljs" data-trim data-line-numbers="|1-4|5-8|9-12|13-14|">
+            <script type="text/template">
+                #!/bin/sh
+                file_in1=$1
+                file_in2=$2
+                file_out=$3
+                echo '---------------------------------------' > $file_out
+                echo \| $file_in1 \| >> $file_out
+                echo '---------------------------------------' >> $file_out
+                cat $file_in1 >> $file_out
+                echo '---------------------------------------' >> $file_out
+                echo \| $file_in2 \| >> $file_out
+                echo '---------------------------------------' >> $file_out
+                cat $file_in2 >> $file_out
+                echo termine
+                exit 0
+            </script>
+        </code></pre>
+    </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -733,8 +736,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content fragment">
-        Vérifier si un utilisateur est connecté 
+
+    <div class="left-content fragment" style="width: 50%;">
+        <p>Vérifier si un utilisateur est connecté </p>
         <pre><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -753,13 +757,15 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Un autre Exemple</h2>
-    <div class="slide-content fragment">
-        Vérifier le nombre de paramètres d'une commande
+
+    <div class="left-content fragment">
+        <p>Vérifier le nombre de paramètres d'une commande</p>
         <pre><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -784,6 +790,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -839,7 +846,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content class="fragment"">
+
+    <div class="left-content fragment">
         Vérifier si une commande a des paramètres avant de l'utiliser
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|2-4|5-7|8-10|">
             <script type="text/template">
@@ -868,6 +876,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -896,8 +905,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content fragment">
-        Comparer une réponse à des expressions régulières
+
+    <div class="left-content fragment">
+        <p>Comparer une réponse à des expressions régulières</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|2-4|5-7|8-9|10-11|12-13|14-15|">
             <script type="text/template">
                 #! /bin/sh
@@ -919,6 +929,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -962,8 +973,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple I</h2>
-    <div class="slide-content fragment">
-        Parcourir une liste de valeurs
+
+    <div class="left-content fragment" style="width: 50%;">
+        <p>Parcourir une liste de valeurs</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #! /bin/sh
@@ -984,13 +996,15 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple II</h2>
-    <div class="slide-content fragment">
-        Parcourir les paramètres d'une commande
+
+    <div class="left-content fragment">
+        <p>Parcourir les paramètres d'une commande</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #! /bin/sh
@@ -1010,13 +1024,15 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple III</h2>
-    <div class="slide-content fragment">
-        Parcourir une liste de fichiers correspondant à un motif
+
+    <div class="left-content fragment">
+        <p>Parcourir une liste de fichiers correspondant à un motif</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -1037,6 +1053,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1060,8 +1077,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="fragment slide-content">
-        Script qui boucle jusqu'à ce qu'un utilisateur se déconnecte
+
+    <div class="fragment left-content">
+        <p>Script qui boucle jusqu'à ce qu'un utilisateur se déconnecte</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -1075,6 +1093,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1097,8 +1116,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate  data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content fragment">
-        Script qui boucle jusqu'à ce qu'un utilisateur se connecte
+    <div class="left-content fragment">
+        <p>Script qui boucle jusqu'à ce qu'un utilisateur se connecte</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
             <script type="text/template">
                 #!/bin/sh
@@ -1187,8 +1206,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content fragment">
-        Répéter une boucle jusqu'à ce qu'une valeur soit lue
+    <div class="left-content fragment">
+        <p>Répéter une boucle jusqu'à ce qu'une valeur soit lue</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|5-10|">
             <script type="text/template">
                 #!/bin/sh
@@ -1244,8 +1263,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
     <h2>Exemple</h2>
-    <div class="slide-content fragment">
-        Afficher les 4 premières lignes d'un fichier s'il est lisible
+    <div class="left-content fragment" style="width: 80%;">
+        <p>Afficher les 4 premières lignes d'un fichier s'il est lisible</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|6-10|">
             <script type="text/template">
                 #!/bin/sh

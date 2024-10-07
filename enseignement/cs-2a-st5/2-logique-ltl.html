@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	
-	<div class="slide-content">
+	<div style="text-align: left">
 		<h2>Conception et vérification <br> de systèmes critiques</h2>
 		<h3>La spécification des propriétés avec la logique LTL</h3>
 	</div>
@@ -119,19 +119,21 @@
         <span class="fragment" data-fragment-index="2">$~~~~~ \square$ (always)</span>
     </div>
 
-    <div class="slide-content">
-       <span style="margin-right: 50px;">$\sigma \models a ~~~~~$</span>  
-       <img src="./img/trace-1.svg" alt="" width="70%" style="vertical-align:-30px;">
+    <div class="left-content">
+        <div>
+            <span style="margin-right: 50px;">$\sigma \models a ~~~~~$</span>  
+            <img src="./img/trace-1.svg" alt="" width="70%" style="vertical-align:-30px;">
+        </div>
+        <div class="fragment" data-fragment-index="1">
+            <span style="margin-right: 50px;">$\sigma \models \bigcirc~a$</span>  
+            <img src="./img/trace-2.svg" alt="" width="70%" style="vertical-align:-30px;">
+        </div>
+        <div class="fragment" data-fragment-index="2" data-id="t1">
+            <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
+            <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
+        </div>
     </div>
-    <div class="slide-content fragment" data-fragment-index="1">
-        <span style="margin-right: 50px;">$\sigma \models \bigcirc~a$</span>  
-        <img src="./img/trace-2.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-     <div class="slide-content fragment" data-fragment-index="2" data-id="t1">
-        <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
-        <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -157,26 +159,28 @@
         </div>
     </div>
 
-    <div class="slide-content" data-id="t1">
-        <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
-        <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
-     <div class="slide-content fragment" data-fragment-index="1">
-        <span style="margin-right: 50px;">$\sigma \models \Diamond~a~~$</span> 
-        <img src="./img/trace-4.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
-     <div class="slide-content fragment" data-fragment-index="2">
-        <span style="margin-right: 50px;">$\sigma \models \Diamond \square~a$</span>
-        <img src="./img/trace-5.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
-     <div class="slide-content fragment" data-fragment-index="3">
-        <span style="margin-right: 50px;">$\sigma \models \square \Diamond~a$</span>
-        <img src="./img/trace-6.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
+    <div class="left-content">
+        <div data-id="t1">
+            <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
+            <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    
+         <div class="fragment" data-fragment-index="1">
+            <span style="margin-right: 50px;">$\sigma \models \Diamond~a~~$</span> 
+            <img src="./img/trace-4.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    
+         <div class="fragment" data-fragment-index="2">
+            <span style="margin-right: 50px;">$\sigma \models \Diamond \square~a$</span>
+            <img src="./img/trace-5.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    
+         <div class="fragment" data-fragment-index="3">
+            <span style="margin-right: 50px;">$\sigma \models \square \Diamond~a$</span>
+            <img src="./img/trace-6.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -238,20 +242,22 @@
         <span class="fragment" data-fragment-index="1">$| ~~~ \phi ~~~ \bigcup ~~~ \phi$</span>
     </div>
 
-    <div class="slide-content">
-        <span style="margin-right: 50px;">$try \Rightarrow \bigcirc~deliv$</span>  
-        <img src="./img/trace-7.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
-     <div class="slide-content">
-        <span style="margin-right: 50px;">$try \Rightarrow \Diamond~deliv$</span> 
-        <img src="./img/trace-8.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
-
-     <div class="slide-content fragment" data-fragment-index="1">
-        <span style="margin-right: 50px;">$~~~try~\bigcup~deliv$</span> 
-        <img src="./img/trace-9.svg" alt="" width="70%" style="vertical-align:-30px;">
-     </div>
+    <div class="left-content">
+        <div>
+            <span style="margin-right: 50px;">$try \Rightarrow \bigcirc~deliv$</span>  
+            <img src="./img/trace-7.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    
+         <div>
+            <span style="margin-right: 50px;">$try \Rightarrow \Diamond~deliv$</span> 
+            <img src="./img/trace-8.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    
+         <div class="fragment" data-fragment-index="1">
+            <span style="margin-right: 50px;">$~~~try~\bigcup~deliv$</span> 
+            <img src="./img/trace-9.svg" alt="" width="70%" style="vertical-align:-30px;">
+         </div>
+    </div>
 
      <div class="d-skip fragment" data-fragment-index="2">
         $\Diamond~\phi~\equiv~true~\cup~\phi~~~~$  <span class="fragment" data-fragment-index="3">and $~~~~\square~\phi \equiv \neg \Diamond \neg \phi$</span>

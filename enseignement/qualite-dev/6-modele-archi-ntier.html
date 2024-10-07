@@ -51,7 +51,7 @@
 		</div>
 	</div>
 	
-	<div class="slide-content">
+	<div style="text-align: left">
 		<h2>Qualité de développement</h2>
 		<h3>Modèle d'architecture ''n-tier''</h3>
 	</div>
@@ -140,19 +140,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Couches applicatives</h2>
-	<div class="slide-content">
-		Principe de conception = <i>séparation des responsabilités</i>
-		<ul><li class="fragment">3 types de responsabilités = <i>3 couches principales</i></li></ul>
-    </div>
-	<img class="fragment" src="./img/archiCouches.png" height="200px" alt="">
-	<div class="slide-content">
+
+	<div class="left-content">
+		<p>Principe de conception = <i>séparation des responsabilités</i></p>
 		<ul>
+			<li class="fragment">3 types de responsabilités = <i>3 couches principales</i></li>
+			<img class="fragment center-content" src="./img/archiCouches.png" height="200px" alt="">
 			<li class="fragment"><b>Présentation</b> : envoie les requêtes utilisateurs à la couche métier <br>
 				et présente les informations renvoyées par les traitements</li>
 			<li class="fragment"><b>Traitement/logique applicative</b> : décrit les services disponibles <br> dans l'application</li>
 			<li class="fragment"><b>Ressources/stockage</b> : gère l'accès aux données du système</li>
 		</ul>
-	</div>
+    </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -218,25 +218,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Les stéréotypes de Jacobson</h2>
-	<div class="slide-content">
-		<ul>
-			<li>Pour rendre les modèles plus précis et plus lisibles, <a href="https://fr.wikipedia.org/wiki/Ivar_Jacobson" target="_blank">Ivar Jacobson</a>, <br>
-				a proposé <i>de catégoriser les classes d’analyse/conception</i>.</li>
-		</ul>
-    </div>
-	<img class="fragment" src="./img/archiCouches.png" height="200px" alt="">
-	<div class="slide-content">
-		<ul>
-			<li class="fragment">Trois catégories de classes ont été proposées  :
-				<ul>
-					<li class="fragment"><b>boundary</b> (frontière) : modélise les interactions entre un acteur externe avec le système modélisé </li>
-					<li class="fragment"><b>control</b> (contrôle) : modélise la coordination, l’enchaînement et le contrôle des  objets métier 
-						(reliés à un cas d’utilisation particulier).</li>
-					<li class="fragment"><b>entity</b> (entité) : modélise les concepts métier manipulés</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+
+	<ul>
+		<li>Pour rendre les modèles plus précis et plus lisibles, <a href="https://fr.wikipedia.org/wiki/Ivar_Jacobson" target="_blank">Ivar Jacobson</a>, <br>
+			a proposé <i>de catégoriser les classes d’analyse/conception</i>.</li>
+		<img class="fragment center-content" src="./img/archiCouches.png" height="200px" alt="">
+		<li class="fragment">Trois catégories de classes ont été proposées  :
+			<ul>
+				<li class="fragment"><b>boundary</b> (frontière) : modélise les interactions entre un acteur externe avec le système modélisé </li>
+				<li class="fragment"><b>control</b> (contrôle) : modélise la coordination, l’enchaînement et le contrôle des  objets métier 
+					(reliés à un cas d’utilisation particulier).</li>
+				<li class="fragment"><b>entity</b> (entité) : modélise les concepts métier manipulés</li>
+			</ul>
+		</li>
+	</ul>
+ 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

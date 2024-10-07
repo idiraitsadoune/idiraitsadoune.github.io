@@ -51,7 +51,7 @@
             </div>
         </div>
         
-        <div class="slide-content">
+        <div style="text-align: left">
             <h2>Qualité de développement</h2>
             <h3>Diagramme UML de cas d'utilisation</h3>
         </div>
@@ -214,7 +214,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Bilan</h2>
-    <div class="slide-content">
+   
     <ul>
         <li class="fragment"><b>Diagrammes de cas d’utilisation</b>
             <ul id="ok"><li><b style="color: green; ">Utiles</b> pour la discussion avec le client (intuitifs et concis)</li></ul>
@@ -223,18 +223,20 @@
 
         <li class="fragment skip"><b>Que faire ?</b>
             <ul>
-            <li class="fragment"><b>Besoin</b> : <u>description détaillée des scénarios</u> pour chacun des cas :
-                <ul id="fleche">
-                <li><u>description textuelle</u> en langue naturelle structurée</li>
-                <li>explication du <u>vocabulaire</u> utilisé dans les diagrammes</li>
-            </ul></li>
-            <li class="fragment skip">
-                <b>Objectif</b> :  détailler <u>la chronologie des interactions</u> 
-                entre les acteurs<br> et le système pour réaliser un cas d’utilisation
-            </li>
-        </ul></li>
+                <li class="fragment"><b>Besoin</b> : <u>description détaillée des scénarios</u> pour chacun des cas :
+                    <ul id="fleche">
+                        <li><u>description textuelle</u> en langue naturelle structurée</li>
+                        <li>explication du <u>vocabulaire</u> utilisé dans les diagrammes</li>
+                    </ul>
+                </li>
+                <li class="fragment skip">
+                    <b>Objectif</b> :  détailler <u>la chronologie des interactions</u> 
+                    entre les acteurs<br> et le système pour réaliser un cas d’utilisation
+                </li>
+            </ul>
+        </li>
     </ul>
-</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -300,9 +302,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>2 - La description des scénarios</h2>
-    <div class="slide-content">
-      
-        La partie scénarios contient 3 catégories :
+
+    <div class="left-content">
+        <p>La partie scénarios contient 3 catégories :</p>
         <ol>
             <li class="fragment skip"><b>Le scénario nominal</b> : décrire le scénario principal
                 pour la réalisation de la fonction;</li>
@@ -311,8 +313,8 @@
             <li class="fragment skip"><b>Les scénarios d’exception</b> : décrire les actions à faire <br>
                 lorsqu’un scénario est perturbé par <u>un événement non désiré</u>.</li>
         </ol>
-      
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -335,114 +337,114 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemples de scénarios alternatifs</h2>
-    <div class="slide-content">
-        <ol>
-            <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
-            <li>L’<b>utilisateur</b> sélectionne une des catégories.
-                <ul id="fleche">
-                    <li><b>2.a</b> L’<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
-                    <li><b>2.b</b> L’<b>utilisateur</b> quitte la consultation du catalogue.</li>
-                </ul>
-            </li>
-            <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.</li>
-            <li>Le <b>système</b> affiche une description et une photo par produit.</li>
-            <li>L’<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
-            <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
-            <li>L’<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
-            <li>Retour à l’étape 4  </li>
-        </ol>
-</div>
+
+    <ol>
+        <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
+        <li>L’<b>utilisateur</b> sélectionne une des catégories.
+            <ul id="fleche">
+                <li><b>2.a</b> L’<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
+                <li><b>2.b</b> L’<b>utilisateur</b> quitte la consultation du catalogue.</li>
+            </ul>
+        </li>
+        <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.</li>
+        <li>Le <b>système</b> affiche une description et une photo par produit.</li>
+        <li>L’<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
+        <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
+        <li>L’<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
+        <li>Retour à l’étape 4  </li>
+    </ol>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple de scénarios d’exception</h2>
-    <div class="slide-content">
-        <ol>
-            <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
-            <li>L’<b>utilisateur</b> sélectionne une des catégories.
-                <ul id="fleche">
-                    <li><b>2.a</b> L’<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
-                    <li><b>2.b</b> L’<b>utilisateur</b> quitte la consultation du catalogue.</li>
-                </ul>
-                
-            </li>
-            <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.
-                <ul id="ko">
-                    <li><b>2.c</b> La connexion à la BDD échoue : le <b>système</b> affiche une erreur.</li>
-                </ul>
-            </li>
-            <li>Le <b>système</b> affiche une description et une photo par produit.</li>
-            <li>L’<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
-            <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
-            <li>L’<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
-            <li>Retour à l’étape 4  </li>
-        </ol>
-</div>
+  
+    <ol>
+        <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
+        <li>L’<b>utilisateur</b> sélectionne une des catégories.
+            <ul id="fleche">
+                <li><b>2.a</b> L’<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
+                <li><b>2.b</b> L’<b>utilisateur</b> quitte la consultation du catalogue.</li>
+            </ul>
+            
+        </li>
+        <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.
+            <ul id="ko">
+                <li><b>2.c</b> La connexion à la BDD échoue : le <b>système</b> affiche une erreur.</li>
+            </ul>
+        </li>
+        <li>Le <b>système</b> affiche une description et une photo par produit.</li>
+        <li>L’<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
+        <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
+        <li>L’<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
+        <li>Retour à l’étape 4  </li>
+    </ol>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>3 - La fin et les post-conditions</h2>
-    <div class="slide-content">
-        <ul>
-            <li class="fragment">
-                <b>La fin</b> : décrit les actions qui terminent le cas d’utilisation.
-                <ul>
-                    <li class="fragment"><b>Exemple</b> : les étapes <b>2</b>, <b>5</b> et <b>7</b> dans le sénarios nominal
-                        <ul id="fleche">
-                            <li>L’<b>utilisateur</b> ferme la fenêtre.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+ 
+    <ul>
+        <li class="fragment">
+            <b>La fin</b> : décrit les actions qui terminent le cas d’utilisation.
+            <ul>
+                <li class="fragment"><b>Exemple</b> : les étapes <b>2</b>, <b>5</b> et <b>7</b> dans le sénarios nominal
+                    <ul id="fleche">
+                        <li>L’<b>utilisateur</b> ferme la fenêtre.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
 
-            <li class="fragment skip">
-                <b>Les post-conditions</b> : définissent les résultats 
-                et les conditions <br> à vérifier après l'exécution du cas d’utilisation.
-                <ul>
-                    <li class="fragment"><b>Exemple</b> : les préférences de l'utilisateur ont été mis 
-                        à jours avec la liste des produits visités.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+        <li class="fragment skip">
+            <b>Les post-conditions</b> : définissent les résultats 
+            et les conditions <br> à vérifier après l'exécution du cas d’utilisation.
+            <ul>
+                <li class="fragment"><b>Exemple</b> : les préférences de l'utilisateur ont été mis 
+                    à jours avec la liste des produits visités.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>4 - Les compléments</h2>
-    <div class="slide-content">
-        <ul>
-            <li class="fragment">
-                Les <b>compléments</b> peuvent porter sur des sujets variés :
-                <ul id="fleche"><li> ergonomie, performances, questions non résolues, ... </li></ul>
-            </li>
+    
+    <ul>
+        <li class="fragment">
+            Les <b>compléments</b> peuvent porter sur des sujets variés :
+            <ul id="fleche"><li> ergonomie, performances, questions non résolues, ... </li></ul>
+        </li>
 
-            <li class="skip fragment">
-                <b>Exemples :</b>
-                <ul>
-                    <li class="fragment">
-                        <b>Ergonomie</b>
-                        <ul>
-                            <li>l’affichage des produits d’une catégorie par groupe de 15. </li>
-                            <li>l’utilisateur pourra choisir des pages avec 30, 45 ou 60 produits.</li>
-                        </ul>
-                    </li>
-                    <li class="fragment">
-                        <b>Performances</b>
-                        <ul><li>la recherche et l'affichage des produits doivent se faire en moins
-                            de 10 sec.</li></ul>
-                    </li>
-                    <li class="fragment">
-                        <b>Questions non résolues</b>
-                        <ul><li>le critère d'affichage (prix, taille, disponibilité, ...)</li></ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+        <li class="skip fragment">
+            <b>Exemples :</b>
+            <ul>
+                <li class="fragment">
+                    <b>Ergonomie</b>
+                    <ul>
+                        <li>l’affichage des produits d’une catégorie par groupe de 15. </li>
+                        <li>l’utilisateur pourra choisir des pages avec 30, 45 ou 60 produits.</li>
+                    </ul>
+                </li>
+                <li class="fragment">
+                    <b>Performances</b>
+                    <ul><li>la recherche et l'affichage des produits doivent se faire en moins
+                        de 10 sec.</li></ul>
+                </li>
+                <li class="fragment">
+                    <b>Questions non résolues</b>
+                    <ul><li>le critère d'affichage (prix, taille, disponibilité, ...)</li></ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

@@ -52,7 +52,7 @@
 		</div>
 	</div>
 	
-	<div class="slide-content">
+	<div style="text-align: left">
 		<h2>Développement de systèmes critiques avec la méthode Event-B</h2>
 		<h3>Modélisation, Raffinement et Preuve</h3>
 	</div>
@@ -334,65 +334,65 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Formalizing the State</h2>
-    <div class="slide-content">
-        <ul>
-            <li><b>STATIC PART</b> of the state: <b>constant</b> <code class="listing">d</code> with <b>axiom</b>  
-                <code class="listing">axm0_1</code></li>
-            <div class="skip" style="display: flex;">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cl">CONSTANTS</span> 
-                            <ul><li>$d$</li></ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cl">AXIOMS</span> 
-                            <ul><li><span class="eb-cm">axm0_1:</span> $d \in \mathbb N$</li></ul>
-                        </li>
-                    </ul>
-                </div>
+   
+    <ul>
+        <li><b>STATIC PART</b> of the state: <b>constant</b> <code class="listing">d</code> with <b>axiom</b>  
+            <code class="listing">axm0_1</code></li>
+        <div class="skip" style="display: flex;">
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li><span class="eb-cl">CONSTANTS</span> 
+                        <ul><li>$d$</li></ul>
+                    </li>
+                </ul>
             </div>
-            <li class="skip"><code class="listing">d</code> is the maximum number of cars allowed on the Island-Bridge</li>
-            <li class="skip"><code class="listing">axm0_1</code> states that <code class="listing">d</code> is a natural number</li>
-            <li class="skip">Constant <code class="listing">d</code> is a member of the set $\mathbb N = \{0,1,2,...\}$</li>
-        </ul>
-    </div>
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li><span class="eb-cl">AXIOMS</span> 
+                        <ul><li><span class="eb-cm">axm0_1:</span> $d \in \mathbb N$</li></ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <li class="skip"><code class="listing">d</code> is the maximum number of cars allowed on the Island-Bridge</li>
+        <li class="skip"><code class="listing">axm0_1</code> states that <code class="listing">d</code> is a natural number</li>
+        <li class="skip">Constant <code class="listing">d</code> is a member of the set $\mathbb N = \{0,1,2,...\}$</li>
+    </ul>
+ 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Formalizing the State</h2>
-    <div class="slide-content">
-        <ul>
-            <li><b>DYNAMIC PART</b>: <b>variable</b> <code class="listing">n</code> with <b>invariants</b>  
-                <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
-            <div class="skip" style="display: flex;">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cl">VARIABLES</span> 
-                            <ul><li>$n$</li></ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cl">INVARIANTS</span> 
-                            <ul>
-                                <li><span class="eb-cm">inv0_1:</span> $n \in \mathbb N$</li>
-                                <li><span class="eb-cm">inv0_2:</span> $n \leq d$</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+  
+    <ul>
+        <li><b>DYNAMIC PART</b>: <b>variable</b> <code class="listing">n</code> with <b>invariants</b>  
+            <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
+        <div class="skip" style="display: flex;">
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li><span class="eb-cl">VARIABLES</span> 
+                        <ul><li>$n$</li></ul>
+                    </li>
+                </ul>
             </div>
-            <li class="skip"><code class="listing">n</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
-            <li class="skip"><code class="listing">n</code> is a natural number (<code class="listing">inv0_1</code>)</li>
-            <li class="skip"><code class="listing">n</code> is always smaller than or equal to <code class="listing">d</code> 
-                (<code class="listing">inv0_2</code>): this is <b>FUN 2</b></li>
-        </ul>
-    </div>
+            <div style="width: 50%;">
+                <ul id="eb">
+                    <li><span class="eb-cl">INVARIANTS</span> 
+                        <ul>
+                            <li><span class="eb-cm">inv0_1:</span> $n \in \mathbb N$</li>
+                            <li><span class="eb-cm">inv0_2:</span> $n \leq d$</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <li class="skip"><code class="listing">n</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
+        <li class="skip"><code class="listing">n</code> is a natural number (<code class="listing">inv0_1</code>)</li>
+        <li class="skip"><code class="listing">n</code> is always smaller than or equal to <code class="listing">d</code> 
+            (<code class="listing">inv0_2</code>): this is <b>FUN 2</b></li>
+    </ul>
+  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2767,8 +2767,6 @@ them as <b>proof obligations</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
-    </div>
 	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2786,8 +2784,6 @@ them as <b>proof obligations</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
-    </div>
 	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2805,8 +2801,6 @@ them as <b>proof obligations</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
-    </div>
 	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2820,8 +2814,6 @@ them as <b>proof obligations</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>NEW SLIDE</h2>
-	<div class="slide-content">
-    </div>
 	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
