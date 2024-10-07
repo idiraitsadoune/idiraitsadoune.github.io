@@ -123,30 +123,26 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemples</h2>
 
-    <div class="fragment" style="text-align: left;">
-    Déclaration et initialisation de variables
-    <pre><code class="language-shell hljs" data-trim>
-        <script type="text/template">
-            $ alpha=toto
-            $ b=35 
-            $ c2=3b
-        </script>
-    </code></pre>
-    </div>
-        
-    <div class="fragment skip" style="text-align: left;">
-        Affichage du contenu des variables
-        <pre><code class="language-shell hljs" data-trim>
+    <div class="left-content">
+        <p class="fragment">Déclaration et initialisation de variables</p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
+            <script type="text/template">
+                $ alpha=toto
+                $ b=35 
+                $ c2=3b
+            </script>
+        </code></pre>
+
+        <p class="fragment skip">Affichage du contenu des variables</p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ echo alpha, b, c2 contiennent ${alpha}, ${b}, ${c2}
                 alpha, b, c2 contiennent toto, 35, 3b
             </script>
         </code></pre>
-    </div>
 
-    <div class="fragment skip" style="text-align: left;">
-        Affichage des noms et valeurs des variables du <b>Shell</b>
-        <pre><code class="language-shell hljs" data-trim>
+        <p class="fragment skip">Affichage des noms et valeurs des variables du <b>Shell</b></p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ set | grep alpha
                 alpha=toto
@@ -160,9 +156,9 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Evaluation des expressions</h2>
 
-    <div class="fragment" style="text-align: left;">
-        Evaluation d'une expression ?
-        <pre><code class="language-shell hljs" data-trim>
+    <div class="left-content">
+        <p>Evaluation d'une expression ?</p>
+        <pre class="fragment"><code class="language-shell hljs" data-trim>
             <script type="text/template">
                 $ b=35 
                 $ bb=${b}+${b}
@@ -170,10 +166,8 @@
                 b vaut 35, bb vaut 35+35
             </script>
         </code></pre>
-    </div>
 
-    <div class="fragment d-skip" style="text-align: left;">
-        <i>Pas d'arithmétique</i> directement avec le <b>shell</b> 
+        <p class="fragment d-skip"><i>Pas d'arithmétique</i> directement avec le <b>shell</b> </p>
         <ul id="fleche">
             <li class="fragment">utiliser <code class="listing">expr</code> ou <code class="listing">$(())</code></li>
             <li class="fragment">les arguments de <code class="listing">expr</code> doivent être séparés par au moins un espace</li>
@@ -238,6 +232,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Les variables d'environnement</h2>
+
     <ul>
         <li class="fragment">
             Les <b>variables d'environnement</b> sont systématiquement <i>héritées</i> <br> 
@@ -263,11 +258,13 @@
             </ul>
         </li>
     </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>La variable <code class="listing">PATH</code></h2>
+
     <ul>
         <li data-id="line1"><code class="listing">PATH</code> : liste des chemins de recherche des commandes
             <pre><code class="language-shell hljs" data-trim>
@@ -298,15 +295,16 @@
                         </script>
                     </code></pre>
                 </li>
-                
-            </ul>
+            </ol>
         </li>
     </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Initialisation du shell</h2>
+
     <ul>
         <li class="fragment">
             Quelques <i>fichiers d'initialisation</i> du <b>shell</b> :
@@ -319,7 +317,7 @@
             </ul>
         </li>
         <li class="fragment skip">
-            <b style="color: black;">Exemple</b> de modifications à mettre dans  <code class="listing">${HOME}/.zshenv</code> <br>
+            <strong>Exemple</strong> de modifications à mettre dans  <code class="listing">${HOME}/.zshenv</code> <br>
             (recherche des commandes dans le répertoire <code class="listing">${HOME}/Scripts</code>)
             <pre><code class="language-bash hljs" data-trim>
                 <script type="text/template">
@@ -497,7 +495,7 @@
     <ul>
         <li class="fragment"><b>Shell-scripts</b> : fichier texte contenant <i>des commandes</i></li>
 
-        <li class="fragment"><b>Trois méthodes d'exécution</b> :
+        <li class="fragment skip"><b>Trois méthodes d'exécution</b> :
             <ol>
                 <li class="fragment">utiliser <b>la commande</b> <code class="listing">bash</code>
                     <pre><code class="language-shell hljs" data-trim>
@@ -601,6 +599,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple utilisant <br> les paramètres des scripts</h2>
+
     <pre><code class="language-bash hljs" data-trim data-line-numbers>
         <script type="text/template">
             #!/bin/sh
@@ -622,6 +621,7 @@
             le numero du processus lance est 2960
         </script>
     </code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -686,7 +686,7 @@
                 </script>
             </code></pre>
         </li>
-        <div id="default-block" class="fragment skip" style="font-size: 30px;">
+        <div id="default-block" class="fragment d-skip">
             <ul>    
                 <li>Consultez <a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests" target="_blank">ce lien</a> 
                     pour découvrir la commande <code class="listing">test</code>
@@ -703,6 +703,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Structure Structures <code class="listing">if ... fi</code></h2>
+
     <ul>
         <li class="fragment">L'instruction <code class="listing">if</code> 
             permet d'effectuer des opérations <br> <b>si</b> <i>une condition</i> est vérifiée.
@@ -964,8 +965,6 @@
                     </li>
             </ul>
         </li>
-
-        
     </ul>
     
 </section>
@@ -1072,6 +1071,7 @@
             </code></pre>
         </li>
     </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1099,6 +1099,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate  data-transition="fade-in fade-out">
     <h2>La structure <code class="listing">until ... do ... done</code></h2>
+
         <ul>
             <li class="fragment"><b>La boucle</b> <code class="listing">until</code> est exécutée 
                 <i>tant que la condition est fausse</i>.
@@ -1111,11 +1112,13 @@
                 </code></pre>
             </li>
         </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate  data-transition="fade-in fade-out">
     <h2>Exemple</h2>
+
     <div class="left-content fragment">
         <p>Script qui boucle jusqu'à ce qu'un utilisateur se connecte</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers>
@@ -1131,6 +1134,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->      
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1206,6 +1210,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Exemple</h2>
+
     <div class="left-content fragment">
         <p>Répéter une boucle jusqu'à ce qu'une valeur soit lue</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|5-10|">
@@ -1227,6 +1232,7 @@
             </script>
         </code></pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1255,7 +1261,6 @@
         <li class="fragment skip">
             A Utiliser dans un bloc conditionnel pour <i>court-circuiter <br> les instruction de la fin de boucle</i>.
         </li>
-
     </ul>
 
 </section>
@@ -1263,6 +1268,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
     <h2>Exemple</h2>
+
     <div class="left-content fragment" style="width: 80%;">
         <p>Afficher les 4 premières lignes d'un fichier s'il est lisible</p>
         <pre class="fragment"><code class="language-bash hljs" data-trim data-line-numbers="|6-10|">
@@ -1283,6 +1289,7 @@
             </script>
         </code></pre>
     </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
