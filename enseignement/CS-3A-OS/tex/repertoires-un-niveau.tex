@@ -1,0 +1,70 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}
+
+    \node at (4,2.2) {\bf \footnotesize Disque 1};
+    \filldraw[color=blue, fill=blue!50, very thick] (0,2) rectangle (1,0);
+    \node[rotate=90] at (.5,1) {\bf \scriptsize Répertoire};
+    \filldraw[color=blue, fill=blue!20, very thick] (1,2) rectangle (5,0);
+    \filldraw[color=blue, fill=blue!50, very thick] (5,2) rectangle (6,0);
+    \node[rotate=90] at (5.5,1) {\bf \scriptsize Répertoire};
+    \filldraw[color=blue, fill=blue!20, very thick] (6,2) rectangle (8,0);
+
+    \node at (11,2.2) {\bf \footnotesize Disque 2};
+    \filldraw[color=blue, fill=blue!50, very thick] (9,2) rectangle (10,0);
+    \node[rotate=90] at (9.5,1) {\bf \scriptsize Répertoire};
+    \filldraw[color=blue, fill=blue!20, very thick] (10,2) rectangle (13,0);
+    
+    \node at (15.5,2.2) {\bf \footnotesize Disque 3};
+    \filldraw[color=blue, fill=blue!20, very thick] (14,2) rectangle (17,0);
+
+    \draw[decoration={brace,amplitude=5}, decorate, very thick] (5,-.2)-- (0,-.2);
+    \node at (2.5,-.7) {\bf  \footnotesize Partition 1};
+    \draw[decoration={brace,amplitude=5}, decorate, very thick] (8,-.2)-- (5,-.2);
+    \node at (6.5,-.7) {\bf  \footnotesize Partition 2};
+    \draw[decoration={brace,amplitude=5}, decorate, very thick] (17,-.2)-- (9,-.2);
+    \node at (13,-.7) {\bf  \footnotesize Partition 3};
+    
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
