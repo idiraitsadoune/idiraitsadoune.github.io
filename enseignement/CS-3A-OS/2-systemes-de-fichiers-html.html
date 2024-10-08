@@ -598,6 +598,99 @@
   </div>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure à 2 niveaux</h2>
+
+  <img src="./tex/repertoires-deux-niveaux.svg" alt="" width="70%">
+
+  <ul>
+    <li>
+      Un répertoire par utilisateur
+      <ul>
+        <li class="fragment">
+          Identifiant + Nom $\to$ <b>FCB</b>
+        </li>
+        <li class="fragment">
+          Répertoire des utilisateurs: <b>Master File Directory</b> (<b>MFD</b>)
+          <ul id="fleche">
+            <li>Identifiant $\to$ <b>User File Directory</b></li>
+          </ul>
+        </li>
+        <li class="fragment">
+          Répertoire par utilisateur: <b>User File Directory</b> (<b>UFD</b>)
+          <ul id="fleche">
+            <li>Nom $\to$ <b>FCB</b></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure à 2 niveaux</h2>
+
+  <img src="./tex/repertoires-deux-niveaux.svg" alt="" width="70%">
+
+  <div class="left-content">
+    <ul id="ok">
+      <li>Pas beaucoup plus coûteux en taille</li>
+      <li class="fragment">Utilisateur: organiser les fichiers, unicité de nom, $\ldots$</li>
+    </ul>
+    <br>
+    <ul id="ko">
+      <li class="skip fragment">Taille des répertoires proportionnelle au nombre de fichiers</li>
+      <li class="fragment">Partage de fichiers</li>
+    </ul>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure arborescente</h2>
+
+  <img src="./tex/repertoire-arbre.svg" alt="" width="45%">
+
+  <ul>
+    <li>
+      Généralisation de la structure à 2 niveaux:
+      <ul id="fleche">
+        <li class="fragment"><i>Répertoire racine</i> $\to$ <b>Master File Directory</b> (<b>MFD</b>)</li>
+        <li class="fragment"><i>Sous-répertoires</i>, pouvant à leur tour jouer le rôle de <b>MFD</b></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure arborescente</h2>
+
+  <img src="./tex/repertoire-arbre.svg" alt="" width="35%">
+
+  <ul>
+    <li>
+      <b>Fichiers</b>
+      <ul>
+        <li><b>Bit</b> "<b>répertoire</b>" dans le <b>FCB</b></li>
+        <li class="fragment">Nom unique = chemin depuis la racine (chemin <i>absolu</i>)</li>
+      </ul>
+    </li>
+    <li class="skip fragment">
+      <b>OS</b> $\to$ Répertoire courant (par processus)
+      <ul id="fleche">
+        <li class="fragment">Recherche à partir du répertoire courant (chemin <i>relatif</i>)</li>
+        <li class="fragment">Recherche par défaut (<b>PATH</b>)</li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
 
 
