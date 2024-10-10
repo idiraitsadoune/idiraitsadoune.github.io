@@ -690,6 +690,95 @@
       </ul>
     </li>
   </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure en graphe</h2>
+
+  <ul>
+    <li>
+      Généralisation de l'arbre avec des <i>liens</i>
+      <ul id="fleche"><li>Graphe <b>acyclique</b></li></ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Liens</b>: <i>référencer</i> un fichier décrit dans un autre répertoire
+      <ul id="fleche"><li>bit <b>"lien"</b> dans le répertoire + chemin absolu</li></ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Extension</b>: <i>duplication</i>
+      <ul id="fleche">
+        <li><b>FCB</b> recopié $\to$ copie et original indiscernables</li>
+        <li>Compteur de liens (pour libérer l'espace sur le support physique)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Structure en graphe</h2>
+
+  <img src="./tex/repertoire-graphe.svg" alt="" style="width: 60%;">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Techniques de protection</h2>
+
+  <ul>
+    <li>
+      Dans les systèmes <a href="https://fr.wikipedia.org/wiki/POSIX" target="_blank">POSIX</a> on distingue :
+      <ul>
+        <li><b>3 modes</b> (lecture, écriture, exécution)</li>
+        <li><b>3 catégories de sujets</b> (le propriétaire, son groupe et le reste des sujets)</li>
+      </ul>
+    </li>
+
+    <pre class="skip">
+      <code class="language-shell hljs" data-trim><script type="text/template">
+        $ ls -l
+        total 248
+        drwx------ 6 nico prof     4096 nov.  20 12:06 private
+        -rw------- 1 nico prof     2356 dec.   5 15:30 notes.ods
+        drwxrwx--- 8 nico prof     4096 dec.   4 17:31 doc
+        -rw-rw-r-- 1 joe  student    36 jan.  21 16:49 programme.c
+        -rwxrwxr-x 1 joe  student   996 jan.  28 10:53 programme
+        ...
+      </script></code>
+    </pre>
+  </ul>
+
+  <table class="fragment" style="font-size: 25px;">
+		<thead>
+			<tr>
+				<th>Mode</th>
+				<th>Lecture (r)</th>
+				<th>Écriture (w)</th>
+        <th>Exécution (x)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><b>Fichier</b></td>
+				<td>mode lecture</td>
+				<td>mode écriture</td>
+        <td>exécution du fichier</td>
+			</tr>
+			<tr>
+				<td><b>Répertoire</b></td>
+				<td>lister le contenu</td>
+				<td>créer, renommer <br>et supprimer un fichier</td>
+        <td>acceder au répertoire <br>et à son contenu</td>
+			</tr>
+		</tbody>
+	</table>
+
 </section>
 
 

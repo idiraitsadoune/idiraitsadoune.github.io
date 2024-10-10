@@ -1,0 +1,82 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}
+
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (root) at (0,0) {\small root};
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (dir1) at (-3,-2) {\small sbd1};
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (dir2) at (3,-2) {\small sbd2};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f01) at (0,-1.8) {};
+    \draw[-Stealth, ultra thick] (root) to (dir1);
+    \draw[-Stealth, ultra thick] (root) to (dir2);
+    \draw[-Stealth, ultra thick] (root) to (f01);
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (dir11) at (-3,-4) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f11) at (-6,-3.8) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f12) at (0,-3.8) {};
+    \draw[-Stealth, ultra thick] (dir1) to (dir11);
+    \draw[-Stealth, ultra thick] (dir1) to (f11);
+    \draw[-Stealth, ultra thick] (dir1) to (f12);
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (dir21) at (3,-4) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f21) at (6,-3.8) {};
+    \draw[-Stealth, ultra thick] (dir2) to (dir21);
+    \draw[-Stealth, ultra thick] (dir2) to (f21);
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f211) at (1,-5.8) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f212) at (3,-5.8) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f213) at (5,-5.8) {};
+    \draw[-Stealth, ultra thick] (dir21) to (f211);
+    \draw[-Stealth, ultra thick] (dir21) to (f212);
+    \draw[-Stealth, ultra thick] (dir21) to (f213);
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm, ultra thick] (dir111) at (-3,-6) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f121) at (-6,-5.8) {};
+    \draw[-Stealth, ultra thick] (dir11) to (dir111);
+    \draw[-Stealth, ultra thick] (dir11) to (f121);
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f1111) at (-2,-7.8) {};
+    \node[circle,draw=blue,fill=blue!40,minimum width=1cm, ultra thick] (f1112) at (-4,-7.8) {};
+    \draw[-Stealth, ultra thick] (dir111) to (f1111);
+    \draw[-Stealth, ultra thick] (dir111) to (f1112);
+    
+    \draw[-Stealth, ultra thick ,dashed, color=gray] (dir21) to[bend right=10] node[xshift=-.2cm,rotate=40]{\tiny lien symbolique} (f1111);
+    \draw[-Stealth, ultra thick, color=gray] (dir2) to node[xshift=-.1cm,yshift=.1cm,rotate=30]{\tiny duplication} (f12);
+    
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
