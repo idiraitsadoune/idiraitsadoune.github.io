@@ -4,12 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>The main title of the lecture : The title of the chapter</title>
-
-	<meta name="description" content="The main title of the lecture : The title of the chapter">
-	<meta name="author" content="Idir AIT SADOUNE">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -130,6 +124,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le titre de la slide</h2>
+
 	<ul>
 		<li class="fragment">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Maecenas egestas</b> nulla <br>
@@ -152,6 +147,7 @@
 			vérifie l'égalité entre deux objets : $A = B$.
 		</li>
 	</ul>
+
 	<aside class="notes">
 		Shhh, these are your private notes 📝
 	</aside>
@@ -166,21 +162,21 @@
 			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
 				consectetur adipiscing elit.</li>
 		</ul>
-
+		<br>
 		<ul id="ok">
 			<li class="skip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
 				amet, consectetur adipiscing elit. :
 				<code class="listing">name</code>
 			</li>
 		</ul>
-
+		<br>
 		<ul id="ko">
 			<li class="skip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
 				amet, consectetur adipiscing elit. :
 				<code class="listing">23_name</code>
 			</li>
 		</ul>
-
+		<br>
 		<ul>
 			<li class="skip">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
 				amet, consectetur adipiscing elit
@@ -291,22 +287,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Animated image example</h2>
+
 	<div class="r-stack">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-1.svg" height="auto" width="900px"
-			alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-2.svg" height="auto" width="900px"
-			alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-3.svg" height="auto" width="900px"
-			alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-4.svg" height="auto" width="900px"
-			alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-5.svg" height="auto" width="900px"
-			alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle-dev-6.svg" height="auto" width="900px"
-			alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-1.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-3.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-4.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-5.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./img/cycle-dev-6.svg" height="auto" width="900px" alt="">
 		<img class="fragment fade-in" src="./img/cycle-dev-fm.svg" height="auto" width="900px" alt="">
 	</div>
+
 	<div class="fragment skip">Une belle <b>image</b> animée</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -320,28 +313,30 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple code</h2>
 
-	<pre><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17|>
-<script type="text/template">
-public class Application {
-
-	public static <T> T RandomChoice(T ob1, T ob2) {
-		if(Math.random() > 0.5) return ob1;
-		else return ob2;
-	}
-
-	public static void main(String[] args) {
-		Integer i1 = 5;
-		Integer i2 = 7;
-		Double d1 = 0.7;
-
-		Integer i3 = Application.<Integer>RandomChoice(i1,i2);
-		Integer i4 = Application.RandomChoice(i1,i2);
-		Integer i5 = (Integer) Application.RandomChoice(d1,i1);
-		Double d2 = (Double) Application.RandomChoice(d1,i1);
-	}
-}                             
-</script>
-</code></pre>
+	<div>
+		<pre><code class="language-java hljs" data-trim data-line-numbers=|3-6|8,9,10,13,17|8,9,10,14,17|8,9,11,15,17|8,9,11,16,17|>
+			<script type="text/template">
+			public class Application {
+			
+				public static <T> T RandomChoice(T ob1, T ob2) {
+					if(Math.random() > 0.5) return ob1;
+					else return ob2;
+				}
+			
+				public static void main(String[] args) {
+					Integer i1 = 5;
+					Integer i2 = 7;
+					Double d1 = 0.7;
+			
+					Integer i3 = Application.<Integer>RandomChoice(i1,i2);
+					Integer i4 = Application.RandomChoice(i1,i2);
+					Integer i5 = (Integer) Application.RandomChoice(d1,i1);
+					Double d2 = (Double) Application.RandomChoice(d1,i1);
+				}
+			}                             
+			</script>
+		</code></pre>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -349,23 +344,25 @@ public class Application {
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Un autre Exemple</h2>
 
-<pre><code class="language-bash hljs" data-trim data-line-numbers>
-<script type="text/template">
-#!/bin/sh
-for fic in *.sh
-do
-	echo "*************************"
-	echo "< fichier ${fic} >"
-	if [ ! -r "${fic}" ] # tester si le fichier existe et est lisible
-		then 
-		echo "fichier ${fic} non lisible"
-		continue # sauter la commande head
-	fi
-	head -n 4 ${fic}
-done
-exit 0
-</script>
-</code></pre>
+	<div>
+		<pre><code class="language-bash hljs" data-trim data-line-numbers>
+			<script type="text/template">
+			#!/bin/sh
+			for fic in *.sh
+			do
+				echo "*************************"
+				echo "< fichier ${fic} >"
+				if [ ! -r "${fic}" ] # tester si le fichier existe et est lisible
+					then 
+					echo "fichier ${fic} non lisible"
+					continue # sauter la commande head
+				fi
+				head -n 4 ${fic}
+			done
+			exit 0
+			</script>
+		</code></pre>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -405,7 +402,11 @@ exit 0
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>New Slides</h2>
-	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+
+	<div>
+		<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -419,7 +420,14 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Centered Content</h2>
 
-	<img class="center-content" src="../resources/img/cs.png" height="200px">
+	<div>
+		<ul>
+			<li> 
+				Here a centered image Here a centered image Here a centered image <br>
+				<img class="center-content" src="../resources/img/cs.png" height="200px">
+			</li>
+		</ul>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -427,16 +435,20 @@ exit 0
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Image dans le texte</h2>
 
-	<img src="../resources/img/cs.png" height="200px" style="float: right; margin-bottom: 20px; margin-left: 20px;">
-
-	<ul style="display: block;">
-		<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
-			est un langage de modélisation graphique à base de pictogrammes. </li>
-		<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
-			Booch, OMT, OOSE.</li>
-		<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par l'OMG en
-			juillet 2005.</li>
-	</ul>
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; height: 200px;">
+		<img src="../resources/img/cs.png" height="100%" >
+	</div>
+	
+	<div>
+		<ul style="display: block;">
+			<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
+				est un langage de modélisation graphique à base de pictogrammes. </li>
+			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
+			<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par l'OMG en
+				juillet 2005.</li>
+		</ul>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -445,10 +457,12 @@ exit 0
 	<h2>Deux colonnes</h2>
 
 	<div style="display: flex; align-items: center;">
+
 		<div style="width: 25%;">
 			<img src="../resources/img/cs.png" >
 		</div>
-		<div style="width: 75%; margin-left: 30px;">
+
+		<div style="width: 75%;">
 			<ul>
 				<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
 					est un langage de modélisation graphique à base de pictogrammes. </li>
@@ -458,6 +472,7 @@ exit 0
 					l'OMG en juillet 2005.</li>
 			</ul>
 		</div>
+
 	</div>
 
 </section>
@@ -498,23 +513,25 @@ exit 0
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-transition="fade-in fade-out">
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A math Example</h2>
+
 	<div>
 		$$
 		\begin{aligned}
-		\dot{x} &amp; = \sigma(y-x) \\
-		\dot{y} &amp; = \rho x - y - xz \\
-		\dot{z} &amp; = -\beta z + xy
+		\dot{x} & = \sigma(y-x) \\
+		\dot{y} & = \rho x - y - xz \\
+		\dot{z} & = -\beta z + xy
 		\end{aligned}
 		$$
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-transition="fade-in fade-out">
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
 		<a href="./presentation-modele.pdf" target="_blank">Version PDF des slides</a>
