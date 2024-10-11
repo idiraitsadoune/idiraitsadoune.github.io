@@ -1,0 +1,65 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[ultra thick]
+
+    \node at (-1,0) {\textbf{\large Fichiers:}};
+		\node[draw=blue,fill=blue!40,minimum width=2cm,minimum height=1cm, text=black] at (2,0) {toto.c};
+		\node[draw=red,fill=red!40,minimum width=4cm,minimum height=1cm, text=black] at (6,0) {prog.exe};
+		\node[draw=purple,fill=purple!40,minimum width=6cm,minimum height=1cm, text=black] at (12,0) {file.dat};
+		
+		\node at (-1,-1.5) {\textbf{\large Disque:}};
+		\draw[ultra thick] (0,-1) rectangle (16,-2);
+		\foreach \i in {1,...,15} { \draw (\i,-1) to (\i,-2); }
+		
+        \foreach \i in {1,2,4,5,6,7,9,10,11,12,13,14}
+        {
+            \draw[thick] (\i,-.5) rectangle (\i+1,.5);
+        }
+        \draw[-Stealth, ultra thick] (1.5,-.5) to (0.5,-1.5);
+        \draw[-Stealth, ultra thick] (2.5,-.5) to (7.5,-1.5);
+        \draw[-Stealth, ultra thick] (4.5,-.5) to (2.5,-1.5);
+        \draw[-Stealth, ultra thick] (5.5,-.5) to (9.5,-1.5);
+        %\node at (8,-.7) {\textit{etc}};
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

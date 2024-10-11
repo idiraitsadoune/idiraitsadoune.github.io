@@ -1,0 +1,85 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[ultra thick]
+
+    \node at (0,10) { }; % pour pas que ça saute
+		
+    % Application
+    \draw[color=blue,fill=blue!20] (-12,8.5) rectangle (-4,6.5);
+    \node at (-8,9) {\textbf{Application}};
+    
+    % RAM
+    \draw[color=blue,fill=blue!20] (-12,4) rectangle (-4,0);
+    \node at (-8,4.5) {\textbf{RAM (OS)}};
+    \draw[color=red,fill=red!20] (-11,3.5) rectangle (-9,1);
+    \node at (-10,.5) {Cache répertoires};
+    \draw[color=red,fill=red!20] (-7,3.5) rectangle (-5,1);
+    \node at (-6,.5) {Table fichiers ouverts};
+    
+    % le disque
+    \draw[color=blue,fill=blue!20] (0,0) rectangle (6,5);
+    \draw[color=blue,fill=blue!20] (3,0) ellipse (3 and .8);
+    \draw[color=blue,fill=blue!20] (3,5) ellipse (3 and .8);
+    \node at (3,6.3) {\textbf{Disque}};
+    \node[draw,color=red,fill=red!40,text=black,minimum width=2cm,minimum height=1cm] (dir) at (2,3.5) {\small Répertoire};
+    \node[draw,color=red,fill=red!40,text=black,minimum width=1cm,minimum height=1cm] (fcb) at (4.5,3.5) {\small FCB};
+    \draw[color=red,fill=red!20] (.8,2.7) rectangle (5.2,1.3);
+    \node[draw,color=red,fill=red!40,text=black,minimum width=1cm,minimum height=1cm] (file1) at (1.5,2) {\small Bloc};
+    \node[draw,color=red,fill=red!40,text=black,minimum width=1cm,minimum height=1cm] (file2) at (3,2) {\small Bloc};
+    \node[draw,color=red,fill=red!40,text=black,minimum width=1cm,minimum height=1cm] (file3) at (4.5,2) {\small Bloc};
+    \node at (4,1.1) {\textit{Fichier}};
+
+    \draw[fill=red] (2.7,3) rectangle (2.9,4);
+    \draw[-Stealth, ultra thick] (2.8,4) to (3.2,4.6) to (4.2,4.6) to (fcb);
+    \draw[-Stealth, ultra thick] (fcb) to (file1);
+    \draw[-Stealth, ultra thick] (fcb) to (file2);
+    \draw[-Stealth, ultra thick] (fcb) to (file3);
+
+    % Images 2 seulement
+	\node at (2,9.25) {\begin{minipage}{6cm}
+    \textbf{Le système de fichier \\(sur~le~disque) définit\\ la structuration des données}
+    \end{minipage}};		
+    
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
