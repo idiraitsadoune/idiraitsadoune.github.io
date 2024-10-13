@@ -1,0 +1,70 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[ultra thick]
+
+    \node at (-1,1.5) {\textbf{\large Fichiers:}};
+    \node[draw=red,fill=red!40,minimum width=2cm,minimum height=1cm] at (2,1.5) {toto.c};
+    \node[draw=blue,fill=blue!40,minimum width=4cm,minimum height=1cm] at (6,1.5) {prog.exe};
+    \node[draw=purple,fill=purple!40,minimum width=6cm,minimum height=1cm] at (12,1.5) {file.dat};
+    
+    \foreach \i in {1,2,4,5,6,7,9,10,11,12,13,14} { \draw[thick] (\i,2) rectangle (\i+1,1); }
+    
+    % répertoire
+    \node at (-1,0) {\textbf{\large Répertoire:}};
+    \draw[ultra thick] (1,.5) rectangle (6,-.5);
+    \node[draw=red,fill=red!30,minimum width=1cm,minimum height=1cm] at (1.5,0) {FCB};
+    \node[draw=blue,fill=blue!30,minimum width=1cm,minimum height=1cm] at (2.5,0) {FCB};
+    \node[draw=purple,fill=purple!30,minimum width=1cm,minimum height=1cm] at (3.5,0) {FCB};
+    \node at (5,0) {\textbf{\ldots}};
+    
+    % disque
+    \node at (-1,-1.5) {\textbf{\large Disque:}};
+    \draw[ultra thick] (0,-1) rectangle (16,-2);
+
+    \node[fill=blue!40,minimum width=4cm,minimum height=1cm] at (2.5,-1.5) {prog.exe};
+    \foreach \i in {4,5,6,7} { \draw[thick] (\i-3.5,-1) rectangle (\i-2.5,-2); }
+    \draw[-Stealth, ultra thick] (2.5,-.5) to (1,-1);
+    
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

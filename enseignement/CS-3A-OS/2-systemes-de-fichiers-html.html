@@ -1064,6 +1064,54 @@
   </div>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation contiguë</h2>
+
+  <p>
+    Ranger les blocs les uns derrière les autres
+  </p>
+
+  <div class="r-stack d-skip" style="align-items: end;">
+		<img class="fragment fade-in-then-out" src="./tex/allocation-contigue-1.svg" height="auto" width="750px" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/allocation-contigue-2.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-contigue-3.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in" src="./tex/allocation-contigue-4.svg" height="auto" width="750px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation contiguë</h2>
+
+  <p>
+    Ranger les blocs les uns derrière les autres
+  </p>
+
+  <ul>
+    <li class="skip">
+      <b style="color: green;">Avantages</b>
+      <ul id="ok">
+        <li>Accès au bloc suivant: aucun coût</li>
+        <li><b>FCB</b>: adresse bloc départ + taille</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b style="color: red;">Inconvénients</b>
+      <ul id="ko">
+        <li>Fragmentation (compactage coûteux)</li>
+        <li>Connaître à l'avance la taille des fichiers</li>
+        <li>Recherche d'espace libre coûteux</li>
+        <li>Stratégies d'allocation (<b>BestFit</b>, <b>FirstFit</b>, <b>WorstFit</b>) à définir</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
