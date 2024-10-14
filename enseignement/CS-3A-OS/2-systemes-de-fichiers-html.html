@@ -841,8 +841,8 @@
   <h2>La vue logique</h2>
 
   <div class="left-content">
-    <p>
-      <b>Système de fichiers</b> (<b>File System - FS</b>)
+    <div>
+      <b>Système de fichiers</b> (<b>File System - FS</b>) <br>
 
       <ul>
         <li class="fragment">
@@ -851,10 +851,10 @@
           à un <b>OS</b> de <i>manipuler des fichiers</i>.
         </li>
       </ul>
-    </p>
+    </div>
 
-    <p class="fragment">
-      <b>Unité logique</b>
+    <div class="skip fragment">
+      <b>Unité logique</b> <br>
       <ul>
         <li class="fragment">Du point de vue de l'<b>OS</b>, le <b>FS</b> doit rendre des services qui ne 
           <i>dépendent <br> pas de son implémentation</i> (indépendant du support physique).
@@ -867,7 +867,7 @@
           </ul>
         </li>
       </ul>
-    </p>
+    </div>
   </div>
 
 </section>
@@ -1046,21 +1046,21 @@
       <ul id="fleche"><li class="fragment">Choix des blocs physiques pour 1 fichier donné</li></ul>
     </div>
  
-  <div class="r-stack d-skip" style="align-items: end;">
-		<img class="fragment fade-in-then-out" src="./tex/allocation-1.svg" height="auto" width="750px" alt="">
-		<img class="fragment fade-in" src="./tex/allocation-2.svg" height="auto" width="750px" alt="">
-	</div>
+    <div class="r-stack d-skip" style="align-items: end;">
+      <img class="fragment fade-in-then-out" src="./tex/allocation-1.svg" height="auto" width="750px" alt="">
+      <img class="fragment fade-in" src="./tex/allocation-2.svg" height="auto" width="750px" alt="">
+    </div>
 
-  <ul>
-    <li class="d-skip fragment">
-      <b>3 méthodes possibles</b>
-      <ol>
-        <li class="fragment"><i>Allocation contiguë</i></li>
-        <li class="fragment"><i>Allocation chaînée</i></li>
-        <li class="fragment"><i>Allocation indexée</i></li>
-      </ol>
-    </li>
-  </ul>
+    <ul>
+      <li class="d-skip fragment">
+        <b>3 méthodes possibles</b>
+        <ol>
+          <li class="fragment"><i>Allocation contiguë</i></li>
+          <li class="fragment"><i>Allocation chaînée</i></li>
+          <li class="fragment"><i>Allocation indexée</i></li>
+        </ol>
+      </li>
+    </ul>
   </div>
 
 </section>
@@ -1109,6 +1109,150 @@
       </ul>
     </li>
   </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation chaînée</h2>
+
+  <p>
+    Fichier = liste chaînée de blocs
+  </p>
+
+  <div class="r-stack d-skip" style="align-items: end;">
+		<img class="fragment fade-in-then-out" src="./tex/allocation-chainee-1.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-chainee-2.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-chainee-3.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in" src="./tex/allocation-chainee-4.svg" height="auto" width="750px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation chaînée</h2>
+
+  <p>
+    Fichier = liste chaînée de blocs
+  </p>
+
+  <ul>
+    <li class="skip">
+      <b style="color: green;">Avantages</b>
+      <ul id="ok">
+        <li><b>FCB</b>: adresse premier et dernier blocs</li>
+        <li>Pas de fragmentation</li>
+        <li>Fichiers taille quelconque</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b style="color: red;">Inconvénients</b>
+      <ul id="ko">
+        <li>Accès séquentiel: N$^e$ bloc $\rightarrow$ N accès disques!</li>
+        <li>Fiabilité: 1 bloc endommagé $\rightarrow$ tout le fichier est perdu</li>
+        <li>Espace utilisé par les pointeurs (relativement négligeable)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation indexée</h2>
+
+  <p>
+    Rassembler tous les pointeurs dans un bloc d'index <br>
+	  (1 bloc par fichier)
+  </p>
+
+  <div class="r-stack d-skip" style="align-items: end;">
+		<img class="fragment fade-in-then-out" src="./tex/allocation-indexee-1.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-indexee-2.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-indexee-3.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-indexee-4.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-indexee-5.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in" src="./tex/allocation-indexee-6.svg" height="auto" width="750px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation indexée</h2>
+
+  <p>
+    Rassembler tous les pointeurs dans un bloc d'index <br>
+	  (1 bloc par fichier)
+  </p>
+
+  <ul>
+    <li class="skip">
+      <b style="color: green;">Avantages</b>
+      <ul id="ok">
+        <li>Pas de fragmentation</li>
+        <li>Accès direct (2 accès disque)</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b style="color: red;">Inconvénients</b>
+      <ul id="ko">
+        <li>1 bloc perdu par fichier</li>
+        <li>Taille fichier limitée par taille bloc <br>
+          64 bits $\times$ <i>64</i> blocs = 512o $\Rightarrow$ max = 64$\times$512o = <i>32 Ko</i>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Liste chaînée de blocs d'index</h2>
+
+  <ul>
+    <li>Le répertoire pointe vers un bloc d'index</li>
+    <li>Le bloc d'index se termine par un pointeur vers un autre bloc d'index</li>
+  </ul>
+
+  <div class="r-stack d-skip" style="align-items: end;">
+		<img class="fragment fade-in-then-out" src="./tex/allocation-liste-chainee-1.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-liste-chainee-2.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-liste-chainee-3.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in-then-out" src="./tex/allocation-liste-chainee-4.svg" height="auto" width="750px" alt="">
+    <img class="fragment fade-in" src="./tex/allocation-liste-chainee-5.svg" height="auto" width="750px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Liste chaînée de blocs d'index</h2>
+
+    <ul>
+      <li>Le répertoire pointe vers un bloc d'index</li>
+      <li>Le bloc d'index se termine par un pointeur vers un autre bloc d'index</li>
+  
+      <li class="skip">
+        <b style="color: green;">Avantages</b>
+        <ul id="ok">
+          <li>Pas de fragmentation</li>
+          <li>Taille de fichier quelconque</li>
+        </ul>
+      </li>
+
+      <li class="skip fragment">
+        <b style="color: red;">Inconvénients</b>
+        <ul id="ko">
+          <li>$N$ blocs perdus par fichier</li>
+          <li>Accès indirect ($\geq$2 accès disque) mais plus rapide que la liste chaînée</li>
+        </ul>
+      </li>
+    </ul>
 
 </section>
 

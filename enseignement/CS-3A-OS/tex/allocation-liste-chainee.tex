@@ -1,0 +1,110 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[ultra thick]
+
+% fichiers
+\node at (-1,2.5) {\textbf{\large Fichier:}};
+\node[draw=red,fill=red!40,minimum width=8cm,minimum height=1cm] at (5,2.5) {mon gros fichier de 8 blocs (64o)};
+\foreach \i in {1,...,8} { \draw[thick] (\i+1,2) rectangle (\i,3); }
+
+% disque
+\node at (-1,0) {\textbf{\large Disque:}};
+\draw (0,-.5) rectangle (16,.5);
+
+% allocation
+\draw[thick,fill=red!40] (2.5,.5) rectangle (3.5,-.5);
+\draw[thick,fill=red!40] (3.5,.5) rectangle (4.5,-.5);
+\draw[thick,fill=red!40] (5.5,.5) rectangle (6.5,-.5);
+\draw[thick,fill=red!40] (7.5,.5) rectangle (8.5,-.5);
+\draw[thick,fill=red!40] (8.5,.5) rectangle (9.5,-.5);
+\draw[thick,fill=red!40] (10.5,.5) rectangle (11.5,-.5);
+\draw[thick,fill=red!40] (13.5,.5) rectangle (14.5,-.5);
+\draw[thick,fill=red!40] (14.5,.5) rectangle (15.5,-.5);
+
+% index(es)
+%\only<2->{
+    \draw[thick,color=red,fill=red!20,opacity=1.0] (1.5,.5) rectangle (2.5,-.5);
+    %\only<2>{
+        \node[opacity=0.0] at (2,0) {\small Index};
+    %} % je le remets après le rouge
+    \draw[thick,opacity=1.0] (1.75,.5) to (1.75,-.5);
+    \draw[thick,opacity=1.0] (2,.5) to (2,-.5);
+    \draw[thick,opacity=1.0] (2.25,.5) to (2.25,-.5);
+    \draw[-Stealth,opacity=1.0] (1.625,-.5) to[bend right=20] (3,-.5);
+    \draw[-Stealth,opacity=1.0] (1.875,-.5) to[bend right=20] (4,-.5);
+    \draw[-Stealth,opacity=1.0] (2.125,-.5) to[bend right=20] (6,-.5);
+%}
+%\only<3->{
+    \draw[color=red,fill=red!20,opacity=1.0] (2.25,.5) rectangle (2.5,-.5);
+    \node[opacity=1.0] at (2,0) {\small Index};
+    \draw[thick,color=red, fill=red!20,opacity=1.0] (.5,.5) rectangle (1.5,-.5);
+    %\only<3-4>{ 
+        \node[opacity=0.0] at (1,0) {\small Index}; 
+    %} % je le remets après le rouge
+    \draw[thick,color=red,-Stealth,opacity=1.0] (2.375,.5) to[bend right=20] (1,.5);
+%}
+%\only<4->{
+    \draw[thick,opacity=1.0] (.75,.5) to (.75,-.5);
+    \draw[thick,opacity=1.0] (1,.5) to (1,-.5);
+    \draw[thick,opacity=1.0] (1.25,.5) to (1.25,-.5);
+    \draw[-Stealth,opacity=1.0] (.625,-.5) to[bend right=20] (8,-.5);
+    \draw[-Stealth,opacity=1.0] (.875,-.5) to[bend right=20] (9,-.5);
+    \draw[-Stealth,opacity=1.0] (1.125,-.5) to[bend right=20] (11,-.5);
+%}
+%\only<5->{
+    \draw[color=red,fill=red!20,opacity=1.0] (1.25,.5) rectangle (1.5,-.5);
+    \node[opacity=1.0] at (1,0) {\small Index};
+    \draw[thick,color=red,fill=red!20,opacity=1.0] (9.5,.5) rectangle (10.5,-.5);
+    \node[opacity=1.0] at (10,0) {\small Index};
+    \draw[thick,-Stealth,color=red,opacity=1.0] (1.375,.5) to[bend left=20] (10,.5);
+    \draw[thick,opacity=1.0] (9.75,.5) to (9.75,-.5);
+    \draw[thick,opacity=1.0] (10,.5) to (10,-.5);
+    \draw[thick,opacity=1.0] (10.25,.5) to (10.25,-.5);
+    \draw[-Stealth,opacity=1.0] (9.625,-.5) to[bend right=20] (14,-.5);
+    \draw[-Stealth,opacity=1.0] (9.875,-.5) to[bend right=20] (15,-.5);
+%}
+
+
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
