@@ -1,0 +1,150 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/slides-cours-td-tp-conference/0-beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[ultra thick]
+
+% fichiers
+\node at (-1,2.5) {\textbf{\large Fichier:}};
+\node[draw=red,fill=red!40,minimum width=8cm,minimum height=1cm] at (5,2.5) {mon gros fichier de 8 blocs (64o)};
+\foreach \i in {1,...,8} { \draw[thick] (\i+1,2) rectangle (\i,3); }
+
+% disque
+\node at (-1,0) {\textbf{\large Disque:}};
+\draw(0,-.5) rectangle (16,.5);
+
+% allocation
+\draw[thick,fill=red!40] (2.5,.5) rectangle (3.5,-.5);
+\draw[thick,fill=red!40] (3.5,.5) rectangle (4.5,-.5);
+\draw[thick,fill=red!40] (5.5,.5) rectangle (6.5,-.5);
+\draw[thick,fill=red!40] (7.5,.5) rectangle (8.5,-.5);
+\draw[thick,fill=red!40] (8.5,.5) rectangle (9.5,-.5);
+\draw[thick,fill=red!40] (10.5,.5) rectangle (11.5,-.5);
+\draw[thick,fill=red!40] (13.5,.5) rectangle (14.5,-.5);
+\draw[thick,fill=red!40] (14.5,.5) rectangle (15.5,-.5);
+
+%\only<1-5> { 
+    \draw[-Stealth,opacity=0.0] (1.5,2) to (4,.5); 
+% }
+
+%\only<2>{
+    \draw[-Stealth,opacity=0.0] (2.5,2) to (3,.5);
+    \draw[-Stealth,opacity=0.0] (3.5,2) to (8,.5);
+    \draw[-Stealth,opacity=0.0] (4.5,2) to (6,.5);
+    \draw[-Stealth,opacity=0.0] (5.5,2) to (9,.5);
+    \draw[-Stealth,opacity=0.0] (6.5,2) to (14,.5);
+    \draw[-Stealth,opacity=0.0] (7.5,2) to (15,.5);
+    \draw[-Stealth,opacity=0.0] (8.5,2) to (11,.5);
+%}
+
+\node[opacity=1.0] at (4,0) {\footnotesize 0};
+\node[opacity=1.0] at (3,0) {\footnotesize 1};
+\node[opacity=1.0] at (8,0) {\footnotesize 2};
+\node[opacity=1.0] at (6,0) {\footnotesize 3};
+\node[opacity=1.0] at (9,0) {\footnotesize 4};
+\node[opacity=1.0] at (14,0) {\footnotesize 5};
+\node[opacity=1.0] at (15,0) {\footnotesize 6};
+\node[opacity=1.0] at (11,0) {\footnotesize 7};
+
+% Adresses
+%\only<3-> {
+    \node[opacity=1.0] at (3,-.7) {\footnotesize 03};
+    \node[opacity=1.0] at (4,-.7) {\footnotesize 04};
+    \node[opacity=1.0] at (6,-.7) {\footnotesize 06};
+    \node[opacity=1.0] at (8,-.7) {\footnotesize 08};
+    \node[opacity=1.0] at (9,-.7) {\footnotesize 09};
+    \node[opacity=1.0] at (11,-.7) {\footnotesize 0B};
+    \node[opacity=1.0] at (14,-.7) {\footnotesize 0E};
+    \node[opacity=1.0] at (15,-.7) {\footnotesize 0F};
+%}
+
+% détail FAT
+%\only<4-> {
+    \node[draw=red,thick,fill=red!40,minimum width=1cm,minimum height=1cm,opacity=1.0] at (.5,0) {\textbf{\large FAT}};
+    \draw[opacity=1.0] (0,-.5) to (-1,-2);
+    \draw[opacity=1.0] (1,-.5) to (7,-2);
+    \foreach \i in {0,...,15} { \draw[thick,opacity=1.0] (\i/2-1,-2) rectangle (\i/2-.5,-3); }
+%}
+
+% 
+%\only<5-> {
+    \node[opacity=1.0] at (.75,-3.2) {\tiny 03};
+    \node[opacity=1.0] at (1.25,-3.2) {\tiny 04};
+    \node[opacity=1.0] at (2.25,-3.2) {\tiny 06};
+    \node[opacity=1.0] at (3.25,-3.2) {\tiny 08};
+    \node[opacity=1.0] at (3.75,-3.2) {\tiny 09};
+    \node[opacity=1.0] at (4.75,-3.2) {\tiny 0B};
+    \node[opacity=1.0] at (6.25,-3.2) {\tiny 0E};
+    \node[opacity=1.0] at (6.75,-3.2) {\tiny 0F};
+%}
+
+%\only<6-> {
+    \draw[dashed,-Stealth,opacity=1.0] (1.5,2) to (1.25,-2);
+    \node[opacity=1.0] at (2.7,1.5) {\emph{\scriptsize FCB/Répertoire}};
+%}
+
+%\only<7-> {
+    \node[opacity=1.0] at (1.25,-2.5) {\scriptsize 03};
+    %\only<7> { 
+        \draw[-Stealth,opacity=0.0] (1.25,-3.4) to[bend left=50] (.75,-3.4);
+    %}
+%}
+
+%\only<8-> {
+    \node[opacity=1.0] at (.75,-2.5) {\scriptsize 08};
+%    \only<8> { 
+        \draw[-Stealth,opacity=0.0] (.75,-3.4) to[bend right=30] (3.25,-3.4);
+%    }
+%}
+
+%\only<9-> {
+    \node[opacity=1.0] at (3.25,-2.5) {\scriptsize 06};
+%}
+
+%\only<10> {
+    \node[opacity=1.0] at (2.25,-2.5) {\scriptsize 09};
+    \node[opacity=1.0] at (3.75,-2.5) {\scriptsize 0E};
+    \node[opacity=1.0] at (6.25,-2.5) {\scriptsize 0F};
+    \node[opacity=1.0] at (6.75,-2.5) {\scriptsize 0B};
+    \node[rotate=90,opacity=1.0] at (4.75,-2.5) {\scriptsize EOF};
+%}
+
+\end{tikzpicture}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
