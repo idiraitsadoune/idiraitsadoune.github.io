@@ -21,6 +21,16 @@
 		};
 	</script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+  <script>
+      function display_correction(my_id) {
+          var x = document.getElementById(my_id);
+          if (x.style.display === "none") {
+              x.style.display = "block";
+          } else {
+              x.style.display = "none";
+          }
+      }
+  </script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -401,17 +411,5 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
 
-  <script>
-      function display_correction(my_id) {
-          var x = document.getElementById(my_id);
-          if (x.style.display === "none") {
-              x.style.display = "block";
-          } else {
-              x.style.display = "none";
-          }
-      }
-  </script>
-
 </body>
-
 </html>
