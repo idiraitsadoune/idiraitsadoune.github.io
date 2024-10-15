@@ -73,8 +73,9 @@ f3.txt : Ni DOC, ni PDF
 </script></code></pre>
 
 <div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-for fic in $*  
+	<button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
+	<div id="exo1" style="display: none; margin-top: 20px;">
+<pre><code class="language-bash"><script type="text/template">for fic in $*  
 do 
 	case $fic in   
 		*.doc|*.docx)  
@@ -89,6 +90,7 @@ do
 	esac 
 done
 </script></code></pre>
+</div>
 </div>
 <!-- #################################################### -->
 <!-- #################################################### -->
@@ -113,8 +115,9 @@ done
 </p>
 
 <div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-if test $# -eq 0
+	<button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+	<div id="exo2" style="display: none; margin-top: 20px;">
+<pre><code class="language-bash"><script type="text/template">if test $# -eq 0
 	then
 	rep=.
 elif test $# -eq 1
@@ -141,6 +144,7 @@ do
     mv $nomfic "./$nouveauNom" 
 done
 </script></code></pre>
+	</div>
 </div>
 
 <!-- #################################################### -->
@@ -183,8 +187,9 @@ daniel n'est pas un utilisateur valide
 </script></code></pre>
 
 <div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-if test $# -eq 0 
+	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+	<div id="exo3" style="display: none; margin-top: 20px;">
+<pre><code class="language-bash"><script type="text/template">if test $# -eq 0 
 	then 
 	echo "Usage : $0 user1 user2 ... usern"  
 	exit 1
@@ -214,6 +219,7 @@ do
 	fi 
 done
 </script></code></pre>
+</div>
 </div>
 
 <!-- #################################################### -->
@@ -252,8 +258,9 @@ done
 </p>
 
 <div class="green-block">
-<pre><code class="language-bash"><script type="text/template">#! /bin/bash         # Adapter selon shell 
-	if test $# -eq 0
+	<button class="button_display" onclick="display_correction('exo4')">Click here to display or hide the correction</button>
+	<div id="exo4" style="display: none; margin-top: 20px;">
+<pre><code class="language-bash"><script type="text/template">if test $# -eq 0
 	then
 	rep=.
 elif test $# -eq 1
@@ -293,6 +300,7 @@ do
 done
 </script></code></pre>
 </div>
+</div>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -312,5 +320,17 @@ done
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
+	<script>
+		function display_correction(my_id) {
+			var x = document.getElementById(my_id);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	</script>
+
 </body>
 </html>
