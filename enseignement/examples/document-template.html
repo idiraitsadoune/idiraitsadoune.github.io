@@ -33,7 +33,7 @@
 </head>
 
 <body>
-	<div class="container">
+<div class="container">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -84,6 +84,15 @@
 	<p>Here we put the text </p>
 </div>
 
+<!-- un élément non visible -->
+<!-- <div class="green-block" hidden> -->
+<div class="green-block">
+	<button class="button_display" onclick="display_correction('correction')">Click here to display or hide the correction</button>
+	<div id="correction" style="display: none;">
+		<p>Here we put the text</p>
+	</div>
+</div>
+
 <!-- Shell code -->
 <pre><code class="language-shell"><script type="text/template">$ ls -l | more # affiche page par page
 </script></code></pre>
@@ -125,7 +134,18 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	</div>
+</div>
+
+	<script>
+		function display_correction(my_id) {
+			var x = document.getElementById(my_id);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	</script>
 </body>
 
 </html>

@@ -83,3 +83,14 @@ mjx-math{
 	font-family: 'Inter Semi Bold' !important;
 	font-size: 32px;
 }
+
+.button_display{
+	border: solid;
+	border-width: 0px;
+	background-color: green;
+	padding: 5px 10px 5px 10px;
+	border-radius: 10px;
+	color:  rgb(220, 245, 220);
+	font-weight:bold !important;
+	font-size: 0.95em !important;
+}
