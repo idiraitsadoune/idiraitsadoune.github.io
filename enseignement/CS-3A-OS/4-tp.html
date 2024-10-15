@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Systèmes d'exploitation : TP - La programmation avec le Shell/Unix</title>
-
-	<meta name="description" content="Systèmes d'exploitation : TP - La programmation avec le Shell/Unix">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
@@ -32,7 +23,6 @@
 	  </script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 	
-	
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -43,7 +33,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -64,8 +54,8 @@
     <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
     <b style="color: navy;">Modalités de livraison</b>
     <p>
-        Ce TP fait l’objet d’une notation. Vous travaillerez seul et vous devrez rendre un compte-rendu. 
-        Les TP sont à remettre <b style="color: red;">avant <br> le mercredi 22 novembre 2023</b> sur <b>EDUNAO</b>. 
+        Ce TP fait l'objet d'une notation. Vous travaillerez seul et vous devrez rendre un compte-rendu. 
+        Les TP sont à remettre <b style="color: red;">avant <br> le vendredi 8 novembre 2024</b> sur <b>EDUNAO</b>. 
         Vous devez envoyer un fichier au format <code class="listing">PDF</code> qui devrait être nommé en suivant  <br>
         la convention suivante : <code class="listing">NOM-TP2.pdf</code>.
     </p>
@@ -74,7 +64,7 @@
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Rappel</b> 
     <p>
         Un script shell est un fichier texte possédant l'extension <code class="listing">.sh</code>, comme <code class="listing">toto.sh</code>. <br>
-        Un tel fichier peut être exécuté en commençant son code par une ligne précisant l’interpréteur de commande à utiliser :
+        Un tel fichier peut être exécuté en commençant son code par une ligne précisant l'interpréteur de commande à utiliser :
 <pre><code class="language-bash"><script type="text/template">#!/bin/bash
 </script></code></pre>
     </p>
@@ -123,11 +113,11 @@
             La commande accepte trois options : 
             <ol>
                 <li><code class="listing">-l</code> pour lister le contenu de la poubelle ;</li>
-                <li><code class="listing">-s fichier chemin</code> pour sortir le fichier de la poubelle et le placer à l’emplacement chemin ;</li>
+                <li><code class="listing">-s fichier chemin</code> pour sortir le fichier de la poubelle et le placer à l'emplacement chemin ;</li>
                 <li><code class="listing">-v</code> pour vider la poubelle ;</li>
             </ol>
         </li>
-        <li>Si la poubelle n’existe pas, elle est créée à l’appel de la commande.</li>
+        <li>Si la poubelle n'existe pas, elle est créée à l'appel de la commande.</li>
     </ul>
 </p>
 <!-- #################################################### -->
@@ -137,16 +127,16 @@
 <div class="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Remarque</b> 
     <p>Pour réaliser cet exercice, vous devez installer <b>Java</b> sur votre machine. 
-Vous devez également télécharger les codes <b>Java</b> à partir de <a href="./7-tp-tests.zip" target="_blank">ce lien</a> pour tester votre script.</p>
+Vous devez également télécharger les codes <b>Java</b> à partir de <a href="./4-tp-tests.zip" target="_blank">ce lien</a> pour tester votre script.</p>
 </div>
 <p> 
     <ul>
         <li>Définir un script shell <code class="listing">javac_test.sh</code> qui attend un argument et teste si cet argument est un fichier <b>Java</b> compilable sans erreurs.
         <ul>
-            <li>Si l’argument est un fichier <b>Java</b> qui se compile sans aucune erreur, il affiche sur la sortie standard <code class="listing">file.java : compilé</code>, 
+            <li>Si l'argument est un fichier <b>Java</b> qui se compile sans aucune erreur, il affiche sur la sortie standard <code class="listing">file.java : compilé</code>, 
                 génère un fichier <code class="listing">file.class</code>, et termine avec le code de retour <code class="listing">0</code>. </li>
-            <li>Si l’argument est un fichier <b>Java</b> qui ne se compile pas, il affiche sur la sortie standard <code class="listing">file.java : non compilé</code> et termine avec le code de retour <code class="listing">1</code>.</li>
-            <li>Dans tous les autres cas, il affiche <code class="listing">Entree incorrecte</code> sur la sortie d’erreur standard et termine avec le code de retour <code class="listing">2</code>.</li>
+            <li>Si l'argument est un fichier <b>Java</b> qui ne se compile pas, il affiche sur la sortie standard <code class="listing">file.java : non compilé</code> et termine avec le code de retour <code class="listing">1</code>.</li>
+            <li>Dans tous les autres cas, il affiche <code class="listing">Entree incorrecte</code> sur la sortie d'erreur standard et termine avec le code de retour <code class="listing">2</code>.</li>
         </ul>
         </li>
     </ul>  
@@ -189,7 +179,7 @@ Vous devez également télécharger les codes <b>Java</b> à partir de <a href="
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
