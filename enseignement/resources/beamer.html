@@ -77,23 +77,33 @@
 <h2 id="q1">Template de départ</h2>
 
 <pre><code class="language-latex"><script type="text/template">\documentclass[aspectratio=169]{beamer}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PATH to the beamer-templates-v3 folder
+\def\cspath{../../}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Main declarations for this slides
-\usepackage{../../0-beamer-templates-v3/theme}
+\usepackage{\cspath beamer-templates-v3/theme}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The specific packages for these only slides. 
+\usetikzlibrary{shapes,arrows.meta}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\csfullname{Idir AIT SADOUNE}
 \def\cswebsite{https://idiraitsadoune.com}
-\def\cspicture{../../0-beamer-templates-v3/Figs/idir.png}
-\def\csaffectation{../../0-beamer-templates-v3/Figs/logo-aff.pdf}
+\def\cspicture{\cspath beamer-templates-v3/Figs/idir.png}
+\def\csaffectation{\cspath beamer-templates-v3/Figs/logo-aff.pdf}
 \def\csemail{idir.aitsadoune@centralesupelec.fr}
 
 \def\csmaintitle{The main title of the lecture \break in two lines}
-\def\cssubtitle{The title of the chapter in one line}
+\def\cssubtitle{The chapter title in one line}
 
-\def\cslogo{../../0-beamer-templates-v3/Figs/cs.png}
+\def\cslogo{\cspath beamer-templates-v3/Figs/cs.png}
 \def\csprogramname{The program name}
 \def\csuniversityname{The university name - 2024/2025}
 
