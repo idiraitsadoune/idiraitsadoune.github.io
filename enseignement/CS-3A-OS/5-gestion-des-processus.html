@@ -626,49 +626,63 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Taux d'utilisation</h2>
-    <p><b>Proportion</b> de temps pendant lequel la ressource (le CPU) <br> est utilisée</p>
+
+    <p><b>Proportion</b> de temps pendant lequel la ressource (le <b>CPU</b>) <br> est utilisée</p>
+
     <div class="fragment" >
         <img src="./img/critere-1.svg" alt="">
         <p>$taux=\frac{5}{6}=83\%$ $\rightarrow$ à <b>maximiser</b></p>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Débit</h2>
+
     <p><b>Nombre moyen</b> de processus traités par unité de temps</p>
+
     <div class="fragment">
         <img  src="./img/critere-1.svg" alt="">
         <p>$nb=\frac{3}{6}=0.5$ $\rightarrow$ à <b>maximiser</b></p>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Temps d'attente</h2>
+
     <p><b>Temps total</b> passé <b>par tous les processus</b> dans la file <b>prêt</b></p>
+
     <div class="fragment" >
         <img src="./img/critere-1.svg" alt="">
         <p>$moyenne=\frac{1+2+5}{3}=2.66$ $\rightarrow$ à <b>minimiser</b></p>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Rotation</h2>
+
     <p>
-        <b>Durée</b> d'un processus: $date$ $terminaison$ $-$ $date$ $creation$ <br>
-        $\rightarrow$ temps de réponse du processus
+        <b>Durée</b> d'un processus: ($date\_terminaison$ $-$ $date\_creation$) <br>
+        $\rightarrow$ <b>temps de réponse</b> du processus
     </p>
+
     <div class="fragment">
         <img src="./img/critere-1.svg" alt="">
         <p>$moyenne=\frac{5+6+6}{3}=5.66$ $\rightarrow$ à <b>minimiser</b></p>
     </div> 
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Ordonnancement <br> préemptif <span style="text-transform: lowercase;">vs</span> non préemptif</h2>
+	<h2>Ordonnancement</h2>
+	<h3>préemptif <span style="text-transform: lowercase;">vs</span> non préemptif</h3>
+
 	<ul>
 		<li class="fragment">Ordonnancement <b>non préemptif</b> $\to$ après avoir donné le
 			contrôle <br> à un processus, l'OS <i>ne peut pas l'interrompre</i>
@@ -678,7 +692,8 @@
 		</li>
 
 		<li class="fragment skip">
-			Ordonnancement <b>préemptif</b> (<b>avec réquisition</b>) $\to$ l'OS <i>peut interrompre</i> un processus si :
+			Ordonnancement <b>préemptif</b> (<b>avec réquisition</b>) $\to$ l'<b>OS</b> <i>peut interrompre</i> <br>
+			un processus si :
 			<ul id="fleche">
 				<li class="fragment">le <b>quantum</b> (le temps d'utilisation maximum consécutif) est
 					atteint</li>
@@ -692,18 +707,29 @@
 				temps réel</b> ou des <b>systèmes interactifs</b>.
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Ordonnancement non préemptif</h2>
-	<img src="./img/ordonnancement-non-pre.png" height="450px" alt="">
+	<h2>Ordonnancement</h2>
+	<h3>non préemptif</h3>
+
+	<div>
+		<img src="./img/ordonnancement-non-pre.png" height="450px" alt="">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Ordonnancement préemptif</h2>
-	<img src="./img/ordonnacement-pre.png" height="450px" alt="">
+	<h2>Ordonnancement</h2>
+	<h3>préemptif</h3>
+
+	<div>
+		<img src="./img/ordonnacement-pre.png" height="450px" alt="">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
