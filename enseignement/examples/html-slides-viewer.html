@@ -11,21 +11,43 @@
       text-align: center;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 60px;
+      /*margin-top: 60px;*/
     }
   </style>
+  <script>
+    function myrender() {
+      const elem = document.getElementById('body') ;
+      const x = elem.getBoundingClientRect().width ;
+      const y = elem.getBoundingClientRect().height ;
+
+      if((y-40) < (9/16) * x){
+        document.getElementById('myiframes').style["width"] = ((y-40)*(16/9)) + "px" ;
+        document.getElementById('myiframes').style["height"] = (y-40) + "px" ;
+        document.getElementById('myslides').style["marginTop"] = "40px";
+      }
+      else{
+        document.getElementById('myiframes').style["width"] = (x-40) + "px" ;
+        document.getElementById('myiframes').style["height"] = ((x-40)*(9/16)) + "px" ;
+        const mar = (y - ((x-40)*(9/16))) / 2 ;
+        document.getElementById('myslides').style["marginTop"] = mar + "px" ;
+      }
+    };
+
+    addEventListener('resize', (event) => {
+      myrender();
+    });
+  </script>
 </head>
 
 <body id="body">
   
-  <div class="ssss">
-    <iframe 
-      src="./presentation-example.html#/4" 
-      frameborder="0"
-      width="1500px"
-      height="844px">
+  <div id="myslides" class="ssss">
+    <iframe id="myiframes" src="./../CS-3A-OS/5-gestion-des-processus.html#25/0/8" style="border: 0;">
     </iframe>
   </div>
 
+  <script>
+    myrender();
+  </script>
 </body>
 </html>

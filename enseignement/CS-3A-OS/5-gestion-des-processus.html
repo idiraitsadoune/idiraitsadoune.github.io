@@ -232,31 +232,12 @@
 	</ul>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Création de processus</h2>
-	<div id="alert-block" class="fragment">
+
+	<div id="alert-block" style="width: 860px;">
 		<b>Rappel</b> :
 		un processus est forcément créé par un autre processus
 	</div>
@@ -264,19 +245,19 @@
 	<ul>
 		<li class="fragment skip">
 			<b>Sous UNIX</b> $\rightarrow$ 2 appels système
-			<ol>
-				<li class="fragment"><code class="listing">fork</code> pour créer un processus à partir du processus
+			<ul>
+				<li><code class="listing">fork</code> pour créer un processus à partir du processus
 					courant 
 					<ul id="fleche"><li>le processus courant est <i>dupliqué</i></li></ul>
 				</li>
-				<li class="fragment"><code class="listing">exec</code> pour <b>remplacer</b> le processus courant par un
+				<li><code class="listing">exec</code> pour <b>remplacer</b> le processus courant par un
 					autre processus</li>
-			</ol>
+			</ul>
 		</li>
 		<li class="fragment skip">
 			<b>Sous WINDOWS</b>
 			<ul>
-				<li class="fragment"><code class="listing">createprocess</code> pour créer un processus 
+				<li><code class="listing">createprocess</code> pour créer un processus 
 					(<b>cf</b>. <code class="listing">exec</code> <b>Unix</b>) 
 					<ul id="fleche"><li>le processus courant est <b>conservé</b></li></ul>
 				</li>
@@ -288,42 +269,47 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>L'espace mémoire d'un processus</h2>
-	<div style="display: flex; align-items: center;">
-		<img src="./img/f32-memoire-process.png" height="100%"
-			style="width: 30%; margin-bottom: 20px; margin-right: 60px;">
 
-		<ul style="width: 70%;">
-			<li class="fragment"><b>Code exécutable</b> en lecture seule <br> (taille connue)</li>
-			<li class="fragment skip"><b>Variables/Constantes globales</b> <br> (taille connue)</li>
-			<li class="fragment skip"><b>Pile</b> pour gérer les contextes et les variables temporaires
-				(taille inconnue)</li>
-			<li class="fragment skip"><b>Le TAS</b> ou la <b>Zone d'allocation dynamique de mémoire</b>
-				(taille inconnue)</li>
-		</ul>
+	<div style="display: flex; align-items: center;">
+		<div style="width: 40%;">
+			<img 	src="./img/f32-memoire-process.png" style="width: 85%;">
+		</div>
+		
+		<div style="width: 60%;">
+			<ul>
+				<li class="fragment"><b>Code exécutable</b> en lecture seule <br> (taille connue)</li>
+				<li class="fragment skip"><b>Variables/Constantes globales</b> <br> (taille connue)</li>
+				<li class="fragment skip"><b>Pile</b> pour gérer les contextes et les variables temporaires
+					(taille inconnue)</li>
+				<li class="fragment skip"><b>Le TAS</b> ou la <b>Zone d'allocation dynamique <br> de mémoire</b>
+					(taille inconnue)</li>
+			</ul>
+		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Bloc de contrôle de Processus</h2>
-	<ul>
-		<li class="fragment">
-			<b>Process Control Block - PCB</b>
-			<ul>
-				<li>
-					<b>Structure de données</b> contenant les informations relatives 
-					à un processus utilisée par l'OS pour la <b>gestion des processus</b>.
-				</li>
-			</ul>
-			
-		</li>
-	</ul>
+
+	<div class="left-content">
+		<b>Process Control Block - PCB</b>
+		<ul>
+			<li>
+				<b>Structure de données</b> contenant les informations relatives 
+				à un processus utilisée par l'OS pour la <b>gestion des processus</b>.
+			</li>
+		</ul>
+	</div>
 
 	<div class="fragment" style="display: flex; align-items: center;">
-		<img src="./img/f20-process-control-block.png" height="100%"
-			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-		<div class="r-stack" style="width: 60%;">
 
+		<div style="width: 50%;">
+			<img src="./img/f20-process-control-block.png" style="width: 90%;">
+		</div>
+
+		<div class="r-stack" style="width: 50%;">
 			<ul class="fragment fade-in-then-out">
 				<li>Information <b>mémoire</b></li>
 				<li>Données d'<b>ordonnancement</b></li>
@@ -345,6 +331,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Rôle de l'OS</h2>
+
 	<ul>
 		<li><b>Création et suppression de processus</b>
 			<ul>
@@ -353,10 +340,10 @@
 				</li>
 			</ul>
 		</li>
-		<li class="skip" style="color: red !important;"><b style="color: red !important;">Suspension et reprise</b>
+		<li class="skip" style="color: red !important;"><strong>Suspension et reprise</strong>
 			<ul>
-				<li>Multiprogrammation $\rightarrow$ <b style="color: red !important;">interrompre et reprendre</b> les processus</li>
-				<li><b style="color: red !important;">Gestion de la mémoire</b> où sont stockées les processus interrompus</li>
+				<li>Multiprogrammation $\rightarrow$ <strong>interrompre et reprendre</strong> les processus</li>
+				<li><strong>Gestion de la mémoire</strong> où sont stockées les processus interrompus</li>
 			</ul>
 		</li>
 		<li class="skip"><b>Communication et synchronisation</b>
@@ -366,11 +353,13 @@
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Cycle de vie du processus</h2>
+
 	<div class="r-stack skip">
 		<img class="fragment fade-in-then-out" src="./img/cycle_vie_process_1.svg" height="100%"
 			alt="">
@@ -390,39 +379,48 @@
 			alt="">
 		<img data-id="cycle" class="fragment fade-in" src="./img/cycle_vie_process_9.svg" height="100%" alt="">
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Suspension de l'exécution</h2>
+
 	<div style="display: flex; align-items: center;">
-
-		<img data-id="cycle" src="./img/cycle_vie_process_10.svg" height="100%"
-			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
-		<ul style="width: 60%;">
-			<li id="listing">Le processus en exécution laisse <br> la main si:
-				<ul id="fleche">
-
-					<li class="fragment">son quantum a expiré $\rightarrow$ <b>Prêt</b></li>
-					<li class="fragment">crée un processus fils $\rightarrow$ <b>Prêt</b></li>
-					<li class="fragment">fait une demande d'E/S $\rightarrow$ <b>Bloqué</b></li>
-					<li class="fragment">exécute <code class="listing">wait</code> $\rightarrow$ <b>Bloqué</b></li>
-				</ul>
-			</li>
-		</ul>
+		<div style="width: 40%; ">
+			<img data-id="cycle" src="./img/cycle_vie_process_10.svg" style="width: 100%;">
+		</div>
+		
+		<div style="width: 60%;">
+			<ul>
+				<li>Le processus en exécution laisse <br> la main si:
+					<ul id="fleche">
+						<li class="fragment">son quantum a expiré $\rightarrow$ <b>Prêt</b></li>
+						<li class="fragment">crée un processus fils $\rightarrow$ <b>Prêt</b></li>
+						<li class="fragment">fait une demande d'E/S $\rightarrow$ <b>Bloqué</b></li>
+						<li class="fragment">exécute <code class="listing">wait</code> $\rightarrow$ <b>Bloqué</b></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Commutation de processus</h2>
-	<img src="./img/f25-changement-contexte.png" width="70%" alt="">
+
+	<div>
+		<img src="./img/f25-changement-contexte.png" width="70%" alt="">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Rôle de l'OS</h2>
+
 	<ul>
 		<li><b>Création et suppression de processus</b>
 			<ul>
@@ -437,18 +435,20 @@
 				<li><b>Gestion de la mémoire</b> où sont stockées les processus interrompus</li>
 			</ul>
 		</li>
-		<li class="skip" style="color: red !important;"><b style="color: red !important;">Communication et synchronisation</b>
+		<li class="skip" style="color: red !important;"><strong>Communication et synchronisation</strong>
 			<ul>
 				<li>Partage de données entre plusieurs processus</li>
-				<li><b style="color: red !important;">Consistance</b> de l'état de la mémoire</li>
+				<li><strong>Consistance</strong> de l'état de la mémoire</li>
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Actions de l'OS</h2>
+
 	<ul>
 		<li class="fragment">
 			<b>Mémoire</b>: chaque processus a son propre espace mémoire
@@ -469,6 +469,7 @@
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -483,8 +484,8 @@
 	<h2>Notion de Thread</h2>
 
 	<ul>
-		<li class="fragment"><b>Un thread</b> est l'<i>unité
-				d'exécution de base d'un processus</i>, décrite par son <i>point d'exécution</i> et son <i>état
+		<li><b>Un thread</b> est l'<i>unité
+				d'exécution de base d'un processus</i>, décrite <br> par son <i>point d'exécution</i> et son <i>état
 			interne</i> (registres, pile, ...). 
 			<ul>
 				<li class="fragment">les threads partagent le <b>même code et les mêmes données</b></li>
@@ -504,7 +505,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Notion de Thread</h2>
-	<img src="./img/thread.svg" width="40%" alt="">
+
+	<div>
+		<img src="./img/thread.svg" width="40%" alt="">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -512,7 +517,7 @@
 	<h2>Utilisation des Threads</h2>
 
 	<ul>
-		<li>Le <b>Thread</b> permet la gestion de <b>plusieurs traitements <br> en parallèle</b>
+		<li>Le <b>Thread</b> permet la gestion de <b>plusieurs traitements en parallèle</b><br> 
 			dans le même processus.
 			<ul id="fleche">
 				<li class="fragment">
@@ -535,6 +540,7 @@
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -549,7 +555,7 @@
 	<h2>Multiprogrammation <br> et temps partagé</h2>
 
 	<ul>
-		<li class="fragment"><b>Les processus</b> sont <i>répartis sur les ressources</i> :
+		<li><b>Les processus</b> sont <i>répartis sur les ressources</i> :
 			<ul>
 				<li class="fragment"><b>Plusieurs processus</b> peuvent vouloir la <b>même ressource</b>
 					en même temps</li>
@@ -561,19 +567,21 @@
 		<li class="fragment skip"><b>Exemple</b>
 			<ul>
 				<li class="fragment"><b>le processeur</b> est <b>une ressource hautement critique</b>.</li>
-				<li class="fragment">l'<b>OS</b> est en charge de sa <i>répartition entre les processus</i>
-					<ul id="fleche"><li class="fragment"><b>l'ordonnancement (scheduling)</b>.</li></ul> 
+				<li class="fragment">l'<b>OS</b> est en charge de sa <i>répartition entre les processus</i> <br>
+					<span class="fragment"><b>&#10144; l'ordonnancement (scheduling)</b></span>
 				</li>
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Ordonnancement</h2>
+
 	<ul>
-		<li class="fragment">
+		<li>
 			On ne s'intéresse pas à la durée totale du processus ... <br>
 			<span class="fragment">mais au <b>temps</b> pendant lequel il va <b>garder le processeur</b> :</span>
 			<ul id="fleche">
@@ -582,11 +590,11 @@
 				<li class="fragment">jusqu'à ce que l'<b>OS</b> décide que <i>ce n'est plus son tour</i></li>
 			</ul>
 		</li>
-		<li class="fragment skip"><b>Le remplacement d'un processus</b> en exécution a un coût
+		<li class="fragment skip"><b>Le remplacement d'un processus</b> en exécution a un coût <br>
 			(<b>commutation de contexte</b>)
 			<ul>
 				<li class="fragment">exécution de la <i>routine d'ordonnancement</i></li>
-				<li class="fragment">sauvegarde du <i>contexte</i> (registres + PC)</li>
+				<li class="fragment">sauvegarde du <i>contexte</i> (registres + <b>PC</b>)</li>
 				<li class="fragment">chargement d'un nouveau <i>contexte</i></li>
 			</ul>
 		</li>
@@ -597,6 +605,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Objectifs possibles <br> de l'ordonnancement</h2>
+
 	<ul>
 		<li class="fragment">être <b>équitable</b> (<b>fairness</b>) vis-à-vis des processus ;</li>
 		<li class="fragment">maximiser l'utilisation globale du processeur (<b>efficace</b>) ;</li>
@@ -606,15 +615,12 @@
 		<li class="fragment">assurer une <b>utilisation maximale</b> des ressources ;</li>
 		<li class="fragment">gérer convenablement les <b>priorités</b>.</li>
 	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Objectifs possibles <br> de l'ordonnancement</h2>
-    <div id="alert-block">
-        <b>Objectif</b> : 
-        choisir un algorithme d'ordonnancement qui minimise <br> ou maximise un critère.
-    </div>
+
+	<div id="alert-block" class="d-skip fragment" style="width: 70%;">
+			<b>Objectif</b> $\to$ 
+			choisir un <b>algorithme d'ordonnancement</b> qui <i>minimise</i> ou <i>maximise</i> <b>un critère</b>.
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
