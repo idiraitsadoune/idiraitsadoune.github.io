@@ -8,11 +8,11 @@
 <body>
   
   <div id="adobe-dc-view" style="height: 360px; width: 500px;"></div>
-  
+
   <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
   <script type="text/javascript">
     document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-      var adobeDCView = new AdobeDC.View({clientId: "f2d4aa58c4eb4c35a9320f5b6b6cc92f", divId: "adobe-dc-view"});
+      var adobeDCView = new AdobeDC.View({clientId: "e03781ad17354f099bc81459f4817f61", divId: "adobe-dc-view"});
       adobeDCView.previewFile({
         content:{location: {url: "./pdf-slides.pdf"}},
         metaData:{fileName: "pdf-slides.pdf"}
