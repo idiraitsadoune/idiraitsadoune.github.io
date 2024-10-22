@@ -734,215 +734,236 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> <span class="fragment">FIFO sans préemption</span></h2>
+	<h2>De nombreuses stratégies</h2>
+	<h3 class="fragment">FIFO sans préemption</h3>
 
-	<img src="./img/f27-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
+	<div class="fragment" style="float: right; margin-bottom: 20px; margin-left: 20px; width: 500px;">
+		<img src="./img/f27-ordonnancement.png" width="100%">
+	</div>
 
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>: 
-			<ul id="fleche"><li>premier arrivé, premier servi.</li></ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: green;">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Simple à implémenter
-				</li>
-				<li class="fragment">Équitable dans l'ordre d'arrivée
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: red;">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Peu efficace $\to$ des processus ont "longtemps" le processeur
-				</li>
-				<li class="fragment">Peu réactif $\to$ des processus peuvent attendre longtemps
-				</li>
-			</ul>	
-		</li>
-	</ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Plus court d'abord</h2>
-
-	<img src="./img/f26-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>: 
-			<ul id="fleche"><li>priorité au processus le plus court</li></ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color: green;">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Réactif: avantage aux petits processus
-				</li>
-				<li class="fragment">Optimal sur le temps d'attente moyen
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:red">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Pas efficace: les processus ont moins le processeur s'il y a beaucoup d'E/S
-				</li>
-				<li class="fragment">Non équitable: on peut avoir une <span style="color:red">famine</span> des gros processus
-				</li>
-			</ul>	
-		</li>
-	</ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Round-Robin (FIFO préemptif)</h2>
-
-	<img src="./img/f28-ordonnancement.png" width="450px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
-
-
-	<ul style="display: block;">
-		<li class="fragment"><b>Principe</b>:
-			<ul id="fleche"><li><b>FIFO</b> avec <b>quantum</b> de temps</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:green">Avantages</b> :
-			<ul id="ok">
-				<li class="fragment">Équitable: tout le monde<br> a le processeur
-				</li>
-				<li class="fragment">Réactif: les processus n'attendent pas
-				</li>
-			</ul>
-		</li>
-		<li class="fragment skip">
-			<b style="color:red">Inconvénients</b> :
-			<ul id="ko">
-				<li class="fragment">Temps d'attente moyen plus élevé
-				</li>
-				<li class="fragment">Beaucoup de commutations $\rightarrow$ surcoût!
-				</li>
-			</ul>
-		</li>
-	</ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Files de priorités</h2>
-
-	<img src="./img/f29-ordonnancement.png" width="400px"
-					style="float: right; margin-left: 20px;">
-
-	<div class="left-content">
+	<div>
 		<ul style="display: block;">
-			<li class="fragment">
-				Plusieurs files d'attente
+			<li class="fragment"><b>Principe</b>: 
+				<ul id="fleche"><li>premier arrivé, premier servi.</li></ul>
 			</li>
-			<li class="fragment">La durée des quantums peut dépendre de la file</li>
+			<li class="fragment skip">
+				<b style="color: green;">Avantages</b> :
+				<ul id="ok">
+					<li>Simple à implémenter</li>
+					<li>Équitable dans l'ordre d'arrivée</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				<b style="color: red;">Inconvénients</b> :
+				<ul id="ko">
+					<li>Peu efficace $\to$ des processus ont "longtemps" le processeur</li>
+					<li>Peu réactif $\to$ des processus peuvent attendre longtemps</li>
+				</ul>	
+			</li>
 		</ul>
-		<ul id="ok" style="display: block;" class="fragment skip"><li>favorise le temps de réponse <br> des processus systèmes</li></ul>
-		<ul id="ko" style="display: block;" class="fragment"><li>Comment choisir la priorité ?</li></ul>
 	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>De nombreuses stratégies <br> Files de priorités dynamiques</h2>
+	<h2>De nombreuses stratégies</h2>
+	<h3>Plus court d'abord</h3>
 
-	<img src="./img/f30-ordonnancement.png" width="400px"
-	style="float: right; margin-bottom: 20px; margin-left: 60px;">
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; width: 500px;">
+		<img src="./img/f26-ordonnancement.png" width="100%">
+	</div>
 
-	<ul style="display: block;">
-		<li class="fragment">
-			La priorité d'un processus peut être modifié par l'OS
-			<ul>
-				<li class="fragment">Par exemple sortie d'attente I/O</li>
-				<li class="fragment">Attente longue en file basse priorité</li>
+	<div>
+		<ul style="display: block;">
+			<li><b>Principe</b>: 
+				<ul id="fleche"><li>priorité au processus le plus court</li></ul>
+			</li>
+			<li class="fragment skip">
+				<b style="color: green;">Avantages</b> :
+				<ul id="ok">
+					<li>Réactif: avantage aux petits processus</li>
+					<li>Optimal sur le temps d'attente moyen</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				<b style="color:red">Inconvénients</b> :
+				<ul id="ko">
+					<li>Pas efficace: les processus ont moins le processeur s'il y a beaucoup d'E/S</li>
+					<li>Non équitable: on peut avoir une <span style="color:red">famine</span> des gros processus</li>
+				</ul>	
+			</li>
+		</ul>
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>De nombreuses stratégies</h2>
+	<h3>Round-Robin (FIFO préemptif)</h3>
+
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; width: 500px;">
+		<img src="./img/f28-ordonnancement.png" width="100%">
+	</div>
+	
+	<div>
+		<ul style="display: block;">
+			<li><b>Principe</b>:
+				<ul id="fleche"><li><b>FIFO</b> avec <b>quantum</b> de temps</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				<b style="color:green">Avantages</b> :
+				<ul id="ok">
+					<li>Équitable: tout le monde a le processeur</li>
+					<li>Réactif: les processus n'attendent pas</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				<b style="color:red">Inconvénients</b> :
+				<ul id="ko">
+					<li>Temps d'attente moyen plus élevé</li>
+					<li>Beaucoup de commutations $\rightarrow$ surcoût!</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>De nombreuses stratégies</h2>
+	<h3>Files de priorités</h3>
+
+	<div style="display: flex; align-items: center;">
+		<div class="left-content" style="width: 60%;">
+			<ul style="display: block;">
+				<li>Plusieurs files d'attente</li>
+				<li class="fragment">La durée des quantums peut dépendre de la file</li>
 			</ul>
-		</li>
-		<li class="fragment skip"><b>Utilité</b> : Windows NT, OS X, Linux </li>
-		<li class="fragment">Notion de <b>classe de priorités</b></li>
-	</ul>
+			<ul id="ok" style="display: block;" class="fragment skip"><li>favorise le temps de réponse des processus systèmes</li></ul>
+			<ul id="ko" style="display: block;" class="fragment"><li>Comment choisir la priorité ?</li></ul>
+		</div>
+
+		<div style="width: 40%;">
+			<img src="./img/f29-ordonnancement.png" width="100%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>De nombreuses stratégies</h2>
+	<h3>Files de priorités dynamiques</h3>
+
+	<div style="display: flex; align-items: center;">
+		<div style="width: 65%;">
+			<ul style="display: block;">
+				<li>
+					La priorité d'un processus peut être modifié par l'OS
+					<ul>
+						<li class="fragment">par exemple sortie d'attente I/O</li>
+						<li class="fragment">attente longue en file basse priorité</li>
+					</ul>
+				</li>
+				<li class="fragment skip"><b>Utilité</b> : Windows NT, OS X, Linux </li>
+				<li class="fragment">Notion de <b>classe de priorités</b></li>
+			</ul>
+		</div>
+
+		<div style="width: 35%;">
+			<img src="./img/f30-ordonnancement.png" width="100%">
+		</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple : Solaris</h2>
-	<p style="font-size: 30px;">OS des machines Sun entre 1993 et 2000</p>
-	<ul>
-		<li class="fragment"><b>Principe</b>
-			<ul>
-				<li class="fragment">Quantum de temps selon priorité (0 = priorité max)</li>
-				<li class="fragment">Priorité modifiée à la fin du quantum ou après une E/S
-					<ul id="fleche">
-						<li class="fragment">Prioritaire $\rightarrow$ grand quantum</li>
-						<li class="fragment">Quantum consommé $\rightarrow$ priorité augmentée</li>
-						<li class="fragment">E/S $\rightarrow$ priorité diminuée</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+	<h3>OS des machines Sun entre 1993 et 2000</h3>
+	
+	<div class="left-content">
+		<p>
+			<b>Principe</b>
+		</p>
+		
+		<ul>
+			<li>Quantum de temps selon priorité (0 = priorité max)</li>
+			<li class="fragment">Priorité modifiée à la fin du quantum ou après une E/S
+				<ul id="fleche">
+					<li class="fragment">prioritaire $\rightarrow$ grand quantum</li>
+					<li class="fragment">quantum consommé $\rightarrow$ priorité augmentée</li>
+					<li class="fragment">E/S $\rightarrow$ priorité diminuée</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple : Windows XP et après</h2>
-	<ul>
-		<li class="fragment"><b>Principe</b>
-			<ul>
-				<li class="fragment">Priorité + Round Robin
-					<ul id="fleche">
-						<li class="fragment">Gérée au niveau des threads uniquement</li>
-						<li class="fragment">32 niveaux de priorité</li>
-						<li class="fragment">Ordonnancement préemptif par niveau de priorité</li>
-					</ul>
-				</li>
-				<li class="fragment">
-					Priorité dynamique
-					<ul id="fleche">
-						<li class="fragment">Baissée à la fin du quantum</li>
-						<li class="fragment">Remontée après chaque E/S $\rightarrow$ interface graphique plus réactive!</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+
+	<div class="left-content">
+		<p>
+			<b>Principe</b>
+		</p>
+
+		<ul>
+			<li>Priorité + Round Robin
+				<ul id="fleche">
+					<li>gérée au niveau des threads uniquement</li>
+					<li class="fragment">32 niveaux de priorité</li>
+					<li class="fragment">ordonnancement préemptif par niveau de priorité</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				Priorité dynamique
+				<ul id="fleche">
+					<li>baissée à la fin du quantum</li>
+					<li class="fragment">remontée après chaque E/S $\rightarrow$ interface graphique plus réactive!</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Exemple : Linux, MacOS X</h2>
-	<ul>
-		<li class="fragment"><b>Principe</b>
-			<ul>
-				<li class="fragment">2 algorithmes:
-					<ol>
-						<li class="fragment">Tâches <b>temps réel</b>: préemptif selon priorité, FIFO ou RR par priorité</li>
-						<li class="fragment">Autres tâches: temps partagé équitable</li>
-					</ol>
-				</li>
-				<li  class="fragment">
-					Système de crédits : chaque processus dispose d'un <b>crédit</b> = sa priorité
-					<ul id="fleche"> 
-						<li class="fragment">Le processus le plus riche l'emporte (préemptif)</li>
-						<li class="fragment">Perte de 1 crédit à la fin du quantum</li>
-						<li class="fragment">Si aucun processus <b>prêt</b> n'a de crédit, <b>tous</b> les processus sont re-crédités
-						<br> $\to$ $credit^{'}$ $=$ $credit/2$ $+$ $credit_{init}$
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+
+	<div class="left-content">
+		<p>
+			<b>Principe</b>
+		</p>
+
+		<ul>
+			<li>2 algorithmes:
+				<ol>
+					<li>Tâches <b>temps réel</b> $\to$ préemptif selon priorité, <b>FIFO</b> ou <b>RR</b> par priorité</li>
+					<li>Autres tâches $\to$ temps partagé équitable</li>
+				</ol>
+			</li>
+			<li  class="skip fragment">
+				Système de crédits
+				<ul id="fleche"> 
+					<li>chaque processus dispose d'un <b>crédit</b> = sa priorité</li>
+					<li>le processus le plus riche l'emporte (préemptif)</li>
+					<li class="fragment">perte de 1 crédit à la fin du quantum</li>
+					<li class="fragment">si aucun processus <b>prêt</b> n'a de crédit, <b>tous</b> les processus sont re-crédités
+					<br> $\to$ $credit^{'}$ $=$ $credit/2$ $+$ $credit_{init}$
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -977,6 +998,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
+	<p>
+		<a href="./5-gestion-des-processus.pdf" target="_blank">Version PDF des slides</a>
+	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
