@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Systèmes d'exploitation : Synchronisation des processus et des threads</title>
-
-	<meta name="description" content="Systèmes d'exploitation : Synchronisation des processus et des threads">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -37,11 +28,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
-<div style="text-align: left">
-	<div class="header-logo">
+
+  <div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
+				<img src="../resources/img/logo-aff.png" alt="">
 			</a>
 		</div>
 		<div class="right-logo">
@@ -50,15 +41,17 @@
 			</a>
 		</div>
 	</div>
-	
-	<h2>Systèmes d'exploitation</h2>
-	<h3>Synchronisation des processus <br> et des threads</h3>
-	<div class="description">
-		<span class="description-item"><span class="fa fa-graduation-cap"></span> 3A - Cursus Ingénieurs</span>	
-		<span class="description-item"><span class="fa fa-university"></span> CentraleSupelec</span>
-		<span class="description-item"><span class="fa fa-calendar" aria-hidden="true"></span> 2023/2024</span>
+
+	<div style="text-align: left">
+		<h2>Systèmes d'exploitation</h2>
+		<h3>Synchronisation des processus et des threads</h3>
 	</div>
-		
+
+	<div class="description" >
+		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2024/2025</span>
+	</div>
+
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
 			<img src="../resources/img/idir.png" class="hero-user">
@@ -73,7 +66,7 @@
 			</a>
 		</div>
 	</div>
-</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1202,6 +1195,9 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./6-synchronisation-des-processus.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
 	</p>	
@@ -1210,48 +1206,44 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		</div>
-	</div>
-	<script src="../resources/js/plan.js"></script>
+    </div>
+  </div>
 
-	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
-	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+  <script src="../resources/js/plan.js"></script>
+  <script src="../reveal-js-framework/dist/reveal.js"></script>
+  <script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+  <script src="../reveal-js-framework/plugin/math/math.js"></script>
 
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-		Reveal.initialize({
-			// Display presentation control arrows
-			controls: true,
-			// Display a presentation progress bar
-			progress: true,
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      // Display presentation control arrows
+      controls: true,
+      // Display a presentation progress bar
+      progress: true,
 
-			// Vertical centering of slides
-			center: true,
-			// The "normal" size of the presentation, aspect ratio will
-			// be preserved when the presentation is scaled to fit different
-			// resolutions. Can be specified using percentage units.
-			width: 1280,
-			height: 720,
+      // Vertical centering of slides
+      center: true,
+      // The "normal" size of the presentation, aspect ratio will
+      // be preserved when the presentation is scaled to fit different
+      // resolutions. Can be specified using percentage units.
+      width: 1280,
+      height: 720,
 
-			// Add the current slide number to the URL hash so that reloading the
-			// page/copying the URL will return you to the same slide
-			hash: true,
+      // Add the current slide number to the URL hash so that reloading the
+      // page/copying the URL will return you to the same slide
+      hash: true,
 
-			slideNumber: 'c/t',
+      slideNumber: 'c/t',
 
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
-		});
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMath.MathJax3, RevealHighlight]
+    });
 
-        Reveal.configure({ pdfSeparateFragments: false });
-	</script>
+    Reveal.configure({ pdfSeparateFragments: false });
+  </script>
+
 </body>
-
 </html>
