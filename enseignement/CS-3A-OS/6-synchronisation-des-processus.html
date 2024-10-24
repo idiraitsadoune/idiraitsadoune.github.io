@@ -81,11 +81,11 @@
     <h2>Inter Process Communication - IPC</h2>
 
     <ul>
-        <li class="fragment">
-            L’OS garantie l’<b>indépendance des processus</b>
+        <li>
+            L'<b>OS</b> garantie l'<b>indépendance des processus</b>
             <ul>
-                <li class="fragment">Par l’<i>ordonnanceur CPU</i></li>
-                <li class="fragment">Par la <i>gestion mémoire</i> que l’on verra plus tard</li>
+                <li class="fragment">Par l'<i>ordonnanceur CPU</i></li>
+                <li class="fragment">Par la <i>gestion mémoire</i> que l'on verra plus tard</li>
             </ul>
         </li>
         <li class="fragment skip">
@@ -104,7 +104,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Principales méthodes <br> de communications</h2>
 
-    <table style="font-size: 32px ;">
+    <table style="font-size: 30px ;">
         <thead>
             <tr style="background-color:DeepSkyBlue ;">
                 <th>Méthode</th>
@@ -114,7 +114,7 @@
         <tbody>
             <tr class="fragment">
                 <td><b>Signal</b></td>
-                <td>Un message système est envoyé d’un processus <br> à un autre.</td>
+                <td>Un message système est envoyé d'un processus <br> à un autre.</td>
             </tr>
             <tr class="fragment">
                 <td><b>Pipe</b></td>
@@ -140,85 +140,89 @@
             </tr>
         </tbody>
     </table>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Problème de la concurrence</h2>
+    <h3>Exemple</h3>
 
-    <div class="fragment" style="display: flex; align-items: center;">
+    <div class="left-content">
+        <p class="fragment">Soit la gestion d'un compte bancaire </p>
+        <ul>
+            <li class="fragment">Une variable partagée <code class="listing">balance</code></li>
+            <li class="fragment">Une fonction <code class="listing">add(1)</code>
+                (<code class="listing">balance = balance + 1</code>)</li>
+            <li class="fragment">Une fonction <code class="listing">sub(1)</code>
+                (<code class="listing">balance = balance - 1</code>)</li>
+            <li class="fragment">Le montant initial du compte est de <code
+                    class="listing">9&#8364;</code></li>
+        </ul>
+    </div>
+
+    <div class="skip fragment" style="display: flex; align-items: center;">
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance + 1
+            ;add(1) or balance = balance + 1
             mov eax, balance 
             add eax, 1
             mov balance, eax
         </script></code></pre>
 
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance - 1
+            ;sub(1) or balance = balance - 1
             mov eax, balance 
             sub eax, 1
             mov balance, eax
         </script></code></pre>
     </div>
 
-    <ul>
-        <li class="fragment">Soit la gestion d’un compte bancaire
-            <ul>
-                <li class="fragment">Une variable partagée <code class="listing">balance</code></li>
-                <li class="fragment">Une fonction <code class="listing">add(1)</code>
-                    (<code class="listing">balance = balance + 1</code>)</li>
-                <li class="fragment">Une fonction <code class="listing">sub(1)</code>
-                    (<code class="listing">balance = balance - 1</code>)</li>
-                <li class="fragment">Le montant initial du compte est de <code
-                        class="listing">9&#8364;</code></li>
-            </ul>
-        </li>
-    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Problème de la concurrence</h2>
+    <h3>Exemple</h3>
 
     <div style="display: flex; align-items: center;">
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance + 1
+            ;add(1) or balance = balance + 1
             mov eax, balance 
             add eax, 1
             mov balance, eax
         </script></code></pre>
 
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance - 1
+            ;sub(1) or balance = balance - 1
             mov eax, balance 
             sub eax, 1
             mov balance, eax
         </script></code></pre>
     </div>
 
-    <ul>
-        <li>Soient 2 threads en parallèle
-            <ul>
-                <li class="fragment">La première thread ajoute <code class="listing">10 000 000</code> fois
-                    <code class="listing">1&#8364;</code>
-                </li>
-                <li class="fragment">La deuxième thread soustrait <code class="listing">10 000 000</code> fois
-                    <code class="listing">1&#8364;</code>
-                </li>
-            </ul>
-        </li>
-        <ul id="ok">
-            <li class="fragment skip">
-                <b>Résultat attendu:</b> <code class="listing">balance = 9&#8364;</code>
+    <div class="left-content">
+        <p>On lance 2 threads en parallèle</p>
+        <ul>
+            <li class="fragment">La première thread exécute <code class="listing">10 000 000</code> fois
+                <code class="listing">add(1)</code>
+            </li>
+            <li class="fragment">La deuxième thread soustrait <code class="listing">10 000 000</code> fois
+                <code class="listing">sub(1)</code>
             </li>
         </ul>
+        <br>
+        <ul id="fleche">
+            <li class="fragment skip">
+                <b>Résultat attendu</b> $\to$ <code class="listing">balance = 9&#8364;</code>
+            </li>
+        </ul>
+        <br>
         <ul id="ko">
             <li class="fragment">
-                <b>Résultat obtenu:</b> <code class="listing">balance = -98599&#8364;</code>
+                <b>Résultat obtenu</b> $\to$ <code class="listing">balance = -98599&#8364;</code>
             </li>
         </ul>
-    </ul>
+    </div>
     
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -227,89 +231,91 @@
     <h2>Problème de la concurrence</h2>
 
     <div style="display: flex; align-items: center;">
-
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance + 1
+            ;add(1) or balance = balance + 1
             mov eax, balance 
             add eax, 1
             mov balance, eax
         </script></code></pre>
 
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance - 1
+            ;sub(1) or balance = balance - 1
             mov eax, balance 
             sub eax, 1
             mov balance, eax
         </script></code></pre>
     </div>
 
-    <ul>
-        <li>Comment expliquer ces erreurs de calcul ?</li>
-            <ul id="fleche">
-                <li class="fragment">les entrelacements se font au niveau du code binaire
-                <li class="fragment">couper <b>entre chaque instruction assembleur</b></li>
-            </ul>
-        </li>
-    </ul>
+    <div class="left-content">
+        Comment expliquer ces erreurs de calcul ?
+        <br>
+        <ul id="fleche">
+            <li class="fragment">les entrelacements se font au niveau du code binaire
+            <li class="fragment">couper <b>entre chaque instruction assembleur</b></li>
+        </ul>
+    </div>
 
     <div class="skip r-stack">
         <div class="fragment fade-in-then-out">
             <img src="./img/error-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:145px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:130px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-2.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:145px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:130px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-3.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:145px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:130px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-2.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-4.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-5.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-6.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-7.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-8.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:175px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:155px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-9.svg" alt="">
         </div>
+
+
+
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:180px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-10.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:180px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-11.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:205px;left:60px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:180px;left:75px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-12.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:205px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:180px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-13.svg" alt="">
         </div>
         <div class="fragment fade-in">
-            <span style="position:absolute;top:205px;left:630px;font-size: 30px;">&#128073;</span>
+            <span style="position:absolute;top:180px;left:635px;font-size: 30px;">&#128073;</span>
             <img src="./img/error-14.svg" alt="">
         </div>
     </div>
@@ -319,45 +325,48 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Problème de la concurrence</h2>
+    <h3>Conclusion</h3>
 
     <div style="display: flex; align-items: center;">
-
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance + 1
+            ;add(1) or balance = balance + 1
             mov eax, balance 
             add eax, 1
             mov balance, eax
         </script></code></pre>
 
         <pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-            ;balance = balance - 1
+            ;sub(1) or balance = balance - 1
             mov eax, balance 
             sub eax, 1
             mov balance, eax
         </script></code></pre>
     </div>
 
-    <div id="alert-block" style="text-align: center;">
-        <ul id="ko"><li><b>Après une itération</b> $\rightarrow$ <code class="listing">balance = 8</code></li></ul>
+    <div id="alert-block" style="text-align: center; width: 60%;" class="skip">
+        <b>Après une itération</b> $\rightarrow$ <code class="listing">balance = 8</code> <br>
+        alors qu'on s'attend à <code class="listing">balance = 9</code> 
     </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Problème de la concurrence</h2>
-    <ul>
-        <li><b>Situation de compétition</b> 
-            <ul id="fleche">
-                <li><b>erreur</b> dépendant de l’<u>enchaînement</u> temporel d’événements <br>
-                        impliquant une <u>ressource partagée</u></li>
-                <li class="fragment skip">non déterministe</li>
-            </ul>
-            <ul id="ko">
-                <li class="fragment">difficile à détecter (<b>tests</b>)</li>
-                <li class="fragment">difficile à corriger (<b>debug</b>)</li>
-            </ul>
-        </li>
-    </ul>
+    <h3>Conclusion</h3>
+
+    <div class="left-content">
+        <p><b>Situation de compétition</b> </p>
+        <ul id="fleche">
+            <li><b>erreur</b> dépendant de l'<u>enchaînement</u> temporel d'événements <br>
+                    impliquant une <u>ressource partagée</u></li>
+            <li class="fragment skip">non déterministe</li>
+        </ul>
+        <br>
+        <ul id="ko">
+            <li class="fragment">difficile à détecter (<b>tests</b>)</li>
+            <li class="fragment">difficile à corriger (<b>debug</b>)</li>
+        </ul>
+    </div>
     
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -372,14 +381,14 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Section critique</h2>
 
-    <ul>
-        <li class="fragment">Lorsqu'il y a des <b>variables partagées</b>,
-            il existe des <b>portions <br> de code</b> qu'on ne veut pas pouvoir interrompre.
-            <ul id="fleche">
-                <li class="fragment">des <b>zones du code</b> qui manipulent des <b>ressources partagées</b></li>
-                <li class="fragment">ces zones sont appelées <b>sections critiques</b></li>
-            </ul>
-        </li>
+    <div class="left-content">
+        <p>Lorsqu'il y a des <b>variables partagées</b>,
+            il existe des <b>portions <br> de code</b> qu'on ne veut pas pouvoir interrompre.</p>
+
+        <ul id="fleche">
+            <li class="fragment">des <b>zones du code</b> qui manipulent des <b>ressources partagées</b></li>
+            <li class="fragment">ces zones sont appelées <b>sections critiques</b></li>
+        </ul>
     </ul>
 
 </section>
@@ -389,11 +398,11 @@
     <h2>Exclusion mutuelle</h2>
 
     <ul>
-        <li class="fragment">
+        <li>
             Lorsqu'on déclare une <b>section critique</b>,
             on doit garantir <br> qu'<b>au plus un seul</b> processus/thread est dans la section critique.
             <ul id="fleche">
-                <li class="fragment">besoin de gérer l’<i>exclusion mutuelle</i> des
+                <li class="skip fragment">besoin de gérer l'<i>exclusion mutuelle</i> des
                     <b>sections critiques</b>.</li>
                 <li class="fragment"><b>une seule section critique</b> peut être exécutée à la fois.</li>
             </ul>
@@ -406,26 +415,31 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Les propriétés à respecter</h2>
+
     <ol>
         <li class="fragment">
-            <b>Exclusion mutuelle</b> :
+            <b>Exclusion mutuelle</b> $\to$
             si une thread effectue sa section critique, <br> alors <b>aucune autre
             thread</b> ne peut entrer en section critique.
         </li>
 
         <li class="fragment skip">
-            <b>Déroulement</b> : une thread qui souhaite entrer en section critique <br> <b>ne
+            <b>Déroulement</b> $\to$ 
+            une thread, qui souhaite entrer en section critique, <br> <b>ne
             peut pas décider</b> qui doit rentrer en section critique.
         </li>
 
         <li class="fragment skip">
-            <b>Vivacité</b> : une thread qui souhaite entrer en section critique <br> <b>y
+            <b>Vivacité</b> $\to$ 
+            une thread, qui souhaite entrer en section critique, <br> <b>y
             rentre en temps borné</b>.
         </li>
     </ol>
-    <div id="alert-block" class="fragment" style="margin-top: 40px !important; text-align: center;">
-        Définir des <b>mécanismes</b> qui garantissent ces trois propriétés <br>
+
+    <div id="alert-block" class="fragment d-skip" style="text-align: center; width: 80%;">
+        Il faut définir des <b>mécanismes</b> qui garantissent ces trois propriétés <br>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -437,28 +451,27 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Une solution pour 2 threads</h2>
-    <ul>
-        <li class="fragment">
-            <b>Principes</b>
-            <ul>
-                <li class="fragment">un contrôleur central</li>
-                <li class="fragment">met en attente</li>
-                <li class="fragment">autorise les SC chacune à son tour</li>
-            </ul>
-        </li>
-        <ul id="fleche" class="fragment" style="margin-top: 40px !important;">
-            <li>respecte les 3 objectifs de la synchronisation</li>
-        </ul>
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Principes</h3>
+
+  <div class="left-content">
+    <p>Un contrôleur central qui:</p>
+    <ul id="fleche" >
+      <li class="fragment">met en attente les processus/threads demandant l'accès en <b>SC</b></li>
+      <li class="fragment">autorise l'accès en <b>SC</b> des processus/threads <i>chacune à son tour</i></li>
+      <li class="fragment d-skip">respecte <b>les 3 objectifs de la synchronisation</b></li>
     </ul>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Une solution pour 2 threads</h2>
+    <h3>Principes</h3>
 
     <div style="display: flex; align-items: center;">
-        <pre style="width: 48% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        <pre style="width: 45% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         interface Mutex {
             abstract void commencerSC(int id);
             abstract void finirSC(int id);
@@ -466,7 +479,7 @@
         }                             
         </script></code></pre>
 
-        <pre style="width: 48% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        <pre style="width: 45% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         //... code non critique
         my_mutex.commencerSC(my_id);
         //... code critique
@@ -474,8 +487,9 @@
         //... code non critique
         </script></code></pre>
     </div>
+
     <ul>
-        <li class="fragment">Lorsque $t_{i}$ invoque <code class="listing">commencerSC(i)</code>:
+        <li class="fragment skip">Lorsque $t_{i}$ invoque <code class="listing">commencerSC(i)</code>:
             <ul>
                 <li>Vérifier que $t_{1-i}$ n'est pas en SC <u>(sinon, attendre)</u></li>
                 <li>Noter que $t_{i}$ est en SC</li>
@@ -489,38 +503,43 @@
             </ul>
         </li>
     </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Une première implémentation</h2>
-    <pre style="width: 77%;"><code class="language-java hljs" data-trim data-line-numbers="|2|4-8|10-12|"><script type="text/template">
-        class Mutex1 implements Mutex{
-            boolean[] est_SC = {false,false}; //pour noter qui est en SC
-            
-            void commencerSC(int id){
-                while (est_SC[1-id])
-                    ; //attendre ...
-                est_SC[id]=true;
-            }
-            
-            void finirSC(int id){
-                est_SC[id]=false;
-            }
-        }
-    </script></code></pre>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>évaluation</h2>
-    <pre style="width: 40% ;"><code class="language-java hljs" data-trim><script type="text/template">
-            void commencerSC(int id){
-                while (est_SC[1-id])
-                    ; //attendre ...
-                est_SC[id]=true;
-            }
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une première implémentation</h3>
+
+  <pre style="width: 77%;"><code class="language-java hljs" data-trim data-line-numbers="|2|4-8|10-12|"><script type="text/template">
+      class Mutex1 implements Mutex{
+          boolean[] est_SC = {false,false}; //pour noter qui est en SC
+          
+          void commencerSC(int id){
+              while (est_SC[1-id])
+                  ; //attendre ...
+              est_SC[id]=true;
+          }
+          
+          void finirSC(int id){
+              est_SC[id]=false;
+          }
+      }
+  </script></code></pre>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une première implémentation</h3>
+
+    <pre style="width: 40% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      void commencerSC(int id){
+          while (est_SC[1-id])
+              ; //attendre ...
+          est_SC[id]=true;
+      }
     </script></code></pre>
 
     <div class="skip r-stack">
@@ -528,52 +547,54 @@
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:95px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;left:325px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:125px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:175px;left:325px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;left:325px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <img src="./img/eval-1.svg" alt="">
+        </div>
+
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:95px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:175px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:125px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:155px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:185px;right:310px;font-size: 30px;">&#128072; id=1</span>
-            <img src="./img/eval-1.svg" alt="">
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:215px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:185px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:250px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-2.svg" alt="">
         </div>
-        <div class="fragment fade-in">
-            <span style="position:absolute;top:215px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:215px;right:310px;font-size: 30px;">&#128072; id=1</span>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:250px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:250px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-3.svg" alt="">
         </div>
-        <div id="alert-block" class=" fragment" style="margin-top: 20px !important; width: 55%;">
+
+        <div id="alert-block" class="skip fragment fade-in" style="width: 55%;">
             <ul id="ko">
                 <li>Les deux threads sont en SC!</li>
                 <li class="fragment">Ce code contient lui-même des SC!</li>
@@ -585,9 +606,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Une deuxième implémentation</h2>
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une deuxième implémentation</h3>
+
     <pre style="width: 82%;"><code class="language-java hljs" data-trim data-line-numbers="|5-9|"><script type="text/template">
-        //Mettre en attente la thread demandeuse si l’autre est déjà en SC
+        //Mettre en attente la thread demandeuse si l'autre est déjà en SC
         class Mutex2 implements Mutex{
             boolean[] est_SC = {false,false}; 
             
@@ -602,12 +625,15 @@
             }
         }
     </script></code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>évaluation</h2>
-    <pre style="width: 40% ;"><code class="language-java hljs" data-trim><script type="text/template">
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une deuxième implémentation</h3>
+
+    <pre style="width: 40% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         void commencerSC(int id){
             est_SC[id]=true;
             while (est_SC[1-id])
@@ -620,43 +646,45 @@
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:95px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <img src="./img/eval-1.svg" alt="">
+        </div>
+
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:175px;left:325px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-1.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:125px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <img src="./img/eval-1.svg" alt="">
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:310px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;left:325px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-2.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:95px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:200px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-2.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:125px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:200px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:175px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-2.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:155px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:200px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-3.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:155px;right:310px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-3.svg" alt="">
         </div>
-        <div class="fragment fade-in">
-            <span style="position:absolute;top:185px;left:310px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:185px;right:310px;font-size: 30px;">&#128072; id=1</span>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:225px;left:325px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;right:325px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-3.svg" alt="">
         </div>
-        <div id="alert-block" class=" fragment" style="margin-top: 20px !important; text-align: center; width: 60%;">
+
+        <div id="alert-block" class="skip fragment fade-in" style="text-align: center; width: 50%;">
             <ul id="ko">
                 <li><b>Problème</b> $\to$ interblocage</li>
             </ul>
@@ -667,97 +695,104 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Une troisième implémentation</h2>
-    <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|4|6-11|13-15|"><script type="text/template">
-        //Ajout de tours de priorité
-        class Mutex3 implements Mutex{
-            boolean[] est_SC = {false,false}; 
-            int tour = 0;
-            
-            void commencerSC(int id){
-                tour=1-id;
-                est_SC[id]=true; 
-                while (est_SC[1-id] && tour==1-id)
-                    ; 
-            }
-            
-            void finirSC(int id){
-                est_SC[id]=false;
-            }
-        }
-    </script></code></pre>
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une troisième implémentation</h3>
+
+  <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|4|6-11|13-15|"><script type="text/template">
+      //Ajout de tours de priorité
+      class Mutex3 implements Mutex{
+          boolean[] est_SC = {false,false}; 
+          int tour = 0;
+          
+          void commencerSC(int id){
+              tour=1-id;
+              est_SC[id]=true; 
+              while (est_SC[1-id] && tour==1-id)
+                  ; 
+          }
+          
+          void finirSC(int id){
+              est_SC[id]=false;
+          }
+      }
+  </script></code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>évaluation</h2>
-    <pre style="width: 45% ;"><code class="language-java hljs" data-trim><script type="text/template">
-        void commencerSC(int id){
-            tour=1-id;
-            est_SC[id]=true; 
-            while (est_SC[1-id] && tour==1-id)
-                ; 
-        }
-    </script></code></pre>
+  <h2>Une solution pour 2 threads</h2>
+  <h3>Une troisième implémentation</h3>
+
+  <pre style="width: 45% ;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      void commencerSC(int id){
+          tour=1-id;
+          est_SC[id]=true; 
+          while (est_SC[1-id] && tour==1-id)
+              ; 
+      }
+  </script></code></pre>
+
     <div class="skip r-stack">
         <div class="fragment fade-in-then-out">
             <img src="./img/eval-11.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:95px;left:280px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;left:295px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-11.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:125px;left:280px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:175px;left:295px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-11.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:155px;left:280px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;left:295px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-12.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
             <img src="./img/eval-13.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:95px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:150px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-13.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:125px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:175px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-13.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:155px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:200px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-14.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:185px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:225px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-15.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:185px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:215px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:225px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:250px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-15.svg" alt="">
         </div>
         <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:215px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:215px;right:280px;font-size: 30px;">&#128072; id=1</span>
+            <span style="position:absolute;top:250px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:250px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-15.svg" alt="">
         </div>
-        <div class="fragment fade-in">
-            <span style="position:absolute;top:245px;left:280px;font-size: 30px;">id=0 &#128073;</span>
-            <span style="position:absolute;top:215px;right:280px;font-size: 30px;">&#128072; id=1</span>
+        <div class="fragment fade-in-then-out">
+            <span style="position:absolute;top:275px;left:295px;font-size: 30px;">id=0 &#128073;</span>
+            <span style="position:absolute;top:250px;right:295px;font-size: 30px;">&#128072; id=1</span>
             <img src="./img/eval-15.svg" alt="">
         </div>
-        <div id="green-block" class=" fragment" style="margin-top: 20px !important; text-align: center;width: 80%;">
-            <ul id="ok">
-                <li>Une seule thread est passée, l'autre est en attente</li>
-            </ul>
+
+        <div id="green-block" class="skip fragment fade-in" style="text-align: center; width: 65%;">
+          <ul id="ok">
+            <li>Une seule thread est passée, l'autre est en attente</li>
+          </ul>
         </div>
     </div>
     
@@ -767,19 +802,19 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Attente active</h2>
     
-    <div id="alert-block" class="fragment"  style="text-align: center;">
-        <pre style="width: 75% ;"><code class="language-java hljs" data-trim><script type="text/template">
+    <div id="alert-block" style="text-align: center; width: 70% ;">
+        <pre><code class="language-java hljs" data-trim><script type="text/template">
             while (est_SC[1-id] && tour==1-id)
                 ; 
         </script></code></pre>
         <ul id="ko" class="fragment">
-            <li>Les processus font de l'<b>attente active</b>. 
-                <ul id="fleche"><li>utilisation inutile du processeur</li></ul>
+            <li>Les processus font de l'<b>attente active</b>. <br>
+                $\to$ utilisation inutile du processeur
             </li> 
         </ul>
         
     </div>
-    <div id="green-block" class=" fragment" style="margin-top: 20px !important; text-align: center;">
+    <div id="green-block" class="skip fragment" style="width: 70%; text-align: center;">
         <ul id="ok">
             <li>Des <b>mécanismes de haut niveau</b> sont offerts par les <b>OS</b></li>
         </ul>
@@ -791,7 +826,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Mécanismes de haut niveau</h2>
 
-    <table class="fragment" style="font-size: 32px ;">
+    <table style="font-size: 30px ;">
         <thead>
             <tr style="background-color:DeepSkyBlue ;">
                 <th>Méthode</th>
@@ -801,7 +836,7 @@
         <tbody>
             <tr>
                 <td><b>Signal</b></td>
-                <td>Un message système est envoyé d’un processus <br> à un autre.</td>
+                <td>Un message système est envoyé d'un processus <br> à un autre.</td>
             </tr>
             <tr>
                 <td><b>Pipe</b></td>
@@ -839,39 +874,41 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Moniteur</h2>
+  <h2>Moniteur</h2>
 
+  <div class="left-content">
+    <p><b>Un moniteur</b> est un module constitué de:</p>
     <ul>
-        <li class="fragment">
-            <b>Un moniteur</b> est un module constitué de:
-            <ul>
-                <li>objets <u>inaccessibles</u> de l’extérieur</li>
-                <li><u>fonctions</u> manipulant l'objet en <u>exclusion mutuelle</u></li>
-            </ul>
-        </li>
-        <li class="fragment skip">
-            Dans la <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle_Java" target="_blank">JVM</a> de <b>Java</b>, on peut définir que des <u>méthodes</u> <br> 
-            d’une classe sont en <u>exclusion mutuelle</u>.
-            <ul><li>mot clef <code class="listing">synchronized</code> : utilisation d’un verrou (lock)</li></ul>
-            <ul id="fleche"><li class="fragment">une seule thread dans un bloc <code class="listing">synchronized</code> pour un objet donné</li></ul>
-        </li>
+        <li>objets <u>inaccessibles</u> de l'extérieur</li>
+        <li><u>fonctions</u> manipulant l'objet en <u>exclusion mutuelle</u></li>
     </ul>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Moniteurs en Java</h2>
-    <ul>
-        <li class="fragment">
-            Une thread qui possède un verrou peut rentrer <br> dans n'importe quelle méthode (<b>verrou récursif</b>).
-        </li>
-        <li class="fragment skip">
-            Une thread peut <b>verrouiller plusieurs objets</b><br> (risque d'interblocage).
-        </li>
-        <li class="fragment skip">
-            Tout bloc <b>non</b> <code class="listing">synchronized</code> peut être appelé <br> par n'importe qui n'importe quand.
-        </li>
-    </ul>
+  <h2>Moniteurs en Java</h2>
+
+  <ul>
+    <li class="fragment">
+      Dans la <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle_Java" target="_blank">JVM</a> de <b>Java</b>, 
+      on peut déclarer que des <u>blocs</u> de code<br> sont en <u>exclusion mutuelle</u>.
+      <ul>
+        <li>utilisation du mot clé <code class="listing">synchronized</code> $\to$ <b>un verrou</b> (<b>lock</b>) sur un objet</li>
+        <li class="fragment">une seule thread dans les blocs <code class="listing">synchronized</code> sur le même objet</li>
+      </ul>
+    </li>
+    <li class="fragment skip">
+        Une thread qui possède un verrou peut rentrer <br> dans n'importe quelle méthode (<b>verrou récursif</b>).
+    </li>
+    <li class="fragment skip">
+        Une thread peut <b>verrouiller plusieurs objets</b><br> (risque d'interblocage).
+    </li>
+    <li class="fragment skip">
+        Tout bloc <b>non</b> <code class="listing">synchronized</code> peut être appelé <br> par n'importe qui n'importe quand.
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -954,7 +991,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>L'exclusion mutuelle</h2>
     <div class="fragment">
-        Un sémaphore permettant de faire de l’<b>exclusion mutuelle</b><br> est un sémaphore dont la <u>valeur initiale
+        Un sémaphore permettant de faire de l'<b>exclusion mutuelle</b><br> est un sémaphore dont la <u>valeur initiale
             est 1</u>.
 
         <pre style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
@@ -988,7 +1025,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Demi rendez-vous</h2>
     <div class="fragment">
-        Quand un processus veut s’assurer qu’un traitement a été réalisé <br> par un autre processus <u>avant</u> de réaliser le sien</u>.
+        Quand un processus veut s'assurer qu'un traitement a été réalisé <br> par un autre processus <u>avant</u> de réaliser le sien</u>.
 
         <pre class="fragment" style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
                     Semaphore sem = new Semaphore(0);
@@ -1053,7 +1090,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Partage de $N$ ressources</h2>
     <div class="fragment">
-        Soient $N$ ressources disponibles et $P$ processus voulant <br> avoir accès à au moins l’une de ces ressources
+        Soient $N$ ressources disponibles et $P$ processus voulant <br> avoir accès à au moins l'une de ces ressources
         ($P>N$).
     </div>
 
