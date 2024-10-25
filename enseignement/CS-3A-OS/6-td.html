@@ -3,36 +3,36 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Systèmes d'exploitation : TD - Synchronisation des processus</title>
-
-	<meta name="description" content="Systèmes d'exploitation : TD - Synchronisation des processus">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-    <script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 	<script>
 		MathJax = {
 			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+			loader: { load: ['ui/lazy'] }
+		};
+	</script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+    <script>
+      function display_correction(my_id) {
+          var x = document.getElementById(my_id);
+          if (x.style.display === "none") {
+              x.style.display = "block";
+          } else {
+              x.style.display = "none";
+          }
+      }
+    </script>
 
-	<link rel="icon" href="../resources/img/favicon.ico" />
+    <link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -50,6 +50,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-title">
     Travaux dirigés - TD<br> 
     Synchronisation des processus
@@ -61,6 +65,7 @@
 <div id="orange-block">
     Exercice 1 : Barrière de synchronisation
 </div>
+
 <p>
     On suppose dans un premier temps que l’on ne traite que 2 threads. Ces threads obéissent au modèle suivant :
 </p>
@@ -99,7 +104,9 @@
             (et réciproquement).</li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+	<button class="button_display" onclick="display_correction('exo1.1')">Click here to display or hide the correction</button>
+	<div id="exo1.1" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
 <pre >Semaphore s1 = <span class="kd">new</span> Semaphore(0);
@@ -130,12 +137,15 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 </div>
 
 </div>
+</div>
 <!-- END CORRECTION ################# -->
 
         <li>Généralisez au cas de <code class="listing">N</code> threads</li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+	<button class="button_display" onclick="display_correction('exo1.2')">Click here to display or hide the correction</button>
+	<div id="exo1.2" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
 <pre >Semaphore s_i = <span class="kd">new</span> Semaphore(0); <span class="cm">// i : 1..n ;</span> 
@@ -153,13 +163,16 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 </div>
 
 </div>
+</div>
 <!-- END CORRECTION ################# -->
 
         <li>Proposez une autre solution, dans laquelle un thread auxiliaire (coordinateur) reçoit un signal quand le <b>Thread_i</b> 
             atteint sa barrière, et débloque les <code class="listing">N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+	<button class="button_display" onclick="display_correction('exo1.3')">Click here to display or hide the correction</button>
+	<div id="exo1.3" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
 <pre >Semaphore s_c = <span class="kd">new</span> Semaphore(0);
@@ -194,6 +207,7 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 </div>
 
 </div>
+</div>
 <!-- END CORRECTION ################# -->    
     </ol>
 </p>
@@ -217,7 +231,9 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 </p>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+	<button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+	<div id="exo2" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
 <pre >Semaphore tunnel = <span class="kd">new</span> Semaphore(1);
@@ -292,7 +308,7 @@ Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Q
 <div style="width: 10%;"></div>
 </div>
 
-
+</div>
 </div>
 <!-- END CORRECTION ################# -->    
 
@@ -322,9 +338,11 @@ Vous pouvez introduire toute structure de données qui vous paraît utile, sous 
 </div>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+	<div id="exo3" style="display: none; margin-top: 20px;">
 
-<div class="highlight"><pre >
+<div class="highlight"><pre>
 <span class="kd">int</span>[] bal = <span class="kd">new</span> <span class="kd">int</span>[N]();
 <span class="kd">int</span> i_prod = 0;
 <span class="kd">int</span>[] i_cons = <span class="kd">new</span> <span class="kd">int</span>[C]();
@@ -361,7 +379,7 @@ Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class
 <div style="width: 10%;"></div>
 </div>
 
-
+</div>
 </div>
 <!-- END CORRECTION ################# -->  
 
@@ -377,7 +395,7 @@ Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

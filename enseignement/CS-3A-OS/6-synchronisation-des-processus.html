@@ -84,8 +84,8 @@
         <li>
             L'<b>OS</b> garantie l'<b>indépendance des processus</b>
             <ul>
-                <li class="fragment">Par l'<i>ordonnanceur CPU</i></li>
-                <li class="fragment">Par la <i>gestion mémoire</i> que l'on verra plus tard</li>
+                <li class="fragment">par l'<i>ordonnanceur CPU</i></li>
+                <li class="fragment">par la <i>gestion mémoire</i> que l'on verra plus tard</li>
             </ul>
         </li>
         <li class="fragment skip">
@@ -891,22 +891,25 @@
   <h2>Moniteurs en Java</h2>
 
   <ul>
-    <li class="fragment">
+    <li>
       Dans la <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle_Java" target="_blank">JVM</a> de <b>Java</b>, 
-      on peut déclarer que des <u>blocs</u> de code<br> sont en <u>exclusion mutuelle</u>.
+      on peut déclarer que des <i>blocs</i> de code<br> sont en <b>exclusion mutuelle</b>.
       <ul>
-        <li>utilisation du mot clé <code class="listing">synchronized</code> $\to$ <b>un verrou</b> (<b>lock</b>) sur un objet</li>
+        <li class="fragment">utilisation du mot clé <code class="listing">synchronized</code> $\to$ <b>un verrou</b> (<b>lock</b>) sur un objet</li>
         <li class="fragment">une seule thread dans les blocs <code class="listing">synchronized</code> sur le même objet</li>
       </ul>
     </li>
     <li class="fragment skip">
-        Une thread qui possède un verrou peut rentrer <br> dans n'importe quelle méthode (<b>verrou récursif</b>).
+        Une thread, qui possède un verrou, peut exécuter  
+        n'importe quelle<br> méthode, vérouillée ou non (<b>verrou récursif</b>).
     </li>
     <li class="fragment skip">
-        Une thread peut <b>verrouiller plusieurs objets</b><br> (risque d'interblocage).
+        Une thread peut <b>verrouiller plusieurs objets</b>, ceci peut provoquer  <br>  
+        une situation <b>d'interblocage</b>.
     </li>
     <li class="fragment skip">
-        Tout bloc <b>non</b> <code class="listing">synchronized</code> peut être appelé <br> par n'importe qui n'importe quand.
+        Tout bloc <b>non</b> <code class="listing">synchronized</code> (<b>non vérouillé</b>) peut être appelé <br> 
+        par n'importe qui n'importe quand.
     </li>
   </ul>
 
@@ -914,7 +917,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+    <h2>Moniteurs en Java</h2>
+    <h3>Exemple</h3>
+
     <pre style="width: 60%;"><code class="language-java hljs" style="max-height:500px;" data-trim data-line-numbers="|2|8-10|12-14|"><script type="text/template">
         public class Account {
             private int value;
@@ -940,18 +945,18 @@
     <a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra" target="_blank">Dijkstra - 1962</a></h2>
 
     <ul>
-        <li class="fragment"><b>Un sémaphore</b> définit un objet <u>partagé</u>
+        <li class="fragment"><b>Un sémaphore</b> définit un objet <i>partagé</i>
             <ul>
-                <li class="fragment">Qu'on peut <u>acquérir</u>;</li>
-                <li class="fragment">Qui <u>met en attente</u> ceux qui le demandent;</li>
-                <li class="fragment">Qui donne la main dans <u>l'ordre des demandes</u>.</li>
+                <li class="fragment">qu'on peut <i>acquérir</i>;</li>
+                <li class="fragment">qui <i>met en attente</i> ceux qui le demandent;</li>
+                <li class="fragment">qui donne la main dans <i>l'ordre des demandes</i>.</li>
             </ul>
         </li>
         <li class="fragment skip">
-            Toutes les threads en <b>concurrence sur une ressource</b><br> partagent <b>un même sémaphore</b>
+            Toutes les threads en <b>concurrence sur une ressource</b> partagent <br> <b>un même sémaphore</b>
             <ul>
-                <li class="fragment">On <b>acquiert</b> le sémaphore <u>avant d'entrer</u> en SC;</li>
-                <li class="fragment">On <b>relâche</b> le sémaphore <u>en sortant</u> de la SC.</li>
+                <li class="fragment">on <b>acquiert</b> le sémaphore <i>avant d'entrer</i> en <b>SC</b>;</li>
+                <li class="fragment">on <b>relâche</b> le sémaphore <i>en sortant</i> de la <b>SC</b>.</li>
             </ul>
         </li>
     </ul>
@@ -960,248 +965,284 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Utilisation du Sémaphore</h2>
-    <pre style="width: 50%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-        Semaphore s = new Semaphore();
-        // ... code non-critique ...
-        s.acquire();
-        // ... code critique ...
-        s.release();
-        // ... code non-critique ...
-    </script></code></pre>
+  <h2>Implémentation du Sémaphore</h2>
+
+  <div>
+    <img src="./img/f31-semaphore.png" height="450px">
+  </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Utilisation du Sémaphore</h2>
+
+  <pre style="width: 50%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore s = new Semaphore();
+      // ... code non-critique ...
+      s.acquire();
+      // ... code critique ...
+      s.release();
+      // ... code non-critique ...
+  </script></code></pre>
+
+  <div class="left-content fragment skip">
+    <p><b>Les propriétés d'un sémaphore</b></p>
 
     <ul>
-        <li class="fragment"><b>Vivacité</b> : on veut passer la main dans le bon ordre
-            <ul id="fleche"><li>utilisation d'une <u>file d'attente</u></li></ul>
-        </li>
-        <li class="fragment">
-            <code class="listing">acquire</code> et <code class="listing">release</code> doivent être atomiques !
-            <ul id="fleche"><li>elles sont elles-même des SC pour le sémaphore ...</li></ul>
-        </li>
+      <li class="fragment"><b>Vivacité</b> : on veut passer la main dans le bon ordre
+          <ul id="fleche"><li>utilisation d'une <i>file d'attente</i> des <b>PCB</b></li></ul>
+      </li>
+      <li class="fragment skip">
+          Les fonctions <code class="listing">acquire</code> et <code class="listing">release</code> 
+          doivent être <b>atomiques</b> !
+          <ul id="fleche"><li>elles sont elles-même des <b>SC</b> pour le sémaphore ...</li></ul>
+      </li>
     </ul>
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>implémentation du Sémaphore</h2>
-    <img src="./img/f31-semaphore.png" height="450px">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>L'exclusion mutuelle</h2>
-    <div class="fragment">
-        Un sémaphore permettant de faire de l'<b>exclusion mutuelle</b><br> est un sémaphore dont la <u>valeur initiale
-            est 1</u>.
+  <h2>Utilisation du Sémaphore</h2>
+  <h3>L'exclusion mutuelle</h3>
 
-        <pre style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    int cpt = 0;
-                    Semaphore mutex = new Semaphore(1);
-                </script></code></pre>
-    </div>
+  <div>
+    <p>Un sémaphore permettant de faire de l'<b>exclusion mutuelle</b><br> est un sémaphore 
+    dont la <i>valeur initiale est 1</i>.</p>
+  </div>
 
-    <div class="fragment" style="display: flex; align-items: center;">
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_1(){
-                            mutex.acquire();
-                            cpt = cpt + 1;
-                            mutex.release();
-                        }
-                    </script></code></pre>
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_2(){
-                            mutex.acquire();
-                            cpt = cpt - 1;
-                            mutex.release();
-                        }
-                    </script></code></pre>
-    </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Demi rendez-vous</h2>
-    <div class="fragment">
-        Quand un processus veut s'assurer qu'un traitement a été réalisé <br> par un autre processus <u>avant</u> de réaliser le sien</u>.
-
-        <pre class="fragment" style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    Semaphore sem = new Semaphore(0);
-                </script></code></pre>
-    </div>
-
-    <div class="fragment" style="display: flex; align-items: center;">
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_1(){
-                            traitement_1();
-                            sem.release();
-                        }
-                    </script></code></pre>
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_2(){
-                            sem.acquire();
-                            traitement_2();
-                        }
-                    </script></code></pre>
-    </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Rendez-vous</h2>
-    <div class="fragment">
-        Permet à deux processus de définir un <u>point de synchronisation</u>.
-
-        <pre class="fragment" style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    Semaphore sem1 = new Semaphore(0);
-                    Semaphore sem2 = new Semaphore(0);
-                </script></code></pre>
-    </div>
-
-    <div class="fragment" style="display: flex; align-items: center;">
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_1(){
-                            traitement_11();
-                            sem1.release(); 
-                            sem2.acquire();
-                            traitement_12();
-                        }
-                    </script></code></pre>
-
-        <pre style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_2(){
-                            traitement_21();
-                            sem2.release(); 
-                            sem1.acquire();
-                            traitement_22();
-                        }
-                    </script></code></pre>
-    </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Partage de $N$ ressources</h2>
-    <div class="fragment">
-        Soient $N$ ressources disponibles et $P$ processus voulant <br> avoir accès à au moins l'une de ces ressources
-        ($P>N$).
-    </div>
-
-    <pre class="fragment" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    Semaphore sem = new Semaphore(N);
-                </script></code></pre>
-
-    <pre class="fragment" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                                    void Processus_i(){
-                                        debutTraitement();
-                                        sem.acquire();
-                                        utiliserLaRessource();
-                                        sem.release();
-                                        finTraitement();
-                                    }
-                                </script></code></pre>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2 data-id="code-title">Inter-blocage (deadlock)</h2>
-    <pre class="fragment" style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-        Semaphore sem1 = new Semaphore(1);
-        Semaphore sem2 = new Semaphore(1);
+  <div style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      int cpt = 0;
+      Semaphore mutex = new Semaphore(1);
     </script></code></pre>
-
-    <div class="fragment" style="display: flex; align-items: center;">
-
-        <pre data-id="code-animation-1" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    void Processus_1(){
-                        sem1.acquire();
-                        sem2.acquire();
-                        utiliserRessource1();
-                        utiliserRessource2();
-                        sem1.release();
-                        sem2.release();
-                    }
-                    </script></code></pre>
-
-        <pre data-id="code-animation-2" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_2(){
-                            sem2.acquire();
-                            sem1.acquire();
-                            utiliserRessource2();
-                            utiliserRessource1();
-                            sem1.release();
-                            sem2.release();
-                        }
-                    </script></code></pre>
+  </div>
+  
+  <div class="fragment" style="display: flex; align-items: center;">
+    <div style="width: 50%; padding-left: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_1(){
+            mutex.acquire();
+            cpt = cpt + 1;
+            mutex.release();
+        }
+      </script></code></pre>
     </div>
-    <div class="skip r-stack">
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:215px;left:60px;font-size: 30px;"> &#128073;</span>
-            <span style="position:absolute;top:215px;left:630px;font-size: 30px;"> &#128073;</span>
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:245px;left:60px;font-size: 30px;"> &#128073;</span>
-            <span style="position:absolute;top:215px;left:630px;font-size: 30px;"> &#128073;</span>
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:245px;left:60px;font-size: 30px;"> &#128073;</span>
-            <span style="position:absolute;top:245px;left:630px;font-size: 30px;"> &#128073;</span>
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:275px;left:60px;font-size: 30px;"> &#128073;</span>
-            <span style="position:absolute;top:245px;left:630px;font-size: 30px;"> &#128073;</span>
-        </div>
-        <div class="fragment fade-in-then-out">
-            <span style="position:absolute;top:275px;left:60px;font-size: 30px;"> &#128073;</span>
-            <span style="position:absolute;top:275px;left:630px;font-size: 30px;"> &#128073;</span>
-        </div>
-        <div id="alert-block" class=" fragment" style="text-align: center;">
-            <ul id="ko">
-                <li>Le programmeur doit s'assurer qu'il ne crée pas d'<b>interblocage</b></li>
-            </ul>
-        </div>
-    </div>
+    <div style="width: 50%; padding-right: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_2(){
+            mutex.acquire();
+            cpt = cpt - 1;
+            mutex.release();
+        }
+      </script></code></pre>
+    </div> 
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2 data-id="code-title">Inter-blocage (Solution)</h2>
-    <pre style="width: 95%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-        Semaphore sem1 = new Semaphore(1);
-        Semaphore sem2 = new Semaphore(1);
+  <h2>Utilisation du Sémaphore</h2>
+  <h3>Demi rendez-vous</h3>
+
+  <div>
+    <p>
+      Quand un processus veut s'assurer qu'un traitement a été réalisé <br> 
+      par un autre processus <i>avant</i> de réaliser le sien</u>.
+    </p>
+  </div>
+  <div class="fragment" style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore sem = new Semaphore(0);
     </script></code></pre>
+  </div>
 
-    <div style="display: flex; align-items: center;">
 
-        <pre data-id="code-animation-1" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                    void Processus_1(){
-                        sem1.acquire();
-                        utiliserRessource1();
-                        sem1.release();
-                        sem2.acquire();
-                        utiliserRessource2();
-                        sem2.release();
-                    }
-                    </script></code></pre>
-
-        <pre data-id="code-animation-2" style="width: 45%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                        void Processus_2(){
-                            sem2.acquire();
-                            utiliserRessource2();
-                            sem2.release();
-                            sem1.acquire();
-                            utiliserRessource1();
-                            sem1.release();
-                        }
-                    </script></code></pre>
+  <div class="fragment" style="display: flex; align-items: center;">
+    <div style="width: 50%; padding-left: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_1(){
+            traitement_1();
+            sem.release();
+        }
+      </script></code></pre>
     </div>
+    <div style="width: 50%; padding-right: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_2(){
+            sem.acquire();
+            traitement_2();
+        }
+      </script></code></pre>
+    </div>   
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Utilisation du Sémaphore</h2>
+  <h3>Rendez-vous</h3>
+
+  <div>
+    <p>
+      Permet à deux processus de définir un <i>point de synchronisation</i>.
+    </p>
+  </div>
+  <div class="fragment" style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore sem1 = new Semaphore(0);
+      Semaphore sem2 = new Semaphore(0);
+    </script></code></pre>  
+  </div>
+
+  <div class="fragment" style="display: flex; align-items: center;">
+    <div style="width: 50%; padding-left: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_1(){
+            traitement_11();
+            sem1.release(); 
+            sem2.acquire();
+            traitement_12();
+        }
+      </script></code></pre>
+    </div>
+    <div style="width: 50%; padding-right: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+        void Processus_2(){
+            traitement_21();
+            sem2.release(); 
+            sem1.acquire();
+            traitement_22();
+        }
+      </script></code></pre>
+    </div>    
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Utilisation du Sémaphore</h2>
+  <h3>Partage de $N$ ressources</h3>
+
+  <div>
+    <p>
+      Soient <b>$N$ ressources</b> disponibles et <b>$P$ processus</b> voulant <br> 
+      avoir accès à au moins l'une de ces ressources
+      ($P>N$).
+    </p>
+  </div>
+
+  <div class="fragment" style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore sem = new Semaphore(N);
+    </script></code></pre>
+  </div>
+
+  <div class="fragment" style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      void Processus_i(){
+          debutTraitement();
+          sem.acquire();
+          utiliserLaRessource();
+          sem.release();
+          finTraitement();
+      }
+    </script></code></pre>
+  </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Utilisation du Sémaphore</h2>
+  <h3 data-id="code-title">Inter-blocage (deadlock)</h3>
+
+  <div class="fragment" style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore sem1 = new Semaphore(1);
+      Semaphore sem2 = new Semaphore(1);
+    </script></code></pre>
+  </div>
+    
+  <div class="fragment" style="display: flex; align-items: center;">
+    <div data-id="code-animation-1" style="width: 50%; padding-left: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers="|2,3,6,7"><script type="text/template">
+        void Processus_1(){
+            sem1.acquire();
+            sem2.acquire();
+            utiliserRessource1();
+            utiliserRessource2();
+            sem1.release();
+            sem2.release();
+        }
+      </script></code></pre>
+    </div>
+    <div data-id="code-animation-2" style="width: 50%; padding-right: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers="|2,3,6,7"><script type="text/template">
+        void Processus_2(){
+            sem2.acquire();
+            sem1.acquire();
+            utiliserRessource2();
+            utiliserRessource1();
+            sem1.release();
+            sem2.release();
+        }
+      </script></code></pre>
+    </div>
+  </div>
+
+  <div id="alert-block" class="fragment" style="text-align: center; width: 80%;">
+    <ul id="ko">
+        <li>Le programmeur doit s'assurer qu'il ne crée pas d'<b>interblocage</b></li>
+    </ul>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Utilisation du Sémaphore</h2>
+  <h3 data-id="code-title">Inter-blocage (Solution)</h3>
+
+  <div style="padding-left: 10%; padding-right: 10%;">
+    <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      Semaphore sem1 = new Semaphore(1);
+      Semaphore sem2 = new Semaphore(1);
+    </script></code></pre>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <div data-id="code-animation-1" style="width: 50%; padding-left: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers="2,4,5,7"><script type="text/template">
+        void Processus_1(){
+          sem1.acquire();
+          utiliserRessource1();
+          sem1.release();
+          sem2.acquire();
+          utiliserRessource2();
+          sem2.release();
+        }
+      </script></code></pre>
+    </div>
+    <div data-id="code-animation-2" style="width: 50%; padding-right: 12%;">
+      <pre><code class="language-java hljs" data-trim data-line-numbers="2,4,5,7"><script type="text/template">
+        void Processus_2(){
+          sem2.acquire();
+          utiliserRessource2();
+          sem2.release();
+          sem1.acquire();
+          utiliserRessource1();
+          sem1.release();
+        }
+      </script></code></pre>
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1217,12 +1258,12 @@
 
     <ul>
         <li class="fragment">Problème d'utilisation des <b>ressources partagées</b></li>
-        <li class="fragment"><b>Exemple</b> : accès à une variable partagée</li>
-        <li class="fragment">Notion de <b>section critique</b></li>
-        <li class="fragment">Propriétés d'<b>exclusion mutuelle</b>, de <b>déroulement</b> et de <b>vivacité</b></li>
-        <li class="fragment">Problème de l'<b>attente active</b></li>
-        <li class="fragment"><b>Moniteurs</b></li>
-        <li class="fragment"><b>Sémaphores</b></li>
+        <li class="fragment skip"><b>Exemple</b> : accès à une variable partagée</li>
+        <li class="fragment skip">Notion de <b>section critique</b></li>
+        <li class="fragment skip">Propriétés d'<b>exclusion mutuelle</b>, de <b>déroulement</b> et de <b>vivacité</b></li>
+        <li class="fragment skip">Problème de l'<b>attente active</b></li>
+        <li class="fragment skip"><b>Moniteurs</b></li>
+        <li class="fragment skip"><b>Sémaphores</b></li>
     </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
