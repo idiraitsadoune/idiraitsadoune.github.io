@@ -23,7 +23,7 @@
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{shapes}
-
+\usetikzlibrary{arrows}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The main document 
@@ -36,22 +36,50 @@
 
 \begin{tikzpicture}[thick]
 
-    \node[draw,fill=blue!50,minimum width=1.5cm] (ram) at (.75,3.5) {\small RAM};
-    \foreach \i in {0,...,24}
-    {
-    \draw (0,\i/8) rectangle (1.5,\i/8+.125);
-    }
-    \draw (ram) to (.75,4);
-    \draw[thick] (0,4) to (8,4);
-    \node at (8,3.7) {\small \emph{bus}};
-    
-    \node[draw,fill=blue!50,minimum width=2cm, minimum height=2cm] (uc) at (7,2) {UC};
-    \draw (uc) to (7,4);
-    \node[draw,fill=blue!50,minimum width=1.5cm] (pc) at (4.7,2.75) {\footnotesize PC};
-    \draw (pc) to (4.7,4);
-    \node[draw,fill=blue!50,minimum width=1.5cm] (radm) at (4.7,1.25) {\footnotesize RADM};
-    \draw (radm) to (3.7,1.25) to (3.7,4);
-    \draw[dashed,->] (radm) to (4.7,.5) to (1.8,.5) to (1.8,3.5) to (ram);
+  \foreach \i in {0,...,150} { \draw (\i/20,0) rectangle (\i/20+.05,1); }
+	\node at (0,1.2) {RAM};
+	\draw[thick] (2,-1.5) rectangle (5.5,-.5);
+	\node at (1,-1) {Processus:};
+	\node at (3.3,-.85) {\scriptsize code, bibliothèques};
+	\node at (3.8,-1.15) {\scriptsize environnement, tas, pile\ldots};
+	%
+	%\onslide<2->{
+		\foreach \i in {0,...,7} { \draw[thick,red, opacity=1.0] (\i,0) rectangle (\i+1,1); }
+		\node[opacity=1.0] at (2,1.2) {\textbf{\footnotesize cadres de page}};
+	%}
+	%
+	%\only<3->{
+		\foreach \i in {0,...,3} { \draw[thick,red, opacity=1.0] (2+\i,-.5) rectangle (3+\i,-1.5); }
+		\node[opacity=1.0] at (4,-.3) {\textbf{\footnotesize pages}};
+	%}
+	%
+	%\only<4->{
+		\foreach \i in {0,...,3} {
+			\draw[thick,black,fill=red!70, opacity=1.0] (2+\i,-.5) rectangle (3+\i,-1.5);
+			\node[opacity=1.0] (\i) at (2.5+\i,-1) {\textbf{\i}};
+		}
+	%}
+	%
+	%\only<5->{
+		\draw[thick,black,fill=red!70, opacity=1.0] (1,0) rectangle (2,1);
+		\draw[dashed,->, opacity=1.0] (0) to (1.5,.5);
+	%}
+	%
+	%\only<6->{
+		\draw[thick,black,fill=red!70, opacity=1.0] (3,0) rectangle (4,1);
+		\draw[dashed,->, opacity=1.0] (1) to (3.5,.5);
+	%}
+	%
+	%\only<7->{
+		\draw[thick,black,fill=red!70, opacity=1.0] (6,0) rectangle (7,1);
+		\draw[dashed,->, opacity=1.0] (2) to (6.5,.5);
+	%}
+	%
+	%\only<8->{
+		\draw[thick,black,fill=red!70, opacity=1.0] (2,0) rectangle (3,1);
+		\draw[dashed,->, opacity=1.0] (3) to (2.5,.5);
+	%}
+
 
 \end{tikzpicture}
 
