@@ -317,6 +317,116 @@
 	</ul>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Résolution d'adresse</h2>
+	<h3>Memory Management Unit - MMU</h3>
+
+	<div>
+		<img src="./tex/resolution-adresse.svg" alt="" style="width: 60%;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Stratégies d'allocation <br> de mémoire</h2>
+
+	<ul>
+		<li>Il faut choisir une stratégie pour <b>allouer et libérer la
+			mémoire</b> <br> en fonction des besoins des processus.</li>
+
+		<li class="fragment skip">
+			Deux stratégies possibles:
+			<ol>
+				<li class="fragment"><b>Allocation contiguë</b> de cases mémoire (<strong>par partition</strong>)</li>
+				<li class="fragment"><b>Allocation non contiguë</b> (<strong>par pagination</strong>)</li>
+			</ol>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation par partition</h2>
+	
+	<p>
+		Les processus constituent <b>un seul bloc</b> non décomposable
+	</p>
+
+	<div class="skip r-stack">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-0.svg" width="60%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-1.svg" width="60%"  alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-2.svg" width="60%"  alt="">
+
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-3.svg" width="60%"  alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-4.svg" width="60%"  alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-5.svg" width="60%"  alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-6.svg" width="60%"  alt="">
+		<img class="fragment fade-in" src="./img/alloc-part-7.svg" width="60%" alt="">
+	</div>
+
+	<div id="alert-block" data-id="uc1" class="d-skip fragment" style="width: 80%;">
+		<div data-id="uc1">
+			<b>Problèmes</b> : <br>
+			<ul id="ko">
+				<li>des trous apparaissent $\rightarrow$ <b>fragmentation</b></li>
+			</ul>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation par partition</h2>
+
+	<div id="alert-block" data-id="uc1" style="width: 80%;">
+		<div data-id="uc1">
+			<b>Problèmes</b> : <br>
+			<ul id="ko">
+				<li>des trous apparaissent $\rightarrow$ <b>fragmentation</b></li>
+				<li>les processus trop gros ne peuvent pas rentrer $\rightarrow$ <b>défragmenter</b></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="skip r-stack">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-8.svg" width="60%"  alt="">
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-9.svg" width="60%"  alt="">
+
+		<img class="fragment fade-in-then-out" src="./img/alloc-part-10.svg" width="60%"  alt="">
+		<img class="fragment fade-in" src="./img/alloc-part-11.svg" width="60%" alt="">
+	</div>
+
+	<ul id="fleche">
+		<li class="fragment d-skip">réduire la <b>fragmentation</b></li>
+		<li class="fragment">limiter les opérations de <b>défragmentation</b></li>
+		<li class="fragment">taille fixe des espaces mémoire (taille max à ne pas dépasser)</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation par partition</h2>
+
+	<div class="left-content">
+		<p>
+			<b>Stratégies d'allocation</b> $\to$ choisir dans quelle <i>zone libre</i> placer un processus
+		</p>
+		
+		<ul>
+			<li class="fragment"><b>First Fit</b>: premier bloc libre</li>
+			<li class="fragment"><b>Best Fit</b>: plus petit bloc libre</li>
+			<li class="fragment"><b>Worst Fit</b>: plus grand bloc libre</li>
+		</ul>
+
+	</div>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

@@ -1,0 +1,63 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/home/idiraitsadoune/Desktop/Teaching-Desktop/Beamer-Resources/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[thick]
+
+	\node[draw,fill=blue!50,minimum width=2cm,minimum height=2cm] (uc) at (0,2) {UC};
+	\node[draw,fill=blue!50,minimum width=.8cm] (rt) at (2.3,1.2) {\tiny translation};
+	\draw[draw,fill=blue!50] (7,3) rectangle (8,-3);
+	\node at (7.5,3.2) {\tiny RAM};
+
+		\node[draw,fill=blue!50,minimum width=1cm] (log) at (4,2.5) {\tiny adresse logique translatable};
+		\draw[semithick,->] (1,2.5) to (2.56,2.5);
+
+		\node[draw,thick,fill=blue!50,circle] (s) at (5,1.2) {\footnotesize +};
+		\draw[dashed,->] (log) to (4,2) to (s);
+		\draw[dashed,->] (rt) to (s);
+		\node[draw,fill=blue!50,minimum width=1cm] (phys) at (5,0) {\tiny adresse physique};
+		\draw[dashed,->] (s) to (phys);
+
+		\draw[dashed,->] (phys) to (6.5,0) to (6.5,1.5) to (7,1.5);
+		\draw[fill=black] (7,1.4) rectangle (8,1.6);
+
+
+\end{tikzpicture}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
