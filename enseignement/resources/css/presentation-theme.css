@@ -36,17 +36,17 @@
 	padding: 10px 15px 10px 15px !important;
 }
 
-b{
-    color: var(--r-link-color);
+.reveal b{
+  color: var(--r-link-color);
 	font-weight: bold !important; 
 }
 
-i{
-    color: var(--r-link-color);
+.reveal i{
+  color: var(--r-link-color);
 }
 
-em{
-    color: var(--r-link-color);
+.reveal em{
+  color: var(--r-link-color);
 	font-style: italic !important;
 }
 
@@ -197,8 +197,8 @@ em{
 }
 
 .listing{
-    font-size: 0.85em !important;
-    color:coral !important;
+  font-size: 0.85em !important;
+  color:coral !important;
 }
 
 #fleche li{
@@ -281,11 +281,11 @@ em{
 }
 
 #default-block i{
-    color: navy !important; 
+  color: navy !important; 
 }
 
 #default-block em{
-    color: navy ;
+  color: navy ;
 	font-style: italic !important;
 }
 
@@ -310,11 +310,11 @@ em{
 }
 
 #alert-block i{
-    color: red !important; 
+  color: red !important; 
 }
 
 #alert-block em{
-    color: red ;
+  color: red ;
 	font-style: italic !important;
 }
 
@@ -339,10 +339,10 @@ em{
 }
 
 #green-block i{
-    color: green !important; 
+  color: green !important; 
 }
 
 #green-block em{
-    color: green ;
+  color: green ;
 	font-style: italic !important;
 }
