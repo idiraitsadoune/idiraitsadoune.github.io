@@ -1,0 +1,129 @@
+\documentclass[margin=1mm]{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% le package de la langue du document
+\usepackage[french]{babel}
+% le package du codage du document
+\usepackage[utf8]{inputenc}
+% le package du style de la font
+\usepackage[default,semibold]{/Users/idiraitsadoune/Desktop/Teaching-Desktop/Beamer-Resources/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+% le package pour la font de \ttfamily
+\usepackage{fontspec}
+\setmonofont{Monaco}
+% le package pour la font Math
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+% le package pour les couleurs
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{main-color}{HTML}{0271FF}
+\newcommand{\mc}[1]{\textcolor{main-color}{#1}}
+
+% pour le dessin
+\usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,automata,positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes}
+\usetikzlibrary{arrows}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}[thick]
+
+  \draw[semithick] (0,0) to (0,5);
+	\draw[semithick] (2,0) to (2,5);
+	\node at (1,4.5) {\ldots};
+	\node[draw,fill=red!30,minimum width=2cm,minimum height=.5cm] at (1,4) {\scriptsize ldr r0, @a};
+	\node[draw,fill=red!30,minimum width=2cm,minimum height=.5cm] at (1,3.5) {\scriptsize \mc{ldr r1, @b}};
+	\node[draw,fill=red!30,minimum width=2cm,minimum height=.5cm] at (1,3) {\scriptsize add r2, r0, r1};
+	\node[draw,fill=red!30,minimum width=2cm,minimum height=.5cm] at (1,2.5) {\scriptsize str r2, @c};
+	\node at (1,2) {\ldots};
+	\node at (1,-.5) {Processus};
+	%
+	%\onslide<2->{
+		\draw[->, opacity=1.0] (2,3.5) to (5,3.5);
+		\node[opacity=1.0] at (3.5,3.8) {\footnotesize\mc{1. référence}};
+		\draw[fill=red!30, opacity=1.0] (5,1) rectangle (7,4);
+		\draw[opacity=1.0] (5,1.9) to (7,1.9);
+		\draw[opacity=1.0] (5,2.3) to (7,2.3);
+		\draw[opacity=1.0] (6.6,1.9) to (6.6,2.3);
+		\node[opacity=1.0] at (6,.5) {Table};
+		\node[opacity=1.0] at (6,0) {des};
+		\node[opacity=1.0] at (6,-.5) {pages};
+	%}
+	%\only<3-6>{
+		\node[opacity=0.0] at (5.9,2.1) {\scriptsize\mc{--}};
+		\node[opacity=0.0] at (6.8,2.1) {\scriptsize\mc{0}};
+		\node[opacity=0.0] at (6,3.5) {\footnotesize\emph{défaut}};
+		\node[opacity=0.0] at (6,3.2) {\footnotesize\emph{de page}};
+	%}
+	%\onslide<4->{
+		\draw[fill=red!30, opacity=1.0] (0,7) rectangle (2,10);
+		\node[opacity=1.0] at (1,8.5) {OS};
+		\draw[->, opacity=1.0] (7,3.5) to (7.5,3.5) to (7.5,7.5) to (2,7.5);
+		\node[opacity=1.0] at (4,7.2) {\footnotesize\mc{2. déroutement}};
+	%}
+	%\onslide<5->{
+		\node[cylinder,draw=black,cylinder uses custom fill,
+			cylinder body fill=red!30,
+			cylinder end  fill=red!10,
+			shape border rotate=90,minimum height=2.5cm,minimum width=2cm, opacity=1.0] at (9,9) {};
+		\node[opacity=1.0] at (9,7.5) {Disque};
+		\draw[fill=red!10, opacity=1.0] (9,9.2) rectangle (9.5,9.5);
+		\draw[->, opacity=1.0] (2,9.5) to (8,9.5);
+		\node[opacity=1.0] at (5,9.2) {\footnotesize\mc{3. requête disque}};
+	%}
+	%\onslide<6->{
+		\draw[->, opacity=1.0] (2,8.5) to (3.5,8.5);
+		\node[opacity=1.0] at (5.1,8.5) {\footnotesize\mc{4. allocation UC à}};
+		\node[opacity=1.0] at (5.1,8.2) {\footnotesize\mc{un autre processus}};
+	%}
+	%\onslide<7->{
+		\draw[dashed,->, opacity=1.0] (6.5,8.5) to (10.5,8.5);
+		\node[opacity=1.0] at (11.5,8.5) {\footnotesize\mc{5. fin d'E/S}};
+		\node[opacity=1.0] at (12,8.2) {\footnotesize\mc{$\rightarrow$ interruption}};
+	%}
+	%\onslide<8->{
+		\draw[fill=red!30, opacity=1.0] (10,6) rectangle (12,1);
+		\draw[opacity=1.0] (10,5.2) rectangle (12,4.8);
+		\node[opacity=1.0] at (11,5) {\scriptsize disponible};
+		\node[opacity=1.0] at (11,.5) {Mémoire};
+		\node[opacity=1.0] at (11,.2) {physique};
+		\node[opacity=1.0] at (11,-.1) {(RAM)};
+		\draw[dashed,->, opacity=1.0] (10,9) to (14,9) to (14,5) to (12,5);
+		\node[opacity=1.0] at (15.5,6.5) {\footnotesize\mc{6. chargement}};
+		\node[opacity=1.0] at (16,6.2) {\footnotesize\mc{page manquante}};
+	%}
+	%\onslide<9->{
+		\draw[->, opacity=1.0] (10,5) to (9,5) to (9,2.1) to (7,2.1);
+		\node[opacity=1.0] at (6.8,2.1) {\scriptsize\mc{1}};
+		\node[opacity=1.0] at (5.9,2.1) {\scriptsize\mc{n° cadre}};
+		\node[opacity=1.0] at (7.8,2.7) {\footnotesize\mc{7. mise à}};
+		\node[opacity=1.0] at (8.1,2.4) {\footnotesize\mc{jour table(s)}};
+	%}
+	%\onslide<10>{
+		\draw[->, opacity=1.0] (5,2.1) to (3.5,2.1) to (2.1,3.4);
+		\node[opacity=1.0] at (4,1.8) {\footnotesize\mc{8. instruction}};
+		\node[opacity=1.0] at (4,1.5) {\footnotesize\mc{\textbf{relancée}}};
+	%}
+
+\end{tikzpicture}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

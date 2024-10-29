@@ -674,7 +674,283 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>État de la mémoire</h2>
 
+	<div class="left-content">
+		<ul>
+			<li>
+				Nombre et taille des processus:   
+				<ul>
+					<li>Entre $200$ et $500$ processus en parallèle sur un <b>PC</b></li>
+					<li>Gros processus: Eclipse = $250$ Mo, données d'un jeu $\geq$ $1$ Go</li>
+				</ul>
+			</li>
+			<ul id="ko"><li class="fragment">Somme des tailles des processus $\geq$ Capacité <b>RAM</b></li></ul>
+	
+			<li class="skip fragment">
+				Portions de code inutilisées
+				<ul>
+					<li>Traitement d'erreur $\rightarrow$ rarement utilisé</li>
+					<li>Données (tableau, jeu, ...) $\rightarrow$ pas tout en même temps</li>
+					<li>Bibliothèque $\rightarrow$ très variable!</li>
+				</ul>
+			</li>
+		</ul>
+		<br>
+		<ul id="fleche" class="d-skip fragment">
+			<li>ne charger que les pages utiles!</li>
+			<li>laisser le reste sur le disque</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Mémoire virtuelle</h2>
+
+	<ul>
+		<li>
+			<i>Extension</i> des mécanismes de <b>pagination</b>
+			<ul>
+				<li class="fragment">la mémoire paginée peut représenter des <b>espaces <br> 
+					non présents en RAM</b> (<strong>ex.</strong> disque) $\to$ <b>mémoire virtuelle</b></li>
+				<li class="fragment">les pages sont soit en <b>RAM</b>, soit en <b>mémoire 
+					auxiliaire</b> <br> (<b>swap</b>) $\to$ la <b>RAM</b> est un cache </li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">
+			Chaque ligne de <b>la table des pages</b> contient:
+			<ul>
+				<li class="fragment">un <i>bit de la validité</i> qui indique si la page est en <b>RAM</b></li>
+				<li class="fragment">l'adresse correspondante en <b>RAM</b> (<i>numéro du bloc</i>)</li>
+				<li class="fragment">sinon une information pour la trouver sur <i>le disque</i></li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Schéma de principe</h2>
+	
+	<p>
+		Chaque processus peut <i>adresser</i> plus d'espace <br> qu'il n'a effectivement en <i>mémoire physique</i>
+	</p>
+
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./tex/mem-virtuelle-1.svg" height="auto" width="70%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/mem-virtuelle-2.svg" height="auto" width="70%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/mem-virtuelle-3.svg" height="auto" width="70%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/mem-virtuelle-4.svg" height="auto" width="70%" alt="">
+		<img class="fragment fade-in" src="./tex/mem-virtuelle-5.svg" height="auto" width="70%" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Schéma de principe</h2>
+
+	<p>
+		Chaque processus peut <i>adresser</i> plus d'espace <br> qu'il n'a effectivement en <i>mémoire physique</i>
+	</p>
+
+	<ul>
+		<li>
+			Accès à une page non présente en <b>RAM</b> : 
+			<ul id="fleche">
+				<li class="fragment">levée d'une <b style="color: red;">exception</b> <b>CPU</b> <b style="color: red;">Page-Fault</b></li>
+				<li class="fragment"><i>processus courant bloqué</i> et <b>chargement</b> de la page en <b>RAM</b></li>
+			</ul>
+		</li>
+
+		<li class="skip fragment">
+			<b style="color: green;">Avantages</b>
+			<ul id="ok">
+				<li class="fragment">masquer la taille de la RAM</li>
+				<li class="fragment">possibilité de mettre plus de processus en parallèles </li>
+				<li class="fragment">affecter plusieurs adresses virtuelles à une adresse physique </li>
+				<li class="fragment">une pagination à la demande </li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Pagination à la demande</h2>
+
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-1.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-2.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-3.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-4.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-5.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-6.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-7.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-8.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./tex/pagination-demande-9.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in" src="./tex/pagination-demande-10.svg" height="auto" width="80%" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Coût des défauts de page</h2>
+
+	<ul>
+		<li class="fragment"><i>$p$</i> = probabilité d'avoir un défaut de page</li>
+		<li class="fragment"><i>$M$</i> = temps d'accès à la mémoire</li>
+		<li class="fragment"><i>$D$</i> = temps de traitement du défaut de page</li>
+
+		<li class="skip fragment">
+			Temps d'accès = $(1-p)\times M+p\times D$ = <i>$M+p \times (D-M)$</i>
+			<ul id="fleche">
+				<li class="fragment">dépend à la probabilité d'avoir un défaut de page</li>
+				<li class="fragment">en pratique, $M$ est $1000$ fois plus petit que $D$.</li>
+			</ul>
+		</li>
+
+		<li class="skip fragment">
+			Temps d'exécution proportionnel à la probabilité de défaut de page
+			<ul id="fleche">
+				<li class="fragment">réduire le nombre de défauts de page</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation des pages</h2>
+
+	<ul>
+		<li>
+			Combien de cadres (<b>RAM</b>) alloués à chaque processus?
+			<ul>
+				<li class="fragment">
+					un nombre de cadres limité (selon la politique d'allocation)
+					<ul id="fleche">
+						<li class="fragment">plus de cadre par processus $\rightarrow$ moins de processus $\rightarrow$ <i>ralentissement</i></li>
+						<li class="fragment">moins de cadre par processus $\rightarrow$ plus de défauts $\rightarrow$ <i>ralentissement</i></li>
+					</ul>
+				</li>
+				<li class="fragment">
+					libérer un cadre lorsqu'on a besoin d'une nouvelle page
+				</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			Politiques d'allocation
+			<ul id="fleche">
+				<li class="fragment">Allocation équitable</li>
+				<li class="fragment">Allocation proportionnelle</li>
+				<li class="fragment">Allocation basée sur la priorité</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation des pages</h2>
+	<h3>Allocation équitable</h3>
+
+	<div class="left-content">
+		<ul>
+			<li class="fragment"><i>$N$</i> cadres disponibles en <b>RAM</b></li>
+			<li class="fragment"><i>$P$</i> processus</li>
+			<li class="fragment">Chaque processus reçoit $N \div P$ cadres
+				<ul><li>le reste sert de <i>tampon</i></li></ul>
+			</li>
+		</ul>
+		<br>
+		<ul id="ko">
+			<li class="fragment skip"><b style="color: red;">Inconvénient</b> <br>
+				 $\to$ tous les processus n'ont pas besoin de la même quantité de mémoire$\ldots$</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation des pages</h2>
+	<h3>Allocation proportionnelle</h3>
+
+	<div class="left-content">
+		<ul>
+			<li><i>$N$</i> cadres disponibles en <b>RAM</b></li>
+			<li><i>$P$</i> processus</li>
+			<li class="fragment">On garde généralement un <i>tampon</i> de $T$ pages</li>
+			<li class="fragment">$\forall i\in[1,P]$, <i>$M_i$</i> la taille de $P_i$</li>
+			<li class="fragment">$P_i$ reçoit $(N-T)\times \frac{M_i}{\sum_i M_i}$  cadres</li>
+		</ul>
+		<br>
+		<ul id="ko">
+			<li class="fragment skip"><b style="color: red;">Inconvénient</b> <br>
+				 $\to$ les petits processus font plus de défauts de pages</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Allocation des pages</h2>
+	<h3>Allocation basée sur la priorité</h3>
+
+	<div class="left-content">
+		<ul>
+			<li><i>$N$</i> cadres disponibles en <b>RAM</b></li>
+			<li><i>$P$</i> processus</li>
+			<li>On garde généralement un <i>tampon</i> de $T$ pages</li>
+			<li class="fragment">$\forall i\in[1,P]$, <i>$prio_i$</i> la priorité de $P_i$</li>
+			<li class="fragment">$P_i$ reçoit $(N-T)\times \frac{prio_i}{\sum_i prio_i}$</li>
+		</ul>
+		<br>
+		<ul id="ko">
+			<li class="fragment skip"><b style="color: red;">Inconvénient</b> <br>
+				 $\to$ les processus moins prioritaires font plus de défauts de pages</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Remplacement de pages</h2>
+
+	<ul>
+		<li><i>$p$</i> = probabilité d'avoir un défaut de page</li>
+		<li><i>$M$</i> = temps d'accès à la mémoire</li>
+		<li><i>$D$</i> = temps de traitement du défaut de page</li>
+
+		<li class="skip">
+			Temps d'accès = $(1-p)\times M+p\times D$ = <i>$M+p \times (D-M)$</i>
+			<ul id="fleche">
+				<li>dépend à la probabilité d'avoir un défaut de page </li>
+				<li>en pratique, $M$ est $1000$ fois plus petit que $D$.</li>
+			</ul>
+		</li>
+
+		<li class="skip">
+			Temps d'exécution proportionnel à la probabilité de défaut de page
+			<ul id="fleche">
+				<li>réduire le nombre de défauts de page </li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -694,7 +970,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Synthèse</h2>
 
+	<ul>
+		<li>Gestion de la mémoire</li>
+		<li class="fragment skip">Allocation par partitions</li>
+		<li class="fragment skip">La mémoire paginée</li>
+		<li class="fragment skip">La mémoire virtuelle</li>
+		<li class="fragment skip">La mémoire segmentée	</li>
+		<li class="fragment skip">La Segmentation avec pagination</li>
+	</ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
