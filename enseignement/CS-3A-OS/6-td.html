@@ -67,7 +67,7 @@
 </div>
 
 <p>
-    On suppose dans un premier temps que l’on ne traite que 2 threads. Ces threads obéissent au modèle suivant :
+    On suppose dans un premier temps que l'on ne traite que 2 threads. Ces threads obéissent au modèle suivant :
 </p>
 
 <div style="display: flex; align-items: center;">
@@ -104,7 +104,7 @@
             (et réciproquement).</li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block" hidden>
+<div class="green-block">
 	<button class="button_display" onclick="display_correction('exo1.1')">Click here to display or hide the correction</button>
 	<div id="exo1.1" style="display: none; margin-top: 20px;">
 
@@ -120,8 +120,8 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>barriere_1()</b>
-    s1.release();
-    s2.acquire();
+  s1.release();
+  s2.acquire();
 </pre></div>
 
 <div style="width: 10%;"></div>
@@ -129,8 +129,8 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>barriere_2()</b>
-    s2.release();
-    s1.acquire();
+  s2.release();
+  s1.acquire();
 </pre>
 </div>
 <div style="width: 10%;"></div>
@@ -143,7 +143,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
         <li>Généralisez au cas de <code class="listing">N</code> threads</li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block" hidden>
+<div class="green-block">
 	<button class="button_display" onclick="display_correction('exo1.2')">Click here to display or hide the correction</button>
 	<div id="exo1.2" style="display: none; margin-top: 20px;">
 
@@ -151,14 +151,14 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <pre >Semaphore s_i = <span class="kd">new</span> Semaphore(0); <span class="cm">// i : 1..n ;</span> 
 
 <b>barriere_i()</b> 
-    <span class="kd">for</span> k := 1 <span class="kd">to</span> (n-1) <span class="kd">do</span>
-        s_i.release();
+  <span class="kd">for</span> k := 1 <span class="kd">to</span> (n-1) <span class="kd">do</span>
+    s_i.release();
+  <span class="kd">end</span>
+  <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+    <span class="kd">if</span> (k != i) <span class="kd">the</span>
+      s_k.acquire();
     <span class="kd">end</span>
-    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
-        <span class="kd">if</span> (k != i) <span class="kd">the</span>
-            s_k.acquire();
-        <span class="kd">end</span>
-    <span class="kd">end</span>
+  <span class="kd">end</span>
 </pre>
 </div>
 
@@ -170,7 +170,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
             atteint sa barrière, et débloque les <code class="listing">N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
 
 <!-- CORRECTION ################# -->
-<div class="green-block" hidden>
+<div class="green-block">
 	<button class="button_display" onclick="display_correction('exo1.3')">Click here to display or hide the correction</button>
 	<div id="exo1.3" style="display: none; margin-top: 20px;">
 
@@ -186,8 +186,8 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>barriere_i()</b>
-    s_i.release();
-    s_c.acquire();
+  s_i.release();
+  s_c.acquire();
 </pre></div>
 
 <div style="width: 10%;"></div>
@@ -195,12 +195,12 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>coordinateur()</b>
-    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
-        s_i.acquire();
-    <span class="kd">end</span>
-    <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
-        s_c.release();
-    <span class="kd">end</span>
+  <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+    s_i.acquire();
+  <span class="kd">end</span>
+  <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
+    s_c.release();
+  <span class="kd">end</span>
 </pre>
 </div>
 <div style="width: 10%;"></div>
@@ -217,8 +217,8 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
     Exercice 2 - Gestion de véhicules dans un  tunnel
 </div>
 <p>
-    Une route joignant la France à l’Espagne utilise un tunnel à voie unique. En utilisant des sémaphores, 
-    vous allez synchroniser les véhicules de manière qu’à tout instant, tous les véhicules circulent dans le même sens.
+    Une route joignant la France à l'Espagne utilise un tunnel à voie unique. En utilisant des sémaphores, 
+    vous allez synchroniser les véhicules de manière qu'à tout instant, tous les véhicules circulent dans le même sens.
 </p>
 <p>
     <ol>
@@ -231,12 +231,12 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 </p>
 
 <!-- CORRECTION ################# -->
-<div class="green-block" hidden>
+<div class="green-block">
 	<button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
 	<div id="exo2" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
-<pre >Semaphore tunnel = <span class="kd">new</span> Semaphore(1);
+<pre>Semaphore tunnel = <span class="kd">new</span> Semaphore(1);
 <span class="kd">int</span> nb_fr = 0;
 <span class="kd">int</span> nb_es = 0;
 Semaphore mutex_fr = <span class="kd">new</span> Semaphore(1);
@@ -246,34 +246,33 @@ Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Q
 </pre>
 </div>
 
-
 <div style="display: flex; align-items: center;">
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>vers_France()</b>
-    fifo.acquire();
+  fifo.acquire();
 
-    mutex_fr.acquire();
-    nb_fr++;
-    <span class="kd">if</span> nb_fr = 1 <span class="kd">then</span>
-        tunnel.acquire();
-    <span class="kd">end</span>
-    mutex_fr.release();	
+  mutex_fr.acquire();
+  nb_fr++;
+  <span class="kd">if</span> nb_fr = 1 <span class="kd">then</span>
+      tunnel.acquire();
+  <span class="kd">end</span>
+  mutex_fr.release();	
 
-    fifo.release();
+  fifo.release();
 
-    capacite.acquire();
-    utiliser_tunnel();
-    capacite.release();
+  capacite.acquire();
+  utiliser_tunnel();
+  capacite.release();
 
-    mutex_fr.acquire();
-    nb_fr--;
-    <span class="kd">if</span> nb_fr = 0 <span class="kd">then</span>
-        tunnel.release();
-    <span class="kd">end</span>
-    mutex_fr.release();
+  mutex_fr.acquire();
+  nb_fr--;
+  <span class="kd">if</span> nb_fr = 0 <span class="kd">then</span>
+      tunnel.release();
+  <span class="kd">end</span>
+  mutex_fr.release();
 </pre>
 </div>
 
@@ -282,27 +281,27 @@ Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Q
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>vers_Espagne()</b>
-    fifo.acquire();
+  fifo.acquire();
 
-    mutex_es.acquire();
-    nb_es++;
-    <span class="kd">if</span> nb_es = 1 <span class="kd">then</span>
-        tunnel.acquire();
-    <span class="kd">end</span>
-    mutex_es.release();	
+  mutex_es.acquire();
+  nb_es++;
+  <span class="kd">if</span> nb_es = 1 <span class="kd">then</span>
+      tunnel.acquire();
+  <span class="kd">end</span>
+  mutex_es.release();	
 
-    fifo.release();
+  fifo.release();
 
-    capacite.acquire();
-    utiliser_tunnel();
-    capacite.release();
+  capacite.acquire();
+  utiliser_tunnel();
+  capacite.release();
 
-    mutex_es.acquire();
-    nb_es--;
-    <span class="kd">if</span> nb_es = 0 <span class="kd">then</span>
-        tunnel.release();
-    <span class="kd">end</span>
-    mutex_es.release();
+  mutex_es.acquire();
+  nb_es--;
+  <span class="kd">if</span> nb_es = 0 <span class="kd">then</span>
+      tunnel.release();
+  <span class="kd">end</span>
+  mutex_es.release();
 </pre>
 </div>
 <div style="width: 10%;"></div>
@@ -321,12 +320,12 @@ Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Q
     On considère un système à <code class="listing">1</code> producteur et <code class="listing">C</code> consommateurs partageant une boîte à lettres pouvant contenir <code class="listing">N</code> messages. 
     Le producteur dépose les messages dans la boîte à lettres, et les consommateurs les y récupèrent. Chaque message déposé (une fois) 
     par le producteur doit être lu par les <code class="listing">C</code> consommateurs. On impose également que les consommateurs reçoivent les messages 
-    dans l’ordre où ils ont été déposés. Il faut noter que les consommateurs ne sont pas synchronisés, et que, par exemple, 
-    un consommateur rapide peut avoir lu jusqu’à <code class="listing">N</code> messages de plus qu’un consommateur plus lent.
+    dans l'ordre où ils ont été déposés. Il faut noter que les consommateurs ne sont pas synchronisés, et que, par exemple, 
+    un consommateur rapide peut avoir lu jusqu'à <code class="listing">N</code> messages de plus qu'un consommateur plus lent.
 </p>
 <p>
     <ul>
-        <li>Développez une solution à ce problème, c’est-à-dire une description du processus producteur et des processus consommateurs qui respectent 
+        <li>Développez une solution à ce problème, c'est-à-dire une description du processus producteur et des processus consommateurs qui respectent 
             les spécifications. Cette solution devra utiliser des sémaphores dont le rôle sera explicité.</li>
     </ul>
 </p>
@@ -338,7 +337,7 @@ Vous pouvez introduire toute structure de données qui vous paraît utile, sous 
 </div>
 
 <!-- CORRECTION ################# -->
-<div class="green-block" hidden>
+<div class="green-block">
 	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
 	<div id="exo3" style="display: none; margin-top: 20px;">
 
@@ -351,17 +350,16 @@ Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class
 </pre>
 </div>
 
-
 <div style="display: flex; align-items: center;">
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
 <pre><b>producteur()</b>
-    <span class="kd">int</span> msg = produire_message();
-    place_dispo[i_prod].acquire(C);
-    bal[i_prod] = msg;
-    msg_dispo[i_prod].release(C);
-    i_prod = (i_prod +1) mod N;
+  <span class="kd">int</span> msg = produire_message();
+  place_dispo[i_prod].acquire(C);
+  bal[i_prod] = msg;
+  msg_dispo[i_prod].release(C);
+  i_prod = (i_prod +1) mod N;
 </pre></div>
 
 <div style="width: 10%;"></div>
@@ -369,11 +367,11 @@ Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class
 <div style="width: 35%;" class="highlight">
 <pre>
 <b>consommateur(int i)</b>
-    msg_dispo[i_cons[i]].acquire();
-    <span class="kd">int</span> msg = bal[i_cons[i]];
-    place_dispo[i_cons[i]].release();
-    i_cons[i] = (i_cons[i] +1) mod N;	
-    utiliser_message(msg);
+  msg_dispo[i_cons[i]].acquire();
+  <span class="kd">int</span> msg = bal[i_cons[i]];
+  place_dispo[i_cons[i]].release();
+  i_cons[i] = (i_cons[i] +1) mod N;	
+  utiliser_message(msg);
 </pre>
 </div>
 <div style="width: 10%;"></div>
