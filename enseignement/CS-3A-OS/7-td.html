@@ -3,34 +3,34 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Systèmes d'exploitation : TD - Gestion de la mémoire</title>
-
-	<meta name="description" content="Systèmes d'exploitation : TD - Gestion de la mémoire">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-    <script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 	<script>
 		MathJax = {
 			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+			loader: { load: ['ui/lazy'] }
+		};
+	</script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script>
+		function display_correction(my_id) {
+			var x = document.getElementById(my_id);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	</script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 
@@ -47,7 +47,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -55,10 +55,12 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-form">
-<div class="section-title">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1>
     Travaux dirigés - TD<br> 
     Gestion de la mémoire
-</div>
+</h1>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -80,10 +82,12 @@
     </li>
 </ol>
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
+	<div id="exo1" style="display: none; margin-top: 20px;">
     <ol>
         <li>
-            Il suffit de diviser l’adresse par 100, ce qui donne : 0, 1, 1, 5, 4, 3, 4, 0, 0, 0, 2, 3, 4.
+            Il suffit de diviser l'adresse par 100, ce qui donne : 0, 1, 1, 5, 4, 3, 4, 0, 0, 0, 2, 3, 4.
         </li>
         <li style="margin-top: 20px;"> 
             <br>
@@ -96,6 +100,7 @@
             <img src="./img/td_4_q2_4.png" alt="">
         </li>
     </ol>
+    </div>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -157,13 +162,15 @@ processus P1 :
     <ul><li>240, 546, 1578, 2072</li></ul>
 </li>
 <li>Que se passe-t-il si P1 génère l'adresse virtuelle 770 ?</li>
-<li>On considère l’adresse virtuelle suivante: 0000 0000 0000 0111. Sachant que les 4 bits de
+<li>On considère l'adresse virtuelle suivante: 0000 0000 0000 0111. Sachant que les 4 bits de
     poids fort désigne le numéro de page et que 12 bits suivants représentent le déplacement dans la
-    page, donnez l’adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
+    page, donnez l'adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
 </ol>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+	<div id="exo2" style="display: none; margin-top: 20px;">
     <ol>
         <li>
             8 pages x 256 = 2048 mots mémoire
@@ -198,6 +205,7 @@ processus P1 :
             adresse phy = 0011 0000 0000 0111
         </li>
     </ol>
+    </div>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -259,7 +267,9 @@ processus P1 :
 </div>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+	<div id="exo3" style="display: none; margin-top: 20px;">
 <ol>
     <li>
         L'adresse physique s'obtient en ajoutant l'adresse de base du segment au déplacement dans le
@@ -278,7 +288,7 @@ processus P1 :
         Dans un segment de longueur 200, les déplacements valides sont dans l'intervalle [0-199].
     </li>
 </ol>
-
+</div>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -288,14 +298,14 @@ processus P1 :
     Exercice 4 : Segmentation paginée
 </div>
 <p>
-    On considère un système avec une mémoire virtuelle segmentée paginée où la taille d’une
-    page est de 4Ko et une mémoire physique de 64Ko. L’espace d’adressage d’un processus P est
+    On considère un système avec une mémoire virtuelle segmentée paginée où la taille d'une
+    page est de 4Ko et une mémoire physique de 64Ko. L'espace d'adressage d'un processus P est
     composé de trois segments S1, S2 et S3 de taille, respectivement 16Ko, 8Ko et 4Ko. À un moment
     donné, pour le processus P, les pages 2 et 3 du segment S1, la page 2 du segment S2 et la page 1 du
     segment S3 sont chargées en mémoire physique, respectivement dans les cases 2, 0, 9, 12.  
 </p>
 <p>
-    Pour une donnée située dans l’espace d’adressage du processus P à l’adresse décimale 8212,
+    Pour une donnée située dans l'espace d'adressage du processus P à l'adresse décimale 8212,
 indiquez :
 </p>
 
@@ -305,11 +315,13 @@ indiquez :
     <li> le déplacement dans la page</li>
     <li> le numéro de case</li>
     <li> le déplacement dans la case</li>
-    <li> l’adresse physique (en décimal et en binaire)  </li>
+    <li> l'adresse physique (en décimal et en binaire)  </li>
 </ol>
 
 <!-- CORRECTION ################# -->
-<div class="green-block">
+<div class="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo4')">Click here to display or hide the correction</button>
+	<div id="exo4" style="display: none; margin-top: 20px;">
 <img src="./img/td_4_q4.png" alt=""> <br>
 8212 = 2 *4096 + 20 avec 4 Ko = 1024 * 4 = 4096<br>
 segment = S1<br>
@@ -317,12 +329,11 @@ page = 3<br>
 déplacement = 20<br>
 cadre = 0<br>
 déplacement = 20<br>
-l’adresse physique est donc 20 en décimal. L’adresse physique est exprimée sur 16 bits (64Ko =
+l'adresse physique est donc 20 en décimal. L'adresse physique est exprimée sur 16 bits (64Ko =
 $2^{16}$), dont 4 bits pour le numéro de cadre et 12 bits pour le déplacement dans la case (4Ko = $2^{12}$ ) , ce
 qui nous donne en binaire 0000 0000 0001 0100.<br>
 </div>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
@@ -332,12 +343,13 @@ qui nous donne en binaire 0000 0000 0001 0100.<br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2023/2024</span>
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>
