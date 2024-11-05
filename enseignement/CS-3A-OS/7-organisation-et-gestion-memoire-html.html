@@ -1039,16 +1039,16 @@
 	<table>
 		<tr>
 			<td></td>
-			<td>03</td>
-			<td>2A</td>
-			<td>1F</td>
-			<td>04</td>
-			<td>2A</td>
-			<td>12</td>
-			<td>03</td>
+			<td><span class="fragment" data-fragment-index="2">03</span></td>
+			<td><span class="fragment" data-fragment-index="2">2A</span></td>
+			<td><span class="fragment" data-fragment-index="2">1F</span></td>
+			<td><span class="fragment" data-fragment-index="2">04</span></td>
+			<td><span class="fragment" data-fragment-index="2">2A</span></td>
+			<td><span class="fragment" data-fragment-index="2">12</span></td>
+			<td><span class="fragment" data-fragment-index="2">03</span></td>
 		</tr>
 		<tr>
-			<td style="background-color: aquamarine;">00</td>
+			<td style="background-color: aquamarine;"><span class="fragment" data-fragment-index="3">00</span></td>
 			<td><span class="fragment" data-fragment-index="4">03</span></td>
 			<td></td>
 			<td></td>
@@ -1058,7 +1058,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td style="background-color: aquamarine;">01</td>
+			<td style="background-color: aquamarine;"><span class="fragment" data-fragment-index="3">01</span></td>
 			<td></td>
 			<td><span class="fragment" data-fragment-index="4">2A</span></td>
 			<td></td>
@@ -1068,7 +1068,7 @@
 			<td><span class="fragment" data-fragment-index="7">03</span></td>
 		</tr>
 		<tr>
-			<td style="background-color: aquamarine;">02</td>
+			<td style="background-color: aquamarine;"><span class="fragment" data-fragment-index="3">02</span></td>
 			<td></td>
 			<td></td>
 			<td><span class="fragment" data-fragment-index="4">1F</span></td>
@@ -1078,7 +1078,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td style="background-color: aquamarine;">03</td>
+			<td style="background-color: aquamarine;"><span class="fragment" data-fragment-index="3">03</span></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -1093,13 +1093,13 @@
 			<td><span class="fragment" data-fragment-index="5">x</span></td>
 			<td><span class="fragment" data-fragment-index="5">x</span></td>
 			<td><span class="fragment" data-fragment-index="5">x</span></td>
-			<td></td>
+			<td><span class="fragment" data-fragment-index="6">_</span></td>
 			<td><span class="fragment" data-fragment-index="7">x</span></td>
 			<td><span class="fragment" data-fragment-index="7">x</span></td>
 		</tr>
 	</table>
 
-	<div class="r-stack d-skip">
+	<div class="r-stack skip">
 		<!-- -->
 		<div class="fragment fade-in-then-out" data-fragment-index="1">
 			Exemple ...
@@ -1122,7 +1122,127 @@
 		<div class="fragment fade-in-then-out" data-fragment-index="7">
 			Et on continue ...
 		</div>
+		<div class="fragment fade-in" data-fragment-index="8">
+			Total : <i>6</i> défauts
+		</div>
 	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Solution optimale</h2>
+
+	<p>
+		Il existe une politique de remplacement optimale ... <br>
+    ... si on connaît à l'avance les références aux pages !
+	</p>
+
+	<table class="fragment">
+		<tr>
+			<td></td>
+			<td>03</td>
+			<td>2A</td>
+			<td>1F</td>
+			<td>04</td>
+			<td>2A</td>
+			<td>12</td>
+			<td>03</td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">00</td>
+			<td>03</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">01</td>
+			<td></td>
+			<td>2A</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>12</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">02</td>
+			<td></td>
+			<td></td>
+			<td>1F</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">03</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>04</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+			<td></td>
+			<td>x</td>
+			<td></td>
+		</tr>
+	</table>
+
+	<div class="fragment">
+		Total : <i>5</i> défauts
+	</div>
+
+	<div class="fragment skip">
+		<b style="color: red;">En pratique, on ne connaît pas les références !</b>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Algorithmes de remplacement</h2>
+
+	<p>
+		Définir <b>une fonction</b> qui, étant donné l'état actuel <br>
+		(occupation des cadres), <i>décide quel cadre libérer</i>.
+	</p>
+
+	<ul>
+		<li class="fragment">
+			<b>Les classes d'algorithmes</b>
+			<ul>
+				<li class="fragment">
+					<b>First In, First Out (FIFO)</b>
+					<ul id="fleche">
+						<li class="fragment">retirer les pages les plus anciennes</li>
+						<li class="fragment">seconde chance</li>
+					</ul>
+				</li>
+				<li class="fragment skip">
+					 	<b>basés sur l'utilisation des pages</b>
+						<ul id="fleche">
+							<li class="fragment">la page la moins utilisée (<b>Least Frequently Used</b>)</li>
+							<li class="fragment">une page pas récemment utilisée (<b>Not Recently Used</b>)</li>
+							<li class="fragment">la page la moins récemment utilisée (<b>Least Recently Used</b>)</li>
+						</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
