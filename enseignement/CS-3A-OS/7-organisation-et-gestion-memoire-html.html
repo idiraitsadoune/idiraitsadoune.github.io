@@ -942,13 +942,187 @@
 			</ul>
 		</li>
 
-		<li class="skip">
+		<li class="skip" style="color: red;">
 			Temps d'exécution proportionnel à la probabilité de défaut de page
 			<ul id="fleche">
 				<li>réduire le nombre de défauts de page </li>
 			</ul>
 		</li>
 	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Remplacement de pages</h2>
+
+	<div class="r-stack d-skip">
+		<!-- -->
+		<div class="fragment fade-in-then-out">
+			Exemple : 03 2A 1F 04 2A 12 03 ...
+			<table class="skip">
+				<tr>
+					<td style="border: 1px solid; padding: 20px">00</td>
+					<td style="border: 1px solid; padding: 20px">00</td>
+					<td style="border: 1px solid; padding: 20px">00</td>
+					<td style="border: 1px solid; padding: 20px">00</td>
+				</tr>
+			</table>
+			<p class="skip">Defauts: 0</p>
+		</div>
+		<!-- -->
+		<div class="fragment fade-in-then-out">
+			Exemple : <i>03 2A 1F 04</i> 2A 12 03 ...
+			<table class="skip">
+				<tr>
+					<td style="border: 1px solid; padding: 20px"><i>03</i></td>
+					<td style="border: 1px solid; padding: 20px"><i>2A</i></td>
+					<td style="border: 1px solid; padding: 20px"><i>1F</i></td>
+					<td style="border: 1px solid; padding: 20px"><i>04</i></td>
+				</tr>
+			</table>
+			<p class="skip">Defauts: 4</p>
+		</div>
+		<!-- -->
+		<div class="fragment fade-in-then-out">
+			Exemple : 03 2A 1F 04 <i>2A</i> 12 03 ...
+			<table class="skip">
+				<tr>
+					<td style="border: 1px solid; padding: 20px">03</td>
+					<td style="border: 1px solid; padding: 20px">2A</td>
+					<td style="border: 1px solid; padding: 20px">1F</td>
+					<td style="border: 1px solid; padding: 20px">04</td>
+				</tr>
+			</table>
+			<p class="skip">Defauts: 4</p>
+		</div>
+		<!-- -->
+		<div class="fragment fade-in-then-out">
+			Exemple : 03 2A 1F 04 2A <i>12</i> 03 ...
+			<table class="skip">
+				<tr>
+					<td style="border: 1px solid; padding: 20px"><i>12</i></td>
+					<td style="border: 1px solid; padding: 20px">2A</td>
+					<td style="border: 1px solid; padding: 20px">1F</td>
+					<td style="border: 1px solid; padding: 20px">04</td>
+				</tr>
+			</table>
+			<p class="skip">Defauts: 5</p>
+		</div>
+		<!-- -->
+		<div class="fragment fade-in">
+			Exemple : 03 2A 1F 04 2A 12 <i>03</i> ...
+			<table class="skip">
+				<tr>
+					<td style="border: 1px solid; padding: 20px">12</td>
+					<td style="border: 1px solid; padding: 20px"><i>03</i></td>
+					<td style="border: 1px solid; padding: 20px">1F</td>
+					<td style="border: 1px solid; padding: 20px">04</td>
+				</tr>
+			</table>
+			<p class="skip">Defauts: 6</p>
+		</div>
+		<!-- -->
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Représentation visuelle</h2>
+
+	<p>
+		Figurer l'état du cache dans le temps <br>
+		pour compter le nombre de défauts
+	</p>
+
+	<table>
+		<tr>
+			<td></td>
+			<td>03</td>
+			<td>2A</td>
+			<td>1F</td>
+			<td>04</td>
+			<td>2A</td>
+			<td>12</td>
+			<td>03</td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">00</td>
+			<td><span class="fragment" data-fragment-index="4">03</span></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="7">12</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">01</td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="4">2A</span></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="7">03</span></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">02</td>
+			<td></td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="4">1F</span></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td style="background-color: aquamarine;">03</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="4">04</span></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="5">x</span></td>
+			<td><span class="fragment" data-fragment-index="5">x</span></td>
+			<td><span class="fragment" data-fragment-index="5">x</span></td>
+			<td><span class="fragment" data-fragment-index="5">x</span></td>
+			<td></td>
+			<td><span class="fragment" data-fragment-index="7">x</span></td>
+			<td><span class="fragment" data-fragment-index="7">x</span></td>
+		</tr>
+	</table>
+
+	<div class="r-stack d-skip">
+		<!-- -->
+		<div class="fragment fade-in-then-out" data-fragment-index="1">
+			Exemple ...
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="2">
+			Première ligne : liste des pages demandées (dans l'ordre)
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="3">
+			Une ligne par cadre de page alloué au processus
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="4">
+			Une page par colonne
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="5">
+			Marquer les défauts au fur et à mesure
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="6">
+			Pas de défaut $\to$ laisser en blanc
+		</div>
+		<div class="fragment fade-in-then-out" data-fragment-index="7">
+			Et on continue ...
+		</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
