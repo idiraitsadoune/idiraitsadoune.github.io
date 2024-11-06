@@ -81,9 +81,9 @@
             
     </li>
 </ol>
-<!-- CORRECTION ################# -->
-<div class="green-block" hidden>
-    <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
+<!-- CORRECTION ################# <div class="green-block" hidden> -->
+<div class="green-block">
+  <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
 	<div id="exo1" style="display: none; margin-top: 20px;">
     <ol>
         <li>
@@ -167,9 +167,9 @@ processus P1 :
     page, donnez l'adresse physique (exprimée en binaire) correspondant à cette adresse.</li>
 </ol>
 
-<!-- CORRECTION ################# -->
-<div class="green-block" hidden>
-    <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+<!-- CORRECTION ################# <div class="green-block" hidden> -->
+<div class="green-block">
+  <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
 	<div id="exo2" style="display: none; margin-top: 20px;">
     <ol>
         <li>
@@ -266,9 +266,9 @@ processus P1 :
     <p>Les adresses sont données sous la forme (segment:déplacement)</p>
 </div>
 
-<!-- CORRECTION ################# -->
-<div class="green-block" hidden>
-    <button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+<!-- CORRECTION ################# <div class="green-block" hidden>-->
+<div class="green-block">
+  <button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
 	<div id="exo3" style="display: none; margin-top: 20px;">
 <ol>
     <li>
@@ -276,11 +276,11 @@ processus P1 :
         segment, mais à condition que le déplacement ne soit pas supérieur à la taille du segment moins 1
         (on compte le déplacement en partant de 0) : <br>
         <br>
-        (0:128) : déplacement valide (128<234). Adr_physique = base + limite = 540 + 128 = 668.<br>
-        (1:100) : déplacement valide (100<128). Adr_physique = base + limite = 1254+ 100 = 1354.<br>
-        (2:465) : déplacement invalide (465>328).<br>
-        (3:888) : déplacement valide (888<1024). Adr_physique = base + limite = 2048 + 888 = 2936.<br>
-        (4:100) : déplacement valide (100<200). Adr_physique = base + limite = 976+ 100 = 1076.<br>
+        (0:128) : déplacement valide (128$<$234). Adr_physique = base + limite = 540 + 128 = 668.<br>
+        (1:100) : déplacement valide (100$<$128). Adr_physique = base + limite = 1254+ 100 = 1354.<br>
+        (2:465) : déplacement invalide (465$>$328).<br>
+        (3:888) : déplacement valide (888$<$1024). Adr_physique = base + limite = 2048 + 888 = 2936.<br>
+        (4:100) : déplacement valide (100$<$200). Adr_physique = base + limite = 976+ 100 = 1076.<br>
         (4:344) : déplacement invalide car (344>200).
     </li>
     <li style="margin-top: 20px;">
@@ -302,7 +302,7 @@ processus P1 :
     page est de 4Ko et une mémoire physique de 64Ko. L'espace d'adressage d'un processus P est
     composé de trois segments S1, S2 et S3 de taille, respectivement 16Ko, 8Ko et 4Ko. À un moment
     donné, pour le processus P, les pages 2 et 3 du segment S1, la page 2 du segment S2 et la page 1 du
-    segment S3 sont chargées en mémoire physique, respectivement dans les cases 2, 0, 9, 12.  
+    segment S3 sont chargées en mémoire physique, respectivement dans les cadres 2, 0, 9, 12.  
 </p>
 <p>
     Pour une donnée située dans l'espace d'adressage du processus P à l'adresse décimale 8212,
@@ -313,17 +313,18 @@ indiquez :
     <li> le segment </li>
     <li> le numéro de page dans le segment</li>
     <li> le déplacement dans la page</li>
-    <li> le numéro de case</li>
-    <li> le déplacement dans la case</li>
+    <li> le numéro de cadre</li>
+    <li> le déplacement dans la cadre</li>
     <li> l'adresse physique (en décimal et en binaire)  </li>
 </ol>
 
-<!-- CORRECTION ################# -->
-<div class="green-block" hidden>
-    <button class="button_display" onclick="display_correction('exo4')">Click here to display or hide the correction</button>
+<!-- CORRECTION ################# <div class="green-block" hidden> -->
+<div class="green-block">
+  <button class="button_display" onclick="display_correction('exo4')">Click here to display or hide the correction</button>
 	<div id="exo4" style="display: none; margin-top: 20px;">
+
 <img src="./img/td_4_q4.png" alt=""> <br>
-8212 = 2 *4096 + 20 avec 4 Ko = 1024 * 4 = 4096<br>
+8212 = 2 * 4096 + 20 (avec 4 Ko = 1024 * 4 = 4096)<br>
 segment = S1<br>
 page = 3<br>
 déplacement = 20<br>
