@@ -4,37 +4,44 @@
             "title" : "Algorithmique et Complexité",
             "level" : "1A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://wdi.centralesupelec.fr/1CC2000/",
+            "link" : "#",
             "target" : "_blank"
         }, 
+        {
+            "title" : "Conception et vérification de systèmes critiques",
+            "level" : "2A - Cursus Ingénieur - CentraleSupelec",
+            "image" : "ensignement.jpg",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=8571",
+            "target" : "_blank"
+        },
         {
             "title" : "Systèmes d'exploitation",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6623",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=8663",
             "target" : "_blank"
         },
         {
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6643",
-            "target" : "_blank"
-        },
-        {
-            "title" : "Computer architecture and software execution process",
-            "level" : "1A - Cursus Bachelor - CentraleSupelec",
-            "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6598",
+            "link" : "#",
             "target" : "_blank"
         },
         {
             "title" : "Développer des applications avec Java/Jakarta EE",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "https://centralesupelec.edunao.com/course/view.php?id=6619",
+            "link" : "#",
             "target" : "_blank"
-        }, 
+        },
+        {
+            "title" : "Computer architecture and software execution process",
+            "level" : "1A - Cursus Bachelor - CentraleSupelec",
+            "image" : "ensignement.jpg",
+            "link" : "#",
+            "target" : "_blank"
+        },
         {
             "title" : "Qualité de développement",
             "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
@@ -48,7 +55,7 @@
             "title" : "Systèmes d'exploitation \n et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "https://csee.edunao.com/course/view.php?id=1656",
+            "link" : "#",
             "target" : "_blank"
         },   
         {
