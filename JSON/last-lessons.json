@@ -39,8 +39,10 @@
             "title" : "Qualité de développement",
             "level" : "2A - Cursus BUT - IUT d'Orsay Paris-Saclay",
             "image" : "ensignement.jpg",
-            "link" : "UPS-IUT-2A-QD",
-            "target" : "_self"
+            "link":"https://cours.iut-orsay.fr/course/index.php?categoryid=1282",
+            "target" : "_blank",
+            "p-link" : "UPS-IUT-2A-QD",
+            "p-target" : "_self"
         },   
         {
             "title" : "Systèmes d'exploitation \n et virtualisation",
