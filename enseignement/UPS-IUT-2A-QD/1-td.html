@@ -3,34 +3,34 @@
 
 <head>
 	<meta charset="utf-8">
-
-	<title>TD Qualité de développement : Diagramme UML des cas d’utilisation</title>
-
-	<meta name="description" content="TD Qualité de développement : Diagramme UML des cas d’utilisation">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TD Qualité de développement : Diagramme UML des cas d'utilisation</title>
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 	<script>
 		MathJax = {
 			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+			loader: { load: ['ui/lazy'] }
+		};
+	</script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script>
+		function display_correction(my_id) {
+			var x = document.getElementById(my_id);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	</script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +42,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,10 +54,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
-    Travaux dirigés - TD<br> 
-    Diagramme UML des cas d’utilisation
+<h1>
+    Diagramme UML <br> de cas d'utilisation
+</h1>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Le support de cours</h2>
+
+<div>
+  <iframe style="width: 100%; height: 770px;" 
+  src="./1-uml-diagramme-cas-utilisation.html" frameborder="0"></iframe>
 </div>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Les exercices</h2>
+<!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 1 : Gestion d'une bibliothèque
@@ -65,15 +76,15 @@
 
 <p class="text-justify">
 Une bibliothèque universitaire souhaite automatiser sa gestion. Cette bibliothèque est gérée par un gestionnaire 
-chargé des inscriptions et des relances des lecteurs quand ceux-ci n’ont pas rendu leurs ouvrages au-delà du délai autorisé. 
-Les bibliothécaires sont chargés de gérer les emprunts et la restitution des ouvrages ainsi que l’acquisition de nouveaux ouvrages.
+chargé des inscriptions et des relances des lecteurs quand ceux-ci n'ont pas rendu leurs ouvrages au-delà du délai autorisé. 
+Les bibliothécaires sont chargés de gérer les emprunts et la restitution des ouvrages ainsi que l'acquisition de nouveaux ouvrages.
 </p>
 
 <p class="text-justify">
-Il existe trois catégories d’abonné. Tout d’abord les étudiants qui doivent seulement s’acquitter d’une somme forfaitaire 
-pour une année afin d’avoir droit à tous les services de la bibliothèque. L’accès à la bibliothèque est libre pour tous les enseignants. 
-Enfin, il est possible d’autoriser des étudiants d’une autre université à s’inscrire exceptionnellement comme abonné moyennant 
-le versement d’une cotisation. Le nombre d’abonné externe est limité chaque année à environ 10% des inscrits.
+Il existe trois catégories d'abonné. Tout d'abord les étudiants qui doivent seulement s'acquitter d'une somme forfaitaire 
+pour une année afin d'avoir droit à tous les services de la bibliothèque. L'accès à la bibliothèque est libre pour tous les enseignants. 
+Enfin, il est possible d'autoriser des étudiants d'une autre université à s'inscrire exceptionnellement comme abonné moyennant 
+le versement d'une cotisation. Le nombre d'abonné externe est limité chaque année à environ 10% des inscrits.
 </p>
 
 <p class="text-justify">
@@ -86,7 +97,7 @@ Chaque exemplaire est repéré par une référence gérée dans le catalogue et 
 </p>
 
 <p class="text-justify">
-Chaque abonné ne peut emprunter plus de trois ouvrages. Le délai d’emprunt d’un ouvrage est de trois semaines, 
+Chaque abonné ne peut emprunter plus de trois ouvrages. Le délai d'emprunt d'un ouvrage est de trois semaines, 
 il peut cependant être prolongé exceptionnellement à cinq semaines.
 </p>
 
@@ -95,13 +106,19 @@ il peut cependant être prolongé exceptionnellement à cinq semaines.
 </div>
 
 <p>
-    <ul>
-        <li>élaborer le diagramme des cas d’utilisation du système décrit dans ce document</li>
-    </ul>
+  <ul>
+    <li>élaborer le diagramme des cas d'utilisation du système décrit dans ce document</li>
+  </ul>
 </p>
-<div class="green-block">
-<img src="./img/1-td-exo1.png" alt="">	
+
+<!-- CORRECTION --><!-- <div class="green-block" hidden> -->
+<div class="green-block" hidden>
+  <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
+	<div id="exo1" style="display: none; margin-top: 20px;">
+    <img src="./img/1-td-exo1.png" alt="">
+  </div>
 </div>
+<!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">
     Exercice 2 : Terminal Point de Vente (TPV)
@@ -112,26 +129,26 @@ Cet exercice concerne un système simplifié de caisse enregistreuse d'un super-
 </p>
 
 <p class="text-justify">
-    <ul>
-        <li>Un client arrive à la caisse avec des articles à payer </li>
-        <li>Le caissier enregistre le numéro d’identification (CPU) de chaque article, ainsi que la quantité si elle est supérieure à 1.</li>
-        <li>La caisse affiche le prix de chaque article et son libellé.</li>
-        <li>Lorsque tous les achats sont enregistrés, le caissier signale la fin de la vente.</li>
-        <li>La caisse affiche le total des achats.</li>
-        <li>Le client choisit son mode de paiement :
-            <ul>
-                <li>numéraire : le caissier encaisse l’argent reçu, la caisse indique l’argent à rendre au client.
-                <li>chèque : le caissier vérifie la solvabilité du client en transmettant une requête à un centre d’autorisation via la caisse.
-                <li>carte de crédit : un terminal bancaire fait partie de la caisse. Il transmet une demande d’autorisation à un centre d’autorisation en fonction du type de la carte.
-            </ul>
-        </li>
-        <li>La caisse enregistre la vente et imprime un ticket.</li>
-        <li>Le caissier donne le ticket de caisse au client.</li>
-    </ul>
+  <ul>
+    <li>Un client arrive à la caisse avec des articles à payer </li>
+    <li>Le caissier enregistre le numéro d'identification (CPU) de chaque article, ainsi que la quantité si elle est supérieure à 1.</li>
+    <li>La caisse affiche le prix de chaque article et son libellé.</li>
+    <li>Lorsque tous les achats sont enregistrés, le caissier signale la fin de la vente.</li>
+    <li>La caisse affiche le total des achats.</li>
+    <li>Le client choisit son mode de paiement :
+      <ul>
+        <li>numéraire : le caissier encaisse l'argent reçu, la caisse indique l'argent à rendre au client.
+        <li>chèque : le caissier vérifie la solvabilité du client en transmettant une requête à un centre d'autorisation via la caisse.
+        <li>carte de crédit : un terminal bancaire fait partie de la caisse. Il transmet une demande d'autorisation à un centre d'autorisation en fonction du type de la carte.
+      </ul>
+    </li>
+    <li>La caisse enregistre la vente et imprime un ticket.</li>
+    <li>Le caissier donne le ticket de caisse au client.</li>
+  </ul>
 </p>
 
 <p class="text-justify">
-Après la saisie des articles, le client peut présenter au caissier des coupons de réduction pour certains articles. Lorsque le paiement est terminé, la caisse transmet les informations sur le nombre d’articles vendus au système de gestion des stocks.
+Après la saisie des articles, le client peut présenter au caissier des coupons de réduction pour certains articles. Lorsque le paiement est terminé, la caisse transmet les informations sur le nombre d'articles vendus au système de gestion des stocks.
 </p>
 
 <p class="text-justify">
@@ -142,46 +159,47 @@ Tous les matins, le responsable du magasin initialise les caisses pour la journ�
     Travail demandé
 </div>
 <p>
-    <ul>
-        <li>Construire un diagramme de cas d’utilisation détaillé de la caisse enregistreuse.</li>
-        <li>Décrire textuellement le cas d’utilisation principal <b>Traiter le passage en caisse</b>
-            sans détailler les cas d’utilisation spécialisés correspondant aux différents cas de règlement.</li>
-    </ul>
+  <ul>
+    <li>Construire un diagramme de cas d'utilisation détaillé de la caisse enregistreuse.</li>
+    <li>Décrire textuellement le cas d'utilisation principal <b>Traiter le passage en caisse</b>
+        sans détailler les cas d'utilisation spécialisés correspondant aux différents cas de règlement.</li>
+  </ul>
 </p>
-<div class="green-block">
+
+<!-- CORRECTION --><!-- <div class="green-block" hidden> -->
+<div class="green-block" hidden>
+  <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+	<div id="exo2" style="display: none; margin-top: 20px;">
+
     <img src="./img/1-td-exo2.png" width="90%" alt="">	
 
     <p>
-        <b>Scénario nominal</b>
-    
-        <ol>
-            <li>Le caissier lance un nouveau passage à la caisse</li>
-            <li>Le caissier passe les articles</li>
-            <li>Le système enregistre le numéro d’identification (CPU) de chaque article.</li>
-            <li>La système affiche le prix de chaque article et son libellé.</li>
-            <li>Lorsque tous les achats sont enregistrés, le caissier signale la fin de la vente.</li>
-            <li>La système affiche le total des achats.</li>
-            <li>Le caissier lance le paiement</li>
-            <li>Le système enregistre le paiement </li>
-            <li>La système enregistre la vente et imprime un ticket.</li>
-            <li>Le caissier donne le ticket de caisse au client.</li>
-        </ol>
-
+      <b>Scénario nominal</b>
+      <ol>
+        <li>Le caissier lance un nouveau passage à la caisse</li>
+        <li>Le caissier passe les articles</li>
+        <li>Le système enregistre le numéro d'identification (CPU) de chaque article.</li>
+        <li>La système affiche le prix de chaque article et son libellé.</li>
+        <li>Lorsque tous les achats sont enregistrés, le caissier signale la fin de la vente.</li>
+        <li>La système affiche le total des achats.</li>
+        <li>Le caissier lance le paiement</li>
+        <li>Le système enregistre le paiement </li>
+        <li>La système enregistre la vente et imprime un ticket.</li>
+        <li>Le caissier donne le ticket de caisse au client.</li>
+      </ol>
     </p>
     
     <p>
-        <b>Scénarios alternatifs</b>
-        <ul>
-            <li><b>3.b</b> Le système enregistre la quantité d'un produit si elle est supérieure à 1.</li>
-            <li style="margin-top: 20px;"><b>5.b.1</b> Le caissier passe les coupons de réduction</li>
-            <li><b>5.b.2</b> Le système enregistre les réductions</li>
-            <li><b>5.b.3</b> Le caissier signale la fin de la vente.</li>
-        </ul>
-
-
+      <b>Scénarios alternatifs</b>
+      <ul>
+          <li><b>3.b</b> Le système enregistre la quantité d'un produit si elle est supérieure à 1.</li>
+          <li style="margin-top: 20px;"><b>5.b.1</b> Le caissier passe les coupons de réduction</li>
+          <li><b>5.b.2</b> Le système enregistre les réductions</li>
+          <li><b>5.b.3</b> Le caissier signale la fin de la vente.</li>
+      </ul>
     </p>
     
-   
+   </div>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -194,12 +212,13 @@ Tous les matins, le responsable du magasin initialise les caisses pour la journ�
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>
