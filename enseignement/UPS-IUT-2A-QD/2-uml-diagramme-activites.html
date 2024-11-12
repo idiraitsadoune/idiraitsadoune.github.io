@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Qualité de développement : Diagramme UML d'activités</title>
-
-	<meta name="description" content="Qualité de développement : Diagramme UML d'activités">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -24,6 +15,7 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -38,313 +30,344 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
     
-        <div class="header-logo">
-            <div class="left-logo">
-                <a href="https://lmf.cnrs.fr/" target="_blank">
-                    <img  src="../resources/img/logo-aff.png" alt="">
-                </a>
-            </div>
-            <div class="right-logo">
-                <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-                    <img src="./img/iut-logo.png" alt="">
-                </a>
-            </div>
-        </div>
-
-        <div style="text-align: left">
-            <h2>Qualité de développement</h2>
-            <h3>Diagramme UML d'activités</h3>
-        </div>
-
-        <div class="description">
-            <span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-            <span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
-        </div>
-            
-        <div class="hero-card-id">
-            <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-                <img src="../resources/img/idir.png" class="hero-user">
-            </a>
-            <div class="hero-desc">
-                <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-                    <span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
-                </a>
-                <br>
-                <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-                    <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-                </a>
-            </div>
-        </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Cycle de développement</h2>
-    <div class="r-stack">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-1.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-2.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-3.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-4.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-5.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-2.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-3.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-4.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-5.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-6.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in" src="./img/cycle-dev-en-v-step-1-2.svg" height="auto" width="1000px" alt="">
+  <div class="header-logo">
+    <div class="left-logo">
+      <a href="https://lmf.cnrs.fr/" target="_blank">
+        <img  src="../resources/img/logo-aff.png" alt="">
+      </a>
     </div>
+    <div class="right-logo">
+      <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+        <img src="./img/iut-logo.png" alt="">
+      </a>
+    </div>
+  </div>
+
+  <div style="text-align: left">
+    <h2>Qualité de développement</h2>
+    <h3>Diagramme UML d'activités</h3>
+  </div>
+
+  <div class="description">
+    <span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+    <span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+  </div>
+      
+  <div class="hero-card-id">
+    <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+      <img src="../resources/img/idir.png" class="hero-user">
+    </a>
+    <div class="hero-desc">
+      <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+        <span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+      </a>
+      <br>
+      <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Cycle de développement</h2>
+
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_1.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_3.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_4.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in" src="./../CS-2A-ST58/img/cycle_v_5.svg" height="auto" width="900px" alt="">
+	</div>
+
+	<div class="fragment">
+		Ce cours se positionne dans les étapes <b>Analyse</b> et <b>Spécification</b>.
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Pourquoi un diagramme d'activité</h2>
-   
-    <ul>
-        <li class="fragment"><b>Diagrammes de cas d’utilisation</b>
-            <ul id="ok"><li class="fragment"><b style="color: green; ">Utiles</b> pour la discussion avec le client (intuitifs et concis)</li></ul>
-            <ul id="ko"><li class="fragment"><b style="color: red;">Pas suffisant</b> pour l'équipe de développement</li></ul>
+  <h2>Pourquoi un diagramme d'activité ?</h2>
+  
+  <ul>
+    <li class="fragment"><b>Diagrammes de cas d'utilisation</b>
+      <ul id="ok"><li class="fragment"><b style="color: green; ">Utiles</b> pour la discussion avec le client (intuitifs et concis)</li></ul>
+      <ul id="ko"><li class="fragment"><b style="color: red;">Pas suffisant</b> pour l'équipe de développement</li></ul>
+    </li>
+    
+    <li class="fragment skip"><b>Descriptions textuelles</b>
+      <ul id="ko">
+        <li class="fragment">
+          <b style="color:red; ">Absence de  vision globale</b> des actions décrites dans 
+          <u>les scénarios</u> 
         </li>
-        
-        <li class="fragment skip"><b>Descriptions textuelles</b>
-            <ul id="ko"><li class="fragment"><b style="color:red; ">Absence de  vision globale</b> des actions décrites dans 
-                <u>les scénarios</u> </li></ul>
-        </li>
+      </ul>
+    </li>
 
-        <li class="fragment skip"><b>Que faire ?</b></li>
-        <ul>
-            <li class="fragment"><b>Les diagrammes d’activité</b> représentent une <i>alternative visuelle</i>. 
-        </ul>
-    </ul>
+    <li class="fragment skip"><b>Que faire ?</b>
+      <ul>
+          <li class="fragment"><b>Les diagrammes d'activité</b> représentent une <i>alternative visuelle</i>. 
+      </ul>
+    </li>
+  </ul>
+
+  <div id="default-block" class="left-content fragment d-skip">
+    L'objectif du <b>diagramme d'activité</b> est de <i>décrire graphiquement</i> <br>
+    le <i>comportement d'un système</i> sous formes d'<i>actions ordonnées</i>.
+  </div>
   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Pourquoi un diagramme d'activité</h2>
+  <h2>Activité et actions</h2>
 
-    <p>L'objectif du <b>diagramme d’activité</b> est de <i>décrire graphiquement</i> 
-                <br>le <i>comportement d’un système</i> sous formes d’<i>actions ordonnées</i>.</p>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Activité et actions</h2>
+  <ul>
+    <li class="fragment"><b>Une activité</b> représente un <i>scénario</i> qui peut être décrit <br>
+        par un <i>ensemble d'actions</i>.</li>
+    <li class="fragment"><b>Une action</b> représente une <i>étape simple</i> de l'activité. </li>
+  </ul>
 
-    <ul>
-        <li class="fragment"><b>Une activité</b> représente un <i>scénario</i> qui peut être décrit <br>
-            par un <i>ensemble d'actions</i>.</li>
-        <li class="fragment"><b>Une action</b> représente une <i>étape simple</i> de l’activité. </li>
-    </ul>
+  <div>
     <img class="skip" src="./img/12-uml-01.svg"/>	
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Interfaces d'activité</h2>
+  <h2>Interfaces d'activité</h2>
 
-    <p>Les <b>interfaces d’activité</b> représentent les différents <br>
-        <i>flux traversant une activité</i> </p>
+  <p class="left-content">
+    Les <b>interfaces d'activité</b> représentent les différents <br>
+    <i>flux traversant une activité</i> 
+  </p>
 
-    </section>
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <section data-auto-animate data-transition="fade-in fade-out">
-        <h2>Interfaces d'activité</h2>
-        <h3>Flux de contrôle</h3>
-
-        <ul><li><b>Flux de contrôle</b> : représente explicitement 
-            un <i>contrôle</i> 
-            passant <br>d’une activité (ou d’une action) à la suivante (<i>définition d’un ordre</i>). 
-        </li></ul>
-            
-        <img src="./img/12-uml-02.svg"/>
-        
-    </section>
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Interfaces d'activité</h2>
-    <h3>Flux d’objets</h3>
+  <h2>Interfaces d'activité</h2>
+  <h3>Flux de contrôle</h3>
 
-    <ul><li><b>Flux d’objets</b> modélise :</li> 
-        <ul>
-            <li class="fragment">l’<i>envoie de données</i> (objets) à plusieurs destinataires (multicast),</li>
-            <li class="fragment">la <i>selection</i> (satisfaire un test),</li>
-            <li class="fragment">la <i>transformation</i> (extraire une partie de la donnée).</li>
-        </ul>
-    </ul>
-        
+  <p class="left-content">
+    <b>Flux de contrôle</b> : représente explicitement 
+    un <i>contrôle</i> 
+    passant <br>d'une activité (ou d'une action) à la suivante (<i>définition d'un ordre</i>). 
+  </p>
+      
+  <img src="./img/12-uml-02.svg"/>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Interfaces d'activité</h2>
+  <h3>Flux d'objets</h3>
+
+  <ul><li><b>Flux d'objets</b> modélise :</li> 
+      <ul>
+          <li class="fragment">l'<i>envoie de données</i> (objets) à plusieurs destinataires (multicast),</li>
+          <li class="fragment">la <i>selection</i> (satisfaire un test),</li>
+          <li class="fragment">la <i>transformation</i> (extraire une partie de la donnée).</li>
+      </ul>
+  </ul>
+
+  <div>
     <img src="./img/12-uml-03.svg"/>
-        
+  </div>
+         
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœud initial</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœud initial</h3>
 
-        <ul><li><b>Nœud initial</b> : constitue le <i>point de départ</i> d’une activité <br>
-        (une activité peut posséder plusieurs nœuds initiaux). </li></ul>
+  <p class="left-content">
+    <b>Nœud initial</b> : constitue le <i>point de départ</i> d'une activité <br>
+    (une activité peut posséder plusieurs nœuds initiaux). 
+  </p>
 
-            <img src="./img/12-uml-04.svg"/>
+  <div>
+    <img src="./img/12-uml-04.svg"/>
+  </div>
+   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœuds d’objets</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœuds d'objets</h3>
 
-    <ul><li><b>Nœuds d’objets</b> : représentent 
-        les <i>données complexes</i> parcourant<br> un diagramme d’activités. 
-    </li></ul>
+  <p class="left-content">
+    <b>Nœuds d'objets</b> : représentent 
+    les <i>données complexes</i> parcourant<br> un diagramme d'activités. 
+  </p>
 
-            <img src="./img/12-uml-05.svg"/>
+  <div>
+    <img src="./img/12-uml-05.svg"/>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœud final</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœud final</h3>
 
-    <ul>
-        <li>
-            <b>Nœud final</b> : 
-        permet de <i>mettre fin à toute l’activité</i> <br> 
-        (une activité peut posséder plusieurs nœuds finaux). 
-        </li>
-    </ul>
+  <p class="left-content">
+    <b>Nœud final</b> : 
+    permet de <i>mettre fin à toute l'activité</i> <br> 
+    (une activité peut posséder plusieurs nœuds finaux). 
+  </p>
 
+  <div>
     <img src="./img/12-uml-06.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœud décisionnel et Nœud de confluence</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœud décisionnel et Nœud de confluence</h3>
 
-    <ul><li class="fragment"><b>Nœud décisionnel</b> : 
-        permet de <i>choisir un flux de sortie</i> en fonction d’une expression booléenne. 
-
+  <ul>
+    <li class="fragment"><b>Nœud décisionnel</b> : 
+      permet de <i>choisir un flux de sortie</i> en fonction <br> d'une expression booléenne. 
     </li>
     <li class="fragment"><b>Nœud de confluence</b> : 
-        permet de <i>rassembler différents flux</i> au sein d’un même flux de sortie 
-
+      permet de <i>rassembler différents flux</i> au sein <br> d'un même flux de sortie 
     </li>
-    </ul>
+  </ul>
 
+  <div>
     <img src="./img/12-uml-07.svg"/>
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœud fourches et Nœud de jonction</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœud fourches et Nœud de jonction</h3>
 
-    <ul><li class="fragment"><b>Nœud fourches</b> : 
-        permet de <i>scinder le flux courant</i> au sein<br> d’une activité
-         en plusieurs flux concurrentiels. 
-
+  <ul>
+    <li class="fragment"><b>Nœud fourches</b> : 
+      permet de <i>scinder le flux courant</i> au sein<br> d'une activité
+        en plusieurs flux concurrentiels. 
     </li>
     <li class="fragment"><b>Nœud de jonction</b> : 
-        permet de <i>synchroniser plusieurs flots</i> <br>
-        d’une activité et de les réunir au sein d’un même flot. 
-
+      permet de <i>synchroniser plusieurs flots</i> <br>
+      d'une activité et de les réunir au sein d'un même flot. 
     </li>
-    </ul>
+  </ul>
 
+  <div>
     <img src="./img/12-uml-08.svg"/>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Nœuds d'activité</h2>
-    <h3>Nœud final de flux</h3>
+  <h2>Nœuds d'activité</h2>
+  <h3>Nœud final de flux</h3>
 
-    <ul>
-        <li>
-            <b>Nœud final de flux</b> : 
-        permet de <i>mettre fin à un chemin partiel d’exécution</i> dans une activité. 
+  <p class="left-content">
+    <b>Nœud final de flux</b> : 
+    permet de <i>mettre fin à un chemin partiel d'exécution</i><br> dans une activité. 
+  </p>
 
-        </li>
-    </ul>
+  <div>
     <img src="./img/12-uml-09.svg"/>
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Modélisation avancée d’une activité</h2>
+  <h2>Modélisation avancée d'une activité</h2>
 
-    <ul>
-        <li>
-            <b>Partitions d’activité</b> : permet d’indiquer qui est
-         <i>responsable</i><br> d’une ou d’un ensemble d’actions dans une activité. 
-
-        </li>
-    </ul>
+  <p class="left-content">
+    <b>Partitions d'activité</b> : permet d'indiquer qui est
+    <i>responsable</i><br> d'une ou d'un ensemble d'actions dans une activité. 
+  </p>
+    
+  <div>
     <img src="./img/12-uml-10.svg"/>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+  <h2>Exemple</h2>
+
+  <div>
     <img src="./img/11-uml-09.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-markdown data-auto-animate data-transition="fade-in fade-out">
-    <script type="text/template">
-        ## Le scénario nominal
+  <script type="text/template">
+    ## Le scénario nominal
 
-        1. Le **système** vérifie le type d’utilisateur connecté
-        1. Le **système** affiche des informations concernant le client
-        1. Le **système** fait appel au cas d’utilisation interne "Constituer panier"
-        1. Le **système** fait appel au cas d’utilisation interne "Saisir information pour livraison"
-        1. Le **système** fait appel au cas d’utilisation interne "Enregistrer\
-         le règlement"
-        1. Le **système** enregistre définitivement l’achat
-        1. Le **système** affiche le récapitulatif de l’achat.
-                                    
-    </script>
+    1. Le **système** vérifie le type d'utilisateur connecté
+    1. Le **système** affiche des informations concernant le client
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Constituer panier"
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Saisir information pour livraison"
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Enregistrer le règlement"
+    1. Le **système** enregistre définitivement l'achat
+    1. Le **système** affiche le récapitulatif de l'achat.                   
+  </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-markdown data-auto-animate data-transition="fade-in fade-out">
-    <script type="text/template">
-        ## Le scénario alternatif
-
-        - **2.a** Si l’utilisateur est le commercial, le **système** fait appel au cas d’utilisation interne "sélectionner un client"
-                                    
-    </script>
+  <script type="text/template">
+    ## Le scénario alternatif
+    - **2.a** Si l'utilisateur est le commercial,\
+    le **système** fait appel au cas d'utilisation interne "sélectionner un client"                   
+  </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-markdown data-auto-animate data-transition="fade-in fade-out">
-    <script type="text/template">
-        ## Les scénarios d’exception
+  <script type="text/template">
+    ## Les scénarios d'exception
 
-        - **2.b** Le **système** n’affiche aucun utilisateur sélectionné : 
-            - Le **système** affiche "Veuillez sélectionner le client concerné\
-             par l’achat" (*retour à l’étape 2*).
-        - **5.a** L’enregistrement du règlement échoue : 
-            - Le **système** récapitule les informations dans un message envoyé\
-             au département commercial (*arrêt du cas d’utilisation*).
-        - **6.a** L’enregistrement définitif de l’achat échoue : 
-            - Le **système** récapitule les informations dans un message envoyé\
-             au département commercial (*arrêt du cas d’utilisation*).
-                                    
-    </script>
+    - **2.b** Le **système** n'affiche aucun utilisateur sélectionné : 
+        - Le **système** affiche "Veuillez sélectionner le client concerné\
+          par l'achat" (*retour à l'étape 2*).
+    - **5.a** L'enregistrement du règlement échoue : 
+        - Le **système** récapitule les informations dans un message envoyé\
+          au département commercial (*arrêt du cas d'utilisation*).
+    - **6.a** L'enregistrement définitif de l'achat échoue : 
+        - Le **système** récapitule les informations dans un message envoyé\
+          au département commercial (*arrêt du cas d'utilisation*).                           
+  </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Diagramme d'activité</h2>
+  <h2>Diagramme d'activité</h2>
+
+  <div>
     <img src="./img/12-uml-11.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -353,9 +376,12 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./2-uml-diagramme-activites.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>	
+	</p>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -363,14 +389,11 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan.js"></script>
 
+	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+  <script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
@@ -398,13 +421,11 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 
-
 </body>
-
 </html>
