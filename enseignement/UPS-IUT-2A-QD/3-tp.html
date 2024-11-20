@@ -3,34 +3,34 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>TP Qualité de développement : Diagramme UML de séquence</title>
-
-	<meta name="description" content="TP Qualité de développement : Diagramme UML de séquence">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
 	<script>
 		MathJax = {
 			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
+				inlineMath: [['$', '$'], ['\\(', '\\)']]
 			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+			loader: { load: ['ui/lazy'] }
+		};
+	</script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script>
+		function display_correction(my_id) {
+			var x = document.getElementById(my_id);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	</script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +42,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,23 +54,28 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
+<h1>
     Travaux Pratiques - TP<br> 
     La société Lavengro
-</div>
+</h1>
+<!-- #################################################### -->
 <!-- #################################################### -->
 <div class="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
+  <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
 	<b style="color: green;">Les modalités du TP</b>
-    <p  class="text-justify">Ce TP fait l’objet d’une notation. Vous travaillerez en binôme, et vous devrez rendre un compte-rendu. 
-        Les TP sont à remettre <b>avant le Vendredi 8 Décembre 2023</b> par email à l'adresse <code class="listing">idir.ait-sadoune@universite-paris-saclay.fr</code> 
-        avec comme objet <br> <code  class="listing">[QD-TP-UML]</code>. 
-        Vous devez envoyer un fichier au format <b>PDF</b> qui devra être nommé avec la convention suivante : <code class="listing">NOM1-NOM2-TP.pdf</code>.</p>	
+  <p  class="text-justify">
+		Ce TP fait l'objet d'une notation. Vous travaillerez en binôme, et vous devrez rendre un compte-rendu. 
+		Les TP sont à remettre <b>avant le Vendredi 20 Décembre 2024</b> par email à l'adresse <code class="listing">idir.ait-sadoune@universite-paris-saclay.fr</code> 
+		avec comme objet <br> <code  class="listing">[QD-TP-UML]</code>. 
+		Vous devez envoyer un fichier au format <b>PDF</b> qui devra être nommé avec la convention suivante : <code class="listing">NOM1-NOM2-TP.pdf</code>.
+	</p>	
 </div>
+<!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">
     Description de la société
 </div>
+
 <p class="text-justify">
     La société Lavengro est spécialisée dans le lavage des poids lourds et possède un ensemble de stations de lavage réparties sur la France. 
 </p>
@@ -79,18 +84,18 @@ Les clients de Lavengro sont des entreprises qui souscrivent des contrats pour f
 Lavengro propose diverses formules de contrat, dont deux sont retenues pour cette étude :
 </p>
 <ul>
-    <li>Le <b>forfait lavage à volonté</b>, qui permet de laver, pour un prix fixé d’avance, autant de fois que le client le souhaite, des véhicules figurant sur une liste établie dans le contrat ;  </li>
-    <li>L’<b>abonnement libre service</b>, qui permet au client de payer les lavages à l’aide de cartes à puce spéciales. </li>
+    <li>Le <b>forfait lavage à volonté</b>, qui permet de laver, pour un prix fixé d'avance, autant de fois que le client le souhaite, des véhicules figurant sur une liste établie dans le contrat ;  </li>
+    <li>L'<b>abonnement libre service</b>, qui permet au client de payer les lavages à l'aide de cartes à puce spéciales. </li>
 </ul>
 <p class="text-justify">
 Quel que soit le type de contrat choisi, le client doit donner, au départ, le nom de son entreprise. 
-Celle- ci peut déjà être connue de Lavengro. Si l’entreprise n’est pas connue de Lavengro, ses coordonnées (nom, adresse, téléphone) 
-sont saisies. Dans le cas contraire, une vérification des informations autres que le nom est faite et s’il s’avère qu’il s’agit bien 
+Celle- ci peut déjà être connue de Lavengro. Si l'entreprise n'est pas connue de Lavengro, ses coordonnées (nom, adresse, téléphone) 
+sont saisies. Dans le cas contraire, une vérification des informations autres que le nom est faite et s'il s'avère qu'il s'agit bien 
 de la même société, la procédure de saisie du contrat de lavage peut débuter. 
 </p>
 <p class="text-justify">
 Si le type de contrat choisi est un forfait <b>"lavage à volonté"</b>, le client doit préciser la liste des véhicules 
-qui bénéficieront d’autant de lavages qu’il le souhaite. Pour chaque lavage, le client fournit le numéro d’immatriculation 
+qui bénéficieront d'autant de lavages qu'il le souhaite. Pour chaque lavage, le client fournit le numéro d'immatriculation 
 et le type du véhicule (camion porteur, ensemble semi-benne, etc.). Ces données sont vérifiées et la date de début du contrat est ensuite demandée. 
 Celle-ci détermine la périodicité de paiement : trimestriel si on inscrit de 1 à 3 véhicules, mensuel si on inscrit au moins 4 véhicules. 
 Le client est informé du montant à verser et de la périodicité et doit préciser le numéro du compte bancaire qui sera débité. 
@@ -100,16 +105,17 @@ Des contrôles de format portent sur ce numéro.
 Si le type de contrat est un <b>"abonnement libre service"</b>, le client précise le nombre de cartes à puce, 
 pré-chargées avec 50 unités de lavage, souhaitées. Des cartes numérotées sont établies et transmises au client.
 </p>
-<div class="subsection-title">
+
+<h3>
 	Travail à faire
-</div>
+</h3>
 <p class="text-justify">
     <ul>
         <li>Établir un diagramme de cas d'utilisation du système et un digramme d'activité décrivant les fonctionnalités du système ainsi que le scénario principal.</li>
         
         <li>Établir un diagramme de classe du système modélisant les objets manipulées.</li>
             
-        <li>Construire les diagrammes de séquences correspondant à l’établissement de chaque sorte de contrat. </li>
+        <li>Construire les diagrammes de séquences correspondant à l'établissement de chaque sorte de contrat. </li>
             
         <li>Construire un diagramme de séquence modélisant le comportant global du système de souscription de contrats de lavage en faisant usage de fragment <b>alt</b> et <b>ref</b>.</li>
     </ul>
@@ -125,7 +131,7 @@ pré-chargées avec 50 unités de lavage, souhaitées. Des cartes numérotées s
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
