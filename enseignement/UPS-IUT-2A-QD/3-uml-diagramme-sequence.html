@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Qualité de développement : Diagramme UML de séquence</title>
-
-	<meta name="description" content="Qualité de développement : Diagramme UML de séquence">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -58,7 +49,7 @@
 
 	<div class="description" >
 		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -70,9 +61,9 @@
 				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
 			</a>
 			<br>
-            <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-            </a>
+      <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
 
@@ -87,139 +78,150 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Cycle de développement</h2>
-    <div class="r-stack">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-1.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-2.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-3.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-4.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-5.svg" height="auto" width="900px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-2.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-3.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-4.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-5.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in-then-out" src="./img/cycle-dev-en-v-6.svg" height="auto" width="1000px" alt="">
-        <img class="fragment fade-in" src="./img/cycle-dev-en-v-step-2-3-4.svg" height="auto" width="1000px" alt="">
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch1" name="Diagramme de séquence"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Définitions</h2>
-    
-    <div class="left-content">
-        <ul>
-            <li class="fragment">
-                Les <b>diagrammes de séquence</b> ont été 
-                introduits pour permettre <br> de décrire les <i>scénarios de communications entre objets</i>.
-                <ul id="fleche">
-                    <li class="fragment">décrire les <i>messages échangés</i> pour la <i>réalisation 
-                        d’une fonctionnalité</i>.</li>
-                     
-                    <li class="fragment">identifier <i>les liens</i> et <i>les méthodes</i> nécessaires pour les objets. </li>
-                </ul> 
-            </li>
-        </ul>
-    
-        <div class="fragment skip" style="display: flex; align-items: center;">
-            <ul style="width: 65%;">
-                <li>Un <b>diagramme de séquence</b> représente :
-                <ul>
-                    <li class="fragment">les <i>entités</i> (objets/acteurs) verticalement <br> par des <i>lignes de vie</i></li>
-                    <li class="fragment">les <i>messages</i> horizontalement <br> par <i>des flèches</i></li>
-                </ul>
-                </li>
-            </ul>
-            <div style="width: 35%; margin-left: 20px;">
-                <img src="./img/13-uml-02.svg" height="10%"/>
-            </div>
-        </div>  
-    </div>
-    
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les entités</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <ul style="width: 60%;">
-            <li>Deux <i>entités</i> principales <br> dans un <b>diagramme de séquence</b> : 
-            <ol>
-                <li class="fragment">un <b>acteur</b> représentant <i>une entité extérieur au système</i></li>
-                <li class="fragment">un <b>objet</b> représentant <i>une entité <br> du système</i></li>
-            </ol>
-            </li>
-            <li  class="fragment skip">
-                Chaque entité a une <i>ligne de vie</i> représentée par une <i>ligne verticale</i> 
-                <ul id="fleche">
-                    <li class="fragment">en pointillée lorsque l’entité est inactive</li>
-                    <li class="fragment">en bloc lorsque l’entité est active</li>
-                </ul>
-            </li>
-        </ul>
-        <div style="width: 40%;">
-            <img src="./img/13-uml-03.svg" />
-        </div>
-    </div>
-    
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les messages </h2>
-    <div class="fragment" style="display: flex; align-items: center;">
+  <h2>Cycle de développement</h2>
 
-        <ul style="width: 60%;">
-            <li>Différents <i>types de communications</i> :
-                <ul>
-                    <li class="fragment">création d’un objet</li>
-                    <li class="fragment">appels de méthodes</li>  
-                    <li class="fragment">envoi d’un signal</li>  
-                    <li class="fragment">destruction d’un objet ...</li> 
-                </ul>
-                
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_1.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_3.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_4.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in" src="./../CS-2A-ST58/img/cycle_v_5.svg" height="auto" width="900px" alt="">
+	</div>
+
+	<div class="fragment">
+		Ce cours se positionne dans les étapes <b>Spécification</b> et <b>Conception</b>.
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Eléments de base"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Définitions</h2>
+    
+  <div class="left-content">
+
+    <ul>
+      <li>
+        Les <b>diagrammes de séquence</b> ont été introduits pour permettre de décrire <br> 
+        les <i>scénarios de communications entre objets</i>.
+        <ul id="fleche">
+            <li class="fragment">décrire les <i>messages échangés</i> pour la <i>réalisation 
+                d'une fonctionnalité</i>.
             </li>
+            <li class="fragment">identifier <i>les liens</i> et <i>les méthodes</i> nécessaires pour les objets. </li>
+        </ul> 
+      </li>
+    </ul>
+
+    <div class="fragment d-skip">
+      <div style="float: right; width: 300px;">
+        <img src="./img/13-uml-02.svg"/>
+      </div>
+
+      <ul style="display: block;">
+        <li>
+          Un <b>diagramme de séquence</b> représente :
+          <ul>
+            <li class="fragment">les <b>entités</b> (objets/acteurs) <i>verticalement</i> <br> par des <i>lignes de vie</i></li>
+            <li class="fragment">les <b>messages</b> <i>horizontalement</i> par <i>des flèches</i></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Les entités</h2>
+
+  <div class="fragment" style="display: flex; align-items: center;">
+
+    <ul style="width: 55%;">
+      <li>Un <b>diagramme de séquence</b> décrit des interactions entre deux <b>entités</b> principales : 
+        <ol>
+          <li class="fragment">un <b>acteur</b> $\to$ <i>une entité extérieur au système</i></li>
+          <li class="fragment">un <b>objet</b> $\to$ <i>une entité du système</i></li>
+        </ol>
+      </li>
+      <li  class="fragment skip">
+        Chaque <b>entité</b> a une <i>ligne de vie</i> représentée par une <i>ligne verticale</i> 
+        <ul id="fleche">
+          <li class="fragment">en <i>pointillée</i> lorsque l'entité est <i>inactive</i></li>
+          <li class="fragment">en <i>bloc</i> lorsque l'entité est <i>active</i></li>
         </ul>
+      </li>
+    </ul>
+
+    <div style="width: 45%;">
+      <img src="./img/13-uml-03.svg" />
+    </div>
+  </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Les messages </h2>
+
+  <div class="fragment" style="display: flex; align-items: center;">
+    <ul style="width: 60%;">
+      <li>Un <b>diagramme de séquence</b> permet de spécifier différents <b>types de communications</b> :
+        <ul>
+          <li class="fragment skip">création d'un objet</li>
+          <li class="fragment skip">appels de méthodes</li>  
+          <li class="fragment skip">envoi d'un signal</li>  
+          <li class="fragment skip">destruction d'un objet ...</li> 
+        </ul>
+      </li>
+    </ul>
 
     <div style="width: 40%;">
         <img src="./img/13-uml-07.svg" />
     </div>
-</div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les messages </h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <ul style="width: 65%;">
-            <li>Une communication peut être représentée par <i>trois types de messages</i>
-                <ol>
-                    <li class="fragment"> <b>message synchrone</b> : <br> l'entité attend la réponse avant de continuer</li>
-                    <li class="fragment"> <b>message de retour</b> : <br> la réponse d’une entité à un message</li>
-                    <li class="fragment"> <b>message asynchrone</b> : <br> l'entité n’attend pas la réponse pour continuer</li>	
-                </ol> 
+  <h2>Les messages </h2>
+  
+  <div style="display: flex; align-items: center;">
+    <ul style="width: 60%;">
+      <li>Un <b>diagramme de séquence</b> utilise <br> <i>trois types de messages</i> pour spécifier <br> une communication :
+        <ol>
+          <li class="fragment"> <b>message synchrone</b> : <br> l'entité attend la réponse avant de continuer</li>
+          <li class="fragment"> <b>message de retour</b> : <br> la réponse d'une entité à un message</li>
+          <li class="fragment"> <b>message asynchrone</b> : <br> l'entité n'attend pas la réponse pour continuer</li>	
+        </ol> 
+      </li>
+    </ul>
 
-            </li>
-        </ul>
-
-        <div style="width: 35%;">
-            <img src="./img/13-uml-04.svg" />
-        </div>
-        
+    <div style="width: 40%;">
+      <img src="./img/13-uml-04.svg" />
     </div>
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+  <h2>Exemple</h2>
+
+  <div>
     <img src="./img/13-uml-05.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -232,180 +234,233 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Les fragments combinés</h2>
-    <p>
+
+    <ul>
+      <li>Dans un <b>diagramme de séquence</b>, il est possible :
         <ul>
-            <li class="fragment">Dans un <b>diagramme de séquence</b>, il est possible :
-                <ul>
-                    <li class="fragment">de représenter des <i>contraintes</i> ou des <i>propriétés</i> 
-                        particulières <br> (exécution atomique, répétition, ...).</li> 
-
-                    <li class="fragment">de <i>décomposer une interaction complexe</i> en fragments simples. </li>
-                </ul>
-
-            </li>
-
-            <li class="fragment skip">
-                <b>Le fragment combiné</b> est l'élément graphique permettant <br> de <i>représenter ce type d'information</i>.
-            </li>
+          <li class="fragment">de représenter des <i>contraintes</i> ou des <i>propriétés</i> 
+              particulières <br> (exécution atomique, répétition, ...).</li> 
+          <li class="fragment">de <i>décomposer une interaction complexe</i> en fragments simples. </li>
         </ul>
-    </p>
+      </li>
+
+      <li class="fragment skip">
+        <b>Le fragment combiné</b> est l'élément graphique permettant <br> de <i>représenter ce type d'information</i>.
+      </li>
+    </ul>
+ 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les fragments combinés</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <ul style="width: 60%;">
-            <li><b>Un fragment combiné</b> est constitué de :
-            <ul>
-                <li class="fragment"> <i>un opérateur d’interaction</i> <br> (type de la combinaison) </li>
-                <li class="fragment"> un ou plusieurs <i>fragments d’interaction</i> <br> (une partie du diagramme)</li>
-            </ul>
-            </li>
-            <li class="skip fragment">
-                <b>L'opérateur d’interaction</b> est indiqué <br> dans le coin supérieur gauche <br>
-                dans un <i>rectangle</i>.
-                
-            </li>
+  <h2>Les fragments combinés</h2>
+
+  <div style="display: flex; align-items: center;">
+    <ul style="width: 60%;">
+      <li><b>Un fragment combiné</b> est constitué de :
+        <ul>
+          <li class="fragment"> <i>un opérateur d'interaction</i> <br> (type de la combinaison) </li>
+          <li class="fragment"> un ou plusieurs <i>fragments d'interaction</i> <br> (une partie du diagramme)</li>
         </ul>
-        <div>
-            <img src="./img/13-uml-06.svg" />
-        </div>
+      </li>
+      <li class="skip fragment">
+          <b>L'opérateur d'interaction</b> est indiqué <br> dans le coin supérieur gauche <br>
+          dans un <i>rectangle</i>.
+      </li>
+    </ul>
+    
+    <div>
+        <img src="./img/13-uml-06.svg" />
     </div>
+  </div>
     
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Alternative</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-    <div style="width: 45%; text-align: left;">
-        <b>Alternative - alt</b> : <br> <i>sélectionner</i> un comportement en fonction
+  <h2>Les fragments combinés</h2>
+  <h3>Alternative</h3>
+
+  <div style="display: flex; align-items: center;">
+    <div style="width: 50%; text-align: left;">
+        <b>Alternative - alt</b> : <br> 
+        <i>sélectionner</i> un comportement en fonction
          d'<i>une condition</i>.
     </div> 
-    <img src="./img/13-uml-08.svg" />
-</div>
+
+    <div>
+      <img src="./img/13-uml-08.svg" />
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Option</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 50%; text-align: left;">
-    <b>Option - opt</b> : <br> exécuter un comportement <br> <i>si la condition</i> de garde <i>est vérifiée</i>. 
-        </div>
-    <img style="margin-left:30px" src="./img/13-uml-09.svg" />
+  <h2>Les fragments combinés</h2>
+  <h3>Option</h3>
+
+  <div style="display: flex; align-items: center;">
+    <div style="width: 50%; text-align: left;">
+      <b>Option - opt</b> : <br> 
+      exécuter un comportement <i>si la condition</i> de garde <i>est vérifiée</i>. 
     </div>
+
+    <div>
+      <img src="./img/13-uml-09.svg" />
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Boucle</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 50%; text-align: left;">
-      <b>Boucle - loop</b> : <br> exécuter une interaction <i>tant qu’une condition  est satisfaite</i>. 
-        </div>
-    <img src="./img/13-uml-10.svg" />
+  <h2>Les fragments combinés</h2>
+  <h3>Boucle</h3>
+
+  <div style="display: flex; align-items: center;">
+    <div style="width: 50%; text-align: left;">
+      <b>Boucle - loop</b> : <br> 
+      exécuter une interaction <i>tant qu'une condition  est satisfaite</i>. 
     </div>
+
+    <div>
+      <img src="./img/13-uml-10.svg" />
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Rupture</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 65%; text-align: left;">
-        <b>Rupture - break</b> : <br>  exécuter le fragment associé puis  <br> <i>mettre fin à l’interaction englobante</i>. 
+  <h2>Les fragments combinés</h2>
+  <h3>Rupture</h3>
+
+  <div style="display: flex; align-items: center;">
+    <div style="width: 60%; text-align: left;">
+      <b>Rupture - break</b> : <br>  
+      exécuter le fragment associé puis <i>mettre fin <br> à l'interaction englobante</i>. 
     </div>
-    <img src="./img/13-uml-11.svg" />
+
+    <div>
+      <img src="./img/13-uml-11.svg" style="width: 85%;"/>
     </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Parallèle</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 50%; text-align: left; margin-right: 30px;">
-        <b>Parallèle - par</b> : <br> les fragments d’interaction associés sont <i>exécutés  en parallèle</i>. 
+  <h2>Les fragments combinés</h2>
+  <h3>Parallèle</h3>
+
+  <div style="display: flex; align-items: center;">
+    <div style="width: 50%; text-align: left; margin-right: 30px;">
+      <b>Parallèle - par</b> : <br> 
+      les fragments d'interaction associés sont <i>exécutés  en parallèle</i>. 
     </div>
-    <img src="./img/13-uml-12.svg" />
-</div>
+
+    <div>
+      <img src="./img/13-uml-12.svg" />
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Opérateurs supplémentaires</h2>
-        <ul>
-            <li class="fragment">  <b>ref</b> : appeler une interaction décrite par ailleurs.</li>
-        
-            <li class="fragment skip"> <b>strict</b> : l’ordre d’exécution doit être strictement respecté. </li>
-        
-            <li class="fragment skip"> <b>weak</b> : l’ordre d’exécution des opérations n’a pas d’importance. </li>
-        
-            <li class="fragment skip"> <b>ignore</b> : certains messages peuvent être absents sans incidence. </li>
-        
-            <li class="fragment skip"> <b>consider</b> : certains messages doivent être obligatoirement présents. </li>
-        
-            <li class="fragment skip"> <b>critical</b> : une séquence d’interactions ne peut être interrompue  <br>
-            (<i>séquence critique est atomique</i>).</li>
-        </ul>
+  <h2>Les fragments combinés</h2>
+  <h3>Quelques opérateurs supplémentaires</h3>
+
+  <ul>
+    <li class="fragment skip">  <b>ref</b> : appeler une interaction décrite par ailleurs.</li>
+    <li class="fragment skip"> <b>strict</b> : l'ordre d'exécution doit être strictement respecté. </li>
+    <li class="fragment skip"> <b>weak</b> : l'ordre d'exécution des opérations n'a pas d'importance. </li>
+    <li class="fragment skip"> <b>ignore</b> : certains messages peuvent être absents sans incidence. </li>
+    <li class="fragment skip"> <b>consider</b> : certains messages doivent être obligatoirement présents. </li>
+    <li class="fragment skip"> <b>critical</b> : une séquence d'interactions ne peut être interrompue  <br>
+    (<i>séquence critique est atomique</i>).</li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="Utilisation du diagramme de séquence"></section>
+<section id="ch3" name="Utilisation du diagramme"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>En complément du diagramme <br> de cas d'utilisation</h2>
-    <p>
-        <ul>
-            <li class="fragment"><i>à la place de la description textuelle</i> des scénarios du diagramme <br> 
-                de cas d'utilisation.</li>
-            <li class="fragment skip">pour décrire les <i>flux d’informations échangés</i> 
-                pour la <i>réalisation <br> d’un cas d'utilisation</i>.</li>
-        </ul>
-    </p>
+  <h2>En complément <br> du diagramme de cas d'utilisation</h2>
+  <h3>Spécification</h3>
+
+  <ul>
+    <li class="fragment">à la place de <i>la description textuelle</i> ou du <i>diagramme d'activité</i> <br>
+      décrivant les scénarios du diagramme de cas d'utilisation.</li>
+    <li class="fragment skip">pour décrire les <i>flux d'informations échangés</i> 
+        pour la <i>réalisation <br> d'un cas d'utilisation</i>.</li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+  <h2>En complément <br> du diagramme de cas d'utilisation</h2>
+  <h3>Exemple</h3>
+
+  <div>
     <img data-id="box1" src="./img/13-uml-13.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+  <h2>En complément <br> du diagramme de cas d'utilisation</h2>
+  <h3>Exemple</h3>
+
+  <div>
     <img data-id="box1" style="height: 250px" src="./img/13-uml-13.svg" />
     <img style="height: 450px;margin-left: 50px;" src="./img/13-uml-14.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>En complément du diagramme <br> de classe</h2>
-    <p>
-        <ul>
-            <li class="fragment">identifier <i>les liens</i> entre les objets (les classes).</li>
-            <li class="fragment skip">identifier <i>les méthodes</i> nécessaires pour les objets (les classes).</li>
-        </ul>
-    </p>
+  <h2>En complément <br> du diagramme de classe</h2>
+  <h3>Conception</h3>
+
+  <ul>
+    <li class="fragment">identifier <i>les liens</i> entre les objets (les classes).</li>
+    <li class="fragment skip">identifier <i>les méthodes</i> nécessaires pour les objets (les classes).</li>
+  </ul>
+   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
-    <img data-id="box2" src="./img/13-uml-05.svg" />
+  <h2>En complément <br> du diagramme de classe</h2>
+  <h3>Exemple</h3>
+
+  <div>
+    <img data-id="box2"  style="height: 450px" src="./img/13-uml-05.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+  <h2>En complément <br> du diagramme de classe</h2>
+  <h3>Exemple</h3>
+
+  <div>
     <img data-id="box2" style="height: 450px" src="./img/13-uml-05.svg" />
     <img style="height: 400px;margin-left: 100px;" src="./img/13-uml-15.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -414,9 +469,12 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./3-uml-diagramme-sequence.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>	
+	</p>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -424,13 +482,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan.js"></script>
 
+	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
@@ -459,7 +513,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealMath.MathJax3,RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
@@ -467,5 +521,4 @@
 
 
 </body>
-
 </html>
