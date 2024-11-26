@@ -711,174 +711,170 @@
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>L'état d'un modèle</h2>
 
 	<ul>
-		<li class="fragment"><b>Un modèle discret</b> est d'abord constitué d'un <b>état</b></li>
-		<li class="fragment skip">L'état est représenté par des <b>constantes</b> et des <b>variables</b></li>
+		<li><b>Un modèle discret</b> est d'abord constitué d'un <b>état</b></li>
+		<li class="skip">L'état est représenté par des <b>constantes</b> et des <b>variables</b></li>
 		<li class="fragment skip">Les <b>constantes</b> sont liées par certaines <b>propriétés</b></li>
 		<li class="fragment skip">Les <b>variables</b> sont liées par des <b>invariants</b></li>
 		<li class="fragment skip">Les <b>propriétés</b> et les <b>invariants</b> sont écrits à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Une vue schématique du modèle</h2>
+	<h2>Une vue schématique <br> du modèle</h2>
+	
 	<div style="display: flex;">
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
-                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
-                <li>&nbsp;</li>
-                <li class="fragment"><span class="eb-cl">SETS</span> $s$</li>
-                <li class="fragment"><span class="eb-cl">CONSTANTS</span> $c$</li>
-                <li class="fragment"><span class="eb-cl">AXIOMS</span>
-                    <ul>
-                        <li>$A(s,c)$</li>
-                    </ul>
-                </li>
-                <li class="fragment"><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+</pre>
+<pre id="eb" class="fragment" data-fragment-index="2">
 
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
-                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
-                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
-                <li>&nbsp;</li>
-                <li class="fragment"><span class="eb-cl">VARIABLES</span> $v$</li>
-                <li class="fragment"><span class="eb-cl">INVARIANTS</span>
-                    <ul>
-                        <li>$I(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li class="fragment"><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li class="fragment">...</li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+</pre>
+<pre id="eb" class="fragment" data-fragment-index="3">
 
-		<div style="width: 33%;">
-		</div>
-    </div>
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+...
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;"></div>
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les événements d'un modèle (transitions)</h2>
+	<h2>Les événements d'un modèle <br> (transitions)</h2>
+
 	<ul>
-		<li class="fragment"><b>Un modèle discret</b> est également constitué d'un certain nombre <b>d'événements</b></li>
-		<li class="fragment skip">Un <b>événement</b> est composé <b>d'une garde</b> et <b>d'une action</b></li>
+		<li><b>Un modèle discret</b> est également constitué d'un certain nombre <br> <b>d'événements</b></li>
+		<li class="skip">Un <b>événement</b> est composé <b>d'une garde</b> et <b>d'une action</b></li>
 		<li class="fragment skip">La <b>garde</b> indique la <b>condition d'activation</b> de l'événement</li>
 		<li class="fragment skip">L'<b>action</b> indique la façon dont <b>l'état est modifié</b> par l'événement</li>
 		<li class="fragment skip">Les <b>gardes</b> et les <b>actions</b> sont écrites à l'aide d'expressions <br> de <b>la théorie des ensembles</b></li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Une vue schématique du modèle</h2>
+	<h2>Une vue schématique <br> du modèle</h2>
+	
 	<div style="display: flex;">
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
-                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">SETS</span> $s$</li>
-                <li><span class="eb-cl">CONSTANTS</span> $c$</li>
-                <li><span class="eb-cl">AXIOMS</span>
-                    <ul>
-                        <li>$A(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
 
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
-                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
-                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">VARIABLES</span> $v$</li>
-                <li><span class="eb-cl">INVARIANTS</span>
-                    <ul>
-                        <li>$I(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">EVENTS</span>
-                    <ul>
-                        <li>$[events\_list]$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
 
-		<div style="width: 33%;">
-			<ul class="fragment" id="eb">
-				<li>event $\mathrel{\widehat=}$ 
-					<ul>
-						<li><span class="eb-kw">any</span> $x$</li>
-						<li><span class="eb-kw">where</span>
-							<ul>
-								<li>$G(s,c,v,x)$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">then</span>
-							<ul>
-								<li>$BA(s,c,v,x,v')$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">end</span></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-    </div>
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+</pre>
+<pre id="eb" class="fragment" data-fragment-index="2">
+<b>EVENTS</b>
+	$[events\_list]$
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;">
+<div class="eb-code fragment" data-fragment-index="3">
+<pre id="eb">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+</div>
+	</div>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Interprétation opérationnelle</h2>
+
 	<ul>
-		<li class="fragment">L'exécution d'un événement est censée <b>ne pas prendre de temps</b></li>
+		<li>L'exécution d'un événement est censée <b>ne pas prendre de temps</b></li>
 		<li class="fragment skip">Deux événements <b>ne peuvent pas se produire simultanément</b></li>
 		<li class="fragment skip">Si tous les événements ont des gardes fausses, <b>le système s'arrête</b></li>
 		<li class="fragment skip">Si plusieurs événements ont des gardes vraies, <b>l'un d'eux est choisi</b> <br>
 			 de manière non déterministe, et <b>son action modifie l'état</b></li>
 		<li class="fragment skip">La phase précédente est <b>répétée</b> (si possible)</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Interprétation opérationnelle</h2>
-	<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+
+	<pre style="width: 60%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
 		Initialize;
 		while (some events have true guards) {
 			Choose one such event;
@@ -891,94 +887,85 @@
 		<li class="fragment skip">Cette interprétation est juste donnée ici pour une <b>compréhension informelle</b></li>
 		<li class="fragment skip">L'<b>interprétation</b> d'un système discret est <b>donnée par les preuves</b> <br> qui peuvent être effectuées sur lui</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Une vue schématique du modèle</h2>
+	<h2>Une vue schématique <br> du modèle</h2>
+	
 	<div style="display: flex;">
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
-                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">SETS</span> $s$</li>
-                <li><span class="eb-cl">CONSTANTS</span> $c$</li>
-                <li><span class="eb-cl">AXIOMS</span>
-                    <ul>
-                        <li>$A(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
 
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
-                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
-                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">VARIABLES</span> $v$</li>
-                <li><span class="eb-cl">INVARIANTS</span>
-                    <ul>
-                        <li>$I(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">EVENTS</span>
-                    <ul>
-                        <li>$[events\_list]$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
 
-		<div style="width: 33%;">
-			<ul id="eb">
-				<li>event $\mathrel{\widehat=}$ 
-					<ul>
-						<li><span class="eb-kw">any</span> $x$</li>
-						<li><span class="eb-kw">where</span>
-							<ul>
-								<li>$G(s,c,v,x)$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">then</span>
-							<ul>
-								<li>$BA(s,c,v,x,v')$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">end</span></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-    </div>
-	<div class="skip">
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$
+</pre>
+<pre id="eb">
+<b>END</b>
+</pre>
+</div>
+	</div>
+	
+	<div style="width: 33%;">
+<div class="eb-code">
+<pre id="eb">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+</div>
+	</div>
+	</div>
+
+	<div class="d-skip">
 		<ul id="eb">
-			<li class="fragment">$A(s,c) \mathbin\Rightarrow T(s,c) $</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \mathbin\Rightarrow T(s,c,v)$</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') \mathbin\Rightarrow I(s,c,v')$</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  \mathbin\Rightarrow \exists v'.BA(s,c,v,x,v')$</li>
-			<li class="fragment">...</li>
+			<li class="fragment" data-fragment-index="2">$A(s,c) ~~~\vdash~~~ T(s,c) $</li>
+			<li class="fragment" data-fragment-index="3">$A(s,c) \land I(s,c,v) ~~~\vdash~~~ T(s,c,v)$</li>
+			<li class="fragment" data-fragment-index="4">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  ~~~\vdash~~~ \exists v'.BA(s,c,v,x,v')$</li>
+			<li class="fragment" data-fragment-index="5">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') ~~~\vdash~~~ I(s,c,v')$</li>
+			<li class="fragment" data-fragment-index="5">$...$</li>
 		</ul>
 	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Construire des systèmes complexes</h2>
+	<h2>Développer <br> des systèmes complexes</h2>
+
 	<ul>
 		<li class="fragment">
 			La formalisation contient des modèles :
@@ -994,32 +981,40 @@
 			Le <b>raffinement</b>  peut être utilisé pour maîtriser cette complexité
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le raffinement</h2>
+
 	<ul>
-		<li class="fragment">Le <b>raffinement</b> nous permet de construire un modèle <b>progressivement</b></li>
+		<li>Le <b>raffinement</b> nous permet de construire un modèle <b>progressivement</b></li>
 		<li class="fragment skip">Nous construirons <b>une séquence ordonnée</b> de modèles plus précis</li>
 		<li class="fragment skip">Chaque modèle est <b>un raffinement</b> de celui qui le précède</li>
 		<li class="fragment skip">Une analogie : regarder à travers <b>un microscope</b></li>
 		<li class="fragment skip">Extensions <b>spatiales</b> et <b>temporelles</b></li>
 		<li class="fragment skip"><b>Raffinement des données</b></li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les phases du développement formel</h2>
-	<img src="./img/cycle_ref.svg" alt="">
+	<h2>Les phases <br> du développement formel</h2>
+
+	<div>
+		<img src="./img/cycle_ref.svg" alt="">
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les phases du développement formel</h2>
+	<h2>Les phases <br> du développement formel</h2>
+
 	<ul>
-		<li class="fragment">Construction du <b>modèle abstrait </b>
+		<li>Construction du <b>modèle abstrait </b>
 			<ul>
 				<li><b>le document d'exigences</b> logicielles est donné</li>
 				<li>les détails de ce document sont progressivement <b>extraits</b></li>
@@ -1044,14 +1039,18 @@
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les phases du développement formel</h2>
-	<img src="./img/dev-event-b.svg" alt="">
+	<h2>Les phases <br> du développement formel</h2>
+
+	<div>
+		<img src="./img/dev-event-b.svg" alt="">
+	</div>
+	
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1063,42 +1062,48 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Objectifs du cours</h2>
+
 	<ul>
-		<li class="fragment">Donner un aperçu sur les activités de <b>modélisation</b> <br> et du <b>raisonnement formel</b></li>
+		<li class="fragment">Donner un aperçu sur les activités de <b>modélisation</b> et du <b>raisonnement formel</b></li>
 		<li class="skip fragment">Montrer que les programmes peuvent être <b>corrects par construction</b></li>
 		<li class="skip fragment">Montrer que la modélisation peut être rendue <b>pratique</b></li>
 		<li class="skip fragment">Illustrer cette approche par de nombreux <b>exemples</b></li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Ce que vous apprendrez</h2>
-	<ul>
-		<li class="fragment">À la fin du cours, vous devriez être à l'aise avec :
-			<ul id="fleche">
-				<li class="skip fragment">La <b>modélisation</b> (versus programmation)</li>
-				<li class="fragment">L'<b>abstraction</b> et le <b>raffinement</b></li>
-				<li class="fragment">Quelques <b>techniques mathématiques</b> utilisées pour le raisonnement</li>
-				<li class="fragment">La pratique de <b>la preuve</b> comme moyen de <b>construire des programmes</b></li>
-				<li class="fragment">L'utilisation de certains <b>outils de preuve</b></li>
-			</ul>
-		</li>
-	</ul>
+	
+	<div class="left-content">
+		À la fin du cours, vous devriez être à l'aise avec : <br>
+
+		<ul id="fleche">
+			<li class="skip fragment">La <b>modélisation</b> (versus programmation)</li>
+			<li class="fragment">L'<b>abstraction</b> et le <b>raffinement</b></li>
+			<li class="fragment">Quelques <b>techniques mathématiques</b> utilisées pour le raisonnement</li>
+			<li class="fragment">La pratique de <b>la preuve</b> comme moyen de <b>construire des programmes</b></li>
+			<li class="fragment">L'utilisation de certains <b>outils de preuve</b></li>
+		</ul>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>L'évaluation ...</h2>
-	<ul>
-		<li class="fragment">L'étude de cas 
-			<a href="https://abz2020.uni-ulm.de/resources/files/casestudyABZ2020v1.17.pdf" target="_blank">Adaptive Exterior Light and Speed Control System</a>
-			<ul>
-				<li>l'étude de cas de la conférence internationale ABZ 2020</li>
-				<li>projet sur deux jours : $2 \times 3h$</li>
-			</ul>
-		</li>
-	</ul>
+
+	<div class="left-content">
+		Le contrôleur 
+		<a href="https://abz2020.uni-ulm.de/resources/files/casestudyABZ2020v1.17.pdf" target="_blank">Adaptive Exterior Light and Speed Control System</a>
+		<br>
+		<ul>
+			<li>l'étude de cas de la conférence internationale ABZ 2020</li>
+			<li>projet sur deux jours : $2 \times 3h$</li>
+		</ul>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1107,9 +1112,12 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./1-event-b-method.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>	
+	</p>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
