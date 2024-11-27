@@ -5,21 +5,21 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
-#eb{
+.reveal pre.math-code{
+	font-size: 0.9em !important;
 	tab-size: 2 !important ;
-	padding: 0 !important;
-	margin: 0 !important;
-	box-shadow:none ;
+	box-shadow:none !important;
 }
 
-.eb-code {
-	display: block;
-	position: relative;
-	width: 90%;
-	text-align: left;
-	line-height: 1.2em;
-	word-wrap: break-word;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+.reveal pre.eb-code {
+	display: block !important;
+	position: relative !important;
+	width: 90% !important;
+	text-align: left !important;
+	line-height: 1.2em !important;
+	tab-size: 2 !important ;
+	word-wrap: break-word !important;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15) !important;
 	margin-left: auto !important; 
 	margin-right: auto !important;
 	padding : 3px 10px !important;
@@ -29,7 +29,7 @@
 #eb li{
 	font-family: 'Monaco' !important;  
 	list-style: none !important; 
-	font-size: 25px !important;
+	font-size: 0.9em !important;
 }
 
 .eb-cl, #eb b{

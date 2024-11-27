@@ -357,14 +357,12 @@
     <li><b>STATIC PART</b> of the state $\to$ <b>constant</b> <code class="listing">$d$</code> with <b>axiom</b>  
         <code class="listing">axm0_1</code></li>
 
-<div class="eb-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
-<pre id="eb">
+<pre id="eb" class="math-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
 <b>CONSTANTS</b>
-    $d$
+  $d$
 <b>AXIOMS</b>
-    <u>axm0_1:</u> $d \in \mathbb N$
+  <u>axm0_1:</u> $d \in \mathbb N$
 </pre>
-</div>
 
     <li class="skip"><code class="listing">d</code> is the maximum number of cars allowed on the Island-Bridge</li>
     <li class="skip"><code class="listing">axm0_1</code> states that <code class="listing">$d$</code> is a natural number</li>
@@ -381,15 +379,13 @@
     <li><b>DYNAMIC PART</b> of the state $\to$ <b>variable</b> <code class="listing">$n$</code> with <b>invariants</b>  
         <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
  
-<div class="eb-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
-<pre id="eb">
+<pre id="eb" class="math-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
 <b>VARIABLES</b>
   $n$
 <b>INVARIANTS</b>
   <u>inv0_1:</u> $n \in \mathbb N$
   <u>inv0_2:</u> $n \leq d$
 </pre>
-</div>
 
     <li class="skip"><code class="listing">$n$</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
     <li class="skip"><code class="listing">$n$</code> is a natural number (<code class="listing">inv0_1</code>)</li>
@@ -441,25 +437,21 @@
     <li>An event is denoted by its <b>name</b>  and its <b>action</b>  (an assignment)</li>
     <li class="fragment skip">Event <code class="listing">ML_out</code> <b>increments</b>  the number of cars</li>
 
-<div class="eb-code skip fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
-<pre id="eb">
+<pre id="eb" class="math-code fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
 ML_out $\mathrel{\widehat=}$
   <i>then</i>
     <u>act0_1:</u> $n := n + 1$
   <i>end</i>
 </pre>
-</div>
 
     <li class="fragment skip">Event <code class="listing">ML_in</code> <b>decrements</b>  the number of cars</li>
 
-<div class="eb-code skip fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
-<pre id="eb">
+<pre id="eb" class="math-code fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
 ML_in $\mathrel{\widehat=}$
   <i>then</i>
     <u>act0_1:</u> $n := n - 1$
   <i>end</i>
 </pre>
-</div>
   </ul>
 
 </section>
@@ -527,49 +519,45 @@ ML_in $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Before-after Predicates</h2>
-  <h3>Examples</h3>
+  <h3>Example</h3>
 
-  <p>The events</p>
+  <p>The <b>events</b></p>
 
-<div style="display: flex;">
-<div style="width: 20%;"></div>
-<div class="eb-code" style="width: 25%;">
-<pre id="eb">
+  <div style="display: flex; width: 90%; margin-left: auto;">
+    <div style="width: 50%;">
+<pre id="eb" class="math-code" >
 ML_out $\mathrel{\widehat=}$
   <i>then</i>
     <u>act0_1:</u> $n := n + 1$
   <i>end</i>
 </pre>
-</div>
+    </div>
 
-<div class="eb-code" style="width: 25%;">
-<pre id="eb">
+    <div style="width: 50%;">
+<pre id="eb" class="math-code" >
 ML_in $\mathrel{\widehat=}$
   <i>then</i>
     <u>act0_1:</u> $n := n - 1$
   <i>end</i>
 </pre>
-</div>
-<div style="width: 20%;"></div>
-</div>
+    </div>
+  </div>
 
-<div class="d-skip fragment">
-  <p>The corresponding <b>before-after predicates</b></p> 
+  <div class="fragment">
+    <p>The corresponding <b>before-after predicates</b></p> 
 
-<div style="display: flex;">
-<div style="width: 20%;"></div>
-<div class="eb-code" style="width: 25%;">
-$$n' = n + 1$$
-</div>
+    <div style="display: flex; width: 90%; margin-left: auto;">
+      <div style="width: 50%;">
+        $$n' = n + 1$$
+      </div>
 
-<div class="eb-code" style="width: 25%;">
-$$n' = n - 1$$
-</div>
-<div style="width: 20%;"></div>
-</div>
-</div>
+      <div style="width: 50%;">
+        $$n' = n - 1$$
+      </div>    
+    </div>
+  </div>
 
-  <div id="default-block" class="d-skip fragment left-content">
+  <div id="default-block" class="fragment left-content">
     These representations are equivalent.
   </div>
 
@@ -747,383 +735,310 @@ $$n' = n - 1$$
   </div>
 
   <div class="fragment">
-    can be re-written vertically as follows<br>
-    <div style="display: flex;" class="skip">
-      <div style="width: 25%;"></div>
-<pre class="math-code" style="width: 35%;">
+    can be re-written vertically as follows <br>
+
+    <div class="skip" style="display: flex; width: 800px; margin-left: auto;">
+<pre class="math-code" style="width: 45%;">
 $\text{Axioms}$ 
 $\text{Invariants}$
 $\vdash$ 
 $\text{Modified Invariant}$ 
 </pre>
-<pre class="math-code" style="width: 30%;">
+<pre class="math-code" style="width: 55%;">
 $A(c)$
 $I(c, v)$
 $\vdash$
 $I_i(c, E(c, v))$
 </pre>
-<div style="width: 10%;"></div>
     </div>
   </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Back to our Example</h2>
-    <ul>
-        <li>
-            We have <i>two events</i> 
-            <div style="display: flex;">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>ML_out $\mathrel{\widehat=}$
-                            <ul>
-                                <li><span class="eb-kw">then</span>
-                                    <ul>
-                                        <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                                    </ul>     
-                                </li>
-                                <li><span class="eb-kw">end</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>ML_in $\mathrel{\widehat=}$
-                            <ul>
-                                <li><span class="eb-kw">then</span>
-                                    <ul>
-                                        <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                                    </ul>     
-                                </li>
-                                <li><span class="eb-kw">end</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </li>
+
+  <ul>
+    <li>We have <i>two events</i> </li>
+
+    <div style="display: flex;">
+      <div style="width: 50%;">
+<pre id="eb" class="math-code">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
+</pre>
+      </div>
+      <div style="width: 50%;">
+<pre id="eb" class="math-code">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
+</pre>
+      </div>
+    </div>
         
-        <li class="skip">
-            And <i>two invariants</i> 
-            <div style="display: flex;">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cm">inv0_1:</span> $n \in \mathbb N$</li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li><span class="eb-cm">inv0_2:</span> $n \leq d$</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
+    <li class="skip fragment">And <i>two invariants</i> </li>
 
-        <li class="skip">
-            Thus, we need to prove <i>four proof obligations</i> 
-        </li>
-    </ul>
+    <div class="fragment" style="display: flex;">
+      <div style="width: 50%;">
+<pre id="eb" class="math-code" >
+<u>inv0_1:</u> $n \in \mathbb N$
+</pre>
+      </div>
+      <div style="width: 50%;">
+<pre id="eb" class="math-code" >
+<u>inv0_2:</u> $n \leq d$
+</pre>
+      </div>
+    </div>
+
+    <li class="skip fragment">
+        Thus, we need to prove <i>four proof obligations</i> 
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!--%%%%%%% TO DO %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation for <code class="listing">ML_out</code> <br> and <code class="listing">inv0_1</code> </h2>
+	<h2>Proof obligation <br> for <code class="listing">ML_out</code> and <code class="listing">inv0_1</code> </h2>
 
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_out $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$n' = n + 1$</li>
-            </ul>
-        </div>
-    </div>
+<div class="eb-code" style="width: 40%;">
+<pre id="eb">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$ <u>// $n' = n + 1$</u>
+  <i>end</i>
+</pre>
+</div>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>Axiom <span class="eb-cm">axm0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_2</span></li>
-                <li>$\vdash$</li>
-                <li>Modified Invariant <span class="eb-cm">inv0_1</span></li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li style="color: red;">$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-    </div>
+<div style="display: flex;" class="skip">
+  <div style="width: 25%;"></div>
+<pre class="math-code" style="width: 50%;">
+$\text{Axioms}$ axm0_1
+$\text{Invariant}$ inv0_1
+$\text{Invariant}$ inv0_2 
+$\vdash$ 
+$\text{Modified Invariant}$ inv0_1
+</pre>
+<pre class="math-code" style="width: 30%;">
+$d \in \mathbb N$
+<span style="color: red;">$n \in \mathbb N$</span>
+$n \leq d$
+$\vdash$
+<span style="color: red;">$n + 1 \in \mathbb N$</span>
+</pre>
+<div style="width: 5%;"></div>
+</div>
 
     <div class="skip">
-        This proof obligation is named:  <b>ML_out/inv0_1/INV</b>
+        This proof obligation is named <b>ML_out/inv0_1/INV</b>
     </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation for <code class="listing">ML_out</code> <br> and <code class="listing">inv0_2</code> </h2>
+	<h2>Proof obligation <br> for <code class="listing">ML_out</code> and <code class="listing">inv0_2</code> </h2>
 
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_out $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$n' = n + 1$</li>
-            </ul>
-        </div>
-    </div>
+<div class="eb-code" style="width: 40%;">
+<pre id="eb">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$ <u>// $n' = n + 1$</u>
+  <i>end</i>
+</pre>
+</div>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>Axiom <span class="eb-cm">axm0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_2</span></li>
-                <li>$\vdash$</li>
-                <li>Modified Invariant <span class="eb-cm">inv0_2</span></li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li style="color: red;">$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \leq d$</li>
-            </ul>
-        </div>
-    </div>
+<div style="display: flex;" class="skip">
+  <div style="width: 25%;"></div>
+<pre class="math-code" style="width: 50%;">
+$\text{Axioms}$ axm0_1
+$\text{Invariant}$ inv0_1
+$\text{Invariant}$ inv0_2 
+$\vdash$ 
+$\text{Modified Invariant}$ inv0_2
+</pre>
+<pre class="math-code" style="width: 30%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+<span style="color: red;">$n \leq d$</span>
+$\vdash$
+<span style="color: red;">$n + 1 \leq d$</span>
+</pre>
+<div style="width: 5%;"></div>
+</div>
 
-    <div class="skip">
-        This proof obligation is named:  <b>ML_out/inv0_2/INV</b>
-    </div>
+  <div class="skip">
+      This proof obligation is named <b>ML_out/inv0_2/INV</b>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation for <code class="listing">ML_in</code> <br> and <code class="listing">inv0_1</code> </h2>
+	<h2>Proof obligation for <br> <code class="listing">ML_in</code> and <code class="listing">inv0_1</code> </h2>
 
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_in $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$n' = n - 1$</li>
-            </ul>
-        </div>
-    </div>
+<div class="eb-code" style="width: 40%;">
+<pre id="eb">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$ <u>// $n' = n - 1$</u>
+  <i>end</i>
+</pre>
+</div>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>Axiom <span class="eb-cm">axm0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_2</span></li>
-                <li>$\vdash$</li>
-                <li>Modified Invariant <span class="eb-cm">inv0_1</span></li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li style="color: red;">$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-    </div>
+<div style="display: flex;" class="skip">
+  <div style="width: 25%;"></div>
+<pre class="math-code" style="width: 50%;">
+$\text{Axioms}$ axm0_1
+$\text{Invariant}$ inv0_1
+$\text{Invariant}$ inv0_2 
+$\vdash$ 
+$\text{Modified Invariant}$ inv0_1
+</pre>
+<pre class="math-code" style="width: 30%;">
+$d \in \mathbb N$
+<span style="color: red;">$n \in \mathbb N$</span>
+$n \leq d$
+$\vdash$
+<span style="color: red;">$n - 1 \in \mathbb N$</span>
+</pre>
+<div style="width: 5%;"></div>
+</div>
 
-    <div class="skip">
-        This proof obligation is named:  <b>ML_in/inv0_1/INV</b>
-    </div>
+  <div class="skip">
+      This proof obligation is named <b>ML_in/inv0_1/INV</b>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation for <code class="listing">ML_in</code> <br> and <code class="listing">inv0_2</code> </h2>
+	<h2>Proof obligation <br> for <code class="listing">ML_in</code> and <code class="listing">inv0_2</code> </h2>
 
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_in $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$n' = n - 1$</li>
-            </ul>
-        </div>
-    </div>
+<div class="eb-code" style="width: 40%;">
+<pre id="eb">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$ <u>// $n' = n - 1$</u>
+  <i>end</i>
+</pre>
+</div>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>Axiom <span class="eb-cm">axm0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_1</span></li>
-                <li>Invariant <span class="eb-cm">inv0_2</span></li>
-                <li>$\vdash$</li>
-                <li>Modified Invariant <span class="eb-cm">inv0_2</span></li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li style="color: red;">$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \leq d$</li>
-            </ul>
-        </div>
-    </div>
+<div style="display: flex;" class="skip">
+  <div style="width: 25%;"></div>
+<pre class="math-code" style="width: 50%;">
+$\text{Axioms}$ axm0_1
+$\text{Invariant}$ inv0_1
+$\text{Invariant}$ inv0_2 
+$\vdash$ 
+$\text{Modified Invariant}$ inv0_2
+</pre>
+<pre class="math-code" style="width: 30%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+<span style="color: red;">$n \leq d$</span>
+$\vdash$
+<span style="color: red;">$n - 1 \leq d$</span>
+</pre>
+<div style="width: 5%;"></div>
+</div>
 
-    <div class="skip">
-        This proof obligation is named:  <b>ML_in/inv0_2/INV</b>
-    </div>
+  <div class="skip">
+      This proof obligation is named:  <b>ML_in/inv0_2/INV</b>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Summary of Proof Obligations</h2>
+	<h2>Summary <br> of Proof Obligations</h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <b>ML_out/inv0_1/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li style="color: red;">$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <b>ML_out/inv0_2/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li style="color: red;">$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \leq d$</li>
-            </ul>
-        </div>
+    <div style="display: flex; width: 700px; margin-left: auto; margin-right: auto;" class="skip">
+<pre class="math-code" style="width: 50%;">
+<b>ML_out/inv0_1/INV</b>
+$d \in \mathbb N$
+<span style="color: red;">$n \in \mathbb N$</span>
+$n \leq d$
+$\vdash$
+<span style="color: red;">$n + 1 \in \mathbb N$</span>
+</pre>
+
+<pre class="math-code" style="width: 50%;">
+<b>ML_out/inv0_2/INV</b>
+$d \in \mathbb N$
+$n \in \mathbb N$
+<span style="color: red;">$n \leq d$</span>
+$\vdash$
+<span style="color: red;">$n + 1 \leq d$</span>
+</pre>
     </div>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <b>ML_in/inv0_1/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li style="color: red;">$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <b>ML_in/inv0_2/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li style="color: red;">$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \leq d$</li>
-            </ul>
-        </div>
+    <div style="display: flex; width: 700px; margin-left: auto; margin-right: auto;">
+<pre class="math-code"  style="width: 50%;">
+<b>ML_in/inv0_1/INV</b>
+$d \in \mathbb N$
+<span style="color: red;">$n \in \mathbb N$</span>
+$n \leq d$
+$\vdash$
+<span style="color: red;">$n - 1 \in \mathbb N$</span>
+</pre>
+
+<pre class="math-code" style="width: 50%;">
+<b>ML_in/inv0_2/INV</b>
+$d \in \mathbb N$
+$n \in \mathbb N$
+<span style="color: red;">$n \leq d$</span>
+$\vdash$
+<span style="color: red;">$n - 1 \leq d$</span>
+</pre>
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Informal Proof <br> of <code class="listing">ML_out/inv0_1/INV</code></h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            remove <br> $\longrightarrow$ <br> hypotheses
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n \in \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">obvious</div>
-    </div>
+  <div style="display: flex; width: 900px; margin-left: auto; margin-right: auto;" class="skip">
+<pre class="math-code" style="width: 25%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+$\vdash$
+$n + 1 \in \mathbb N$
+</pre>
 
-    <ul>
-        <li class="skip">In the first step, we <i>remove some irrelevant hypotheses</i> </li>
-        <li class="skip">In the second and final step, we <i>accept the sequent as it is</i> </li>
-        <li class="skip">We have implicitly applied <i>inference rules</i></li>
-        <li class="skip">For <i>rigorous reasoning</i> we will make these rules <i>explicit</i></li>
-    </ul>
+<pre class="math-code" style="width: 25%;">
+remove 
+$\longrightarrow$ 
+hypotheses 
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+$n \in \mathbb N$
+$\vdash$
+$n + 1 \in \mathbb N$
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+  obvious
+</pre>
+  </div>
+
+  <ul>
+    <li class="skip fragment">In the first step, we <i>remove some irrelevant hypotheses</i> </li>
+    <li class="skip fragment">In the second and final step, we <i>accept the sequent as it is</i> </li>
+    <li class="skip fragment">We have implicitly applied <i>inference rules</i></li>
+    <li class="skip fragment">For <i>rigorous reasoning</i> we will make these rules <i>explicit</i></li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

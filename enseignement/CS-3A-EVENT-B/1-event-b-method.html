@@ -731,55 +731,44 @@
 	<h2>Une vue schématique <br> du modèle</h2>
 	
 	<div style="display: flex;">
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
 <b>CONTEXT</b> $ctx_1$
 <b>EXTENDS</b> $ctx_2$
-</pre>
-<pre id="eb" class="fragment" data-fragment-index="2">
-
+<span class="fragment">
 <b>SETS</b> $s$
 <b>CONSTANTS</b> $c$
 <b>AXIOMS</b>
 	$A(s,c)$
 <b>THEOREMS</b>
-	$T(s,c)$
-</pre>
-<pre id="eb">
+	$T(s,c)$</span>
 <b>END</b>
 </pre>
-</div>
-	</div>
+		</div>
 	
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
 <b>MACHINE</b> $mch_1$
 <b>REFINES</b> $mch_2$
 <b>SEES</b> $ctx_i$
-</pre>
-<pre id="eb" class="fragment" data-fragment-index="3">
-
+<span class="fragment">
 <b>VARIABLES</b> $v$
 <b>INVARIANTS</b>
 	$I(s,c,v)$
 <b>THEOREMS</b>
 	$T(s,c,v)$
-...
-</pre>
-<pre id="eb">
+$...$</span>
 <b>END</b>
 </pre>
-</div>
-	</div>
+		</div>
 	
-	<div style="width: 33%;"></div>
+		<div style="width: 33%;"></div>
 	</div>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <!-- TO DO  TO DO  TO DO  TO DO  TO DO  TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Les événements d'un modèle <br> (transitions)</h2>
 
@@ -798,9 +787,8 @@
 	<h2>Une vue schématique <br> du modèle</h2>
 	
 	<div style="display: flex;">
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
 <b>CONTEXT</b> $ctx_1$
 <b>EXTENDS</b> $ctx_2$
 
@@ -810,16 +798,12 @@
 	$A(s,c)$
 <b>THEOREMS</b>
 	$T(s,c)$
-</pre>
-<pre id="eb">
 <b>END</b>
 </pre>
-</div>
-	</div>
+		</div>
 	
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
 <b>MACHINE</b> $mch_1$
 <b>REFINES</b> $mch_2$
 <b>SEES</b> $ctx_i$
@@ -829,20 +813,14 @@
 	$I(s,c,v)$
 <b>THEOREMS</b>
 	$T(s,c,v)$
-</pre>
-<pre id="eb" class="fragment" data-fragment-index="2">
-<b>EVENTS</b>
-	$[events\_list]$
-</pre>
-<pre id="eb">
+<span class="fragment"><b>EVENTS</b>
+	$[events\_list]$</span>
 <b>END</b>
 </pre>
-</div>
-	</div>
+		</div>
 	
-	<div style="width: 33%;">
-<div class="eb-code fragment" data-fragment-index="3">
-<pre id="eb">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code fragment">
 $event$ $\mathrel{\widehat=}$
 	<i>any</i> $x$
 	<i>where</i>
@@ -851,8 +829,7 @@ $event$ $\mathrel{\widehat=}$
 		$BA(s,c,v,x,v')$
 	<i>end</i>
 </pre>
-</div>
-	</div>
+		</div>
 	</div>
 
 </section>
@@ -890,78 +867,6 @@ $event$ $\mathrel{\widehat=}$
 		<li class="fragment skip">L'<b>interprétation</b> d'un système discret est <b>donnée par les preuves</b> <br> qui peuvent être effectuées sur lui</li>
 	</ul>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Une vue schématique <br> du modèle</h2>
-	
-	<div style="display: flex;">
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
-<b>CONTEXT</b> $ctx_1$
-<b>EXTENDS</b> $ctx_2$
-
-<b>SETS</b> $s$
-<b>CONSTANTS</b> $c$
-<b>AXIOMS</b>
-	$A(s,c)$
-<b>THEOREMS</b>
-	$T(s,c)$
-</pre>
-<pre id="eb">
-<b>END</b>
-</pre>
-</div>
-	</div>
-	
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
-<b>MACHINE</b> $mch_1$
-<b>REFINES</b> $mch_2$
-<b>SEES</b> $ctx_i$
-
-<b>VARIABLES</b> $v$
-<b>INVARIANTS</b>
-	$I(s,c,v)$
-<b>THEOREMS</b>
-	$T(s,c,v)$
-<b>EVENTS</b>
-	$[events\_list]$
-</pre>
-<pre id="eb">
-<b>END</b>
-</pre>
-</div>
-	</div>
-	
-	<div style="width: 33%;">
-<div class="eb-code">
-<pre id="eb">
-$event$ $\mathrel{\widehat=}$
-	<i>any</i> $x$
-	<i>where</i>
-		$G(s,c,v,x)$
-	<i>then</i>
-		$BA(s,c,v,x,v')$
-	<i>end</i>
-</pre>
-</div>
-	</div>
-	</div>
-
-	<div class="d-skip">
-		<ul id="eb">
-			<li class="fragment" data-fragment-index="2">$A(s,c) ~~~\vdash~~~ T(s,c) $</li>
-			<li class="fragment" data-fragment-index="3">$A(s,c) \land I(s,c,v) ~~~\vdash~~~ T(s,c,v)$</li>
-			<li class="fragment" data-fragment-index="4">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  ~~~\vdash~~~ \exists v'.BA(s,c,v,x,v')$</li>
-			<li class="fragment" data-fragment-index="5">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') ~~~\vdash~~~ I(s,c,v')$</li>
-			<li class="fragment" data-fragment-index="5">$...$</li>
-		</ul>
-	</div>
-	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
