@@ -357,24 +357,14 @@
     <li><b>STATIC PART</b> of the state $\to$ <b>constant</b> <code class="listing">d</code> with <b>axiom</b>  
         <code class="listing">axm0_1</code></li>
 
-    <div class="skip" style="display: flex;">
-      <div style="width: 50%;">
-        <div class="eb-code">
+<div class="eb-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
 <pre id="eb">
 <b>CONSTANTS</b>
-  $d$
-</pre>
-        </div>
-      </div>
-      <div style="width: 50%;">
-        <div class="eb-code">
-<pre id="eb">
+    $d$
 <b>AXIOMS</b>
-  <u>axm0_1:</u> $d \in \mathbb N$
-</pre>          
-        </div>
-      </div>
-    </div>
+    <u>axm0_1:</u> $d \in \mathbb N$
+</pre>
+</div>
 
     <li class="skip"><code class="listing">d</code> is the maximum number of cars allowed on the Island-Bridge</li>
     <li class="skip"><code class="listing">axm0_1</code> states that <code class="listing">d</code> is a natural number</li>
@@ -384,396 +374,402 @@
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Formalizing the State</h2>
   
-    <ul>
-        <li><b>DYNAMIC PART</b>: <b>variable</b> <code class="listing">n</code> with <b>invariants</b>  
-            <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
-        <div class="skip" style="display: flex;">
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li><span class="eb-cl">VARIABLES</span> 
-                        <ul><li>$n$</li></ul>
-                    </li>
-                </ul>
-            </div>
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li><span class="eb-cl">INVARIANTS</span> 
-                        <ul>
-                            <li><span class="eb-cm">inv0_1:</span> $n \in \mathbb N$</li>
-                            <li><span class="eb-cm">inv0_2:</span> $n \leq d$</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <li class="skip"><code class="listing">n</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
-        <li class="skip"><code class="listing">n</code> is a natural number (<code class="listing">inv0_1</code>)</li>
-        <li class="skip"><code class="listing">n</code> is always smaller than or equal to <code class="listing">d</code> 
-            (<code class="listing">inv0_2</code>): this is <b>FUN 2</b></li>
-    </ul>
+  <ul>
+    <li><b>DYNAMIC PART</b> of the state $\to$ <b>variable</b> <code class="listing">n</code> with <b>invariants</b>  
+        <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
+ 
+<div class="eb-code skip" style="width: 40%; margin-left: auto; margin-right: auto;">
+<pre id="eb">
+<b>VARIABLES</b>
+  $n$
+<b>INVARIANTS</b>
+  <u>inv0_1:</u> $n \in \mathbb N$
+  <u>inv0_2:</u> $n \leq d$
+</pre>
+</div>
+
+    <li class="skip"><code class="listing">n</code> is the <b>effective number of cars</b>  on the Island-Bridge</li>
+    <li class="skip"><code class="listing">n</code> is a natural number (<code class="listing">inv0_1</code>)</li>
+    <li class="skip"><code class="listing">n</code> is always smaller than or equal to <code class="listing">d</code> 
+        (<code class="listing">inv0_2</code>) $\to$ this is <b>FUN 2</b></li>
+  </ul>
   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Event ML_out</h2>
-    <ul>
-        <li>This is the <b>first transition</b>  (or event) that can be <b>observed</b> </li>
-        <li class="skip">A car is leaving the mainland and entering the Island-Bridge
-            <img src="./img/ml_out.svg" alt="">
-        </li>
-        <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>incremented</b> </li>
-    </ul>
-    
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Event ML_in</h2>
-    <ul>
-        <li>We can also observe a <b>second transition</b> (or event) </li>
-        <li class="skip">A car leaving the Island-Bridge and re-entering the mainland
-            <img src="./img/ml_in.svg" alt="">
-        </li>
-        <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>decremented</b> </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Formalizing the two Events (Approximation)</h2>
-    
-    <ul>
-        <li>An event is denoted by its <b>name</b>  and its <b>action</b>  (an assignment)</li>
+	<h2>Event <code class="listing">ML_out</code></h2>
 
-        <li class="fragment skip">Event <code class="listing">ML_out</code> <b>increments</b>  the number of cars
+  <ul>
+    <li>This is the <b>first transition</b>  (or event) that can be <b>observed</b> </li>
+    <li class="skip">A car is leaving the mainland and entering the Island-Bridge</li>
+
+    <div style="width: 80%; margin-left: auto; margin-right: auto;">
+      <img src="./img/ml_out.svg" alt="" >
+    </div>
         
-            <ul id="eb">
-                <li>ML_out $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </li>
-
-        <li class="fragment skip">Event <code class="listing">ML_in</code> <b>decrements</b>  the number of cars
-            <ul id="eb">
-                <li>ML_in $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>incremented</b> </li>
+  </ul>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Event <code class="listing">ML_in</code></h2>
+
+  <ul>
+    <li>We can also observe a <b>second transition</b> (or event) </li>
+    <li class="skip">A car leaving the Island-Bridge and re-entering the mainland</li>
+
+    <div style="width: 80%; margin-left: auto; margin-right: auto;">
+      <img src="./img/ml_in.svg" alt="">
+    </div>
+
+    <li class="skip">The <b>number of cars</b> in the Island-Bridge is <b>decremented</b> </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Formalizing the two Events <br> (Approximation)</h2>
+    
+  <ul>
+    <li>An event is denoted by its <b>name</b>  and its <b>action</b>  (an assignment)</li>
+    <li class="fragment skip">Event <code class="listing">ML_out</code> <b>increments</b>  the number of cars</li>
+
+<div class="eb-code skip fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
+<pre id="eb">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
+</pre>
+</div>
+
+    <li class="fragment skip">Event <code class="listing">ML_in</code> <b>decrements</b>  the number of cars</li>
+
+<div class="eb-code skip fragment" style="width: 40%; margin-left: auto; margin-right: auto;">
+<pre id="eb">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
+</pre>
+</div>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Why an Approximation?</h2>
-    <ul>
-        <li>These events are approximations for <b>two reasons</b>:
-            <ol>
-                <li class="fragment">They might be <b>refined</b>  (made more precise) later</li>
-                <li class="fragment">They might be <b>insufficient</b> at this stage because <b>not consistent <br>
-                    with the invariant</b> </li>
-            </ol>
-        </li>
 
-        <li class="fragment skip">We have to perform a <b>proof</b> in order to <b>verify this consistency</b>.</li>
-    </ul>
+  <ul>
+    <li>These events are approximations for <b>two reasons</b>:
+      <ol>
+        <li class="fragment">They might be <b>insufficient</b> at this stage because <b>not consistent
+            with the invariant</b> </li>
+        <li class="fragment">They might be <b>refined</b>  (made more precise) later</li>
+      </ol>
+    </li>
+
+    <li class="fragment skip">We have to perform a <b>proof</b> in order to <b>verify this consistency</b>.</li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Invariants</h2>
-    <ul>
-        <li>An invariant is a <b>constraint</b>  on the allowed values of the variables</li>
 
-        <li class="skip">An invariant <b>must hold on all reachable states</b>  of a model</li>
+  <ul>
+    <li>An invariant is a <b>constraint</b>  on the allowed values of the variables</li>
 
-        <li class="skip">To verify that this holds we must show that
-            <ol>
-                <li>the invariant holds for <b>initial states</b>, and</li>
-                <li>the invariant is <b>preserved by all events</b> </li>
-            </ol>
+    <li class="skip fragment">An invariant <b>must hold on all reachable states</b>  of a model</li>
 
-        </li>
+    <li class="skip fragment">To verify that this holds we must show that
+      <ol>
+        <li>the invariant holds for <b>initial states</b>, and</li>
+        <li>the invariant is <b>preserved by all events</b> </li>
+      </ol>
 
-        <li class="skip">We will formalize these two statements as <b>proof obligations (POs)</b> </li>
+    </li>
 
-        <li class="skip">We need a <b>rigorous proof</b>  showing that these POs indeed hold</li>
-    </ul>
+    <li class="skip fragment">We will formalize these two statements as <b>proof obligations (POs)</b> </li>
+
+    <li class="skip fragment">We need a <b>rigorous proof</b>  showing that these POs indeed hold</li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Before-after Predicates</h2>
 
-    <ul>
-        <li>To each event can be associated a <b>before-after predicate</b></li>
+  <ul>
+    <li>To each event can be associated a <b>before-after predicate</b></li>
 
-        <li class="skip">It describes the <b>relation</b>  between the <b>values</b>  of the variable(s) <br> 
-           <b>just before</b> and <b>just after</b> the event occurrence</li>
+    <li class="skip fragment">It describes the <b>relation</b>  between the <b>values</b>  of the variable(s) <br> 
+        <b>just before</b> and <b>just after</b> the event occurrence</li>
 
-        <li class="skip">The <b>before-value</b> is denoted by the <b>variable name</b>, say <code class="listing">$n$</code> </li>
+    <li class="skip fragment">The <b>before-value</b> is denoted by the <b>variable name</b>, say <code class="listing">$n$</code> </li>
 
-        <li class="skip">The <b>after-value</b> is denoted by the <b>primed variable name</b>, say <code class="listing">$n'$</code></li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Before-after Predicate Examples</h2>
-    <ul>
-        <li>The Events</li>
-        <div style="display: flex;">
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>ML_out $\mathrel{\widehat=}$
-                        <ul>
-                            <li><span class="eb-kw">then</span>
-                                <ul>
-                                    <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                                </ul>     
-                            </li>
-                            <li><span class="eb-kw">end</span></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>ML_in $\mathrel{\widehat=}$
-                        <ul>
-                            <li><span class="eb-kw">then</span>
-                                <ul>
-                                    <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                                </ul>     
-                            </li>
-                            <li><span class="eb-kw">end</span></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <li class="skip fragment">The corresponding <b>before-after predicates</b></li>
-        <div class="fragment" style="display: flex;">
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>$n' = n + 1$</li>
-                </ul>
-            </div>
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>$n' = n - 1$</li>
-                </ul>
-            </div>
-        </div>
-
-        <li class="skip fragment">These representations are equivalent.</li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>About the Shape of the Before-after Predicates</h2>
-
-    <ul>
-        <li>The before-after predicates we have shown are <b>very simple</b></li>
-        <div style="display: flex;">
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>$n' = n + 1$</li>
-                </ul>
-            </div>
-            <div style="width: 50%;">
-                <ul id="eb">
-                    <li>$n' = n - 1$</li>
-                </ul>
-            </div>
-        </div>
-
-        <li class="skip fragment">The after-value <code class="listing">$n'$</code> is defined as a <b>function</b>  
-            of the before-value  <code class="listing">$n$</code></li>
-
-        <li class="skip fragment">This is because the corresponding events are <b>deterministic</b> </li>
-
-        <li class="skip fragment">In later lectures, we shall consider some <b>non-deterministic</b>  events:
-            $$n' \in \{n + 1, n + 2\}$$
-        </li>
-    </ul>
+    <li class="skip fragment">The <b>after-value</b> is denoted by the <b>primed variable name</b>, say <code class="listing">$n'$</code></li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Intuition about Invariant Preservation</h2>
+	<h2>Before-after Predicates</h2>
+  <h3>Examples</h3>
+
+  <p>The events</p>
+
+<div style="display: flex;">
+<div style="width: 20%;"></div>
+<div class="eb-code" style="width: 25%;">
+<pre id="eb">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
+</pre>
+</div>
+
+<div class="eb-code" style="width: 25%;">
+<pre id="eb">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
+</pre>
+</div>
+<div style="width: 20%;"></div>
+</div>
+
+<div class="d-skip fragment">
+  <p>The corresponding <b>before-after predicates</b></p> 
+
+<div style="display: flex;">
+<div style="width: 20%;"></div>
+<div class="eb-code" style="width: 25%;">
+$$n' = n + 1$$
+</div>
+
+<div class="eb-code" style="width: 25%;">
+$$n' = n - 1$$
+</div>
+<div style="width: 20%;"></div>
+</div>
+</div>
+
+  <div id="default-block" class="d-skip fragment left-content">
+    These representations are equivalent.
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>About the Shape <br> of the Before-after Predicates</h2>
+
+  <ul>
+    <li>The before-after predicates we have shown are <b>very simple</b>
+      <div style="display: flex;">
+        <div style="width: 50%;">
+        $$n' = n + 1$$
+        </div>
+
+        <div style="width: 50%;">
+        $$n' = n - 1$$
+        </div>
+      </div>
+    </li>
+
+    <li class="fragment">The after-value <code class="listing">$n'$</code> is defined as a <b>function</b>  
+        of the before-value  <code class="listing">$n$</code></li>
+
+    <li class="skip fragment">This is because the corresponding events are <b>deterministic</b> </li>
+
+    <li class="skip fragment">In later lectures, we shall consider some <b>non-deterministic</b> events
+        $$n' \in \{n + 1, n + 2\}$$
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Intuition <br> about Invariant Preservation</h2>
+
 	<ul>
-        <li>Let us consider invariant <code class="listing">inv0_1</code> 
-            $$n \in \mathbb N$$
-        </li>
-        <li class="skip">And let us consider event <code class="listing">ML_out</code> with before-after predicate
-            $$n' = n + 1$$
-        </li>
-        <li class="skip"><b>Preservation of</b> <code class="listing">inv0_1</code> means that we have (just after <code class="listing">ML_out</code>):
-            $$n' \in \mathbb N  ~~~~~~\textrm{that is}~~~~~~ n + 1 \in \mathbb N$$
-        </li>
-    </ul>
+    <li>Let us consider invariant <code class="listing">inv0_1</code> 
+        $$n \in \mathbb N$$
+    </li>
+    <li class="skip fragment">And let us consider event <code class="listing">ML_out</code> with before-after predicate
+        $$n' = n + 1$$
+    </li>
+    <li class="skip fragment"><b>Preservation of</b> <code class="listing">inv0_1</code> means that we have (just after <code class="listing">ML_out</code>):
+        $$n' \in \mathbb N  ~~~~~~\text{that is}~~~~~~ n + 1 \in \mathbb N$$
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Being more Precise</h2>
-    <ul>
-        <li>Under <i>hypothesis</i> $n \in \mathbb N$ 
-            the <i>conclusion</i>  $n + 1 \in \mathbb N$ holds</li>
-        <li class="skip">
-            This can be written as follows 
-            $$n \in \mathbb N ~~~\vdash~~~ n + 1 \in \mathbb N$$
-        </li>
-        <li class="skip">
-            This type of statement is called a <b>sequent</b>
-        </li>
-        <li class="skip">
-            Sequent above: <i>invariant preservation proof obligation for</i> <code class="listing">inv0_1</code>
-        </li>
-    </ul>
+
+  <ul>
+    <li>Under <i>hypothesis</i> <code class="listing">$n \in \mathbb N$</code>
+        the <i>conclusion</i>  <code class="listing">$n + 1 \in \mathbb N$</code> holds</li>
+    <li class="skip fragment">
+        This can be written as follows 
+        $$n \in \mathbb N ~~~\vdash~~~ n + 1 \in \mathbb N$$
+    </li>
+    <li class="skip fragment">
+        This type of statement is called a <b>sequent</b>
+    </li>
+    <li class="skip fragment">
+        Sequent above $\to$ <i>invariant preservation proof obligation for</i> <code class="listing">inv0_1</code>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Sequents</h2>
-    <ul>
-        <li>
-            A <b>sequent</b> is a formal statement of the following shape 
-            $$H ~~~\vdash~~~ G$$
-        </li>
-        <li class="skip">
-            <b>H</b> denotes a <i>set of predicates</i>: the <i>hypotheses</i> (or <i>assumptions</i>)
-        </li>
-        <li class="skip">
-            <b>G</b> denotes a predicate: the <i>goal</i> (or <i>conclusion</i>)
-        </li>
-        <li class="skip">
-            The symbol "$\vdash$", called the <i>turnstyle</i>, stands for <i>provability</i>. <br>
-            It is read: "<b>Assumptions H yield conclusion G</b>"
-        </li>
-    </ul>
+
+  <ul>
+    <li>
+        A <b>sequent</b> is a formal statement of the following shape 
+        $$H ~~~\vdash~~~ G$$
+    </li>
+    <li class="skip fragment">
+      <code class="listing">$H$</code> denotes a <i>set of predicates</i> $\to$ the <i>hypotheses</i> (or <i>assumptions</i>)
+    </li>
+    <li class="skip fragment">
+      <code class="listing">$G$</code> denotes a <i>predicate</i> $\to$ the <i>goal</i> (or <i>conclusion</i>)
+    </li>
+    <li class="skip fragment">
+        The symbol <code class="listing">$~\vdash~$</code>, called the <i>turnstyle</i>, stands for <i>provability</i>. <br>
+        It is read $\to$ <em>Assumptions $H$ yield conclusion $G$</em>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof Obligation <br> Invariant Preservation</h2>
-    <ul>
-        <li>
-            We collectively denote our set of <i>constants</i>  by <i>$c$</i> 
-        </li>
-        <li class="skip">
-            We denote our set of <i>axioms</i>  by <i>$A(c)$</i>: $A_1(c)$, $A_2(c)$, $...$
-        </li>
-        <li class="skip">
-            We collectively denote our set of <i>variables</i>  by <i>$v$</i> 
-        </li>
-        <li class="skip">
-            We denote our set of <i>invariants</i>  by <i>$I(c, v)$</i>: $I_1(c, v)$, $I_2(c, v)$, $...$
-        </li>
-    </ul>
+	<h2>Proof Obligation</h2>
+  <h3>Invariant Preservation</h3>
+
+  <ul>
+    <li>
+        We collectively denote our set of <i>constants</i> by <i>$c$</i> 
+    </li>
+    <li class="skip fragment">
+        We denote our set of <i>axioms</i>  by <i>$A(c)$</i> $\to$ $A_1(c)$, $A_2(c)$, $\ldots$
+    </li>
+    <li class="skip fragment">
+        We collectively denote our set of <i>variables</i> by <i>$v$</i> 
+    </li>
+    <li class="skip fragment">
+        We denote our set of <i>invariants</i>  by <i>$I(c, v)$</i> $\to$ $I_1(c, v)$, $I_2(c, v)$, $\ldots$
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof Obligation <br> Invariant Preservation</h2>
-    <ul>
-        <li>
-            We are given an <i>event</i>  with <i>before-after predicate $v' = E(c, v)$</i>  
-        </li>
-        <li class="skip">
-            The following sequent expresses <i>preservation of invariant $I_i(c, v)$</i>:
-            $$INV~:~A(c), I(c, v) ~~~\vdash~~~ I_i(c, E(c, v))$$
-        </li>
-        <li class="skip">
-            It says: $I_i(c, E(c, v))$ provable under hypotheses $A(c)$ and $I(c, v)$
-        </li>
-        <li class="skip">
-            We have given the name <b>INV</b> to this proof obligation
-        </li>
-    </ul>
+  <h2>Proof Obligation</h2>
+  <h3>Invariant Preservation</h3>
+
+  <ul>
+    <li>
+        We are given an <i>event</i>  with <i>before-after predicate $v' = E(c, v)$</i>  
+    </li>
+    <li class="skip fragment">
+        The following sequent expresses <i>preservation of invariant $I_i(c, v)$</i>
+        $$INV~:~A(c), I(c, v) ~~~\vdash~~~ I_i(c, E(c, v))$$
+    </li>
+    <li class="skip fragment">
+        It says $\to$ <code class="listing">$I_i(c, E(c, v))$</code> provable 
+        under hypotheses <code class="listing">$A(c)$</code> and <code class="listing">$I(c, v)$</code>
+    </li>
+    <li class="skip fragment">
+        We have given the name <b>$INV$</b> to this proof obligation
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Explanation <br> of the Proof Obligation</h2>
 
+  <div>
     $$INV~:~A(c), I(c, v) ~~~\vdash~~~ I_i(c, E(c, v))$$
+  </div>
+ 
+  <ul>
+    <li>
+        We assume that <code class="listing">$A(c)$</code> as well as <code class="listing">$I(c, v)$</code> hold just before <br> 
+        the occurrence of the event represented by <code class="listing">$v' = E(c, v)$</code>
+    </li>
+    <li class="skip fragment">
+        Just after the occurrence, invariant <code class="listing">$I_i(c, v)$</code> becomes <code class="listing">$I_i(c, v')$</code>, <br> 
+        that is, <code class="listing">$I_i(c, E(c, v))$</code>
+    </li>
+    <li class="skip fragment">
+        The predicate <code class="listing">$I_i(c, E(c, v))$</code> must then hold for <code class="listing">$I_i(c, v)$</code> to be <br> 
+        an invariant
+    </li>
+  </ul>
 
-    <ul>
-        <li>
-            We assume that $A(c)$ as well as $I(c, v)$ hold just before <br> the occurrence of the event represented by $v' = E(c, v)$
-        </li>
-        <li class="skip">
-            Just after the occurrence, invariant $I_i(c, v)$ becomes $I_i(c, v')$, <br> that is, $I_i(c, E(c, v))$
-        </li>
-        <li class="skip">
-            The predicate $I_i(c, E(c, v))$ must then hold for $I_i(c, v)$ to be <br> an invariant
-        </li>
-    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Vertical Layout <br> of Proof Obligations</h2>
-    <ul>
-        <li>
-            The proof obligation 
-            <ul id="eb">
-                <li>$$INV~:~A(c), I(c, v) ~~~\vdash~~~ I_i(c, E(c, v))$$</li>
-            </ul>
-            
-        </li>
-        <li class="skip">
-            can be re-written vertically as follows: <br>
-            <div style="display: flex;" class="skip">
-                <div style="width: 60%;">
-                    <ul id="eb">
-                        <li>Axioms</li>
-                        <li>Invariants</li>
-                        <li>$\vdash$</li>
-                        <li>Modified Invariant</li>
-                    </ul>
-                </div>
-                <div style="width: 40%;">
-                    <ul id="eb">
-                        <li>$A(c)$</li>
-                        <li>$I(c, v)$</li>
-                        <li>$\vdash$</li>
-                        <li>$I_i(c, E(c, v))$</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ul>
+
+  <div>
+    The proof obligation 
+    $$INV~:~A(c), I(c, v) ~~~\vdash~~~ I_i(c, E(c, v))$$
+  </div>
+
+  <div class="fragment">
+    can be re-written vertically as follows: <br>
+    <div style="display: flex;" class="skip">
+      <div style="width: 30%;"></div>
+<pre class="math-code" style="width: 30%;">
+$\text{Axioms}$ 
+$\text{Invariants}$
+$\vdash$ 
+$\text{Modified Invariant}$ 
+</pre>
+<pre class="math-code" style="width: 30%;">
+$A(c)$
+$I(c, v)$
+$\vdash$
+$I_i(c, E(c, v))$
+</pre>
+<div style="width: 10%;"></div>
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Back to our Example</h2>
     <ul>

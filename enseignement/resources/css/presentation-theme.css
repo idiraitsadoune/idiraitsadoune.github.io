@@ -36,6 +36,11 @@
 	padding: 10px 15px 10px 15px !important;
 }
 
+.reveal pre.math-code{
+	font-size: 0.8em !important;
+	box-shadow:none !important;
+}
+
 .reveal b{
   color: var(--r-link-color);
 	font-weight: bold !important; 
