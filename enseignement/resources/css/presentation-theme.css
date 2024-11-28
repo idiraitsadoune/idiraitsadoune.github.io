@@ -50,6 +50,14 @@
 	font-style: italic !important;
 }
 
+.reveal cs-i{
+	margin:0;
+	padding:0;
+	border:0;
+	color:coral ;
+}
+
+
 /* ****************************************************** */
 /* main page style */
 .header-logo{
@@ -188,6 +196,12 @@
 	margin-right: auto !important;
 }
 
+.center-divs{
+	display: flex !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
 .skip{
 	margin-top: 25px !important;
 }
@@ -259,6 +273,13 @@
 
 /* ****************************************************** */
 /* block definitions */
+.box{
+	border-width: 5px;
+	border: solid; 
+	align-items: center !important;
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
 
 #default-block, .default-block {
 	border: solid;
