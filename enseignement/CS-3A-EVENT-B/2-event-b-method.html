@@ -753,18 +753,19 @@ $I_i(c, E(c, v))$
     <div class="center-divs">
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_out $\mathrel{\widehat=}$
-<i>then</i>
-  <u>act0_1:</u> $n := n + 1$
-<i>end</i>
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
 </pre>
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_in $\mathrel{\widehat=}$
-<i>then</i>
-  <u>act0_1:</u> $n := n - 1$
-<i>end</i>
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
 </pre>
     </div>
 
+    <br>
 <span class="fragment"><i>&#10144;</i>  ... and <i>two invariants</i> </span> <br>
 
 <div class="fragment center-divs">
@@ -812,7 +813,7 @@ $\vdash$
 </pre>
   </div>
 
-  <div class="skip">
+  <div id="default-block" class="left-content skip">
       This proof obligation is named <b>ML_out/inv0_1/INV</b>
   </div>
 
@@ -846,7 +847,7 @@ $\vdash$
 </pre>
 </div>
 
-  <div class="skip">
+  <div id="default-block" class="left-content skip">
       This proof obligation is named <b>ML_out/inv0_2/INV</b>
   </div>
 
@@ -880,7 +881,7 @@ $\vdash$
 </pre>
 </div>
 
-  <div class="skip">
+  <div id="default-block" class="left-content skip">
       This proof obligation is named <b>ML_in/inv0_1/INV</b>
   </div>
 
@@ -914,7 +915,7 @@ $\vdash$
 </pre>
 </div>
 
-  <div class="skip">
+  <div id="default-block" class="left-content skip">
       This proof obligation is named:  <b>ML_in/inv0_2/INV</b>
   </div>
 
@@ -924,7 +925,7 @@ $\vdash$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Summary <br> of Proof Obligations</h2>
 
-    <div class="center-divs"  style="width: 700px;">
+  <div class="center-divs"  style="width: 700px;">
 <pre class="math-code" style="width: 50%;">
 <b>ML_out/inv0_1/INV</b>
 $d \in \mathbb N$
@@ -941,9 +942,9 @@ $n \in \mathbb N$
 $\vdash$
 <span style="color: red;">$n + 1 \leq d$</span>
 </pre>
-    </div>
+  </div>
 
-    <div class="center-divs" style="width: 700px;">
+  <div class="center-divs" style="width: 700px;">
 <pre class="math-code"  style="width: 50%;">
 <b>ML_in/inv0_1/INV</b>
 $d \in \mathbb N$
@@ -960,7 +961,7 @@ $n \in \mathbb N$
 $\vdash$
 <span style="color: red;">$n - 1 \leq d$</span>
 </pre>
-    </div>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -978,9 +979,9 @@ $n + 1 \in \mathbb N$
 </pre>
 
 <pre class="math-code" style="width: 25%;">
-remove 
+  remove 
 hypotheses 
-$\Longrightarrow$ 
+    $\Longrightarrow$ 
 </pre>
 
 <pre class="math-code box" style="width: 25%;">
@@ -991,7 +992,7 @@ $n + 1 \in \mathbb N$
 
 <pre class="math-code" style="width: 25%;">
 obvious
-$\surd$
+  $\surd$
 </pre>
   </div>
 
@@ -1166,7 +1167,7 @@ $n + 1 \leq d$
     <li class="skip">We put a <b>?</b> to indicate that <i>we have no rule to apply</i> </li>
     <li class="fragment skip"><b style="color: red;">The proof fails</b> $\to$ we cannot conclude with rule $\text{INC}$ 
       (<cs-i>$n < d$</cs-i> needed)
-        $$  \frac{  }{n < m ~~~ \vdash ~~~ n + 1 \leq m}  ~~~~~~ \textrm{INC}$$
+        $$  \frac{  }{n < m ~~~ \vdash ~~~ n + 1 \leq m}  ~~~~~~ \text{INC}$$
     </li>
   </ul>
 
@@ -1204,7 +1205,7 @@ $n - 1 \in \mathbb N$
   <ul>
       <li class="skip"><b style="color: red;">The proof fails</b> $\to$ we cannot conclude with rule $\text{P2'}$ 
         (<cs-i>$0 < n$</cs-i> needed)
-          $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \textrm{P2'}$$
+          $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \text{P2'}$$
       </li>
   </ul>
 
@@ -1241,145 +1242,105 @@ $n - 1 \leq d$
   </div>
 
   <div class="skip">
-      $$  \frac{  }{n \leq m ~~~ \vdash ~~~ n - 1 \leq m}  ~~~~~~ \textrm{DEC}$$
+      $$  \frac{  }{n \leq m ~~~ \vdash ~~~ n - 1 \leq m}  ~~~~~~ \text{DEC}$$
   </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
- <!--%%%%%%% TO DO TO DO %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Reasons for Proof Failure</h2>
 
     <ul>
-        <li>We needed hypothesis <code class="listing">$n < d$</code>  to prove <code class="listing">ML_out/inv0_2/INV</code></li>
-        <li class="skip">We needed hypothesis <code class="listing">$0 < n$</code>  to prove <code class="listing">ML_in/inv0_1/INV</code>
+        <li>We needed hypothesis <cs-i>$n < d$</cs-i>  to prove <code class="listing">ML_out/inv0_2/INV</code></li>
+        <li class="skip">We needed hypothesis <cs-i>$0 < n$</cs-i>  to prove <code class="listing">ML_in/inv0_1/INV</code>
         
-            <div style="display: flex;" class="skip">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>ML_out $\mathrel{\widehat=}$
-                            <ul>
-                                <li><span class="eb-kw">then</span>
-                                    <ul>
-                                        <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                                    </ul>     
-                                </li>
-                                <li><span class="eb-kw">end</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>ML_in $\mathrel{\widehat=}$
-                            <ul>
-                                <li><span class="eb-kw">then</span>
-                                    <ul>
-                                        <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                                    </ul>     
-                                </li>
-                                <li><span class="eb-kw">end</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="center-divs">
+<pre id="eb" class="math-code" style="width: 50%;">
+ML_out $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
+</pre>
+<pre id="eb" class="math-code" style="width: 50%;">
+ML_in $\mathrel{\widehat=}$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
+</pre>
+        </div>
 
         </li>
-        <li class="skip">We are going to add <code class="listing">$n < d$</code> as a guard to event <code class="listing">ML_out</code></li>
-        <li class="skip">We are going to add <code class="listing">$0 < n$</code> as a guard to event <code class="listing">ML_in</code></li>
+        <li class="fragment skip">We are going to add <cs-i>$n < d$</cs-i> as a guard to event <code class="listing">ML_out</code></li>
+        <li class="fragment skip">We are going to add <cs-i>$0 < n$</cs-i> as a guard to event <code class="listing">ML_in</code></li>
     </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Improving the Events <br> Introducing Guards</h2>
+	<h2>Improving the Events</h2>
+  <h3>Introducing Guards</h3>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_out $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">when</span>
-                            <ul>
-                                <li><span class="eb-cm">grd0_1:</span> $n < d$</li>
-                            </ul>
-                        </li>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n + 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>ML_in $\mathrel{\widehat=}$
-                    <ul>
-                        <li><span class="eb-kw">when</span>
-                            <ul>
-                                <li><span class="eb-cm">grd0_1:</span> $0 < n$</li>
-                            </ul>
-                        </li>
-                        <li><span class="eb-kw">then</span>
-                            <ul>
-                                <li><span class="eb-cm">act0_1:</span> $n := n - 1$</li>
-                            </ul>     
-                        </li>
-                        <li><span class="eb-kw">end</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div> 
-
-    <ul>
-        <li class="skip">We are adding <i>guards</i> to the events</li>
-        <li class="skip">The guard is the <i>necessary condition</i> for an event to “occur”</li>
-    </ul>
+  <ul>
+    <div class="center-divs">
+<pre id="eb" class="math-code" style="width: 50%;">
+ML_out $\mathrel{\widehat=}$
+  <i>when</i>
+    <u>grd0_1:</u> $n < d$
+  <i>then</i>
+    <u>act0_1:</u> $n := n + 1$
+  <i>end</i>
+</pre>
+<pre id="eb" class="math-code" style="width: 50%;">
+ML_in $\mathrel{\widehat=}$
+  <i>when</i>
+    <u>grd0_1:</u> $0 < n$
+  <i>then</i>
+    <u>act0_1:</u> $n := n - 1$
+  <i>end</i>
+</pre>
+    </div>
+    
+    <li class="skip">We are adding <i>guards</i> to the events</li>
+    <li class="skip">The guard is the <i>necessary condition</i> for an event to <em>occur</em></li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof Obligation <br> General Invariant Preservation</h2>
+	<h2>Proof Obligation</h2>
+  <h3>General Invariant Preservation</h3>
+
     <ul>
-        <li>
-            Given <i>$c$</i> with <i>axioms $A(c)$</i> and <i>$v$</i> with <i>invariants $I(c, v)$</i>
-        </li>
+      <li>
+          Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
+      </li>
 
-        <li class="skip">
-            Given an <i>event</i> with <i>guard $G(c, v)$</i> and <i>b-a predicate $v' = E(c, v)$</i>
-        </li>
+      <li class="skip">
+          Given an <i>event</i> with <i>guard</i> <cs-i>$G(c, v)$</cs-i> and <i>b-a predicate</i> <cs-i>$v' = E(c, v)$</cs-i>
+      </li>
 
-        <li class="skip">
-            We modify the Invariant Preservation PO as follows: <br>
-            <div style="display: flex;" class="skip">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>Axioms</li>
-                        <li>Invariants</li>
-                        <li style="color: red;">Guard of the event</li>
-                        <li>$\vdash$</li>
-                        <li>Modified Invariant</li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>$A(c)$</li>
-                        <li>$I(c, v)$</li>
-                        <li style="color: red;">$G(c, v)$</li>
-                        <li>$\vdash$</li>
-                        <li>$I_i(c, E(c, v))$</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ul>
+      <li class="fragment skip">
+          We modify the <b>Invariant Preservation PO</b> as follows:
+          <div class="center-divs">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\text{Invariants}$
+<span style="color: red;">$\text{Guard of the event}$</span>
+$\vdash$ 
+$\text{Modified Invariant}$ 
+</pre>
+<pre class="math-code" style="width: 45%;">
+$A(c)$
+$I(c, v)$
+<span style="color: red;">$G(c, v)$</span>
+$\vdash$
+$I_i(c, E(c, v))$
+</pre>
+        </div>
+      </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1387,31 +1348,34 @@ $n - 1 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A Formal Proof <br> of <code class="listing">ML_out/inv0_1/INV</code></h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n \in \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">P2</div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$n < d$</span>
+$\vdash$
+$n + 1 \in \mathbb N$
+</pre>
 
-    <div class="skip">Adding new assumptions to a sequent <i>does not affect its provability</i></div>
+<pre class="math-code" style="width: 25%;">
+    MON 
+    $\Longrightarrow$ 
+</pre>
+
+<pre class="math-code box" style="width: 25%;">
+$n \in \mathbb N$
+$\vdash$
+$n + 1 \in \mathbb N$
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+    P2
+    $\surd$
+</pre>
+  </div>
+
+  <div class="skip">Adding new assumptions to a sequent <i>does not affect its provability</i></div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1419,35 +1383,38 @@ $n - 1 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A Formal Proof <br> of <code class="listing">ML_out/inv0_2/INV</code></h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n + 1 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;"><b>INC</b></div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$n < d$</span>
+$\vdash$
+$n + 1 \leq d$
+</pre>
 
-    <ul>
-        <li class="skip">Now we can conclude the proof using rule $\textrm{INC}$
-            $$  \frac{  }{n < m ~~~ \vdash ~~~ n + 1 \leq m}  ~~~~~~ \textrm{INC}$$
-        </li>
-    </ul>
+<pre class="math-code" style="width: 25%;">
+    MON 
+    $\Longrightarrow$ 
+</pre>
+
+<pre class="math-code box" style="width: 25%;">
+$n < d$
+$\vdash$
+$n + 1 \leq d$
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+    INC
+    $\surd$
+</pre>
+  </div>
+
+  <ul>
+    <li class="skip fragment">Now we can conclude the proof using rule $\text{INC}$
+        $$  \frac{  }{n < m ~~~ \vdash ~~~ n + 1 \leq m}  ~~~~~~ \text{INC}$$
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1455,163 +1422,159 @@ $n - 1 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A Formal Proof <br> of <code class="listing">ML_in/inv0_1/INV</code></h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$0 < n$</li>
-                <li>$\vdash$</li>
-                <li>$n - 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$0 < n$</li>
-                <li>$\vdash$</li>
-                <li>$n - 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;"><b>P2'</b></div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$0 < n$</span>
+$\vdash$
+$n - 1 \in \mathbb N$
+</pre>
 
-    <ul>
-        <li class="skip">Now we can conclude the proof using rule $\textrm{P2'}$
-            $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \textrm{P2'}$$
-        </li>
-    </ul>
+<pre class="math-code" style="width: 25%;">
+    MON 
+    $\Longrightarrow$ 
+</pre>
+
+<pre class="math-code box" style="width: 25%;">
+$0 < n$
+$\vdash$
+$n - 1 \in \mathbb N$
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+    P2'
+    $\surd$
+</pre>
+  </div>
+
+  <ul>
+    <li class="fragment skip">Now we can conclude the proof using rule $\text{P2'}$
+        $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \text{P2'}$$
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A Formal Proof <br> of <code class="listing">ML_in/inv0_2/INV</code></h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$0 < n$</li>
-                <li>$\vdash$</li>
-                <li>$n - 1 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n - 1 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">DEC</div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$0 < n$</span>
+$\vdash$
+$n - 1 \leq d$
+</pre>
 
-    <div class="skip">
-        Again, the proof still works after the addition of a new assumption
-    </div>
+<pre class="math-code" style="width: 25%;">
+    MON 
+    $\Longrightarrow$ 
+</pre>
+
+<pre class="math-code box" style="width: 25%;">
+$n \leq d$
+$\vdash$
+$n - 1 \leq d$
+</pre>
+
+<pre class="math-code" style="width: 25%;">
+    DEC
+    $\surd$
+</pre>
+  </div>
+
+  <div class="skip">
+      Again, the proof still works after the addition of a new assumption
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Re-proving the Events <br> No Proofs Fail</h2>
+
+  <div class="center-divs"  style="width: 700px;">
+<pre class="math-code" style="width: 50%;">
+<b>ML_out/inv0_1/INV</b>
+$d \in \mathbb N$
+<span style="color: red;">$n \in \mathbb N$</span>
+$n \leq d$
+$n < d$
+$\vdash$
+<span style="color: red;">$n + 1 \in \mathbb N$</span>
+</pre>
+<pre class="math-code" style="width: 50%;">
+<b>ML_out/inv0_2/INV</b>
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$n < d$</span>
+$\vdash$
+<span style="color: red;">$n + 1 \leq d$</span>
+</pre>
+  </div>
+
+  <div class="center-divs" style="width: 700px;">
+<pre class="math-code"  style="width: 50%;">
+<b>ML_in/inv0_1/INV</b>
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+<span style="color: red;">$0 < n$</span>
+$\vdash$
+<span style="color: red;">$n - 1 \in \mathbb N$</span>
+</pre>
+<pre class="math-code" style="width: 50%;">
+<b>ML_in/inv0_2/INV</b>
+$d \in \mathbb N$
+$n \in \mathbb N$
+<span style="color: red;">$n \leq d$</span>
+$0 < n$
+$\vdash$
+<span style="color: red;">$n - 1 \leq d$</span>
+</pre>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Re-proving the Events: No Proofs Fail</h2>
+	<h2>Initialisation</h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <b>ML_out/inv0_1/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li style="color: red;">$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <b>ML_out/inv0_2/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$n < d$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n + 1 \leq d$</li>
-            </ul>
-        </div>
-    </div>
-
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <b>ML_in/inv0_1/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li style="color: red;">$0 < n$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <b>ML_in/inv0_2/INV</b><br>
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$n \in \mathbb N$</li>
-                <li style="color: red;">$n \leq d$</li>
-                <li>$0 < n$</li>
-                <li>$\vdash$</li>
-                <li style="color: red;">$n - 1 \leq d$</li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Initialization</h2>
-
-    <ul>
-        <li>Our system must be <i>initialized</i> (with no car in the island-bridge)</li>
-        <li class="skip">The initialization event is <i>never guarded</i></li>
-        <li class="skip">It does <i>not mention any variable</i>  on the right hand side of $:=$</li>
-        <li class="skip">Its before-after predicate is just an <i>after predicate</i> 
-            <div style="display: flex;" class="skip">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>init $\mathrel{\widehat=}$ 
-                        <ul>
-                            <li><span class="eb-kw">begin</span></li>
-                            <ul>
-                                <li><span class="eb-cm">init0_1:</span> n $:=$ 0</li>
-                            </ul>
-                            <li><span class="eb-kw">end</span></li>
-                        </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div style="width: 30%;">
-                    After predicate
-                </div>
-                <div style="width: 20%;">
-                    <ul id="eb">
-                        <li>$n' = 0$</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ul>
+  <ul>
+    <li>Our system must be <i>initialized</i> (with no car in the island-bridge)</li>
+    <li class="skip fragment">The initialisation event is <i>never guarded</i></li>
+    <li class="skip fragment">It does <i>not mention any variable</i>  on the right hand side of <cs-i>$:=$</cs-i></li>
+    <li class="skip fragment">Its before-after predicate is just an <i>after predicate</i>
+      <div class="center-divs">
+<pre id="eb" class="math-code" style="width: 45%;">
+init $\mathrel{\widehat=}$ 
+  <i>begin</i>
+    <u>init0_1:</u> $n := 0$
+  <i>end</i>
+</pre>
+<pre class="math-code" style="width: 35%;">
+After predicate
+      $\Longrightarrow$ 
+</pre>
+<pre class="math-code" style="width: 20%;">
+$$n' = 0$$
+</pre>
+      </div> 
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!--%%%%%%% TO DO TO DO %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proof Obligation <br> Invariant Establishment</h2>
     <ul>
