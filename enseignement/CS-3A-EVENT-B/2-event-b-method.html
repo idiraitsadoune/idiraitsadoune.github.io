@@ -1574,105 +1574,94 @@ $$n' = 0$$
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-  <!--%%%%%%% TO DO TO DO %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proof Obligation <br> Invariant Establishment</h2>
-    <ul>
-        <li>
-            Given <i>$c$</i> with <i>axioms $A(c)$</i> and <i>$v$</i> with <i>invariants $I(c, v)$</i>
-        </li>
 
-        <li class="skip">
-            Given an <i>init event</i> with <i>after predicate $v' = K(c)$</i>
-        </li>
+  <ul>
+    <li>
+        Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> 
+        with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
+    </li>
 
-        <li class="skip">
-            The <i>Invariant Establishment PO</i>  is the following: <br>
-            <div style="display: flex;" class="skip">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>Axioms</li>
-                        <li>$\vdash$</li>
-                        <li>Modified Invariant</li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>$A(c)$</li>
-                        <li>$\vdash$</li>
-                        <li>$I_i(c, K(c))$</li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    </ul>
+    <li class="skip">
+        Given an <i>init event</i> with <i>after predicate</i> <cs-i>$v' = K(c)$</cs-i>
+    </li>
+
+    <li class="fragment skip">
+        The <i>Invariant Establishment PO</i>  is the following: 
+        <div class="fragment center-divs">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\vdash$ 
+$\text{Modified Invariant}$ 
+</pre>
+<pre class="math-code" style="width: 45%;">
+$A(c)$
+$\vdash$
+$I_i(c, K(c))$
+</pre>
+        </div>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Applying the Invariant <br> Establishment PO</h2>
 
-    <div style="display: flex;">
-        <div style="width: 34%;">
-            <ul id="eb">
-                <li><span class="eb-cm">axm0_1</span></li>
-                <li>$\vdash$</li>
-                <li>Modified <span class="eb-cm">inv0_1</span></li>
-            </ul>
-        </div>
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li>$d \in  \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$0 \in  \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><b>inv0_1/INV</b></li>
-            </ul>
-        </div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code" style="width: 45%;">
+axm0_1
+$\vdash$
+$\text{Modified}$ inv0_1
+</pre>
+<pre class="math-code" style="width: 25%;">
+$d \in  \mathbb N$
+$\vdash$
+$0 \in  \mathbb N$
+</pre>
+<div class="left-content" style="width: 30%;">
+<b>inv0_1/INV</b>  
+</div>
+  </div>
 
-    <div style="display: flex;  margin-top: 60px;" >
-        <div style="width: 34%;">
-            <ul id="eb">
-                <li><span class="eb-cm">axm0_1</span></li>
-                <li>$\vdash$</li>
-                <li>Modified <span class="eb-cm">inv0_2</span></li>
-            </ul>
-        </div>
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li>$d \in  \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$0 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><b>inv0_2/INV</b></li>
-            </ul>
-        </div>
-    </div>
+  <div class="center-divs fragment skip" style="width: 70%;">
+<pre class="math-code" style="width: 45%;">
+axm0_1
+$\vdash$
+$\text{Modified}$ inv0_2
+</pre>
+<pre class="math-code" style="width: 25%;">
+$d \in  \mathbb N$
+$\vdash$
+$0 \leq d$
+</pre>
+<div class="left-content" style="width: 30%;">
+<b>inv0_2/INV</b>  
+</div>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>More Arithmetic Inference Rules</h2>
-    <ul>
-        <li><i>First Peano Axiom</i>
-            $$  \frac{  }{~~~ \vdash ~~~ 0 \in \mathbb N}  ~~~~~~ \textrm{P1}$$
-        </li>
 
-        <li style=" margin-top: 60px;"><i>Third Peano Axiom </i>(slightly modified)
-            $$  \frac{  }{n \in \mathbb N ~~~ \vdash ~~~ 0 \leq n}  ~~~~~~ \textrm{P3}$$
-        </li>
-    </ul>
+  <ul>
+    <li><i>First Peano Axiom</i>
+        $$  \frac{  }{~~~ \vdash ~~~ 0 \in \mathbb N}  ~~~~~~ \textrm{P1}$$
+    </li>
+
+    <li class="d-skip"><i>Third Peano Axiom </i>(slightly modified)
+        $$  \frac{  }{n \in \mathbb N ~~~ \vdash ~~~ 0 \leq n}  ~~~~~~ \textrm{P3}$$
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <!--%%%%%%% TO DO TO DO -67- %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proofs of Invariant <br>  Establishment</h2>
 
