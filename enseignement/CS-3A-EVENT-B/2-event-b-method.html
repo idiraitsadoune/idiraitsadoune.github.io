@@ -1661,44 +1661,42 @@ $0 \leq d$
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
- <!--%%%%%%% TO DO TO DO -67- %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proofs of Invariant <br>  Establishment</h2>
 
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$0 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$\vdash$</li>
-                <li>$0 \in \mathbb N$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">P1</div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$ 
+$\vdash$
+$0 \in \mathbb N$
+</pre>
+<pre class="math-code" style="width: 25%;">
+    MON 
+    $\Longrightarrow$
+</pre>
+<pre class="math-code box" style="width: 25%;">
+$\vdash$  
+$0 \in \mathbb N$
+</pre>
+<pre class="math-code" style="width: 25%;">
+    P1
+    $\surd$
+</pre>
+  </div>
 
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;"></div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$\vdash$</li>
-                <li>$0 \leq d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            P3
-        </div>
-        <div style="width: 25%;"></div>
-    </div>
+  <div class="center-divs fragment d-skip" style="width: 70%;">
+<div style="width: 25%;"></div>
+<pre class="math-code box" style="width: 25%;">
+$d \in \mathbb N$ 
+$\vdash$
+$0 \leq d$
+  </pre>
+<pre class="math-code" style="width: 25%;">
+    P3
+    $\surd$
+</pre>
+<div style="width: 25%;"></div>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1706,19 +1704,20 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A Missing Requirement</h2>
 
-    <ul>
-        <li>It is possible for the system to be blocked <i>if both guards are false</i></li>
-        <li class="skip"><i>We do not want this to happen</i></li>
-        <li class="skip">We figure out that one <i>important requirement was missing</i>
-        <ul><li class="skip"><b>FUN-4</b> : Once started, the system should work for ever (<i>Deadlock Freedom</i>)</li></ul>
-        </li>
-    </ul>
+  <ul>
+    <li>It is possible for the system to be blocked <i>if both guards are false</i></li>
+    <li class="skip"><i>We do not want this to happen</i></li>
+    <li class="skip fragment">We figure out that one <i>important requirement was missing</i>
+    <li class="skip fragment"><b>FUN-4</b> $\to$ Once started, the system should work for ever (<i>Deadlock Freedom</i>)</li></li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!--%%%%%%% TO DO TO DO -69- %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof Obligation <br> The theorem PO rule</h2>
+	<h2>Proof Obligation</h2>
+  <h3>The theorem PO rule</h3>
     <ul>
         <li>Given <i>$c$</i>  with <i>axioms $A(c)$</i>  and <i>$v$</i> with <i>invariants $I(c, v)$</i> </li>
         <li class="skip">Given the <i>theorem $Th(c, v)$</i> </li>
