@@ -85,6 +85,11 @@
     ],
     "revues" : [
         {
+            "title" : "Parametric ontologies in formal software engineering",
+            "conference" : "Science of Computer Programming Journal, Volume 241, April 2025",
+            "link" : "https://www.sciencedirect.com/science/article/pii/S0167642324001540"
+        },
+        {
             "title" : "The role of user requirements in data repository design",
             "conference" : "International Journal on Software Tools for Technology Transfer, 2018",
             "link" : "https://link.springer.com/article/10.1007/s10009-016-0443-0"

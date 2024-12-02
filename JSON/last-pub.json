@@ -1,6 +1,11 @@
 {
     "publications" : [
         {
+            "title" : "Parametric ontologies in formal software engineering",
+            "conference" : "Science of Computer Programming Journal, Volume 241, April 2025",
+            "link" : "https://www.sciencedirect.com/science/article/pii/S0167642324001540"
+        },
+        {
             "title" : "A floating-point numbers theory for Event-B",
             "conference" : "12th International Conference on Model and Data Engineering, MEDI 2023",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-031-49333-1_3"
@@ -14,11 +19,6 @@
             "title" : "Building Formal Semantic Domain Model: An Event-B Based Approach",
             "conference" : "9th International Conference on Model and Data Engineering, MEDI 2019",
             "link" : "https://link.springer.com/chapter/10.1007/978-3-030-32065-2_10"
-        },
-        {
-            "title" : "Using the Isabelle Ontology Framework : Linking the Formal with the Informal",
-            "conference" : "11th International Conference on Intelligent Computer Mathematics, CICM 2018",
-            "link" : "https://link.springer.com/chapter/10.1007/978-3-319-96812-4_3"
         }
     ]
 }
