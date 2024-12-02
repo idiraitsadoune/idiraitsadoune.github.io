@@ -4,7 +4,7 @@
             "title" : "Algorithmique et Complexité",
             "level" : "1A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "#",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=8892",
             "target" : "_blank"
         }, 
         {
@@ -25,7 +25,7 @@
             "title" : "Modélisation et Vérification avec la méthode Event-B",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "#",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=8690",
             "target" : "_blank"
         },
         {
