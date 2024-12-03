@@ -83,7 +83,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-  <!-- TO DO  TO DO  TO DO  TO DO  TO DO  TO DO -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Rodin Platform</h2>
 
@@ -97,7 +96,7 @@
     <li class="skip fragment">
       <b>Rodin Platform and Plug-in Installation</b>: 
       <ul>
-        <li>Requires <b>Java 11</b></li>
+        <li>Requires <b>Java 17</b></li>
         <li>Download the Core: <a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/" target="_blank">Rodin Platform file</a> for your platform.</li>
         <li>Install the <b>Atelier B Provers plugin</b> from the Atelier B Provers Update site.</li>
       </ul>
@@ -1690,7 +1689,7 @@ $0 \in \mathbb N$
 $d \in \mathbb N$ 
 $\vdash$
 $0 \leq d$
-  </pre>
+</pre>
 <pre class="math-code" style="width: 25%;">
     P3
     $\surd$
@@ -1714,44 +1713,31 @@ $0 \leq d$
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-  <!--%%%%%%% TO DO TO DO -69- %%%%%%%-->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>NEW SLIDE</h2>
-	<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-  <!--%%%%%%% TO DO TO DO -69- %%%%%%%-->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proof Obligation</h2>
   <h3>The theorem PO rule</h3>
-    <ul>
-        <li>Given <i>$c$</i>  with <i>axioms $A(c)$</i>  and <i>$v$</i> with <i>invariants $I(c, v)$</i> </li>
-        <li class="skip">Given the <i>theorem $Th(c, v)$</i> </li>
-        <li class="skip">Given the <i>guards $G_1(c, v)$, $...$ , $G_m(c, v)$</i> of the events</li>
-        <li class="skip">We have to prove the following:
 
-            <div style="display: flex;" class="skip">
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>$A(c)$</li>
-                        <li>$I(c, v)$</li>
-                        <li>$\vdash$</li>
-                        <li>$Th(c, v)$</li>
-                    </ul>
-                </div>
-                <div style="width: 50%;">
-                    <ul id="eb">
-                        <li>$A(c)$</li>
-                        <li>$I(c, v)$</li>
-                        <li>$\vdash$</li>
-                        <li>$G_1(c, v)$ $\lor$ $...$ $\lor$ $G_m(c, v)$</li>
-                    </ul>
-                </div>
-            </div>
+  <ul>
+    <li>Given <cs-i>$c$</cs-i>  with <i>axioms</i> <cs-i>$A(c)$</cs-i>  and <cs-i>$v$</cs-i> with <i>invariants</i> <cs-i>$I(c, v)$</cs-i></li>
+    <li class="skip">Given the <i>theorem</i> <cs-i>$Th(c, v)$</cs-i>  </li>
+    <li class="skip">Given the <i>guards</i> <cs-i>$G_1(c, v)$</cs-i>, <cs-i>$...$</cs-i>, <cs-i>$G_m(c, v)$</cs-i> of the events</li>
+    <li class="fragment skip">We have to prove the following:</li>
+  </ul>
 
-        </li>
-    </ul>
+  <div class="center-divs fragment skip" style="width: 50%;">
+<pre class="math-code" style="width: 50%;">
+$A(c)$
+$I(c, v)$
+$\vdash$
+$Th(c, v)$
+</pre>
+<pre class="math-code" style="width: 50%;">
+$A(c)$
+$I(c, v)$
+$\vdash$
+$G_1(c, v)$ $\lor$ $...$ $\lor$ $G_m(c, v)$
+</pre>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1759,37 +1745,33 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Applying the Deadlock Freedom PO</h2>
 
-    <div style="display: flex;" class="skip">
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li><span class="eb-cm">axm0_1</span></li>
-                <li><span class="eb-cm">inv0_1</span></li>
-                <li><span class="eb-cm">inv0_2</span></li>
-                <li>$\vdash$</li>
-                <li>Disjunction of guards</li>
-            </ul>
-        </div>
-        <div style="width: 50%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$d \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-    </div>
+  <div class="center-divs" style="width: 70%;">
+<pre class="math-code" style="width: 50%;">
+axm0_1
+inv0_1
+inv0_2
+$\vdash$
+$\text{Disjunction of guards}$
+</pre>
+<pre class="math-code" style="width: 50%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+  </div>
 
-    <ul>
-        <li class="skip">This cannot be proved <i>with the inference rules we have so far</i> </li>
-        <li class="skip"><i>$n \leq d$</i> can be replaced by <i>$n = d \lor n < d$</i> </li>
-        <li class="skip">We continue our proof by a <i>case analysis</i>:
-            <ul>
-                <li>case 1: <i>$n = d$</i></li>
-                <li>case 2: <i>$n < d$</i></li>
-            </ul>
-        </li>
-    </ul>
+  <ul>
+    <li class="fragment">This cannot be proved <i>with the inference rules we have so far</i> </li>
+    <li class="skip fragment"><cs-i>$n \leq d$</cs-i> can be replaced by <cs-i>$n = d \lor n < d$</cs-i> </li>
+    <li class="skip fragment">We continue our proof by a <i>case analysis</i>:
+        <ul>
+            <li>case 1: <cs-i>$n = d$</cs-i></li>
+            <li>case 2: <cs-i>$n < d$</cs-i></li>
+        </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1797,23 +1779,17 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Inference Rules for Disjunction</h2>
 
-    <ul>
-        <li>Proof by <i>case analysis</i> 
-            $$  \frac{H, P ~~~ \vdash ~~~ R  ~~~~~~~~~   H, Q ~~~ \vdash ~~~ R  }{H, P \lor Q ~~~ \vdash ~~~ R}  ~~~~~~ \textrm{OR_L}$$
-        </li>
+  <ul>
+    <li>Proof by <i>case analysis</i> 
+        $$  \frac{H, P ~~~ \vdash ~~~ R  ~~~~~~~~~   H, Q ~~~ \vdash ~~~ R  }{H, P \lor Q ~~~ \vdash ~~~ R}  ~~~~~~ \textrm{OR_L}$$
+    </li>
 
-        <li class="skip">Choice for proving a <i>disjunctive goal</i>
-            <div style="display: flex;" class="skip">
-                <div style="width: 45%;">
-                    $$  \frac{H ~~~ \vdash ~~~ P }{H ~~~ \vdash ~~~ P \lor Q}  ~~~~~~ \textrm{OR_R1}$$
-                </div>
-                <div style="width: 10%;"></div>
-                <div style="width: 45%;">
-                    $$  \frac{H ~~~ \vdash ~~~ Q }{H ~~~ \vdash ~~~ P \lor Q}  ~~~~~~ \textrm{OR_R2}$$
-                </div>
-            </div>
-        </li>
-    </ul>
+    <li class="skip fragment">Choice for proving a <i>disjunctive goal</i>
+      $$  \frac{H ~~~ \vdash ~~~ P }{H ~~~ \vdash ~~~ P \lor Q}  ~~~~~~ \textrm{OR_R1}$$
+
+      $$  \frac{H ~~~ \vdash ~~~ Q }{H ~~~ \vdash ~~~ P \lor Q}  ~~~~~~ \textrm{OR_R2}$$
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1821,28 +1797,98 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proof of Deadlock Freedom</h2>
 
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$d \in \mathbb N$</li>
-                <li>$d \in \mathbb N$</li>
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            MON
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">...</div>
-    </div>
+  <div class="center-divs">
+<pre class="math-code box" style="width: 20%;">
+$d \in \mathbb N$
+$n \in \mathbb N$
+$n \leq d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    MON 
+    $\Longrightarrow$      
+</pre>
+<pre class="math-code box" style="width: 20%;">
+$n \leq d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    OR_L 
+    $\Longrightarrow$      
+</pre>
+<div style="width: 20%;">
+<pre class="math-code box">
+$n < d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<br>
+<pre class="math-code box">
+$n = d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+</div>
+  </div>
+
+  <div class="center-divs skip fragment">
+<pre class="math-code box" style="width: 20%;">
+$n < d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
+
+    OR_R1
+    $\Longrightarrow$ 
+</pre>
+<pre class="math-code box" style="width: 20%;">
+$n < d$
+$\vdash$
+$n < d$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    <b>?</b>
+    $\Longrightarrow$ 
+</pre>
+<pre class="math-code" style="width: 20%;">seems to be <i>obvious</i></pre>
+  </div>
+
+  <div class="center-divs skip fragment">
+<pre class="math-code box" style="width: 20%;">
+$n = d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    <b>?</b>
+    $\Longrightarrow$ 
+</pre>
+<pre class="math-code" style="width: 20%;">can be (partially) solved <br>by <i>applying the equality</i></pre>
+<pre class="math-code" style="width: 20%;"></pre>
+<pre class="math-code" style="width: 20%;"></pre>
+  </div>  
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>More Inference Rules</h2>
+  <h3>Identity and Equality</h3>
+
+  <ul>
+    <li>The <i>identity axiom</i> (conclusion holds by hypothesis)
+        $$  \frac{}{P ~~~ \vdash ~~~ P}  ~~~~~~ \textrm{HYP}$$
+    </li>
+
+    <li class="skip fragment"><i>Rewriting an equality</i> (<b>EQ_LR</b>) and <i>reflexivity of equality</i> (<b>EQL</b>)
+        $$  \frac{H(F), E = F ~~ \vdash ~~ P(F)}{H(E), E = F ~~ \vdash ~~ P(E)}  ~~~~ \textrm{EQ_LR}$$
+    
+        $$  \frac{ }{\vdash ~~ E = E}  ~~~~ \textrm{EQL}$$    
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1850,158 +1896,58 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proof of Deadlock Freedom</h2>
 
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li style="color: red;">$n \leq d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            OR_L
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li style="color: red;">$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-            <ul id="eb" class="skip">
-               <li style="color: red;">$n = d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">...</div>
-    </div>
+  <div class="center-divs">
+<pre class="math-code box" style="width: 20%;">
+$n < d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof of Deadlock Freedom</h2>
+    OR_R1
+    $\Longrightarrow$ 
+</pre>
+<pre class="math-code box" style="width: 20%;">
+$n < d$
+$\vdash$
+$n < d$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    HYP
+    $\surd$
+</pre>
+<pre class="math-code" style="width: 20%;"></pre>
+  </div>
 
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            OR_R1
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;"><b>?</b></div>
-    </div>
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n = d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;"><b>?</b></div>
-        <div style="width: 25%;"></div>
-        <div style="width: 25%;"></div>
-    </div>
-
-    <ul>
-        <li class="skip">The first <b>?</b> seems to be <i>obvious</i></li>
-        <li class="skip">The second  <b>?</b> can be (partially) solved by <i>applying the equality</i></li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>More Inference Rules <br> Identity and Equality</h2>
-
-    <ul>
-        <li>The <i>identity axiom</i> (conclusion holds by hypothesis)
-            $$  \frac{}{P ~~~ \vdash ~~~ P}  ~~~~~~ \textrm{HYP}$$
-        </li>
-
-        <li class="skip"><i>Rewriting an equality</i> (<b>EQ_LR</b>) and <i>reflexivity of equality</i> (<b>EQL</b>)
-            <div style="display: flex;" class="skip">
-                <div style="width: 65%;">
-                    $$  \frac{H(F), E = F ~~ \vdash ~~ P(F)}{H(E), E = F ~~ \vdash ~~ P(E)}  ~~~~ \textrm{EQ_LR}$$
-                </div>
-                <div style="width: 10%;"></div>
-                <div style="width: 25%;">
-                    $$  \frac{ }{\vdash ~~ E = E}  ~~~~ \textrm{EQL}$$
-                </div>
-            </div>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof of Deadlock Freedom</h2>
-
-    <div style="display: flex; margin-top: 60px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">
-            OR_R1
-        </div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n < d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">HYP</div>
-    </div>
-    <div style="display: flex; margin-top: 100px;">
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$n = d$</li>
-                <li>$\vdash$</li>
-                <li>$n < d$ $\lor$ $0 < n$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">EQ_LR</div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$\vdash$</li>
-                <li>$d < d$ $\lor$ $0 < d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;">OR_R2</div>
-    </div>
-    <div style="display: flex;">
-        <div style="width: 25%;"></div>
-        <div style="width: 25%;"></div>
-        <div style="width: 25%;">
-            <ul id="eb">
-                <li>$\vdash$</li>
-                <li>$0 < d$</li>
-            </ul>
-        </div>
-        <div style="width: 25%;"><b>?</b></div>
-    </div>
-
-    <ul>
-        <li class="skip">We still have a problem: <i>$d$ must be positive!</i> </li>
-    </ul>
+  <div class="center-divs skip fragment">
+<pre class="math-code box" style="width: 20%;">
+$n = d$
+$\vdash$
+$n < d$ $\lor$ $0 < n$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    EQ_LR
+    $\Longrightarrow$ 
+</pre>
+<pre class="math-code box" style="width: 20%;">
+$\vdash$
+$d < d$ $\lor$ $0 < d$
+</pre>
+<pre class="math-code" style="width: 20%;">
+    OR_R2
+    $\Longrightarrow$
+</pre>
+<pre class="math-code box" style="width: 20%;">
+$\vdash$
+$0 < d$ <b>?</b>
+</pre>
+  </div>
+  
+  <ul>
+    <li class="skip fragment">
+      We still have a problem $\to$ <cs-i>$d$</cs-i> <i>must be positive!</i> 
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2009,39 +1955,47 @@ $0 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Adding the Forgotten Axiom</h2>
 
-    <ul>
-        <li>If $d$ is equal to $0$, then <i>no car can ever enter the Island-Bridge</i>
-            <ul id="eb" class="skip">
-                <li><span class="eb-cl">AXIOMS</span> 
-                    <ul>
-                        <li><span class="eb-cm">axm0_1:</span> $d \in \mathbb N$</li>
-                        <li><span class="eb-cm">axm0_2:</span> $0 < d$</li>
-                    </ul>
-                </li>
-            </ul> 
-        </li>
-    </ul>
+  <ul>
+      <li>
+        If <cs-i>$d = 0$</cs-i>, then <i>no car can ever enter the Island-Bridge</i>
+      </li>
+<pre id="eb" class="math-code fragment" style="width: 40%;">
+<b>CONSTANTS</b>
+  $d$
+<b>AXIOMS</b>
+  <u>axm0_1:</u> $d \in \mathbb N$
+  <u>axm0_2:</u> $0 < d$
+</pre>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Initial Model <br> Conclusion</h2>
+	<h2>Initial Model</h2>
+  <h3>Conclusion</h3>
 
-    <ul>
-        <li>Thanks to the proofs, we discovered <i>3 errors</i></li>
+  <ul>
+    <li>Thanks to the proofs, we discovered <i>3 errors</i></li>
 
-        <li class="skip">They were corrected by:
-            <ul>
-                <li><i>adding guards</i> to both events</li>
-                <li><i>adding an axiom</i></li>
-            </ul>
-        </li>
+    <li class="skip fragment">They were corrected by:
+      <ul>
+        <li><i>adding guards</i> to both events</li>
+        <li><i>adding an axiom</i></li>
+      </ul>
+    </li>
 
-        <li class="skip">The <i>interaction of modeling and proving</i> is an essential element <br> of Formal Methods with Proofs</li>
-    </ul>
+    <li class="skip fragment">The <i>interaction of modeling and proving</i> is an essential element <br> of Formal Methods with Proofs</li>
+  </ul>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!--%%%%%%% TO DO TO DO -77- %%%%%%%-->
+  <section data-auto-animate data-transition="fade-in fade-out">
+    <h2>NEW SLIDE</h2>
+    <img src="../resources/img/construction.png" alt="" height="500px" width="auto">
+  </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
