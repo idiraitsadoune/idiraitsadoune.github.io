@@ -5,23 +5,20 @@
 	<meta charset="utf-8">
 	<title>A floating-point numbers theory for Event-B - LMF 2024</title>
 
-	<meta name="description" content="A floating-point numbers theory for Event-B - LMF 2024">
-	<meta name="author" content="Idir AIT SADOUNE">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
 
-	<link rel="icon" href="../resources/img/favicon.ico" />
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
 </head>
 
 <body>
@@ -37,7 +34,7 @@
 	<div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
+				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
 			</a>
 		</div>
 		<div class="right-logo">
@@ -58,7 +55,7 @@
 
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-			<img src="../resources/img/idir.png" class="hero-user">
+			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
 		</a>
 		<div class="hero-desc">
 			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
@@ -149,7 +146,7 @@
 	<h2>Using Event-B method</h2>
 	<ul>
 		<li>
-			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support the construction and verification 
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support <br> the construction and verification 
 			of <b>Event-B models</b>.
 		</li>
 		<li class="fragment skip">The use of the <b>Event-B method</b> has continued to increase.
@@ -452,7 +449,7 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	<ul>
 		<li>Analysing <b>two functional properties</b>:
 			<ul>
-				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$distance\_travelled$</code> <br>
+				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-i>$distance\_travelled$</cs-i> <br>
 					divided by the <code class="listing">$measured\_time$</code>  (<code class="listing">$v = d/t$</code>).</li>
 				<li class="fragment"><strong>PROP-2</strong> : when the <code class="listing">$distance\_travelled$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
 					of the moving object must also be <i>strictly positive</i>.
@@ -462,7 +459,7 @@ Now, with the Theory component, an Event-B model can be specified using three co
 		</li>
 	</ul>
 
-	<div id="green-block" class="d-skip fragment" style="width: 80%;">
+	<div id="green-block" class="d-skip fragment left-content">
 		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <b style="color: red;">problems</b> :<br> 
 		<ul>
 			<li class="fragment">analysing <b>physical phenomena</b>.
@@ -641,7 +638,7 @@ For these reasons, this PO cannot be proven.
 <section data-transition="fade-in fade-out">
 	<h2>Conclusion</h2>
 
-	<div id="alert-block" style="text-align: center; width: 66%;">
+	<div id="alert-block" style="text-align: center; width: 67%;">
 		<b>The basic types and operators of the Event-B language <br> are not adapted to our needs</b>  
 	</div>
 
@@ -676,7 +673,7 @@ to extend the Event-B type-checking system with the possibility of handling floa
 		$$
 	</div>
 
-	<div id="default-block" class="fragment skip" style="width: 76%;">
+	<div id="default-block" class="fragment skip left-content">
 		<b>We have chosen that the base always equals ten in our models.</b>
 		$$
 			x = s(x) \times 10^{e(x)}
@@ -1456,10 +1453,9 @@ I think that such theories will help many Event-B developers to model and verify
 		</div>
 	</div>
 
-	<script src="../resources/js/plan-en.js"></script>
-	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1486,7 +1482,7 @@ I think that such theories will help many Event-B developers to model and verify
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealNotes]
+			plugins: [RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
