@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -1033,10 +1036,10 @@ $event$ $\mathrel{\widehat=}$
 		</div>
 	</div>
 
-	<script src="../resources/js/plan.js"></script>
+	<script src="../resources/js/plan-en.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
+  <script src="../reveal-js-framework/plugin/notes/notes.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1063,7 +1066,7 @@ $event$ $\mathrel{\widehat=}$
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealHighlight]
+			plugins: [RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });

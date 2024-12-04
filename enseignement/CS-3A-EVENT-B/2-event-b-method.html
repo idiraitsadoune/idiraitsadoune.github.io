@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
+  <script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -1763,7 +1766,7 @@ $n < d$ $\lor$ $0 < n$
   </div>
 
   <ul>
-    <li class="fragment">This cannot be proved <i>with the inference rules we have so far</i> </li>
+    <li class="skip fragment">This cannot be proved <i>with the inference rules we have so far</i> </li>
     <li class="skip fragment"><cs-i>$n \leq d$</cs-i> can be replaced by <cs-i>$n = d \lor n < d$</cs-i> </li>
     <li class="skip fragment">We continue our proof by a <i>case analysis</i>:
         <ul>
@@ -2658,8 +2661,8 @@ them as <b>proof obligations</b>.
 
 	<script src="../resources/js/plan-en.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
+  <script src="../reveal-js-framework/plugin/notes/notes.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -2686,7 +2689,7 @@ them as <b>proof obligations</b>.
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealHighlight]
+			plugins: [RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });

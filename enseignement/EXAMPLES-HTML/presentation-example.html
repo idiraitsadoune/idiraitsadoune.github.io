@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -416,7 +419,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Math code</h2>
 
-<pre id="eb" class="math-code">
+<pre id="eb" class="math-code" style="width: 55%;">
 ...
 <b>INVARIANTS</b> 
 	<u>inv1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
@@ -588,7 +591,6 @@
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
 	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -615,7 +617,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });

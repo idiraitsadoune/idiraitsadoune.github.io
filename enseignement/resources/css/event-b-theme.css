@@ -18,13 +18,13 @@
 	position: relative !important;
 	width: 90% !important;
 	text-align: left !important;
-	line-height: 1.2em !important;
+	line-height: 1.4em !important;
 	tab-size: 2 !important ;
 	word-wrap: break-word !important;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15) !important;
 	margin-left: auto !important; 
 	margin-right: auto !important;
-	padding : 3px 10px !important;
+	padding : 7px 10px 3px 10px !important;
 	background-color: white;
 }
 
