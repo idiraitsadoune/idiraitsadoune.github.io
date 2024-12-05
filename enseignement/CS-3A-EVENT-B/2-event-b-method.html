@@ -832,8 +832,8 @@ ML_out $\mathrel{\widehat=}$
   <i>end</i>
 </pre>
 
-<div class="center-divs" style="width: 60% ;">
-  <pre class="math-code" style="width: 65%">
+  <div class="center-divs" style="width: 60% ;">
+<pre class="math-code" style="width: 65%">
 $\text{Axioms}$ axm0_1
 $\text{Invariant}$ inv0_1
 $\text{Invariant}$ inv0_2 
@@ -847,7 +847,7 @@ $n \in \mathbb N$
 $\vdash$
 <span style="color: red;">$n + 1 \leq d$</span>
 </pre>
-</div>
+  </div>
 
   <div id="default-block" class="left-content skip">
       This proof obligation is named <b>ML_out/inv0_2/INV</b>
@@ -866,8 +866,8 @@ ML_in $\mathrel{\widehat=}$
   <i>end</i>
 </pre>
 
-<div class="center-divs" style="width: 60% ;">
-  <pre class="math-code" style="width: 65%">
+  <div class="center-divs" style="width: 60% ;">
+<pre class="math-code" style="width: 65%">
 $\text{Axioms}$ axm0_1
 $\text{Invariant}$ inv0_1
 $\text{Invariant}$ inv0_2 
@@ -881,10 +881,10 @@ $n \leq d$
 $\vdash$
 <span style="color: red;">$n - 1 \in \mathbb N$</span>
 </pre>
-</div>
+  </div>
 
   <div id="default-block" class="left-content skip">
-      This proof obligation is named <b>ML_in/inv0_1/INV</b>
+    This proof obligation is named <b>ML_in/inv0_1/INV</b>
   </div>
 
 </section>
@@ -900,8 +900,8 @@ ML_in $\mathrel{\widehat=}$
   <i>end</i>
 </pre>
 
-<div class="center-divs" style="width: 60% ;">
-  <pre class="math-code" style="width: 65%">
+  <div class="center-divs" style="width: 60% ;">
+<pre class="math-code" style="width: 65%">
 $\text{Axioms}$ axm0_1
 $\text{Invariant}$ inv0_1
 $\text{Invariant}$ inv0_2 
@@ -915,7 +915,7 @@ $n \in \mathbb N$
 $\vdash$
 <span style="color: red;">$n - 1 \leq d$</span>
 </pre>
-</div>
+  </div>
 
   <div id="default-block" class="left-content skip">
       This proof obligation is named:  <b>ML_in/inv0_2/INV</b>
@@ -1031,11 +1031,11 @@ obvious
 
   <ul>
     <li>
-        The rule that removes hypotheses can be stated as follows:
+      The rule that removes hypotheses can be stated as follows:
         $$  \frac{H ~~~ \vdash ~~~ G}{H, H' ~~~ \vdash ~~~ G}  ~~~~~~ \textrm{MON}$$
     </li>
     <li class="fragment skip">
-        It expresses the <i>monotonicity</i> of the hypotheses
+      It expresses the <i>monotonicity</i> of the hypotheses
     </li>
   </ul>
 
@@ -1132,7 +1132,9 @@ $n + 1 \in \mathbb N$
 </pre>
   </div>
 
-  <div class="skip">Proof requires only application of two rules $\to$ <b>MON</b> and <b>P2</b></div>
+  <div class="skip">
+    Proof requires only application of two rules $\to$ <b>MON</b> and <b>P2</b>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1205,10 +1207,10 @@ $n - 1 \in \mathbb N$
   </div>
 
   <ul>
-      <li class="skip"><b style="color: red;">The proof fails</b> $\to$ we cannot conclude with rule $\text{P2'}$ 
-        (<cs-i>$0 < n$</cs-i> needed)
-          $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \text{P2'}$$
-      </li>
+    <li class="skip"><b style="color: red;">The proof fails</b> $\to$ we cannot conclude with rule $\text{P2'}$ 
+      (<cs-i>$0 < n$</cs-i> needed)
+        $$  \frac{  }{0 < n ~~~ \vdash ~~~ n - 1 \in \mathbb N}  ~~~~~~ \text{P2'}$$
+    </li>
   </ul>
 
 </section>
@@ -1253,11 +1255,11 @@ $n - 1 \leq d$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Reasons for Proof Failure</h2>
 
-    <ul>
-        <li>We needed hypothesis <cs-i>$n < d$</cs-i>  to prove <code class="listing">ML_out/inv0_2/INV</code></li>
-        <li class="skip">We needed hypothesis <cs-i>$0 < n$</cs-i>  to prove <code class="listing">ML_in/inv0_1/INV</code>
-        
-        <div class="center-divs">
+  <ul>
+    <li>We needed hypothesis <cs-i>$n < d$</cs-i>  to prove <code class="listing">ML_out/inv0_2/INV</code></li>
+    <li class="skip">We needed hypothesis <cs-i>$0 < n$</cs-i>  to prove <code class="listing">ML_in/inv0_1/INV</code>
+    
+      <div class="center-divs">
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_out $\mathrel{\widehat=}$
   <i>then</i>
@@ -1270,12 +1272,12 @@ ML_in $\mathrel{\widehat=}$
     <u>act0_1:</u> $n := n - 1$
   <i>end</i>
 </pre>
-        </div>
+      </div>
+    </li>
+    <li class="fragment skip">We are going to add <cs-i>$n < d$</cs-i> as a guard to event <code class="listing">ML_out</code></li>
+    <li class="fragment skip">We are going to add <cs-i>$0 < n$</cs-i> as a guard to event <code class="listing">ML_in</code></li>
+  </ul>
 
-        </li>
-        <li class="fragment skip">We are going to add <cs-i>$n < d$</cs-i> as a guard to event <code class="listing">ML_out</code></li>
-        <li class="fragment skip">We are going to add <cs-i>$0 < n$</cs-i> as a guard to event <code class="listing">ML_in</code></li>
-    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1314,18 +1316,18 @@ ML_in $\mathrel{\widehat=}$
 	<h2>Proof Obligation</h2>
   <h3>General Invariant Preservation</h3>
 
-    <ul>
-      <li>
-          Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
-      </li>
+  <ul>
+    <li>
+        Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
+    </li>
 
-      <li class="skip">
-          Given an <i>event</i> with <i>guard</i> <cs-i>$G(c, v)$</cs-i> and <i>b-a predicate</i> <cs-i>$v' = E(c, v)$</cs-i>
-      </li>
+    <li class="skip">
+        Given an <i>event</i> with <i>guard</i> <cs-i>$G(c, v)$</cs-i> and <i>b-a predicate</i> <cs-i>$v' = E(c, v)$</cs-i>
+    </li>
 
-      <li class="fragment skip">
-          We modify the <b>Invariant Preservation PO</b> as follows:
-          <div class="center-divs">
+    <li class="fragment skip">
+        We modify the <b>Invariant Preservation PO</b> as follows:
+        <div class="center-divs">
 <pre class="math-code" style="width: 55%;">
 $\text{Axioms}$ 
 $\text{Invariants}$
@@ -1340,8 +1342,8 @@ $I(c, v)$
 $\vdash$
 $I_i(c, E(c, v))$
 </pre>
-        </div>
-      </li>
+      </div>
+    </li>
   </ul>
 
 </section>
@@ -1377,7 +1379,9 @@ $n + 1 \in \mathbb N$
 </pre>
   </div>
 
-  <div class="skip">Adding new assumptions to a sequent <i>does not affect its provability</i></div>
+  <div class="skip">
+    Adding new assumptions to a sequent <i>does not affect its provability</i>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1491,7 +1495,7 @@ $n - 1 \leq d$
   </div>
 
   <div class="skip">
-      Again, the proof still works after the addition of a new assumption
+    Again, the proof still works after the addition of a new assumption
   </div>
 
 </section>
@@ -1581,17 +1585,17 @@ $$n' = 0$$
 
   <ul>
     <li>
-        Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> 
-        with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
+      Given <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i> and <cs-i>$v$</cs-i> 
+      with <i>invariants</i> <cs-i>$I(c, v)$</cs-i>
     </li>
 
     <li class="skip">
-        Given an <i>init event</i> with <i>after predicate</i> <cs-i>$v' = K(c)$</cs-i>
+      Given an <i>init event</i> with <i>after predicate</i> <cs-i>$v' = K(c)$</cs-i>
     </li>
 
     <li class="fragment skip">
-        The <i>Invariant Establishment PO</i>  is the following: 
-        <div class="fragment center-divs">
+      The <i>Invariant Establishment PO</i>  is the following: 
+      <div class="fragment center-divs">
 <pre class="math-code" style="width: 55%;">
 $\text{Axioms}$ 
 $\vdash$ 
@@ -1602,7 +1606,7 @@ $A(c)$
 $\vdash$
 $I_i(c, K(c))$
 </pre>
-        </div>
+      </div>
     </li>
   </ul>
 
@@ -1769,10 +1773,10 @@ $n < d$ $\lor$ $0 < n$
     <li class="skip fragment">This cannot be proved <i>with the inference rules we have so far</i> </li>
     <li class="skip fragment"><cs-i>$n \leq d$</cs-i> can be replaced by <cs-i>$n = d \lor n < d$</cs-i> </li>
     <li class="skip fragment">We continue our proof by a <i>case analysis</i>:
-        <ul>
-            <li>case 1: <cs-i>$n = d$</cs-i></li>
-            <li>case 2: <cs-i>$n < d$</cs-i></li>
-        </ul>
+      <ul>
+        <li>case 1: <cs-i>$n = d$</cs-i></li>
+        <li>case 2: <cs-i>$n < d$</cs-i></li>
+      </ul>
     </li>
   </ul>
 
@@ -2023,12 +2027,12 @@ $0 < d$ <b>?</b>
   <h3>Introducing a One-Way Bridge</h3>
 
   <ul>
-      <li>We go down with our <i>parachute</i></li>
-      <li class="skip">Our <i>view</i> of the system gets <i>more accurate</i></li>
-      <li class="fragment skip">We introduce the <i>bridge</i> and <i>separate it from the island</i></li>
-      <li class="fragment skip">We <i>refine</i> the state and the events</li>
-      <li class="fragment skip">We also add <i>two new events</i> $\to$ <code class="listing">IL_in</code> and <code class="listing">IL_out</code></li>
-      <li class="fragment skip">We are focusing on <b>FUN-3</b> $\to$ one-way bridge</li>
+    <li>We go down with our <i>parachute</i></li>
+    <li class="skip">Our <i>view</i> of the system gets <i>more accurate</i></li>
+    <li class="fragment skip">We introduce the <i>bridge</i> and <i>separate it from the island</i></li>
+    <li class="fragment skip">We <i>refine</i> the state and the events</li>
+    <li class="fragment skip">We also add <i>two new events</i> $\to$ <code class="listing">IL_in</code> and <code class="listing">IL_out</code></li>
+    <li class="fragment skip">We are focusing on <b>FUN-3</b> $\to$ one-way bridge</li>
   </ul>
 
 </section>

@@ -12,25 +12,9 @@
 
 	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<script>
-		MathJax = {
-			tex: {
-				inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: { load: ['ui/lazy'] }
-		};
-	</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
-	<script>
-		function display_correction(my_id) {
-			var x = document.getElementById(my_id);
-			if (x.style.display === "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			}
-		}
-	</script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
