@@ -113,16 +113,134 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>First Refinement</h2>
-  <h3>Introducing a One-Way Bridge </h3>
+  <h3>Introducing a One-Way Bridge</h3>
 
   <ul>
     <li>We go down with our <i>parachute</i></li>
     <li class="skip fragment">Our <i>view</i> of the system gets <i>more accurate</i></li>
     <li class="skip fragment">We introduce the <i>bridge</i> and <i>separate it from the island</i></li>
     <li class="skip fragment">We <i>refine</i> the state and the events</li>
-    <li class="skip fragment">We also add <i>two new events</i> $\to$ <code class="listing">IL_in</code> and <code class="listing">IL_out</code></li>
+    <li class="skip fragment">We also add <i>two new events</i> $\to$ <cs-code>IL_in</cs-code> and <cs-code>IL_out</cs-code></li>
     <li class="skip fragment">We are focusing on <b>FUN-3</b> $\to$ one-way bridge</li>
   </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>First Refinement</h2>
+  <h3>Introducing a One-Way Bridge</h3>
+
+	<div>
+		<img src="./img/bridg-one-way.png" alt=""  height="200px"> <br>
+		<img class="fragment" src="./img/new-events-ref1.png" alt=""  height="200px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Introducing Three New Variables</h2>
+	
+	<div>
+		<img src="./img/ref1-new-variables.png" alt="" height="200px">
+	</div>
+
+	<ul>
+		<li class="skip fragment"><cs-i>$a$</cs-i> denotes the number of cars <i>on bridge</i> going <i>to island</i></li>
+		<li class="skip fragment"><cs-i>$b$</cs-i> denotes the number of cars <i>on island</i></li>
+		<li class="skip fragment"><cs-i>$c$</cs-i> denotes the number of cars <i>on bridge</i> going <i>to mainland</i></li>
+		<li class="skip fragment"><cs-i>$a$</cs-i>, <cs-i>$b$</cs-i>, and <cs-i>$c$</cs-i> are the <i>concrete variables</i></li>
+		<li class="skip fragment"><i>They replace the abstract variable</i> <cs-i>$n$</cs-i></li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Reﬁning the State</h2>
+
+	<ul>
+		<li>Variables <cs-i>$a$</cs-i>, <cs-i>$b$</cs-i>, and <cs-i>$c$</cs-i> denote <i>natural numbers</i>
+<pre id="eb" class="math-code" style="width: 50%;">
+<b>VARIABLES</b>
+	$a$ $b$ $c$ 
+<b>INVARIANTS</b>
+	<u>inv1_1:</u> $a \in \mathbb N$
+	<u>inv1_2:</u> $b \in \mathbb N$
+	<u>inv1_3:</u> $c \in \mathbb N$
+</pre>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Reﬁning the State</h2>
+	<h3>Introducing New Invariants</h3>
+
+	<ul>
+		<li>Relating the <i>concrete state</i> (<cs-i>$a$</cs-i>, <cs-i>$b$</cs-i>, <cs-i>$c$</cs-i>) 
+			to the <i>abstract state</i> (<cs-i>$n$</cs-i>)
+<pre id="eb" class="math-code" style="width: 50%;">
+<b>INVARIANTS</b>
+	...
+	<u>inv1_4:</u> $a + b + c = n$
+</pre>
+		</li>
+
+		<li class="fragment skip">Formalizing the new invariant $\to$ <i>one way bridge</i> (this is <b>FUN-3</b>)
+<pre id="eb" class="math-code" style="width: 50%;">
+<b>INVARIANTS</b>
+	...
+	<u>inv1_5:</u> $a = 0 \lor c = 0$
+</pre>
+		</li>
+
+		<li class="fragment skip">Invariants <cs-code>inv1_1</cs-code> to <cs-code>inv1_5</cs-code> are called the <i>concrete invariants</i></li>
+		<li  class="fragment skip"><cs-code>inv1_4</cs-code> <b>glues</b> the <i>abstract state</i>, <cs-i>$n$</cs-i>, 
+			to the <i>concrete state</i>, <cs-i>$a$</cs-i>, <cs-i>$b$</cs-i>, <cs-i>$c$</cs-i></li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Proposal for Reﬁning Event <cs-code>ML_out</cs-code></h2>
+
+	<div>
+		<img src="./img/ref1_ML_out.png" alt="" height="200px">
+	</div>
+
+<pre id="eb" class="math-code fragment" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$
+	<i>when</i>
+		<u>grd1_1:</u> $a + b < d$
+		<u>grd1_2:</u> $c = 0$
+	<i>then</i>
+		<u>act1_1:</u> $a := a + 1$
+	<i>end</i>
+</pre>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Proposal for Reﬁning Event <cs-code>ML_in</cs-code></h2>
+
+	<div>
+		<img src="./img/ref1_ML_in.png" alt="" height="200px">
+	</div>
+
+<pre id="eb" class="math-code fragment" style="width: 30%;">
+ML_in $\mathrel{\widehat=}$
+	<i>when</i>
+		<u>grd1_1:</u> $0 < c$
+	<i>then</i>
+		<u>act1_1:</u> $c := c - 1$
+	<i>end</i>
+</pre>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

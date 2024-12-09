@@ -54,9 +54,19 @@
 	margin:0;
 	padding:0;
 	border:0;
-	color:coral ;
+	color:coral !important;
+	text-transform: none !important;
 }
 
+.reveal cs-code{
+	margin:0;
+	padding:0;
+	border:0;
+	font-family: var(--r-code-font);
+	font-size: 0.85em !important;
+  color:coral !important;
+	text-transform: none !important;
+}
 
 /* ****************************************************** */
 /* main page style */
