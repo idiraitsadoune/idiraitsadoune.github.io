@@ -289,7 +289,7 @@ ML_in $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Intuition about Reﬁnement</h2>
+	<h2>Intuition about Refinement</h2>
 
 	<ul>
 		<li>The concrete model <i>behaves as speciﬁed by the abstract model</i><br>
@@ -304,9 +304,150 @@ ML_in $\mathrel{\widehat=}$
 			</ol>
 		</li>
 
-		<li class="skip fragment">We will make these two conditions more precise and formalize
-			them <br> as <i>proof obligations</i>.</li>
+		<li class="skip fragment">We will make these two conditions more precise and formalize<br> 
+			them as <i>proof obligations</i>.</li>
 	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Intuition about Refinement</h2>
+
+	<div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$ <u>//abstract</u>
+	<i>when</i>
+		<u>grd0_1:</u> $n < d$
+	<i>then</i>
+		<u>act0_1:</u> $n := n + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$ <u>//concrete</u>
+	<i>when</i>
+		<u>grd1_1:</u> $a + b < d$
+		<u>grd1_2:</u> $c = 0$
+	<i>then</i>
+		<u>act1_1:</u> $a := a + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 15%;"></div>
+	</div>
+
+	<ul>
+		<li class="skip fragment">The concrete version is <i>not contradictory</i> with the abstract one</li>
+		<li class="skip fragment">When the <i>concrete version is enabled</i> then <i>so is the abstract one</i></li>
+		<li class="skip fragment"><i>Executions</i> seem to be <i>compatible</i></li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Intuition about Refinement</h2>
+
+	<div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_in $\mathrel{\widehat=}$ <u>//abstract</u>
+	<i>when</i>
+		<u>grd0_1:</u> $0 < n$
+	<i>then</i>
+		<u>act0_1:</u> $n := n - 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_in $\mathrel{\widehat=}$ <u>//concrete</u>
+	<i>when</i>
+		<u>grd1_1:</u> $0 < c$
+	<i>then</i>
+		<u>act1_1:</u> $c := c - 1$
+	<i>end</i>
+</pre>
+		<div style="width: 15%;"></div>
+	</div>
+
+	<ul>
+		<li class="skip fragment">Same remarks as in the previous slide</li>
+		<li class="skip fragment">But this has to be <i>conﬁrmed by well-defined proof obligations</i></li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Proof Obligations for Refinement</h2>
+
+	<ul>
+		<li>The concrete guard is <i>stronger</i> than the abstract one</li>
+		<li class="skip fragment">Each concrete action is <i>compatible</i> with its abstract counterpart</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Proving Correct Refinement</h2>
+	<h3>the Situation</h3>
+
+	<ul>
+		<li>Constants <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i></li>
+		<li class="skip fragment">Abstract variables <cs-i>$v$</cs-i> with <i>abstract invariant</i> <cs-i>$I(c, v)$</cs-i></li>
+		<li class="skip fragment">Concrete variables <cs-i>$w$</cs-i> with <i>concrete invariant</i> <cs-i>$J(c, v, w)$</cs-i></li>
+		<li class="skip fragment"><i>Abstract event</i> with <i>guards</i> <cs-i>$G(c, v)$</cs-i> $\to$ <cs-i>$G_1(c, v)$</cs-i>, <cs-i>$G_2(c, v)$</cs-i>, <cs-i>$...$</cs-i></li>
+		<li class="skip fragment"><i>Abstract event</i> with <i>before-after predicate</i> <cs-i>$v'= E(c, v)$</cs-i></li>
+		<li class="skip fragment"><i>Concrete event</i> with <i>guards</i> <cs-i>$H(c, w)$</cs-i> and <i>b-a predicate</i> <cs-i>$w' = F (c, w)$</cs-i></li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>PCorrectness of Event Refinement</h2>
+
+	<div>
+		<img src="./img/correctnessOfEventRef.png" alt="" height="300px">
+	</div>
+
+	<ol>
+		<li class="skip fragment">The concrete guard is <i>stronger</i> than the abstract one <br>
+				(<i>Guard Strengthening</i>, following slides)</li>
+		<li class="skip fragment">Each concrete action is <i>simulated by</i> its abstract counterpart <br>
+				(<i>Concrete Invariant Preservation</i>, later)</li>
+	</ol>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Proof Obligation</h2>
+	<h3>Guard Strengthening</h3>
+
+	<div class="center-divs" style="width: 70%;">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\text{Abstract Invariants}$
+$\text{Concrete Invariants}$
+$\text{Concrete Guard}$
+$\vdash$ 
+$\text{Abstract Guard}$ 
+</pre>
+<pre class="math-code" style="width: 25%;">
+$A(c)$
+$I(c, v)$
+$J(c, v, w)$
+$H(c, w)$
+$\vdash$
+$G_i(c, v)$
+</pre>
+<pre class="math-code" style="width: 20%;">
+GRD
+</pre>
+		</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
