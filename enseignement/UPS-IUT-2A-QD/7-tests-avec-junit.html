@@ -178,17 +178,15 @@
             <li data-id="line1" class="fragment"><b>JUnit</b> utilise un système d'annotations définissant <br>
                 le comportement d'une méthode dans <span class="mcg">une classe de test</span> :
                 <ul>
-                    <li class="fragment"><code class="listing">@Test</code> :
+                    <li class="fragment"><cs-code>@Test</cs-code> :
                         spécifie que la méthode annotée est <span class="mc">un test</span>.
                     </li>
-                    <li class="fragment"><code class="listing">@Before</code> ou <code
-                            class="listing">@BeforeEach</code>
+                    <li class="fragment"><cs-code>@Before</cs-code> ou <cs-code>@BeforeEach</cs-code>
                         (<a href="https://junit.org/junit5/" target="_blank">JUnit5</a>) :
                         spécifie que la méthode annotée sera exécutée <span class="mc">avant chaque méthode
                             de test</span>.
                     </li>
-                    <li class="fragment"><code class="listing">@BeforeClass</code> ou <code
-                            class="listing">@BeforeAll</code> (<a href="https://junit.org/junit5/"
+                    <li class="fragment"><cs-code>@BeforeClass</cs-code> ou <cs-code>@BeforeAll</cs-code> (<a href="https://junit.org/junit5/"
                             target="_blank">JUnit5</a>):
                         spécifie que la méthode annotée sera exécutée une fois <span class="mc">avant toutes les
                         méthodes de test</span>.
@@ -211,14 +209,12 @@
                 <ul>
                     <li>...
                     </li>
-                    <li><code class="listing">@After</code> ou <code
-                            class="listing">@AfterEach</code> (<a href="https://junit.org/junit5/"
+                    <li><cs-code>@After</cs-code> ou <cs-code>@AfterEach</cs-code> (<a href="https://junit.org/junit5/"
                             target="_blank">JUnit5</a>) :
                         spécifie que la méthode annotée sera exécutée <span class="mc">après chaque méthode
                             de test</span>.
                     </li>
-                    <li class="fragment"><code class="listing">@AfterClass</code> ou <code
-                            class="listing">@AfterAll</code> (<a href="https://junit.org/junit5/"
+                    <li class="fragment"><cs-code>@AfterClass</cs-code> ou <cs-code>@AfterAll</cs-code> (<a href="https://junit.org/junit5/"
                             target="_blank">JUnit5</a>):
                         spécifie
                         que la méthode annotée sera exécutée une fois <span class="mc">après toutes les
@@ -246,20 +242,19 @@
 
         <ul>
             
-            <li><code class="listing">void assertTrue(boolean condition)</code><br>
+            <li><cs-code>void assertTrue(boolean condition)</cs-code><br>
                 vérifie qu'une condition est vraie.
             </li>
-            <li class="fragment"><code class="listing">void assertFalse(boolean condition)</code><br>
+            <li class="fragment"><cs-code>void assertFalse(boolean condition)</cs-code><br>
                 vérifie qu'une condition est fausse.
             </li>
-            <li class="fragment"><code class="listing">void assertNotNull(Object object)</code><br>
+            <li class="fragment"><cs-code>void assertNotNull(Object object)</cs-code><br>
                 vérifie qu'un objet n'est pas null.
             </li>
-            <li class="fragment"><code class="listing">void assertNull(Object object)</code><br>
+            <li class="fragment"><cs-code>void assertNull(Object object)</cs-code><br>
                 vérifie qu'un objet est null.
             </li>
-            <li class="fragment"><code
-                class="listing">void assertEquals(Object expected, Object actual)</code><br>
+            <li class="fragment"><cs-code>void assertEquals(Object expected, Object actual)</cs-code><br>
             vérifie l'égalité entre deux objets ou deux types primitifs.
         </li>
         </ul>
@@ -273,18 +268,16 @@
         <ul>
             <li>...
             </li>
-            <li><code class="listing">void assertSame(Object expected, Object actual)</code><br>
+            <li><cs-code>void assertSame(Object expected, Object actual)</cs-code><br>
                 vérifie l'égalité entre deux références d'objets.
             </li>
-            <li class="fragment"><code
-                    class="listing">void assertNotSame(Object expected, Object actual)</code><br>
+            <li class="fragment"><cs-code>void assertNotSame(Object expected, Object actual)</cs-code><br>
                 vérifie que deux références d'objets sont différentes.
             </li>
-            <li class="fragment"><code
-                    class="listing">void assertArrayEquals(expectedArray, resultArray)</code><br>
+            <li class="fragment"><cs-code>void assertArrayEquals(expectedArray, resultArray)</cs-code><br>
                 vérifie que deux tableaux sont égaux.
             </li>
-            <li class="fragment"><code class="listing">void fail(String)</code><br>
+            <li class="fragment"><cs-code>void fail(String)</cs-code><br>
                 force un test à l'échec.
             </li>
         </ul>
@@ -1111,7 +1104,7 @@ public void shouldCreateContact() {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
     <h2>Tests des exceptions avec JUnit</h2>
-    Utilisation de la méthode <code class="listing">assertThrows</code>
+    Utilisation de la méthode <cs-code>assertThrows</cs-code>
     <pre><code class="java" data-trim data-line-numbers>
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;

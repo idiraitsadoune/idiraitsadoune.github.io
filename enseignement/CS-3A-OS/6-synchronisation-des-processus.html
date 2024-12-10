@@ -151,13 +151,12 @@
     <div class="left-content">
         <p class="fragment">Soit la gestion d'un compte bancaire </p>
         <ul>
-            <li class="fragment">Une variable partagée <code class="listing">balance</code></li>
-            <li class="fragment">Une fonction <code class="listing">add(1)</code>
-                (<code class="listing">balance = balance + 1</code>)</li>
-            <li class="fragment">Une fonction <code class="listing">sub(1)</code>
-                (<code class="listing">balance = balance - 1</code>)</li>
-            <li class="fragment">Le montant initial du compte est de <code
-                    class="listing">9&#8364;</code></li>
+            <li class="fragment">Une variable partagée <cs-code>balance</cs-code></li>
+            <li class="fragment">Une fonction <cs-code>add(1)</cs-code>
+                (<cs-code>balance = balance + 1</cs-code>)</li>
+            <li class="fragment">Une fonction <ccs-code>sub(1)</cs-code>
+                (<cs-code>balance = balance - 1</cs-code>)</li>
+            <li class="fragment">Le montant initial du compte est de <cs-code>9&#8364;</cs-code></li>
         </ul>
     </div>
 
@@ -203,23 +202,23 @@
     <div class="left-content">
         <p>On lance 2 threads en parallèle</p>
         <ul>
-            <li class="fragment">La première thread exécute <code class="listing">10 000 000</code> fois
-                <code class="listing">add(1)</code>
+            <li class="fragment">La première thread exécute <cs-code>10 000 000</cs-code> fois
+                <cs-code>add(1)</cs-code>
             </li>
-            <li class="fragment">La deuxième thread soustrait <code class="listing">10 000 000</code> fois
-                <code class="listing">sub(1)</code>
+            <li class="fragment">La deuxième thread soustrait <cs-code>10 000 000</cs-code> fois
+                <cs-code>sub(1)</cs-code>
             </li>
         </ul>
         <br>
         <ul id="fleche">
             <li class="fragment skip">
-                <b>Résultat attendu</b> $\to$ <code class="listing">balance = 9&#8364;</code>
+                <b>Résultat attendu</b> $\to$ <cs-code>balance = 9&#8364;</cs-code>
             </li>
         </ul>
         <br>
         <ul id="ko">
             <li class="fragment">
-                <b>Résultat obtenu</b> $\to$ <code class="listing">balance = -98599&#8364;</code>
+                <b>Résultat obtenu</b> $\to$ <cs-code>balance = -98599&#8364;</cs-code>
             </li>
         </ul>
     </div>
@@ -344,8 +343,8 @@
     </div>
 
     <div id="alert-block" style="text-align: center; width: 60%;" class="skip">
-        <b>Après une itération</b> $\rightarrow$ <code class="listing">balance = 8</code> <br>
-        alors qu'on s'attend à <code class="listing">balance = 9</code> 
+        <b>Après une itération</b> $\rightarrow$ <cs-code>balance = 8</cs-code> <br>
+        alors qu'on s'attend à <cs-code>balance = 9</cs-code> 
     </div>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -489,7 +488,7 @@
     </div>
 
     <ul>
-        <li class="fragment skip">Lorsque $t_{i}$ invoque <code class="listing">commencerSC(i)</code>:
+        <li class="fragment skip">Lorsque $t_{i}$ invoque <cs-code>commencerSC(i)</cs-code>:
             <ul>
                 <li>Vérifier que $t_{1-i}$ n'est pas en SC <u>(sinon, attendre)</u></li>
                 <li>Noter que $t_{i}$ est en SC</li>
@@ -497,7 +496,7 @@
         </li>
 
         <li class="fragment skip">
-            Lorsque $t_{i}$ invoque <code class="listing">finirSC(i)</code>:
+            Lorsque $t_{i}$ invoque <cs-code>finirSC(i)</cs-code>:
             <ul>
                 <li>Noter que $t_{i}$ n'est plus en SC</li>
             </ul>
@@ -895,8 +894,8 @@
       Dans la <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle_Java" target="_blank">JVM</a> de <b>Java</b>, 
       on peut déclarer que des <i>blocs</i> de code<br> sont en <b>exclusion mutuelle</b>.
       <ul>
-        <li class="fragment">utilisation du mot clé <code class="listing">synchronized</code> $\to$ <b>un verrou</b> (<b>lock</b>) sur un objet</li>
-        <li class="fragment">une seule thread dans les blocs <code class="listing">synchronized</code> sur le même objet</li>
+        <li class="fragment">utilisation du mot clé <cs-code>synchronized</cs-code> $\to$ <b>un verrou</b> (<b>lock</b>) sur un objet</li>
+        <li class="fragment">une seule thread dans les blocs <cs-code>synchronized</cs-code> sur le même objet</li>
       </ul>
     </li>
     <li class="fragment skip">
@@ -908,7 +907,7 @@
         une situation <b>d'interblocage</b>.
     </li>
     <li class="fragment skip">
-        Tout bloc <b>non</b> <code class="listing">synchronized</code> (<b>non vérouillé</b>) peut être appelé <br> 
+        Tout bloc <b>non</b> <cs-code>synchronized</cs-code> (<b>non vérouillé</b>) peut être appelé <br> 
         par n'importe qui n'importe quand.
     </li>
   </ul>
@@ -994,7 +993,7 @@
           <ul id="fleche"><li>utilisation d'une <i>file d'attente</i> des <b>PCB</b></li></ul>
       </li>
       <li class="fragment skip">
-          Les fonctions <code class="listing">acquire</code> et <code class="listing">release</code> 
+          Les fonctions <cs-code>acquire</cs-code> et <cs-code>release</cs-code> 
           doivent être <b>atomiques</b> !
           <ul id="fleche"><li>elles sont elles-même des <b>SC</b> pour le sémaphore ...</li></ul>
       </li>

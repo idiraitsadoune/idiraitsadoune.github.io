@@ -211,7 +211,7 @@
     <ul>
         <li class="fragment">
             La description du comportement d'un processus en <b>Java</b> se fait <br>
-            en implémentant la méthode <code class="listing">main()</code> dans une classe. 
+            en implémentant la méthode <cs-code>main()</cs-code> dans une classe. 
 
             <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
                 public class ProcessInstanciation {
@@ -223,7 +223,7 @@
         </li>
 
         <li class="fragment skip">
-            La création d'un processus se fait en exécutant la méthode <code class="listing">main()</code>.
+            La création d'un processus se fait en exécutant la méthode <cs-code>main()</cs-code>.
             <pre><code class="language-shell hljs" data-trim>
                 <script type="text/template">
                     Run with main method
@@ -243,29 +243,29 @@
                 <li class="fragment">
                     en dérivant
                     <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html" target="_blank">
-                        la classe   <code class="listing">Thread</code></a> 
-                        et en <i>surchargeant</i> la méthode <code class="listing">run()</code>.
+                        la classe <cs-code>Thread</cs-code></a> 
+                        et en <i>surchargeant</i> la méthode <cs-code>run()</cs-code>.
                 </li>
                 <li class="fragment">
                     en implémentant
                     <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Runnable.html"  target="_blank">
-                        l'interface <code class="listing">Runnable</code>
+                        l'interface <cs-code>Runnable</cs-code>
                     </a>
-                        contenant la méthode <code class="listing">run()</code>.
+                        contenant la méthode <cs-code>run()</cs-code>.
                 </li>
             </ol>
         </li>
 
         <li class="fragment skip">
-            L'<i>exécution</i> d'un thread se fait en utilisant la méthode <code class="listing">start()</code>. <br>
-            Le code métier (la méthode <code class="listing">run()</code>) sera exécuté en tâche de fond.
+            L'<i>exécution</i> d'un thread se fait en utilisant la méthode <cs-code>start()</cs-code>. <br>
+            Le code métier (la méthode <cs-code>run()</cs-code>) sera exécuté en tâche de fond.
         </li>
     </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Etendre la classe <code class="listing">Thread</code></h2>
+	<h2>Etendre la classe <cs-code>Thread</cs-code></h2>
     <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class FromThreadClass extends Thread {
             public FromThreadClass(String id) {
@@ -294,7 +294,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Implémenter l'interface <code class="listing">Runnable</code></h2>
+	<h2>Implémenter l'interface <cs-code>Runnable</cs-code></h2>
     <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class FromRunnableInterface implements Runnable { 
             private String name ;
@@ -331,7 +331,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+	<h2>Les méthodes <cs-code>sleep()</cs-code> et <cs-code>join()</cs-code></h2>
     <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class ThreadFils extends Thread {
             public ThreadFils(String name) {
@@ -354,7 +354,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+	<h2>Les méthodes <cs-code>sleep()</cs-code> et <cs-code>join()</cs-code></h2>
     <pre data-id="c1" class="fragment"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class Main {
             public static void main(String[] args) {
@@ -383,7 +383,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les méthodes <code class="listing">sleep()</code> et <code class="listing">join()</code></h2>
+	<h2>Les méthodes <cs-code>sleep()</cs-code> et <cs-code>join()</cs-code></h2>
     <pre data-id="c1"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class Main {
             public static void main(String[] args) {
@@ -412,7 +412,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>La méthode <code class="listing">interrupt()</code></h2>
+	<h2>La méthode <cs-code>interrupt()</cs-code></h2>
     <pre  data-id="c1"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
         public class Main {
             public static void main(String[] args) {
