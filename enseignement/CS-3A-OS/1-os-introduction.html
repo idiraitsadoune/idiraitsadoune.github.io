@@ -808,19 +808,19 @@
 	<ul>
 		<li><b>Contrôle de processus</b>
 			<ul>
-				<li class="fragment"><code class="listing">sys_fork</code> : créer un processus</li>
-				<li class="fragment"><code class="listing">sys_wait</code> : attendre la terminaison d'un processus</li>
-				<li class="fragment"><code class="listing">sys_exit</code> : terminer l'exécution d'un processus</li>
-				<li class="fragment"><code class="listing">sys_kill</code> : Envoyer un signal à un processus</li>
+				<li class="fragment"><cs-code>sys_fork</cs-code> : créer un processus</li>
+				<li class="fragment"><cs-code>sys_wait</cs-code> : attendre la terminaison d'un processus</li>
+				<li class="fragment"><cs-code>sys_exit</cs-code> : terminer l'exécution d'un processus</li>
+				<li class="fragment"><cs-code>sys_kill</cs-code> : Envoyer un signal à un processus</li>
 			</ul>
 		</li>
 		<li class="fragment skip">
 			<b>Gestion des fichiers </b>
 			<ul>
-				<li class="fragment"><code class="listing">sys_open/sys_close</code> : ouvrir/fermer un fichier</li>
-				<li class="fragment"><code class="listing">sys_read/sys_write</code> : lire/écrire des données dans un
+				<li class="fragment"><cs-code>sys_open/sys_close</cs-code> : ouvrir/fermer un fichier</li>
+				<li class="fragment"><cs-code>sys_read/sys_write</cs-code> : lire/écrire des données dans un
 					fichier</li>
-				<li class="fragment"><code class="listing">sys_mkdir/sys_rmdir</code> : créer/supprimer un répertoire</li>
+				<li class="fragment"><cs-code>sys_mkdir/sys_rmdir</cs-code> : créer/supprimer un répertoire</li>
 			</ul>
 		</li>
 	</ul>
@@ -829,7 +829,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'appel système <code class="listing">fork()</code></h2>
+	<h2>L'appel système <cs-code>fork()</cs-code></h2>
 
 	<img src="./img/f18-fork.jpeg" height="100%">
 
@@ -841,15 +841,15 @@
 
 	<ul>
 		<li>
-			L'instruction <code  class="listing">os.chdir(path)</code> permet
+			L'instruction <cs-code>os.chdir(path)</cs-code> permet
 			de <i>changer le répertoire courant</i> <br> d'un programme <b>Python</b> en cours d'exécution.
 		</li>
 		<li class="skip fragment">
-			La commande <code  class="listing">cd path</code> permet
+			La commande <cs-code>cd path</cs-code> permet
 			de <i>changer le répertoire courant</i> depuis <br> l'<b>interpréteur de commandes</b> (<b>Shell</b>).
 		</li>
 		<li class="skip fragment">
-			Les deux exécutent <b>la routine système</b> <code class="listing">sys_chdir</code>.
+			Les deux exécutent <b>la routine système</b> <cs-code>sys_chdir</cs-code>.
 		</li>
 	</ul>
 

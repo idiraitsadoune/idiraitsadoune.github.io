@@ -66,14 +66,14 @@
     <p>
         Ce TP fait l'objet d'une notation. Vous travaillerez seul et vous devrez rendre un compte-rendu. 
         Les TP sont à remettre <b style="color: red;">avant <br> le vendredi 8 novembre 2024</b> sur <b>EDUNAO</b>. 
-        Vous devez envoyer un fichier au format <code class="listing">PDF</code> qui devrait être nommé en suivant  <br>
-        la convention suivante : <code class="listing">NOM-TP2.pdf</code>.
+        Vous devez envoyer un fichier au format <cs-code>PDF</cs-code> qui devrait être nommé en suivant  <br>
+        la convention suivante : <cs-code>NOM-TP2.pdf</cs-code>.
     </p>
 </div>
 <div class="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> <b style="color: green;">Rappel</b> 
     <p>
-        Un script shell est un fichier texte possédant l'extension <code class="listing">.sh</code>, comme <code class="listing">toto.sh</code>. <br>
+        Un script shell est un fichier texte possédant l'extension <cs-code>.sh</cs-code>, comme <cs-code>toto.sh</cs-code>. <br>
         Un tel fichier peut être exécuté en commençant son code par une ligne précisant l'interpréteur de commande à utiliser :
 <pre><code class="language-bash"><script type="text/template">#!/bin/bash
 </script></code></pre>
@@ -98,13 +98,13 @@
 </p>
 <p>
     <ul>
-        <li>Ecrire un script <code class="listing">bash</code> copiant tous les fichiers du répertoire courant dans le sous-répertoire <code class="listing">OLD</code> 
-            en ajoutant au nom des fichiers la date du jour au format <code class="listing">"#année-mois-jour"</code>. Il faudra, au préalable, 
-            s'assurer de l'existence du répertoire <code class="listing">OLD</code> et le créer s'il n'existe pas. On vérifiera alors dans ce cas 
+        <li>Ecrire un script <cs-code>bash</cs-code> copiant tous les fichiers du répertoire courant dans le sous-répertoire <cs-code>OLD</cs-code> 
+            en ajoutant au nom des fichiers la date du jour au format <cs-code>"#année-mois-jour"</cs-code>. Il faudra, au préalable, 
+            s'assurer de l'existence du répertoire <cs-code>OLD</cs-code> et le créer s'il n'existe pas. On vérifiera alors dans ce cas 
             que la création du répertoire s'est bien passée.      
         </li>
-        <li>Par exemple, si le répertoire courant comporte un fichier <code class="listing">fich.txt</code> et que le shell est lancé aujourd'hui, 
-            ce programme devra recopier le fichier <code class="listing">fich.txt</code> vers le fichier <code class="listing">OLD/fich#2020-11-04.txt</code>.
+        <li>Par exemple, si le répertoire courant comporte un fichier <cs-code>fich.txt</cs-code> et que le shell est lancé aujourd'hui, 
+            ce programme devra recopier le fichier <cs-code>fich.txt</cs-code> vers le fichier <cs-code>OLD/fich#2020-11-04.txt</cs-code>.
         </li>
     </ul>
 </p>
@@ -114,17 +114,17 @@
 </div>
 <p>
     <ul>
-        <li>Écrire un script <code class="listing">jeter.sh</code> qui permet de manipuler une poubelle à fichier (un
-    répertoire nommé <code class="listing">poubelle</code> situé à votre racine). La commande 
-    <code class="listing">$ ./jeter.sh fichier1 fichier2 ... </code>
+        <li>Écrire un script <cs-code>jeter.sh</cs-code> qui permet de manipuler une poubelle à fichier (un
+    répertoire nommé <cs-code>poubelle</cs-code> situé à votre racine). La commande 
+    <cs-code>$ ./jeter.sh fichier1 fichier2 ... </cs-code>
     est utilisée pour déplacer les fichiers considérés vers la poubelle ;
         </li>
         <li>
             La commande accepte trois options : 
             <ol>
-                <li><code class="listing">-l</code> pour lister le contenu de la poubelle ;</li>
-                <li><code class="listing">-s fichier chemin</code> pour sortir le fichier de la poubelle et le placer à l'emplacement chemin ;</li>
-                <li><code class="listing">-v</code> pour vider la poubelle ;</li>
+                <li><cs-code>-l</cs-code> pour lister le contenu de la poubelle ;</li>
+                <li><cs-code>-s fichier chemin</cs-code> pour sortir le fichier de la poubelle et le placer à l'emplacement chemin ;</li>
+                <li><cs-code>-v</cs-code> pour vider la poubelle ;</li>
             </ol>
         </li>
         <li>Si la poubelle n'existe pas, elle est créée à l'appel de la commande.</li>
@@ -141,12 +141,12 @@ Vous devez également télécharger les codes <b>Java</b> à partir de <a href="
 </div>
 <p> 
     <ul>
-        <li>Définir un script shell <code class="listing">javac_test.sh</code> qui attend un argument et teste si cet argument est un fichier <b>Java</b> compilable sans erreurs.
+        <li>Définir un script shell <cs-code>javac_test.sh</cs-code> qui attend un argument et teste si cet argument est un fichier <b>Java</b> compilable sans erreurs.
         <ul>
-            <li>Si l'argument est un fichier <b>Java</b> qui se compile sans aucune erreur, il affiche sur la sortie standard <code class="listing">file.java : compilé</code>, 
-                génère un fichier <code class="listing">file.class</code>, et termine avec le code de retour <code class="listing">0</code>. </li>
-            <li>Si l'argument est un fichier <b>Java</b> qui ne se compile pas, il affiche sur la sortie standard <code class="listing">file.java : non compilé</code> et termine avec le code de retour <code class="listing">1</code>.</li>
-            <li>Dans tous les autres cas, il affiche <code class="listing">Entree incorrecte</code> sur la sortie d'erreur standard et termine avec le code de retour <code class="listing">2</code>.</li>
+            <li>Si l'argument est un fichier <b>Java</b> qui se compile sans aucune erreur, il affiche sur la sortie standard <cs-code>file.java : compilé</cs-code>, 
+                génère un fichier <cs-code>file.class</cs-code>, et termine avec le code de retour <cs-code>0</cs-code>. </li>
+            <li>Si l'argument est un fichier <b>Java</b> qui ne se compile pas, il affiche sur la sortie standard <cs-code>file.java : non compilé</cs-code> et termine avec le code de retour <cs-code>1</cs-code>.</li>
+            <li>Dans tous les autres cas, il affiche <cs-code>Entree incorrecte</cs-code> sur la sortie d'erreur standard et termine avec le code de retour <cs-code>2</cs-code>.</li>
         </ul>
         </li>
     </ul>  
@@ -159,11 +159,11 @@ Vous devez également télécharger les codes <b>Java</b> à partir de <a href="
 </div>
 <p>
     <ul>
-        <li>Définir un script shell <code class="listing">java_compilation.sh</code> qui prend comme argument un répertoire <code class="listing">rep</code> qui contient des fichiers (<b>Java</b> ou autre), 
-            parcours le contenu du répertoire, exécute <code class="listing">javac_test.sh</code>, et sauvegarde les fichiers <code class="listing">.class</code> générés dans un répertoire <code class="listing">rep/bin</code></li>
+        <li>Définir un script shell <cs-code>java_compilation.sh</cs-code> qui prend comme argument un répertoire <cs-code>rep</cs-code> qui contient des fichiers (<b>Java</b> ou autre), 
+            parcours le contenu du répertoire, exécute <cs-code>javac_test.sh</cs-code>, et sauvegarde les fichiers <cs-code>.class</cs-code> générés dans un répertoire <cs-code>rep/bin</cs-code></li>
 
-        <li>Définir un script shell <code class="listing">java_execution.sh</code> qui prend comme argument un répertoire <code class="listing">rep</code>, teste si le répertoire
-            <code class="listing">rep/bin</code> existe et exécute les fichiers <code class="listing">.class</code> générés par le script de la question précédente.</li>
+        <li>Définir un script shell <cs-code>java_execution.sh</cs-code> qui prend comme argument un répertoire <cs-code>rep</cs-code>, teste si le répertoire
+            <cs-code>rep/bin</cs-code> existe et exécute les fichiers <cs-code>.class</cs-code> générés par le script de la question précédente.</li>
     </ul>
 </p>
 <div class="green-block">

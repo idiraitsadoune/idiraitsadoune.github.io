@@ -119,7 +119,7 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 				</li>
 
 				<li>
-					Ajouter le <b>remote</b> <code class="listing">ebrp</code> avec les lignes suivantes :
+					Ajouter le <b>remote</b> <cs-code>ebrp</cs-code> avec les lignes suivantes :
 					<pre><code class="language-bash"><script type="text/template">[remote "ebrp"]
 	url = ssh://idir@ebrp.irit.fr/srv/git/RodinCore
 	fetch = +refs/heads/*:refs/remotes/ebrp/*
@@ -127,8 +127,8 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 				</li>
 
 				<li>
-					Ajouter la déclaration de la fonction <code class="listing">jenkins-ebrp</code> dans le fichier
-					<code class="listing">.zshenv</code> ou <code class="listing">.bashrc</code>
+					Ajouter la déclaration de la fonction <cs-code>jenkins-ebrp</cs-code> dans le fichier
+					<cs-code>.zshenv</cs-code> ou <cs-code>.bashrc</cs-code>
 					<pre><code class="language-bash"><script type="text/template">jenkins-ebrp() {
 	ssh -N -L 8088:localhost:8080 idir@ebrp.irit.fr &
 	sleep 1
@@ -139,20 +139,20 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 				</li>
 
 				<li>
-					Exécuter la fonction <code class="listing">jenkins-ebrp</code>
+					Exécuter la fonction <cs-code>jenkins-ebrp</cs-code>
 					<pre><code class="language-shell"><script type="text/template">$ jenkins-ebrp
 </script></code></pre>
 				</li>
 
 				<li>
-					Déclencher un build dans le serveur d'intégration <code class="listing">ebrp</code> à partir du
+					Déclencher un build dans le serveur d'intégration <cs-code>ebrp</cs-code> à partir du
 					dernier commit du master local
 					<pre><code class="language-shell"><script type="text/template">$ git push ebrp master:ci
 </script></code></pre>
 				</li>
 
 				<li>
-					Récupérer les modifications présentes sur le serveur d'intégration <code class="listing">ebrp</code>
+					Récupérer les modifications présentes sur le serveur d'intégration <cs-code>ebrp</cs-code>
 					<pre><code class="language-shell"><script type="text/template">$ git pull ebrp ci
 </script></code></pre>
 				</li>
@@ -163,12 +163,12 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 			<ul>
 				<li>
-					Copier le fichier <code class="listing">org.rodinp.releng/toolchains.xml</code>
-					vers le dossier <code class="listing">${user.home}/.m2/</code>
+					Copier le fichier <cs-code>org.rodinp.releng/toolchains.xml</cs-code>
+					vers le dossier <cs-code>${user.home}/.m2/</cs-code>
 				</li>
 				<li>
-					Modifier le fichier <code class="listing">toolchains.xml</code>
-					pour qu'il pointe votre <code class="listing">jdk</code>
+					Modifier le fichier <cs-code>toolchains.xml</cs-code>
+					pour qu'il pointe votre <cs-code>jdk</cs-code>
 				</li>
 				<li>
 					Lancer l'une des commandes suivantes :
@@ -208,12 +208,12 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 				</li>
 
 				<li>
-					Importer dans votre workspace tous les projets listés dans le <code class="listing">pom.xml</code>
+					Importer dans votre workspace tous les projets listés dans le <cs-code>pom.xml</cs-code>
 					de la racine du dépôt cloné (sans les copier).
 				</li>
 
 				<li>
-					Importer également le projet <code class="listing">org.rodinp.releng</code>
+					Importer également le projet <cs-code>org.rodinp.releng</cs-code>
 				</li>
 
 				<li>
@@ -243,22 +243,20 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 			<ul>
 				<li>
-					Dans le projet <code class="listing">org.eventb.parent</code> :
+					Dans le projet <cs-code>org.eventb.parent</cs-code> :
 					<ul>
 						<li>
-							Mettre à jour <code class="listing">eclipse.taget</code> avec la bonne définition
-							du <code class="listing">update site</code> vers le bon <code
-								class="listing">Eclipse SDK</code>
+							Mettre à jour <cs-code>eclipse.taget</cs-code> avec la bonne définition
+							du <cs-code>update site</cs-code> vers le bon <cs-code>Eclipse SDK</cs-code>
 						</li>
 						<li>
-							Dans le fichier <code class="listing">pom.xml</code> :
+							Dans le fichier <cs-code>pom.xml</cs-code> :
 							<ul>
 								<li>
-									Définir la nouvelle <code class="listing">id</code> et la nouvelle <code
-										class="listing">url</code> d'<b>Eclipse SDK</b>
+									Définir la nouvelle <cs-code>id</cs-code> et la nouvelle <cs-code>url</cs-code> d'<b>Eclipse SDK</b>
 								</li>
 								<li>
-									Définir la nouvelle <code class="listing">www-basedir</code>
+									Définir la nouvelle <cs-code>www-basedir</cs-code>
 								</li>
 							</ul>
 						</li>
@@ -266,33 +264,31 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 				</li>
 
 				<li>
-					Mettre à jours la version d'eclipse dans le fichier <code
-						class="listing">org.rodinp-feature/feature.xml</code>
+					Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp-feature/feature.xml</cs-code>
 				</li>
 
 				<li>
-					Mettre à jours la version d'eclipse dans le fichier <code
-						class="listing">org.rodinp.platform/Rodin.p2.inf</code> (update site)
+					Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp.platform/Rodin.p2.inf</cs-code> (update site)
 				</li>
 
 				<li>
 					Mettre à jours l'année et la version d'eclipse dans les fichiers : <br>
-					- <code class="listing">org.rodinp.platform/plugin.properties</code> <br>
-					- <code class="listing">org.rodinp.platform/about.properties</code> <br>
-					- <code class="listing">org.rodinp/about.properties</code> <br>
-					- <code class="listing">org.eventb.ide/about.properties</code> <br>
+					- <cs-code>org.rodinp.platform/plugin.properties</cs-code> <br>
+					- <cs-code>org.rodinp.platform/about.properties</cs-code> <br>
+					- <cs-code>org.rodinp/about.properties</cs-code> <br>
+					- <cs-code>org.eventb.ide/about.properties</cs-code> <br>
 				</li>
 
 				<li>
 					Mettre à jours l'année dans les fichiers : <br>
-					- <code class="listing">org.eventb.ide-feature/feature.properties </code> <br>
-					- <code class="listing">org.rodinp-feature/feature.properties </code> <br>
-					- <code class="listing">org.rodinp.platform-feature/feature.properties</code> <br>
-					- <code class="listing">org.rodinp.platform.tests-feature/feature.properties</code> <br>
+					- <cs-code>org.eventb.ide-feature/feature.properties </cs-code> <br>
+					- <cs-code>org.rodinp-feature/feature.properties </cs-code> <br>
+					- <cs-code>org.rodinp.platform-feature/feature.properties</cs-code> <br>
+					- <cs-code>org.rodinp.platform.tests-feature/feature.properties</cs-code> <br>
 				</li>
 
 				<li>
-					Mettre à jour l'année dans l'image du produit (<code class="listing">splash</code>).
+					Mettre à jour l'année dans l'image du produit (<cs-code>splash</cs-code>).
 				</li>
 
 				<li>
@@ -307,29 +303,24 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 			<ul>
 				<li>
-					Mettre à jour les versions des plugins en commençant par le projet <code
-						class="listing">org.eventb.parent</code>
+					Mettre à jour les versions des plugins en commençant par le projet <cs-code>org.eventb.parent</cs-code>
 				</li>
 
 				<li>
-					Mettre à jour tous les fichiers <code class="listing">pom.xml</code> avec
-					la nouvelle version du projet <code class="listing">org.eventb.parent</code>
+					Mettre à jour tous les fichiers <cs-code>pom.xml</cs-code> avec
+					la nouvelle version du projet <cs-code>org.eventb.parent</cs-code>
 				</li>
 
 				<li>
 					Mettre à jours les plugins : <br>
-					- <code
-						class="listing">Rodin.product</code class="listing">, <code class="listing">plugin.xml</code> et
-					<code class="listing">pom.xml</code> dans <code class="listing">org.rodinp.platform</code> <br>
-					- <code class="listing">feature.xml</code> et <code class="listing">pom.xml</code> dans <code
-						class="listing">org.rodinp.platform-feature</code> <br>
-					- <code class="listing">feature.xml</code> et <code class="listing">pom.xml</code> dans <code
-						class="listing">org.rodinp.platform.test-feature</code> <br>
-					- <code class="listing">feature.xml</code> et <code class="listing">pom.xml</code> dans <code
-						class="listing">org.eventb.ide-feature</code> <br>
-					- <code class="listing">org.rodinp.platform.product</code> et <code class="listing">pom.xml</code>
-					dans <code class="listing">org.rodinp.platform.repository</code> <br>
-					- <code class="listing">pom.xml</code> dans <code class="listing">org.rodinp.dev</code> <br>
+					- <cs-code>Rodin.product</cs-code>, <cs-code>plugin.xml</cs-code> et
+					<cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform</cs-code> <br>
+					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform-feature</cs-code> <br>
+					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform.test-feature</cs-code> <br>
+					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.eventb.ide-feature</cs-code> <br>
+					- <cs-code>org.rodinp.platform.product</cs-code> et <cs-code>pom.xml</cs-code>
+					dans <cs-code>org.rodinp.platform.repository</cs-code> <br>
+					- <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.dev</cs-code> <br>
 				</li>
 
 				<li>
@@ -354,12 +345,11 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 						target="_blank">Core_Rodin_Platform de Source Forge</a>
 				</li>
 
-				<li>Copier les binaires du dossier <code
-						class="listing">org.rodinp.platform.repository/target/product/</code>
+				<li>Copier les binaires du dossier <cs-code>org.rodinp.platform.repository/target/product/</cs-code>
 					vers le dossier créé </li>
 
-				<li>Copier également le <code class="listing">org.rodinp.dev</code> à partir du dossier
-					<code class="listing">org.rodinp.dev/target/</code> vers le dossier créé
+				<li>Copier également le <cs-code>org.rodinp.dev</cs-code> à partir du dossier
+					<cs-code>org.rodinp.dev/target/</cs-code> vers le dossier créé
 				</li>
 
 				<li>Vérifier que le téléchargement par défaut de Rodin est sur la nouvelle version </li>
@@ -368,10 +358,9 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 			<h2>Mise à jour du Update site</h2>
 			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 			<ul>
-				<li>Mettre à jour le script <code class="listing">org.rodinp.releng/coreUpdates/compSite.xml</code></li>
+				<li>Mettre à jour le script <cs-code>org.rodinp.releng/coreUpdates/compSite.xml</cs-code></li>
 
-				<li>Générer le <b>Update site</b> en exécutant dans <b>Eclipse</b> <code
-						class="listing">Run as > Ant Build ...</code></li>
+				<li>Générer le <b>Update site</b> en exécutant dans <b>Eclipse</b> <cs-code>Run as > Ant Build ...</cs-code></li>
 
 				<li>Sélectionner l'option <b>"Run in the same JRE as the workspace"</b> </li>
 
@@ -379,10 +368,10 @@ $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore .
 						href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
 						target="_blank">Core_Update_Site de Source Forge</a></li>
 
-				<li>Copier le contenu de <code class="listing">org.rodinp.platform.repository/target/repository/</code>
+				<li>Copier le contenu de <cs-code>org.rodinp.platform.repository/target/repository/</cs-code>
 					vers le dossier créé</li>
 
-				<li>Copier les fichiers générés dans <code class="listing">/tmp/compo</code> vers la racine de <a
+				<li>Copier les fichiers générés dans <cs-code>/tmp/compo</cs-code> vers la racine de <a
 						href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
 						target="_blank">Core_Update_Site de Source Forge</a></li>
 			</ul>

@@ -71,23 +71,23 @@
 	Déroulement d'un partie du jeu
 </div>
 <ul>
-    <li>Le <code class="listing">Serveur</code> commence par générer un nombre aléatoire entre <code class="listing">0</code> et <code class="listing">100</code>.</li>
+    <li>Le <cs-code>Serveur</cs-code> commence par générer un nombre aléatoire entre <cs-code>0</cs-code> et <cs-code>100</cs-code>.</li>
 
-    <li>Le <code class="listing">Serveur</code> attend que deux joueurs (<code class="listing">Clients</code>) se connectent.</li>
+    <li>Le <cs-code>Serveur</cs-code> attend que deux joueurs (<cs-code>Clients</cs-code>) se connectent.</li>
 
-    <li>Une fois que les deux joueurs sont connectés, le serveur leurs envoie un message <code class="listing">"GO"</code> pour leur permettre de commencer le jeu.</li>
+    <li>Une fois que les deux joueurs sont connectés, le serveur leurs envoie un message <cs-code>"GO"</cs-code> pour leur permettre de commencer le jeu.</li>
 
-    <li>Chaque joueur va essayer de trouver le nombre aléatoire généré par le <code class="listing">Serveur</code>.
+    <li>Chaque joueur va essayer de trouver le nombre aléatoire généré par le <cs-code>Serveur</cs-code>.
         <ul>
             <li>Le joueur envoie un nombre au serveur</li>
-            <li>Le serveur répond par : <code class="listing">"plus grand"</code>, <code class="listing">"plus petit"</code>, ou <code class="listing">"trouvé"</code>.</li>
+            <li>Le serveur répond par : <cs-code>"plus grand"</cs-code>, <cs-code>"plus petit"</cs-code>, ou <cs-code>"trouvé"</cs-code>.</li>
         </ul>
 	</li>
 
     <li>
         A la fin du jeu (les deux joueurs ont réussi à trouver le nombre aléatoire généré par le serveur), 
-        les deux joueurs reçoivent un message de la part du serveur contenant le nombre de tentatives et <code class="listing">"Vous avez gagné"</code> 
-        si le joueur a réussi à trouver le nombre caché avec moins de tentatives que son adversaire, <code class="listing">"Vous avez perdu"</code> sinon.
+        les deux joueurs reçoivent un message de la part du serveur contenant le nombre de tentatives et <cs-code>"Vous avez gagné"</cs-code> 
+        si le joueur a réussi à trouver le nombre caché avec moins de tentatives que son adversaire, <cs-code>"Vous avez perdu"</cs-code> sinon.
     </li>
 </ul>
 <div class="subsection-title">
@@ -266,7 +266,7 @@ le protocole suivant a été implémenté :
 </ul>
 
 <p>
-Le code <code class="listing">Java</code> suivant permet de collecter le nom et l'adresse IP d'une machine :
+Le code <cs-code>Java</cs-code> suivant permet de collecter le nom et l'adresse IP d'une machine :
 </p>
 <pre><code class="language-java"><script type="text/template">import java.net.*;
 
@@ -285,8 +285,8 @@ public class Test {
 <p>
 	<ul>
 		<li>à chaque connexion d'un client, un thread est lancé pour collecter les informations envoyées.</li>
-		<li>Après reception des informations, elles sont stockées dans une liste gérée par le serveur et un message <code class="listing">"ACK"</code> est envoyé au client.</li>
-		<li>Après la réception du message <code class="listing">"ACK"</code> par le client, il renvoie à son tour un message <code class="listing">"ACK"</code> au Thread du Serveur qui peut s'arrêter.</li>
+		<li>Après reception des informations, elles sont stockées dans une liste gérée par le serveur et un message <cs-code>"ACK"</cs-code> est envoyé au client.</li>
+		<li>Après la réception du message <cs-code>"ACK"</cs-code> par le client, il renvoie à son tour un message <cs-code>"ACK"</cs-code> au Thread du Serveur qui peut s'arrêter.</li>
 		</ul>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -297,7 +297,7 @@ public class Test {
 
 <ul>
     <li>
-        Proposez en <code class="listing">Java</code> un protocole client/serveur pour réaliser ce service. 
+        Proposez en <cs-code>Java</cs-code> un protocole client/serveur pour réaliser ce service. 
     </li>
 </ul>
 </p>

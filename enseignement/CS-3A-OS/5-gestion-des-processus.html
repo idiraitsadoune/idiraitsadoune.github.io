@@ -246,19 +246,19 @@
 		<li class="fragment skip">
 			<b>Sous UNIX</b> $\rightarrow$ 2 appels système
 			<ul>
-				<li><code class="listing">fork</code> pour créer un processus à partir du processus
+				<li><cs-code>fork</cs-code> pour créer un processus à partir du processus
 					courant 
 					<ul id="fleche"><li>le processus courant est <i>dupliqué</i></li></ul>
 				</li>
-				<li><code class="listing">exec</code> pour <b>remplacer</b> le processus courant par un
+				<li><cs-code>exec</cs-code> pour <b>remplacer</b> le processus courant par un
 					autre processus</li>
 			</ul>
 		</li>
 		<li class="fragment skip">
 			<b>Sous WINDOWS</b>
 			<ul>
-				<li><code class="listing">createprocess</code> pour créer un processus 
-					(<b>cf</b>. <code class="listing">exec</code> <b>Unix</b>) 
+				<li><cs-code>createprocess</cs-code> pour créer un processus 
+					(<b>cf</b>. <cs-code>exec</cs-code> <b>Unix</b>) 
 					<ul id="fleche"><li>le processus courant est <b>conservé</b></li></ul>
 				</li>
 			</ul>
@@ -398,7 +398,7 @@
 						<li class="fragment">son quantum a expiré $\rightarrow$ <b>Prêt</b></li>
 						<li class="fragment">crée un processus fils $\rightarrow$ <b>Prêt</b></li>
 						<li class="fragment">fait une demande d'E/S $\rightarrow$ <b>Bloqué</b></li>
-						<li class="fragment">exécute <code class="listing">wait</code> $\rightarrow$ <b>Bloqué</b></li>
+						<li class="fragment">exécute <cs-code>wait</cs-code> $\rightarrow$ <b>Bloqué</b></li>
 					</ul>
 				</li>
 			</ul>

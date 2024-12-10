@@ -64,9 +64,9 @@
     Exercice 1 : Structures de contrôle case, boucle for
 </div>
 <p>
-    Écrire un script <code class="listing">typefic.sh</code> qui prend des noms de fichiers en arguments. Si le fichier se termine 
-    par <code class="listing">.doc</code> ou <code class="listing">.pdf</code>, afficher un message spécifique. 
-    Sinon afficher <code class="listing">"Ni DOC, ni PDF"</code>.
+    Écrire un script <cs-code>typefic.sh</cs-code> qui prend des noms de fichiers en arguments. Si le fichier se termine 
+    par <cs-code>.doc</cs-code> ou <cs-code>.pdf</cs-code>, afficher un message spécifique. 
+    Sinon afficher <cs-code>"Ni DOC, ni PDF"</cs-code>.
 </p>
 <pre><code class="language-shell"><script type="text/template">$ typefic.sh f1.doc f2.pdf f3.txt  
 f1.doc : Fichier DOC 
@@ -103,12 +103,12 @@ done
     <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>  
 	<b style="color: navy;">Commandes utiles :</b>
     <p>
-        <code class="listing">tr</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/tr.1.html" target="_blank">man tr</a>). <br>
-        <code class="listing">mv</code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/mv.1.html" target="_blank">man mv</a>).   
+        <cs-code>tr</cs-code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/tr.1.html" target="_blank">man tr</a>). <br>
+        <cs-code>mv</cs-code> (utilisez ce lien <a href="https://man7.org/linux/man-pages/man1/mv.1.html" target="_blank">man mv</a>).   
     </p>	
 </div>
 <p>
-    Écrire un script <code class="listing">maj_min.sh</code> :
+    Écrire un script <cs-code>maj_min.sh</cs-code> :
     <ul>
         <li>Argument facultatif : un nom de répertoire. La valeur par défaut de l'argument sera le répertoire courant.</li>
         <li>Vérifier que l'éventuel argument est un répertoire.</li>
@@ -158,18 +158,18 @@ done
     <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>  
 	<b style="color: navy;">Commandes utiles :</b>
     <p>
-        <code class="listing">grep</code> (utilisez ce lien 
+        <cs-code>grep</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
-        <code class="listing">wc</code> (utilisez ce lien 
+        <cs-code>wc</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/wc.1.html" target="_blank">man wc</a>). <br>
-        <code class="listing">ps</code> (utilisez ce lien 
+        <cs-code>ps</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/ps.1.html" target="_blank">man ps</a>). <br> 
-        <code class="listing">id</code> (utilisez ce lien 
+        <cs-code>id</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/id.1.html" target="_blank">man id</a>).
     </p>	
 </div>
 <p>
-    Écrire un script <code class="listing">proc_users.sh</code> :
+    Écrire un script <cs-code>proc_users.sh</cs-code> :
     <ul>
         <li>Arguments : un ou plusieurs noms d'utilisateurs.</li>
         <li>Tester le nombre d'arguments reçus : il doit y avoir au moins un argument.</li>
@@ -233,26 +233,26 @@ done
     <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>  
 	<b style="color: navy;">Commandes utiles :</b>
     <p>
-        <code class="listing">grep</code> (utilisez ce lien 
+        <cs-code>grep</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/grep.1.html" target="_blank">man grep</a>). <br>
-        <code class="listing">file</code> (utilisez ce lien 
+        <cs-code>file</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank">man file</a>). <br>
-        <code class="listing">find</code> (utilisez ce lien 
+        <cs-code>find</cs-code> (utilisez ce lien 
         <a href="https://man7.org/linux/man-pages/man1/find.1.html" target="_blank">man find</a>). 
     </p>	
 </div>
 <p>
-    Écrire un script <code class="listing">consulte.sh</code> :
+    Écrire un script <cs-code>consulte.sh</cs-code> :
     <ul>
         <li>Argument facultatif : un nom de répertoire. Vérifier que l'argument reçu est un répertoire.</li>
         <li>Si le script ne reçoit pas de nom de répertoire, traiter le répertoire courant.</li>
         <li>Rechercher tous les fichiers ordinaires qui sont sous ce répertoire (à tous les niveaux).</li>
         <li>Pour chaque fichier de contenu texte accessible en lecture, demander à l'utilisateur 
             s'il veut consulter le fichier. Un fichier non texte sera ignoré.</li>
-        <li>L'utilisateur pourra saisir <code class="listing">'o'</code>, <code class="listing">'O'</code>, 
-            <code class="listing">'oui'</code>, <code class="listing">'OUI'</code> pour consulter le fichier,
-            <code class="listing">'n'</code>, <code class="listing">'N'</code>, <code class="listing">'non'</code>, 
-            <code class="listing">'NON'</code> pour ne pas le consulter, ou <code class="listing">'q'</code> pour quitter le script. 
+        <li>L'utilisateur pourra saisir <cs-code>'o'</cs-code>, <cs-code>'O'</cs-code>, 
+            <cs-code>'oui'</cs-code>, <cs-code>'OUI'</cs-code> pour consulter le fichier,
+            <cs-code>'n'</cs-code>, <cs-code>'N'</cs-code>, <cs-code>'non'</cs-code>, 
+            <cs-code>'NON'</cs-code> pour ne pas le consulter, ou <cs-code>'q'</cs-code> pour quitter le script. 
             Toute autre réponse engendrera une nouvelle demande de saisie.</li>
         <li>Si l'utilisateur souhaite consulter le fichier : afficher le contenu paginé du fichier à l'écran.</li>
         <li>Si l'utilisateur ne souhaite pas consulter le fichier : passer au fichier suivant.</li>

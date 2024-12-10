@@ -164,7 +164,7 @@
 
   <ul>
     <li>
-      <b>Fichiers texte</b>: <code class="listing">.txt</code>
+      <b>Fichiers texte</b>: <cs-code>.txt</cs-code>
       <ul>
         <li><i>données textuelles</i> à l'usage de l'utilisateur humain</li>
         <li>succession de <i>caractères</i> ...</li>
@@ -172,7 +172,7 @@
     </li>
 
     <li class="skip fragment">
-      <b>Fichiers source</b>: <code class="listing">.c</code>, <code class="listing">.java</code>, ...
+      <b>Fichiers source</b>: <cs-code>.c</cs-code>, <cs-code>.java</cs-code>, ...
       <ul>
         <li>fourni par un humain pour être traité par la machine</li>
         <li>composés d'<i>instructions</i> ...</li>
@@ -180,7 +180,7 @@
     </li>
 
     <li class="skip fragment">
-      <b>Exécutable</b>: <code class="listing">.exe</code>, ...
+      <b>Exécutable</b>: <cs-code>.exe</cs-code>, ...
       <ul>
         <li>construits par <i>un compilateur</i> à partir d'un fichier source</li>
         <li>succession d'<i>octets</i> ...</li>
@@ -292,7 +292,7 @@
     <li class="skip fragment">
       <b>Mot de passe</b>
       <ul>
-        <li>1 mot de passe par fichier $\times$ type d'accès (<code class="listing">r</code>, <code class="listing">w</code>, ...)</li>
+        <li>1 mot de passe par fichier $\times$ type d'accès (<cs-code>r</cs-code>, <cs-code>w</cs-code>, ...)</li>
       </ul>
     </li>
     <ul id="ko" class="fragment">
@@ -320,26 +320,26 @@
         <li class="fragment">
           Ensemble de groupes définis a priori
           <ul>
-            <li><strong>Ex</strong>: <code class="listing">admin</code>, <code class="listing">dev-disque</code>, 
-              <code class="listing">user-disque</code>, <code class="listing">dev-ram</code>, <code class="listing">user-ram</code></li>
+            <li><strong>Ex</strong>: <cs-code>admin</cs-code>, <cs-code>dev-disque</cs-code>, 
+              <cs-code>user-disque</cs-code>, <cs-code>dev-ram</cs-code>, <cs-code>user-ram</cs-code></li>
           </ul>
         </li>
 
         <li class="fragment">
           <b>FCB</b>: 1 utilisateur + 1 groupe (propriétaires)
           <ul>
-            <li><strong>Ex</strong>: <code class="listing">toto.c</code>, <code class="listing">u=batman</code>, 
-              <code class="listing">g=dev-disque</code></li>
+            <li><strong>Ex</strong>: <cs-code>toto.c</cs-code>, <cs-code>u=batman</cs-code>, 
+              <cs-code>g=dev-disque</cs-code></li>
           </ul>
         </li>
 
         <li class="fragment">
           Utilisateur $\to$ liste de groupes
           <ul>
-            <li><strong>Ex</strong>: <code class="listing">robin</code>, <code class="listing">g=[user-disque,dev-ram]</code></li>
+            <li><strong>Ex</strong>: <cs-code>robin</cs-code>, <cs-code>g=[user-disque,dev-ram]</cs-code></li>
           </ul>
         </li>
-        <ul id="fleche" class="fragment"><li><code class="listing">robin</code> n'a pas accès à <code class="listing">toto.c</code></li></ul>
+        <ul id="fleche" class="fragment"><li><cs-code>robin</cs-code> n'a pas accès à <cs-code>toto.c</cs-code></li></ul>
       </ul>
     </li>
 
@@ -456,7 +456,7 @@
       <br>
       <ul class="fragment">
         <ul>
-          <li>L'appel système <code class="listing">open</code> permet de <i>charger</i> le <b>FCB</b> <i>en mémoire</i>.</li>
+          <li>L'appel système <cs-code>open</cs-code> permet de <i>charger</i> le <b>FCB</b> <i>en mémoire</i>.</li>
           <li>L'<b>OS</b> impose que tout accès à un fichier soit <i>précédé d'une ouverture</i>.</li>
         </ul>
       </ul>
@@ -486,7 +486,7 @@
     <li class="skip fragment">
       Gestion par l'<b>OS</b>
       <ul>
-        <li><b>implicite</b> $\to$ <code class="listing">open</code> implicite au premier accès</li>
+        <li><b>implicite</b> $\to$ <cs-code>open</cs-code> implicite au premier accès</li>
         <li><b>explicite</b> $\to$ <b style="color: red;">exception</b> si le fichier n'a pas été ouvert avant</li>
         <li><i>une table de fichiers ouverts globale</i> avec compteurs</li>
         <li><i>une table par processus</i> $\to$ fermeture à la terminaison</li>

@@ -99,8 +99,8 @@
 <p>
     <ol>
         <li>En utilisant 2 sémaphores, dont vous préciserez les valeurs initiales, écrivez le pseudo-code des fonctions 
-            <code class="listing">barriere_1()</code> <br> et <code class="listing">barriere_2()</code>, qui doivent être telles que le <b>Thread_1</b> ne sort de 
-            <code class="listing">barriere_1()</code> que lorsque le <b>Thread_2</b> a atteint <code class="listing">barriere_2()</code> <br>
+            <cs-code>barriere_1()</cs-code> <br> et <cs-code>barriere_2()</cs-code>, qui doivent être telles que le <b>Thread_1</b> ne sort de 
+            <cs-code>barriere_1()</cs-code> que lorsque le <b>Thread_2</b> a atteint <cs-code>barriere_2()</cs-code> <br>
             (et réciproquement).</li>
 
 <!-- CORRECTION ################# -->
@@ -140,7 +140,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 </div>
 <!-- END CORRECTION ################# -->
 
-        <li>Généralisez au cas de <code class="listing">N</code> threads</li>
+        <li>Généralisez au cas de <cs-code>N</cs-code> threads</li>
 
 <!-- CORRECTION ################# -->
 <div class="green-block">
@@ -167,7 +167,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <!-- END CORRECTION ################# -->
 
         <li>Proposez une autre solution, dans laquelle un thread auxiliaire (coordinateur) reçoit un signal quand le <b>Thread_i</b> 
-            atteint sa barrière, et débloque les <code class="listing">N</code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
+            atteint sa barrière, et débloque les <cs-code>N</cs-code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
 
 <!-- CORRECTION ################# -->
 <div class="green-block">
@@ -224,7 +224,7 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
     <ol>
         <li>On supposera dans un premier temps que le tunnel peut contenir un nombre quelconque de véhicules, 
             et on tolère les attentes infinies.</li>
-        <li>Modifiez votre solution de manière à garantir que, à un instant donné, au plus <code class="listing">4</code> véhicules 
+        <li>Modifiez votre solution de manière à garantir que, à un instant donné, au plus <cs-code>4</cs-code> véhicules 
             (dans la même direction) sont sur le tunnel.</li>
         <li>Comment faire en sorte que les véhicules joignant la France (resp. L'Espagne) ne monopolisent pas le tunnel?</li>
     </ol>
@@ -317,11 +317,11 @@ Semaphore fifo = <span class="kd">new</span> Semaphore(1); <span class="cm">// Q
     Exercice 3 - Diffusion de messages
 </div>
 <p>
-    On considère un système à <code class="listing">1</code> producteur et <code class="listing">C</code> consommateurs partageant une boîte à lettres pouvant contenir <code class="listing">N</code> messages. 
+    On considère un système à <cs-code>1</cs-code> producteur et <cs-code>C</cs-code> consommateurs partageant une boîte à lettres pouvant contenir <cs-code>N</cs-code> messages. 
     Le producteur dépose les messages dans la boîte à lettres, et les consommateurs les y récupèrent. Chaque message déposé (une fois) 
-    par le producteur doit être lu par les <code class="listing">C</code> consommateurs. On impose également que les consommateurs reçoivent les messages 
+    par le producteur doit être lu par les <cs-code>C</cs-code> consommateurs. On impose également que les consommateurs reçoivent les messages 
     dans l'ordre où ils ont été déposés. Il faut noter que les consommateurs ne sont pas synchronisés, et que, par exemple, 
-    un consommateur rapide peut avoir lu jusqu'à <code class="listing">N</code> messages de plus qu'un consommateur plus lent.
+    un consommateur rapide peut avoir lu jusqu'à <cs-code>N</cs-code> messages de plus qu'un consommateur plus lent.
 </p>
 <p>
     <ul>

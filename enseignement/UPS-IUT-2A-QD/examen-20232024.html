@@ -69,7 +69,7 @@
     <ul>
         <li>
             Vous devez envoyer un fichier au format <b>ZIP</b> contenant tous vos sources et nommé avec la convention suivante : 
-            <code class="listing">NOM-QD-DS.zip</code>.
+            <cs-code>NOM-QD-DS.zip</cs-code>.
         </li>
     </ul>
     </p>	 
@@ -83,12 +83,12 @@
     On souhaite proposer un service de synchronisation en ligne avec le fonctionnement suivant :
 
 <ol>
-  <li>Un client se connecte à ce service en s’adressant au port <code class="listing">8765</code>.</li> 
+  <li>Un client se connecte à ce service en s’adressant au port <cs-code>8765</cs-code>.</li> 
   <li>S’il est le premier ou le deuxième à se connecter, alors il sera mis en attente.</li> 
-  <li>S'il est le troisième client à se connecter, alors le serveur envoie un message <code class="listing">"start"</code> aux trois clients.</li> 
-  <li>Une fois lancé, un client doit produire <code class="listing">10</code> entiers aléatoires qu’il transmettra au serveur. La transmission se fait entier par entier.</li> 
+  <li>S'il est le troisième client à se connecter, alors le serveur envoie un message <cs-code>"start"</cs-code> aux trois clients.</li> 
+  <li>Une fois lancé, un client doit produire <cs-code>10</cs-code> entiers aléatoires qu’il transmettra au serveur. La transmission se fait entier par entier.</li> 
   <li>Les messages reçus par le serveurs doivent être stockés dans un seul tableau en respectant ordre de réception.</li> 
-  <li>A la fin, le serveur envoie un message <code class="listing">"end"</code> pour signifier la fin de la transmission aux trois
+  <li>A la fin, le serveur envoie un message <cs-code>"end"</cs-code> pour signifier la fin de la transmission aux trois
     clients.</li> 
 </ol>
 

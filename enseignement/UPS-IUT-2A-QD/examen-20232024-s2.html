@@ -69,7 +69,7 @@
     <ul>
         <li>
             Vous devez envoyer un fichier au format <b>ZIP</b> contenant tous vos sources et nommé avec la convention suivante : 
-            <code class="listing">NOM-QD-DS.zip</code>.
+            <cs-code>NOM-QD-DS.zip</cs-code>.
         </li>
     </ul>
     </p>	 
@@ -81,24 +81,24 @@
 
 <p class="text-justify">
 <ul>
-    <li>On considère un ensemble de <code class="listing">P producteurs</code> et <code class="listing">C consommateurs</code>, 
+    <li>On considère un ensemble de <cs-code>P producteurs</cs-code> et <ccs-code>C consommateurs</cs-code>, 
         communiquant par des messages 
         de longueur fixe à travers une zone de mémoire partagée (<b>boîte à lettres</b>) gérée en  <b>FIFO</b> par un <b>serveur</b>. 
         Les producteurs y déposent des messages ; les consommateurs en retirent (ou extraient) des messages.
     </li>
 
     <li style="padding-top: 20px;">
-        Cette boîte à lettres est réalisée à l’aide d’un <b>tableau circulaire</b> de taille <code class="listing">N</code>, 
-        noté <code class="listing">boiteALettre</code>. 
-        Chaque élément de ce tableau est susceptible de contenir un <b>message</b> de type <code class="listing">Integer</code>.
+        Cette boîte à lettres est réalisée à l’aide d’un <b>tableau circulaire</b> de taille <cs-code>N</cs-code>, 
+        noté <cs-code>boiteALettre</cs-code>. 
+        Chaque élément de ce tableau est susceptible de contenir un <b>message</b> de type <cs-code>Integer</cs-code>.
     </li>
 
     <li style="padding-top: 20px;">
-        On désignera par <code class="listing">finDepot</code> (resp. <code class="listing">debutRetrait</code>) 
+        On désignera par <cs-code>finDepot</cs-code> (resp. <cs-code>debutRetrait</cs-code>) 
         l’indice dans ce tableau de la prochaine place libre pour un dépôt
-        (resp. du prochain message à extraire). <code class="listing">finDepot</code> et <code class="listing">debutRetrait</code> 
-        sont initialisés à <code class="listing">0</code> 
-        et sont incrémentés (modulo <code class="listing">N</code>) après chaque opération de dépôt (resp. retrait).
+        (resp. du prochain message à extraire). <cs-code>finDepot</cs-code> et <cs-code>debutRetrait</cs-code> 
+        sont initialisés à <cs-code>0</cs-code> 
+        et sont incrémentés (modulo <cs-code>N</cs-code>) après chaque opération de dépôt (resp. retrait).
     </li>
 
     <li style="padding-top: 20px;">
@@ -128,7 +128,7 @@
 </div>
 <p class="text-justify">
     En utilisant les différents outils vus en cours, proposez une solution en \mcg{Java} qui implémente 
-    le système producteurs - consommateurs (<code class="listing">clients</code>) / Boite à Lettres (<code class="listing">Serveur</code>). 
+    le système producteurs - consommateurs (<cs-code>clients</cs-code>) / Boite à Lettres (<cs-code>Serveur</cs-code>). 
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

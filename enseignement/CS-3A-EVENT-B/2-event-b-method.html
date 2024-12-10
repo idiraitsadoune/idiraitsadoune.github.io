@@ -359,7 +359,7 @@
    
   <ul>
     <li><b>STATIC PART</b> of the state $\to$ <b>constant</b> <cs-i>$d$</cs-i> with <b>axiom</b>  
-        <code class="listing">axm0_1</code></li>
+        <cs-code>axm0_1</cs-code></li>
 
 <pre id="eb" class="math-code" style="width: 30%;">
 <b>CONSTANTS</b>
@@ -369,7 +369,7 @@
 </pre>
 
     <li class="skip"><cs-i>$d$</cs-i> is the maximum number of cars allowed on the Island-Bridge</li>
-    <li class="skip"><code class="listing">axm0_1</code> states that <cs-i>$d$</cs-i> is a natural number</li>
+    <li class="skip"><cs-code>axm0_1</cs-code> states that <cs-i>$d$</cs-i> is a natural number</li>
     <li class="skip">Constant <cs-i>$d$</cs-i> is a member of the set <cs-i>$\mathbb N = \{0,1,2,...\}$</cs-i></li>
   </ul>
  
@@ -381,7 +381,7 @@
   
   <ul>
     <li><b>DYNAMIC PART</b> of the state $\to$ <b>variable</b> <cs-i>$n$</cs-i> with <b>invariants</b>  
-        <code class="listing">inv0_1</code> and <code class="listing">inv0_2</code></li>
+        <cs-code>inv0_1</cs-code> and <cs-code>inv0_2</cs-code></li>
  
 <pre id="eb" class="math-code" style="width: 25%;">
 <b>VARIABLES</b>
@@ -392,16 +392,16 @@
 </pre>
 
     <li class="skip"><cs-i>$n$</cs-i> is the <b>effective number of cars</b>  on the Island-Bridge</li>
-    <li class="skip"><cs-i>$n$</cs-i> is a natural number (<code class="listing">inv0_1</code>)</li>
+    <li class="skip"><cs-i>$n$</cs-i> is a natural number (<cs-code>inv0_1</cs-code>)</li>
     <li class="skip"><cs-i>$n$</cs-i> is always smaller than or equal to <cs-i>$d$</cs-i> 
-        (<code class="listing">inv0_2</code>) $\to$ this is <b>FUN 2</b></li>
+        (<cs-code>inv0_2</cs-code>) $\to$ this is <b>FUN 2</b></li>
   </ul>
   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Event <code class="listing">ML_out</code></h2>
+	<h2>Event <cs-code>ML_out</cs-code></h2>
 
   <ul>
     <li>This is the <b>first transition</b>  (or event) that can be <b>observed</b> </li>
@@ -418,7 +418,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Event <code class="listing">ML_in</code></h2>
+	<h2>Event <cs-code>ML_in</cs-code></h2>
 
   <ul>
     <li>We can also observe a <b>second transition</b> (or event) </li>
@@ -439,7 +439,7 @@
     
   <ul>
     <li>An event is denoted by its <b>name</b>  and its <b>action</b>  (an assignment)</li>
-    <li class="fragment skip">Event <code class="listing">ML_out</code> <b>increments</b>  the number of cars</li>
+    <li class="fragment skip">Event <cs-code>ML_out</cs-code> <b>increments</b>  the number of cars</li>
 
 <pre id="eb" class="math-code fragment" style="width: 40%;">
 ML_out $\mathrel{\widehat=}$
@@ -448,7 +448,7 @@ ML_out $\mathrel{\widehat=}$
   <i>end</i>
 </pre>
 
-    <li class="fragment skip">Event <code class="listing">ML_in</code> <b>decrements</b>  the number of cars</li>
+    <li class="fragment skip">Event <cs-code>ML_in</cs-code> <b>decrements</b>  the number of cars</li>
 
 <pre id="eb" class="math-code fragment" style="width: 40%;">
 ML_in $\mathrel{\widehat=}$
@@ -587,13 +587,13 @@ ML_in $\mathrel{\widehat=}$
 	<h2>Intuition <br> about Invariant Preservation</h2>
 
 	<ul>
-    <li>Let us consider invariant <code class="listing">inv0_1</code> 
+    <li>Let us consider invariant <cs-code>inv0_1</cs-code> 
         $$n \in \mathbb N$$
     </li>
-    <li class="skip fragment">And let us consider event <code class="listing">ML_out</code> with before-after predicate
+    <li class="skip fragment">And let us consider event <cs-code>ML_out</cs-code> with before-after predicate
         $$n' = n + 1$$
     </li>
-    <li class="skip fragment"><b>Preservation of</b> <code class="listing">inv0_1</code> means that we have (just after <code class="listing">ML_out</code>):
+    <li class="skip fragment"><b>Preservation of</b> <cs-code>inv0_1</cs-code> means that we have (just after <cs-code>ML_out</cs-code>):
         $$n' \in \mathbb N  ~~~~~~\text{that is}~~~~~~ n + 1 \in \mathbb N$$
     </li>
   </ul>
@@ -615,7 +615,7 @@ ML_in $\mathrel{\widehat=}$
         This type of statement is called a <b>sequent</b>
     </li>
     <li class="skip fragment">
-        Sequent above $\to$ <i>invariant preservation proof obligation for</i> <code class="listing">inv0_1</code>
+        Sequent above $\to$ <i>invariant preservation proof obligation for</i> <cs-code>inv0_1</cs-code>
     </li>
   </ul>
 
@@ -789,7 +789,7 @@ ML_in $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation <br> for <code class="listing">ML_out</code> and <code class="listing">inv0_1</code> </h2>
+	<h2>Proof obligation <br> for <cs-code>ML_out</cs-code> and <cs-code>inv0_1</cs-code> </h2>
 
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_out $\mathrel{\widehat=}$
@@ -823,7 +823,7 @@ $\vdash$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation <br> for <code class="listing">ML_out</code> and <code class="listing">inv0_2</code> </h2>
+	<h2>Proof obligation <br> for <cs-code>ML_out</cs-code> and <cs-code>inv0_2</cs-code> </h2>
 
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_out $\mathrel{\widehat=}$
@@ -857,7 +857,7 @@ $\vdash$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation for <br> <code class="listing">ML_in</code> and <code class="listing">inv0_1</code> </h2>
+	<h2>Proof obligation for <br> <cs-code>ML_in</cs-code> and <cs-code>inv0_1</cs-code> </h2>
 
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_in $\mathrel{\widehat=}$
@@ -891,7 +891,7 @@ $\vdash$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof obligation <br> for <code class="listing">ML_in</code> and <code class="listing">inv0_2</code> </h2>
+	<h2>Proof obligation <br> for <cs-code>ML_in</cs-code> and <cs-code>inv0_2</cs-code> </h2>
 
 <pre id="eb" class="math-code" style="width: 50%;">
 ML_in $\mathrel{\widehat=}$
@@ -969,7 +969,7 @@ $\vdash$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Informal Proof <br> of <code class="listing">ML_out/inv0_1/INV</code></h2>
+	<h2>Informal Proof <br> of <cs-code>ML_out/inv0_1/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1104,7 +1104,7 @@ obvious
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_out/inv0_1/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_out/inv0_1/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1140,7 +1140,7 @@ $n + 1 \in \mathbb N$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Failed Proof Attempt <br> <code class="listing">ML_out/inv0_2/INV</code></h2>
+	<h2>A Failed Proof Attempt <br> <cs-code>ML_out/inv0_2/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1179,7 +1179,7 @@ $n + 1 \leq d$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Failed Proof Attempt <br> <code class="listing">ML_in/inv0_1/INV</code></h2>
+	<h2>A Failed Proof Attempt <br> <cs-code>ML_in/inv0_1/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1217,7 +1217,7 @@ $n - 1 \in \mathbb N$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_in/inv0_2/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_in/inv0_2/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1256,8 +1256,8 @@ $n - 1 \leq d$
 	<h2>Reasons for Proof Failure</h2>
 
   <ul>
-    <li>We needed hypothesis <cs-i>$n < d$</cs-i>  to prove <code class="listing">ML_out/inv0_2/INV</code></li>
-    <li class="skip">We needed hypothesis <cs-i>$0 < n$</cs-i>  to prove <code class="listing">ML_in/inv0_1/INV</code>
+    <li>We needed hypothesis <cs-i>$n < d$</cs-i>  to prove <cs-code>ML_out/inv0_2/INV</cs-code></li>
+    <li class="skip">We needed hypothesis <cs-i>$0 < n$</cs-i>  to prove <cs-code>ML_in/inv0_1/INV</cs-code>
     
       <div class="center-divs">
 <pre id="eb" class="math-code" style="width: 50%;">
@@ -1274,8 +1274,8 @@ ML_in $\mathrel{\widehat=}$
 </pre>
       </div>
     </li>
-    <li class="fragment skip">We are going to add <cs-i>$n < d$</cs-i> as a guard to event <code class="listing">ML_out</code></li>
-    <li class="fragment skip">We are going to add <cs-i>$0 < n$</cs-i> as a guard to event <code class="listing">ML_in</code></li>
+    <li class="fragment skip">We are going to add <cs-i>$n < d$</cs-i> as a guard to event <cs-code>ML_out</cs-code></li>
+    <li class="fragment skip">We are going to add <cs-i>$0 < n$</cs-i> as a guard to event <cs-code>ML_in</cs-code></li>
   </ul>
 
 </section>
@@ -1350,7 +1350,7 @@ $I_i(c, E(c, v))$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_out/inv0_1/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_out/inv0_1/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1387,7 +1387,7 @@ $n + 1 \in \mathbb N$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_out/inv0_2/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_out/inv0_2/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1426,7 +1426,7 @@ $n + 1 \leq d$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_in/inv0_1/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_in/inv0_1/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
@@ -1465,7 +1465,7 @@ $n - 1 \in \mathbb N$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A Formal Proof <br> of <code class="listing">ML_in/inv0_2/INV</code></h2>
+	<h2>A Formal Proof <br> of <cs-code>ML_in/inv0_2/INV</cs-code></h2>
 
   <div class="center-divs" style="width: 70%;">
 <pre class="math-code box" style="width: 25%;">
