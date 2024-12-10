@@ -243,6 +243,72 @@ ML_in $\mathrel{\widehat=}$
 </pre>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Before-after predicates</h2>
+	<h3>Preserved Variables</h3>
+
+	<div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$
+	<i>when</i>
+		<u>grd1_1:</u> $a + b < d$
+		<u>grd1_2:</u> $c = 0$
+	<i>then</i>
+		<u>act1_1:</u> $a := a + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_in $\mathrel{\widehat=}$
+	<i>when</i>
+		<u>grd1_1:</u> $0 < c$
+	<i>then</i>
+		<u>act1_1:</u> $c := c - 1$
+	<i>end</i>
+</pre>
+		<div style="width: 15%;"></div>
+	</div>
+
+	<p class="fragment">
+		<i>Before-after predicates</i> showing the <i>unmodiﬁed variables</i>
+	</p>
+
+	<div class="center-divs">
+		<div class="fragment" style="width: 50%;">
+			$$ a' = a + 1 \land b'=b \land c' = c $$
+		</div>
+		<div class="fragment" style="width: 50%;">
+			$$ a' = a \land b'=b \land c' = c - 1 $$
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Intuition about Reﬁnement</h2>
+
+	<ul>
+		<li>The concrete model <i>behaves as speciﬁed by the abstract model</i><br>
+			(i.e., concrete model <i>does not exhibit any new behaviors)</i></li>
+
+		<li class="skip fragment">To show this we have to prove that
+			<ol>
+				<li><i>every concrete event is simulated by its abstract counterpart</i><br>
+					(event reﬁnement $\to$ following slides)</li>
+				<li class="fragment"><i>to every concrete initial state corresponds an abstract one</i><br>
+					(initial state reﬁnement $\to$ later)</li>
+			</ol>
+		</li>
+
+		<li class="skip fragment">We will make these two conditions more precise and formalize
+			them <br> as <i>proof obligations</i>.</li>
+	</ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
