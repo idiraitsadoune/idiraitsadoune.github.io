@@ -5,28 +5,20 @@
 	<meta charset="utf-8">
 	<title>Event-B refinement in presence of data measures</title>
 
-	<meta name="description" content="Event-B refinement in presence of data measures">
-	<meta name="author" content="Idir AIT SADOUNE">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
 
-	<link rel="icon" href="../resources/img/favicon.ico" />
-    <style>
-		#eb {
-			font-size: 15.6px !important;
-		}
-	</style>
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
 </head>
 
 <body>
@@ -41,7 +33,7 @@
 	<div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
+				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
 			</a>
 		</div>
 	</div>
@@ -57,7 +49,7 @@
 
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-			<img src="../resources/img/idir.png" class="hero-user">
+			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
 		</a>
 		<div class="hero-desc">
 			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
@@ -77,25 +69,21 @@
 	<h2>A simple example</h2>
 	
 	<ul>
-		<li>
-            System that continuously calculates <b>a moving object's speed</b> <br>
-                <div style="display: block; margin: auto; width: 80%;">
-                    <img src="./img/motivating-example.svg" alt="">
-                </div>
-        </li>
-        <li class="fragment skip">
-            Analysing <b>two functional properties</b>:
+		<li>System that continuously calculates <b>a moving object's speed</b> <br>
+				<div style="display: block; margin: auto; width: 80%;">
+					<img src="./img/motivating-example.svg" alt="">
+				</div>
+    </li>
+    <li class="fragment skip">Analysing <b>two functional properties</b>:
 			<ul>
-				<li class="fragment">
-                    <strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-code>$distance\_travelled$</cs-code> <br>
+				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-code>$distance\_travelled$</cs-code> <br>
 					divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).
-                </li>
-				<li class="fragment">
-                    <strong>PROP-2</strong> : when the <cs-code>$distance\_travelled$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
+        </li>
+				<li class="fragment"><strong>PROP-2</strong> : when the <cs-code>$distance\_travelled$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
 					of the moving object must also be <i>strictly positive</i>.
 					<ul>
-                        <li><b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li>
-                    </ul>
+            <li><b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li>
+          </ul>
 				</li>
 			</ul>
 		</li>
@@ -107,74 +95,86 @@
 <section data-transition="fade-in fade-out">
 	<h2>The first approach</h2>
 	
-    <ul>
-        <li>
-            A simple example in a <i>single</i> <b>Event-B model/machine</b>.
-        </li>
-        <li class="fragment skip">
-            The obtained Event-B machine is built using <b>two Event-B theories</b>:
-            <ol>
-                <li>Floating-point numbers <b>theory</b></li>
-                <li>International System of Units <b>theory</b></li>
-            </ol>
-        </li>
-    </ul>
+	<ul>
+		<li>
+				A simple example in a <i>single</i> <b>Event-B model/machine</b>.
+		</li>
+		<li class="fragment skip">
+			The obtained Event-B machine is built using <b>two Event-B theories</b>:
+			<ol>
+				<li>Floating-point numbers <b>theory</b></li>
+				<li>International System of Units <b>theory</b></li>
+			</ol>
+		</li>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
 	<h2>The Event-B model</h2>
 
-<div class="eb-code">
-<pre id="eb">
+	<div>
+<pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_car_speed
 ...
 <b>INVARIANTS</b>
-    <u>@inv1:</u> distance_travelled $\in$ SI_MEASURE_Type(METRE_UNIT)
-    <u>@inv2:</u> measured_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
-    <u>@inv3:</u> speed $\in$ SI_MEASURE_Type(METRE_PER_SECOND_UNIT)
-    <u>@inv4:</u> starting_position $\in$ SI_MEASURE_Type(METRE_UNIT)
-    <u>@inv5:</u> starting_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
-</pre>
-<pre id="eb" class="fragment">
-    <u>@PROP-1:</u> speed SI_EQ distance_travelled SI_DIV measured_time
-    <u>@PROP-2:</u> distance_travelled SI_GT MEASURE(F0,METRE_UNIT) $\mathbin\Rightarrow$ speed SI_GT MEASURE(F0,METRE_PER_SECOND_UNIT)
-</pre>
-<pre id="eb">
-<b>EVENTS</b>   
-</pre>
-<div class="r-stack">
-<pre id="eb" class="fragment fade-in-then-out" >
-...
-get_starting_point $\mathrel{\widehat=}$
+	<u>@inv1:</u> distance_travelled $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv2:</u> measured_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@inv3:</u> speed $\in$ SI_MEASURE_Type(METRE_PER_SECOND_UNIT)
+	<u>@inv4:</u> starting_position $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv5:</u> starting_time $\in$ SI_MEASURE_Type(SECOND_UNIT)<span class="fragment">
+	<u>@PROP-1:</u> speed SI_EQ distance_travelled SI_DIV measured_time
+	<u>@PROP-2:</u> distance_travelled SI_GT MEASURE(F0,METRE_UNIT) $\mathbin\Rightarrow$ speed SI_GT MEASURE(F0,METRE_PER_SECOND_UNIT)</span>
+<b>EVENTS</b><span class="fragment" >
+	...
+	get_starting_point $\mathrel{\widehat=}$
     <i>any</i> p t
     <i>where</i> 
-        <u>@grd1:</u> p $\in$ SI_MEASURE_Type(KILO_METRE_UNIT)
-        <u>@grd2:</u> t $\in$ SI_MEASURE_Type(SECOND_UNIT)
+			<u>@grd1:</u> p $\in$ SI_MEASURE_Type(KILO_METRE_UNIT)
+			<u>@grd2:</u> t $\in$ SI_MEASURE_Type(SECOND_UNIT)
     <i>then</i>
-        <u>@act1:</u> starting_position $:=$ SI_CONVERT(METRE_UNIT, p)
-        <u>@act2:</u> starting_time $:=$ t
-    <i>end</i>
-...
-</pre>
-<pre id="eb" class="fragment fade-in" >
-...
-get_speed $\mathrel{\widehat=}$ 
-    <i>any</i> p t
-    <i>where</i>
-        <u>@grd1:</u> p $\in$ SI_MEASURE_Type(METRE_UNIT) $\land$ p SI_GT starting_position
-        <u>@grd2:</u> t $\in$ SI_MEASURE_Type(SECOND_UNIT) $\land$ t SI_GT starting_time
-    <i>then</i>
-        <u>@act1:</u> distance_travelled $:=$ p SI_MINUS starting_position
-        <u>@act2:</u> measured_time $:=$ t SI_MINUS starting_time
-        <u>@act3:</u> speed $:=$ (p SI_MINUS starting_position) SI_DIV (t SI_MINUS starting_time)
-    <i>end</i>
-</pre>
-</div>
-<pre id="eb">
+			<u>@act1:</u> starting_position $:=$ SI_CONVERT(METRE_UNIT, p)
+			<u>@act2:</u> starting_time $:=$ t
+    <i>end</i></span>
+	...
 <b>END</b>
 </pre>
-</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+	<h2>The Event-B model</h2>
+
+	<div>
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_car_speed
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv2:</u> measured_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@inv3:</u> speed $\in$ SI_MEASURE_Type(METRE_PER_SECOND_UNIT)
+	<u>@inv4:</u> starting_position $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv5:</u> starting_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@PROP-1:</u> speed SI_EQ distance_travelled SI_DIV measured_time
+	<u>@PROP-2:</u> distance_travelled SI_GT MEASURE(F0,METRE_UNIT) $\mathbin\Rightarrow$ speed SI_GT MEASURE(F0,METRE_PER_SECOND_UNIT)</span>
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+    <i>any</i> p t
+    <i>where</i>
+			<u>@grd1:</u> p $\in$ SI_MEASURE_Type(METRE_UNIT) $\land$ p SI_GT starting_position
+			<u>@grd2:</u> t $\in$ SI_MEASURE_Type(SECOND_UNIT) $\land$ t SI_GT starting_time
+    <i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p SI_MINUS starting_position
+			<u>@act2:</u> measured_time $:=$ t SI_MINUS starting_time
+			<u>@act3:</u> speed $:=$ (p SI_MINUS starting_position) SI_DIV (t SI_MINUS starting_time)
+    <i>end</i>
+<b>END</b>
+</pre>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -182,26 +182,26 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>generated and proven POs</h2>
     
-    <ul>
-        <li>
-            <b>All POs are green</b> but :
-            <ul class="fragment">
-                <li>we get a lot of proof obligations</li>
-                <li>the proof of each of them was <i>interactive</i></li>
-                <li>each proof needs <i>several steps</i></li>
-            </ul>
-        </li>
+	<ul>
+		<li>
+			<b>All POs are green</b> but :
+			<ul class="fragment">
+				<li>we get a lot of proof obligations</li>
+				<li>the proof of each of them was <i>interactive</i></li>
+				<li>each proof needs <i>several steps</i></li>
+			</ul>
+		</li>
 
-        <li class="fragment skip">
-            At the same time, we treat :
-            <ul>
-                <li>the system properties</li>
-                <li>the data measurement annotations</li>
-            </ul>
-        </li>
-    </ul>
+		<li class="fragment skip">
+			At the same time, we treat :
+			<ul>
+				<li>the system properties</li>
+				<li>the data measurement annotations</li>
+			</ul>
+		</li>
+	</ul>
 
-    <div id="green-block" class="d-skip fragment" style="width: 60%;">
+  <div id="green-block" class="d-skip fragment" style="width: 60%;">
 		<b>Refinement</b> is an excellent solution to decompose a complex proof.
 	</div>
 
@@ -211,9 +211,9 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>The refinement based approach</h2>
 
-    <div style="display: block; margin: auto; width: 60%;">
-        <img src="./img/refinement.svg" alt="">
-    </div>
+	<div style="display: block; margin: auto; width: 60%;">
+			<img src="./img/refinement.svg" alt="">
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -221,8 +221,8 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>The abstract model</h2>
 
-<div class="eb-code">
-<pre id="eb">
+	<div>
+<pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_1 
 ...
 <b>INVARIANTS</b>
@@ -246,7 +246,7 @@ get_speed $\mathrel{\widehat=}$
 	<i>end</i>
 <b>END</b>
 </pre>
-</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -254,8 +254,8 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>The refinement model</h2>
 
-<div class="eb-code">
-<pre id="eb">
+	<div>
+<pre id="eb"  class="eb-code">
 <b>MACHINE</b> mch_2 <b>REFINES</b> mch_1 
 ...
 <b>INVARIANTS</b>
@@ -283,7 +283,7 @@ get_speed $\mathrel{\widehat=}$
 	<i>end</i>
 <b>END</b>
 </pre>
-</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -291,8 +291,8 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>The annotated model</h2>
 
-<div class="eb-code">
-<pre id="eb">
+	<div>
+<pre id="eb"  class="eb-code">
 <b>MACHINE</b> mch_3 <b>REFINES</b> mch_2
 ...
 <b>INVARIANTS</b>
@@ -319,7 +319,7 @@ get_speed $\mathrel{\widehat=}$
 	<i>end</i>
 <b>END</b>
 </pre>
-</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -327,17 +327,17 @@ get_speed $\mathrel{\widehat=}$
 <section data-transition="fade-in fade-out">
 	<h2>generated and proven POs</h2>
 
-		<ul>
-			<li>
-				<b>All POs are green</b> with :
-				<ul>
-					<li>a lot of proof obligations</li>
-					<li class="fragment">some proofs were done <i>automatically</i></li>
-					<li class="fragment">and some were <i>interactives</i></li>
-					<li class="fragment"><b>each interactive proof needs less steps than the first approach</b></li>
-				</ul>
-			</li>
-		</ul>
+	<ul>
+		<li>
+			<b>All POs are green</b> with :
+			<ul>
+				<li>a lot of proof obligations</li>
+				<li class="fragment">some proofs were done <i>automatically</i></li>
+				<li class="fragment">and some were <i>interactives</i></li>
+				<li class="fragment"><b>each interactive proof needs less steps than the first approach</b></li>
+			</ul>
+		</li>
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -358,9 +358,9 @@ get_speed $\mathrel{\widehat=}$
 		</div>
 	</div>
 
-	<script src="../resources/js/plan-en.js"></script>
-	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -387,13 +387,11 @@ get_speed $\mathrel{\widehat=}$
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3]
+			plugins: [RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 
-
 </body>
-
 </html>

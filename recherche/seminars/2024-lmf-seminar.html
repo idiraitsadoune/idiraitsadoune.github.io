@@ -722,8 +722,7 @@ and some axioms and theorems that characterise the proposed modelling.
 <b>AXIOMATIC DEFINITIONS</b>
 	<i>operators</i>
 		pow(x $\in$ $\mathbb Z$, n $\in$ $\mathbb N$) : $\mathbb Z$ <strong>INFIX</strong> <u>// x pow n $=$ $x^n$</u>
-		<i>wd condition</i> : $\neg$ (x $=$ 0 $\land$ n $=$ 0) <u>// $0^0$ is not defined</u>
-<span class="fragment">
+		<i>wd condition</i> : $\neg$ (x $=$ 0 $\land$ n $=$ 0) <u>// $0^0$ is not defined</u><span class="fragment">
 	<i>axioms</i>
 		<u>@axm1:</u> $\forall$ n $\cdot$ n $\in \mathbb N_1$ $\mathbin\Rightarrow$ 0 pow n $=$ 0
 		<u>@axm2:</u> $\forall$ x $\cdot$ x $\in \mathbb Z$ $\land$ x $\neq$ 0 $\mathbin\Rightarrow$ x pow 0 $=$ 1
@@ -769,7 +768,6 @@ the power rule, and the multiplying exponents rule.
 		<li class="fragment skip">We have chosen to define the <cs-code>pow</cs-code> operator in a <b>single theory</b><br>
 			to offer the possibility of <b>reusing it</b> in other <b>Event-B</b> <i>developments</i>.</li>
 
-		
 		<li style="font-size: 15px; margin-top: 100px;">
 			Julien Cervelle and Frédéric Gervais.<br>
 			<span style="font-style: italic;">Introducing Inductive Construction in B with the Theory Plugin</span>. 
