@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Qualité de développement : UML vers Java</title>
-
-	<meta name="description" content="Qualité de développement : UML vers Java">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -24,6 +15,10 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -58,7 +53,7 @@
 
 	<div class="description" >
 		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -71,8 +66,8 @@
 			</a>
 			<br>
 			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-            </a>
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
 
@@ -93,111 +88,127 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Transcription des classes</h2>
-    <p class="fragment">A chaque <b>classe UML</b> correspondra une <b>classe Java</b>.</p>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width:50%">
-            <img src="./img/1-chap-1.svg" alt="" width="150px">
-        </div>
-        <div style="width:50%">
-            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-            class Point{
-                ...
-            }                            
-			</script></code></pre>
-        </div>
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des classes</h2>
-    <div class="left-content">
-        <p>
-            A chaque <b>attribut</b> d'une <b>classe UML</b> correspondra un <b>attribut</b> <br>
-            d'une <b>classe Java</b>.  
-            <ul class="fragment">
-                <li>cardinalité $\leq$ 1 : <code class="listing">Type nomAttribut;</code></li>
-                <li>cardinalité $>$ 1 : <code class="listing">Collection&#60;Type> nomAttribut;</code></li>
-            </ul>
-        </p>    
-    </div>
 
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width:50%">
-            <img src="./img/1-chap-2.svg" alt="" width="150px">
-        </div>
-        <div style="width:50%">
-            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-            class Point{
-                private double x;
-                private double y;
-            }                            
-			</script></code></pre>
-        </div>
-    </div>
+	<p>A chaque <b>classe UML</b> correspondra une <b>classe Java</b>.</p>
+    
+	<div class="fragment center-divs d-skip">
+		<div style="width:50%">
+				<img src="./img/1-chap-1.svg" alt="" width="150px">
+		</div>
+		<div style="width:50%">
+				<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Point{
+						...
+				}                            
+				</script></code></pre>
+		</div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Remarque</h2>
-    <div  class="blue-block" style="text-align:center ;">
-        Les <i>visibilités</i> des éléments de modélisation <b>UML</b> seront <br> les mêmes
-dans leurs correspondants en <b>Java</b>.
+  <h2>Transcription des classes</h2>
+
+	<div class="left-content">
+		<p>
+			A chaque <b>attribut</b> d'une <b>classe UML</b> correspondra un <b>attribut</b> <br>
+			d'une <b>classe Java</b>.  
+		</p>
+		<ul class="fragment">
+			<li>cardinalité $\leq$ 1 $\to$ <cs-code>Type nomAttribut;</cs-code></li>
+			<li>cardinalité $>$ 1 $\to$ <cs-code>Collection&#60;Type> nomAttribut;</cs-code></li>
+		</ul>
+   
 	</div>
+
+	<div class="fragment center-divs d-skip">
+		<div style="width:50%">
+				<img src="./img/1-chap-2.svg" alt="" width="150px">
+		</div>
+		<div style="width:50%">
+				<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+				class Point{
+						private double x;
+						private double y;
+				}                            
+				</script></code></pre>
+		</div>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des classes</h2>
-    <p>
-        A chaque <b>operation</b> d'une <b>classe UML</b> correspondra  une <b>méthode</b> <br>
-d'une <b>classe Java</b>.
-    </p>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width:40%">
-            <img src="./img/1-chap-3.svg" alt="" width="350px">
-        </div>
-        <div style="width:60%">
-            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-                class Point{
-                    private double x;
-                    private double y;
-                    
-                    public double distanceTo(Point autre){
-                        // TO DO
-                    }
-                }                             
-			</script></code></pre>
-        </div>
-    </div>
+	<h2>Remarque</h2>
+
+	<div  id="default-block" class="left-content">
+		Les <i>visibilités</i> des éléments de modélisation <b>UML</b> seront <br> les mêmes
+		dans leurs correspondants en <b>Java</b>.
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des classes</h2>
+  <h2>Transcription des classes</h2>
+
+	<p>
+		A chaque <b>operation</b> d'une <b>classe UML</b> correspondra  <br> une <b>méthode</b> 
+		d'une <b>classe Java</b>.
+	</p>
+
+	<div class="fragment center-divs d-skip">
+		<div style="width:40%">
+				<img src="./img/1-chap-3.svg" alt="" width="350px">
+		</div>
+		<div style="width:60%">
+				<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+						class Point{
+								private double x;
+								private double y;
+								
+								public double distanceTo(Point autre){
+										// TO DO
+								}
+						}                             
+				</script></code></pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Transcription des classes</h2>
+
 	<p>
 		A chaque <b>classe UML abstraite</b> correspondra <br> une <b>classe Java abstraite</b>.
 	</p>
-	<div class="fragment" style="display: flex; align-items: center;">
-        <div style="width:50%">
-            <img src="./img/1-chap-4.svg" alt="" width="150px">
-        </div>
-        <div style="width:50%">
-            <pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-				abstract class Shape{
-					...
-				}                             
-			</script></code></pre>
-        </div>
-    </div>
+
+	<div class="fragment center-divs d-skip">
+		<div style="width:50%">
+				<img src="./img/1-chap-4.svg" alt="" width="150px">
+		</div>
+		<div style="width:50%">
+				<pre><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+					abstract class Shape{
+						...
+					}                             
+				</script></code></pre>
+		</div>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des classes</h2>
+  <h2>Transcription des classes</h2>
+
 	<p>A chaque <b>interface UML</b> correspondra 
 		une <b>interface Java</b>.</p>
-	<div class="fragment" style="display: flex; align-items: center;">
+
+	<div class="fragment center-divs d-skip">
 		<div style="width:50%">
 			<img src="./img/1-chap-5.svg" alt="" width="250px">
 		</div>
@@ -209,6 +220,7 @@ d'une <b>classe Java</b>.
 			</script></code></pre>
 		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -220,16 +232,16 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des associations</h2>
+  <h2>Transcription des associations</h2>
 	
 	<ul>
-		<li class="fragment">A chaque <b>association UML</b> correspondra <b>un attribut</b> 
+		<li>A chaque <b>association UML</b> correspondra <b>un attribut</b> 
 			dans les <b>classes Java</b> participantes à l'association.</li>
 		<li class="fragment skip">L'<b>attribut</b> est ajouté uniquement si l'<i>association est navigable</i>.</li>
 		<li class="fragment skip">Le <b>nom de l'attribut</b> est le nom de l'<i>extrémité navigable</i>.
 			<ul class="fragment">
-				<li>cardinalité $\leq$ 1 : <code class="listing">Type nomExtremite;</code></li>
-				<li>cardinalité $>$ 1 : <code class="listing">Collection&#60;Type> nomExtremite;</code></li>
+				<li>cardinalité $\leq$ 1 $\to$ <cs-code>Type nomExtremite;</cs-code></li>
+				<li>cardinalité $>$ 1 $\to$ <cs-code>Collection&#60;Type> nomExtremite;</cs-code></li>
 			</ul>
 		</li>
 	</ul>
@@ -238,8 +250,9 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des associations</h2>
-	<div style="display: flex; align-items: center;">
+  <h2>Transcription des associations</h2>
+
+	<div class="center-divs">
 		<div style="width:50%">
 			<img src="./img/1-chap-6.svg" alt="" width="450px">
 		</div>
@@ -262,15 +275,18 @@ d'une <b>classe Java</b>.
 			</script></code></pre>
 		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des associations</h2>
+	<h2>Transcription des associations</h2>
+
 	<p>
-		La relation de <b>généralisation en UML</b> est traduite par une relation d'<b>héritage en Java</b>.
+		La relation de <b>généralisation en UML</b> est traduite <br> par une relation d'<b>héritage en Java</b>.
 	</p>
-	<div class="fragment" style="display: flex; align-items: center;">
+
+	<div class="fragment center-divs d-skip">
 		<div style="width:50%">
 			<img src="./img/1-chap-7.svg" alt="" width="450px">
 		</div>
@@ -293,15 +309,18 @@ d'une <b>classe Java</b>.
 			</script></code></pre>
 		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des associations</h2>
+  <h2>Transcription des associations</h2>
+
 	<p>
-		La relation de <b>réalisation en UML</b> est traduite par une relation d'<b>implémentation en Java</b>.
+		La relation de <b>réalisation en UML</b> est traduite <br> par une relation d'<b>implémentation en Java</b>.
 	</p>
-	<div class="fragment" style="display: flex; align-items: center;">
+
+	<div class="fragment center-divs d-skip">
 		<div style="width:50%">
 			<img src="./img/1-chap-8.svg" alt="" width="450px">
 		</div>
@@ -327,6 +346,7 @@ d'une <b>classe Java</b>.
 			</script></code></pre>
 		</div>
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -338,17 +358,23 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les collections en Java</h2>
-	<img data-id="collec" class="fragment" src="./img/1-chap-9.svg" alt="" width="600px">
-	
+  <h2>Les collections en Java</h2>
+
+	<div>
+		<img data-id="collec" src="./img/1-chap-9.svg" alt="" width="700px">
+	</div>
+
 	<ul>
-		<li class="fragment"><code class="listing">Collection</code> : interface qui gèrent toutes
+		<li class="skip"><cs-code>Collection</cs-code> $\to$ interface qui gèrent toutes
 			les <i>collections</i> dynamiques.</li>
-		<li class="fragment"><code class="listing">Set</code> : interface pour
+
+		<li class="fragment"><cs-code>Set</cs-code> $\to$ interface pour
 			des <i>collections</i> qui n'autorisent <i>pas de doublons</i>.</li>
-		<li class="fragment"><code class="listing">List</code> : interface pour
+
+		<li class="fragment"><cs-code>List</cs-code> $\to$ interface pour
 			des <i>collections</i> qui <i>autorisent des doublons</i> <br>
 			et un <i>accès direct</i> à un élément.</li>
+
 		<li class="fragment">...</li>
 	</ul>
 
@@ -356,33 +382,36 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les collections en Java</h2>
-	<img data-id="collec" src="./img/1-chap-10.svg" alt="" width="700px">
+  <h2>Les collections en Java</h2>
+
+	<div>
+		<img data-id="collec" src="./img/1-chap-10.svg" alt="" width="700px">
+	</div>
 	
 	<ul>
-		<li class="fragment"><code class="listing">Vector</code>: implémente l'interface <code class="listing">List</code> (synchronisé)</li>
-		<li class="fragment"><code class="listing">ArrayList</code> : implémente l'interface  <code class="listing">List</code> (non synchronisé)</li>
-		<li class="fragment"><code class="listing">LinkedList</code> : implémente l'interface  <code class="listing">List</code> (doublement chaînée)</li>
-		<li class="fragment"><code class="listing">HashSet</code> : implémente l'interface  <code class="listing">Set</code></li>
-		<li class="fragment"><code class="listing">SortedSet</code> : implémente l'interface  <code class="listing">Set</code> (ordonné)</li>
+		<li class="fragment skip"><cs-code>Vector</cs-code> $\to$ implémente l'interface <cs-code>List</cs-code> (synchronisé)</li>
+		<li class="fragment"><cs-code>ArrayList</cs-code> $\to$ implémente l'interface  <cs-code>List</cs-code> (non synchronisé)</li>
+		<li class="fragment"><cs-code>LinkedList</cs-code> $\to$ implémente l'interface  <cs-code>List</cs-code> (doublement chaînée)</li>
+		<li class="fragment"><cs-code>HashSet</cs-code> $\to$ implémente l'interface  <cs-code>Set</cs-code></li>
+		<li class="fragment"><cs-code>SortedSet</cs-code> $\to$ implémente l'interface  <cs-code>Set</cs-code> (ordonné)</li>
 	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Transcription des collections</h2>
+  <h2>Transcription des collections</h2>
 
 	<div class="left-content">
-		<p class="fragment">
-		Le type de la <code class="listing">Collection</code> affecté à un <i>attribut</i>
+		<p>
+		Le type de la <cs-code>Collection</cs-code> affecté à un <i>attribut</i>
 		en <b>Java</b>, dépend <br> des <i>propriétés</i> 
 		de l'<i>attribut/association</i> <b>UML</b>:
 		<ul>
 			<li class="fragment skip">aucune propriété $\to$ à configurer manuellement.</li>
-			<li class="fragment skip"><i>ordered</i> $\to$ traduit en <code class="listing">ArrayList</code> ou <code class="listing">LinkedList</code>.</li>
-			<li class="fragment skip"><i>unique</i> $\to$ traduit en <code class="listing">HashSet</code>.</li>
-			<li class="fragment skip"><i>ordered</i>  et <i>unique</i> $\to$ traduit en <code class="listing">SortedSet</code>.</li>
+			<li class="fragment skip"><i>ordered</i> $\to$ traduit en <cs-code>ArrayList</cs-code> ou <cs-code>LinkedList</cs-code>.</li>
+			<li class="fragment skip"><i>unique</i> $\to$ traduit en <cs-code>HashSet</cs-code>.</li>
+			<li class="fragment skip"><i>ordered</i>  et <i>unique</i> $\to$ traduit en <cs-code>SortedSet</cs-code>.</li>
 		</ul>
 		</p>
 	</div>
@@ -391,9 +420,10 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple</h2>
+	<h2>Transcription des collections</h2>
+  <h3>Exemple</h3>
 
-	<div style="display: flex; align-items: center;">
+	<div class="center-divs">
 		<div style="width:50%">
 			<img src="./img/1-chap-11.svg" alt="" width="450px">
 		</div>
@@ -425,6 +455,9 @@ d'une <b>classe Java</b>.
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./5-uml-vers-java.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
 	</p>	
@@ -435,15 +468,11 @@ d'une <b>classe Java</b>.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan.js"></script>
 
+	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -470,7 +499,7 @@ d'une <b>classe Java</b>.
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
@@ -478,5 +507,4 @@ d'une <b>classe Java</b>.
 
 
 </body>
-
 </html>

@@ -3,34 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>TD Qualité de développement : UML vers Java</title>
-
-	<meta name="description" content="TD Qualité de développement : UML vers Java">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script>
-		MathJax = {
-			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,19 +38,27 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
-    Travaux dirigés - TD<br> 
+<h1>
     UML vers Java
+</h1>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Le support de cours</h2>
+<div>
+  <iframe style="width: 100%; height: 770px; box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);" 
+  				src="./5-uml-vers-java.html" frameborder="0"></iframe>
 </div>
 <!-- #################################################### -->
-<div id="orange-block">
-    Un mini langage de programmation
-</div>
+<!-- #################################################### -->
+<h2>L'exercice</h2>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">Un mini langage de programmation</div>
 
 <p class="text-justify">
     Nous allons dans cet exercice envisager la construction d'un petit langage de programmation. 
     Notre langage sera impératif, et ne contiendra que des instructions d'affectation d'une expression dans une variable. 
-    Les variables seront toutes du type <code class="listing">double</code>, et les expressions seront constituées uniquement de nombres, 
+    Les variables seront toutes du type <cs-code>double</cs-code>, et les expressions seront constituées uniquement de nombres, 
     de variables et d'opérations arithmétiques simples.
 </p>
 
@@ -137,36 +129,36 @@ z = 0.5714285714285714
     Première itération : uniquement des nombres et des variables
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
-    Exercice 1 : Modélisation UML
-</div>
+<h2>
+    Exercice 1 : modélisation UML
+</h2>
 
 <p class="text-justify">
     <ul>
         <li>
-            Créez une classe <code class="listing">Program</code> et une classe <code class="listing">Variable</code> sur votre diagramme.
+            Créez une classe <cs-code>Program</cs-code> et une classe <cs-code>Variable</cs-code> sur votre diagramme.
         </li>
         <li>Les variables sont contenues dans le programme : 
             créez un lien de composition en ajustant les multiplicités ; 
-            corrigez aussi le nom de l'extrémité côté <code class="listing">Variable</code> en ajoutant un <code class="listing">s</code> 
-            pour que le nom de rôle devienne <code class="listing">variables</code> et soit donc cohérent avec la multiplicité choisie.
+            corrigez aussi le nom de l'extrémité côté <cs-code>Variable</cs-code> en ajoutant un <cs-code>s</cs-code> 
+            pour que le nom de rôle devienne <cs-code>variables</cs-code> et soit donc cohérent avec la multiplicité choisie.
         </li>
         <li>
-            Ajoutez un attribut <code class="listing">name</code> dans <code class="listing">Variable</code>, de type <code class="listing">String</code>. 
-Une variable a une certaine valeur qui peut changer au cours du temps : créez un attribut <code class="listing">value</code> 
-de type <code class="listing">double</code> dans <code class="listing">Variable</code>. 
-Ajoutez une méthode <code class="listing">setValue(v : double)</code> pour pouvoir modifier le contenu d'une variable.
+            Ajoutez un attribut <cs-code>name</cs-code> dans <cs-code>Variable</cs-code>, de type <cs-code>String</cs-code>. 
+Une variable a une certaine valeur qui peut changer au cours du temps : créez un attribut <cs-code>value</cs-code> 
+de type <cs-code>double</cs-code> dans <cs-code>Variable</cs-code>. 
+Ajoutez une méthode <cs-code>setValue(v : double)</cs-code> pour pouvoir modifier le contenu d'une variable.
         </li>
         <li>
-            Un programme contient aussi des affectations. Créez une classe <code class="listing">Assignment</code> 
-    et le lien de composition avec <code class="listing">Program</code>. L'ordre des affectations dans un 
-    programme est important : précisez cette caractéristique sur l'extrémité du côté <code class="listing">Assignment</code>. 
+            Un programme contient aussi des affectations. Créez une classe <cs-code>Assignment</cs-code> 
+    et le lien de composition avec <cs-code>Program</cs-code>. L'ordre des affectations dans un 
+    programme est important : précisez cette caractéristique sur l'extrémité du côté <cs-code>Assignment</cs-code>. 
     Plusieurs affectations identiques peuvent par contre figurer dans un programme : 
     décochez la propriété d'unicité.
         </li>
         <li>
             Une affectation permet de modifier la valeur d'une variable : 
-    faites une association de la classe <code class="listing">Assignment</code> vers la classe <code class="listing">Variable</code> 
+    faites une association de la classe <cs-code>Assignment</cs-code> vers la classe <cs-code>Variable</cs-code> 
     navigable uniquement sur cette extrémité, corrigez la multiplicité.
         </li>
         <li>
@@ -174,41 +166,41 @@ Ajoutez une méthode <code class="listing">setValue(v : double)</code> pour pouv
     qui peut être pour cette itération soit un nombre, soit une variable.
         </li>
         <li>
-            Créez une classe abstraite <code class="listing">Expression</code> et un lien de composition avec <code class="listing">Assignment</code>, 
-    corrigez la multiplicité. Créez une sous-classe <code class="listing">Number</code> (avec un attribut <code class="listing">value</code>) ; 
-    Expression est aussi super-classe de <code class="listing">Variable</code>.
+            Créez une classe abstraite <cs-code>Expression</cs-code> et un lien de composition avec <cs-code>Assignment</cs-code>, 
+    corrigez la multiplicité. Créez une sous-classe <cs-code>Number</cs-code> (avec un attribut <cs-code>value</cs-code>) ; 
+    Expression est aussi super-classe de <cs-code>Variable</cs-code>.
         </li>
         <li>
-            Tous nos objets doivent savoir s'afficher via <code class="listing">toString() : String</code>. 
+            Tous nos objets doivent savoir s'afficher via <cs-code>toString() : String</cs-code>. 
     Ajoutez cette opération aux différentes classes.
         </li>
         <li>
             On peut demander la valeur d'une expression. 
-    Ajoutez les méthodes <code class="listing">getValue() : double</code> aux classes concernées.
+    Ajoutez les méthodes <cs-code>getValue() : double</cs-code> aux classes concernées.
         </li>
         <li>
-            Ajoutez les opérations suivantes à la classe <code class="listing">Program</code> :
+            Ajoutez les opérations suivantes à la classe <cs-code>Program</cs-code> :
             <ul>
                 <li>
                     Un programme est une suite ordonnée d'affectations, ces affectations seront ajoutées par l'opération <br> 
-                    <code class="listing">addAssignment( v : Variable, e : Expression )</code>. 
+                    <cs-code>addAssignment( v : Variable, e : Expression )</cs-code>. 
                 </li>
                 <li>
                     Un programme mémorise des variables identifiées par un nom, ces variables seront accessibles via l'opération <br> 
-                    <code class="listing">getVariable( name : String ) : Variable</code>.
+                    <cs-code>getVariable( name : String ) : Variable</cs-code>.
                 </li>
                 <li>
                     Un programme s'exécute (évalue chaque affectation dans l'ordre puis affiche la valeur de ses variables : 
-                    ajoutez l'opération <code class="listing">run()</code>.
+                    ajoutez l'opération <cs-code>run()</cs-code>.
                 </li>
                 <li>
-                    La méthode <code class="listing">run()</code> de <code class="listing">Program</code> devra exécuter chaque affectation l'une après l'autre : 
-                    ajoutez l'opération <code class="listing">execute()</code> à la classe <code class="listing">Assignment</code>.
+                    La méthode <cs-code>run()</cs-code> de <cs-code>Program</cs-code> devra exécuter chaque affectation l'une après l'autre : 
+                    ajoutez l'opération <cs-code>execute()</cs-code> à la classe <cs-code>Assignment</cs-code>.
                 </li>
             </ul>
         </li>
         <li>
-            Ajoutez les constructeurs avec leurs arguments : le constructeur de <code class="listing">Assignment</code> 
+            Ajoutez les constructeurs avec leurs arguments : le constructeur de <cs-code>Assignment</cs-code> 
     aura pour arguments une variable et une expression.
         </li>
         <li>
@@ -216,14 +208,13 @@ Ajoutez une méthode <code class="listing">setValue(v : double)</code> pour pouv
         </li>
     </ul>
 </p>
-<br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h3>
     Un peu de Git
-</div>
+</h3>
 
 <p class="text-justify">
-    Commencez d'abord par configurer votre profil <code class="listing">git</code>.
+    Commencez d'abord par configurer votre profil <cs-code>git</cs-code>.
 </p>
 
 <pre><code class="language-shell"><script type="text/template">$ git config --global user.name "Prénom Nom"
@@ -240,7 +231,7 @@ $ cd td1-mini-langage-de-programmation
 
 <p class="text-justify">
     Créez une nouvelle branche sur votre machine locale et basculez dans cette branche.
-    Nommez cette branche en suivant la convention <code class="listing">prenom_nom</code> :
+    Nommez cette branche en suivant la convention <cs-code>prenom_nom</cs-code> :
 </p>
 
 <pre><code class="language-shell"><script type="text/template">$ git checkout -b prenom_nom
@@ -248,22 +239,22 @@ $ cd td1-mini-langage-de-programmation
 
 <br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
-    Exercice 2 : Réalisation en Java
-</div>
+<h2>
+    Exercice 2 : réalisation en Java
+</h2>
 
 <p class="text-justify">
     Les variables sont identifiées par leur nom, et nous souhaitons accéder directement à une variable à partir de ce nom. 
-    La structure de données classique utilisée dans ce cas est le dictionnaire (<code class="listing">Map</code> en java), 
-    nous choisirons l'implémentation <code class="listing">HashMap</code> (<code class="listing">String</code> pour <code class="listing">keyType</code>). 
-    Cette implémentation permettra à la méthode <code class="listing">getVariable</code> de renvoyer un objet de type <code class="listing">Variable</code>
-    à partir de son nom. Si la variable n'existe pas, la méthode <code class="listing">getVariable</code> va créer une nouvelle <code class="listing">Variable</code>
+    La structure de données classique utilisée dans ce cas est le dictionnaire (<cs-code>Map</cs-code> en java), 
+    nous choisirons l'implémentation <cs-code>HashMap</cs-code> (<cs-code>String</cs-code> pour <cs-code>keyType</cs-code>). 
+    Cette implémentation permettra à la méthode <cs-code>getVariable</cs-code> de renvoyer un objet de type <cs-code>Variable</cs-code>
+    à partir de son nom. Si la variable n'existe pas, la méthode <cs-code>getVariable</cs-code> va créer une nouvelle <cs-code>Variable</cs-code>
     avec le nom reçu en argument.
 </p>
 
 <p class="text-justify">
-    Le programme de test sera dans le <code class="listing">main()</code> de <code class="listing">Program</code>. Ajoutez cette méthode dans votre modèle UML 
-    en la déclarant statique, ajoutez un paramètre <code class="listing">args</code> de type <code class="listing">String</code> et de multiplicité <code class="listing">*</code>. 
+    Le programme de test sera dans le <cs-code>main()</cs-code> de <cs-code>Program</cs-code>. Ajoutez cette méthode dans votre modèle UML 
+    en la déclarant statique, ajoutez un paramètre <cs-code>args</cs-code> de type <cs-code>String</cs-code> et de multiplicité <cs-code>*</cs-code>. 
     Après régénération du code, copiez/collez le programme de test suivant :   
 </p>
 
@@ -287,9 +278,9 @@ p.run();
 
 <p class="text-justify">
     Vous allez incrémentalement compléter le code pour obtenir le comportement global souhaité. 
-    Commencez par écrire la méthode <code class="listing">toString() : String</code> de <code class="listing">Program</code>, 
-    puis celle d'<code class="listing">Assignment</code>, 
-    celle de <code class="listing">Variable</code>...  
+    Commencez par écrire la méthode <cs-code>toString() : String</cs-code> de <cs-code>Program</cs-code>, 
+    puis celle d'<cs-code>Assignment</cs-code>, 
+    celle de <cs-code>Variable</cs-code>...  
 </p>
 
 <p class="text-justify">
@@ -318,49 +309,49 @@ $ git commit -m "Solution de l'exercice 2"
 </div>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
-    Exercice 3 : Ajouts dans le modèle UML
-</div>
+<h2>
+    Exercice 3 : ajouts dans le modèle UML
+</h2>
 
 <p class="text-justify">
     <ul>
         <li>
             Nous nous limiterons aux opérateurs arithmétiques binaires. Créez une classe abstraite
-         <code class="listing">BinaryOperator</code>, sous classes de <code class="listing">Expression</code>, 
-         et 4 sous-classes <code class="listing">Plus</code>, <code class="listing">Minus</code>, 
-         <code class="listing">Multiply</code> et <code class="listing">Divide</code>.
+         <cs-code>BinaryOperator</cs-code>, sous classes de <cs-code>Expression</cs-code>, 
+         et 4 sous-classes <cs-code>Plus</cs-code>, <cs-code>Minus</cs-code>, 
+         <cs-code>Multiply</cs-code> et <cs-code>Divide</cs-code>.
         </li>
 
         <li>
             Un opérateur binaire a deux opérandes qui sont des expressions. Créez deux liens de composition 
-            de <code class="listing">BinaryOperator</code> 
-        vers <code class="listing">Expression</code> avec une multiplicité 
-        de <code class="listing">1</code>, nommez les extrémités <code class="listing">leftOperand</code> 
-        et <code class="listing">rightOperand</code>.
+            de <cs-code>BinaryOperator</cs-code> 
+        vers <cs-code>Expression</cs-code> avec une multiplicité 
+        de <cs-code>1</cs-code>, nommez les extrémités <cs-code>leftOperand</cs-code> 
+        et <cs-code>rightOperand</cs-code>.
         </li>
 
         <li>
-            L'accès aux opérandes par les sous-classes de <code class="listing">BinaryOperator</code> 
+            L'accès aux opérandes par les sous-classes de <cs-code>BinaryOperator</cs-code> 
             est nécessaire : modifiez la protection des deux extrémités.
         </li>
 
         <li>
-            Pour les opérations, le comportement <code class="listing">toString() : String</code> 
-            sera défini au niveau de <code class="listing">BinaryOperator</code> qui fera 
-    appel à une méthode abstraite <code class="listing">getOperator()</code> qui sera redéfinie 
+            Pour les opérations, le comportement <cs-code>toString() : String</cs-code> 
+            sera défini au niveau de <cs-code>BinaryOperator</cs-code> qui fera 
+    appel à une méthode abstraite <cs-code>getOperator()</cs-code> qui sera redéfinie 
     dans les 4 sous-classes.
         </li>
 
         <li>
-            Plus et les autres opérateurs sont des sous-classes d'<code class="listing">Expression</code>, 
+            Plus et les autres opérateurs sont des sous-classes d'<cs-code>Expression</cs-code>, 
             et doivent donc être capable de s'évaluer : 
-        ajoutez l'opération <code class="listing">getValue() : double</code> aux 4 opérateurs.
+        ajoutez l'opération <cs-code>getValue() : double</cs-code> aux 4 opérateurs.
         </li>
 
         <li>
             Ajoutez les constructeurs avec leurs arguments : le constructeur 
-            de <code class="listing">BinaryOperator</code> aura 2 arguments 
-        de type <code class="listing">Expression</code>, de même pour ses sous-classes.
+            de <cs-code>BinaryOperator</cs-code> aura 2 arguments 
+        de type <cs-code>Expression</cs-code>, de même pour ses sous-classes.
         </li>
 
         <li>
@@ -386,9 +377,9 @@ $ git commit -m "Solution de l'exercice 3"
 
 <br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h2>
     Exercice 4 : Mise à jour du code Java et tests
-</div>
+</h2>
 
 <p class="text-justify">
     <ul>
@@ -431,7 +422,7 @@ $ git commit -m "Solution de l'exercice 4"
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
