@@ -217,7 +217,7 @@
 	margin-bottom: auto !important;
 }
 
-#default-block, .default-block {
+#default-block {
 	border: solid;
 	border-width: 5px;
 	border-color: navy;
@@ -247,7 +247,7 @@
 	font-style: italic !important;
 }
 
-#alert-block, .alert-block {
+#alert-block {
 	border: solid;
 	border-width: 5px;
 	border-color: red;
@@ -277,7 +277,7 @@
 	font-style: italic !important;
 }
 
-#green-block, .green-block {
+#green-block {
 	border: solid;
 	border-width: 5px;
 	border-color: green;
