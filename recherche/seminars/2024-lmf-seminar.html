@@ -179,7 +179,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Event-B method</h2>
 
-	<div class="center-divs">
+	<div class="start-divs">
 		<div style="width: 33%;">
 <pre id="eb" class="eb-code" >
 <b>CONTEXT</b> $ctx_1$
@@ -327,7 +327,7 @@ $event$ $\mathrel{\widehat=}$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Event-B method</h2>
 
-	<div class="center-divs">
+	<div class="start-divs">
 		<div class="fragment" style="width: 33%;">
 <pre id="eb" class="eb-code">
 <b>THEORY</b> $thy_1$
@@ -382,6 +382,7 @@ $event$ $\mathrel{\widehat=}$
 </pre>
 		</div>
 	</div>
+
 <!-- What I want to say. -->
 <aside class="notes">
 Now, with the Theory component, an Event-B model can be specified using three component types besides Context and Machine.
@@ -436,7 +437,7 @@ Now, with the Theory component, an Event-B model can be specified using three co
 	</ul>
 
 	<div id="green-block" class="d-skip fragment left-content">
-		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <b style="color: red;">problems</b> :<br> 
+		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <red-b>problems</red-b> :<br> 
 		<ul>
 			<li class="fragment">analysing <b>physical phenomena</b>.
 				<ul><li>expressions that come from <i>the physics laws</i>.</li></ul>
@@ -568,7 +569,7 @@ by the previous event.
 		style="float: right; margin-bottom: 10px; margin-left: 10px;">
 
 	<ul style="display: block;">
-		<li><b>All POs are green</b> <b style="color: red;">except</b> the one for maintaining <br> the <span style="color: green;">$@inv7$</span> 
+		<li><b>All POs are green</b> <red-b>except</red-b> the one for maintaining <br> the <green-i>$@inv7$</green-i> 
 			invariant by the <cs-code>$get\_speed$</cs-code> event.</li>
 
 		<li class="fragment skip">This invariant formalises the <b>PROP 2</b> property.
@@ -683,7 +684,7 @@ This implies that the operators defined in the theory involve no precision loss.
 			<ol>
 				<li class="fragment skip">the first theory formalises <b>the power operator</b>. 
 					<ul id="ko">
-						<li class="fragment"><cs-code>$\widehat{\ }$</cs-code> <i>operator</i> is <b style="color: red;">not implemented</b> 
+						<li class="fragment"><cs-code>$\widehat{\ }$</cs-code> <i>operator</i> is <red-b>not implemented</red-b> 
 							in the provers besides <cs-code>$\widehat{\ }~0$</cs-code> and <cs-code>$\widehat{\ }~1$</cs-code>.</li>
 					</ul>
 				</li>
@@ -1262,8 +1263,8 @@ concerning the well-definedness condition of the division operator used to calcu
 		<div  style="width: 70%;">
 			<ul>
 				<li>All generated POs have been proven.</li>
-				<li class="fragment skip">The <span style="color: green;">$get\_speed/inv8/INV$</span> 
-					PO becomes <span style="color: green;">&#10004;</span>.
+				<li class="fragment skip">The <b>get_speed/inv8/INV</b> 
+					PO becomes <green-i>&#10004;</green-i>.
 					<ul id="fleche">
 						<li>thanks to handling small values (<cs-code>$]0..1[$</cs-code>),</li>
 						<li>and to the new <cs-code>div</cs-code> operator specification.</li>

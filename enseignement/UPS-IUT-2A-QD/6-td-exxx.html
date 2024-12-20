@@ -83,34 +83,34 @@
 <p class="text-justify">
     Dans cette séance, nous utiliserons une architecture <b>3-tier</b> contenant les 3 packages suivants : 
     <ol>
-        <li><code class="listing">entity</code> contenant les classes suivantes : 
+        <li><cs-code>entity</cs-code> contenant les classes suivantes : 
             <ul>
-                <li><code class="listing">Cell</code> qui représentera une case. Elle mémorise un entier représentant sa valeur.</li>
+                <li><cs-code>Cell</cs-code> qui représentera une case. Elle mémorise un entier représentant sa valeur.</li>
                 <li>
-                    <code class="listing">Engine</code> qui contiendra les attributs suivant :
+                    <cs-code>Engine</cs-code> qui contiendra les attributs suivant :
                     <ul>
                         <li>un entier représentant la hauteur du tableau.</li>
                         <li>un entier représentant la largeur du tableau.</li>
                         <li>le plateau de jeu qui sera constitué d'un tableau à deux dimensions 
-                            (première dimension : hauteur, seconde dimension : largeur) de <code class="listing">Cell</code>.</li>
+                            (première dimension : hauteur, seconde dimension : largeur) de <cs-code>Cell</cs-code>.</li>
                     </ul>
                 </li>
             </ul>
         </li>
         <li>
-            <code class="listing">control</code> contenant l'interface <code class="listing">IControl</code> qui définit l'ensemble des méthodes à implémenter pour faire fonctionner le jeu. 
+            <cs-code>control</cs-code> contenant l'interface <cs-code>IControl</cs-code> qui définit l'ensemble des méthodes à implémenter pour faire fonctionner le jeu. 
         </li>
         <li>
-            <code class="listing">boundary</code> contenant les classes de l'interface utilisateur.
+            <cs-code>boundary</cs-code> contenant les classes de l'interface utilisateur.
             <ul>
-                <li><code class="listing">Grid</code> qui hérite de <code class="listing">JPanel</code> et permet d'afficher le plateau.</li>
-                <li><code class="listing">MainWindow</code> qui hérite de <code class="listing">JFrame</code> et présente la fenêtre principale. </li>
+                <li><cs-code>Grid</cs-code> qui hérite de <cs-code>JPanel</cs-code> et permet d'afficher le plateau.</li>
+                <li><cs-code>MainWindow</cs-code> qui hérite de <cs-code>JFrame</cs-code> et présente la fenêtre principale. </li>
             </ul>
         </li>
     </ol>
 </p>
 <p class="text-justify">
-    En plus des trois packages, une classe <code class="listing">Launcher</code> contenant la méthode <code class="listing">main()</code> est fournie 
+    En plus des trois packages, une classe <cs-code>Launcher</cs-code> contenant la méthode <cs-code>main()</cs-code> est fournie 
         pour exécuter le programme et faire les tests.
 </p>
 <p class="text-justify">
@@ -124,30 +124,30 @@
 
 <p class="text-justify">
     <ul>
-        <li>Ajoutez un constructeur pour la classe <code class="listing">Engine</code> qui prend un tableau d'entiers en argument et initialise le plateau avec 
+        <li>Ajoutez un constructeur pour la classe <cs-code>Engine</cs-code> qui prend un tableau d'entiers en argument et initialise le plateau avec 
             les valeurs de ce tableau. 
             Ce constructeur va nous permettre de faire un certain nombre de vérification. </li>
 
         <li>
-            Créez une classe <code class="listing">Jeu2048</code> implémentant l'interface <code class="listing">IControl</code>. Cette nouvelle classe doit définir
-                 un attribut <code class="listing">engine</code> de type <code class="listing">Engine</code>
-            et un constructeur qui initialise le jeu en appelant la méthode <code class="listing">init()</code>. 
+            Créez une classe <cs-code>Jeu2048</cs-code> implémentant l'interface <cs-code>IControl</cs-code>. Cette nouvelle classe doit définir
+                 un attribut <cs-code>engine</cs-code> de type <cs-code>Engine</cs-code>
+            et un constructeur qui initialise le jeu en appelant la méthode <cs-code>init()</cs-code>. 
         </li>
 
         <li>
-            Dans un premier temps, vous allez compléter la méthode <code class="listing">init()</code> en initialisant l'attribut <code class="listing">engine</code> en utilisant 
+            Dans un premier temps, vous allez compléter la méthode <cs-code>init()</cs-code> en initialisant l'attribut <cs-code>engine</cs-code> en utilisant 
             le nouveau constructeur ajouté avec comme argument le tableau <br>
-            <code class="listing">vals = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};</code>
+            <cs-code>vals = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};</cs-code>
         </li>
 
         <li>
-            Implémentez la méthode <code class="listing">getGrid()</code> en renvoyant un tableau contenant les valeurs de <code class="listing">engine</code>.
+            Implémentez la méthode <cs-code>getGrid()</cs-code> en renvoyant un tableau contenant les valeurs de <cs-code>engine</cs-code>.
         </li>
 
         <li>
-            Ajoutez la ligne <code class="listing">new MainWindow(new Jeu2048());</code> à la méthode <code class="listing">run()</code> 
-            de la classe <code class="listing">Launcher</code>
-            pour lier la classe <code class="listing">Jeu2048</code> avec le reste des classes.
+            Ajoutez la ligne <cs-code>new MainWindow(new Jeu2048());</cs-code> à la méthode <cs-code>run()</cs-code> 
+            de la classe <cs-code>Launcher</cs-code>
+            pour lier la classe <cs-code>Jeu2048</cs-code> avec le reste des classes.
         </li>
 
         <li>
@@ -165,22 +165,22 @@
     Nous voulons maintenant générer une nouvelle case comme cela arrive au début du jeu et après chaque déplacement.
 
     <ul>
-        <li>Ajoutez dans la classe <code class="listing">Engine</code> une méthode <code class="listing">getEmptyCells()</code> qui retourne 
-            une  <code class="listing">ArrayList</code> de <code class="listing">Cell</code> contenant la liste des cases vides (cases ayant la valeur 0).</li>
+        <li>Ajoutez dans la classe <cs-code>Engine</cs-code> une méthode <cs-code>getEmptyCells()</cs-code> qui retourne 
+            une  <cs-code>ArrayList</cs-code> de <cs-code>Cell</cs-code> contenant la liste des cases vides (cases ayant la valeur 0).</li>
 
         <li>
-            A l'aide de la méthode précédente, écrivez une méthode  <code class="listing">addNewCell()</code> qui ajoute une nouvelle case à votre grille 
-            (à choisir parmi les <code class="listing">Cell</code>s renvoyées par <code class="listing">getEmptyCells()</code> s'il existe encore au moins une case vide). 
+            A l'aide de la méthode précédente, écrivez une méthode  <cs-code>addNewCell()</cs-code> qui ajoute une nouvelle case à votre grille 
+            (à choisir parmi les <cs-code>Cell</cs-code>s renvoyées par <cs-code>getEmptyCells()</cs-code> s'il existe encore au moins une case vide). 
             Le choix de la case et de sa valeur (la nouvelle valeur a 80% de chance d'être 2 et 20% de chance d'être 4) est fait aléatoirement.
         </li>
 
         <li>
-            Modifiez la méthode <code class="listing">init()</code> de la classe <code class="listing">Jeu2048</code> en créant une grille $4 \times 4$ 
-            contenant deux cellules choisies à l'aide de la méthode <code class="listing">addNewCell()</code>.
+            Modifiez la méthode <cs-code>init()</cs-code> de la classe <cs-code>Jeu2048</cs-code> en créant une grille $4 \times 4$ 
+            contenant deux cellules choisies à l'aide de la méthode <cs-code>addNewCell()</cs-code>.
         </li>
 
         <li>
-            Exécutez votre application et vérifiez que votre méthode <code class="listing">init()</code> marche très bien.
+            Exécutez votre application et vérifiez que votre méthode <cs-code>init()</cs-code> marche très bien.
         </li>
     </ul>
 </p>
@@ -194,31 +194,31 @@
     le déplacement à droite et effectuer des rotations de la grille pour les autres directions.
 
     <ul>
-        <li>Écrivez une méthode <code class="listing">private void rotate()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+        <li>Écrivez une méthode <cs-code>private void rotate()</cs-code>, dans la classe <cs-code>Jeu2048</cs-code>, 
             qui modifie votre grille en lui faisant faire un quart de tour à droite. </li>
 
         <li>
-            Écrivez une méthode <code class="listing">private void moveRight()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+            Écrivez une méthode <cs-code>private void moveRight()</cs-code>, dans la classe <cs-code>Jeu2048</cs-code>, 
             qui effectue le déplacement des cases vers 
             la droite (sans effectuer de fusion)
             (Pour déplacer les cases vers la droite, il faut les parcourir de la droite vers la gauche).
         </li>
 
         <li>
-            Écrivez une méthode <code class="listing">private void fuseRight()</code>, dans la classe <code class="listing">Jeu2048</code>, 
+            Écrivez une méthode <cs-code>private void fuseRight()</cs-code>, dans la classe <cs-code>Jeu2048</cs-code>, 
             qui effectue la fusion des cases vers la droite
             (Pour fusionner les cases vers la droite, il faut les parcourir de la droite vers la gauche).
         </li>
 
         <li>
             La fusion peut laisser des cases qui ne sont pas à leur place. Pour terminer l'étape, il faut effectuer un nouveau déplacement. 
-            En utilisant ce principe, implémentez la méthode <code class="listing">right()</code> qui effectue l'opération bouger la grille vers la droite. 
-            N'oubliez pas de rajouter une nouvelle cellule avec <code class="listing">addNewCell()</code>.
+            En utilisant ce principe, implémentez la méthode <cs-code>right()</cs-code> qui effectue l'opération bouger la grille vers la droite. 
+            N'oubliez pas de rajouter une nouvelle cellule avec <cs-code>addNewCell()</cs-code>.
         </li>
 
         <li>
-            En utilisant le même principe que dans la méthode <code class="listing">right()</code>, et à l'aide des rotations (méthode <code class="listing">rotate()</code>), 
-            implémentez les méthodes <code class="listing">up()</code>, <code class="listing">down()</code> et <code class="listing">left()</code>.
+            En utilisant le même principe que dans la méthode <cs-code>right()</cs-code>, et à l'aide des rotations (méthode <cs-code>rotate()</cs-code>), 
+            implémentez les méthodes <cs-code>up()</cs-code>, <cs-code>down()</cs-code> et <cs-code>left()</cs-code>.
         </li>
 
         <li>
@@ -234,13 +234,13 @@
 <p class="text-justify">
     <ul>
         <li>
-            Implémentez la méthode <code class="listing">isOver()</code> qui retourne <code class="listing">false</code> s'il reste des actions possibles 
-                qui modifient la grille et <code class="listing">true</code> sinon 
+            Implémentez la méthode <cs-code>isOver()</cs-code> qui retourne <cs-code>false</cs-code> s'il reste des actions possibles 
+                qui modifient la grille et <cs-code>true</cs-code> sinon 
             (S'il reste des cases vides, 
             il reste des actions possibles. Sinon, il reste des actions possibles si 2 cases contiguës ont la même valeur).
         </li>
         <li>
-            Et pour finir, Implémentez la méthode <code class="listing">score()</code> qui permet de renvoyer à chaque coup 
+            Et pour finir, Implémentez la méthode <cs-code>score()</cs-code> qui permet de renvoyer à chaque coup 
                 la plus haute des valeurs parmi toutes les cases de la grille.
         </li>
         <li>

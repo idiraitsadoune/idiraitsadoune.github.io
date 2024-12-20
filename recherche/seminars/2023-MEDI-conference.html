@@ -3,34 +3,22 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>A floating-point numbers theory for Event-B - MEDI 2023</title>
 
-	<meta name="description" content="A floating-point numbers theory for Event-B - MEDI 2023">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
-	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="../resources/css/event-b-theme.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
-
-	<style>
-		#eb li{
-			font-size: 20px !important;
-		}
-	</style>
 </head>
 
 <body>
@@ -46,7 +34,7 @@
 	<div class="header-logo">
 		<div class="left-logo">
 			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
+				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
 			</a>
 		</div>
 		<div class="right-logo">
@@ -68,7 +56,7 @@
 
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-			<img src="../resources/img/idir.png" class="hero-user">
+			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
 		</a>
 		<div class="hero-desc">
 			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
@@ -142,6 +130,7 @@ Let's start by presenting the main concepts of the Event-B method.
 		<li class="fragment skip">The <b>Event-B method</b> is a <i>formal method</i> based on <br>
 			<i>first-order logic</i> and <i>set theory</i>.</li>
 	</ul>
+
 <!-- What I want to say. -->
 <aside class="notes">
 The Event-B formal method is an evolution of the classical B method. <br>
@@ -156,6 +145,7 @@ In addition to the event concept, the Event-B method is based on first-order log
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Using Event-B method</h2>
+
 	<ul>
 		<li>The use of the <b>Event-B method</b> has continued to increase.
 			<ul><li>applied to various applications and domains.</li></ul>
@@ -164,6 +154,7 @@ In addition to the event concept, the Event-B method is based on first-order log
 			<ul><li>offers the possibility of modelling <b>discrete behaviors</b>.</li></ul>
 		</li>
 	</ul>
+
 <!-- What I want to say. -->
 <aside class="notes">
 Since its invention, the use of the Event-B formal method has continued to increase, and it has been applied to various applications and domains. <br> <br>
@@ -174,83 +165,59 @@ The Event-B method is practical and adapted to analyse discrete systems, and its
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Event-B method</h2>
-	<div style="display: flex;">
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
-                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
-                <li>&nbsp;</li>
-                <li class="fragment"><span class="eb-cl">SETS</span> $s$</li>
-                <li class="fragment"><span class="eb-cl">CONSTANTS</span> $c$</li>
-                <li class="fragment"><span class="eb-cl">AXIOMS</span>
-                    <ul>
-                        <li>$A(s,c)$</li>
-                    </ul>
-                </li>
-                <li class="fragment"><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
-
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
-                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
-                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
-                <li>&nbsp;</li>
-                <li class="fragment"><span class="eb-cl">VARIABLES</span> $v$</li>
-                <li class="fragment"><span class="eb-cl">INVARIANTS</span>
-                    <ul>
-                        <li>$I(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li class="fragment"><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li class="fragment"><span class="eb-cl">EVENTS</span>
-                    <ul>
-                        <li>$[events\_list]$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
-
-		<div class="fragment" style="width: 33%;">
-			<ul id="eb">
-				<li>event $\mathrel{\widehat=}$ 
-					<ul>
-						<li><span class="eb-kw">any</span> $x$</li>
-						<li><span class="eb-kw">where</span>
-							<ul>
-								<li>$G(s,c,v,x)$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">then</span>
-							<ul>
-								<li>$BA(s,c,v,x,v')$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">end</span></li>
-					</ul>
-				</li>
-			</ul>
+	
+	<div class="start-divs">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+<span class="fragment" data-fragment-index="2">
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$</span>
+<b>END</b>
+</pre>
 		</div>
-    </div>
-	<div class="skip">
-		<ul id="eb">
-			<li class="fragment">$A(s,c) \mathbin\Rightarrow T(s,c) $</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \mathbin\Rightarrow T(s,c,v)$</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') \mathbin\Rightarrow I(s,c,v')$</li>
-			<li class="fragment">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  \mathbin\Rightarrow \exists v'.BA(s,c,v,x,v')$</li>
-			<li class="fragment">...</li>
-		</ul>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+<span class="fragment" data-fragment-index="3">
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code fragment" data-fragment-index="4">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+		</div>
+	</div>
+
+	<div class="skip left-content">
+		<span class="fragment" data-fragment-index="5">$A(s,c) ~~~\vdash~~~ T(s,c) $</span><br>
+		<span class="fragment" data-fragment-index="5">$A(s,c) \land I(s,c,v) ~~~\vdash~~~ T(s,c,v)$</span><br>
+		<span class="fragment" data-fragment-index="6">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  ~~~\vdash~~~ \exists v'.BA(s,c,v,x,v')$</span><br>
+		<span class="fragment" data-fragment-index="7">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') ~~~\vdash~~~ I(s,c,v')$</span><br>
+		<span class="fragment" data-fragment-index="7">$...$</span>
 	</div>
 
 <!-- What I want to say. -->
@@ -292,6 +259,7 @@ of using operators and the correctness of refinement.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The theory plugin</h2>
+
 	<ul>
 		<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <b>the Event-B mathematical language</b> and <b>the Rodin proving infrastructure</b>.</li>
 		<li class="fragment skip">An <b>Event-B theory</b> can contain : 
@@ -304,6 +272,7 @@ of using operators and the correctness of refinement.
 			</ul>
 		</li>
 	</ul>
+
 <!-- What I want to say. -->
 <aside class="notes">
 To extend the Event-B modelling possibilities with new mathematical objects, 
@@ -316,97 +285,63 @@ and associated rewrite and inference rules.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Event-B method</h2>
-	<div style="display: flex;">
+
+	<div class="start-divs">
 		<div class="fragment" style="width: 33%;">
-			<ul id="eb">
-				<li><span class="eb-cl">THEORY</span> $thy_1$</li>
-				<li><span class="eb-cl">IMPORT</span> $thy_2$</li>
-				<li>&nbsp;</li>
-				<li><span class="eb-cl">DATATYPES</span> 
-					<ul>
-						<li>$DT_1,...,DT_n$</li>
-					</ul>
-				</li>
-				<li><span class="eb-cl">OPERATORS</span> 
-					<ul>
-						<li>$OP_{11},...,OP_{1n}$</li>
-					</ul>
-				</li>
-				<li><span class="eb-cl">AXIOMATIC DEFINITIONS</span>
-					<ul>
-						<li><span class="eb-kw">operators</span>
-							<ul>
-								<li>$OP_{21},...,OP_{2n}$</li>
-							</ul>
-						</li>
-						<li><span class="eb-kw">axioms</span>
-							<ul>
-								<li>$A$</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li><span class="eb-cl">THEOREMS</span> 
-					<ul>
-						<li>$T$</li>
-					</ul>
-				</li>
-				<li><span class="eb-cl">PROOF RULES</span> 
-					<ul>
-						<li>$PR$</li>
-					</ul>
-				</li>
-				<li><span class="eb-cl">END</span></li>
-			</ul>
+<pre id="eb" class="eb-code">
+<b>THEORY</b> $thy_1$
+<b>IMPORT</b> $thy_2$
+
+<b>DATATYPES</b> 
+	$DT_1,...,DT_n$
+<b>OPERATORS</b> 
+	$OP_{11},...,OP_{1n}$
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		$OP_{21},...,OP_{2n}$
+	<i>axioms</i>
+		$A$
+<b>THEOREMS</b>
+	$T$
+<b>PROOF RULES</b>
+	$PR$
+<b>END</b>
+</pre>			
+	</div>
+
+	<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+<b>END</b>
+</pre>
 		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
 
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">CONTEXT</span> $ctx_1$</li>
-                <li><span class="eb-cl">EXTENDS</span> $ctx_2$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">SETS</span> $s$</li>
-                <li><span class="eb-cl">CONSTANTS</span> $c$</li>
-                <li><span class="eb-cl">AXIOMS</span>
-                    <ul>
-                        <li>$A(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$
+<b>END</b>
+</pre>
+		</div>
+	</div>
 
-        <div style="width: 33%;">
-            <ul id="eb">
-                <li><span class="eb-cl">MACHINE</span> $mch_1$</li>
-                <li><span class="eb-cl">REFINES</span> $mch_2$</li>
-                <li><span class="eb-cl">SEES</span> $ctx_i$</li>
-                <li>&nbsp;</li>
-                <li><span class="eb-cl">VARIABLES</span> $v$</li>
-                <li><span class="eb-cl">INVARIANTS</span>
-                    <ul>
-                        <li>$I(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">THEOREMS</span>
-                    <ul>
-                        <li>$T(s,c,v)$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">EVENTS</span>
-                    <ul>
-                        <li>$[events\_list]$</li>
-                    </ul>
-                </li>
-                <li><span class="eb-cl">END</span></li>
-            </ul>
-        </div>
-    </div>
 <!-- What I want to say. -->
 <aside class="notes">
 Now, with the Theory component, an Event-B model can be specified using three component types besides Context and Machine.
@@ -423,24 +358,25 @@ Now, with the Theory component, an Event-B model can be specified using three co
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A simple example</h2>
+
 	<div class="left-content">
 		<ul>
 			<li>System that continuously calculates <b>a moving object's speed</b></li>
 	
 			<li class="fragment">Analyzing <b>two functional properties</b>:
 				<ul>
-					<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$traveled\_distance$</code> 
-						divided by the <code class="listing">$measured\_time$</code>  (<code class="listing">$v = d/t$</code>).</li>
-					<li class="fragment"><strong>PROP-2</strong> : when the <code class="listing">$traveled\_distance$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
+					<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-code>$traveled\_distance$</cs-code> 
+						divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).</li>
+					<li class="fragment"><strong>PROP-2</strong> : when the <cs-code>$traveled\_distance$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
 						of the moving object must also be <i>strictly positive</i>.
-						<ul><li> <b>the object moves</b> when its <code class="listing">$speed$</code> is different from zero.</li></ul>
+						<ul><li> <b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li></ul>
 					</li>
 				</ul>
 			</li>
 		</ul>
 	
 		<div id="green-block" class="fragment">
-			<b>Objectives</b> $\to$ showing some <b>modelling and validation</b> <b style="color: red;">problems</b> :<br> 
+			<b>Objectives</b> $\to$ showing some <b>modelling and validation</b> <red-b>problems</red-b> :<br> 
 			<ul>
 				<li class="fragment">analyzing <b>physical phenomena</b>.
 					<ul><li>expressions that come from <i>the physics laws</i>.</li></ul>
@@ -449,6 +385,7 @@ Now, with the Theory component, an Event-B model can be specified using three co
 			</ul>
 		</div>
 	</div>
+
 <!-- What I want to say. -->
 <aside class="notes">
 To illustrate our approach for extending the Event-B core with the floating-point numbers data type, we propose to model a system 
@@ -467,39 +404,37 @@ mainly when we use integer variables to handle small values and expressions that
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The Event-B model</h2>
+  <h2>The Event-B model</h2>
+
 	<div class="left-content">
 		<ul>
 			<li>Analyzing <b>two functional properties</b>:
 				<ul>
-					<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <code class="listing">$traveled\_distance$</code> 
-						divided by the <code class="listing">$measured\_time$</code>  (<code class="listing">$v = d/t$</code>).</li>
-					<li><strong>PROP-2</strong> : when the <code class="listing">$traveled\_distance$</code> <i>is strictly positive</i>, the <code class="listing">$speed$</code> <br> 
+					<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-code>$traveled\_distance$</cs-code> 
+						divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).</li>
+					<li><strong>PROP-2</strong> : when the <cs-code>$traveled\_distance$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
 						of the moving object must also be <i>strictly positive</i>.
-						<ul><li> <b>the object moves</b> when its <code class="listing">$speed$</code> is different from zero.</li></ul>
+						<ul><li> <b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li></ul>
 					</li>
 				</ul>
 			</li>
 		</ul>
-
-		<ul class="skip" id="eb">
-			<li><span class="eb-cl">MACHINE</span> mch_integer_version</li>
-			<li>...</li>
-			<li><span class="eb-cl">INVARIANTS</span>
-				<ul>
-					<li><span class="eb-cm">inv1:</span> traveled_distance $\in$ $\mathbb N$</li>
-					<li><span class="eb-cm">inv2:</span> measured_time $\in$ $\mathbb N_1$</li>
-					<li><span class="eb-cm">inv3:</span> speed $\in$ $\mathbb N$  </li>
-					<li><span class="eb-cm">inv4:</span> starting_position $\in$ $\mathbb N$  </li>
-					<li><span class="eb-cm">inv5:</span> starting_time $\in$ $\mathbb N$  </li>
-				</ul>
-				<ul class="fragment">
-					<li><span class="eb-cm">inv6:</span> speed = traveled_distance $\div$ measured_time <span class="eb-cm">// PROP-1</span></li>
-					<li><span class="eb-cm">inv7:</span> traveled_distance $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$ <span class="eb-cm">// PROP-2</span></li>
-				</ul>
-			</li>
-		</ul>
 	</div>
+
+	<div class="left-content skip" style="width: 65%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
+	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
+	<u>@inv3:</u> speed $\in$ $\mathbb N$
+	<u>@inv4:</u> starting_position $\in$ $\mathbb N$
+	<u>@inv5:</u> starting_time $\in$ $\mathbb N$<span class="fragment">
+	<u>@inv6:</u> speed $=$ distance_travelled $\div$ measured_time <u>// PROP-1</u>
+	<u>@inv7:</u> distance_travelled $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$ <u>// PROP-2</u></span>
+</pre>
+		</div>
 <!-- What I want to say. -->
 <aside class="notes">
 <i>traveled_distance</i>, <i>measured_time</i> and <i>speed</i> variables are used to formalise the properties of the moving object. <br>
@@ -511,112 +446,87 @@ when the seventh invariant formalises the PROP 2.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The Event-B model</h2>
-	<div class="left-content">
-		<ul id="eb">
-			<li><span class="eb-cl">MACHINE</span> mch_integer_version</li>
-			<li>...</li>
-			<li><span class="eb-cl">EVENTS</span>
-				<ul>
-					<li>get_starting_point $\mathrel{\widehat=}$ 
-						<ul>
-							<li><span class="eb-kw">any</span> p t</li>
-							<li><span class="eb-kw">where</span>
-								<ul>
-									<li><span class="eb-cm">grd1:</span> p $\in$ $\mathbb N_1$</li>
-									<li><span class="eb-cm">grd2:</span> t $\in$ $\mathbb N_1$</li>
-								</ul>
-							</li>
-							<li><span class="eb-kw">then</span>
-								<ul>
-									<li><span class="eb-cm">act1:</span> starting_position := p</li>
-									<li><span class="eb-cm">act2:</span> starting_time := t</li>
-								</ul>
-							</li>
-							<li><span class="eb-kw">end</span></li>
-						</ul>
-					</li>
-					<li>...</li>
-				</ul>
-			</li>
-			<li><span class="eb-cl">END</span></li>
-		</ul>
+  <h2>The Event-B model</h2>
+
+	<div class="r-stack">				
+		<div class="fragment fade-out" style="width: 75%" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>EVENTS</b>
+	...
+	get_starting_point $\mathrel{\widehat=}$
+		<i>any</i> p t 
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ $\mathbb N_1$
+			<u>@grd2:</u> t $\in$ $\mathbb N_1$
+		<i>then</i>
+			<u>@act1:</u> starting_position $:=$ p
+			<u>@act2:</u> starting_time $:=$ t
+		<i>end</i>
+	...
+<b>END</b>
+</pre>
+		</div>
+		<div class="fragment" style="width: 75%" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$
+		<i>any</i> p t 
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<u>@grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p $-$ starting_position
+			<u>@act2:</u> measured_time $:=$ t $-$ starting_time
+			<u>@act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<i>end</i>
+<b>END</b>
+</pre>
+		</div>
 	</div>
+
 <!-- What I want to say. -->
 <aside class="notes">	
 The proposed Event-B model contains two main events : <br><br>
 
 The first event, named <i>get_starting_point</i>, allows the capture of the starting point properties 
-of the moving object by initializing the <i>starting_position</i> and <i>starting_time</i> variables. 
-</aside>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The Event-B model</h2>
-	<div class="left-content">
-		<ul id="eb">
-			<li><span class="eb-cl">MACHINE</span> mch_integer_version</li>
-			<li>...</li>
-			<li><span class="eb-cl">EVENTS</span>
-				<ul>
-					<li>...</li>
-					<li>get_speed $\mathrel{\widehat=}$ 
-						<ul>
-							<li><span class="eb-kw">any</span> p t</li>
-							<li><span class="eb-kw">where</span>
-								<ul>
-									<li><span class="eb-cm">grd1:</span> p $\in$ $\mathbb N_1$ $\land$ p > starting_position</li>
-									<li><span class="eb-cm">grd2:</span> t $\in$ $\mathbb N_1$ $\land$ t > starting_time</li>
-								</ul>
-							</li>
-							<li><span class="eb-kw">then</span>
-								<ul>
-									<li><span class="eb-cm">act1:</span> traveled_distance := p - starting_position</li>
-									<li><span class="eb-cm">act2:</span> measured_time := t - starting_time</li>
-									<li><span class="eb-cm">act3:</span> speed := (p - starting_position) $\div$ (t - starting_time)</li>
-								</ul>
-							</li>
-							<li><span class="eb-kw">end</span></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li><span class="eb-cl">END</span></li>
-		</ul>
-	</div>
-<!-- What I want to say. -->
-<aside class="notes">	
+of the moving object by initializing the <i>starting_position</i> and <i>starting_time</i> variables. <br><br>
+
 The second event of the proposed Event-B model is called <i>get_speed</i>. <br>
 It captures the new position of the moving object and calculates the new values of the <i>measured_time</i>, <i>traveled_distance</i>, 
 and <i>speed</i> variables. <br>
 These new values depend on the initial position stored in the <i>starting_time</i> and <i>starting_position</i> variables captured 
 by the <i>get_starting_point$ event</i>.
-</aside>	
+</aside>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>generated and proven POs</h2>
+  <h2>generated and proven POs</h2>
 
 	<img src="./img/fig1.png" height="400px"
 		style="float: right; margin-bottom: 10px; margin-left: 10px;">
 
 	<ul style="display: block;">
-		<li><b>All POs are green</b> <b style="color: red;">except</b> the one maintaining <br> the <span style="color: green;">$@inv7$</span> 
-			invariant by the <code class="listing">$get\_speed$</code> event.</li>
+		<li><b>All POs are green</b> <red-b>except</red-b> the one maintaining <br> the <green-i>$@inv7$</green-i> 
+			invariant by the <cs-code>$get\_speed$</cs-code> event.</li>
 
 		<li class="fragment skip">This invariant formalises the <b>PROP 2</b> property.
-			<ul><li><b>the object moves</b> (<code class="listing">$traveled\_distance \neq 0$</code>) <br> when <code class="listing">$speed \neq 0$</code>.</li></ul>
+			<ul><li><b>the object moves</b> (<cs-code>$traveled\_distance \neq 0$</cs-code>) <br> 
+				when <cs-code>$speed \neq 0$</cs-code>.</li></ul>
 		</li>
 
-		<li class="fragment skip">The <code class="listing">$get\_speed$</code> event calculates the new value of <code class="listing">$traveled\_distance$</code>
-				that can be <code class="listing">$\lt$</code> the new value of <code class="listing">$measured\_time$</code>.
+		<li class="fragment skip">The <cs-code>$get\_speed$</cs-code> event calculates the new value of <cs-code>$traveled\_distance$</cs-code>
+				that can be <cs-code>$\lt$</cs-code> the new value of <cs-code>$measured\_time$</cs-code>.
 			<ul>
 				
-				<li class="fragment">the new value of <code class="listing">$speed$</code> <br>
-					(<code class="listing">$traveled\_distance$ $\div$ $measured\_time$</code>) can be	<code class="listing">$=$ $0$</code> <br>
-				while <code class="listing">$traveled\_distance \neq 0$</code> (<code class="listing">$\div$</code> makes <b>an integer division</b>)</li>
+				<li class="fragment">the new value of <cs-code>$speed$</cs-code> <br>
+					(<cs-code>$traveled\_distance$ $\div$ $measured\_time$</cs-code>) can be	<cs-code>$=$ $0$</cs-code> <br>
+				while <cs-code>$traveled\_distance \neq 0$</cs-code> (<cs-code>$\div$</cs-code> makes <b>an integer division</b>)</li>
 			</ul>
 		</li>
 	</ul>
@@ -639,7 +549,7 @@ For these reasons, this PO cannot be proved.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Conclusion</h2>
+  <h2>Conclusion</h2>
 
 	<div id="alert-block" style="text-align: center;">
 		<b>The basic types and operators of the Event-B language <br> are not adapted to our needs</b>  
@@ -666,7 +576,7 @@ to extend the Event-B type-checking system with the possibility of handling floa
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>floating-point numbers</h2>
+  <h2>floating-point numbers</h2>
 
 	<div>
 		$$
@@ -686,6 +596,7 @@ to extend the Event-B type-checking system with the possibility of handling floa
 			<li>The <b>operators</b> defined in the theory involve <b>no precision loss</b>.</li>
 		</ul>
 	</div>
+
 <aside class="notes">
 As known, the floating point is the most used method for representing and approximating real numbers in computer-based arithmetic. <br>
 Therefore, we propose to represent real numbers by using floating-point arithmetic. <br>
@@ -700,15 +611,16 @@ defined in the theory involve no precision loss.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The proposed approach</h2>
+  <h2>The proposed approach</h2>
+
 	<div class="left-content">
 		To allow the <b>Event-B language</b> to <u>embed</u> this <b>FP representation</b>, <br>
-		we need to define two theories:
+		we need to define two theories: <br>
 		<ol>
 			<li class="fragment skip">the first one formalises <b>the power operator</b>. 
 				<ul id="ko">
-					<li class="fragment"><u><span class="listing">^</span> operator</u> is <b style="color: red;">not implemented</b> in the automated proofs 
-					besides <span class="listing">^0</span> and <span class="listing">^1</span>.</li>
+					<li class="fragment"><u><cs-code>^</cs-code> operator</u> is <red-b>not implemented</red-b> in the automated proofs 
+					besides <cs-code>^0</cs-code> and <cs-code>^1</cs-code>.</li>
 				</ul>
 			</li>
 			<li class="fragment skip">the second one formalises <b>floating-point numbers</b> by specifying: 
@@ -720,6 +632,7 @@ defined in the theory involve no precision loss.
 			</li>
 		</ol>
 	</div>
+	
 <aside class="notes">
 To allow the Event-B language to embed this floating-point representation, 
 we need to define two theories: <br><br>
@@ -734,42 +647,32 @@ and some axioms and theorems that characterise the proposed modelling.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The power operator</h2>
+  <h2>The power operator</h2>
 
-	<ul id="eb">
-		<li><span class="eb-cl">THEORY</span> thy_power_operator</li>
-		<li>&nbsp;</li>
-		<li><span class="eb-cl">AXIOMATIC DEFINITIONS</span>
-			<ul>
-				<li><span class="eb-kw">operators</span>
-					<ul>
-						<li>pow(x $\in$ $\mathbb Z$, n $\in$ $\mathbb N$) : $\mathbb Z$ <strong>INFIX</strong> <span class="eb-cm">// x pow n = $x^n$</span></li>
-						<li><span class="eb-kw">wd condition</span> : $\neg$ (x $=$ 0 $\land$ n $=$ 0) <span class="eb-cm">// $0^0$ is not defined</span></li>
-					</ul>
-				</li>
-				<li>&nbsp;</li>
-				<li class="fragment"><span class="eb-kw">axioms</span>
-					<ul>
-						<li><span class="eb-cm">axm1:</span> $\forall$ n. n $\in \mathbb N_1$ $\mathbin\Rightarrow$ 0 pow n = 0</li>
-						<li><span class="eb-cm">axm2:</span> $\forall$ x. x $\in \mathbb Z$ $\land$ x $\neq$ 0 $\mathbin\Rightarrow$ x pow 0 = 1</li>
-						<li><span class="eb-cm">axm3:</span> $\forall$ x,n. x $\in \mathbb Z$ $\land$ x $\neq$ 0 $\land$ n $\in \mathbb N_1$ $\mathbin\Rightarrow$ x pow n = x $\times$ (x pow (n-1))</li>
-						<li>...</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-		<li>&nbsp;</li>
-		<li class="fragment"><span class="eb-cl">THEOREMS</span>
-			<ul>
-				<li><span class="eb-cm">thm1:</span> $\forall$ x,n,m. $...$ $\mathbin\Rightarrow$ x pow (n + m) = (x pow n) $\times$ (x pow m)</li>
-				<li><span class="eb-cm">thm2:</span> $\forall$ x,n,m. $...$ $\mathbin\Rightarrow$ (x pow n) pow m = x pow (n $\times$ m)</li>
-				<li><span class="eb-cm">thm3:</span> $\forall$ x,y,n. $...$ $\mathbin\Rightarrow$ (x $\times$ y) pow n = (x pow n) $\times$ (y pow n)</li>
-				<li>...</li>
-			</ul>
-		</li>
-		<li>&nbsp;</li>
-		<li><span class="eb-cl">END</span></li>
-	</ul>
+	<div class="left-content" style="width: 82%;">
+<pre id="eb" class="eb-code" >
+<b>THEORY</b> thy_power_operator
+
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		pow(x $\in$ $\mathbb Z$, n $\in$ $\mathbb N$) : $\mathbb Z$ <strong>INFIX</strong> <u>// x pow n $=$ $x^n$</u>
+		<i>wd condition</i> : $\neg$ (x $=$ 0 $\land$ n $=$ 0) <u>// $0^0$ is not defined</u><span class="fragment">
+	<i>axioms</i>
+		<u>@axm1:</u> $\forall$ n $\cdot$ n $\in \mathbb N_1$ $\mathbin\Rightarrow$ 0 pow n $=$ 0
+		<u>@axm2:</u> $\forall$ x $\cdot$ x $\in \mathbb Z$ $\land$ x $\neq$ 0 $\mathbin\Rightarrow$ x pow 0 $=$ 1
+		<u>@axm3:</u> $\forall$ x,n $\cdot$ x $\in \mathbb Z$ $\land$ x $\neq$ 0 $\land$ n $\in \mathbb N_1$ $\mathbin\Rightarrow$ x pow n $=$ x $\times$ (x pow (n $-$ 1))
+		...</span>
+<span class="fragment">
+<b>THEOREMS</b>
+	<u>@thm1:</u> $\forall$ x,n,m $\cdot$ $...$ $\mathbin\Rightarrow$ x pow (n $+$ m) $=$ (x pow n) $\times$ (x pow m)
+	<u>@thm2:</u> $\forall$ x,n,m $\cdot$ $...$ $\mathbin\Rightarrow$ (x pow n) pow m $=$ x pow (n $\times$ m)
+	<u>@thm3:</u> $\forall$ x,y,n $\cdot$ $...$ $\mathbin\Rightarrow$ (x $\times$ y) pow n $=$ (x pow n) $\times$ (y pow n)
+	...
+</span>
+<b>END</b>
+</pre>
+	</div>
+
 <aside class="notes">
 In this theory, we have defined a power operator that uses natural exponents. The power operation with natural 
 exponents may be expressed with multiplication operations. <br><br>
@@ -787,17 +690,19 @@ the power rule, and the multiplying exponents rule.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Some remarks</h2>
+  <h2>Some remarks</h2>
+
 	<ul>
 		<li>By using this theory, it <b>becomes possible to prove</b>, for example, that <br>
-			<span class="listing">5 pow 3 = 125</span></li>
+			<cs-code>5 pow 3 = 125</cs-code></li>
 
 		<li class="fragment skip"><b>The proofs</b> of all theorems were made by <b>induction</b><br>
 			(following the rules defined by <strong>Cervelle and Gervais - ABZ 2023</strong>).</li>
 
-		<li class="fragment skip">We have chosen to define the <span class="listing">pow</span> operator in a <b>single theory</b><br>
+		<li class="fragment skip">We have chosen to define the <cs-code>pow</cs-code> operator in a <b>single theory</b><br>
 			to offer the possibility of <b>reusing it</b> in other <b>Event-B</b> <i>components</i>.</li>
 	</ul>
+
 <aside class="notes">
 	Now, By using this theory, it becomes possible to prove, for example, that <i>5 pow 3 = 125</i>. <br><br>
 
@@ -810,7 +715,8 @@ the power rule, and the multiplying exponents rule.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The floating-point numbers theory</h2>
+  <h2>The floating-point numbers theory</h2>
+
 	<div class="left-content">
 		<ul id="eb">
 			<li><span class="eb-cl">THEORY</span> thy_floating_point_numbers</li>
@@ -964,22 +870,22 @@ Functions calculating the integer part, the fractional part, the floor function 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The case of <code class="listing">inv</code> and <code class="listing">div</code> operators</h2>
+    <h2>The case of <cs-code>inv</cs-code> and <cs-code>div</cs-code> operators</h2>
 	<div class="left-content">
 		<ul>
-			<li>The proposed theory involves <b>no precision loss</b>  for <code class="listing">plus</code> <br> 
-				and <code class="listing">mult</code> operators.</li>
+			<li>The proposed theory involves <b>no precision loss</b>  for <cs-code>plus</cs-code> <br> 
+				and <cs-code>mult</cs-code> operators.</li>
 			<li class="fragment">The <b>division</b> sometimes <b>induces a precision loss</b>.
 				<ul id="ko">
 					<li><strong>ex.</strong> we cannot precisely represent the result of $1/3$ or $2/3$</li>
 				</ul>
 			</li>
-			<li class="fragment skip">For the case of <code class="listing">inv</code> and <code class="listing">div</code> operators,
+			<li class="fragment skip">For the case of <cs-code>inv</cs-code> and <cs-code>div</cs-code> operators,
 				we have defined <br> <b>the Well-definedness conditions</b>. 
 				<ul>
 					<li class="fragment">
-						To calculate <code class="listing">$inv(x)$</code>, we must find a <code class="listing">$z$</code>, 
-						with <code class="listing">$10^n = z \times s(x)$</code>.
+						To calculate <cs-code>$inv(x)$</cs-code>, we must find a <cs-code>$z$</cs-code>, 
+						with <cs-code>$10^n = z \times s(x)$</cs-code>.
 						<ul id="ok">
 							<li>$inv(2.5) = 1/2.5 = 0.4 = 4 \times$ $10^{-1}$ (<b style="color: green;">$z = 4$</b> because $100 = 4 \times 25$)</li>	
 						</ul>
@@ -988,8 +894,8 @@ Functions calculating the integer part, the fractional part, the floor function 
 						</ul>
 					</li>
 					<li class="fragment skip">
-						To calculate <code class="listing">$x$ $div$ $y$</code>, we must find a <code class="listing">$z$</code>, 
-						with <code class="listing">$10^n \times s(x) = z \times s(y)$</code>.
+						To calculate <cs-code>$x$ $div$ $y$</cs-code>, we must find a <cs-code>$z$</cs-code>, 
+						with <cs-code>$10^n \times s(x) = z \times s(y)$</cs-code>.
 						<ul id="ok">
 							<li>$2$ $div$ $5 = 2/5 = 0.4 = 4 \times$ $10^{-1}$ (<b style="color: green;">$z = 4$</b> because $10 \times 2 = 4 \times 5$)</li>
 						</ul>
@@ -1017,7 +923,7 @@ The same reasoning is done for the division operator.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The case of <code class="listing">inv</code> and <code class="listing">div</code> operators</h2>
+    <h2>The case of <cs-code>inv</cs-code> and <cs-code>div</cs-code> operators</h2>
 	<div class="left-content">
 		<ul id="eb">
 			<li><span class="eb-cl">THEORY</span> thy_floating_point_numbers</li>
@@ -1067,7 +973,7 @@ The same reasoning is done for the division operator.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>The case of <code class="listing">inv</code> and <code class="listing">div</code> operators</h2>
+    <h2>The case of <cs-code>inv</cs-code> and <cs-code>div</cs-code> operators</h2>
 	<div class="left-content">
 		<ul id="eb">
 			<li><span class="eb-cl">THEORY</span> thy_floating_point_numbers</li>
@@ -1230,8 +1136,8 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 	</ul>
 
 	<ul>
-		<li class="skip">All <span class="listing">NATURAL</span> variables are typed by 
-			<span class="listing">PFLOAT_Type</span> set containing <i>positive floating-point numbers</i>.</li>
+		<li class="skip">All <cs-code>NATURAL</cs-code> variables are typed by 
+			<cs-code>PFLOAT_Type</cs-code> set containing <i>positive floating-point numbers</i>.</li>
 	</ul>
 	<aside class="notes">
 		Since all our variables are Natural integers, we have defined a set called <i>PFLOAT_Type</i> containing all positive floating-point numbers.
@@ -1452,10 +1358,10 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 		<div  style="width: 70%;">
 			<ul>
 				<li>All generated POs have been proven.</li>
-				<li class="fragment skip">The <span class="listing">get_speed/inv8/INV</span> PO becomes <span style="color: green;">&#10004;</span>.
+				<li class="fragment skip">The <cs-code>get_speed/inv8/INV</cs-code> PO becomes <span style="color: green;">&#10004;</span>.
 					<ul id="fleche">
-						<li>thanks to handling small values (<span class="listing">$]0..1[$</span>),</li>
-						<li>and to the new <span class="listing">div</span> operator specification.</li>
+						<li>thanks to handling small values (<cs-code>$]0..1[$</cs-code>),</li>
+						<li>and to the new <cs-code>div</cs-code> operator specification.</li>
 					</ul>
 				</li>
 			</ul>
@@ -1570,11 +1476,10 @@ I think that such theories will help many Event-B developers to model cyber-phys
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan-en.js"></script>
 
-	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1601,11 +1506,11 @@ I think that such theories will help many Event-B developers to model cyber-phys
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealNotes]
+			plugins: [RevealNotes]
 		});
 
-		Reveal.configure({ pdfSeparateFragments: false }); 	
+		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
-</body>
 
+</body>
 </html>
