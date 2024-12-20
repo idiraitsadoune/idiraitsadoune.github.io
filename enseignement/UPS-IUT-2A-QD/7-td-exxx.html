@@ -68,12 +68,12 @@
     d'<b>une liste doublement chaînée</b> en <b>Java</b>. 
     La liste doublement chaînée offre la possibilité de parcourir la liste dans les 2 sens et facilite ainsi la manipulation.
     Cette caractéristique impose d'utiliser des pointeurs supplémentaires dans les manipulations. 
-    Le chaînage utilise 2 pointeurs : <code class="listing">previous</code> et <code class="listing">next</code> qui pointent respectivement sur l'élément précédent ou l'élément suivant, s'ils existent. 
-    Dans le cas contraire, la valeur sera <code class="listing">null</code>.
+    Le chaînage utilise 2 pointeurs : <cs-code>previous</cs-code> et <cs-code>next</cs-code> qui pointent respectivement sur l'élément précédent ou l'élément suivant, s'ils existent. 
+    Dans le cas contraire, la valeur sera <cs-code>null</cs-code>.
     </p>
     <p class="text-justify">
     Nous commençons d'abord par définir la structure de l'élément stocké dans notre nouvelle collection. Elle est définie par la classe
-    <code class="listing">Element</code> possédant la structure suivante:
+    <cs-code>Element</cs-code> possédant la structure suivante:
 </p>
 <pre><code class="language-java"><script type="text/template">public class Element {
 	private int value;
@@ -113,10 +113,10 @@
 </script></code></pre>
 
 <p class="text-justify">
-    Notre liste doublement chaînée est définie par la classe <code class="listing">DoubleLinkedList</code> contenant deux attributs <code class="listing">begin</code> et <code class="listing">end</code> 
-    de type <code class="listing">Element</code> qui pointent respectivement sur le premier élément de la liste ou le dernier élément de la liste, s'ils existent. 
-    Dans le cas contraire (liste vide), la valeur sera <code class="listing">null</code>. La classe
-    <code class="listing">DoubleLinkedList</code> possède la structure suivante:
+    Notre liste doublement chaînée est définie par la classe <cs-code>DoubleLinkedList</cs-code> contenant deux attributs <cs-code>begin</cs-code> et <cs-code>end</cs-code> 
+    de type <cs-code>Element</cs-code> qui pointent respectivement sur le premier élément de la liste ou le dernier élément de la liste, s'ils existent. 
+    Dans le cas contraire (liste vide), la valeur sera <cs-code>null</cs-code>. La classe
+    <cs-code>DoubleLinkedList</cs-code> possède la structure suivante:
 </p>
 
 <pre><code class="language-java"><script type="text/template">public class DoubleLinkedList {
@@ -203,12 +203,12 @@
 </div>
 <p class="text-justify">
 <ul>
-    <li>Complétez le code <b>Java</b> des deux classes (les parties marquées <code class="listing">// TODO</code>) pour garantir 
+    <li>Complétez le code <b>Java</b> des deux classes (les parties marquées <cs-code>// TODO</cs-code>) pour garantir 
         une construction et une manipulation de listes ordonnées du plus petit élément au plus grand.
         Les doublons sont également interdits dans notre liste doublement chaînée. 
     </li>
     <li>Pour valider les deux classes, nous souhaitons effectuer des tests unitaires avec le framework <b>JUnit</b>. Complétez le code <b>Java</b>
-    des deux classes avec les méthodes manquantes pour garantir un comportement correcte des méthodes de comparaison de la classe <code class="listing">Assertions</code>.</li>
+    des deux classes avec les méthodes manquantes pour garantir un comportement correcte des méthodes de comparaison de la classe <cs-code>Assertions</cs-code>.</li>
 </ul>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->	
@@ -217,19 +217,19 @@
 	Tests à faire
 </div>
 <p class="text-justify">
-On souhaite tester l'ensemble des fonctions de la classe <code class="listing">DoubleLinkedList</code> à l’aide du framework <b>JUnit</b>. 
-Créez des méthodes dans la classe <code class="listing">DoubleLinkedListTest</code> afin de tester les cas suivants :
+On souhaite tester l'ensemble des fonctions de la classe <cs-code>DoubleLinkedList</cs-code> à l’aide du framework <b>JUnit</b>. 
+Créez des méthodes dans la classe <cs-code>DoubleLinkedListTest</cs-code> afin de tester les cas suivants :
 <ul>
     <li>La taille de la liste [] renvoie bien 0</li>
     <li>La taille de la liste [1] renvoie bien 1</li>
     <li>La taille de la liste [1, 4, 5] renvoie bien 3</li>
 
-    <li>Le test de liste vide de la liste [] renvoie bien <code class="listing">true</code></li>
-    <li>Le test de liste vide de la liste [1, 4, 5] renvoie bien <code class="listing">false</code></li>
+    <li>Le test de liste vide de la liste [] renvoie bien <cs-code>true</cs-code></li>
+    <li>Le test de liste vide de la liste [1, 4, 5] renvoie bien <cs-code>false</cs-code></li>
 
-    <li>Le test de l’existence de l'élément 1 dans la liste [] renvoie bien <code class="listing">false</code></li>
-    <li>Le test de l’existence de l'élément 1 dans la liste [1, 4, 5] renvoie bien <code class="listing">true</code></li>
-    <li>Le test de l’existence de l'élément 8 dans la liste [1, 4, 5] renvoie bien <code class="listing">false</code></li>
+    <li>Le test de l’existence de l'élément 1 dans la liste [] renvoie bien <cs-code>false</cs-code></li>
+    <li>Le test de l’existence de l'élément 1 dans la liste [1, 4, 5] renvoie bien <cs-code>true</cs-code></li>
+    <li>Le test de l’existence de l'élément 8 dans la liste [1, 4, 5] renvoie bien <cs-code>false</cs-code></li>
 
 	<li>l’insertion de l’élément 4 dans la liste [] renvoie bien la liste [4]. </li>
 	<li>l’insertion de l’élément 4 dans la liste [1,5] renvoie bien la liste [1, 4, 5].</li>

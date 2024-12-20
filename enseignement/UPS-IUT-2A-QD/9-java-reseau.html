@@ -57,8 +57,8 @@
 	</div>
 
 	<div class="description" >
-		<span class="description-item"><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-		<span class="description-item"><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+		<span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -149,12 +149,12 @@
         
         <li class="fragment skip">All Internet addresses consisted of 32-bit values, organized as four <br> 
             8-bit values (<b>IPv4</b>, Internet Protocol version 4). 
-            <ul><li><code class="listing">192.54.12.68</code></li></ul>
+            <ul><li><cs-code>192.54.12.68</cs-code></li></ul>
         </li>
         
         <li class="fragment skip">A new addressing scheme, called <b>IPv6</b> has come into play <br> 
             (128-bit values organized into eight 16-bit chunks). 
-            <ul><li><code class="listing">2001:0db8:0000:85a3:0000:0000:ac1f:8001</code></li></ul>
+            <ul><li><cs-code>2001:0db8:0000:85a3:0000:0000:ac1f:8001</cs-code></li></ul>
         </li>
     </ul>
 </section>
@@ -226,19 +226,19 @@
     <ul>
         <li>One of the most important reasons that <b>Java</b> is the premier
             language for network programming are the classes defined in the 
-            <a href="https://docs.oracle.com/javase/7/docs/api/java/net/package-summary.html" target="_blank"><code class="listing">java.net</code></a>
+            <a href="https://docs.oracle.com/javase/7/docs/api/java/net/package-summary.html" target="_blank"><cs-code>java.net</cs-code></a>
              package.</li>
 
         <li class="fragment skip">
             There are two kinds of <i>TCP sockets</i> in <b>Java</b>.
             <ol>
-                <li class="fragment">The <code class="listing">ServerSocket</code> class is designed to be a "listener," 
+                <li class="fragment">The <cs-code>ServerSocket</cs-code> class is designed to be a "listener," 
                     which waits for clients to connect
                     before doing anything. 
-                    <ul id="fleche"><li>Thus, <code class="listing">ServerSocket</code> is for servers.</li></ul>
+                    <ul id="fleche"><li>Thus, <cs-code>ServerSocket</cs-code> is for servers.</li></ul>
                      
                 </li>
-                <li class="fragment">The <code class="listing">Socket</code> class is for clients. It is
+                <li class="fragment">The <cs-code>Socket</cs-code> class is for clients. It is
                     designed to connect to server sockets and initiate protocol exchanges.</li>
             </ol>
         </li>
@@ -257,7 +257,7 @@
 	<h2>TCP/IP Client Socket</h2>
     <ul>
         <li class="fragment">
-            The creation of a <code class="listing">Socket</code> object implicitly establishes a connection between the client
+            The creation of a <cs-code>Socket</cs-code> object implicitly establishes a connection between the client
             and server.
         </li>
        
@@ -265,11 +265,11 @@
             <table class="skip" style="font-size: 0.7em !important;">
                 <tbody>
                     <tr  class="fragment">
-                        <td><code class="listing">Socket(String hostName, int port)</code></td>
+                        <td><cs-code>Socket(String hostName, int port)</cs-code></td>
                         <td>Creates a socket connected <br> to the named host and port.</td>
                     </tr>
                     <tr  class="fragment">
-                        <td><code class="listing">Socket(InetAddress ipAddress, int port)</code></td>
+                        <td><cs-code>Socket(InetAddress ipAddress, int port)</cs-code></td>
                         <td>Creates a socket using a preexisting <br> InetAddress object and a port.</td>
                     </tr>
                 </tbody>
@@ -284,16 +284,16 @@
     <h2>TCP/IP Client Socket</h2>
     <ul>
         <li>
-            A <code class="listing">Socket</code> can be examined for the address and port information associated with it, 
+            A <cs-code>Socket</cs-code> can be examined for the address and port information associated with it, 
 			by use of the following methods:
             <table class="skip" style="font-size: 0.7em !important;">
                 <tbody>
                     <tr  class="fragment">
-                        <td><code class="listing">InetAddress getInetAddress()</code></td>
+                        <td><cs-code>InetAddress getInetAddress()</cs-code></td>
                         <td>Returns the InetAddress associated with<br> the Socket object. It returns null if the socket <br> is not connected.</td>
                     </tr>
                     <tr  class="fragment">
-                        <td><code class="listing">int getPort()</code></td>
+                        <td><cs-code>int getPort()</cs-code></td>
                         <td>Returns the remote port to which the invoking <br> Socket object is connected. It returns 0 if the socket <br> is not connected.</td>
                     </tr>
                 </tbody>
@@ -307,16 +307,16 @@
     <h2>TCP/IP Client Socket</h2>
     <ul>
         <li>
-            You can access to the input and output streams associated with <br> a <code class="listing">Socket</code>.
+            You can access to the input and output streams associated with <br> a <cs-code>Socket</cs-code>.
 
             <table class="skip" style="font-size: 0.7em !important;">
                 <tbody>
                     <tr  class="fragment">
-                        <td><code class="listing">InputStream getInputStream()</code></td>
+                        <td><cs-code>InputStream getInputStream()</cs-code></td>
                         <td>Returns the InputStream associated with <br>the invoking socket.</td>
                     </tr>
                     <tr  class="fragment">
-                        <td><code class="listing">OutputStream getOutputStream()</code></td>
+                        <td><cs-code>OutputStream getOutputStream()</cs-code></td>
                         <td>Returns the OutputStream associated with <br>the invoking socket.</td>
                     </tr>
                 </tbody>
@@ -364,21 +364,21 @@
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>TCP/IP Server Sockets</h2>
     <ul>
-        <li class="fragment">The <code class="listing">ServerSocket</code> class is used to create servers that listen for either local or
+        <li class="fragment">The <cs-code>ServerSocket</cs-code> class is used to create servers that listen for either local or
         remote client programs to connect to them on published ports. </li>
                 
-        <li class="fragment skip">When you create a <code class="listing">ServerSocket</code>, it will register itself with
+        <li class="fragment skip">When you create a <cs-code>ServerSocket</cs-code>, it will register itself with
         the system as having an interest in client connections.</li>
     </ul>
     <table class="skip" style="font-size: 0.7em !important;">
         <tbody>
             <tr  class="fragment">
-                <td><code class="listing">ServerSocket(int port)</code></td>
+                <td><cs-code>ServerSocket(int port)</cs-code></td>
                 <td>Creates server socket on the specified port<br>with a queue length of 50.</td>
             </tr>
             <tr  class="fragment">
-                <td><code class="listing">ServerSocket(int port, int maxQueue)</code></td>
-                <td>Creates a server socket on the specified port<br>with a maximum queue length of <code class="listing">maxQueue</code>.</td>
+                <td><cs-code>ServerSocket(int port, int maxQueue)</cs-code></td>
+                <td>Creates a server socket on the specified port<br>with a maximum queue length of <cs-code>maxQueue</cs-code>.</td>
             </tr>
         </tbody>
     </table>
