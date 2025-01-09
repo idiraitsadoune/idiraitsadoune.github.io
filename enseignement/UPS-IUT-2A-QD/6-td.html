@@ -3,34 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>TD Qualité de développement : Le jeu 2048</title>
-
-	<meta name="description" content="TD Qualité de développement : Le jeu 2048">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script>
-		MathJax = {
-			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,10 +38,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
-    Travaux dirigés - TD<br> 
-    Le jeu 2048
+<h1>
+  Modèle d'architecture ''n-tier''
+</h1>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Le support de cours</h2>
+
+<div>
+  <iframe style="width: 100%; height: 770px; box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);"
+          src="./6-modele-archi-ntier.html" frameborder="0"></iframe>
 </div>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>L'exercice</h2>
+<!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">
     Le jeu 2048
@@ -118,9 +113,9 @@
 </p>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h3>
     Etape 1
-</div>
+</h3>
 
 <p class="text-justify">
     <ul>
@@ -157,9 +152,9 @@
 </p>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h3>
     Etape 2
-</div>
+</h3>
 
 <p class="text-justify">
     Nous voulons maintenant générer une nouvelle case comme cela arrive au début du jeu et après chaque déplacement.
@@ -185,9 +180,9 @@
     </ul>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h3>
     Etape 3
-</div>
+</h3>
 
 <p class="text-justify">
     Pour coder le déplacement des cases dans la grille, au lieu de coder 4 déplacements différents pour les 4 directions, nous allons coder uniquement 
@@ -227,9 +222,9 @@
     </ul>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="subsection-title">
+<h3>
     Etape 4
-</div>
+</h3>
 
 <p class="text-justify">
     <ul>
@@ -259,12 +254,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2023/2024</span>
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>
