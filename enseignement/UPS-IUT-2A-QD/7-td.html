@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TD Qualité de développement : La liste doublement chaînée</title>
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1>
+  Les tests Unitaires avec JUnit
+</h1>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>Le support de cours</h2>
+
+<div>
+  <iframe style="width: 100%; height: 770px; box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);"
+          src="./7-tests-avec-junit.html" frameborder="0"></iframe>
+</div>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<h2>L'exercice</h2>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">
+  La liste doublement chaînée
+</div>
+
+<p class="text-justify">
+  Dans le cadre de ce TD, nous souhaitons créer et manipuler une structure de données gérant les collections sous la forme 
+  d'<b>une liste doublement chaînée</b> en <b>Java</b>. 
+  La liste doublement chaînée offre la possibilité de parcourir la liste dans les 2 sens et facilite ainsi la manipulation.
+  Cette caractéristique impose d'utiliser des pointeurs supplémentaires dans les manipulations. 
+  Le chaînage utilise 2 pointeurs, <cs-code>previous</cs-code> et <cs-code>next</cs-code>, qui pointent respectivement sur l'élément précédent ou l'élément suivant, s'ils existent. 
+  Dans le cas contraire, la valeur sera <cs-code>null</cs-code>.
+  </p>
+  <p class="text-justify">
+  Nous commençons d'abord par définir la structure de l'élément stocké dans notre nouvelle collection. Elle est définie par la classe
+  <cs-code>Element</cs-code> possédant la structure suivante:
+</p>
+<pre><code class="language-java"><script type="text/template">public class Element {
+  private int value;
+  private Element next;
+  private Element previous;
+
+  public Element (int v, Element p, Element n){
+    this.value = v;
+    this.previous = p;
+    this.next = n;
+  }
+
+  public int getValue() {
+    return this.value;
+  }
+
+  public void setValue(int v) {
+    this.value = v;
+  }
+
+  public Element getNext() {
+    return this.next;
+  }
+
+  public void setNext(Element n) {
+    this.next = n;
+  }
+
+  public Element getPrevious() {
+    return this.previous;
+  }
+
+  public void setPrevious(Element p) {
+    this.previous = p;
+  }
+}                             
+</script></code></pre>
+
+<p class="text-justify">
+  Notre liste doublement chaînée est définie par la classe <cs-code>DoubleLinkedList</cs-code> contenant deux attributs <cs-code>begin</cs-code> et <cs-code>end</cs-code> 
+  de type <cs-code>Element</cs-code> qui pointent respectivement sur le premier élément de la liste ou le dernier élément de la liste, s'ils existent. 
+  Dans le cas contraire (liste vide), la valeur sera <cs-code>null</cs-code>. La classe
+  <cs-code>DoubleLinkedList</cs-code> possède la structure suivante:
+</p>
+
+<pre><code class="language-java"><script type="text/template">public class DoubleLinkedList {
+  private Element begin ;
+  private Element end ;
+
+  public DoubleLinkedList() {
+    this.begin = null ;
+    this.end = null;
+  }
+
+  public DoubleLinkedList(int v) {
+    this.begin = new Element(v, null, null);
+    this.end = this.begin ;
+  }
+
+  public DoubleLinkedList(int[] array) {
+    if(array.length == 0 || array == null) {
+      this.begin = null ;
+      this.end = null;
+    }
+    else if(array.length == 1) {
+      this.begin = new Element(array[0], null, null);
+      this.end = this.begin ;
+    }
+    else {
+      this.begin = new Element(array[0], null, null);
+      this.end = this.begin ;
+      
+      Element previous = this.begin;
+      for(int i=1;i<array.length;i++) {
+        this.end = new Element(array[i],previous,null);
+        previous.setNext(this.end);
+        previous = this.end ;
+      }
+    }
+  }
+
+  public int size() {
+    // TODO 
+    return 0;
+  }
+
+  public boolean isEmpty() {
+    // TODO 
+    return false;
+  }
+
+  public boolean contains(int o) {
+    // TODO 
+    return false;
+  }
+
+  public boolean add(int e) {
+    // TODO 
+    return false;
+  }
+
+  public boolean remove(int o) {
+    // TODO 
+    return false;
+  }
+
+  public void clear() {
+    // TODO 	
+  }
+
+  public int[] getArray() {
+    // TODO
+    return null;
+  }
+
+  public int[] getReverseArray() {
+    // TODO
+    return null;
+  }
+}                             
+</script></code></pre>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<div class="subsection-title">
+Développement à faire
+</div>
+<p class="text-justify">
+<ul>
+  <li>Complétez le code <b>Java</b> des deux classes (les parties marquées <cs-code>// TODO</cs-code>) pour garantir 
+      une construction et une manipulation de listes ordonnées du plus petit élément au plus grand.
+      Les doublons sont également interdits dans notre liste doublement chaînée. 
+  </li>
+  <li>Pour valider les deux classes, nous souhaitons effectuer des tests unitaires avec le framework <b>JUnit</b>. Complétez le code <b>Java</b>
+  des deux classes avec les méthodes manquantes pour garantir un comportement correcte des méthodes de comparaison de la classe <cs-code>Assertions</cs-code>.</li>
+</ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->		
+<div class="subsection-title">
+Tests à faire
+</div>
+<p class="text-justify">
+On souhaite tester l'ensemble des fonctions de la classe <cs-code>DoubleLinkedList</cs-code> à l'aide du framework <b>JUnit</b>. 
+Créez des méthodes dans la classe <cs-code>DoubleLinkedListTest</cs-code> afin de tester les cas suivants :
+<ul>
+  <li>La taille de la liste [] renvoie bien 0</li>
+  <li>La taille de la liste [1] renvoie bien 1</li>
+  <li>La taille de la liste [1, 4, 5] renvoie bien 3</li>
+
+  <li>Le test de liste vide de la liste [] renvoie bien <cs-code>true</cs-code></li>
+  <li>Le test de liste vide de la liste [1, 4, 5] renvoie bien <cs-code>false</cs-code></li>
+
+  <li>Le test de l'existence de l'élément 1 dans la liste [] renvoie bien <cs-code>false</cs-code></li>
+  <li>Le test de l'existence de l'élément 1 dans la liste [1, 4, 5] renvoie bien <cs-code>true</cs-code></li>
+  <li>Le test de l'existence de l'élément 8 dans la liste [1, 4, 5] renvoie bien <cs-code>false</cs-code></li>
+
+<li>l'insertion de l'élément 4 dans la liste [] renvoie bien la liste [4]. </li>
+<li>l'insertion de l'élément 4 dans la liste [1,5] renvoie bien la liste [1, 4, 5].</li>
+<li>l'insertion de l'élément 1 dans la liste [4,5] renvoie bien la liste [1, 4, 5].</li>
+<li>l'insertion de l'élément 5 dans la liste [1,4] renvoie bien la liste [1, 4, 5].</li>
+
+  <li>La suppression de l'élément 1 dans la liste [] renvoie bien la liste []</li>
+  <li>La suppression de l'élément 4 dans la liste [1, 4, 5] renvoie bien la liste [1,5]</li>
+  <li>La suppression de l'élément 1 dans la liste [1, 4, 5] renvoie bien la liste [4,5]</li>
+  <li>La suppression de l'élément 5 dans la liste [1, 4, 5] renvoie bien la liste [1,4]</li>
+
+  <li>Vider la liste la liste [] renvoie bien la liste []</li>
+  <li>Vider la liste la liste [1, 4, 5] renvoie bien la liste []</li>
+
+  <li>Lister le contenu de la liste [1, 4, 5] renvoie bien le tableau [1, 4, 5]</li>
+  <li>Lister en inverse le contenu de la liste [1, 4, 5] renvoie bien le tableau [5, 4, 1]</li>
+</ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+
+</body>
+</html>

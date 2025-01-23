@@ -3,18 +3,9 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Qualité de développement : Les tests unitaires en Java</title>
 
-	<meta name="description" content="Qualité de développement : Les tests unitaires en Java">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+  <link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
 	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
@@ -24,6 +15,10 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -58,7 +53,7 @@
 
 	<div class="description" >
 		<span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-		<span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2023/2024</span>
+		<span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -71,8 +66,8 @@
 			</a>
 			<br>
 			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-                <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-            </a>
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
 
@@ -82,211 +77,192 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Processus de développement en V</h2>
-    <div class="r-stack skip">
-        <img class="fragment fade-in-then-out" src="./img/cycle-vie.svg" height="500px" alt="">
-        <img class="fragment fade-in" src="./img/cycle-vie-test.svg" height="500px" alt="">
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les activités de tests</h2>
+  <h2>Processus de développement en V</h2>
 
-    <div class="left-content">
-        <p class="fragment">Nous distinguons quatre types d’activités de tests :</p>
-        <ol>
-            <li class="fragment"><b>Les tests unitaires</b> : vérifier séparément le fonctionnement <br>
-                des modules d'un logiciel. </li>
-            <li class="fragment"><b>Les tests d’intégration</b> : regrouper l’ensemble des modules 
-                et valider le fonctionnement global du logiciel.</li>
-            <li class="fragment"><b>Les tests de validation</b> : valider la conformité du logiciel  par
-                rapport
-                aux spécifications. </li>
-            <li class="fragment"><b>Les tests d’acceptation</b> : vérifier avec le client que la solution
-                proposée est conforme à ses exigences. </li>
-        </ol>
-    </div>
+  <div class="r-stack skip">
+      <img class="fragment fade-in-then-out" src="./img/cycle-vie.svg" height="500px" alt="">
+      <img class="fragment fade-in" src="./img/cycle-vie-test.svg" height="500px" alt="">
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Dans ce cours</h2>
+  <h2>Les activités de tests</h2>
 
-    <div class="left-content">
-        <p>Nous distinguons quatre types d’activités de tests :</p>
-        <ol>
-            <li><span style="color: red;"><b style="color: red;">Les tests unitaires</b> : vérifier séparément le
-                    fonctionnement <br>
-                    des modules d'un logiciel.</span></li>
-            <li><b>Les tests d’intégration</b> : regrouper l’ensemble des modules 
-                et valider le fonctionnement global du logiciel.</li>
-            <li><b>Les tests de validation</b> : valider la conformité du logiciel  par rapport
-                aux spécifications. </li>
-            <li><b>Les tests d’acceptation</b> : vérifier avec le client que la solution proposée est
-                conforme à ses exigences. </li>
-        </ol>
-    </div>
+  <div class="left-content">
+    <p>Nous distinguons quatre types d'activités de tests :</p>
+    <ol>
+      <li class="fragment"><b>Les tests unitaires</b> : vérifier séparément le fonctionnement <br>
+          des modules d'un logiciel. </li>
+      <li class="fragment"><b>Les tests d'intégration</b> : regrouper l'ensemble des modules <br>
+          et valider le fonctionnement global du logiciel.</li>
+      <li class="fragment"><b>Les tests de validation</b> : valider la conformité du logiciel <br> par
+          rapport aux spécifications. </li>
+      <li class="fragment"><b>Les tests d'acceptation</b> : vérifier avec le client que la solution <br>
+          proposée est conforme à ses exigences. </li>
+    </ol>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>La philosophie du Test</h2>
- 
-    <ul>
-        <li class="fragment">Pas de différence entre test et débogage.
-            <ul id="fleche"><li>déboguer avec des jeux d'entrées</li></ul>
-        </li>
+  <h2>Dans ce cours</h2>
 
-        <li class="fragment skip">Le test sert à montrer que le logiciel fonctionne.
-            <ul id="fleche"><li>exécuter une suite de tests sans défaillance</li></ul>
-        </li>
+  <div class="left-content">
+    <p>Nous distinguons quatre types d'activités de tests :</p>
+    <ol>
+      <li><span style="color: red;"><b style="color: red;">Les tests unitaires</b> : vérifier séparément le
+              fonctionnement <br> des modules d'un logiciel.</span></li>
+      <li><b>Les tests d'intégration</b> : regrouper l'ensemble des modules  <br>
+          et valider le fonctionnement global du logiciel.</li>
+      <li><b>Les tests de validation</b> : valider la conformité du logiciel <br> par rapport
+          aux spécifications. </li>
+      <li><b>Les tests d'acceptation</b> : vérifier avec le client que la solution <br> proposée est
+          conforme à ses exigences. </li>
+    </ol>
+  </div>
 
-        <li class="fragment skip">Le test montre la présence d'erreurs mais pas leur absence.
-            <ul id="fleche"><li>permettre de diminuer le risque.</li></ul>
-        </li>
-    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La philosophie du Test</h2>
+
+  <ul>
+    <li class="fragment">Pas de différence entre test et débogage.
+        <ul id="fleche"><li>déboguer avec des jeux d'entrées</li></ul>
+    </li>
+
+    <li class="fragment skip">Le test sert à montrer que le logiciel fonctionne.
+        <ul id="fleche"><li>exécuter une suite de tests sans défaillance</li></ul>
+    </li>
+
+    <li class="fragment skip">Le test montre la présence d'erreurs mais pas leur absence.
+        <ul id="fleche"><li>permettre de diminuer le risque.</li></ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-transition="fade-in fade-out">
-    <h2>Les tests unitaires</h2>
+  <h2>Les tests unitaires</h2>
 
-    <ul>
-        <li class="fragment"><b>Un test unitaire</b> est <b>un script</b> permettant de <b>valider</b> <br> 
-            le fonctionnement d'une partie d'un module.
-            <ul id="fleche"><li>une méthode, une class, une interface, ...</li></ul>
-        </li>
+  <ul>
+    <li class="fragment"><b>Un test unitaire</b> est <b>un script</b> permettant de <b>valider</b> 
+        le fonctionnement <br> d'une partie d'un module.
+        <ul id="fleche"><li>une méthode, une class, une interface, ...</li></ul>
+    </li>
 
-        <li class="fragment skip">En <b>Java</b>, le framework (<a href="https://junit.org/"
-                target="_blank">JUnit</a>), offre des fonctionnalités <br> 
-                permettant le développement des tests unitaires.
-        </li>
+    <li class="fragment skip">En <b>Java</b>, le framework (<a href="https://junit.org/"
+            target="_blank">JUnit</a>), offre des fonctionnalités  
+            permettant <br> le développement <i>des tests unitaires</i>.
+    </li>
     </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les annotations</h2>
+  <h2>Les annotations</h2>
 
-    
-        <ul>
-            <li data-id="line1" class="fragment"><b>JUnit</b> utilise un système d'annotations définissant <br>
-                le comportement d'une méthode dans <span class="mcg">une classe de test</span> :
-                <ul>
-                    <li class="fragment"><cs-code>@Test</cs-code> :
-                        spécifie que la méthode annotée est <span class="mc">un test</span>.
-                    </li>
-                    <li class="fragment"><cs-code>@Before</cs-code> ou <cs-code>@BeforeEach</cs-code>
-                        (<a href="https://junit.org/junit5/" target="_blank">JUnit5</a>) :
-                        spécifie que la méthode annotée sera exécutée <span class="mc">avant chaque méthode
-                            de test</span>.
-                    </li>
-                    <li class="fragment"><cs-code>@BeforeClass</cs-code> ou <cs-code>@BeforeAll</cs-code> (<a href="https://junit.org/junit5/"
-                            target="_blank">JUnit5</a>):
-                        spécifie que la méthode annotée sera exécutée une fois <span class="mc">avant toutes les
-                        méthodes de test</span>.
-                    </li>
-
-                </ul>
-            </li>
-        </ul>
-
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les annotations</h2>
-
-        <ul>
-            <li data-id="line1"><b>JUnit</b> utilise un système d'annotations définissant <br>
-                le comportement d'une méthode dans <span class="mcg">une classe de test</span> :
-                <ul>
-                    <li>...
-                    </li>
-                    <li><cs-code>@After</cs-code> ou <cs-code>@AfterEach</cs-code> (<a href="https://junit.org/junit5/"
-                            target="_blank">JUnit5</a>) :
-                        spécifie que la méthode annotée sera exécutée <span class="mc">après chaque méthode
-                            de test</span>.
-                    </li>
-                    <li class="fragment"><cs-code>@AfterClass</cs-code> ou <cs-code>@AfterAll</cs-code> (<a href="https://junit.org/junit5/"
-                            target="_blank">JUnit5</a>):
-                        spécifie
-                        que la méthode annotée sera exécutée une fois <span class="mc">après toutes les
-                            méthodes de test</span>.
-                    </li>
-                </ul>
-            </li>
-        </ul>
+  <div class="left-content">
+    <b>JUnit</b> utilise un système d'annotations définissant 
+        le comportement <br> d'une méthode dans <b>une classe de test</b> : <br>
+    <ul>
+      <li class="fragment"><cs-code>@Test</cs-code> :
+          spécifie que la méthode annotée est <i>un test</i>.
+      </li>
+      <li class="fragment"><cs-code>@Before</cs-code> ou <cs-code>@BeforeEach</cs-code>
+          (<a href="https://junit.org/junit5/" target="_blank">JUnit5</a>) :
+          spécifie que la méthode annotée sera exécutée <i>avant chaque méthode
+              de test</i>.
+      </li>
+      <li class="fragment"><cs-code>@BeforeClass</cs-code> ou <cs-code>@BeforeAll</cs-code> (<a href="https://junit.org/junit5/"
+              target="_blank">JUnit5</a>):
+          spécifie que la méthode annotée sera exécutée une fois <i>avant toutes les
+          méthodes de test</i>.
+      </li>
+      <li class="fragment"><cs-code>@After</cs-code> ou <cs-code>@AfterEach</cs-code> (<a href="https://junit.org/junit5/"
+        target="_blank">JUnit5</a>) :
+          spécifie que la méthode annotée sera exécutée <i>après chaque méthode
+              de test</i>.
+      </li>
+      <li class="fragment"><cs-code>@AfterClass</cs-code> ou <cs-code>@AfterAll</cs-code> (<a href="https://junit.org/junit5/"
+              target="_blank">JUnit5</a>):
+          spécifie
+          que la méthode annotée sera exécutée une fois <i>après toutes les
+              méthodes de test</i>.
+      </li>
+    </ul>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>La classe Assertions</h2>
-    <p>
-        La documentation de la classe <a
-        href="https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html"
-        target="_blank">Assertions</a>
-    </p>
+  <h2>La classe Assertions</h2>
+
+  <p>
+      Lien vers la documentation de la classe <a
+      href="https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html"
+      target="_blank">Assertions</a>
+  </p>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>La classe Assertions</h2>
+  <h2>La classe Assertions</h2>
 
-        <ul>
-            
-            <li><cs-code>void assertTrue(boolean condition)</cs-code><br>
-                vérifie qu'une condition est vraie.
-            </li>
-            <li class="fragment"><cs-code>void assertFalse(boolean condition)</cs-code><br>
-                vérifie qu'une condition est fausse.
-            </li>
-            <li class="fragment"><cs-code>void assertNotNull(Object object)</cs-code><br>
-                vérifie qu'un objet n'est pas null.
-            </li>
-            <li class="fragment"><cs-code>void assertNull(Object object)</cs-code><br>
-                vérifie qu'un objet est null.
-            </li>
-            <li class="fragment"><cs-code>void assertEquals(Object expected, Object actual)</cs-code><br>
-            vérifie l'égalité entre deux objets ou deux types primitifs.
-        </li>
-        </ul>
+  <ul>
+    <li><cs-code>void assertTrue(boolean condition)</cs-code><br>
+        vérifie qu'une condition est vraie.
+    </li>
+    <li class="fragment"><cs-code>void assertFalse(boolean condition)</cs-code><br>
+        vérifie qu'une condition est fausse.
+    </li>
+    <li class="fragment"><cs-code>void assertNotNull(Object object)</cs-code><br>
+        vérifie qu'un objet n'est pas null.
+    </li>
+    <li class="fragment"><cs-code>void assertNull(Object object)</cs-code><br>
+        vérifie qu'un objet est null.
+    </li>
+    <li class="fragment"><cs-code>void assertEquals(Object expected, Object actual)</cs-code><br>
+    vérifie l'égalité entre deux objets ou deux types primitifs.
+    </li>
+  </ul>
  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>La classe Assertions</h2>
+  <h2>La classe Assertions</h2>
  
-        <ul>
-            <li>...
-            </li>
-            <li><cs-code>void assertSame(Object expected, Object actual)</cs-code><br>
-                vérifie l'égalité entre deux références d'objets.
-            </li>
-            <li class="fragment"><cs-code>void assertNotSame(Object expected, Object actual)</cs-code><br>
-                vérifie que deux références d'objets sont différentes.
-            </li>
-            <li class="fragment"><cs-code>void assertArrayEquals(expectedArray, resultArray)</cs-code><br>
-                vérifie que deux tableaux sont égaux.
-            </li>
-            <li class="fragment"><cs-code>void fail(String)</cs-code><br>
-                force un test à l'échec.
-            </li>
-        </ul>
+  <ul>
+    <li>...
+    </li>
+    <li><cs-code>void assertSame(Object expected, Object actual)</cs-code><br>
+        vérifie l'égalité entre deux références d'objets.
+    </li>
+    <li class="fragment"><cs-code>void assertNotSame(Object expected, Object actual)</cs-code><br>
+        vérifie que deux références d'objets sont différentes.
+    </li>
+    <li class="fragment"><cs-code>void assertArrayEquals(expectedArray, resultArray)</cs-code><br>
+        vérifie que deux tableaux sont égaux.
+    </li>
+    <li class="fragment"><cs-code>void fail(String)</cs-code><br>
+        force un test à l'échec.
+    </li>
+  </ul>
   
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Code Java à tester</h2>
+  <h2>Code Java à tester</h2>
     <pre><code class="java" data-trim data-line-numbers="|2-10|12-18|20-26|28-34|36-39|41-44|46-59">
 <script type="text/template">
 public class Contact {
@@ -403,15 +379,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ContactManagerTest {
 
-@Test
-public void shouldCreateContact() {
-    ContactManager contactManager = new ContactManager();
-    contactManager.addContact("John", "Doe", "0123456789");
+  @Test
+  public void shouldCreateContact() {
+      ContactManager contactManager = new ContactManager();
+      contactManager.addContact("John", "Doe", "0123456789");
 
-    assertTrue(! contactManager.getAllContacts().isEmpty());
-    assertFalse(contactManager.getAllContacts().isEmpty());
-    assertEquals(1, contactManager.getAllContacts().size());
-}
+      assertTrue(! contactManager.getAllContacts().isEmpty());
+      assertFalse(contactManager.getAllContacts().isEmpty());
+      assertEquals(1, contactManager.getAllContacts().size());
+  }
 }
 </code></pre>
 </section>
@@ -1129,25 +1105,23 @@ public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
+		<a href="./7-tests-avec-junit.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>	
-</section>
+	</p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan.js"></script>
 
+	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1174,13 +1148,11 @@ public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 
-
 </body>
-
 </html>
