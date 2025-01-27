@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>TD Qualité de développement : La liste doublement chaînée</title>
+	<title>Les tests Unitaires avec JUnit</title>
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
@@ -242,6 +242,366 @@ Créez des méthodes dans la classe <cs-code>DoubleLinkedListTest</cs-code> afin
   <li>Lister en inverse le contenu de la liste [1, 4, 5] renvoie bien le tableau [5, 4, 1]</li>
 </ul>
 </p>
+
+<div id="green-block">
+	<button class="button_display" onclick="display_correction('exo')">Click here to display or hide the correction</button>
+	<div id="exo" style="display: none; margin-top: 20px;">
+    <pre><code class="language-java"><script type="text/template">public class DoubleLinkedList {
+  private Element begin ;
+  private Element end ;
+
+  public DoubleLinkedList() {
+    this.begin = null ;
+    this.end = null;
+  }
+
+  public DoubleLinkedList(int v) {
+    this.begin = new Element(v, null, null);
+    this.end = this.begin ;
+  }
+
+  public DoubleLinkedList(int[] array) {
+    if(array.length == 0 || array == null) {
+      this.begin = null ;
+      this.end = null;
+    }
+    else if(array.length == 1) {
+      this.begin = new Element(array[0], null, null);
+      this.end = this.begin ;
+    }
+    else {
+      this.begin = new Element(array[0], null, null);
+      this.end = this.begin ;
+      
+      Element previous = this.begin;
+      for(int i=1;i<array.length;i++) {
+        this.end = new Element(array[i],previous,null);
+        previous.setNext(this.end);
+        previous = this.end ;
+      }
+    }
+    
+  }
+
+  public int size() {
+    if(this.begin == null || this.end == null) return 0;
+    if(this.begin == this.end) return 1;
+    
+    int size = 1;
+    Element e = this.begin;
+    while(e != this.end) {
+      e = e.getNext();
+      size++;
+    }
+    return size;
+  }
+
+  public boolean isEmpty() {
+    if(this.begin == null || this.end == null) return true; 
+    return false;
+  }
+
+  public boolean contains(int o) {
+    if(this.begin == null || this.end == null) return false; 
+    
+    Element e = this.begin;
+    while(e != null) {
+      if(e.getValue() == o) return true ;
+      e = e.getNext();
+    }
+    return false ;
+  }
+
+  public boolean add(int e) {
+    if(this.contains(e)) return false ;
+    
+    if(this.begin == null || this.end == null) {
+      this.begin = new Element(e, null, null);
+      this.end = this.begin ;
+      return true;
+    }
+    
+    Element l = this.begin;
+    while(l != null && e > l.getValue()) {
+      l = l.getNext();
+    }
+    
+    if(l == null) {
+      Element new_e = new Element(e,this.end,null);
+      this.end.setNext(new_e);
+      this.end = new_e ;
+      
+    }
+    else if(l == this.begin) {
+      Element new_e = new Element(e,null,this.begin);
+      this.begin = new_e;
+    }
+    else {
+      Element new_e = new Element(e,l.getPrevious(),l);
+      l.getPrevious().setNext(new_e);
+    }	 
+    return true;
+  }
+
+  public boolean remove(int o) {
+    if(! this.contains(o)) return false ;
+    
+    if(this.size() == 1) {
+      this.begin = null ;
+      this.end = null ;
+    }
+    else {
+      Element l = this.begin;
+      while(o != l.getValue()) {
+        l = l.getNext();
+      }
+      if(l.getPrevious() != null) {
+        l.getPrevious().setNext(l.getNext());
+      }
+      else {
+        this.begin = l.getNext();
+      }
+      if(l.getNext() != null) {
+        l.getNext().setPrevious(l.getPrevious());
+      } 
+      else {
+        this.end = l.getPrevious();
+      }
+    }
+    
+    return true;
+  }
+
+  public void clear() {
+    this.begin = null ;
+    this.end = null ; 	
+  }
+
+  public int[] getArray() {
+    int[] array = new int[this.size()] ;
+    
+    Element l = this.begin;
+    for(int i=0; i< array.length;i++){
+      array[i] = l.getValue();
+      l = l.getNext();
+    }
+    return array;
+  }
+
+  public int[] getReverseArray() {
+    int[] array = new int[this.size()] ;
+    
+    Element l = this.end;
+    for(int i=0; i< array.length;i++){
+      array[i] = l.getValue();
+      l = l.getPrevious();
+    }
+    return array;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if(obj == null) return false ;
+    if(obj.getClass() != this.getClass()) return false ;
+    
+    DoubleLinkedList other = (DoubleLinkedList) obj ;
+    if(this.size() == 0 && other.size() == 0) return true ;
+    if(this.size() != other.size()) return false ;
+    
+    Element e1 = this.begin ;
+    Element e2 = other.begin ;
+    while (e1 != null && e2 !=null) {
+      if(e1.getValue() != e2.getValue()) return false ;
+      e1 = e1.getNext();
+      e2 = e2.getNext();
+    }
+    if (e1 == null && e2 == null) return true ;
+    else return false;
+  }
+
+  @Override
+  public String toString() {
+    if(this.begin == null || this.end == null) return "[]"; 
+    String array = "[" ;
+    Element e = this.begin ;
+    while(e != null) {
+      array = array + " " + e.getValue() + " " ;
+      e = e.getNext();
+    }
+    return array + "]";
+  }
+}                            
+</script></code></pre>
+<br>
+<pre><code class="language-java"><script type="text/template">class DoubleLinkedListTests {
+  
+	@Test
+	@DisplayName("La taille de la liste [] renvoie bien 0")
+	void test1() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertEquals(0, list.size());
+	}
+	
+	@Test
+	@DisplayName("La taille de la liste [1] renvoie bien 1")
+	void test2() {
+		DoubleLinkedList list = new DoubleLinkedList(1);
+		assertEquals(1, list.size());
+	}
+	
+	@Test
+	@DisplayName("La taille de la liste [1, 4, 5] renvoie bien 3")
+	void test3() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(3, list.size());
+	}
+	
+	@Test
+	@DisplayName("Le test de liste vide de la liste [] renvoie bien true")
+	void test4() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertTrue(list.isEmpty());
+	}
+
+	@Test
+	@DisplayName("Le test de liste vide de la liste [1, 4, 5] renvoie bien false")
+	void test5() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertFalse(list.isEmpty());
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 1 dans la liste [] renvoie bien false")
+	void test6() {
+		DoubleLinkedList list = new DoubleLinkedList();
+		assertFalse(list.contains(1));
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 1 dans la liste [1, 4, 5] renvoie bien true")
+	void test7() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertTrue(list.contains(1));
+		assertTrue(list.contains(4));
+		assertTrue(list.contains(5));
+	}
+	
+	@Test
+	@DisplayName("Le test de l’existence de l'élément 8 dans la liste [1, 4, 5] renvoie bien false")
+	void test8() {
+		DoubleLinkedList list = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertFalse(list.contains(8));
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 4 dans la liste [] renvoie bien la liste [4].")
+	void test9() {
+		DoubleLinkedList list1 = new DoubleLinkedList();
+		list1.add(4);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {4});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 4 dans la liste [1,5] renvoie bien la liste [1, 4, 5].")
+	void test10() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 5});
+		list1.add(4);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 1 dans la liste [4,5] renvoie bien la liste [1, 4, 5].")
+	void test11() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {4, 5});
+		list1.add(1);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("l’insertion de l’élément 5 dans la liste [1,4] renvoie bien la liste [1, 4, 5].")
+	void test12() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4});
+		list1.add(5);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("La suppression de l'élément 1 dans la liste [] renvoie bien la liste []")
+	void test13() {
+		DoubleLinkedList list1 = new DoubleLinkedList();
+		list1.remove(1);
+		DoubleLinkedList list2 = new DoubleLinkedList();
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("La suppression de l'élément 4 dans la liste [1, 4, 5] renvoie bien la liste [1,5]")
+	void test14() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		list1.remove(4);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("La suppression de l'élément 1 dans la liste [1, 4, 5] renvoie bien la liste [4,5]")
+	void test15() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		list1.remove(1);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {4, 5});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("La suppression de l'élément 5 dans la liste [1, 4, 5] renvoie bien la liste [1,4]")
+	void test16() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		list1.remove(5);
+		DoubleLinkedList list2 = new DoubleLinkedList(new int[] {1, 4});
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("Vider la liste la liste [] renvoie bien la liste []")
+	void test17() {
+		DoubleLinkedList list1 = new DoubleLinkedList();
+		list1.clear();
+		DoubleLinkedList list2 = new DoubleLinkedList();
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("Vider la liste la liste [1, 4, 5] renvoie bien la liste []")
+	void test18() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		list1.clear();
+		DoubleLinkedList list2 = new DoubleLinkedList();
+		assertEquals(list2, list1);
+	}
+	
+	@Test
+	@DisplayName("Lister le contenu de la liste [1, 4, 5] renvoie bien le tableau [1, 4, 5]")
+	void test19() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		int[] array = new int[] {1, 4, 5};
+		assertArrayEquals(array, list1.getArray());
+	}
+	
+	@Test
+	@DisplayName("Lister en inverse le contenu de la liste [1, 4, 5] renvoie bien le tableau [5, 4, 1]")
+	void test20() {
+		DoubleLinkedList list1 = new DoubleLinkedList(new int[] {1, 4, 5});
+		int[] array = new int[] {5, 4, 1};
+		assertArrayEquals(array, list1.getReverseArray());
+	}
+}
+</script></code></pre>
+	</div>
+</div>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
