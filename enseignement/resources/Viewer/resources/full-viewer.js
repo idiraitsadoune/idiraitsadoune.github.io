@@ -31,6 +31,7 @@ function render() {
 
     var canvas = document.getElementById("pdf_renderer");
     var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // var elem = document.querySelector('body');
     var elem = document.getElementById('canvas_container')
@@ -56,12 +57,9 @@ function render() {
     });
 
     // ADDED
-    var vide = ((document.getElementById('body').getBoundingClientRect().height - canvas.height) * 0.5);
-    //console.log(vide);
-    document.getElementById('pdf_renderer').style.marginTop = vide.toString().concat("px");
-    document.getElementById('pdf_renderer').style.marginBottom = vide.toString().concat("px");
-
-    
+    //var vide = ((document.getElementById('body').getBoundingClientRect().height - canvas.height) * 0.5);
+    //document.getElementById('pdf_renderer').style.marginTop = vide.toString().concat("px");
+    //document.getElementById('pdf_renderer').style.marginBottom = vide.toString().concat("px");
   });
 }
 
@@ -157,5 +155,6 @@ function toggleFullScreen() {
 }
 
 addEventListener('resize', (event) => {
+  myState.currentPage = myState.currentPage;
   render();
 });
