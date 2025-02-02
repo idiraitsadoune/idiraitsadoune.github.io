@@ -530,6 +530,10 @@
 					<li>a signal between 2V and 5V $\to$ <i>bit 1</i>.</li>
 				</ul>
 			</li>
+			<li class="fragment skip">
+				Electronic/Logic circuits manipulate <i>sequences of bits</i> that can correspond <br>
+				to numeric data or more complex objects. 
+			</li>
 		</ul>
 	</div>
 
@@ -549,7 +553,7 @@
 			$6 \div 2 = 3$ $\to$ remainder $= 0$ <br>
 			$3 \div 2 = 1$ $\to$ remainder $= 1$ <br>
 			$1 \div 2 = 0$ $\to$ remainder $= 1$ <br>
-			<cs-i>$100_{10} = 1100100_2 = 0$b$1100100$</cs-i>
+			<cs-i>$100_{10} = 1100100_2 =$</cs-i> <i>0b</i><cs-i>$1100100$</cs-i>
 		</div>
 		<div class="left-content fragment" style="flex: 2;">
 			<b>Binary $\to$ Decimal</b> of $1100100_2$ <br>
@@ -596,12 +600,22 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Binary system</h2>
 	<h3>Exercise</h3>
+
+	<ul>
+		<li>
+			Convert these decimal numbers to binary:
+			<ul>
+				<li>8, 13, 15, 2025, ... </li>
+			</ul>
+		</li>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Hexadecimal System</h2>
-	<h3>Base 16 or hex system</h3>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
 
 	<ul>
 		<li>
@@ -640,7 +654,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Hexadecimal System</h2>
-	<h3>Base 16 or hex system</h3>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
 
 	<ul>
 		<li>
@@ -658,8 +672,8 @@
 					<th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
 				</tr>
 			</table>
-			<ul class="skip fragment">
-				<li><strong>ex.</strong> $154863_{10} = 100101110011101111_2 = 10-0101-1100-1110-1111_2$  </li>
+			<ul class="skip">
+				<li><strong>ex.</strong> $154863_{10} = 100101110011101111_2$ <span class="fragment">$= 10-0101-1100-1110-1111_2$</span></li>
 				<table class="skip fragment">
 					<tr>
 						<th>10</th><th>0101</th><th>1100</th><th>1110</th><th>1111</th>
@@ -668,7 +682,7 @@
 						<th>2</th><th>5</th><th>C</th><th>E</th><th>F</th>
 					</tr>
 				</table>
-				<li class="skip fragment"><strong>ex.</strong> $154863_{10} = 100101110011101111_2 = 25CEF_{16} = 0$x$25CEF = \$25CEF$  </li>
+				<li class="skip fragment"><strong>ex.</strong> $154863_{10} = 100101110011101111_2 = 25CEF_{16} =$ <i>0x</i>$25CEF =$ <i>$</i>$25CEF$  </li>
 			</ul>
 		</li>
 	</ul>
@@ -678,7 +692,16 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Hexadecimal System</h2>
-	<h3>Base 16 or hex system</h3>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
+
+	<ul>
+		<li>
+			Convert these decimal numbers to hexadecimal:
+			<ul>
+				<li>8, 13, 15, 2025, ... </li>
+			</ul>
+		</li>
+	</ul>
 
 	<p>
 		<a href="https://sebastienguillon.com/test/javascript/convertisseur.html" target="_blank">link to a converter</a>
@@ -692,8 +715,13 @@
 
 	<ul>
 		<li>
-			A <b>byte</b> is a unit that computers use to represent a <i>character</i> such as a letter, number, or a typographic symbol 
+			In computer systems, a <i>unit of information</i> is used to describe the <i>capacity <br> 
+				of a digital data storage device</i>.
+		</li>
+		<li class="skip fragment">
+			A <b>byte</b> is a unit that computers use <b>to represent</b> a <i>character</i> such as a letter, number, or a typographic symbol 
 			(<strong>for example</strong>, “h”, “7”, or “$”)
+			<ul id="fleche" class="fragment"><li>will be discussed later in the <i>3rd chapter</i>.</li></ul>
 		</li>
 		<li class="skip fragment">
 			The <b>byte</b> is a <i>unit of digital information</i> that most commonly consists of <b>8 bits</b>. 
@@ -703,10 +731,10 @@
 		</li>
 		<li class="skip fragment"><b>Multiples of byte</b>
 			<ul>
-				<li>1 <b>Kilobyte</b> 	(KB) = 2$^{10}$ bytes 	= 1 024 bytes $\approx$ 10$^3$ bytes</li>
-				<li>1 <b>Megabyte</b> (MB) 	= 2$^{20}$ bytes 	= 1 024 KB 	= 1 048 576 bytes $\approx$ 10$^6$ bytes</li>
-				<li>1 <b>Gigabyte</b> (GB) 	= 2$^{30}$ bytes 	= 1 024 MB 	= 1 073 741 824 bytes $\approx$ 10$^9$ bytes</li>
-				<li>1 <b>Terabyte</b> (TB) 	= 2$^{40}$ bytes 	= 1 024 GB	= 1 099 511 627 776 bytes $\approx$ 10$^{12}$ bytes</li>
+				<li>1 <b>Kilobyte</b> 	(KB) = <cs-i>2$^{10}$</cs-i> bytes 	= 1 024 bytes $\approx$ <cs-i>10$^3$</cs-i> bytes</li>
+				<li>1 <b>Megabyte</b> (MB) 	= <cs-i>2$^{20}$</cs-i> bytes 	= 1 024 KB 	= 1 048 576 bytes $\approx$ <cs-i>10$^6$</cs-i> bytes</li>
+				<li>1 <b>Gigabyte</b> (GB) 	= <cs-i>2$^{30}$</cs-i> bytes 	= 1 024 MB 	= 1 073 741 824 bytes $\approx$ <cs-i>10$^9$</cs-i> bytes</li>
+				<li>1 <b>Terabyte</b> (TB) 	= <cs-i>2$^{40}$</cs-i> bytes 	= 1 024 GB	= 1 099 511 627 776 bytes $\approx$ <cs-i>10$^{12}$</cs-i> bytes</li>
 			</ul>
 		</li>
 	</ul>
@@ -722,43 +750,74 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Machine Language</h2>
+	<h2>The computer components</h2>
 
-	<ul>
-		<li class="fragment">
-			What can a computer do?
-			<ul id="fleche">
-				<li>copy values between storage units</li>
-				<li>perform logical/arithmetic operations between stored values</li>
-				<li>move within the program (jump), possibly conditionally</li>
-			</ul>
-		</li>
-
-		<li class="skip fragment">
-			A computer executes a very low level language (<b>Machine Language</b>)
-			<ul  id="fleche">
-				<li>means of controlling and elementary control of computer electronics</li>
-				<li>the instructions of this language carry out elementary operations</li>
-			</ul>
-		</li>
-
-		<li class="skip fragment">
-			<b>Machine language</b> coding must be simple to decode and optimized 
-			<ul id="fleche">
-				<li>this coding is not textual; it is done at bit level (<b>binary code</b>)</li>
-				<li>in practice, we represent these codes in hexadecimal or in textual form</li>
-			</ul>
-		</li>
-	</ul>
+	<div>
+		<img src="./img/computer_components.png" alt="" height="500px">
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>An example</h2>
-  
-	<div>
-		<img style="width:60%" src="./img/exemple.svg" alt="">
+	<h2>The computer components</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					What can a computer (processor) do?
+					<ul id="fleche">
+						<li class="fragment"><b>copy values</b> between storage units</li>
+						<li class="fragment"><b>perform logical/arithmetic operations</b> between stored values</li>
+						<li class="fragment"><b>move within the program</b>, possibly conditionally</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/computer_components.png" alt="">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Machine Language</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					A <b>processor</b> executes a <i>very low level language</i> (<b>Machine Language</b>)
+					<ul id="fleche">
+						<li class="fragment" data-fragment-index="2">the instructions of this kind of language execute <i>elementary operations</i>.</li>
+						<li class="fragment" data-fragment-index="3">machine instructions <i>control electronic/logic circuits</i>.</li>
+					</ul>
+				</li>
+		
+				<li class="skip fragment" data-fragment-index="4">
+					<b>Machine language</b> coding must be simple to decode and optimized 
+					<ul id="fleche">
+						<li class="fragment" data-fragment-index="4">each instruction is a <i>sequence of binary numbers</i> (bits).</li>
+						<li class="fragment" data-fragment-index="5">this coding is <i>not textual</i> $\to$ it is done at <i>bit level</i> (<b>binary code</b>)</li>
+						<li class="fragment" data-fragment-index="6">in practice, we represent these codes in <b>hexadecimal form</b></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="fragment" style="flex: 2;" data-fragment-index="4">
+			<img src="./img/exemple.svg" alt="" width="80%">
+			<pre class="fragment" data-fragment-index="6"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+				2B50: 12AE 2B1E
+				2B52: 12AF #0002
+				2B54: 13BE
+				2B55: 12BD 2B1E
+							...
+				2B1E:	0003
+			</script></code></pre>
+		</div>
 	</div>
 
 </section>
@@ -766,43 +825,44 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Assembly language</h2>
+
 	<ul>
-		<li class="fragment">Unreasonable to want to write/read binary machine language directly</li>
-
-		<li class="skip fragment">Definition of an equivalent <b>symbolic representation</b>
-			<ul>
-				<li><i>textual mnemonics</i> for operations</li>
-				<li>textual writing of entire programs</li>
-			</ul>
+		<li>
+			<red-b>Unreasonable</red-b> to want to <i>write/read binary machine</i> language <b>directly</b>.
 		</li>
-
+		<li class="skip fragment">Definition of an equivalent <b>symbolic representation</b> (<b>Assembly language</b>)
+			<ul>
+				<li><b>textual mnemonics</b> for operations/functions</li>
+				<li><b>textual writing</b> of the entire program</li>
+			</ul>
+			<div style="display: flex; align-items: center;">
+				<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+						mov eax, a
+						mov ebx, 2
+						add ecx, eax, ebx
+						mov a, ecx
+						...
+				@a:	memval 3
+				</script></code></pre>
+		
+				<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+					2B50: 12AE 2B1E
+					2B52: 12AF #0002
+					2B54: 13BE
+					2B55: 12BD 2B1E
+								...
+					2B1E:	0003
+				</script></code></pre>
+			</div>
+		</li>
 		<li class="skip fragment"><b>Assembly language</b>
 			<ul>
-				<li>very close to the machine, <i>very low level</i></li>
-				<li><b>Assembler</b>: translator from assembly language to machine language</li>
+				<li>very close to the <b>machine</b>, <i>very low level</i></li>
+				<li>you need to be well-known in the <i>technical details of the processor</i>.</li>
+				<li class="fragment"><b>Assembler</b> $\to$ translator from <b>assembly language</b> to <b>machine language</b>.</li>
 			</ul>
 		</li>
 	</ul>
-
-	<div class="fragment" style="display: flex; align-items: center;">
-		<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-			mov eax, a
-			mov ebx, 2
-			add ecx, eax, ebx
-			mov a, ecx
-			...
-		@a:	memval 3
-		</script></code></pre>
-
-		<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
-			2B50: 12AE 2B1E
-			2B52: 12AF #0002
-			2B54: 13BE
-			2B55: 12BD 2B1E
-			...
-			2B1E:	0003
-		</script></code></pre>
-	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -810,39 +870,118 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>High level programming language</h2>
 
-	<ul>
-		<li>
-			Most software is written in a <b>high-level programming language</b>. 
-			<ul>
-				<li><strong>example $\to$ </strong><b>Python</b>, <b>Java</b>, <b>C</b>, <b>C++</b>, <b>C#</b>, <b>Ruby</b> ...</li>
-			</ul>
-		</li>
+	<div style="float: right; width: 450px;">
+		<pre><code class="language-python hljs" data-trim data-line-numbers>
+			<script type="text/template">
+				# This program adds two numbers
+				num1 = 1.5
+				num2 = 6.3
+				
+				# Add two numbers
+				sum = num1 + num2
+			</script>
+		</code></pre>
+	</div>
 
-		<li class="fragment skip">
-			How is a program written in a high-level programming language executed?
-			<ol class="fragment">
-				<li><b>compilation</b></li>
-				<li><b>interpretation</b></li>
-			</ol>
-		</li>
-	</ul>
+	<div>
+		<ul style="display: block;">
+			<li>
+				Most software is written in a <b>high-level programming language</b>. 
+				<ul>
+					<li><strong>example $\to$ </strong><b>Python</b>, <b>Java</b>, <b>C</b>, <b>C++</b>, ...</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				<b>High-level language</b> $\to$ expressing instructions using <i>words</i> and <i>mathematical symbols</i>.
+				<ul class="fragment">
+					<li>Easy to learn.</li>
+					<li>does not require knowledge of the machine's processor.</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				High-level programming languages provide <b>abstract concepts</b> that are not present in machine language.
+				<ul class="fragment">
+					<li><b>data types</b> $\to$ integers, reals, strings ...</li>
+					<li><b>control structures</b> $\to$ <cs-code>if</cs-code>...<cs-code>then</cs-code>...<cs-code>else</cs-code>, <cs-code>while</cs-code>, <cs-code>for</cs-code>, functions.</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>high-level language <span style="text-transform: lowercase;">vs</span> low-level language</h2>
+
+	<div id="default-block">
+		<ul>
+			<li>
+				The programmer writes a program with <b>high-level language</b>, <br> 
+				and the processor executes a <b>low-level code</b> (<b>binary code</b>).
+			</li>
+			<li class="fragment skip">
+				How is a program written in a high-level programming language <b>executed</b>?
+				<ol class="fragment">
+					<li>a <b>compilation</b> process</li>
+					<li>an <b>interpretation</b> process</li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The compilation process</h2>
 
-	<img style="width:40%" src="./img/compilation.svg" alt=""> 
-  <img class="fragment" style="width:40%; margin-left: 40px;" src="./img/exemple.svg" alt="">
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<p><b>The compiler</b> is itself <b>a program</b></p>
+			<img src="./img/compilation.svg" alt="" width="80%">
+			<p class="fragment"><b>Compilation</b> is performed only once</p>
+		</div>
+		<div class="fragment" style="flex: 2;">
+			<img  src="./img/exemple.svg" alt="" width="80%">
+			<ul>
+				<li>No more need for source code</li>
+				<li>No more need for compiler</li>
+			</ul>
+		</div>
+	</div>
+
+	<ul class="fragment">
+		<li>The two most popular compiled languages are <b>C</b> and <b>C++</b>.
+			<ul><li>used in creating games, software, artificial intelligence, operating systems, and more.</li></ul>
+		</li> 
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The interpretation process</h2>
-    
-	<img style="width:40%" src="./img/interpretation.svg" alt="">
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul class="fragment">
+				<li>Still need the source code</li>
+				<li>Still need the interpreter</li>
+				<li class="fragment"><b>No binary code created</b></li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<p><b>The interpreter</b> is itself <b>a program</b></p>
+			<img src="./img/interpretation.svg" alt="" width="80%">
+		</div>
+	</div>
+
+	<ul class="fragment">
+		<li>The two most popular compiled languages are <b>Python</b> and <b>Javascript</b>.
+			<ul><li>used in web development, data science, machine learning, and more.</li></ul>
+		</li> 
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
