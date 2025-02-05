@@ -3,16 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Computer Architecture and Software Execution Process : Data representation</title>
-
-	<meta name="description" content="Computer Architecture and Software Execution Process : Data representation">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -24,6 +15,10 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -46,7 +41,7 @@
 		</div>
 		<div class="right-logo">
 			<a href="https://www.centralesupelec.fr/fr/bachelor-artificial-intelligence-data-and-management-sciences" target="_blank">
-				<img src="../resources/img/cs.png" alt=""><img style="margin-left: 10px;" height="90%" src="./img/essec_1.png" alt="">
+				<img src="../resources/img/cs.png" alt=""><img style="padding: 5px;" height="80%" src="./img/essec_1.png" alt="">
 			</a>
 		</div>
 	</div>
@@ -58,7 +53,7 @@
 
 	<div class="description" >
 		<span><span class="fa fa-graduation-cap">&#160;</span>Bachelor in Artificial Intelligence, Data and Management Sciences</span><br>
-		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2023/2024</span>
+		<span><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -75,6 +70,32 @@
 			</a>
 		</div>
 	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Processor Arithmetic</h2>
+
+  <ul>
+    <li>
+      A <b>processor</b> is made of several <i>logic circuits</i> (more details in Chapter $4$).
+    </li>
+    <li class="skip fragment">
+      A logic circuit uses only <i>two values</i> $\to$ $0$ and $1$ (<b>bits</b>).
+    </li>
+    <li class="skip fragment">
+      All information handled by a processor must be encoded in <b>binary</b>.
+      <ul><li>integer numbers, real numbers, texts, pictures, ...</li></ul>
+    </li>
+    <li class="skip fragment">
+      For <b>natural numbers</b> $\to$ classic binary representation (see Chapter $1$).
+    </li>
+    <li class="skip fragment">
+      <b>Encoding</b> is required for other data types.
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -85,22 +106,188 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Natural, integers and fixed point numbers encoding "></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>What data to encode?</h2>
+  <h2>Finite precision arithmetic</h2>
+
+  <ul>
+    <li>
+      The processor only manipulates numbers with a <b>fixed representation size</b> <br>
+      $\to$ $1$, $2$, $4$ or $8$ bytes.
+      <ul><li class="fragment"><strong>Example</strong>: Integer $\to$ $4$ bytes ($4 \times 8$ bits $= 32$ bits $\to 2^{32}$ different values)</li></ul>
+    </li>
+    <li class="skip fragment">
+      This means all <i>data types</i> have a <b>finite domain</b> $\to$ possible <red-b>overflows</red-b> in programming languages.
+      <ul>
+        <li><b>Max. value</b> $\to 2147483647$</li>
+        <li><b>Min. value</b> $\to -2147483648$</li>
+        <li class="fragment"> $2147483647 + 1 = ?$ <span class="fragment">($= -2147483648$ next slides)</span></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Natural numbers</h2>
+  <h3>Classic binary representation</h3>
 
     <ul>
-       <li class="fragment">Characters and strings</li> 
-       <li class="fragment">Natural, integers and fixed point numbers</li>   
-       <li class="fragment">Floating point numbers</li>  
-       <li class="fragment">Pictures, sounds, videos...</li>  
+        <li class="fragment">Generally, we use <b>Classic binary representation</b>.</li>
+        <li class="fragment"><strong>Example:</strong> case of using $32$-bit encoding ($235_{10}$)
+          <img class="center-content" src="./img/bin.png" alt="" height="400px">
+          <ul><li>$235 = 00000000~00000000~00000000~11101011$</li></ul>
+        </li>
     </ul>
 
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Natural numbers</h2>
+  <h3>BCD, Binary-Coded Decimal</h3>
+
+  <ul>
+    <li>
+      a class of binary encodings of decimal numbers where each digit <br> is represented by a fixed number of bits ($4$ or $8$).
+    </li>
+    <li class="fragment"><strong>Example:</strong> case of using $32$-bit encoding
+        <ul><li>$214 = 00000000~00000010~00000001~00000100$</li></ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Integer numbers</h2>
+
+    <ul>
+        <li><b>Signed number representation</b>
+            <ul>
+                <li class="fragment"><b>the sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
+                <li class="fragment">number = sign bit + absolute value</li>
+                <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
+            </ul>
+            <ul id="ko">
+                <li class="skip fragment">Two representations of 0</li>
+                <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Integer numbers</h2>
+    <ul>
+        <li class="fragment"><b>Two's complement</b>
+            <ul>
+                <li>the most common method of representing signed integers</li>
+            </ul>
+        </li>
+
+        <li class="skip fragment">
+            The <b>two's complement</b> of an integer is computed by:
+            <ol>
+                <li class="fragment">starting with the binary representation of the number;</li>
+                <li class="fragment">inverting all bits – changing every 0 to 1, and every 1 to 0;</li>
+                <li class="fragment">adding 1 to the entire inverted number, ignoring any overflow</li>
+            </ol>
+        </li>
+
+        <li class="skip fragment">
+            <strong>Example</strong>: to calculate the number -6 in binary from the number 6
+            <ol>
+                <li class="fragment">6 in decimal is 00000110 in binary (using 8-bit encoding)</li>
+                <li class="fragment">flip all bits in 00000110, giving 11111001.</li>
+                <li class="fragment">add the value 1 to the obtained number 11111001, giving 11111010.</li>
+            </ol>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+
+    <ul>
+        <li><b>Fixed-point arithmetic</b>
+            <ul>
+                <li class="fragment"><b>A fixed-point</b> representation of a fractional number is essentially 
+                    an integer that is to be implicitly multiplied by a <b>fixed scaling factor</b>.</li>
+                <li class="skip fragment">
+                    18.625 = 10010.101 (with 8 as a fixed scaling factor) $\to$ 10010101
+                    <ul>
+                        <li>$2^4 + 2^1 = 18$</li>
+                        <li>$2^{-1} + 2^{-3} = 0.625$</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch1" name="Character Encoding "></section>
+<section id="ch2" name="Floating point numbers encoding "></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+    <ul>
+        <li data-id="d1">
+            <b>floating-point arithmetic</b>
+            <ul>
+                <li class="fragment">is arithmetic that represents real numbers using an integer with a <i>fixed precision</i> (<i>significand</i>), 
+                   scaled by an integer <i>exponent</i> of a fixed <i>base</i>. 
+                   $$
+                   x = 3.14159265359 = 
+                   \underset{\text{significand}}{\underbrace{314159265359}} \times 
+                   \underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
+                   $$
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Real numbers</h2>
+    <ul>
+        <li data-id="d1">
+            <b>floating-point arithmetic</b>
+            <ul>
+                <li>
+                    <b>IEEE 754 standard</b>: <b>binary32</b>
+                    <ul>
+                        <li>Sign bit: 1 bit</li>
+                        <li>Exponent width: 8 bits</li>
+                        <li>Significand precision: 24 bits (23 explicitly stored)</li>
+                        <img class="fragment" src="./img/float.png" alt="">
+                        <li class="fragment">$(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$</li>
+                        <li class="fragment">$exponent = 124$ and $fraction = 25$</li>
+                        <li class="fragment">$2^{124 - 127} \times 1.25 = 0.15625$</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Characters and strings encoding "></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -218,141 +405,12 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="Number Encoding "></section>
+<section id="ch4" name="Pictures, sounds, and videos encoding"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Natural numbers</h2>
-    <ul>
-        <li class="fragment"><b>Classic binary representation</b>: generally used.</li>
-        <li class="fragment"><strong>Example:</strong> case of using 32-bit encoding
-            <ul><li>214 = 00000000 00000000 00000000 11010110</li></ul>
-        </li>
 
-        <li class="fragment skip"><b>BCD, Binary-Coded Decimal</b> : <br>
-            a class of binary encodings of decimal numbers where each digit <br> is represented by a fixed number of bits (4 or 8).
-        </li>
-        <li class="fragment"><strong>Example:</strong> case of using 32-bit encoding
-            <ul><li>214 = 00000000 00000010 00000001 00000100</li></ul>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Integer numbers</h2>
-
-    <ul>
-        <li><b>Signed number representation</b>
-            <ul>
-                <li class="fragment"><b>the sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
-                <li class="fragment">number = sign bit + absolute value</li>
-                <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
-            </ul>
-            <ul id="ko">
-                <li class="skip fragment">Two representations of 0</li>
-                <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
-            </ul>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Integer numbers</h2>
-    <ul>
-        <li class="fragment"><b>Two's complement</b>
-            <ul>
-                <li>the most common method of representing signed integers</li>
-            </ul>
-        </li>
-
-        <li class="skip fragment">
-            The <b>two's complement</b> of an integer is computed by:
-            <ol>
-                <li class="fragment">starting with the binary representation of the number;</li>
-                <li class="fragment">inverting all bits – changing every 0 to 1, and every 1 to 0;</li>
-                <li class="fragment">adding 1 to the entire inverted number, ignoring any overflow</li>
-            </ol>
-        </li>
-
-        <li class="skip fragment">
-            <strong>Example</strong>: to calculate the number -6 in binary from the number 6
-            <ol>
-                <li class="fragment">6 in decimal is 00000110 in binary (using 8-bit encoding)</li>
-                <li class="fragment">flip all bits in 00000110, giving 11111001.</li>
-                <li class="fragment">add the value 1 to the obtained number 11111001, giving 11111010.</li>
-            </ol>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-
-    <ul>
-        <li><b>Fixed-point arithmetic</b>
-            <ul>
-                <li class="fragment"><b>A fixed-point</b> representation of a fractional number is essentially 
-                    an integer that is to be implicitly multiplied by a <b>fixed scaling factor</b>.</li>
-                <li class="skip fragment">
-                    18.625 = 10010.101 (with 8 as a fixed scaling factor) $\to$ 10010101
-                    <ul>
-                        <li>$2^4 + 2^1 = 18$</li>
-                        <li>$2^{-1} + 2^{-3} = 0.625$</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-    <ul>
-        <li data-id="d1">
-            <b>floating-point arithmetic</b>
-            <ul>
-                <li class="fragment">is arithmetic that represents real numbers using an integer with a <i>fixed precision</i> (<i>significand</i>), 
-                   scaled by an integer <i>exponent</i> of a fixed <i>base</i>. 
-                   $$
-                   x = 3.14159265359 = 
-                   \underset{\text{significand}}{\underbrace{314159265359}} \times 
-                   \underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
-                   $$
-                </li>
-            </ul>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-    <ul>
-        <li data-id="d1">
-            <b>floating-point arithmetic</b>
-            <ul>
-                <li>
-                    <b>IEEE 754 standard</b>: <b>binary32</b>
-                    <ul>
-                        <li>Sign bit: 1 bit</li>
-                        <li>Exponent width: 8 bits</li>
-                        <li>Significand precision: 24 bits (23 explicitly stored)</li>
-                        <img class="fragment" src="./img/float.png" alt="">
-                        <li class="fragment">$(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$</li>
-                        <li class="fragment">$exponent = 124$ and $fraction = 25$</li>
-                        <li class="fragment">$2^{124 - 127} \times 1.25 = 0.15625$</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -360,8 +418,11 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Thank you</h1>
 	<p>
-		<a href="#">Back to the begin</a>
-		- <a href="#/plan">Back to the outline</a>
+		<a href="./3-data-representation.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -370,15 +431,12 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	<script src="../resources/js/plan-en.js"></script>
 
+	<script src="../resources/js/plan-en.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/zoom/zoom.js"></script>
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/search/search.js"></script>
 	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -405,13 +463,11 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
 
-
 </body>
-
 </html>
