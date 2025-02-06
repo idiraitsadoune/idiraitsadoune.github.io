@@ -276,18 +276,49 @@ public class Test {
 			InetAddress localMachine = InetAddress.getLocalHost();
 			System.out.println(localMachine.getHostName());
 			System.out.println(localMachine.getHostAddress());
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		} 
+		catch (UnknownHostException e) {e.printStackTrace();}
 	}
 }                             
 </script></code></pre>
 <p>
 	<ul>
-		<li>à chaque connexion d'un client, un thread est lancé pour collecter les informations envoyées.</li>
+		<li>A chaque connexion d'un client, un thread est lancé pour collecter les informations envoyées.</li>
 		<li>Après reception des informations, elles sont stockées dans une liste gérée par le serveur et un message <cs-code>"ACK"</cs-code> est envoyé au client.</li>
 		<li>Après la réception du message <cs-code>"ACK"</cs-code> par le client, il renvoie à son tour un message <cs-code>"ACK"</cs-code> au Thread du Serveur qui peut s'arrêter.</li>
 		</ul>
+</p>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>
+	Travail demandé
+</h2>
+<p>
+
+<ul>
+    <li>
+        Proposez en <cs-code>Java</cs-code> un protocole client/serveur pour réaliser ce service. 
+    </li>
+</ul>
+</p>
+
+<!-- #################################################### -->
+<div id="orange-block">
+	Exercice 3 : Serveur de messages
+</div>
+
+<p class="text-justify">
+	On souhaite proposer un service de synchronisation en ligne avec le fonctionnement suivant :
+
+<ol>
+<li>Un client se connecte à ce service en s'adressant au port <cs-code>8765</cs-code>.</li> 
+<li>S'il est le premier ou le deuxième à se connecter, alors il sera mis en attente.</li> 
+<li>S'il est le troisième client à se connecter, alors le serveur envoie un message <cs-code>"start"</cs-code> aux trois clients.</li> 
+<li>Une fois lancé, un client doit produire <cs-code>10</cs-code> entiers aléatoires qu'il transmettra au serveur. La transmission se fait entier par entier.</li> 
+<li>Les messages reçus par le serveurs doivent être stockés dans un seul tableau en respectant ordre de réception.</li> 
+<li>A la fin, le serveur envoie un message <cs-code>"end"</cs-code> pour signifier la fin de la transmission aux trois
+	clients.</li> 
+</ol>
+
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <h2>

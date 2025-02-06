@@ -137,27 +137,44 @@
 	<h2>Natural numbers</h2>
   <h3>Classic binary representation</h3>
 
-    <ul>
-        <li class="fragment">Generally, we use <b>Classic binary representation</b>.</li>
-        <li class="fragment"><strong>Example:</strong> case of using $32$-bit encoding ($235_{10}$)
-          <img class="center-content" src="./img/bin.png" alt="" height="400px">
-          <ul><li>$235 = 00000000~00000000~00000000~11101011$</li></ul>
-        </li>
-    </ul>
+  <ul>
+    <li>
+      Generally, we use the <b>binary representation</b>, as detailed in <strong>Chapter 1</strong>. 
+    </li>
+    <li class="fragment">
+      <strong>Example</strong> $\to$ case of using $32$-bit encoding ($235_{10}$)
+      <img class="center-content" src="./img/bin.png" alt="" height="350px">
+      <ul>
+        <li class="fragment">We convert to binary and <i>complete with zeros</i> on the left to reach 32 bits.</li>
+        <li class="fragment">$235_{10} = 00000000~00000000~00000000~11101011_2$</li>
+      </ul>
+    </li>  
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Natural numbers</h2>
-  <h3>BCD, Binary-Coded Decimal</h3>
+  <h3>Binary-Coded Decimal (BCD)</h3>
 
   <ul>
     <li>
-      a class of binary encodings of decimal numbers where each digit <br> is represented by a fixed number of bits ($4$ or $8$).
+      <b>BCD</b> is a <b>class of binary encodings</b> of decimal numbers where <i>each digit</i> <br> 
+      is represented by <i>a fixed number of bits</i> ($4$ or $8$).
     </li>
-    <li class="fragment"><strong>Example:</strong> case of using $32$-bit encoding
-        <ul><li>$214 = 00000000~00000010~00000001~00000100$</li></ul>
+    <li class="fragment skip">
+      <strong>Example</strong> $\to$ case of using $32$-bit encoding (each digit is represented by $8$ bits) <br>
+      $214 = ~?$
+      <table class="fragment">
+				<tr>
+					<th style="text-align: center;">0</th><th style="text-align: center;">2</th><th style="text-align: center;">1</th><th style="text-align: center;">4</th>
+				</tr>
+				<tr>
+					<th>00000000</th><th>00000010</th><th>00000001</th><th>00000100</th>
+				</tr>
+			</table>
+      <ul class="skip fragment"><li>$214_{10} = 00000000~00000010~00000001~00000100_{BCD}$</li></ul>
     </li>
   </ul>
 
@@ -166,20 +183,21 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
     <h2>Integer numbers</h2>
+    <h3>Signed number representation</h3>
 
-    <ul>
-        <li><b>Signed number representation</b>
-            <ul>
-                <li class="fragment"><b>the sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
-                <li class="fragment">number = sign bit + absolute value</li>
-                <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
-            </ul>
-            <ul id="ko">
-                <li class="skip fragment">Two representations of 0</li>
-                <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
-            </ul>
-        </li>
-    </ul>
+    <div class="left-content">
+      <ul>
+        <li class="fragment"><b>The sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
+        <li class="fragment">Number = sign bit + absolute value</li>
+        <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
+      </ul>
+      <br>
+      <ul id="ko">
+          <li class="skip fragment">Two representations of 0</li>
+          <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
+      </ul>
+    </div>        
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
