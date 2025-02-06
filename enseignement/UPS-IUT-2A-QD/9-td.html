@@ -461,6 +461,147 @@ public class ServeurThread extends Thread {
 </ul>
 </p>
 
+<!-- un élément non visible -->
+<!-- <div id="green-block" hidden> -->
+<div id="green-block">
+	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+	<div id="exo3" style="display: none; margin-top: 20px;">
+
+<pre><code class="language-java"><script type="text/template">package serveur;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.concurrent.Semaphore;
+
+public class Serveur {
+	public static Vector<Integer> tab = new Vector<Integer>();
+	public static boolean[] est_fini = {false, false, false} ;
+	
+	public static void main(String[] args) {
+		try {
+			ServerSocket server = new ServerSocket(8765);
+			System.out.println("Server lancé");
+			
+			Socket s1 = server.accept();
+			ThreadServeur th1 = new ThreadServeur(s1, 0);
+			System.out.println("Client 1 connecté");
+			
+			Socket s2 = server.accept();
+			ThreadServeur th2 = new ThreadServeur(s2, 1);
+			System.out.println("Client 2 connecté");
+			
+			Socket s3 = server.accept();
+			ThreadServeur th3 = new ThreadServeur(s3, 2);
+			System.out.println("Client 3 connecté");
+			
+			th1.start();
+			th2.start();
+			th3.start();
+			
+			th1.join();
+			th2.join();
+			th3.join();
+			
+			server.close();
+			System.out.println("Server arrêté");
+		} catch (IOException | InterruptedException e) {e.printStackTrace();}
+	}
+}																 
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">package serveur;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class ThreadServeur extends Thread {
+	private Socket s ;
+	private int id ;
+
+	public ThreadServeur(Socket s, int id) {
+		this.s = s;
+		this.id = id;
+	}
+	
+	public void run() {
+		try {
+			BufferedReader input = new BufferedReader(new InputStreamReader(this.s.getInputStream()));
+			PrintWriter output = new PrintWriter(new OutputStreamWriter(this.s.getOutputStream()));
+			
+			output.println("start");
+			output.flush();
+			
+			int readValue;
+			for(int i=0;i<10;i++) {
+				readValue = Integer.valueOf(input.readLine());
+				System.out.println("CLient "+ this.id + "a envoye " + readValue);
+				Serveur.tab.add(readValue);
+			}
+			
+			Serveur.est_fini[this.id] = true ;
+			while(Serveur.est_fini[0]==false || Serveur.est_fini[1]==false ||Serveur.est_fini[2]==false);
+			
+			output.println("end");
+			output.flush();
+			
+		} catch (IOException e) {e.printStackTrace();}
+	}
+}																 
+</script></code></pre>
+
+<pre><code class="language-java"><script type="text/template">package client;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import serveur.Serveur;
+
+public class Client {
+
+	public static void main(String[] args) {
+		try {
+			Socket socket = new Socket("localhost", 8765);
+			System.out.println("Connecté en attente de start");
+			
+			PrintWriter output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			String read ;
+			
+			do {
+				read = input.readLine();
+			} while(read.compareTo("start")!=0);
+			
+			System.out.println("je vais commencer mes envoies");
+			for(int i=0;i<10;i++) {
+				int value = (int) (Math.random()*1000);
+				output.println(String.valueOf(value));
+				output.flush();
+			}
+			
+			do {
+				read = input.readLine();
+			} while(read.compareTo("end")!=0);
+			
+			System.out.println("Deconnecté");
+		} catch (IOException e) {e.printStackTrace();} 
+	}
+}															 
+</script></code></pre>
+	</div>
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
