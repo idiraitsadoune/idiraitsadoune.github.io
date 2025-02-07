@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Examen Qualité de développement 2024/2025</title>
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1>
+	Examen Qualité de développement <br> 
+  Session 2024/2025 <br> 
+  Durée : 2H30
+</h1>
+<!-- #################################################### -->
+<div id="alert-block">
+  <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> <b style="color: red;">Modalités de livraison</b> 
+  <p>
+    L'examen se déroulera sur machine avec la possibilité d'accéder aux supports du cours et la liberté
+    d'utiliser n'importe quel outils ou environnement de développement (IDE). A la fin du temps dédié
+    à l'examen (2h30), vous devrez envoyer vos codes <b>Java</b> par email à l'adresse
+    <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr">idir.ait-sadoune@universite-paris-saclay.fr</a> avec comme objet <b>[QD-DS]</b>. 
+    <ul>
+      <li>
+        Vous devez envoyer un fichier au format <b>ZIP</b> contenant tous vos sources et nommé avec la convention suivante : 
+        <cs-code>NOM-QD-DS.zip</cs-code>.
+      </li>
+      <li>
+        Ne quittez pas la salle sans avoir reçu un accusé de réception de votre email. 
+      </li>
+    </ul>
+  </p>	 
+</div>
+<!-- #################################################### -->
+<!-- #################################################### -->
+<div id="orange-block">Description du problème</div>
+<!-- #################################################### -->
+<h2>Jeu du Tic-tac-toe</h2>
+
+<p>
+  Le <b>tic-tac-toe</b>, aussi appelé <b>morpion</b>, est un jeu de réflexion se pratiquant 
+  à deux joueurs, 
+  tour par tour, dont le but est de créer le premier un alignement.
+  <br>
+  <img height="300px" style="display: block !important; margin-left: auto !important; margin-right: auto !important;" src="./img/Tictactoe1.gif" alt="">
+  <br>
+  Deux joueurs s'affrontent. Ils doivent remplir chacun à leur tour une case d'une grille 
+  $3 \times 3$ avec le symbole qui leur est attribué : <cs-code>O</cs-code> ou <cs-code>X</cs-code>. <br>
+  Le gagnant est celui qui arrive à aligner trois symboles identiques, 
+  horizontalement, verticalement ou en diagonale. 
+  <br>
+  Il est coutume de laisser le joueur jouant <cs-code>X</cs-code> effectuer le premier coup de 
+  la partie.
+</p>
+<p>
+  Nous souhaitons développer une version du jeu en utilisant une architecture <b>Client/Serveur</b>.
+  Deux clients doivent se connecter pour pouvoir lancer le jeu. Le premier client joue avec 
+  le symbole <cs-code>X</cs-code> et le second avec le symbole <cs-code>O</cs-code>.
+  <br>
+  Le serveur gère le jeu en envoyant les messages suivants aux clients : 
+  <ul>
+    <li><cs-code>"play"</cs-code>: pour demander à un cleint de de jouer une case</li>
+    <li><cs-code>"invalide-position"</cs-code>: pour demander au client de re-jouer une nouvelle case (car la précédente case jouée est déjà occupée ou n'existe pas)</li>
+    <li><cs-code>"win"</cs-code>: pour informer le client de la fin de la partie par une victoire</li>
+    <li><cs-code>"lose"</cs-code>: pour informer le client de la fin de la partie par une défaite</li>
+    <li><cs-code>"tie"</cs-code>: pour informer le client de la fin de la partie sans vainqueur</li>
+  </ul>
+  Le serveur envoie également l'état de la grille après chaque message de type <cs-code>"play"</cs-code> pour permettre 
+  au joueur de jouer le bon coup.
+</p>
+
+<p>
+  Côté client, selon le type du message reçu, une réaction doit être programmée : 
+  <ul>
+    <li>à la réception de <cs-code>"play"</cs-code>: attendre la réception de la <b>grille</b></li>
+    <li>à la réception de <b>la grille</b> : afficher la grille, demander la saisie des coordonnées de la case à jouer et les envoyer avec le symbole joué au serveur</li>
+    <li>à la réception de <cs-code>"invalide-position"</cs-code>: re-demander la saisir des coordonnées de la case à jouer et les renvoyer avec le symbole joué au serveur</li>
+    <li>à la réception de <cs-code>"win"</cs-code>: afficher un message de victoire</li>
+    <li>à la réception de <cs-code>"lose"</cs-code>: afficher un message de défaite</li>
+    <li>à la réception de <cs-code>"tie"</cs-code>: afficher un message de fin de partie sans victoire/défaite</li>
+  </ul> 
+</p>
+
+<!-- #################################################### -->
+<h2>Travail à faire</h2>
+<ul>
+  <li>Créer trois packages <cs-code>client</cs-code>, <cs-code>serveur</cs-code> et <cs-code>serveur.tests</cs-code></li>
+  <li>Développer les classes <b>Java</b> nécessaires pour la gestion du <b>Tic-tac-toe</b>
+    <ul>
+      <li>
+        pour le bon déroulement du jeu côté <cs-code>serveur</cs-code>, prévoir une méthode <cs-code>check_aligned_symbols</cs-code>
+        qui prend en pramètre la grille et répond par <cs-code>true</cs-code> si trois symboles identiques sont alignés.
+      </li>
+      <li>
+        écrire quatre tests <b>JUnits</b> qui permettent de vérifier la méthode <cs-code>check_aligned_symbols</cs-code> dans les quatres cas suivants: 
+        <ul>
+          <li>mêmes symboles alignés sur une ligne vérticale</li>
+          <li>mêmes symboles alignés sur une ligne horizontale</li>
+          <li>mêmes symboles alignés sur une diagonale</li>
+          <li>pas de combinaison gagnante</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- #################################################### -->
+<div id="green-block">
+	<i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i>
+	<b style="color: green;">Barême</b>
+  <ul>
+    <li>Code exécutable sans erreurs syntaxiques : <b>4 pts</b></li>
+    <li>Code du serveur correct : <b>4 pts</b></li>
+    <li>Code du test correct : <b>4 pts</b></li>
+    <li>Code du client correct : <b>4 pts</b></li>
+    <li>Code fonctionnel avec les 3 packages : <b>4 pts</b></li>
+  </ul>
+</div>
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+
+</body>
+</html>
