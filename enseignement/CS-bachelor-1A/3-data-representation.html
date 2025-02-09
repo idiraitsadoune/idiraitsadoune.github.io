@@ -161,7 +161,7 @@
   <ul>
     <li>
       <b>BCD</b> is a <b>class of binary encodings</b> of decimal numbers where <i>each digit</i> <br> 
-      is represented by <i>a fixed number of bits</i> ($4$ or $8$).
+      is represented by <i>a fixed number of bits</i> ($4$ or $8$ bits).
     </li>
     <li class="fragment skip">
       <strong>Example</strong> $\to$ case of using $32$-bit encoding (each digit is represented by $8$ bits) <br>
@@ -182,73 +182,116 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Integer numbers</h2>
-    <h3>Signed number representation</h3>
+  <h2>Integer numbers</h2>
+  <h3>Signed number representation</h3>
 
-    <div class="left-content">
+  <div>
+    <img class="center-content" src="./img/signed-1.png" alt="" height="300px">
+  </div>
+
+  <div class="left-content">
+    <ul>
+      <li>
+        <b>A signed number</b> is represented by the bit pattern corresponding to
+        <ul>
+          <li class="fragment">
+            <i>the sign</i> of the number for <i>the sign bit</i> (the most significant bit) $\to$ <br>
+            (set to $0$ for a positive number and to $1$ for a negative number)
+          </li>
+          <li class="fragment">
+            <i>the magnitude</i> of the number (or <i>absolute value</i>) for the remaining bits.
+          </li> 
+        </ul>
+      </li>
+    </ul>
+    <br>
+    <ul id="ko">
+      <li class="fragment skip">Two representations of $0$ ($00000000$ = $10000000$)</li>
+      <li class="fragment"><i>Arithmetic operations</i> <b>cannot be implemented</b> in electronic circuits.</li>
+    </ul>
+  </div>        
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Integer numbers</h2>
+  <h3>Ones' complement</h3>
+
+  <div>
+    <img class="center-content" src="./img/1s-complement.png" alt="" height="250px">
+  </div>
+
+  <div class="left-content">
+    <ul>
+      <li>
+        <b>Positive numbers</b> are the <i>same simple</i>, binary system used by sign-magnitude. 
+      </li>
+      <li>
+        <b>Negative values</b> are the <i>bit complement</i> of the corresponding positive value.
+      </li>
+    </ul>
+    <br>
+    <ul id="ko">
+      <li class="fragment skip">
+        Like sign-magnitude representation, ones' complement has <i>two representations</i> <br> of $0$ 
+        ($00000000$ = $11111111$)
+      </li>
+      <li class="fragment"><i>Arithmetic operations</i> are <b>not intuitive</b>.</li>
+    </ul>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Integer numbers</h2>
+  <h3>Two's complement</h3>
+
+  <div>
+    <img src="./img/Two-s-complement-2.png" alt="" height="300px"> 
+    <img class="fragment" src="./img/Two-s-complement-1.gif" alt="" height="300px">
+  </div>
+
+  <div class="left-content">
+    <ul>
+      <li>
+        The <b>two's complement</b> of an integer is computed by
+        <ol>
+          <li>starting with the binary representation of the corresponding positive value;</li>
+          <li>inverting all bits - changing every 0 to 1, and every 1 to 0;</li>
+          <li>adding 1 to the entire inverted number, ignoring any overflow</li>
+        </ol>
+      </li>
+    </ul>
+    <br>
+    <ul id="ok">
+      <li class="fragment skip">Only one representation for $0$</li>
+    </ul>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Real numbers</h2>
+  <h3>Fixed-point arithmetic</h3>
+
+  <ul>
+    <li class="fragment">
+      <b>A fixed-point</b> representation of a fractional number is essentially 
+        an integer that is to be implicitly multiplied by a <b>fixed scaling factor</b>.
+      <img class="center-content" src="./img/fixed-point-number-representation.png" alt="" height="300px">  
+    </li>
+    <li class="skip fragment">
+      $6.1875_{10}$ $=$ $0110.0011_2$ (with 8 as a fixed scaling factor)
       <ul>
-        <li class="fragment"><b>The sign bit</b> is a bit in a <b>signed number representation</b> that indicates <br> the sign of a number</li>
-        <li class="fragment">Number = sign bit + absolute value</li>
-        <li class="fragment"><strong>example</strong>: $5 = 00000101$  and $-5 = 10000101$</li>
+        <li>$2^2 + 2^1 = 4 + 2 = 6$</li>
+        <li>$2^{-3} + 2^{-4} = 0.125 + 0.0625 = 0.1875$</li>
       </ul>
-      <br>
-      <ul id="ko">
-          <li class="skip fragment">Two representations of 0</li>
-          <li class="fragment">Arithmetic operations cannot be implemented in electronic circuits.</li>
-      </ul>
-    </div>        
+    </li>
+  </ul>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Integer numbers</h2>
-    <ul>
-        <li class="fragment"><b>Two's complement</b>
-            <ul>
-                <li>the most common method of representing signed integers</li>
-            </ul>
-        </li>
-
-        <li class="skip fragment">
-            The <b>two's complement</b> of an integer is computed by:
-            <ol>
-                <li class="fragment">starting with the binary representation of the number;</li>
-                <li class="fragment">inverting all bits – changing every 0 to 1, and every 1 to 0;</li>
-                <li class="fragment">adding 1 to the entire inverted number, ignoring any overflow</li>
-            </ol>
-        </li>
-
-        <li class="skip fragment">
-            <strong>Example</strong>: to calculate the number -6 in binary from the number 6
-            <ol>
-                <li class="fragment">6 in decimal is 00000110 in binary (using 8-bit encoding)</li>
-                <li class="fragment">flip all bits in 00000110, giving 11111001.</li>
-                <li class="fragment">add the value 1 to the obtained number 11111001, giving 11111010.</li>
-            </ol>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-
-    <ul>
-        <li><b>Fixed-point arithmetic</b>
-            <ul>
-                <li class="fragment"><b>A fixed-point</b> representation of a fractional number is essentially 
-                    an integer that is to be implicitly multiplied by a <b>fixed scaling factor</b>.</li>
-                <li class="skip fragment">
-                    18.625 = 10010.101 (with 8 as a fixed scaling factor) $\to$ 10010101
-                    <ul>
-                        <li>$2^4 + 2^1 = 18$</li>
-                        <li>$2^{-1} + 2^{-3} = 0.625$</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -260,46 +303,114 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-    <ul>
-        <li data-id="d1">
-            <b>floating-point arithmetic</b>
-            <ul>
-                <li class="fragment">is arithmetic that represents real numbers using an integer with a <i>fixed precision</i> (<i>significand</i>), 
-                   scaled by an integer <i>exponent</i> of a fixed <i>base</i>. 
-                   $$
-                   x = 3.14159265359 = 
-                   \underset{\text{significand}}{\underbrace{314159265359}} \times 
-                   \underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
-                   $$
-                </li>
-            </ul>
-        </li>
-    </ul>
+  <h2>Real numbers</h2>
+  <h3>floating-point arithmetic</h3>
+
+  <ul>
+    <li>Arithmetic that represents <b>real numbers</b> using an integer with a <i>fixed precision</i> 
+      (<i>significand</i>), 
+       scaled by an integer <i>exponent</i> of a fixed <i>base</i>. 
+       $$
+       x = 3.14159265359 = 
+       \underset{\text{significand}}{\underbrace{314159265359}} \times 
+       \underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
+       $$
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Real numbers</h2>
-    <ul>
-        <li data-id="d1">
-            <b>floating-point arithmetic</b>
-            <ul>
-                <li>
-                    <b>IEEE 754 standard</b>: <b>binary32</b>
-                    <ul>
-                        <li>Sign bit: 1 bit</li>
-                        <li>Exponent width: 8 bits</li>
-                        <li>Significand precision: 24 bits (23 explicitly stored)</li>
-                        <img class="fragment" src="./img/float.png" alt="">
-                        <li class="fragment">$(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$</li>
-                        <li class="fragment">$exponent = 124$ and $fraction = 25$</li>
-                        <li class="fragment">$2^{124 - 127} \times 1.25 = 0.15625$</li>
-                    </ul>
-                </li>
-            </ul>
+  <h2>floating-point arithmetic</h2>
+  <h3>IEEE 754 standard (binary32)</h3>
+
+  <ul>
+    <li>Sign bit $\to$ $1$ bit</li>
+    <li>Exponent part $\to$ $8$ bits ($exponent + 127$)</li>
+    <li>Significand precision $\to$ $24$ bits ($23$ explicitly stored)</li>
+      <img class="center-content" src="./img/float.png" alt="">
+      $$(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$$
+    <li class="fragment">$sign = 0$</li>
+    <li class="fragment">$exponent = 01111100_2 = 124$</li>
+    <li class="fragment">$fraction = 2^{-2} = 0.25$</li>
+    <li class="fragment">$(-1)^{0} \times 2^{124 - 127} \times 1.25 = 2^{-3} \times 1.25 = 0.15625$</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>floating-point arithmetic</h2>
+  <h3>IEEE 754 standard (binary32)</h3>
+
+  <div>
+    $$0.15625 = ?$$
+  </div>
+
+  <ul>
+    <li class="fragment">
+      We need a <b>normal form</b><br>
+      $(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$
+    </li>
+    <li class="skip fragment">
+      $0.15625 \times 2 = 0.3125$
+    </li>
+    <li class="fragment">
+      $0.3125 \times 2 = 0.625$
+    </li>
+    <li class="fragment">
+      $0.625 \times 2 = 1.25$
+    </li>
+    <li class="fragment">
+      <i>$0.15625 =  1.25 \times 2^{-3}$ </i>
+      <ul id="fleche" class="fragment">
+        <li>
+          $exponent = -3 + 127 = 124 = 1111100_2$
         </li>
-    </ul>
+        <li class="fragment">
+          $fraction = 0.25 = 2^{-2} = 0.01_2$
+        </li>
+        <li class="fragment">
+          $0.15625 = 0~01111100~01000000000000000000000_2$
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>floating-point arithmetic</h2>
+  <h3>IEEE 754 standard (binary32)</h3>
+
+  <div>
+    $$6.02 \times 10^{23} = ?$$
+  </div>
+
+  <ul>
+    <li class="fragment">
+      We need a <b>normal form</b><br>
+      $(-1)^{sign} \times 2^{exponent-127} \times 1.fraction$
+    </li>
+    <li class="skip fragment">
+      <i>$6.02 \times 10^{23} = 1.991809 \times 2^{78}$</i> <br> 
+      <span class="fragment">(we get this after $78$ successive divisions per $2$)</span>
+      <ul id="fleche">
+        <li class="fragment">
+          $exponent = 78 + 127 = 11001101_2$
+        </li>
+        <li class="fragment">
+          $fraction = 0.991809 = 0.11111101111010011111000_2$
+        </li>
+        <li class="fragment">
+          $6.02 \times 10^{23} = 0~11001101~11111101111010011111000_2$
+        </li>
+      </ul>
+    </li>  
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -313,122 +424,156 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>ASCII character encoding</h2>
 
-    <ul>
-        <li><b>American Standard Code for Information Interchange</b>  - <b>ASCII</b> 
-            <ul><li><b>ASCII</b> is a character encoding standard for electronic communication.</li></ul>
+  <ul>
+    <li>
+      All computer <b>data</b> is seen as a (finite) <b>sequence of bytes</b> (character)
+      <ul>
+        <li>
+          <strong>Example</strong>: A file is a sequence of bytes, regardless of its contents
         </li>
-        <li class="skip fragment"><b>ASCII</b> codes represent text in computers, telecommunications equipment, and other devices. </li>
-        <li class="skip fragment">The first edition of the <b>ASCII standard</b>  was published in <i>1963</i>. </li>
-        <li class="skip fragment"><b>ASCII</b> has just 128 code points (7 bits + 1 as parity bit).
-            <ul><li>Of the $2^7$=128 codes, 33 were used for controls, and 95 for printable characters</li></ul>
-        </li>
-    </ul>
+      </ul>
+    </li>
+    <li class="skip fragment">
+      <b>American Standard Code for Information Interchange</b>  - <b>ASCII</b> 
+        <ul><li><b>ASCII</b> is a character encoding standard for electronic communication.</li></ul>
+    </li>
+    <li class="skip fragment">
+      <b>ASCII</b> codes represent text in computers, telecommunications equipment, <br> and other devices. 
+    </li>
+    <li class="skip fragment">
+      The first edition of the <b>ASCII standard</b>  was published in <i>1963</i>. 
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>ASCII character encoding</h2>
+
+  <ul>
+    <li>
+      <b>ASCII</b> has just $128$ code points ($7$ bits + $1$ as parity bit).
+      <ul><li>Of the $2^7=128$ codes, $33$ were used for controls, and $95$ for printable characters</li></ul>
+    </li>
+  </ul>
+
+  <div>
     <img src="./img/ASCII.png" alt="" height="500px">
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Extended ASCII</h2>
-    <ul>
-        <li class="fragment"><b>Extended ASCII</b> is a repertoire of character encodings that include <br> the original <b>ASCII</b>  
-            character set, plus up to 128 additional characters.</li>
 
-        <li class="skip fragment">In <i>1987</i> , the <b>ISO</b>  published a set of standards for <b>8-bit ASCII</b>  extensions, <b>ISO 8859</b> 
-            <ul>
-                <li class="fragment"><b>ISO 8859-1</b>: for the most common Western European languages.</li>
-                <li class="fragment"><b>ISO 8859-2</b>: for Eastern European languages.</li>
-                <li class="fragment"><b>ISO 8859-xxx</b>: ...</li>
-            </ul>
-        </li>
-    </ul>
+  <ul>
+    <li>
+      <b>Extended ASCII</b> is a repertoire of character encodings that include <br> 
+      the original <b>ASCII</b> character set, plus up to 128 additional characters.
+    </li>
+
+    <li class="skip fragment">
+      In <i>1987</i>, the <b>ISO</b> (<b> International Organization for Standardization</b>)  <br>
+      published a set of standards for <b>8-bit ASCII</b>  extensions, <b>ISO 8859</b> 
+      <ul>
+        <li class="fragment"><b>ISO 8859-1</b>: for the most common Western European languages.</li>
+        <li class="fragment"><b>ISO 8859-2</b>: for Eastern European languages.</li>
+        <li class="fragment"><b>ISO 8859-xxx</b>: ...</li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Unicode Standard</h2>
 
-    <ul>
-        <li class="fragment"><b>Unicode</b> is a text encoding standard maintained by the <b>Unicode Consortium</b>  designed 
-            to support the use of text written in all <br> of the world's major writing systems.</li>
+  <ul>
+    <li>
+      <b>Unicode</b> is a text encoding standard maintained by the <b>Unicode Consortium</b>  designed 
+        to support the use of text in all of the world's major writing systems.
+      </li>
 
-        <li class="skip fragment"><b>Unicode</b> is used to encode the vast majority of text 
-            on the <i>Internet</i>, including most <i>web pages</i>. </li>
+    <li class="skip fragment">
+      <b>Unicode</b> is used to encode the vast majority of text 
+        on the <i>Internet</i>, including most <i>web pages</i>. 
+      </li>
 
-        <li class="skip fragment">149 813 code points in the last published version.<br> (15.1, September 2023)</li>
-    </ul>
+    <li class="skip fragment">
+      149 813 code points in the <i>last published version</i>.<br> (15.1, September 2023)
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The Unicode Standard</h2>
 
-    <table style="font-size: 35px;">
-        <thead>
-            <tr>
-                <th>Forme</th>
-                <th>Used bits</th>
-                <th>Code points</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0xxxxxxx</td>
-                <td>7</td>
-                <td>0 to 127</td>
-            </tr>
-            <tr>
-                <td>110xxxxx 10xxxxxx</td>
-                <td>11</td>
-                <td>128 to 2 047</td>
-            </tr>
-            <tr>
-                <td>1110xxxx 10xxxxxx 10xxxxxx</td>
-                <td>16</td>
-                <td>2 048 to 65 535</td>
-            </tr>
-            <tr>
-                <td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
-                <td>21</td>
-                <td>65 536 to 1 114 111</td>
-            </tr>
-        </tbody>
-    </table>
+  <table style="font-size: 35px;">
+      <thead>
+          <tr>
+              <th>Forme</th>
+              <th>Used bits</th>
+              <th>Code points</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>0xxxxxxx</td>
+              <td>7</td>
+              <td>0 to 127</td>
+          </tr>
+          <tr>
+              <td>110xxxxx 10xxxxxx</td>
+              <td>11</td>
+              <td>128 to 2 047</td>
+          </tr>
+          <tr>
+              <td>1110xxxx 10xxxxxx 10xxxxxx</td>
+              <td>16</td>
+              <td>2 048 to 65 535</td>
+          </tr>
+          <tr>
+              <td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+              <td>21</td>
+              <td>65 536 to 1 114 111</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <div>
+    <img class="fragment skip" src="./img/utf8.png" alt="" width="600px">
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Strings encoding</h2>
 
-    <ul>
-        <li class="fragment">The most used representation is a <b>character array</b>.
-            <ul><li class="fragment">but an array is not directly manipulated by the processor.</li></ul>
-        </li>
-        <li class="fragment skip">
-            The processor needs to know the address of <i>the beginning</i> <br> 
-            of the array and <i>the index</i> of the element it wants to access.
-            <ul>
-                <li class="fragment">the first memory word contains the number of characters, </li>
-                <li class="fragment">or the <b>ASCII</b> code 0 (<b>NULL</b>) indicates the end of the string (like in <b>C</b>)</li>
-            </ul>
-        </li>
-    </ul>
+  <ul>
+    <li>The most used representation is a <b>character array</b>.
+      <ul><li class="fragment">but an array is not directly manipulated by the processor.</li></ul>
+    </li>
+    <li class="fragment skip">
+      The processor needs to know the address of <i>the beginning</i> <br> 
+      of the array and <i>the index</i> of the element it wants to access.
+      <ul>
+        <li class="fragment">the first memory word contains the number of characters, </li>
+        <li class="fragment">or the <b>ASCII</b> code 0 (<b>NULL</b>) indicates the end of the string (like in <b>C</b>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div>
+    <img src="./img/string.png" alt="" height="250px">
+  </div>
 
 </section> 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch4" name="Pictures, sounds, and videos encoding"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
