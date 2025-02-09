@@ -3,41 +3,20 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Computer Architecture and Software Execution Process : Data representation tutorial</title>
-
-	<meta name="description" content="Computer Architecture and Software Execution Process : Data representation tutorial">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script>
-		MathJax = {
-			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
-
-    <style>
-        table, th, td {border: 1px solid #333;}
-        th, td {padding: 5px;}
-    </style>
 </head>
 
 <body>
@@ -47,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -59,10 +38,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
+<h1>
     Data representation <br> 
     tutorial
-</div>
+</h1>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercise 1 : Signed number and Two's complement
@@ -87,12 +66,17 @@
     </ol>
     
 </p>
-<div id="green-block">
+<!-- un élément non visible -->
+<!-- <div id="green-block" hidden> -->
+  <div id="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
+    <div id="exo1" style="display: none; margin-top: 20px;">
     $(+ 1 032)_{10} = (0000~0100~0000~1000)_2$ (signed number and in Two's complement)<br>
     $(- 721)_{10} = (1000~0010~1101~0001)_2$ (signed number) or $(- 721)_{10} = (1111~1101~0010~1111)_2$ (Two's complement)<br><br>
     $(0101 0000 1100 1101)_2 = (20 685)_{10}$ (signed number and in Two's complement) <br>
     $(1010 0001 0011 0011)_2 = (- 8 499)_{10}$ (signed number) <br>
     $(1010 0001 0011 0011)_2 = (- 24 269)_{10}$ (Two's complement) 
+	</div>
 </div>
 <!-- #################################################### -->
 <div id="orange-block">
@@ -106,7 +90,11 @@
         <li>$(1 432.45)_{10}$ in the hexadecimal representation (base $16$)</li>
     </ul>
 </p>
-<div id="green-block">
+<!-- un élément non visible -->
+<!-- <div id="green-block" hidden> -->
+  <div id="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
+    <div id="exo2" style="display: none; margin-top: 20px;">
     $1432 \div 2 = 716$ <br>
     $716 \div 2 = 358$ <br>
     $358 \div 2 = 179$ <br>
@@ -130,7 +118,7 @@
     $0.45 = (0111 0011)_2 = (73)_{16}$ <br>
     $(1 432.45)_{10} = (10110011000.01110011)_2 = (598.73)_{16}$
 </div>
-
+</div>
 <!-- #################################################### -->
 <div id="orange-block">
     Exercise 3 : Floating-point arithmetic
@@ -157,7 +145,11 @@
     
 </p>
 
-<div id="green-block">
+<!-- un élément non visible -->
+<!-- <div id="green-block" hidden> -->
+  <div id="green-block" hidden>
+    <button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
+    <div id="exo3" style="display: none; margin-top: 20px;">
     $(1 432.45)_{10} = (10110011000.0111001100)_2 = 101100110000111001100 \times 2^{10}$ <br>
     the exponent : $10 + 127 = 137 = (10001001)_2$ <br>
     $(1 432.45)_{10} = (0~~10001001~~01100110000111001100000)_2$ <br><br>
@@ -175,7 +167,7 @@
     exponent : $(10000101)_2 = 133 \to 133 – 127 = 6$ <br>
     $1.110111110010001 \times 2^6 = (1110111.110010001)_2 = (119.783203125)_{10}$
 </div>
-
+</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -187,12 +179,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-    1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>
