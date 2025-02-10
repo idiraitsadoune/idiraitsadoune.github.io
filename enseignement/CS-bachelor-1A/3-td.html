@@ -68,14 +68,23 @@
 </p>
 <!-- un élément non visible -->
 <!-- <div id="green-block" hidden> -->
-  <div id="green-block" hidden>
+  <div id="green-block">
     <button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
     <div id="exo1" style="display: none; margin-top: 20px;">
-    $(+ 1 032)_{10} = (0000~0100~0000~1000)_2$ (signed number and in Two's complement)<br>
-    $(- 721)_{10} = (1000~0010~1101~0001)_2$ (signed number) or $(- 721)_{10} = (1111~1101~0010~1111)_2$ (Two's complement)<br><br>
-    $(0101 0000 1100 1101)_2 = (20 685)_{10}$ (signed number and in Two's complement) <br>
-    $(1010 0001 0011 0011)_2 = (- 8 499)_{10}$ (signed number) <br>
-    $(1010 0001 0011 0011)_2 = (- 24 269)_{10}$ (Two's complement) 
+    $(+ 1 032)_{10} = (0000~0100~0000~1000)_2$ (signed number and in Two's complement)<br><br>
+    $(- 721)_{10} = (1000~0010~1101~0001)_2$ (signed number) <br><br>
+    $(- 721)_{10} = ?$<br>
+    $(0000~0010~1101~0001)_2$ (step 1 : binary representation of the absolute value) <br>
+    $(1111~1101~0010~1110)_2$ (step 2 : inverting all bits) <br>
+    $(1111~1101~0010~1111)_2$ (step 3 : +1 to get Two's complement representation) <br>
+    $(- 721)_{10} = (1111~1101~0010~1111)_2$<br>
+    <br><br>
+    $(0101~0000~1100~1101)_2 = (20 685)_{10}$ (signed number and in Two's complement) <br> <br>
+    $(1010~ 0001~ 0011~ 0011)_2 = (- 8 499)_{10}$ (signed number) <br> <br>
+    $(1010~ 0001~ 0011~ 0011)_2 = ?$ <br>
+    $(1010~ 0001~ 0011~ 0010)_2 = ?$ (step 1 : -1) <br>
+    $(0101~ 1110~ 1100~ 1101)_2 $ (step 2 : inverting all bits to get the absolute value) <br>
+    $(1010~ 0001~ 0011~ 0011)_2 = (- 24 269)_{10}$ (Two's complement) <br>
 	</div>
 </div>
 <!-- #################################################### -->
@@ -92,7 +101,7 @@
 </p>
 <!-- un élément non visible -->
 <!-- <div id="green-block" hidden> -->
-  <div id="green-block" hidden>
+  <div id="green-block">
     <button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
     <div id="exo2" style="display: none; margin-top: 20px;">
     $1432 \div 2 = 716$ <br>
@@ -142,23 +151,24 @@
             </ul>
         </li>
     </ol>
-    
 </p>
 
 <!-- un élément non visible -->
 <!-- <div id="green-block" hidden> -->
-  <div id="green-block" hidden>
+  <div id="green-block">
     <button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
     <div id="exo3" style="display: none; margin-top: 20px;">
-    $(1 432.45)_{10} = (10110011000.0111001100)_2 = 101100110000111001100 \times 2^{10}$ <br>
-    the exponent : $10 + 127 = 137 = (10001001)_2$ <br>
+        $(1 432.45)_{10} = 2^{10} \times 1.3988769532$ <br>
+        fractional part : $(0.3988769532)_{10} = (01100110000111001100000)_2$ <br>
+    exponent part : $10 + 127 = 137 = (10001001)_2$ <br>
     $(1 432.45)_{10} = (0~~10001001~~01100110000111001100000)_2$ <br><br>
 
-    $(- 721.25)_{10} = $ <br> 
-    $(721.25)_{10} = (1011010001.01)_2 = 101101000101 \times 2^9$ <br>
-    the exponent : $9 + 127 = 136 = (10001000)_2$ <br>
+    $(- 721.25)_{10} = -1 \times 2^9 \times 1.4086914063$ <br> 
+    fractional part : $(0.4086914063)_{10} = (01101000101000000000000)_2$ <br>
+    exponent part : $9 + 127 = 136 = (10001000)_2$ <br>
     $(- 721.25)_{10} = (1~~10001000~~01101000101000000000000)_2$ <br><br>
 
+    <br>
     $(1~~10001100~~10101110000000000000000)_2 = $ <br>
     exponent : $(10001100)_2 = 140 \to 140 – 127 = 13$ <br>
     $-1 \times 1.1010111 \times 2^{13} = -1 \times (11010111000000)_2 = (-13760)_{10}$ <br><br>
