@@ -3,41 +3,20 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Computer Architecture and Software Execution Process : Microprocessor architecture tutorial</title>
-
-	<meta name="description" content="Computer Architecture and Software Execution Process : Microprocessor architecture tutorial">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script>
-		MathJax = {
-			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
-
-    <style>
-        table, th, td {border: 1px solid #333;}
-        th, td {padding: 5px;}
-    </style>
 </head>
 
 <body>
@@ -47,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+  1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -59,10 +38,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
+<h1>
     Microprocessor architecture <br> 
     tutorial
-</div>
+</h1>
 <!-- #################################################### -->
 <div id="orange-block">
     Design of a register machine
@@ -74,133 +53,88 @@
 </div>
 
 <p class="text-justify">
-    One factor that limits a computer system's overall performance is the data transfer time between the processor and central memory. 
-    There are several techniques to improve this point; we will focus on one of them: the multiplication of registers.
-</p>
-<p class="text-justify">
-    The main idea behind increasing the number of registers is simple: it is the data in the registers that is most quickly available 
-    to the UAL, so it is faster to do, for example, an addition between 2 registers than an addition between 1 accumulator and a word 
-    in main memory as in the case of the course machine.
+  We will keep the same choices for this processor as for the course machine: Von Neumann architecture, 
+  16-bit words and addresses. Instead of an accumulator, two registers (denoted AC0 and AC1) are available; 
+  data exchanges between the main memory (RAM) and the processor (accumulators) 
+  are carried out with the LDR0, LDR1, and STR0 instructions.
 </p>
 
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
      The external architecture description
-</div>
+</h2>
 
 <p class="text-justify">
-    We will keep the same choices for this processor as for the course machine: Von Neumann architecture, 16-bit words and addresses. 
-    Instead of an accumulator, 16 registers (denoted R0 to R15) are
-available; data exchanges between the central memory and the processor are carried out only with the LDRx and STRx instructions; 
-arithmetic operations take their operands from one register and store their result in another.
-</p>
-
-<p class="text-justify">
-    The following table describes the external architecture:
+  The following table describes the external architecture:
 </p>
 
 <table>
-    <thead >
-      <tr>
-        <th ><b>Instruction</b></th>
-        <th ><b>format</b></th>
-        <th ><b>Description</b></th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td >LOAD #val, Rxxxx</td>
-            <td >0000 ---- ---- xxxx <br> val</td>
-            <td >Loading val into Rxxxx <br> (immediate mode)</td>
-          </tr>
-          <tr>
-            <td >LOAD adr, Rxxxx</td>
-            <td >0001 ---- ---- xxxx <br> adr</td>
-            <td >Loading the content of the address word adr into Rxxxx <br> (direct mode)</td>
-          </tr>
-          <tr>
-            <td >LOAD (Ryyyy), Rxxxx</td>
-            <td >0011 ---- yyyy xxxx</td>
-            <td >Loading the content of the address contained in Ryyyy <br> into Rxxxx</td>
-          </tr>
-          <tr>
-            <td >STORE Rxxxx, adr</td>
-            <td >0101 ---- ---- xxxx <br> adr</td>
-            <td >Storage of Rxxxx contents in memory <br> at adr address</td>
-          </tr>
-          <tr>
-            <td >STORE Rxxxx, (Ryyyy)</td>
-            <td >0111 ---- yyyy xxxx</td>
-            <td >Storage of the contents of Rxxxx in memory <br> at the address contained in Ryyyy</td>
-          </tr>
-          <tr>
-            <td >TFR Ryyyy, Rxxxx</td>
-            <td >0010 ---- yyyy xxxx</td>
-            <td >Transfer of Ryyyy into Rxxxx</td>
-          </tr>
-          <tr>
-            <td >ADD Ryyyy, Rzzzz, Rxxxx</td>
-            <td >1000 yyyy zzzz xxxx</td>
-            <td >Add Ryyyy and Rzzzz <br> and put the result in Rxxxx</td>
-          </tr>
-          <tr>
-            <td >SUB Ryyyy, Rzzzz, Rxxxx</td>
-            <td >1001 yyyy zzzz xxxx</td>
-            <td >Subtract Rzzzz from Ryyyy <br> and store the result in Rxxxx</td>
-          </tr>
-
-          <tr>
-            <td >JMP adr</td>
-            <td >1100 ---- ---- ---- <br> adr </td>
-            <td >Jump to adr address</td>
-          </tr>
-          <tr>
-            <td >Jz Rxxxx, adr</td>
-            <td >1110 ---- ---- xxxx <br> adr </td>
-            <td >Jump to adr if content of Rxxxx is null</td>
-          </tr>
-          <tr>
-            <td >Jn Rxxxx, adr</td>
-            <td >1111 ---- ---- xxxx <br> adr </td>
-            <td >Jump to adr if content of Rxxxx is negative</td>
-          </tr>
-    </tbody>
-  </table>
-
-  <p class="text-justify">
-    As with the course machine, you will note that the instructions are 1 or 2 words.
-  </p>
- 
+  <thead>
+    <tr>
+      <th ><b>Instruction</b></th>
+      <th ><b>format</b></th>
+      <th ><b>Description</b></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+      <td >LDR$_0$ #val</td>
+      <td >0000 val val val</td>
+      <td >Loading val into AC0 (immediate mode)</td>
+    </tr>
+    <tr>
+      <td >LDR$_1$ addr</td>
+      <td >0011 addr addr addr</td>
+      <td >Loading the content of the address $addr$ into AC1 (direct mode)</td>
+    </tr>
+    <tr>
+      <td >STR$_0$ addr</td>
+      <td >0100 addr addr addr </td>
+      <td >Storage of AC0 content in memory at the $addr$ address</td>
+    </tr>
+    <tr>
+      <td >JMP addr</td>
+      <td >0101 addr addr addr</td>
+      <td >Make a jump to the address addr</td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- #################################################### -->
-<div class="subsection-title">
-    Generic data path
+<h2>
+  Generic data path
+</h2>
+
+<div>
+  <img src="./img/im.png" alt="">
 </div>
 
+<ul>
+  <li>ALU : Arithmetic and Logic Unit</li>
+  <li>ALUC : Arithmetic and Logic Unit command</li>
+  <li>IR : Instruction register</li>
+  <li>PP : Program pointer register</li>
+  <li>AC0 : Accumulator register 0</li>
+  <li>AC1 : Accumulator register 1</li>
+  <li>ADMR : Memory Address register</li>
+  <li>MI : Memory Input register</li>
+  <li>MO : Memory Output register</li>
+</ul>
+
 <p class="text-justify">
-    The data path which will serve as the basis for the design of the processor follows that of the course machine 
-    by replacing the accumulator register with a bank of 16 registers with one input (selection of the register with the signal SE, 
-    loading on the rising edge of HBR) and two outputs (selection with signals SS1 and SS2); 2 indicators are associated 
-    with each output indicating whether it is zero (ZSi) or negative (NSi). The computer counterclock (HCO) 
-    loads the CO if the CCO signal is one and increments it otherwise. 
-    The arithmetic and logic unit is assumed to have all the necessary operations.
+  The data path that will serve as the basis for the processor's design follows that of the course machine
+   by replacing the accumulator register with two registers (AC0 and AC1). 
+   The program pointer register (PP) clock (HPP) loads the PP register if the CPP signal equals one and increments it otherwise.
+   The arithmetic and logic unit (ALU) is assumed to have all the necessary operations.
 </p>
-
-<img src="./img/ual-tutorial.png" alt="">
-
 <!-- #################################################### -->
-<div class="subsection-title">
-    Work to be done
-</div>
+<h2>
+  Work to do
+</h2>
 
 <p class="text-justify">
-    Determine the data path and sequencer equations of the processor described.
+  Determine the timetable containing the data path and activated signals of the four instructions of the described processor.
 </p>
-
-<div id="green-block">
-	<img src="./img/td-2-sol1.png" alt="" width="80%"> <br>
-  <img src="./img/td-2-slo2.png" alt="" width="80%">
-</div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -212,12 +146,13 @@ arithmetic operations take their operands from one register and store their resu
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-    1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2023/2024</span>
+    1A - BAIDMS Bachelor <span style="text-align: right;float: right;">Computer Architecture and Software Execution Process - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>

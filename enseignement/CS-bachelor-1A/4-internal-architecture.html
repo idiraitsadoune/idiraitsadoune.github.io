@@ -1,0 +1,948 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Computer Architecture and Software Execution Process : Microprocessor architecture</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/cs-essec.jpg" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+	
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr/fr/bachelor-artificial-intelligence-data-and-management-sciences" target="_blank">
+				<img src="../resources/img/cs.png" alt=""><img style="padding: 5px;" height="80%" src="./img/essec_1.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div style="text-align: left">
+		<h2>Computer Architecture <br> and Software Execution Process</h2>
+		<h3>Microprocessor architecture</h3>
+	</div>
+
+	<div class="description" >
+		<span><span class="fa fa-graduation-cap">&#160;</span>Bachelor in Artificial Intelligence, Data and Management Sciences</span><br>
+		<span><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2024/2025</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The computer components</h2>
+
+	<div>
+		<img src="./img/computer_components.png" alt="" height="500px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The computer components</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					What can a computer (processor) do?
+					<ul id="fleche">
+						<li class="fragment"><b>copy values</b> between storage units</li>
+						<li class="fragment"><b>perform logical/arithmetic operations</b> between stored values</li>
+						<li class="fragment"><b>move within the program</b>, possibly conditionally</li>
+					</ul>
+				</li>
+        <li class="fragment skip">
+					A <b>processor</b> executes a <i>very low level language</i> (<b>Machine Language</b>)
+					<ul id="fleche">
+						<li class="fragment">the instructions of this kind of language execute <i>elementary operations</i>.</li>
+						<li class="fragment">machine instructions <i>control electronic/logic circuits</i>.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/computer_components.png" alt="">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Typical Structure of CPU</h2>
+
+	<div>
+		<img src="./img/processor-1.svg" height="500px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Typical Structure of CPU</h2>
+	<h3>Memory Unit</h3>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					<b>Computer memory</b> stores information, such as <i>data and programs</i>, <br>
+					for immediate use in the computer.
+				</li>
+				<li class="fragment skip">
+					The term memory is often synonymous with the terms <b>RAM</b>, <b>main memory</b>, <br>
+					or <b>primary storage</b>. 
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/memory.svg" height="500px">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Typical Structure of CPU</h2>
+	<h3>arithmetic and logic unit (ALU)</h3>
+
+	<ul>
+		<li>
+			The <b>Arithmetic and Logic Unit</b> (<b>ALU</b>) is a combinational digital circuit 
+			that performs <i>arithmetic and bitwise operations</i> on integer binary numbers.
+		</li>
+		<img class="center-content" src="./img/AluStatusRegister.svg" alt="" width="700px">
+		<li class="fragment">
+			The <i>opcode input</i> conveys to the <b>ALU</b> an operation selection code 
+			that specifies <i>the desired arithmetic or logic operation</i> to be performed by the <b>ALU</b>.
+			<ul>
+				<li><cs-code>add</cs-code>, <cs-code>sub</cs-code>, <cs-code>and</cs-code>, <cs-code>or</cs-code>, ...</li>
+				<li class="fragment">generally, an <b>ALU</b> <i>opcode</i> is not the same as a <i>machine language instruction</i></li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Typical Structure of CPU</h2>
+	<h3>Register Section</h3>
+
+	<div style="float: right; margin-left: 10px; height: 250px;">
+		<img src="./img/cpu.svg" height="100%" >
+	</div>
+
+	<div>
+		<ul style="display: block;">
+			<li>
+				<b>A processor register</b> is a <i>quickly accessible memory</i> available to a computer's processor.
+			</li>
+			<li class="fragment skip">
+				<b>Registers</b> are measured by the <i>number of bits they can hold</i>
+				<ul><li>for example, an 8-bit register, 16-bit register, or more.</li></ul>
+			</li>
+			<li class="fragment skip">
+				A processor often contains several kinds of registers:
+				<ul>
+					<li class="fragment"><i>Acc</i>umulator $\to$ stores <i>intermediate</i> arithmetic and logic unit <i>results</i>.</li>
+					<li class="fragment"><i>P</i>rogram <i>C</i>ounter $\to$ indicates <i>where</i> a processor is in its program sequence.</li>
+					<li class="fragment"><i>I</i>struction <i>R</i>egister  $\to$ holds the <i>instruction</i> currently being <i>executed</i> or decoded <br>
+						(each instruction to be executed is loaded into the <i>IR</i> register)</li>
+					<li class="fragment"><i>M</i>emory <i>A</i>ddress <i>R</i>egister $\to$ either stores the <i>memory address</i> 
+						from which data <br> will be fetched or the <i>address</i> to which data will be sent and stored.</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Machine language <br> (Instructions)</h2>
+
+	<ul>
+		<li>
+			<b>Machine language</b> is built up from <b>instructions</b>.
+		</li>
+		<li>
+			<b>Instruction</b> $\to$ an <i>elementary operation</i> that a processor can perform. 
+		</li>
+		<li class="fragment skip">
+			A given instruction may specify:
+			<ul>
+				<li><i>opcode</i> $\to$ the instruction to be performed</li>
+				<li><i>any explicit operands</i> $\to$ registers, constant values, addressing modes used to access memory</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="center-divs fragment skip">
+		<div style="flex: 3;" class="left-content">
+			<ul>
+				<li>
+					<strong>Example</strong>: 
+					<ul>
+						<li class="fragment"><cs-code>LOAD addr</cs-code>  $\to$ Acc := Mem[addr] </li>
+						<li class="fragment"><cs-code>LOAD val</cs-code>  $\to$ Acc := val </li>
+						<li class="fragment"><cs-code>STORE addr</cs-code> $\to$ Mem[addr] := Acc</li>
+						<li class="fragment"><cs-code>ADD addr</cs-code> $\to$ Acc := Acc + Mem[addr]</li>
+						<li class="fragment"><cs-code>ADD val</cs-code> $\to$ Acc := Acc + val</li>
+						<li class="fragment"><cs-code>SUB addr</cs-code> $\to$ Acc := Acc - Mem[addr]</li>
+						<li class="fragment"><cs-code>SUB val</cs-code> $\to$ Acc := Acc - val</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/instr.svg" >
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Examples</h2>
+
+	<div>
+		<img src="./img/instr.svg" width="400px">
+	</div>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					<cs-code>OPCODE OPERAND</cs-code><br>
+					$xxx ~~ xxxxxxxxxxxxx$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>LOAD 25</cs-code>  $\to$ Acc := Mem[25] <br>
+					$000 ~~ 0000000011001 = (0019)_{16}$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>LOAD 12</cs-code>  $\to$ Acc := 12 <br>
+					$100 ~~ 0000000001100 = (800C)_{16}$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>STORE 54</cs-code> $\to$ Mem[54] := Acc <br>
+					$001 ~~ 0000000110110 = (2036)_{16}$
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<ul>
+				<li class="fragment">
+					<cs-code>ADD 41</cs-code> $\to$ Acc := Acc + Mem[41]<br>
+					$010 ~~ 0000000101001 = (4029)_{16}$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>ADD 10</cs-code> $\to$ Acc := Acc + 10<br>
+					$110 ~~ 0000000001010 = (C00A)_{16}$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>SUB 14</cs-code> $\to$ Acc := Acc - Mem[14]<br>
+					$011 ~~ 0000000001110 = (600E)_{16}$
+				</li>
+				<li style="margin-top: 15px;" class="fragment">
+					<cs-code>SUB 112</cs-code> $\to$ Acc := Acc - 112<br>
+					$111 ~~ 0000001110000 = (E070)_{16}$
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Examples</h2>
+
+	<div style="display: flex; align-items: center;">
+		<pre style="width: 30%;"><code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+			int a = 3;
+			int b = 0;
+
+			b = a + 10;
+	</script></code></pre>
+
+		<pre class="fragment" style="width: 30%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+				LOAD a
+				ADD 10
+				STORE b
+				...
+		@a:	memval 3
+				...
+		@b: memval 0
+		</script></code></pre>
+
+		<pre class="fragment" style="width: 30%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+			0000: 0019
+			0001: C00A
+			0002: 2036
+						...
+			0025:	0003
+						...
+			0054: 0000
+		</script></code></pre>
+
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Program execution</h2>
+
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul>
+				<li>
+					A program's instructions are stored at <i>contiguous addresses</i>
+				</li>
+				<li class="fragment skip">
+					The processor reads the program instructions <i>from memory one by one.</i>
+				</li>
+				<li class="fragment skip">
+					The address of the <i>next instruction</i> to be read is stored <br>
+					in the <b>Program Counter</b> (<b>PC</b>) register. 
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 1;">
+			<img src="./img/mem2.svg" alt="" height="400px">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Program execution</h2>
+
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ol>
+				<li>
+					<b>Fetch</b> $\to$ the instruction contained at the address 
+					indicated by the <b>PC</b> register is copied into the <b>Instruction Register</b> (<b>IR</b>)
+					<ul class="fragment"><li>The value contained in the <b>PC</b> register is incremented.</li></ul>
+				</li>
+				<li class="fragment skip">
+					<b>Decode</b> $\to$  the processor <i>"understands"</i> the instruction <br> to be executed.
+				</li>
+				<li class="fragment skip">
+					<b>Execute</b> $\to$ The instruction is <i>executed</i> by the processor.
+				</li>
+			</ol>
+		</div>
+		<div style="flex: 1;">
+			<img src="./img/mem2.svg" alt="" height="400px">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Implementing the control unit</h2>
+
+	<div style="float: right; margin-left: 10px; height: 250px;">
+		<img src="./img/cpu.svg" height="100%" >
+	</div>
+
+	<div>
+		<ul style="display: block;">
+			<li>
+				Creating a Time Table
+				<ul>
+					<li class="fragment">One line for each instruction</li>
+					<li class="fragment">One column for each clock time</li>
+					<li class="fragment">For each time, the data path signals to be activated</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				Derivation of a set of logical equations
+				<ul>
+					<li class="fragment">An equation for each signal in the data path</li>
+					<li class="fragment">An equation indicates when a signal should be activated</li>
+					<li class="fragment">An equation depends on the control unit inputs and the <b>T, P signals</b></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<div class="center-divs fragment">
+		<div style="flex: 1;">
+			<img src="./img/signaux.png" alt="" height="270px">
+		</div>
+		<div style="flex: 1;">
+			<ul>
+				<li><b>$T_i$</b> $\to$ setup time</li>
+				<li><b>$P_i$</b> $\to$ memorization time</li>
+			</ul>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Data path</h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="400px">
+	</div>
+
+	<table style="font-size: 20px;" class="fragment">
+		<tbody>
+			<tr class="fragment">
+				<th>CALU=</th>
+				<th>00 (ALU$_o$ = ALU$_1$),</th>
+				<th>01 (ALU$_o$ = ALU$_1$ + ALU$_2$),</th>
+				<th>10 (ALU$_o$ = ALU$_1$ + 1),</th>
+				<th>11 (ALU$_o$ = ALU$_1$ - ALU$_2$)</th>
+			</tr>
+			<tr class="fragment">
+				<th>R/W=</th>
+				<th>0 (READ),</th>
+				<th>1 (WRITE)</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table - Fetch</h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="275px">
+	</div>
+
+	<table style="font-size: 25px;">
+		<thead>
+			<tr>
+				<th><cs-code>xxx</cs-code></th>
+				<th class="fragment">time 1 (PC $\to$ RAM)</th>
+				<th class="fragment">time 2 (RAM $\to$ IR)</th>
+				<th class="fragment">time 3 (PC+1 $\to$ PC) </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td class="fragment">PC $\to$ ALU$_1$, ALU$_O$ $\to$ MAR <br> s5=1, CALU=00 ($T_1$) <br> MARC=1 ($P_1$)</td>
+				<td class="fragment">RAM $\to$ ALU$_1$, ALU$_O$ $\to$ IR <br> s1=1, CALU=00 ($T_2$) <br> IRC=1 ($P_2$)</td>
+				<td class="fragment">PC $\to$ ALU$_1$, ALU$_O$ $\to$ PC <br> s5=1, CALU=10 ($T_3$) <br> PCC=1 ($P_3$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="alert-block" class="fragment left-content">
+		The fetch steps are the same for all instructions.
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table - <cs-code>LOAD addr</cs-code>/<cs-code>value</cs-code></h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="275px">
+	</div>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<th><cs-code>LOAD$_1$ addr</cs-code></th>
+				<th class="fragment">time 4 (IR $\to$ RAM)</th>
+				<th class="fragment">time 5 (RAM $\to$ ACC)</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">IR $\to$ ALU$_1$, ALU$_O$ $\to$ MAR <br> s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">RAM $\to$ ALU$_1$, ALU$_O$ $\to$ ACC <br> s1=1, CALU=00 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<th class="fragment"><cs-code>LOAD$_2$ value</cs-code></th>
+				<th class="fragment">time 4 (IR $\to$ ACC)</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">IR $\to$ ALU$_1$, ALU$_O$ $\to$ ACC <br> s3=1, CALU=00 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table - <cs-code>STORE addr</cs-code></h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="275px">
+	</div>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<th><cs-code>STORE addr</cs-code></th>
+				<th class="fragment">time 4 (IR $\to$ RAM)</th>
+				<th class="fragment">time 5 (ACC $\to$ RAM)</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">IR $\to$ ALU$_1$, ALU$_O$ $\to$ MAR <br> s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">ACC $\to$ ALU$_1$, ALU$_O$ $\to$ RAM <br> s7=1, CALU=00 ($T_5$) <br> R/W=1 ($P_5$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table - <cs-code>ADD addr</cs-code>/<cs-code>value</cs-code></h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="275px">
+	</div>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<th><cs-code>ADD$_1$ addr</cs-code></th>
+				<th class="fragment">time 4 (IR $\to$ RAM)</th>
+				<th class="fragment">time 5 (ACC + RAM $\to$ ACC)</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">IR $\to$ ALU$_1$, ALU$_O$ $\to$ MAR <br> s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">ACC $\to$ ALU$_1$, RAM $\to$ ALU$_2$, , ALU$_O$ $\to$ ACC <br> s2=1, s7=1, CALU=10 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<th class="fragment"><cs-code>ADD$_2$ value</cs-code></th>
+				<th class="fragment">time 4 (ACC + IR $\to$ ACC)</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">ACC $\to$ ALU$_1$, IR $\to$ ALU$_2$, ALU$_O$ $\to$ ACC <br> s3=1, s7=1, CALU=10 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table - <cs-code>SUB addr</cs-code>/<cs-code>value</cs-code></h2>
+
+	<div>
+		<img src="./img/data-path1.png" alt="" height="275px">
+	</div>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<th><cs-code>SUB$_1$ addr</cs-code></th>
+				<th class="fragment">time 4 (IR $\to$ RAM)</th>
+				<th class="fragment">time 5 (ACC - RAM $\to$ ACC)</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">IR $\to$ ALU$_1$, ALU$_O$ $\to$ MAR <br> s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">ACC $\to$ ALU$_1$, RAM $\to$ ALU$_2$, , ALU$_O$ $\to$ ACC <br> s2=1, s7=1, CALU=11 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<th class="fragment"><cs-code>SUB$_2$ value</cs-code></th>
+				<th class="fragment">time 4 (ACC - IR $\to$ ACC)</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="fragment">ACC $\to$ ALU$_1$, IR $\to$ ALU$_2$, ALU$_O$ $\to$ ACC <br> s3=1, s7=1, CALU=11 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Time Table</h2>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<td><cs-code>fetch</cs-code></td>
+				<td class="fragment">s5=1, CALU=00 ($T_1$) <br> MARC=1 ($P_1$)</td>
+				<td class="fragment">s1=1, CALU=00 ($T_2$) <br> IRC=1 ($P_2$)</td>
+				<td class="fragment">s5=1, CALU=10 ($T_3$) <br> PCC=1 ($P_3$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table style="font-size: 25px;" class="skip fragment">
+		<tbody>
+			<tr>
+				<td><cs-code>LOAD$_1$ addr</cs-code></td>
+				<td class="fragment">s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">s1=1, CALU=00 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>LOAD$_2$ value</cs-code></td>
+				<td class="fragment">s3=1, CALU=00 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>STORE addr</cs-code></td>
+				<td class="fragment">s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">s7=1, CALU=00 ($T_5$) <br> R/W=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_1$ addr</cs-code></td>
+				<td class="fragment">s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">s2=1, s7=1, CALU=10 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_2$ value</cs-code></td>
+				<td class="fragment">s3=1, s7=1, CALU=10 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_1$ addr</cs-code></td>
+				<td class="fragment">s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td class="fragment">s2=1, s7=1, CALU=11 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_2$ value</cs-code></td>
+				<td class="fragment">s3=1, s7=1, CALU=11 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<td><cs-code>fetch</cs-code></td>
+				<td>s5=1, CALU=00 ($T_1$) <br> <i>MARC=1 ($P_1$)</i></td>
+				<td>s1=1, CALU=00 ($T_2$) <br> IRC=1 ($P_2$)</td>
+				<td>s5=1, CALU=10 ($T_3$) <br> PCC=1 ($P_3$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table style="font-size: 25px;" class="skip">
+		<tbody>
+			<tr>
+				<td><cs-code>LOAD$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> <i>MARC=1 ($P_4$)</i></td>
+				<td>s1=1, CALU=00 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>LOAD$_2$ value</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>STORE addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> <i>MARC=1 ($P_4$)</i></td>
+				<td>s7=1, CALU=00 ($T_5$) <br> R/W=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> <i>MARC=1 ($P_4$)</i></td>
+				<td>s2=1, s7=1, CALU=10 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_2$ value</cs-code></td>
+				<td>s3=1, s7=1, CALU=10 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> <i>MARC=1 ($P_4$)</i></td>
+				<td>s2=1, s7=1, CALU=11 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_2$ value</cs-code></td>
+				<td>s3=1, s7=1, CALU=11 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<div>
+		MARC = P$_1$ $+$ (LOAD$_1$ $.$ P$_4$) $+$ (STORE $.$ P$_4$) $+$ (ADD$_1$ $.$ P$_4$) $+$ (SUB$_1$ $.$ P$_4$)
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<td><cs-code>fetch</cs-code></td>
+				<td>s5=1, CALU=00 ($T_1$) <br> MARC=1 ($P_1$)</td>
+				<td>s1=1, CALU=00 ($T_2$) <br> IRC=1 ($P_2$)</td>
+				<td>s5=1, CALU=10 ($T_3$) <br> PCC=1 ($P_3$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table style="font-size: 25px;" class="skip">
+		<tbody>
+			<tr>
+				<td><cs-code>LOAD$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td>s1=1, CALU=00 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>LOAD$_2$ value</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>STORE addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td>s7=1, CALU=00 ($T_5$) <br> R/W=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td><i>s2=1</i>, s7=1, CALU=10 (<i>$T_5$</i>) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_2$ value</cs-code></td>
+				<td>s3=1, s7=1, CALU=10 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_1$ addr</cs-code></td>
+				<td>s3=1, CALU=00 ($T_4$) <br> MARC=1 ($P_4$)</td>
+				<td><i>s2=1</i>, s7=1, CALU=11 (<i>$T_5$</i>) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_2$ value</cs-code></td>
+				<td>s3=1, s7=1, CALU=11 ($T_4$) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<div>
+		s2 = (ADD$_1$ $.$ T$_5$) $+$ (SUB$_1$ $.$ T$_5$)
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<table style="font-size: 25px;">
+		<tbody>
+			<tr>
+				<td><cs-code>fetch</cs-code></td>
+				<td>s5=1, CALU=00 ($T_1$) <br> MARC=1 ($P_1$)</td>
+				<td>s1=1, CALU=00 ($T_2$) <br> IRC=1 ($P_2$)</td>
+				<td>s5=1, CALU=10 ($T_3$) <br> PCC=1 ($P_3$)</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table style="font-size: 25px;" class="skip">
+		<tbody>
+			<tr>
+				<td><cs-code>LOAD$_1$ addr</cs-code></td>
+				<td><i>s3=1</i>, CALU=00 (<i>$T_4$</i>) <br> MARC=1 ($P_4$)</td>
+				<td>s1=1, CALU=00 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>LOAD$_2$ value</cs-code></td>
+				<td><i>s3=1</i>, CALU=00 (<i>$T_4$</i>) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>STORE addr</cs-code></td>
+				<td><i>s3=1</i>, CALU=00 (<i>$T_4$</i>) <br> MARC=1 ($P_4$)</td>
+				<td>s7=1, CALU=00 ($T_5$) <br> R/W=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_1$ addr</cs-code></td>
+				<td><i>s3=1</i>, CALU=00 (<i>$T_4$</i>) <br> MARC=1 ($P_4$)</td>
+				<td>s2=1, s7=1, CALU=10 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>ADD$_2$ value</cs-code></td>
+				<td><i>s3=1</i>, s7=1, CALU=10 (<i>$T_4$</i>) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_1$ addr</cs-code></td>
+				<td><i>s3=1</i>, CALU=00 (<i>$T_4$</i>) <br> MARC=1 ($P_4$)</td>
+				<td>s2=1, s7=1, CALU=11 ($T_5$) <br> AC=1 ($P_5$)</td>
+			</tr>
+			<tr>
+				<td><cs-code>SUB$_2$ value</cs-code></td>
+				<td><i>s3=1</i>, s7=1, CALU=11 (<i>$T_4$</i>) <br> AC=1 ($P_4$)</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Example of logical equation</h2>
+
+	<div>
+		s3 = T$_4$
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="./4-internal-architexture.pdf" target="_blank">PDF version of the slides</a>
+	</p>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../resources/js/plan-en.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
