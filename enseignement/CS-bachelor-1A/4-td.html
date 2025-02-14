@@ -80,22 +80,22 @@
   <tr>
       <td >LDR$_0$ #val</td>
       <td >0000 val val val</td>
-      <td >Loading val into AC0 (immediate mode)</td>
+      <td >Loading val into AC0 <br> AC0 := val</td>
     </tr>
     <tr>
       <td >LDR$_1$ addr</td>
       <td >0011 addr addr addr</td>
-      <td >Loading the content of the address $addr$ into AC1 (direct mode)</td>
+      <td >Loading the content of the address $addr$ into AC1<br> AC1 := Mem[addr]</td>
     </tr>
     <tr>
       <td >STR$_0$ addr</td>
       <td >0100 addr addr addr </td>
-      <td >Storage of AC0 content in memory at the $addr$ address</td>
+      <td >Storage of AC0 content in memory at the $addr$ address <br> Mem[addr] := AC0</td>
     </tr>
     <tr>
       <td >JMP addr</td>
       <td >0101 addr addr addr</td>
-      <td >Make a jump to the address addr</td>
+      <td >Make a jump into the program to the address $addr$ <br> (the next instruction to be executed is located in the address $addr$)</td>
     </tr>
   </tbody>
 </table>
