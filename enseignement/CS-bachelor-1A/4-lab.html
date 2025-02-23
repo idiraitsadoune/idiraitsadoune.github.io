@@ -53,11 +53,11 @@
   <p>
     <ul>
       <li><b style="color: red;">This Lab session will take time over four sessions of 1h30.</b></li>
-      <li>Before starting this study, you must form <b style="color: red;">two-person teams</b> and work in a duo.</li>
+      <li>Before starting this study, you must form <b style="color: red;">three-person teams</b>.</li>
       <li>You must read all the subject before starting the work.</li>
       <li><b style="color: red;">The mark of this work counts for 40% of the final mark only if it increases the final exam mark.</b></li>
       <li>At the end, you must provide a <cs-code>name1_name2.ZIP</cs-code> archive file containing all files used in your work. You must upload it on <b>EDUNOA</b> 
-          before <b style="color: red;">Friday, 28th February at 23h59</b> (<b style="color: red;">One work uploaded by team</b>). </li>
+          before <b style="color: red;">Friday, 28th February at 23h59</b> (<b style="color: red;">one work by team</b>). </li>
     </ul>
   </p>
 </div>
@@ -68,42 +68,29 @@
     <p>
       <ol>
         <li>Install <b>Java</b> by following <a href="https://phoenixnap.com/kb/install-java-windows" target="_blank">this tutorial</a></li>
-        <li>Download <b>Logisim</b> available in <a href="./logisim.zip" target="_blank">this link</a>  </li>
+        <li>Download <b>Logisim</b> available in <a href="./logisim-en.zip" target="_blank">this link</a>  </li>
       </ol>
     </p>	
 </div>
 
 <!-- #################################################### -->
 <div id="orange-block">
-  Creation of a computer on the Logisim logic simulator.
+  Description of the processor to be made. 
 </div>
 
-<!-- #################################################### -->
-<h2>
-  Introduction
-</h2>
-
 <p class="text-justify">
-  This laboratory session aims to design a simple processor using <b>Logisim software</b>  (see below). 
-</p>
-
-<!-- #################################################### -->
-<h2>
-  Description of the processor to be made. 
-</h2>
-
-<p class="text-justify">
-  The objective is to create a simple 16-bit accumulator machine with the following characteristics:
+  This lab session aims to design a simple processor using <b>Logisim software</b> (see below). 
+  More precisely, we aim to create a simple 16-bit accumulator machine with the following characteristics:
   <ul>
     <li>operands are 16-bit integers</li>
     <li>addresses are 12 bits</li>
     <li>the instructions are 16-bit words with three fields: <br>
       <img src="./img/operation.svg" width="50%" alt="" style="margin: 10px ;">
       <ul>
-        <li>the most significant bit (bit 15) indicates the addressing mode. Its meaning is as follows:
+        <li>the most significant bit (bit 15) indicates the addressing mode:
           <ul>
-            <li>0 : <b>Immediate</b> (called direct for jumps): The argument is the operand.</li>
-            <li>1 : <b>Indirect</b>: The argument is the address of the address of the operand.</li>
+            <li>0 (<b>Immediate</b>): the argument contains the operand value.</li>
+            <li>1 (<b>Indirect</b>): the argument contains the address of the address of the operand value.</li>
           </ul>
         </li>
         <li>bits 12 to 14 indicate the operation to be performed: 
@@ -119,46 +106,49 @@
               <tr>
                 <td >000</td>
                 <td >LDA</td>
-                <td >Store the content of the operand in the accumulator. 
+                <td >Load the content of the operand in the accumulator. 
                     <br> (immediate and indirect addressing modes)</td>
               </tr>
               <tr>
                 <td >001</td>
                 <td >STA</td>
-                <td >Store the contents of the accumulator in memory 
-                    <br> (only in indirect addressing mode)</td>
+                <td >Store the contents of the accumulator in the main memory using the address contained in the argument.
+                    (only in indirect addressing mode)</td>
               </tr>
               <tr>
                 <td >010</td>
                 <td >ADD</td>
-                <td >Add the operand to the contents of the accumulator and store the result in the accumulator  
-                    <br> (immediate and indirect addressing modes)</td>
+                <td >Add the content of the operand and the contents of the accumulator and store the result in the accumulator  
+                    (immediate and indirect addressing modes)</td>
               </tr>
               <tr>
                 <td >011</td>
                 <td >SUB</td>
-                <td >Subtract the operand from the contents of the accumulator and store the result in the accumulator  
+                <td >Subtract between the content of the operand and the contents of the accumulator and store the result in the accumulator  
                     (immediate and indirect addressing modes)</td>
               </tr>
               <tr>
                 <td >100</td>
                 <td >JMP</td>
-                <td >unconditional jump (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
+                <td >Unconditional jump <br> 
+                  The address of the next instruction is in the argument.</td>
               </tr>
               <tr>
                 <td >101</td>
                 <td >JEQ</td>
-                <td >jump if the content of the accumulator is zero (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
+                <td >Jump if the content of the accumulator is zero (use the Z bit of the ALU) <br> 
+                  The address of the next instruction is in the argument.</td>
               </tr>
               <tr>
                 <td >110</td>
                 <td >JLT</td>
-                <td >jump if the content of the accumulator is strictly negative (only in direct addressing mode) <br> The address of the next instruction is in the argument.</td>
+                <td >Jump if the content of the accumulator is strictly negative (use the N bit of the ALU) <br> 
+                  The address of the next instruction is in the argument.</td>
               </tr>
               <tr>
                 <td >111</td>
                 <td >CLR</td>
-                <td >putting zero in the accumulator.  <br> (You can generate zero from the UAL and send it to the accumulator) </td>
+                <td >Put to zero the accumulator content.  <br> (You can generate zero from the UAL and send it to the accumulator) </td>
               </tr>
             </tbody>
           </table>
@@ -180,51 +170,47 @@
 <p class="text-justify">
   Logisim is free software suitable for simulating logic, combinatorial and sequential circuits. 
   In particular, it lends itself well to the creation of small computers. 
-  Logisim has numerous components as standard, adding a library of components produced at CentraleSupelec 
-  called ESE1010, which notably includes an arithmetic and logic unit (UAL) and a sequencer.
+  Logisim has numerous components as standard, adding a library of components produced 
+  at CentraleSupelec called ESE1010, which notably includes an arithmetic and logic unit (ALU) and a Control Unit.
 </p>
 
 <p class="text-justify">
-  The kit used for this study is a ZIP archive in which you will find, once unzipped:
+  The kit used for this lab session is a ZIP archive containing (once unzipped):
   <ul>
-    <li>the <cs-code>logisim-2.7.1.jar</cs-code>  file, which is the Logisim simulator.</li>
-    <li>the <cs-code>ese1010.jar</cs-code> file, which is the library of Logisim components necessary to carry out the study</li>
-    <li>the <cs-code>ese1010.circ</cs-code> file, which contains the described computer skeleton</li>
-    <li>The test files <cs-code>test_unit.mem</cs-code> and <cs-code>test_fct.mem</cs-code> contain the two test programs described 
-        below and must be loaded into the memory component. </li>
+    <li><b>the <cs-code>logisim-2.7.1.jar</cs-code> file</b>: the Logisim simulator.</li>
+    <li><b>the <cs-code>ese1010.jar</cs-code> file</b>: the library of Logisim components.</li>
+    <li><b>the <cs-code>ese1010.circ</cs-code> file</b>: contains the described computer skeleton.</li>
+    <li><b>the test files <cs-code>test_unit.mem</cs-code> and <cs-code>test_fct.mem</cs-code></b>: 
+      two test programs described below. </li>
   </ul>
 
+  <br>
   <div>
-    <img src="./img/schema.png" alt="">
+    <img src="./img/schema.png" alt="" width="100%">
   </div>
   
-  The skeleton of the computer is equipped with a clock component. To start the simulation, 
-  all you have to do is activate it in the Simulate menu. Check that:
-  <ul>
-    <li>Simulation Enabled is checked;</li>
-    <li>Ticks Enabled is checked;</li>
-    <li>In Tick Frequency, choose a frequency that is not too high (e.g. 8Hz) to start.</li>
-  </ul>
-
-<br>
-The “top” part of the diagram includes 8 generic control signals, initially called C1 to C8 on the sequencer. 
-You will use these signals to control controlled switches.
+  
+The “top” part of the diagram includes 8 generic control signals called C1 to C8. 
+You can use these signals to control the contolled buffer components.
 
 <br><br>
-The “lower” part of the diagram contains control signals to the data path elements. Their meaning - which can 
-be deduced from an examination of the diagram - is recalled below:
+The main part of the diagram contains control signals of the data path elements. Their meaning is given below:
   <ul>
-    <li> HCO: clock of the ordinal counter register (CO);</li>   
-    <li> CCO: CO loading: determines what is loaded in the CO when HCO is activited: if 0, CO + 1; if 1, CO input;</li>
-    <li> HAQ: accumulator register clock (AQ);</li>
-    <li> HRADM: Memory Address Register Clock (RADM);</li>
-    <li> HEM: clock of the memory input register (EM), which is loaded from the value located at the input of connector D (“from the bottom”);</li>
-    <li> RW: positions the memory for reading (RW=1) or writing (RW=0). When reading, the value located at the address given by the RADM is available 
-      at the output on connector D (“upwards”). In writing, the value present in the EM register is written to the address given by the RADM;</li>
+    <li> PCC: the program counter register command (PC register);</li>   
+    <li> CC command: determines what is loaded in the PC register when PCC is activited: 0 $\to$ (PC + 1); 1 $\to$ (PC register input);</li>
+    <li> AccC: Accumulator register command (Acc register);</li>
+    <li> MARC: Memory Address Register command (MAR register);</li>
+    <li> IMC: the memory input command (MI);</li>
+    <li> RW: the memory command (for reading RW=1 or writing RW=0). <br>
+      When reading command, the memory word 
+      located at the address given by the MAR register is available 
+      at the output memory (OM). In writing command, the value of the memory input (MI) 
+      is written to the address given by the MAR register;</li>
 
-    <li> HRI: instruction register (RI) clock;</li>
-    <li> Sext: control of the extension sign for the 12 least significant bits of the RI (argument part) to 16 bits (extension if Sext = 1).</li>
-    <li> U0 to U3: UAL command, 
+    <li> IRC: Instruction register command (IR register) <command>;</li>
+    <li> Sext: control of the extension sign for the 12 least significant bits of the IR register (argument part) 
+      to 16 bits (extension if Sext = 1).</li>
+    <li> U0 to U3: ALU command, 
       <br>
       <img src="./img/ual-code.png" alt="" width="350px">
     </li>
@@ -232,49 +218,60 @@ be deduced from an examination of the diagram - is recalled below:
 </p>
 
 <!-- #################################################### -->
-<h2>
+ <!-- #################################################### -->
+<div id="orange-block">
   Work to be done
+</div>
+
+<h2>
+  1 - Timetable and equations
 </h2>
 
-<div><b>
-  1 - Timetable and equations
-</b></div>
-
 <p class="text-justify">
   <ul>
-    <li>From the provided schema, determine the data path and timetable for executing all operations (and complete the microprocessor schema).</li>
-    <li>From the obtained timetable, write signal equations to be used by the sequencer.</li>
+    <li>Determine the data path and timetable for executing all operations (and complete the microprocessor schema).</li>
+    <li>Write signal equations to be used by the Control Unit.</li>
   </ul>
 </p>
 
-<div><b>
+<h2>
   2 - Implementation
-</b></div>
+</h2>
 
 <p class="text-justify">
   <ul>
-    <li>Using Logisim, write the obtained equations into the sequencer components.</li>
+    <li>Using Logisim simulator, write the obtained equations into the Control Unit component.</li>
   </ul>
 </p>
 
-<div><b>
+<h2>
   3 - Tests
-</b></div>
+</h2>
 
 <p class="text-justify">
-  Two test programs are provided as files to load into the memory component.
+  The skeleton of the computer is equipped with a clock component. To start the simulation, 
+  you must activate it in the Simulate menu. Check that:
+  <ul>
+    <li>Simulation Enabled is checked;</li>
+    <li>Ticks Enabled is checked;</li>
+    <li>In Tick Frequency, choose a frequency that is not too high (e.g. 8Hz) to start.</li>
+  </ul>
 </p>
 
 <p class="text-justify">
-  The first ( <cs-code>test_unit.mem</cs-code> ) tests each instruction according to the two addressing modes. 
+  Two test programs are provided as files. To use one of them, you need to load it into the memory component.
+</p>
+
+<p class="text-justify">
+  The first program file ( <cs-code>test_unit.mem</cs-code> ) tests each instruction according to the two addressing modes. 
   Lines labelled ERROR should not be executed by the designed processor. 
 </p>
 
 <img src="./img/test1.png" alt="">
 
 <p class="text-justify">
-  It's up to you to determine what the second one (<cs-code>test_fct.mem</cs-code>) 
-  does and whether the result obtained is correct: 
+  If the test program is correctly executed, you can now execute the second program (<cs-code>test_fct.mem</cs-code>) 
+  and determine what it does and whether the obtained result is correct: 
 </p>
 
 <div>
