@@ -189,28 +189,26 @@
     <img src="./img/schema.png" alt="" width="100%">
   </div>
   
-  
-The “top” part of the diagram includes 8 generic control signals called C1 to C8. 
+The "top" part of the diagram includes 8 generic control signals called <b>C1</b> to <b>C8</b>. 
 You can use these signals to control the contolled buffer components.
 
 <br><br>
 The main part of the diagram contains control signals of the data path elements. Their meaning is given below:
   <ul>
-    <li> PCC: the program counter register command (PC register);</li>   
-    <li> CC command: determines what is loaded in the PC register when PCC is activited: 0 $\to$ (PC + 1); 1 $\to$ (PC register input);</li>
-    <li> AccC: Accumulator register command (Acc register);</li>
-    <li> MARC: Memory Address Register command (MAR register);</li>
-    <li> IMC: the memory input command (MI);</li>
-    <li> RW: the memory command (for reading RW=1 or writing RW=0). <br>
+    <li> <b>PCC</b>: the program counter register command (PC register);</li>   
+    <li> <b>CC</b> command: determines what is loaded in the PC register when PCC is activited: 0 $\to$ (PC + 1); 1 $\to$ (PC register input);</li>
+    <li> <b>AccC</b>: Accumulator register command (Acc register);</li>
+    <li> <b>MARC</b>: Memory Address Register command (MAR register);</li>
+    <li> <b>IMC</b>: the memory input command (MI);</li>
+    <li> <b>RW</b>: the memory command (for reading RW=1 or writing RW=0). <br>
       When reading command, the memory word 
       located at the address given by the MAR register is available 
       at the output memory (OM). In writing command, the value of the memory input (MI) 
       is written to the address given by the MAR register;</li>
-
-    <li> IRC: Instruction register command (IR register) <command>;</li>
-    <li> Sext: control of the extension sign for the 12 least significant bits of the IR register (argument part) 
+    <li> <b>IRC</b>: Instruction register command (IR register) <command>;</li>
+    <li> <b>Sext</b>: control of the extension sign for the 12 least significant bits of the IR register (argument part) 
       to 16 bits (extension if Sext = 1).</li>
-    <li> U0 to U3: ALU command, 
+    <li> <b>U0</b> to <b>U3</b>: ALU command, 
       <br>
       <img src="./img/ual-code.png" alt="" width="350px">
     </li>
@@ -263,7 +261,7 @@ The main part of the diagram contains control signals of the data path elements.
 </p>
 
 <p class="text-justify">
-  The first program file ( <cs-code>test_unit.mem</cs-code> ) tests each instruction according to the two addressing modes. 
+  The first program file (<cs-code>test_unit.mem</cs-code>) tests each instruction according to the two addressing modes. 
   Lines labelled ERROR should not be executed by the designed processor. 
 </p>
 
