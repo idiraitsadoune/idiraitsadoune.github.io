@@ -77,7 +77,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr>
+    <tr>
       <td >LDR$_0$ #val</td>
       <td >0000 val val val</td>
       <td >Loading val into AC0 <br> AC0 := val</td>
@@ -135,6 +135,58 @@
 <p class="text-justify">
   Determine the timetable containing the data path and activated signals of the four instructions of the described processor.
 </p>
+
+<!-- <div id="green-block" hidden> -->
+<div id="green-block">
+  <button class="button_display" onclick="display_correction('exo')">Click here to display or hide the correction</button>
+  <div id="exo" style="display: none; margin-top: 20px;">
+      
+
+    <table>
+      <thead>
+        <tr>
+          <th ><b>Instruction</b></th>
+          <th ><b>time T1</b></th>
+          <th ><b>time T2</b></th>
+          <th ><b>time T3</b></th>
+          <th ><b>time T4</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td >LDR$_0$ #val</td>
+          <td >PP $\to$ ALU(A) $\to$ ADMR <br> ALUC = A (T1) <br> HADMR=1 (P1) </td>
+          <td >MO(RAM) $\to$ ALU(A) $\to$ IR <br> ALUC = A (T2) <br> HIR=1 (P2) <br> --- <br> PP=PP+1 <br> HPP=1, CPP=0 (P2)</td>
+          <td >IR $\to$ ALU(A) $\to$ AC0 <br> ALUC = A (T3) <br> HAC0=1 (P3) </td>
+          <td ></td>
+        </tr>
+        <tr>
+          <td >LDR$_1$ addr</td>
+          <td >$//$</td>
+          <td >$//$</td>
+          <td >IR $\to$ ALU(A) $\to$ ADMR <br> ALUC = A (T3) <br> HADMR=1 (P3)</td>
+          <td >MO(RAM) $\to$ ALU(A) $\to$ AC1 <br> ALUC = A (T4) <br> HAC1=1 (P4)</td>
+        </tr>
+        <tr> 
+          <td >STR$_0$ addr</td>
+          <td >$//$</td>
+          <td >$//$</td>
+          <td >IR $\to$ ALU(A) $\to$ ADMR <br> ALUC = A (T3) <br> HADMR=1 (P3)</td>
+          <td >AC0 $\to$ ALU(A) $\to$ MI(RAM) <br> ALUC = A (T4) <br> WR=1 (P4)</td>
+        </tr>
+        <tr>
+          <td >JMP addr</td>
+          <td >$//$</td>
+          <td >$//$</td>
+          <td >IR $\to$ ALU(A) $\to$ PP <br> ALUC = A (T3) <br> HPP=1, CPP=1 (P3)</td>
+          <td ></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
