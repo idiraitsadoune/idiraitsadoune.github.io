@@ -95,7 +95,9 @@
 		</li>
 	</ul>
 
-	<img src="./img/informatique.png" height="auto" width="45%" alt="">
+	<div>
+		<img src="./img/informatique.png" height="auto" width="45%" alt="">
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -443,7 +445,6 @@
 		<div style="width:50%" >
 			<img src="./img/os-schema.svg" width="80%" alt="">
 		</div>
-		
 	</div>
 
 </section>
@@ -690,7 +691,6 @@
 
 		<img data-id="box1" src="./img/interface-noyau-mat.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
@@ -721,6 +721,7 @@
 			</ul>
 		</li>
 	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -772,7 +773,6 @@
 
 		<img data-id="box1" src="./img/interface-noyau-user.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
@@ -796,7 +796,6 @@
 
 		<img data-id="box1" src="./img/appels-sys-schema.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
@@ -954,15 +953,14 @@
 
 		<img src="./img/shell-schema.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-
 	<h2>Interpréteur de commande (shell)</h2>
+
 	<ul>
 		<li>Chaque système d'exploitation a son propre <b>langage <br> de commandes </b>:
 			<ul>
@@ -1069,7 +1067,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Structure des OS</h2>
 
-	<div id="default-block">
+	<div id="default-block" class="left-content">
 		<ul>
 			<li>Comment organiser les différentes fonctions d'un <b>OS</b> ?
 				<ul id="fleche">
@@ -1185,9 +1183,10 @@
 			href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation#Diff%C3%A9rents_types_de_noyaux"
 			target="_blank">https://fr.wikipedia.org</a></div>
 
-			<div id="green-block" class="fragment" style="text-align: center; width: 70%;">
-			Les OS avec un micro-noyau étendus en fonctionnalités par d'autres composants sont les plus utilisés.
-			</div>
+	<div id="green-block" class="fragment left-content" style="text-align: center;">
+		Les OS avec un micro-noyau étendus en fonctionnalités par d'autres <br>
+		composants sont les plus utilisés.
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1212,7 +1211,7 @@
 	<h2>Les étapes du boot</h2>
 
 	<ol>
-		<li class="fragment">le <b>POST</b> test - <b>Power On Self Test</b>
+		<li>le <b>POST</b> test - <b>Power On Self Test</b>
 			<ul>
 				<li class="fragment">après un start ou un reset,
 					le processeur charge <b>les premières instructions</b> <br> à partir de la <b>ROM</b> du
