@@ -109,7 +109,7 @@
 
 <!-- un élément non visible -->
 <!-- <div id="green-block" hidden> -->
-<div id="green-block" hidden>
+<div id="green-block">
     <button class="button_display" onclick="display_correction('exo')">Click here to display or hide the correction</button>
     <div id="exo" style="display: none; margin-top: 20px;">
     <ol>
@@ -126,26 +126,27 @@
             RAM size = 8 x 256 = 2048 memory words = $2^{11}$ memory words
         </li>
         <li style="margin-top: 20px;">
-            virtual address = 240 = 0 $\times$ 256 + 240<br>
-            page = 0, frame = 3 <br>
-            physical address = 3 $\times$ 256 + 240 = 1008<br>
+            virtual address = (000 11110000)$_2$ <br>
+            page = 000, frame = 011 <br>
+            physical address = (011 11110000)$_2$ <br>
             <br>
-            virtual address =  546 = 2 $\times$ 256 + 34 <br>
-            page = 2, frame = 0<br>
-            physical address = 34<br>
+            virtual address =  (010 00100010)$_2$ <br>
+            page = 010, frame = 000<br>
+            physical address = (000 00100010)$_2$<br>
             <br>
-            virtual address = 1578 = 6 $\times$ 256 + 42<br>
-            page = 6, frame = 5<br>
-            physical address = 5 $\times$ 256 + 42 = 1322<br>
+            virtual address = (62A)$_{16}$ = (110 00101010)$_2$<br>
+            page = 110, frame = 101<br>
+            physical address = (101 00101010)$_2$ = (52A)$_{16}$<br>
             <br>
-            virtual address = 2072 > 2048 (address error)
+            virtual address = (818)$_{16}$ = (1000 00011000)$_2$ (address error)
         </li>
         <li style="margin-top: 20px;">
-            virtual address = 770 = 3 $\times$ 256 + 2 <br>
-            page = 3 => page not loaded 
+            virtual address (302)$_{16}$ = (011 0000 0010)$_2$ <br>
+            page = 011 => page not loaded => Page Default
         </li>
         <li  style="margin-top: 20px;">
             virtual address = 0000 0000 0000 0111 <br>
+            page = 000, frame = 011 <br>
             physical address = 0011 0000 0000 0111
         </li>
     </ol>
