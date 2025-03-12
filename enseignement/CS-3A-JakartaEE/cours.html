@@ -88,171 +88,193 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Principes des sites web</h2>
-    <ul>
-        <li class="fragment">Pages <b>HTML</b> statiques</li>
-	    <li class="fragment">Obtention via le protocole <b>HTTP</b> (requête/réponse)</li>
-    </ul>
+
+  <ul>
+    <li class="fragment">Pages <b>HTML</b> statiques</li>
+    <li class="fragment">Obtention via le protocole <b>HTTP</b> (requête/réponse)</li>
+  </ul>
+
+  <div>
     <img src="./img/im1.png" height="300px"  alt="">
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>HTML</h2>
-    <div id="default-block">
-        <b>HTML = EXtensible HyperText Markup Language</b> <br>
-        <ul>
-            <li class="fragment">Un langage à base de <b>balises</b></li> 
-            <li class="fragment">$\approx$ <b>XML</b> avec une grammaire</li> 
-        </ul>
-    </div>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 70%;" >
-            <pre>
-                <code class="language-html" data-trim data-line-numbers>
-                        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-                            &lt;head&gt;	
-                                <title>Le titre de la fenetre</title>
-                            &lt;/head&gt;
-                            &lt;body&gt;
-                                <p>Voici ma premiere page</p>
-                            &lt;/body&gt;
-                        &lt;/html&gt;                               
-                </code>
-            </pre>
-        </div>
-        <img style="width: 30%; margin-bottom: 20px; margin-right: 60px;" src="./img/im2.png" height="100%" >
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Structuration de texte</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 70%;" >
-            <pre>
-                <code class="language-html" data-trim data-line-numbers>
-...
-&lt;body&gt;
-	<h1>Gros titre</h1>
-	<p>Voici mon paragraphe</p>
-	<h2>Section</h2>
-	<h3>Sous-section</h3>
-	<img src="help.png" alt="Ampoule"/>
-	<p>
-        Un nouveau paragraphe avec un
-        <a href="http://www.exemple.fr">
-            lien hypertexte
-        </a>.
-	</p>
-&lt;/body&gt;
-...
-                </code>
-            </pre>
-        </div>
-        <img style="width: 30%; margin-bottom: 20px; margin-right: 60px;" src="./img/im3.png" height="100%" >
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>CSS - personnalisation de l'apparence</h2>
-    <div style="display: flex; align-items: center;">
-            <ul style="width: 70%;">
-                <li class="fragment" >
-                    Attribut de définition de style
-                    <pre style="line-height: 0.8em !important;">
-                        <code class="language-html" data-trim>
-                            <h1 style="color:purple;">Gros titre</h1>
-                        </code>
-                    </pre>
-                </li>
-                <li class="fragment" >
-                    Surcharge de style par défaut
-                    <pre  style="line-height: 0.8em !important;">
-                        <code class="language-html" data-trim>
-                            <h2>Section</h2>
-                        </code>
-                        <code class="language-css" data-trim>
-                            h2 { text-decoration: underline; }
-                        </code>
-                    </pre>
-                </li>
-                <li class="fragment" >
-                    Identifiant
-                    <pre  style="line-height: 0.8em !important;">
-                        <code class="language-html" data-trim>
-                            <img id="ampoule" src="help.png" alt="Ampoule"/>
-                        </code>
-                        <code class="language-css" data-trim>
-                            #ampoule { border: 3px dashed blue; }
-                        </code>
-                    </pre>
-                </li>
-                <li class="fragment" >
-                    Classe de style
-                    <pre  style="line-height: 0.8em !important;">
-                        <code class="language-html" data-trim>
-                            <p class="myp">Voici mon paragraphe</p>
-                        </code>
-                        <code class="language-css" data-trim>
-                            .myp { font-style: italic; }
-                        </code>
-                    </pre>
-                </li>
-            </ul>
-            
-        <img style="width: 30%; margin-bottom: 20px; margin-right: 60px;" src="./img/im4.png" height="100%" >
-    </div>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Principe des applications web</h2>
-    <p class="fragment">
-        <b>Génération dynamique</b> du contenu <b>HTML</b> à partir <br>
-        d’un <b>langage de programmation</b>.
-    </p>
-    <img class="fragment" src="./img/im5.png" height="400px" alt="">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Formulaires</h2>
+  <h2>EXtensible HyperText Markup Language <br> HTML</h2>
 
-    <div class="left-content fragment">
-        <b>Interaction</b> avec l’utilisateur <br>
-        <ul>
-            <li class="fragment"><i>Requête</i> = envoi de données</li>
-            <li class="fragment"><i>Réponse</i> = résultat du traitement des données</li>
-        </ul>
-    </div>
+  <p>
+    Un langage à base de <b>balises</b> $\approx$ <b>XML</b> avec une grammaire
+  </p>
 
-    <img class="fragment" src="./img/im6.png" height="400px" alt="">
+  <div class="fragment center-divs">
+    <div style="flex: 2;">
+      <pre><code class="language-html hljs" data-trim data-line-numbers>
+          &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+            &lt;head&gt;	
+              <title>Le titre de la fenetre</title>
+            &lt;/head&gt;
+            &lt;body&gt;
+              <p>Voici ma premiere page</p>
+            &lt;/body&gt;
+          &lt;/html&gt;                               
+      </code></pre>
+    </div>
+    <div style="flex: 1;">
+      <img  src="./img/im2.png" height="100%" >
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Structure des formulaires</h2>
-    <div class="fragment" style="display: flex; align-items: center;">
-        <div style="width: 75%;" >
-            <pre>
-                <code class="language-html hljs" data-trim data-line-numbers>
-                    <!DOCTYPE html>
-                ...
-                &lt;body&gt;
-                    &lt;h1&gt;Un formulaire&lt;/h1&gt;
-                    &lt;form action="reponse.xyz" method="POST"&gt;
-                        &lt;label for="prenom">Prénom :&lt;/label&gt;
-                        &lt;input type="text" id="prenom" name="prenom"/&gt;
-                        &lt;button type="submit" value="S'inscrire !"/&gt;
-                    &lt;/form&gt;
-                &lt;/body&gt;
-                ...
+  <h2>Structuration de texte</h2>
+
+  <div class="center-divs">
+    <div style="flex: 3;">
+      <pre><code class="language-html hljs" data-trim data-line-numbers>
+        ...
+        &lt;body&gt;
+          <h1>Gros titre</h1>
+          <p>Voici mon paragraphe</p>
+          <h2>Section</h2>
+          <h3>Sous-section</h3>
+          <img src="help.png" alt="Ampoule"/>
+          <p>
+              Un nouveau paragraphe avec
+              un <a href="http://www.exemple.fr">lien hypertexte</a>.
+          </p>
+        &lt;/body&gt;
+        ...
+      </code></pre>
+    </div>
+    <div style="flex: 1;">
+      <img src="./img/im3.png" height="100%" >
+    </div>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>CSS - Cascading Style Sheets</h2>
+  <h3>personnalisation de l'apparence</h3>
+  
+  <div class="center-divs">
+    <div style="flex: 2;">
+      <ul>
+        <li class="fragment" >
+            Attribut de définition de style
+            <pre style="line-height: 0.8em !important; width: 100%;">
+              <code class="language-html hljs" data-trim>
+                  <h1 style="color:purple;">Gros titre</h1>
+              </code>
+          </pre>
+        </li>
+        
+        <li class="fragment" >
+            Surcharge de style par défaut
+            <pre  style="line-height: 0.8em !important; width: 100%;">
+                <code class="language-html hljs" data-trim>
+                    <h2>Section</h2>
+                </code>
+                <code class="language-css" data-trim>
+                    h2 { text-decoration: underline; }
                 </code>
             </pre>
-        </div>
-        <img style="width: 25%; margin-bottom: 20px;" src="./img/im7.png" height="100%" >
+        </li>
+
+        <li class="fragment" >
+            Identifiant
+            <pre  style="line-height: 0.8em !important; width: 100%;">
+                <code class="language-html hljs" data-trim>
+                    <img id="ampoule" src="help.png" alt="Ampoule"/>
+                </code>
+                <code class="language-css" data-trim>
+                    #ampoule { border: 3px dashed blue; }
+                </code>
+            </pre>
+        </li>
+
+        <li class="fragment" >
+            Classe de style
+            <pre  style="line-height: 0.8em !important; width: 100%;">
+                <code class="language-html hljs" data-trim>
+                    <p class="myp">Voici mon paragraphe</p>
+                </code>
+                <code class="language-css" data-trim>
+                    .myp { font-style: italic; }
+                </code>
+            </pre>
+        </li>
+      </ul>
+    
     </div>
+    <div style="flex: 1;">
+      <img src="./img/im4.png" height="100%" >
+    </div>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Principe des applications web</h2>
+
+  <p>
+    <b>Génération dynamique</b> du contenu <b>HTML</b> à partir <br>
+    d'un <b>langage de programmation</b>.
+  </p>
+  <div class="fragment" >
+    <img src="./img/im5.png" height="400px" alt="">
+  </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Formulaires</h2>
+
+  <div class="left-content">
+    <b>Interaction</b> avec l'utilisateur <br>
+    <ul>
+      <li class="fragment"><i>Requête</i> = envoi de données</li>
+      <li class="fragment"><i>Réponse</i> = résultat du traitement des données</li>
+    </ul>
+  </div>
+  <div class="fragment" >
+    <img src="./img/im6.png" height="400px" alt="">
+  </div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Formulaires</h2>
+  <h3>Structure des formulaires</h3>
+
+  <div class="center-divs">
+    <div style="flex: 2;">
+        <pre><code class="language-html hljs" data-trim data-line-numbers>
+            ...
+            &lt;body&gt;
+                &lt;h1&gt;Un formulaire&lt;/h1&gt;
+                &lt;form action="reponse.xyz" method="POST"&gt;
+                    &lt;label for="prenom">Prénom :&lt;/label&gt;
+                    &lt;input type="text" id="prenom" name="prenom"/&gt;
+                    &lt;button type="submit" value="S'inscrire !"/&gt;
+                &lt;/form&gt;
+            &lt;/body&gt;
+            ...
+      </code></pre>
+    </div>
+    <div style="flex: 1;">
+      <img src="./img/im7.png" height="100%" >
+    </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -264,291 +286,337 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Java : langage et plate-forme</h2>
-    <p class="fragment">
-        <b>Java</b> Platform Standard Edition (<b>Java SE</b>) = <br>
-        <b>JVM</b> (machine virtuelle) + <b>APIs</b> (bibliothèques) + 
-        <b>Java</b>
-    </p>
-    <img class="fragment" src="./img/im8.png" height="430px"  alt="">
+  <h2>Java $\to$ langage et plate-forme</h2>
+
+  <p>
+    <b>Java</b> Platform Standard Edition (<b>Java SE</b>) = <br>
+    <b>JVM</b> (machine virtuelle) + <b>APIs</b> (bibliothèques) + <b>Java</b>
+  </p>
+  <div>
+    <img src="./img/im8.png" height="430px"  alt="">
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple</h2>
-    <div style="display: flex; align-items: center;">
-        <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
-            <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-            public class Person {
-                private String name;
-                private boolean deceased;
-            
-                public Person(String n, boolean d){
-                    this.name = n;
-                    this.deceased = d;
-                }
-            
-                public String getName(){
-                    return this.name;
-                }
-            
-                public void setName(String name){
-                    this.name = name;
-                }
-            
-                public Integer doSomething(Integer i){
-                    return (i * i);
-                }
-            }                             
-        </script></code></pre>
-    
-        <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
-            <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-            public class AutreClasse {
-                private Integer oneNumber;
-            
-                public AutreClasse (Integer o) {
-                    this. oneNumber = o;
-                }
-            
-                public Person createRobert(){
-                    Person robert;
-                    robert = new Person("Robert", false);
-                    return robert;
-                }
-            }                             
-        </script></code></pre>
-    </div>
+  <h2>Java $\to$ langage et plate-forme</h2>
+	<h3>Exemple</h3>
+
+  <div class="center-divs">
+      <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
+          <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+          public class Person {
+              private String name;
+              private boolean deceased;
+          
+              public Person(String n, boolean d){
+                  this.name = n;
+                  this.deceased = d;
+              }
+          
+              public String getName(){
+                  return this.name;
+              }
+          
+              public void setName(String name){
+                  this.name = name;
+              }
+          
+              public Integer doSomething(Integer i){
+                  return (i * i);
+              }
+          }                             
+      </script></code></pre>
+  
+      <pre class="fragment" style="width: 49%; font-size: 0.5em !important">
+          <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+          public class AutreClasse {
+              private Integer oneNumber;
+          
+              public AutreClasse (Integer o) {
+                  this. oneNumber = o;
+              }
+          
+              public Person createRobert(){
+                  Person robert;
+                  robert = new Person("Robert", false);
+                  return robert;
+              }
+          }                             
+      </script></code></pre>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Composants</h2>
-    <div style="display: flex; align-items: center;">
-        <ul style="width: 80%;">
-            <li class="fragment"><b>Composant</b> = unité logique de traitement
-                <ul>
-                    <li class="fragment">Objectif : <i>modularité et réutilisation</i></li>
-                    <li class="fragment">Propriétés :
-                        <ul>
-                            <li><i>Identification</i> : nom unique, référencé dans un annuaire</li>
-                            <li><i>Indépendance</i> : utilisable tout seul</li>
-                            <li><i>Réutilisation</i> : utilisable dans différents contextes</li>
-                            <li><i>Intégration</i> : combinable avec d’autres composants</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="fragment skip">Technologies d’implémentation multiples</li>
-            <li class="fragment skip">Déploiement sur serveur</li>
-        </ul>
-        <img style="width: 20%; margin-bottom: 20px; margin-right: 60px;" src="./img/im9.png" height="100%">
+
+  <div class="center-divs">
+    <ul style="width: 70%;">
+        <li><b>Composant</b> = unité logique de traitement
+            <ul>
+                <li class="fragment">Objectif $\to$ <i>modularité et réutilisation</i></li>
+                <li class="fragment">Propriétés :
+                    <ul>
+                        <li><i>Identification</i> : nom unique, référencé dans un annuaire</li>
+                        <li><i>Indépendance</i> : utilisable tout seul</li>
+                        <li><i>Réutilisation</i> : utilisable dans différents contextes</li>
+                        <li><i>Intégration</i> : combinable avec d'autres composants</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="fragment skip">Technologies d'implémentation multiples</li>
+        <li class="fragment skip">Déploiement sur serveur</li>
+    </ul>
+    <div style="width: 30%;">
+      <img  src="./img/im9.png">
     </div>
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Composants et architectures N-tiers</h2>
     
-    <ul>
-        <li class="fragment">3 niveaux types de <b>responsabilités</b> pour les composants</li>
-        <img class="fragment" src="./img/im10.png" height="150px"  alt="">
+  <ul>
+    <li class="fragment">
+      3 niveaux types de <b>responsabilités</b> pour les composants <br>
+      <img src="./img/im10.png" height="150px"  alt="">
+    </li>
+    
 
-        <li class="fragment"><b>N tiers</b> sur lesquels sont distribuées les composants</li>
-        <img class="fragment" src="./img/im11.png" height="200px"  alt="">
-    </ul>
+    <li class="fragment">
+      <b>N tiers</b> sur lesquels sont distribuées les composants <br>
+      <img src="./img/im11.png" height="200px"  alt="">
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Composants Java : JavaBeans</h2>
+	<h2>Composants Java</h2>
+  <h3>JavaBeans</h3>
 
-    <img src="./img/im12.png" height="130px" style="float: right; margin-bottom: 20px;">
-
-    <ul style="display: block;">
-        <li class="fragment"><b>Composant</b> implémenté par une classe <b>Java</b></li>
-        <li class="skip fragment">$\approx$ Classe <b>Java</b> mais <i>conventions</i> à respecter
-            <ul>
-                <li class="fragment"><a href="https://www.jmdoudoux.fr/java/dej/chap-serialisation.htm" target="_blank">Sérialisation</a></li>
-                <li class="fragment"><i>Constructeur</i> par défaut</li>
-                <li class="fragment">Propriétés <i>privées</i> avec <i>accesseurs</i> (encapsulation et introspection)
-                    <ul>
-                        <li><cs-code>public &lt;type&gt; get&lt;Propertyname&gt;()</cs-code></li>
-                        <li><cs-code>public void set&lt;Propertyname&gt;(parameter)</cs-code></li>
-                    </ul>
-                </li>
-                <li class="fragment">
-                    Méthodes d'interception d'<i>événements</i>
-                    <ul>
-                        <li>Utilisation d'écouteurs et génération d'événements</li>
-                        <li><strong>Ex</strong>: <cs-code>implements PropertyChangeListener</cs-code></li>
-                    </ul>
-                    
-                </li>
-            </ul>
+  <div style="float: right; margin-bottom: 20px;">
+    <img src="./img/im12.png" height="130px" >
+  </div>
+    
+  <ul style="display: block;">
+    <li>
+      <b>Composant</b> implémenté par une classe <b>Java</b>
+    </li>
+    <li class="skip fragment">$\approx$ Classe <b>Java</b> mais <i>conventions</i> à respecter
+      <ul>
+        <li class="fragment"><a href="https://www.jmdoudoux.fr/java/dej/chap-serialisation.htm" target="_blank">Sérialisation</a></li>
+        <li class="fragment"><i>Constructeur</i> par défaut</li>
+        <li class="fragment">Propriétés <i>privées</i> avec <i>accesseurs</i> (encapsulation et introspection)
+          <ul>
+            <li><cs-code>public &lt;type&gt; get&lt;Propertyname&gt;()</cs-code></li>
+            <li><cs-code>public void set&lt;Propertyname&gt;(parameter)</cs-code></li>
+          </ul>
         </li>
-    </ul>
+        <li class="fragment">
+          Méthodes d'interception d'<i>événements</i>
+          <ul>
+            <li>Utilisation d'écouteurs et génération d'événements</li>
+            <li><strong>Ex</strong>: <cs-code>implements PropertyChangeListener</cs-code></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple de JavaBeans</h2>
-    <pre style="font-size: 0.49em !important;">
-        <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
-        import java.io.Serializable;
+	<h2>Composants Java</h2>
+  <h3>JavaBeans</h3>
 
-        public class PersonBean implements Serializable {
-            private String name;
-            private boolean deceased;
-        
-            public PersonBean() { ... }
-        
-            public String getName() {
-                return this.name;
-            }
-        
-            public void setName(String name) {
-                this.name = name;
-            }
-        
-            public boolean getDeceased() {
-                return this.deceased;
-            }
-        
-            public void setDeceased(boolean deceased) {
-                this.deceased = deceased;
-            }
-        }                             
-    </script></code></pre> 
+  <div style="float: right; margin-bottom: 20px;">
+    <img src="./img/im12.png" height="130px" >
+  </div>
+
+  <pre style="display: block; font-size: 0.49em !important; width: 70%;">
+      <code class="language-java hljs" data-trim data-line-numbers><script type="text/template">
+      import java.io.Serializable;
+
+      public class PersonBean implements Serializable {
+        private String name;
+        private boolean deceased;
+    
+        public PersonBean() { ... }
+    
+        public String getName() {
+          return this.name;
+        }
+    
+        public void setName(String name) {
+          this.name = name;
+        }
+    
+        public boolean getDeceased() {
+          return this.deceased;
+        }
+    
+        public void setDeceased(boolean deceased) {
+          this.deceased = deceased;
+        }
+      }                             
+  </script></code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Java/Jakarta Enterprise Edition</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
-        <img height="100px" src="./img/jakarta.png" alt="">
-        <img height="100px" src="./img/glassfish.png" alt="">
-    </div>
-    <ul style="display: block;">
-        <li class="fragment">Un ensemble de <i>spécifications</i>
-            <ul>
-                <li class="fragment">Proposées par la société <b>Sun</b>, 
-                    puis <b>Eclipse Foundation</b> depuis <i>2017</i>.</li>
+	<h2>Jakarta Enterprise Edition</h2>
 
-                <li class="fragment">Dédiées au développement et au déploiement 
-                    d’<i>applications n-tiers</i> à base de composants centrées sur le serveur 
-                    <ul id="fleche">
-                        <li>applications d'entreprise</li>
-                    </ul>
-                </li>
-                <li class="fragment">Basées sur <b>Java SE</b> avec
-                    <ul id="fleche">
-                        <li>les spécifications du Serveur d’Applications</li>
-		                <li>des bibliothèques pour le développement d'applications d’entreprises (<b>API</b>)</li>
-                    </ul>
-                </li>
-            </ul>
+  <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+    <img height="100px" src="./img/jakarta.png" alt="">
+    <img height="100px" src="./img/glassfish.png" alt="">
+  </div>
+
+  <ul style="display: block;">
+    <li class="fragment">Un ensemble de <i>spécifications</i>
+      <ul>
+        <li class="fragment">Proposées par la société <b>Sun</b>, 
+            puis <b>Eclipse Foundation</b> depuis <i>2017</i>.</li>
+
+        <li class="fragment">Dédiées au développement et au déploiement 
+            d'<i>applications n-tiers</i> à base de composants centrées sur le serveur 
+          <ul id="fleche">
+            <li>applications d'entreprise</li>
+          </ul>
         </li>
-        <li class="fragment skip">
-            <b>Une implémentation</b> de référence
-            <ul id="fleche">
-                <li>le Serveur d’Applications <b>GlassFish</b> version <i>7.0.13</i> (certifiée <b>Jakarta EE 10</b>) </li>
-                <li>développé par <b>Eclipse Foundation</b> (<i>Février 2024</i>)</li>
-            </ul>
+        <li class="fragment">Basées sur <b>Java SE</b> avec
+          <ul id="fleche">
+            <li>les spécifications du Serveur d'Applications</li>
+            <li>des bibliothèques pour le développement d'applications d'entreprises (<b>API</b>)</li>
+          </ul>
         </li>
-    </ul>
+      </ul>
+    </li>
+    <li class="fragment skip">
+        <b>Une implémentation</b> de référence
+        <ul id="fleche">
+          <li>le Serveur d'Applications <b>GlassFish</b> version <i>7.0.22</i> (certifiée <b>Jakarta EE 10</b>) </li>
+          <li>développé par <b>Eclipse Foundation</b> (<i>Février 2025</i>)</li>
+        </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Ce que définit Jakarta EE</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
-        <img height="100px" src="./img/jakarta.png" alt="">
-        <img height="100px" src="./img/glassfish.png" alt="">
-    </div>
-    <ul style="display: block;">
-        <li>
-            Des <b>composants</b> pour embarquer le code  
-            des éléments d’une application
-            <ul>
-                <li>composants web</li>
-                <li>composant métiers</li>
-            </ul>
-        </li>
-        <li class="fragment skip">
-            Des <b>conteneurs</b> pour héberger les composants
-            d’une application
-            <ul>
-                <li>conteneur web</li>
-                <li>conteneur métier</li>
-            </ul>
-        </li>
-        <li class="fragment skip">
-            Des <b>services</b> support pour les aspects transverses
-            <ul><li>Sécurité, transactions ... </li></ul>
-        </li>
-        <li class="fragment skip">
-            Des <b>infrastructures</b> de communication
-        </li>
-    </ul>
+
+  <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+    <img height="100px" src="./img/jakarta.png" alt="">
+    <img height="100px" src="./img/glassfish.png" alt="">
+  </div>
+
+  <ul style="display: block;">
+    <li>
+      Des <b>composants</b> pour embarquer le code  
+      des éléments d'une application
+      <ul>
+        <li>composants web</li>
+        <li>composant métiers</li>
+      </ul>
+    </li>
+    <li class="fragment skip">
+      Des <b>conteneurs</b> pour héberger les composants
+      d'une application
+      <ul>
+        <li>conteneur web</li>
+        <li>conteneur métier</li>
+      </ul>
+    </li>
+    <li class="fragment skip">
+      Des <b>services</b> support pour les aspects transverses
+      <ul><li>Sécurité, transactions ... </li></ul>
+    </li>
+    <li class="fragment skip">
+        Des <b>infrastructures</b> de communication
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le serveur d'application Jakarta EE</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
-        <img height="100px" src="./img/jakarta.png" alt="">
-        <img height="100px" src="./img/glassfish.png" alt="">
-    </div>
-    <div style="display: block;">
-        <img height="500px" src="./img/im13.png" alt="">
-    </div>
+
+  <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+    <img height="100px" src="./img/jakarta.png" alt="">
+    <img height="100px" src="./img/glassfish.png" alt="">
+  </div>
+
+  <div style="display: block;">
+      <img height="500px" src="./img/im13.png" alt="">
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Jakarta EE Web Profile</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 10px; margin-left: 20px;">
-        <img height="100px" src="./img/jakarta.png" alt="">
-        <img height="100px" src="./img/glassfish.png" alt="">
-    </div>
-    <ul style="display: block;">
-        <li>
-            <i>Sous-ensemble de spécifications</i> séparé <i>dédié <br> au développement web</i>
-        </li>
-        <li class="fragment skip">
-            Inclut
-            <ul>
-                <li>composants web</li>
-                <li>composants métier légers</li>
-                <li>API communes</li>
-            </ul>
-        </li>
-        <li  class="fragment skip">
-            N’utilise que <i>le conteneur Web</i>
-        </li>
-    </ul>
+
+  <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+    <img height="100px" src="./img/jakarta.png" alt="">
+    <img height="100px" src="./img/glassfish.png" alt="">
+  </div>
+
+  <ul style="display: block;">
+    <li>
+      <i>Sous-ensemble de spécifications</i> séparé <i>dédié <br> au développement web</i>
+    </li>
+    <li class="fragment skip">
+      Inclut
+      <ul>
+        <li>composants web</li>
+        <li>composants métier légers</li>
+        <li>API communes</li>
+      </ul>
+    </li>
+    <li  class="fragment skip">
+      N'utilise que <i>le conteneur Web</i>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Jakarta EE Web Profile</h2>
-    <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-right: 60px;">
-        <img height="100px" src="./img/jakarta.png" alt="">
-        <img height="100px" src="./img/glassfish.png" alt="">
-    </div>
-    <div style="display: block;">
-        <img height="500px" src="./img/im14.png" alt="">
-    </div>
+
+  <div id="jee-logo" style="float: right; margin-bottom: 20px; margin-left: 40px;">
+    <img height="100px" src="./img/jakarta.png" alt="">
+    <img height="100px" src="./img/glassfish.png" alt="">
+  </div>
+
+  <div style="display: block;">
+    <img height="500px" src="./img/im14.png" alt="">
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Architectures Jakarta EE type</h2>
     
+  <div>
     <img height="170px" src="./img/im15.png" alt="">
+  </div>
+  <div>
     <img class="fragment"  height="170px" src="./img/im16.png" alt="">
+  </div>
     
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -562,328 +630,381 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Partie web de Jakarta EE</h2>
+
     <div class="r-stack skip">
-        <img class="fragment fade-in-then-out" src="./img/im16.png" height="170px" alt="">
-        <img class="fragment fade-in" src="./img/im17.png" height="170px" alt="">
+      <img class="fragment fade-in-then-out" src="./img/im16.png" height="170px" alt="">
+      <img class="fragment fade-in" src="./img/im17.png" height="170px" alt="">
     </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Servlets</h2>
-    <ul>
-        <li class="fragment"><b>Servlet</b> = composant <b>Java</b>, 
-            accessible à une <b>URL</b> donnée, destiné à :
-            <ol>
-                <li class="fragment"><i>Récupérer les requêtes HTTP</i> de l’utilisateur</li>
-                <li class="fragment"><i>Invoquer les traitements applicatifs</i> <b>Java</b> correspondants</li>
-                <li class="fragment"><b>Construire la page HTML de réponse</b> pour l’utilisateur</li>
-            </ol>
-        </li>
-    </ul>
+  <ul>
+    <li><b>Servlet</b> = composant <b>Java</b>, 
+      accessible à une <b>URL</b> donnée, destiné à :
+      <ol>
+        <li class="fragment"><i>Récupérer les requêtes HTTP</i> de l'utilisateur</li>
+        <li class="fragment"><i>Invoquer les traitements applicatifs</i> <b>Java</b> correspondants</li>
+        <li class="fragment"><b>Construire la page HTML de réponse</b> pour l'utilisateur</li>
+      </ol>
+    </li>
+  </ul>
+  <div>
     <img class="fragment" src="./img/im18.png" height="300px" alt="">
+  </div>
+  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple de Servlets</h2>
-    <pre><code class="language-java hljs" data-trim data-line-numbers>
-        @WebServlet(name="PremiereServlet", urlPatterns={"/premiereServlet"})
-        public class PremiereServlet extends HttpServlet {
-            public void doGet(HttpServletRequest requete, 
-            HttpServletResponse reponse) throws IOException, ServletException {
-            
-                reponse.setContentType("text/html");
-                PrintWriter pw = reponse.getWriter();
-                try {
-                    pw.print("&lt;html&gt;");
-                    pw.print("&lt;head&gt;");
-                    pw.print("&lt;title&gt;Ma premiere servlet&lt;/title&gt;");
-                    pw.print("&lt;/head&gt;");
-                    pw.print("&lt;body&gt;");
-                    pw.print("&lt;h1&gt;Ca marche !&lt;/h1&gt;");
-                    pw.print("&lt;/body&gt;");
-                    pw.print("&lt;/html&gt;");
-                } finally {
-                    out.close();
-                }
-            }
-        }                             
-        </code></pre> 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Exemple de Servlets</h2>
-    <img src="./img/im19.png" height="300px" alt="">
+  <h2>Servlets</h2>
+	<h3>Exemple</h3>
 
-    <div id="alert-block" class="fragment">
-		<b>Problèmes</b> <br> maintenance, évolution… !
+  <pre style="font-size: 0.55em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+    @WebServlet(name="PremiereServlet", urlPatterns={"/premiereServlet"})
+    public class PremiereServlet extends HttpServlet {
+      public void doGet(HttpServletRequest requete, HttpServletResponse reponse) 
+        throws IOException, ServletException {
+    
+        reponse.setContentType("text/html");
+        PrintWriter pw = reponse.getWriter();
+        try {
+          pw.print("&lt;html&gt;");
+          pw.print("&lt;head&gt;");
+          pw.print("&lt;title&gt;Ma premiere servlet&lt;/title&gt;");
+          pw.print("&lt;/head&gt;");
+          pw.print("&lt;body&gt;");
+          pw.print("&lt;h1&gt;Ca marche !&lt;/h1&gt;");
+          pw.print("&lt;/body&gt;");
+          pw.print("&lt;/html&gt;");
+        } finally {
+          out.close();
+        }
+      }
+    }                             
+  </code></pre> 
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Servlets</h2>
+	<h3>Exemple</h3>
+
+  <div>
+    <img src="./img/im19.png" height="300px" alt="">
+  </div>
+    
+  <div id="alert-block" class="fragment left-content">
+		<b>Problèmes</b> $\to$ maintenance, évolution... !
 	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Patron Modèle-Vue-Contrôleur (MVC)</h2>
+  <h2>Patron Modèle-Vue-Contrôleur (MVC)</h2>
+
+  <div>
     <img src="./img/im20.png" height="250px" alt="">
-    <ul>
-        <li class="fragment">Principe = séparation des responsabilités
-            <ul>
-                <li class="fragment"><b>Vue</b> : gère les sorties = visualisation (interface utilisateur)</li>
- 
-                <li class="fragment"><b>Contrôleur</b> : gère les entrées
-                    <ul>
-                        <li>Traitement des actions de l’utilisateur et choix des vues</li>
-                        <li>Gestion des modifications du modèle</li>
-                    </ul>
-                </li>
-                <li class="fragment"><b>Modèle</b> : gère la logique et les données</li>
-            </ul>
+  </div>
+  
+  <ul>
+    <li>Principe = séparation des responsabilités
+      <ul>
+        <li class="fragment"><b>Vue</b> : gère les sorties = visualisation (interface utilisateur)</li>
+
+        <li class="fragment"><b>Contrôleur</b> : gère les entrées
+          <ul>
+            <li>Traitement des actions de l'utilisateur et choix des vues</li>
+            <li>Gestion des modifications du modèle</li>
+          </ul>
         </li>
-    </ul>
+        <li class="fragment"><b>Modèle</b> : gère la logique et les données</li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Java Server Faces (JSF)</h2>
+  <h2>Patron Modèle-Vue-Contrôleur (MVC)</h2>
+  <h3>Java Server Faces (JSF)</h3>
+
+  <div>
     <img src="./img/im21.png" height="250px" alt="">
-    <ul>
-        <li><b>Framework de composants web</b> basé sur <b>MVC</b> amélioré :
-            <ul id="fleche"><li>modèle = logique + données</li></ul>
-        </li>
-    </ul>
+  </div>
+    
+  <ul>
+    <li><b>Framework de composants web</b> basé sur <b>MVC</b> amélioré :
+      <ul id="fleche"><li>modèle = logique + données</li></ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Ce que JSF définit</h2>
-    <ul>
-        <li class="fragment"><b>Contrôleur unique = FacesServlet</b>
-            <ul><li>Gère les événements et les interactions avec le client</li></ul>
+  <h2>Ce que JSF définit</h2>
+  
+  <ul>
+    <li><b>Contrôleur unique = FacesServlet</b>
+      <ul><li>Gère les événements et les interactions avec le client</li></ul>
+    </li>
+    <li class="fragment skip"><b>Modèle =</b>
+      <ul>
+        <li>Logique = <i>Managed Beans</i> ou "backing beans"</li>
+        <li>Données = JavaBeans, Enterprise JavaBeans…</li>
+      </ul>
+    </li>
+    <li class="fragment skip"><b>Vue = page JSF</b> = arbre de composants
+      <ul>
+        <li><i>Composants prédéfinis</i> avec un rendu <b>HTML</b></li>
+        <li><i>Modèles de navigation</i>
+          <ul id="fleche">
+            <li><b>Statique</b> : liens hypertextes entre vues</li>
+            <li><b>Dynamique</b> : règles de navigation s'appuyant sur un bean</li>
+          </ul>
         </li>
-        <li class="fragment skip"><b>Modèle =</b>
-            <ul>
-                <li>Logique = <i>Managed Beans</i> ou "backing beans"</li>
-                <li>Données = JavaBeans, Enterprise JavaBeans…</li>
-            </ul>
-        </li>
-        <li class="fragment skip"><b>Vue = page JSF</b> = arbre de composants
-            <ul>
-                <li><i>Composants prédéfinis</i> avec un rendu <b>HTML</b></li>
-                <li><i>Modèles de navigation</i>
-                    <ul id="fleche">
-                        <li><b>Statique</b> : liens hypertextes entre vues</li>
-                        <li><b>Dynamique</b> : règles de navigation s’appuyant sur un bean</li>
-                    </ul>
-                </li>
-                <li>Outils : convertisseur et validateurs</li>
-            </ul>
-        </li>
-    </ul>
+        <li>Outils : convertisseur et validateurs</li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Principe de JSF</h2>
+  <h2>Principe de JSF</h2>
+
+  <div>
     <img src="./img/im22.png" height="500px" alt="">
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Composants JSF</h2>
-    <ul>
-        <li class="fragment">Une <i>classe</i> : gère les événements utilisateur
-            <pre><code class="language-java hljs" data-trim data-line-numbers>
-                UISelectOne choiceMenu;	
-            </code></pre>
-        </li>
-        <li class="fragment">Un <i>tag</i> : permet de l’inclure dans une vue JSF
-            <pre><code class="language-html hljs" data-trim data-line-numbers>
-                &lt;h:selectOneMenu id="choice" value="..."&gt;
-                    &lt;f:selectItems value="..." /&gt;
-                &lt;/h:selectOneMenu&gt;
-            </code></pre>
-        </li>
-        <li class="fragment">Un <i>rendu</i> : génère la partie graphique de l’interface utilisateur <br>
-             (<b>HTML</b> par défaut)
-             <pre><code class="language-html hljs" data-trim data-line-numbers>
-                &lt;select id="j_idt7:choice" name="j_idt7:choice" size="1"&gt;
-                    &lt;option value="1" selected="selected"&gt;item 1&lt;/option&gt;
-                    &lt;option value="2"&gt;item 2&lt;/option&gt;
-                &lt;/select&gt;
-            </code></pre>
-        </li>
-    </ul>
+  <h2>Composants JSF</h2>
+
+  <ul>
+    <li class="fragment">Une <i>classe</i> : gère les événements utilisateur
+        <pre><code class="language-java hljs" data-trim data-line-numbers>
+            UISelectOne choiceMenu;	
+        </code></pre>
+    </li>
+    <li class="fragment">Un <i>tag</i> : permet de l'inclure dans une vue JSF
+        <pre><code class="language-html hljs" data-trim data-line-numbers>
+            &lt;h:selectOneMenu id="choice" value="..."&gt;
+                &lt;f:selectItems value="..." /&gt;
+            &lt;/h:selectOneMenu&gt;
+        </code></pre>
+    </li>
+    <li class="fragment">Un <i>rendu</i> : génère la partie graphique de l'interface utilisateur <br>
+          (<b>HTML</b> par défaut)
+          <pre><code class="language-html hljs" data-trim data-line-numbers>
+            &lt;select id="j_idt7:choice" name="j_idt7:choice" size="1"&gt;
+                &lt;option value="1" selected="selected"&gt;item 1&lt;/option&gt;
+                &lt;option value="2"&gt;item 2&lt;/option&gt;
+            &lt;/select&gt;
+        </code></pre>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Composants JSF</h2>
+  <h2>Composants JSF</h2>
+
+  <p>
     <i>Bibliothèques</i> de composants prédéfinis et <i>composables</i>
+  </p>
+  <div>
     <img src="./img/im23.png" height="300px" alt="">
+  </div>
+ 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Managed Beans (backing beans)</h2>
-    <ul>
-        <li class="fragment">Composant géré par le contrôleur <b>JSF</b>
-            <ul>
-                <li>$\approx$ <b>JavaBean</b> mais avec <b>annotations</b></li>
-                <li>Gestion par le <b>conteneur</b> (création, cycle de vie…)</li>
-            </ul>
+  <h2>Managed Beans (backing beans)</h2>
+
+  <ul>
+    <li>Composant géré par le contrôleur <b>JSF</b>
+      <ul>
+        <li>$\approx$ <b>JavaBean</b> mais avec <b>annotations</b></li>
+        <li>Gestion par le <b>conteneur</b> (création, cycle de vie…)</li>
+      </ul>
+    </li>
+    <li class="fragment skip"><b>Services basiques</b>
+      <ul>
+        <li>Identification unique, <i>utilisation dans les composants JSF</i>
+          <ul><li>Expression Language (<b>EL</b>)</li></ul>
         </li>
-        <li class="fragment skip"><b>Services basiques</b>
-            <ul>
-                <li>Identification unique, <i>utilisation dans les composants JSF</i>
-                    <ul><li>Expression Language (<b>EL</b>)</li></ul>
-                </li>
-                <li>Gestion du <i>scope</i> (durée de conservation de l'état)</li>
-                <li>Gestion du cycle de vie via des <i>callbacks</i></li>
-                <li>Injection</li>
-                <li><i>Conversion/validation</i> des données</li>
-            </ul>
-        </li>
-    </ul>
+        <li>Gestion du <i>scope</i> (durée de conservation de l'état)</li>
+        <li>Gestion du cycle de vie via des <i>callbacks</i></li>
+        <li>Injection</li>
+        <li><i>Conversion/validation</i> des données</li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Managed Beans (backing beans)</h2>
-    <pre style="font-size: 0.5em !important;"><code class="language-java hljs" data-trim data-line-numbers>
-        import jakarta.enterprise.context.SessionScoped;
-        import jakarta.inject.Named;
-        import jakarta.annotation.PostConstruct;
 
-        @SessionScoped
-        @Named
-        public class MyManagedBean implements Serializable {
-            private String name;
+  <pre style="font-size: 0.5em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+      import jakarta.enterprise.context.SessionScoped;
+      import jakarta.inject.Named;
+      import jakarta.annotation.PostConstruct;
+
+      @SessionScoped
+      @Named
+      public class MyManagedBean implements Serializable {
+        private String name;
+    
+        public MyManagedBean (){...}
+    
+        @PostConstruct
+        public void mySetup () {
+          this.name = "Duke";
+        }
+    
+        public String getName(){return name;}
+        public void setName(String n){this.name = n;}
         
-            public MyManagedBean (){...}
-        
-            @PostConstruct
-            public void mySetup () {
-                this.name = "Duke";
-            }
-        
-            public String getName(){return name;}
-            public void setName(String n){this.name = n;}
-            
-            public String sayHello() {
-                return "Hello, I'm " + this.name;
-            }
-        }                            
-    </code></pre> 
+        public String sayHello() {
+          return "Hello, I'm " + this.name;
+        }
+      }                            
+  </code></pre> 
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Managed Beans et Composants JSF</h2>
-    <div style="display: flex; align-items: center;">
-        <div style="width: 50%;">
-            <pre style="font-size: 0.45em !important;"><code class="language-html hljs" data-trim data-line-numbers>  
-                &lt;f:view&gt;
-                    &lt;h:form&gt;
-                    &lt;h1&gt;Creation d'un compte&lt;/h1&gt;
-                    &lt;p&gt;Nom :&lt;/p&gt;
-                    &lt;h:inputText 
-                        value="#{personBean.name}"
-                        required="true"/&gt;
-                    &lt;/h:inputText&gt;
-            
-                    &lt;p&gt;Prenom :&lt;/p&gt;
-                    &lt;h:inputText 
-                        value="#{personBean.fName}"&gt;
-                        &lt;f:validateLength maximum="50"/&gt;
-                    &lt;/h:inputText&gt;
-            
-                    &lt;h:commandButton value="Valider"
-                        action="#{personBean.createAccount()}"/&gt;
-                    &lt;/h:form&gt;
-                &lt;/f:view&gt;
-                
-            </code></pre> 
-        </div>
-        <div style="width: 50%;">
-            <pre style="font-size: 0.45em !important;"><code class="language-java hljs" data-trim data-line-numbers>
-                @SessionScoped
-                @Named
-                public class PersonBean implements Serializable{
-                    private String name;
-                    private String fName;
-    
-                    public CatalogBean(){
-                        ...
-                    }
-                    ...
-                    public String createAccount(){
-                        ...
-                        return "createAccountSuccess";
-                    }
+
+  <div style="display: flex; align-items: center;">
+      <div style="width: 50%;">
+          <pre style="font-size: 0.45em !important;"><code class="language-html hljs" data-trim data-line-numbers>  
+              &lt;f:view&gt;
+                &lt;h:form&gt;
+                &lt;h1&gt;Creation d'un compte&lt;/h1&gt;
+                &lt;p&gt;Nom :&lt;/p&gt;
+                &lt;h:inputText 
+                  value="#{personBean.l_name}"
+                  required="true"/&gt;
+                &lt;/h:inputText&gt;
+        
+                &lt;p&gt;Prenom :&lt;/p&gt;
+                &lt;h:inputText 
+                  value="#{personBean.f_name}"&gt;
+                  &lt;f:validateLength maximum="50"/&gt;
+                &lt;/h:inputText&gt;
+        
+                &lt;h:commandButton value="Valider"
+                  action="#{personBean.createAccount()}"/&gt;
+                &lt;/h:form&gt;
+              &lt;/f:view&gt;
+              
+          </code></pre> 
+      </div>
+      <div style="width: 50%;">
+          <pre style="font-size: 0.45em !important;"><code class="language-java hljs" data-trim data-line-numbers>
+              @SessionScoped
+              @Named
+              public class PersonBean implements Serializable{
+                private String f_name;
+                private String l_name;
+
+                public PersonBean(){
+                  ...
                 }
-            </code></pre> 
-        </div>    
-    </div>
+                ...
+                public String createAccount(){
+                  ...
+                  return "createAccountSuccess";
+                }
+              }
+          </code></pre> 
+      </div>    
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>JSF et navigation web</h2>
-    <ul>
-        <li class="fragment">A l'aide de <b>règles de navigation</b> décrites dans <cs-code>faces-config.xml</cs-code>, 
-        <br>on déterminer, en fonction de la page courante, la page cible.</li>
-        <li class="fragment"><b>Outcome =</b>
-            <ul>
-                <li>Chaine de caractère représentant le <i>résultat d'un traitement</i><br>
-                    (<strong>Ex</strong> : fail, pass, success, case5, caseTruc…)</li>
-                <li class="fragment">Peut conditionner l'activation d'une règle de navigation</li>
-            </ul>
-        </li>
-    </ul>
+
+  <ul>
+    <li>A l'aide de <b>règles de navigation</b> décrites dans <cs-code>faces-config.xml</cs-code>, 
+    <br>on déterminer, en fonction de la page courante, la page cible.</li>
+    <li class="fragment"><b>Outcome =</b>
+        <ul>
+            <li>Chaine de caractère représentant le <i>résultat d'un traitement</i><br>
+                (<strong>Ex</strong> : fail, pass, success, case5, caseTruc…)</li>
+            <li class="fragment">Peut conditionner l'activation d'une règle de navigation</li>
+        </ul>
+    </li>
+
     <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
-        <navigation-rule>
-        <!-- Si l'outcome renvoye est HelloWorld
-        alors JSF passe a la page /hello-world.jsp -->
-            <from-view-id>/index.jsp</from-view-id>
-            <navigation-case>
-                <from-outcome>HelloWorld</from-outcome>
-                <to-view-id>/hello-world.jsp</to-view-id>
-            </navigation-case>
-        </navigation-rule>
+      <navigation-rule>
+      <!-- Si l'outcome renvoye est HelloWorld
+      alors JSF passe a la page /hello-world.jsp -->
+          <from-view-id>/index.jsp</from-view-id>
+          <navigation-case>
+              <from-outcome>HelloWorld</from-outcome>
+              <to-view-id>/hello-world.jsp</to-view-id>
+          </navigation-case>
+      </navigation-rule>
     </code></pre>
+  </ul>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Types de navigation</h2>
-    <ul>
-        <li class="fragment"><b>Navigation statique</b> = navigation par identifiant de vue/outcome</li>
-        <li class="fragment skip"><b>Navigation dynamique</b> =
-            <ul id="fleche">
-                <li>méthode d'un backing bean rendant plusieurs outcomes possibles</li>
-                <li>règles de navigation différentes suivant les outcomes</li>
-            </ul>
-        </li>
-    </ul>
+
+  <ul>
+    <li><b>Navigation statique</b> = 
+      <ul id="fleche"><li>navigation par identifiant de vue/outcome</li></ul>
+    </li>
+    <li class="fragment skip"><b>Navigation dynamique</b> =
+      <ul id="fleche">
+        <li>méthode d'un backing bean rendant plusieurs outcomes possibles</li>
+        <li>règles de navigation différentes suivant les outcomes</li>
+      </ul>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple de Navigation statique</h2>
-    <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
-        <navigation-rule>
-            <from-view-id>/index.jsp</from-view-id>
-            <navigation-case>
-                <from-outcome>outcom1</from-outcome>
-                <to-view-id>/action1.jsp</to-view-id>
-            </navigation-case>
-            <navigation-case>
-                <from-outcome>outcom2</from-outcome>
-                <to-view-id>/action2.jsp</to-view-id>
-            </navigation-case>
-        </navigation-rule>
-    </code></pre>
+  <h2>Types de navigation</h2>
+	<h3>Exemple de Navigation statique</h3>
+
+  <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
+      <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+          <from-outcome>outcom1</from-outcome>
+          <to-view-id>/action1.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+          <from-outcome>outcom2</from-outcome>
+          <to-view-id>/action2.jsp</to-view-id>
+        </navigation-case>
+      </navigation-rule>
+  </code></pre>
 
     <pre class="fragment"><code class="language-html hljs" data-trim data-line-numbers>
 <!-- Dans index.jsp -->
@@ -894,75 +1015,84 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple de Navigation dynamique</h2>
-    <pre><code class="language-html hljs" data-trim data-line-numbers>
-        <navigation-rule>
-            <from-view-id>/index.jsp</from-view-id>
-            <navigation-case>
-                <from-outcome>outcom1</from-outcome>
-                <to-view-id>/action1.jsp</to-view-id>
-            </navigation-case>
-            <navigation-case>
-                <from-outcome>outcom2</from-outcome>
-                <to-view-id>/action2.jsp</to-view-id>
-            </navigation-case>
-        </navigation-rule>
-    </code></pre>
-    <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers>
-        public class MyBean implements Serializable {
-            ...
-            public String allerEtapeSuivante(){
-                ...
-                if(...) return "outcom1";
-                else return "outcom2";
-            }
+  <h2>Types de navigation</h2>
+	<h3>Exemple de Navigation dynamique</h3>
+
+  <pre><code class="language-html hljs" data-trim data-line-numbers>
+      <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+          <from-outcome>outcom1</from-outcome>
+          <to-view-id>/action1.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+          <from-outcome>outcom2</from-outcome>
+          <to-view-id>/action2.jsp</to-view-id>
+        </navigation-case>
+      </navigation-rule>
+  </code></pre>
+  <pre class="fragment"><code class="language-java hljs" data-trim data-line-numbers>
+      public class MyBean implements Serializable {
+        ...
+        public String allerEtapeSuivante(){
+          ...
+          if(...) return "outcom1";
+          else return "outcom2";
         }
-    </code></pre>
+      }
+  </code></pre>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple de Navigation dynamique</h2>
-    <pre><code class="language-html hljs" data-trim data-line-numbers>
-        <navigation-rule>
-            <from-view-id>/index.jsp</from-view-id>
-            <navigation-case>
-                <from-outcome>outcom1</from-outcome>
-                <to-view-id>/action1.jsp</to-view-id>
-            </navigation-case>
-            <navigation-case>
-                <from-outcome>outcom2</from-outcome>
-                <to-view-id>/action2.jsp</to-view-id>
-            </navigation-case>
-        </navigation-rule>
-    </code></pre>
-    <pre><code class="language-html hljs" data-trim data-line-numbers>
-        <!-- Dans index.jsp -->
-        &lt;h:commandLink action="#{myBean.allerEtapeSuivante()}" value="étape suivante" /&gt;
-    </code></pre>
+  <h2>Types de navigation</h2>
+	<h3>Exemple de Navigation dynamique</h3>
+
+  <pre><code class="language-html hljs" data-trim data-line-numbers>
+      <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+          <from-outcome>outcom1</from-outcome>
+          <to-view-id>/action1.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+          <from-outcome>outcom2</from-outcome>
+          <to-view-id>/action2.jsp</to-view-id>
+        </navigation-case>
+      </navigation-rule>
+  </code></pre>
+
+  <pre><code class="language-html hljs" data-trim data-line-numbers>
+      <!-- Dans index.jsp -->
+      &lt;h:commandLink action="#{myBean.allerEtapeSuivante()}" value="étape suivante" /&gt;
+  </code></pre>
+  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Sessions et composants web</h2>
-    <ul>
-        <li class="fragment"><b>Session web</b> = maintient d'un <i>état conversationnel
-            avec un client</i> <br> à travers plusieurs couples requête/réponse
-            <ul id="fleche" class="fragment">
-                <li>permet de stocker des informations alors que l’utilisateur change
-                    plusieurs fois de pages web</li>
-            </ul>
-        </li>
-        <li class="fragment skip"><b>Session JSF</b> = <b>Session web</b>
-            <ul><li>Mettre des données en sessions avec un <b>ManagedBean</b>
-            </li></ul>
-            <pre><code class="language-java hljs" data-trim data-line-numbers>
-                @SessionScoped
-                @Named
-                public class PersonBean implements Serializable {...}
-            </code></pre>
-        </li>
-    </ul>
+  <h2>Sessions et composants web</h2>
+
+  <ul>
+    <li><b>Session web</b> = maintient d'un <i>état conversationnel
+      avec un client</i> <br> à travers plusieurs couples requête/réponse
+      <ul id="fleche" class="fragment">
+          <li>permet de stocker des informations alors que l'utilisateur change <br>
+              plusieurs fois de pages web</li>
+      </ul>
+    </li>
+    <li class="fragment skip"><b>Session JSF</b> = <b>Session web</b>
+      <ul><li>Mettre des données en sessions avec un <b>ManagedBean</b>
+      </li></ul>
+      <pre><code class="language-java hljs" data-trim data-line-numbers>
+          @SessionScoped
+          @Named
+          public class PersonBean implements Serializable {...}
+      </code></pre>
+    </li>
+  </ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -974,136 +1104,157 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Partie persistance de Jakarta EE</h2>
-    <div class="r-stack skip">
-        <img class="fragment fade-in-then-out" src="./img/im24-bis.png" height="170px" alt="">
-        <img class="fragment fade-in" src="./img/im24.png" height="170px" alt="">
-    </div>
+  <h2>Partie persistance de Jakarta EE</h2>
+
+  <div class="r-stack skip">
+      <img class="fragment fade-in-then-out" src="./img/im24-bis.png" height="170px" alt="">
+      <img class="fragment fade-in" src="./img/im24.png" height="170px" alt="">
+  </div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Bases de données</h2>
+  <h2>Bases de données</h2>
+  
+  <img style="float: right; margin-bottom: 20px; margin-right: 60px;" src="./img/im25.png" height="150px" alt="">
+  <ul style="display: block;">
+    <li>Ensemble de tables
+      <ul>
+        <li><b>Table</b> = colonnes $\times$ lignes
+          <ul>
+            <li><i>Colonnes</i> = propriétés</li>
+            <li><i>Ligne</i> = ensemble de valeurs <br>
+                pour les différentes propriété</li>
+          </ul>
+        </li>
+        <li><b>Clé primaire</b> = identifiant
+            unique d'une ligne</li>
+      </ul>
+    </li>
+    <li class="fragment skip">Stockage persistant sur un serveur</li>
+    <li class="fragment skip">Gestion par un <b>SGBD</b> (Système de Gestion de Base de Données)</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Persistance en base de données</h2>
+
+  <ul>
+    <li>Besoin = <i>Create + Read + Update + Delete</i> (<b>CRUD</b>)</li>
+    <li class="fragment">Problème = <i>mapping relationnel/objet</i> des données <br>
+      <img src="./img/im26.png" height="400px" alt="">
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Java Persistence API (JPA)</h2>
+
+  <ul>
+    <li><b>JPA</b> = spécification d'un <b>mapping relationnel/objet</b><br>
+      (Object Relational Mapping - <b>ORM</b>) 
+      <ul>
+        <li class="fragment">Composant pour <i>accéder à la base de données = <b>EntityManager</b></i>
+          <ul id="fleche">
+            <li>prédéfini (pas besoin de l'écrire)</li>
+            <li>générique</li>
+          </ul>
+        </li>
+        <li class="fragment">Composants pour <i>stocker les données = <b>EJB Entity</b></i></li>
+        <li class="fragment">Langage de requêtes = Java Persistence Query Language (<b>JPQL</b>)</li>
+      </ul>
+    </li>
+    <li class="fragment skip">Plusieurs implémentations
+      <ul>
+        <li>EclipseLink (Oracle TopLink)</li>
+        <li>JBoss Hibernate...</li>
+      </ul>
+    </li>
+    <li class="fragment skip">S'appuie sur un <i>connecteur</i> de base de données <br>
+        <strong>Ex</strong> : <b>JDBC</b></li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Principe de JPA</h2>
+
+  <div>
+    <img src="./img/im27.png" height="500px" alt="">
+  </div>
+  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>EJB Entity</h2>
+
+  <ul>
+    <li>Composant <i>persistant</i> partagé par plusieurs clients
+      <ul>
+        <li class="fragment">Représente des données métiers stockées dans une base de données
+          <ul id="fleche">
+            <li>une <i>classe</i> correspond à une <i>table</i></li>
+            <li>les <i>attributs</i> définis dans la classe correspondent aux <i>colonnes de la table</i></li>
+            <li>une <i>instance</i> de la classe (= un objet) représente une <i>ligne de la table</i></li>
+          </ul>
+        </li>
+        <li class="fragment">Possède une <i>identité explicite</i> (<b>clé primaire</b>)</li>
+      </ul>
+    </li>
+    <li class="fragment skip"><b>EJB Entity</b> $\approx$ <b>JavaBean</b> mais ...
+      <ul id="fleche">
+        <li>avec des <i>annotations</i> qui définissent le <i>mapping relationnel/objet</i></li>
+        <li>gestion par le conteneur (création, cycle de vie...)</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>EJB Entity</h2>
+	<h3>Exemple</h3>
+
+  <pre><code class="language-java hljs" data-trim data-line-numbers="|1-3|4-7|9-11">
+      @Entity
+      @Table(name = "person")
+      public class Personne implements Serializable {
+        @Id
+        @GeneratedValue(strategy = GenerationType.SEQUENCE)
+        @Column(name = "id")
+        private int id;
     
-    <img style="float: right; margin-bottom: 20px; margin-right: 60px;" src="./img/im25.png" height="150px" alt="">
-    <ul style="display: block;">
-        <li class="fragment">Ensemble de tables
-            <ul>
-                <li><b>Table</b> = colonnes $\times$ lignes
-                    <ul>
-                        <li><i>Colonnes</i> = propriétés</li>
-                        <li><i>Ligne</i> = ensemble de valeurs <br>
-                            pour les différentes propriété</li>
-                    </ul>
-                </li>
-                <li><b>Clé primaire</b> = identifiant
-                    unique d’une ligne</li>
-            </ul>
-        </li>
-        <li class="fragment skip">Stockage persistant sur un serveur</li>
-        <li class="fragment skip">Gestion par un <b>SGBD</b> (Système de Gestion de Base de Données)</li>
-    </ul>
+        @Basic(optional = false)
+        @Column(name = "name")
+        private String nom;
+    
+        public Personne() { super(); }
+        public int getId() { return this.id; }
+        public void setId(int id) { this.id = id; }
+        public String getNom() { return this.nom; }
+        public void setNom(String nom) { this.nom = nom; }
+        ...
+      }                            
+  </code></pre> 
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Persistance en base de données</h2>
-    <ul>
-        <li class="fragment">Besoin = <i>Create + Read + Update + Delete</i> (<b>CRUD</b>)</li>
-        <li class="fragment">Problème = <i>mapping relationnel/objet</i> des données</li>
-    </ul>
-    <img class="fragment" src="./img/im26.png" height="400px" alt="">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Java Persistence API (JPA)</h2>
-    <ul>
-        <li class="fragment"><b>JPA</b> = spécification d’un <b>mapping relationnel/objet</b><br>
-            (Object Relational Mapping – <b>ORM</b>) 
-            <ul>
-                <li class="fragment">Composant pour <i>accéder à la base de données = <b>EntityManager</b></i>
-                    <ul id="fleche">
-                        <li>prédéfini (pas besoin de l’écrire)</li>
-                        <li>générique</li>
-                    </ul>
-                </li>
-                <li class="fragment">Composants pour <i>stocker les données = <b>EJB Entity</b></i></li>
-                <li class="fragment">Langage de requêtes = Java Persistence Query Language (<b>JPQL</b>)</li>
-            </ul>
-        </li>
-        <li class="fragment skip">Plusieurs implémentations
-            <ul>
-                <li>EclipseLink (Oracle TopLink)</li>
-                <li>JBoss Hibernate...</li>
-            </ul>
-        </li>
-        <li class="fragment skip">S'appuie sur un <i>connecteur</i> de base de données <br>
-            <strong>Ex</strong> : <b>JDBC</b></li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Principe de JPA</h2>
-    <img class="fragment" src="./img/im27.png" height="500px" alt="">
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>EJB Entity</h2>
-    <ul>
-        <li class="fragment">Composant <i>persistant</i> partagé par plusieurs clients
-            <ul>
-                <li class="fragment">Représente des données métiers stockées dans une base de données
-                    <ul id="fleche">
-                        <li>une <i>classe</i> correspond à une <i>table</i></li>
-                        <li>les <i>attributs</i> définis dans la classe correspondent aux <i>colonnes de la table</i></li>
-                        <li>une <i>instance</i> de la classe (= un objet) représente une <i>ligne de la table</i></li>
-                    </ul>
-                </li>
-                <li class="fragment">Possède une <i>identité explicite</i> (<b>clé primaire</b>)</li>
-            </ul>
-        </li>
-        <li class="fragment skip"><b>EJB Entity</b> $\approx$ <b>JavaBean</b> mais ...
-            <ul id="fleche">
-                <li>avec des <i>annotations</i> qui définissent le <i>mapping relationnel/objet</i></li>
-                <li>gestion par le conteneur (création, cycle de vie...)</li>
-            </ul>
-        </li>
-    </ul>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemple</h2>
-    <pre><code class="language-java hljs" data-trim data-line-numbers="|1-3|4-7|9-11">
-        @Entity
-        @Table(name = "person")
-        public class Personne implements Serializable {
-            @Id
-            @GeneratedValue(strategy = GenerationType.SEQUENCE)
-            @Column(name = "id")
-            private int id;
-        
-            @Basic(optional = false)
-            @Column(name = "name")
-            private String nom;
-        
-            public Personne() { super(); }
-            public int getId() { return this.id; }
-            public void setId(int id) { this.id = id; }
-            public String getNom() { return this.nom; }
-            public void setNom(String nom) { this.nom = nom; }
-            ...
-        }                            
-    </code></pre> 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>JPA et JSF</h2>
-    <img class="fragment" src="./img/im28.png" height="500px" alt="">
+  <h2>JPA et JSF</h2>
+
+  <div>
+    <img src="./img/im28.png" height="500px" alt="">
+  </div>
+  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
