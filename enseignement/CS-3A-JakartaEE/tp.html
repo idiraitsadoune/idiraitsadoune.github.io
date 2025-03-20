@@ -3,34 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>TP : Développement d'applications Web avec Jakarta EE</title>
-
-	<meta name="description" content="TP : Développement d'applications Web avec Jakarta EE">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-	<script type="text/JavaScript"  src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script>
-		MathJax = {
-			tex: {
-			  inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: {load: ['ui/lazy']}
-		  };
-	  </script>
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2023/2024</span>
+    3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2024/2025</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,15 +38,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div class="section-title">
+<h1>
     Travaux Pratiques - TP<br> 
     Développement d'applications Web <br> avec Jakarta EE
-</div>
+</h1>
 
 <div id="alert-block">
     <i class="fa fa-bell-o" style="color: red; font-weight: bold;"></i> 
 	<b style="color: red;">Livraison</b>
-    <p>Le TP est à faire en binôme et à rendre avant <b>le 26/03/2024 à 23h59</b> sur EDUNAO 
+    <p>Le TP est à faire en binôme et à rendre avant <b>le 04/04/2025 à 23h59</b> sur EDUNAO 
         sous la forme d'un fichier <b>NOM1-NOM2.zip</b>.</p>	 
 </div>
 
@@ -100,9 +84,9 @@
     Les étapes à réaliser sont les suivantes : 
 </p>
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Installation de l'environnement de développement
-</div>
+</h2>
 
 <p class="text-justify">
     L'environnement de développement utilisé dans ce TP est composé de :
@@ -114,39 +98,45 @@
     L'objectif des manipulations décrites ici est <b>d'installer l'ensemble de ces logiciels</b> de manière à obtenir un environnement de développement complet et fonctionnel.
 </p>
 <p class="text-justify">
-    Vous devez commencer par installer un <b>JDK</b> (<b>Java Development Kit</b>) de <b>Java</b> Standard Edition.   
+    Vous devez commencer par installer un <b>JDK</b> (<b>Java Development Kit</b>) de <b>Java</b> Standard Edition à partir
+    du lien suivant : <br> <a href="https://www.oracle.com/fr/java/technologies/downloads/" target="_blank">https://www.oracle.com/fr/java/technologies/downloads/</a>.   
 </p>
 <div id="green-block">
     <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-    Si vous avez déjà un <b>JDK</b> sur votre machine, vérifiez que vous avez la version 17 au minimum.	
+    Si vous avez déjà un <b>JDK</b> sur votre machine, vérifiez que vous avez la <b>version 17</b> au minimum.	
+<pre><code class="language-shell"><script type="text/template">$ javac -version
+</script></code></pre>
 </div>
 <p class="text-justify">
     <ul>
-        <li>Télécharger et installer <b>Apache NetBeans 21</b> à partir du lien suivant 
+        <li>Télécharger et installer <b>Apache NetBeans 25</b> à partir du lien suivant 
             <a href="https://netbeans.apache.org/" target="_blank">https://netbeans.apache.org/</a>.</li>
-        <li>Télécharger <b>GlassFish 7.0.13, Jakarta EE Platform, 10</b> à partir du lien 
+        <li>Télécharger <b>GlassFish 7.0.22, Jakarta EE Platform, 10</b> à partir du lien 
             <a href="https://glassfish.org/download"  target="_blank">https://glassfish.org/download</a> 
             et décompresser le zip dans un dossier de travail.</li>
     </ul>
 </p>
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Prise en main de l'environnement de développement
-</div>
+</h2>
 <p class="text-justify">
     L'objectif des manipulations décrites ici sont de démarrer et prendre en main <b>NetBeans</b> et <b>GlassFish</b>  
     de manière à obtenir un environnement de développement fonctionnel.
      La prise en main du serveur de bases de données sera vue plus tard.
 </p>
-
+<!-- #################################################### -->
 <h3>Démarrage du serveur d'applications GlassFish</h3>
 <p class="text-justify">
     NetBeans dispose nativement d'une interface d'interaction avec le serveur d'application GlassFish. 
     C'est cette interface que nous allons utiliser le plus souvent.
 </p>
-<img src="./img/tp/im1.png" alt="">
 <ul>
     <li>Lancer NetBeans.</li>
+    <li>Dans le menu <b>Window</b>, activer les vues Projects, Files et Services</li>
+</ul>
+<img src="./img/tp/im1.png" alt="">
+<ul>
     <li>Dans l'onglet <b>Services</b>, lancer la commande <b>Add Server...</b> avec un clique droit 
         sur l'icône <b>Servers</b> et suivre les étapes suivantes.</li>
 </ul>
@@ -165,10 +155,11 @@
     L'onglet <b>Java DB Database Process</b> contient les affichages générés par le serveur de bases de données Java DB 
     qui est automatiquement installé avec GlassFish.
 </p>
-
+<!-- #################################################### -->
 <h3>Administration du serveur d'applications GlassFish</h3>
 <ul>
-    <li>Toujours dans l'onglet <b>Services</b>, lancer la commande <b>View Domain Admin Console</b>.
+    <li>Toujours dans l'onglet <b>Services</b>, lancer la commande <b>View Domain Admin Console</b> avec un clique droit 
+        sur l'icône <b>Servers > GlassFish Server</b>.
         Dans le navigateur web qui est lancé automatiquement, vous pouvez alors accéder à l'interface 
         web d'administration du serveur GlassFish. Le chargement de la page peut prendre un peu de temps 
         mais vous devez obtenir quelque-chose qui ressemble à la figure ci-dessous.
@@ -187,7 +178,7 @@
         comment déployer puis executer une application.  
     </li>
 </ul>
-
+<!-- #################################################### -->
 <h3>Initialisation du projet NetBeans</h3>
 
 <p class="text-justify">
@@ -232,13 +223,13 @@
     Développement : les étapes fondamentales
 </div>
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Premières pages web
-</div>
+</h2>
 <p class="text-justify">
     Les étapes qui vont vous permettre de commencer votre site sont les suivantes :   
 </p>
-
+<!-- #################################################### -->
 <h3>Création des premières pages</h3>
 
 <p class="text-justify">
@@ -247,7 +238,7 @@
     le squelette des premières pages de l'application et de mettre en place les liens de navigations entre elles. 
     La technologie utilisée pour l'ensemble de l'interface web est <b>Java Server Faces (JSF)</b>.    
 </p>
-
+<!-- #################################################### -->
 <h3>Page d'accueil</h3>
 
 <p class="text-justify">
@@ -276,7 +267,7 @@
     <li>Ouvrir le fichier <code class="listing">index.xhtml</code>. <br>
         Cette page ne fait qu'afficher le texte <code class="listing">"Hello from Facelets"</code>
     
-<pre><code class="language-html"><script type="text/template"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<pre><code class="language-html"><script type="text/template"><html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html">
   <h:head>
       <title>Facelet Title</title>
   </h:head>
@@ -305,7 +296,7 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
 <p class="text-justify">
     Pour vérifier que cette modification est bien prise en compte, nous allons déployer l'application et l'exécuter.
 </p>
-
+<!-- #################################################### -->
 <h3>Déploiement et exécution</h3>
 
 <ul>
@@ -335,7 +326,7 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
         vérifier que l'application est bien déployée.
     </li>
 </ul>
-
+<!-- #################################################### -->
 <h3>Contenu statique</h3>
 
 <p class="text-justify">
@@ -370,7 +361,7 @@ Modifier ce texte de manière à afficher <code class="listing">"Accueil de l'ap
 ...
 </script></code></pre>
 </p>
-
+<!-- #################################################### -->
 <h3>Apparence avec CSS</h3>
 
 <p class="text-justify">
@@ -415,7 +406,7 @@ p {
 }
 </script></code></pre>
 </p>
-
+<!-- #################################################### -->
 <h3>Composants JSF</h3>
 
 <p class="text-justify">
@@ -429,7 +420,7 @@ p {
 
     Dans un premier temps nous n'allons utiliser que des <b>composants simples</b>, c'est-à-dire des <b>composants qui ne nécessitent pas d'utiliser un backing bean</b>.
 </p>
-
+<!-- #################################################### -->
 <h3>Composants simples</h3>
 
 <p class="text-justify">
@@ -499,6 +490,7 @@ Cette documentation liste les composants visuels simples disponibles avec des ex
 
 <ul><li>Personnaliser l'apparence des composants <b>JSF</b> que vous avez utilisés dans votre page d'accueil.</li></ul>
 
+<!-- #################################################### -->
 <h3>Vue JSF</h3>
 
 <p class="text-justify">
@@ -538,6 +530,7 @@ Cette documentation liste les composants visuels simples disponibles avec des ex
 
 <ul><li>Créer une vue <b>JSF</b> dans votre page d'accueil.</li></ul>
 
+<!-- #################################################### -->
 <h3>Navigation</h3>
 
 <p class="text-justify">
@@ -647,6 +640,7 @@ Exemple :
     permettant de retourner à la page d'accueil de l'application.
 </li></ul>
 
+<!-- #################################################### -->
 <h3>Création des premiers beans</h3>
 
 <p class="text-justify">
@@ -655,6 +649,7 @@ Exemple :
     en utilisant des <b>Beans</b>, c'est-à-dire des <b>composants Java</b>.
 </p>
 
+<!-- #################################################### -->
 <h3>Représentation des produits : JavaBean</h3>
 
 <p>Notre objectif est de peupler la page du catalogue <code class="listing">catalog.xhtml</code> avec des produits.</p>
@@ -684,6 +679,7 @@ Exemple :
     </li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Gestion du catalogue : ManagedBean</h3>
 
 <p class="text-justify">
@@ -811,6 +807,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     </li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Création des premiers formulaires</h3>
 
 <p class="text-justify">
@@ -825,6 +822,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     <a href="https://developer.mozilla.org/fr/docs/Learn/Forms/Your_first_form" target="_blank">https://developer.mozilla.org/fr/docs/Learn/Forms/Your_first_form</a>
 </div>
 
+<!-- #################################################### -->
 <h3>Page d'ajout de produits au catalogue</h3>
 
 <p class="text-justify">
@@ -855,6 +853,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     </li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Formulaire de création de produit</h3>
 
 <ul>
@@ -896,6 +895,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     <li>Ajouter un bouton de soumission au formulaire. Laisser l'attribut <code class="listing">"action"</code> vide pour le moment.</li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Bean de traitement du formulaire</h3>
 
 <p class="text-justify">
@@ -967,6 +967,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     l'intermédiaire d'un ManagedBean et de formulaires. L'exemple pris ici est la gestion du panier de l'utilisateur :
 </p>
 
+<!-- #################################################### -->
 <h3>Affichage du panier de l'utilisateur</h3>
 
 <p class="text-justify">
@@ -974,6 +975,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     avec des produits que l'utilisateur aura sélectionnés.
 </p>
 
+<!-- #################################################### -->
 <h3>Représentation des éléments du panier : JavaBean</h3>
 
 <p class="text-justify">
@@ -981,7 +983,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
 </p>
 
 <ul>
-    <li>Créer un JavaBean <code class="listing">ShoppingCartItem</code> disposant de :
+    <li>Créer un JavaBean <code class="listing">ShoppingCartItem</code> dans le package <cs-code>model</cs-code> disposant de :
         <ul>
             <li>un identifiant de type <code class="listing">Integer</code> ;</li>
             <li>une quantité de type <code class="listing">Integer</code> ;</li>
@@ -991,6 +993,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     </li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Gestion du panier : ManagedBean</h3>
 
 <p class="text-justify">
@@ -1005,7 +1008,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
 
 <ul>
     <li>
-        Pour commencer, créer un JavaBean <code class="listing">ShoppingCartManager</code> disposant d'un attribut permettant de stocker le panier, 
+        Pour commencer, créer un JavaBean <code class="listing">ShoppingCartManager</code> dans le package <cs-code>logic</cs-code> disposant d'un attribut permettant de stocker le panier, 
         c'est-à-dire une liste d'objets de type <code class="listing">ShoppingCartItem</code>. <br>
         Vous pouvez utiliser le type <code class="listing">ArrayList</code>. N'oubliez pas d'initialiser cette liste 
             dans le constructeur, et de créer les accesseurs correspondants.
@@ -1039,6 +1042,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
 
 </ul>
 
+<!-- #################################################### -->
 <h3>Ajout de produits dans le panier par l'utilisateur</h3>
 
 <p class="text-justify">
@@ -1048,6 +1052,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
     du formulaire ajoute alors le produit sélectionné au panier.
 </p>
 
+<!-- #################################################### -->
 <h3>Création du formulaire d'ajout de produit au panier</h3>
 
 <b>Action de soumission du formulaire</b>
@@ -1077,6 +1082,7 @@ Pour que cette méthode soit appelée juste après la création du bean, il faut
         l'action doit être un appel à la méthode <code class="listing">"addToCart"</code> du <code class="listing">ShoppingCartManager</code>.</li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Récupération du produit sélectionné</h3>
 
 <p class="text-justify">
@@ -1132,6 +1138,7 @@ Cela donne quelque-chose comme :
         la valeur de la variable d'itération de la table des produits.</li>
 </ul>
 
+<!-- #################################################### -->
 <h3>Ajout du produit dans le panier</h3>
 
 <p class="text-justify">
@@ -1181,15 +1188,16 @@ Cela donne quelque-chose comme :
     Développement : Utilisation de la base de données (Partie Optionnelle)
 </div>
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Préparation de la base de données
-</div>
+</h2>
 
 <p class="text-justify">
     Dans cette étape, vous allez connecter votre application à la base de données, utiliser les données 
     qui se trouvent dans la base et également modifier le contenu de la base :
 </p>
 
+<!-- #################################################### -->
 <h3>Démarrage du serveur de bases de données Java DB</h3>
 
 <ul>
@@ -1239,7 +1247,7 @@ Cela donne quelque-chose comme :
     </li>
     <li>
         Dans l'éditeur de commandes SQL qui s'est ouvert, coller le contenu du script automatique 
-        (<a href="./eMarket.sql">à télécharger ici</a>) de création des tables 
+        (<a href="./eMarket.sql" target="_blank">à télécharger ici</a>) de création des tables 
         et des données que nous avons réalisé pour vous. Puis cliquer sur l'icône de la commande <b>Run SQL</b>.
     </li>
 </ul>
@@ -1249,6 +1257,7 @@ Cela donne quelque-chose comme :
     des données qui vous permettront de tester votre application.
 </p>
 
+<!-- #################################################### -->
 <h3>Affichage du contenu de la base de données $eMarket$</h3>
 
 <ul>
@@ -1267,9 +1276,9 @@ Cela donne quelque-chose comme :
 </ul>
 
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Configuration de l'accès à la base de données
-</div>
+</h2>
 
 <p class="text-justify">
     L'application de commande en ligne $eMarket$ dispose de pages web dynamiques avec lesquelles l'utilisateur peut interagir. 
@@ -1283,6 +1292,7 @@ Cela donne quelque-chose comme :
     le connecteur utilisé est <b>JDBC</b>.
 </p>
 
+<!-- #################################################### -->
 <h3>Création d'une source de données JDBC</h3>
 
 <p class="text-justify">
@@ -1327,6 +1337,7 @@ Cela donne quelque-chose comme :
     qui se trouve dans le répertoire <b>Configuration Files</b> de votre projet.
 </p>
 
+<!-- #################################################### -->
 <h3>Création d'une unité de persistance</h3>
 
 <p class="text-justify">
@@ -1338,7 +1349,7 @@ Cela donne quelque-chose comme :
         </li>
 
         <li>
-            Donner un nom à l'unité de persistance (<code class="listing">eMarket_warPU</code> par exemple), sélectionner la source de données <b>JDBC</b>
+            Donner un nom à l'unité de persistance (<code class="listing">eMarketPU</code> par exemple), sélectionner la source de données <b>JDBC</b>
             que vous avez créé à l'étape précédente et sélectionner <code class="listing">none</code> pour la <b>Table Generation Strategy</b> comme 
             indiqué ci-dessous. Puis cliquez sur <b>"Finish"</b>.
             <img src="./img/tp/bd7.png" width="60%" alt="">
@@ -1352,9 +1363,9 @@ Cela donne quelque-chose comme :
 </p>
 
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Persistance des données et premiers EJBs
-</div>
+</h2>
 
 <p>
     Vous venez de configurer l'accès à la base de données en définissant une source de données <b>JDBC</b> et une unité de persistance 
@@ -1371,6 +1382,7 @@ Cela donne quelque-chose comme :
     </ol>
 </p>
 
+<!-- #################################################### -->
 <h3>Création d'un EJB Entity à partir d'un JavaBeans</h3>
 <p>
     Dans cette étape, nous allons transformer le <b>JavaBean</b> <code class="listing">Product</code> en <b>EJB Entity</b>
@@ -1421,6 +1433,7 @@ public class Product implements Serializable {
 }                             
 </script></code></pre>
 
+<!-- #################################################### -->
 <h3>Création d'un EJB Session Facade</h3>
 
 <p class="text-justify">
@@ -1499,7 +1512,7 @@ import jakarta.persistence.PersistenceContext;
 
 @Stateless
 public class ProductFacade extends AbstractFacade<Product> {
-    @PersistenceContext( unitName = "eMarket_warPU")
+    @PersistenceContext( unitName = "eMarketPU")
     private EntityManager em ;
     
     @Override
@@ -1520,10 +1533,11 @@ public class ProductFacade extends AbstractFacade<Product> {
 </p>
 
 <!-- #################################################### -->
-<div class="subsection-title">
+<h2>
     Requêtes en utilisant l'EJB Session Facade dans un ManagedBean
-</div>
+</h2>
 
+<!-- #################################################### -->
 <h3>Récupération des produits stockés dans la base de données</h3>
 
 <ul>
@@ -1559,6 +1573,7 @@ public void initCatalog(){
 </li>
 </ul>
 
+<!-- #################################################### -->
 <h3>
     Sauvegarde d'un nouveau produit dans la base de données
 </h3>
@@ -1598,12 +1613,13 @@ public void initCatalog(){
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2023/2024</span>
+	3A - CentraleSupelec <span style="text-align: right;float: right;">Architectures Applicatives - 2024/2025</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
+
 </body>
 </html>
