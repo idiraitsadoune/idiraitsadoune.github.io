@@ -3,409 +3,391 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Développement de la Platform Rodin</title>
-
-	<meta name="description" content="Développement de la Platform Rodin">
-	<meta name="author" content="Idir AIT SADOUNE">
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../../enseignement/resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/vs2015.min.css">
 
 	<script type="text/JavaScript" src="../../enseignement/resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/vs2015.min.css">
-
-	<script>
-		MathJax = {
-			tex: {
-				inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: { load: ['ui/lazy'] }
-		};
-	</script>
-	<script type="text/javascript" id="MathJax-script"
-		src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src=".../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../../enseignement/resources/js/correction.js"></script>
 
 	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
 </head>
 
 <body>
-	<div class="container">
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<div style="padding: 0.5em;">
-			ANR EBRP <span style="text-align: right;float: right;">Développement de la Platform Rodin</span>
-		</div>
-		<hr>
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<div class="section-form">
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h1 class="section-title">Le Processus du Développement <br> de la Platform Rodin</h1>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<div id="default-block">
-				<i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
-				<b style="color: navy;">Anciennes versions du processus</b>
-				<ul>
-					<li>
-						<a href="https://wiki.event-b.org/index.php/Developer_FAQ#How_to_setup_an_environment_for_core_platform_development.3F"
-							target="_blank">
-							Developer FAQ
-						</a>
-					</li>
-					<li>
-						<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless#Last_operations_to_perform"
-							target="_blank">
-							Building Rodin Headless
-						</a>
-					</li>
-					<li>
-						<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless" target="_blank">
-							Wiki.Event-B
-						</a>
-					</li>
-				</ul>
-			</div>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<div id="default-block">
-				<i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
-				<b style="color: navy;">Les évolutions de la plateforme ECLIPSE</b>
-				<ul>
-					<li>
-						<a href="https://help.eclipse.org/latest/index.jsp?nav=%2F2" target="_blank">
-							Platform Plug-in Developer Guide
-						</a>
-					</li>
-				</ul>
-			</div>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<div id="orange-block">
-				Développement d'une nouvelle version de Rodin
-			</div>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Récupérer le code source</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<pre><code class="language-shell"><script type="text/template">$ mkdir RodinCore3.x
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+	ANR EBRP <span style="text-align: right;float: right;">Développement de la Platform Rodin</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1 class="section-title">Le Processus du Développement <br> de la Platform Rodin</h1>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="default-block">
+	<i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
+	<b style="color: navy;">Anciennes versions du processus</b>
+	<ul>
+		<li>
+			<a href="https://wiki.event-b.org/index.php/Developer_FAQ#How_to_setup_an_environment_for_core_platform_development.3F"
+				target="_blank">
+				Developer FAQ
+			</a>
+		</li>
+		<li>
+			<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless#Last_operations_to_perform"
+				target="_blank">
+				Building Rodin Headless
+			</a>
+		</li>
+		<li>
+			<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless" target="_blank">
+				Wiki.Event-B
+			</a>
+		</li>
+	</ul>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="default-block">
+	<i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
+	<b style="color: navy;">Les évolutions de la plateforme ECLIPSE</b>
+	<ul>
+		<li>
+			<a href="https://help.eclipse.org/latest/index.jsp?nav=%2F2" target="_blank">
+				Platform Plug-in Developer Guide
+			</a>
+		</li>
+	</ul>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+	Développement d'une nouvelle version de Rodin
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Récupérer le code source</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<pre><code class="language-shell"><script type="text/template">$ mkdir RodinCore3.x
 $ cd RodinCore3.x
 $ git clone git://git.code.sf.net/p/rodin-b-sharp/rodincore . 
 </script></code></pre>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Lien avec le serveur d'intégration</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Modifier le fichier de configuration
-					<pre><code class="language-shell"><script type="text/template">$ vim .git/config 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Lien avec le serveur d'intégration</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Modifier le fichier de configuration
+		<pre><code class="language-shell"><script type="text/template">$ vim .git/config 
 </script></code></pre>
-				</li>
+	</li>
 
-				<li>
-					Ajouter le <b>remote</b> <cs-code>ebrp</cs-code> avec les lignes suivantes :
-					<pre><code class="language-bash"><script type="text/template">[remote "ebrp"]
-	url = ssh://idir@ebrp.irit.fr/srv/git/RodinCore
-	fetch = +refs/heads/*:refs/remotes/ebrp/*
+	<li>
+		Ajouter le <b>remote</b> <cs-code>ebrp</cs-code> avec les lignes suivantes :
+		<pre><code class="language-bash"><script type="text/template">[remote "ebrp"]
+url = ssh://idir@ebrp.irit.fr/srv/git/RodinCore
+fetch = +refs/heads/*:refs/remotes/ebrp/*
 </script></code></pre>
-				</li>
+	</li>
 
-				<li>
-					Ajouter la déclaration de la fonction <cs-code>jenkins-ebrp</cs-code> dans le fichier
-					<cs-code>.zshenv</cs-code> ou <cs-code>.bashrc</cs-code>
-					<pre><code class="language-bash"><script type="text/template">jenkins-ebrp() {
-	ssh -N -L 8088:localhost:8080 idir@ebrp.irit.fr &
-	sleep 1
-	open http://localhost:8088
-	fg
+	<li>
+		Ajouter la déclaration de la fonction <cs-code>jenkins-ebrp</cs-code> dans le fichier
+		<cs-code>.zshenv</cs-code> ou <cs-code>.bashrc</cs-code>
+		<pre><code class="language-bash"><script type="text/template">jenkins-ebrp() {
+ssh -N -L 8088:localhost:8080 idir@ebrp.irit.fr &
+sleep 1
+open http://localhost:8088
+fg
 }
 </script></code></pre>
-				</li>
+	</li>
 
-				<li>
-					Exécuter la fonction <cs-code>jenkins-ebrp</cs-code>
-					<pre><code class="language-shell"><script type="text/template">$ jenkins-ebrp
+	<li>
+		Exécuter la fonction <cs-code>jenkins-ebrp</cs-code>
+		<pre><code class="language-shell"><script type="text/template">$ jenkins-ebrp
 </script></code></pre>
-				</li>
+	</li>
 
-				<li>
-					Déclencher un build dans le serveur d'intégration <cs-code>ebrp</cs-code> à partir du
-					dernier commit du master local
-					<pre><code class="language-shell"><script type="text/template">$ git push ebrp master:ci
+	<li>
+		Déclencher un build dans le serveur d'intégration <cs-code>ebrp</cs-code> à partir du
+		dernier commit du master local
+		<pre><code class="language-shell"><script type="text/template">$ git push ebrp master:ci
 </script></code></pre>
-				</li>
+	</li>
 
-				<li>
-					Récupérer les modifications présentes sur le serveur d'intégration <cs-code>ebrp</cs-code>
-					<pre><code class="language-shell"><script type="text/template">$ git pull ebrp ci
+	<li>
+		Récupérer les modifications présentes sur le serveur d'intégration <cs-code>ebrp</cs-code>
+		<pre><code class="language-shell"><script type="text/template">$ git pull ebrp ci
 </script></code></pre>
-				</li>
-			</ul>
+	</li>
+</ul>
 
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Tester le code du dépôt et construire Rodin</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Copier le fichier <cs-code>org.rodinp.releng/toolchains.xml</cs-code>
-					vers le dossier <cs-code>${user.home}/.m2/</cs-code>
-				</li>
-				<li>
-					Modifier le fichier <cs-code>toolchains.xml</cs-code>
-					pour qu'il pointe votre <cs-code>jdk</cs-code>
-				</li>
-				<li>
-					Lancer l'une des commandes suivantes :
-					<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Tester le code du dépôt et construire Rodin</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Copier le fichier <cs-code>org.rodinp.releng/toolchains.xml</cs-code>
+		vers le dossier <cs-code>${user.home}/.m2/</cs-code>
+	</li>
+	<li>
+		Modifier le fichier <cs-code>toolchains.xml</cs-code>
+		pour qu'il pointe votre <cs-code>jdk</cs-code>
+	</li>
+	<li>
+		Lancer l'une des commandes suivantes :
+		<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
 </script></code></pre>
 
-					<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh -rc 1
+		<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh -rc 1
 </script></code></pre>
-				</li>
-			</ul>
+	</li>
+</ul>
 
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Préparer l'environnement Eclipse for RCP and RAP Developers</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Télécharger la version d’eclipse à utiliser :
-					<a href="https://www.eclipse.org/downloads/packages/release/2021-12/r/eclipse-ide-rcp-and-rap-developers"
-						target="_blank">
-						Eclipse IDE for RCP and RAP Developers
-					</a>
-				</li>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Préparer l'environnement Eclipse for RCP and RAP Developers</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Télécharger la version d’eclipse à utiliser :
+		<a href="https://www.eclipse.org/downloads/packages/release/2021-12/r/eclipse-ide-rcp-and-rap-developers"
+			target="_blank">
+			Eclipse IDE for RCP and RAP Developers
+		</a>
+	</li>
 
-				<li>
-					Lancer Eclipse et créer un workspace (un dossier de travail).
-				</li>
+	<li>
+		Lancer Eclipse et créer un workspace (un dossier de travail).
+	</li>
 
-				<li>
-					Télécharger la version de <a href="http://archive.eclipse.org/eclipse/downloads/drops4/"
-						target="_blank">
-						Eclipse SDK</a> sur laquelle se basera la nouvelle version.
-				</li>
+	<li>
+		Télécharger la version de <a href="http://archive.eclipse.org/eclipse/downloads/drops4/"
+			target="_blank">
+			Eclipse SDK</a> sur laquelle se basera la nouvelle version.
+	</li>
 
-				<li>
-					Dans le menu <b>Preferences ...</b> d’Eclipse, pointer la propriété <b>Target Platform</b>
-					sur l'Eclipse SDK téléchargé. <br>
-				</li>
+	<li>
+		Dans le menu <b>Preferences ...</b> d’Eclipse, pointer la propriété <b>Target Platform</b>
+		sur l'Eclipse SDK téléchargé. <br>
+	</li>
 
-				<li>
-					Importer dans votre workspace tous les projets listés dans le <cs-code>pom.xml</cs-code>
-					de la racine du dépôt cloné (sans les copier).
-				</li>
+	<li>
+		Importer dans votre workspace tous les projets listés dans le <cs-code>pom.xml</cs-code>
+		de la racine du dépôt cloné (sans les copier).
+	</li>
 
-				<li>
-					Importer également le projet <cs-code>org.rodinp.releng</cs-code>
-				</li>
+	<li>
+		Importer également le projet <cs-code>org.rodinp.releng</cs-code>
+	</li>
 
-				<li>
-					Télécharger la version de <a
-						href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/3.6/"
-						target="_blank">
-						Rodin dev</a> sur laquelle se basera la nouvelle version.
-				</li>
+	<li>
+		Télécharger la version de <a
+			href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/3.6/"
+			target="_blank">
+			Rodin dev</a> sur laquelle se basera la nouvelle version.
+	</li>
 
-				<li>
-					Dans le menu <b>Preferences ...</b> d’Eclipse, pointer la propriété <b>API Baselines</b>
-					sur le Rodin dev téléchargé.
-				</li>
+	<li>
+		Dans le menu <b>Preferences ...</b> d’Eclipse, pointer la propriété <b>API Baselines</b>
+		sur le Rodin dev téléchargé.
+	</li>
 
-				<li>
-					Corriger en incrémentant les versions des plugins signalés par des erreurs.
-				</li>
+	<li>
+		Corriger en incrémentant les versions des plugins signalés par des erreurs.
+	</li>
 
-				<li>
-					Faire un premier test :
-					<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
+	<li>
+		Faire un premier test :
+		<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
 </script></code></pre>
-				</li>
-			</ul>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Le portage vers la nouvelle version d'Eclipse</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Dans le projet <cs-code>org.eventb.parent</cs-code> :
-					<ul>
-						<li>
-							Mettre à jour <cs-code>eclipse.taget</cs-code> avec la bonne définition
-							du <cs-code>update site</cs-code> vers le bon <cs-code>Eclipse SDK</cs-code>
-						</li>
-						<li>
-							Dans le fichier <cs-code>pom.xml</cs-code> :
-							<ul>
-								<li>
-									Définir la nouvelle <cs-code>id</cs-code> et la nouvelle <cs-code>url</cs-code> d'<b>Eclipse SDK</b>
-								</li>
-								<li>
-									Définir la nouvelle <cs-code>www-basedir</cs-code>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
+	</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Le portage vers la nouvelle version d'Eclipse</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Dans le projet <cs-code>org.eventb.parent</cs-code> :
+		<ul>
+			<li>
+				Mettre à jour <cs-code>eclipse.taget</cs-code> avec la bonne définition
+				du <cs-code>update site</cs-code> vers le bon <cs-code>Eclipse SDK</cs-code>
+			</li>
+			<li>
+				Dans le fichier <cs-code>pom.xml</cs-code> :
+				<ul>
+					<li>
+						Définir la nouvelle <cs-code>id</cs-code> et la nouvelle <cs-code>url</cs-code> d'<b>Eclipse SDK</b>
+					</li>
+					<li>
+						Définir la nouvelle <cs-code>www-basedir</cs-code>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 
-				<li>
-					Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp-feature/feature.xml</cs-code>
-				</li>
+	<li>
+		Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp-feature/feature.xml</cs-code>
+	</li>
 
-				<li>
-					Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp.platform/Rodin.p2.inf</cs-code> (update site)
-				</li>
+	<li>
+		Mettre à jours la version d'eclipse dans le fichier <cs-code>org.rodinp.platform/Rodin.p2.inf</cs-code> (update site)
+	</li>
 
-				<li>
-					Mettre à jours l'année et la version d'eclipse dans les fichiers : <br>
-					- <cs-code>org.rodinp.platform/plugin.properties</cs-code> <br>
-					- <cs-code>org.rodinp.platform/about.properties</cs-code> <br>
-					- <cs-code>org.rodinp/about.properties</cs-code> <br>
-					- <cs-code>org.eventb.ide/about.properties</cs-code> <br>
-				</li>
+	<li>
+		Mettre à jours l'année et la version d'eclipse dans les fichiers : <br>
+		- <cs-code>org.rodinp.platform/plugin.properties</cs-code> <br>
+		- <cs-code>org.rodinp.platform/about.properties</cs-code> <br>
+		- <cs-code>org.rodinp/about.properties</cs-code> <br>
+		- <cs-code>org.eventb.ide/about.properties</cs-code> <br>
+	</li>
 
-				<li>
-					Mettre à jours l'année dans les fichiers : <br>
-					- <cs-code>org.eventb.ide-feature/feature.properties </cs-code> <br>
-					- <cs-code>org.rodinp-feature/feature.properties </cs-code> <br>
-					- <cs-code>org.rodinp.platform-feature/feature.properties</cs-code> <br>
-					- <cs-code>org.rodinp.platform.tests-feature/feature.properties</cs-code> <br>
-				</li>
+	<li>
+		Mettre à jours l'année dans les fichiers : <br>
+		- <cs-code>org.eventb.ide-feature/feature.properties </cs-code> <br>
+		- <cs-code>org.rodinp-feature/feature.properties </cs-code> <br>
+		- <cs-code>org.rodinp.platform-feature/feature.properties</cs-code> <br>
+		- <cs-code>org.rodinp.platform.tests-feature/feature.properties</cs-code> <br>
+	</li>
 
-				<li>
-					Mettre à jour l'année dans l'image du produit (<cs-code>splash</cs-code>).
-				</li>
+	<li>
+		Mettre à jour l'année dans l'image du produit (<cs-code>splash</cs-code>).
+	</li>
 
-				<li>
-					Faire un test :
-					<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
+	<li>
+		Faire un test :
+		<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
 </script></code></pre>
-				</li>
-			</ul>
+	</li>
+</ul>
 
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Mise à jours des numéros de versions</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Mettre à jour les versions des plugins en commençant par le projet <cs-code>org.eventb.parent</cs-code>
-				</li>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Mise à jours des numéros de versions</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Mettre à jour les versions des plugins en commençant par le projet <cs-code>org.eventb.parent</cs-code>
+	</li>
 
-				<li>
-					Mettre à jour tous les fichiers <cs-code>pom.xml</cs-code> avec
-					la nouvelle version du projet <cs-code>org.eventb.parent</cs-code>
-				</li>
+	<li>
+		Mettre à jour tous les fichiers <cs-code>pom.xml</cs-code> avec
+		la nouvelle version du projet <cs-code>org.eventb.parent</cs-code>
+	</li>
 
-				<li>
-					Mettre à jours les plugins : <br>
-					- <cs-code>Rodin.product</cs-code>, <cs-code>plugin.xml</cs-code> et
-					<cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform</cs-code> <br>
-					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform-feature</cs-code> <br>
-					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform.test-feature</cs-code> <br>
-					- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.eventb.ide-feature</cs-code> <br>
-					- <cs-code>org.rodinp.platform.product</cs-code> et <cs-code>pom.xml</cs-code>
-					dans <cs-code>org.rodinp.platform.repository</cs-code> <br>
-					- <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.dev</cs-code> <br>
-				</li>
+	<li>
+		Mettre à jours les plugins : <br>
+		- <cs-code>Rodin.product</cs-code>, <cs-code>plugin.xml</cs-code> et
+		<cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform</cs-code> <br>
+		- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform-feature</cs-code> <br>
+		- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.platform.test-feature</cs-code> <br>
+		- <cs-code>feature.xml</cs-code> et <cs-code>pom.xml</cs-code> dans <cs-code>org.eventb.ide-feature</cs-code> <br>
+		- <cs-code>org.rodinp.platform.product</cs-code> et <cs-code>pom.xml</cs-code>
+		dans <cs-code>org.rodinp.platform.repository</cs-code> <br>
+		- <cs-code>pom.xml</cs-code> dans <cs-code>org.rodinp.dev</cs-code> <br>
+	</li>
 
-				<li>
-					Faire un test :
-					<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
+	<li>
+		Faire un test :
+		<pre><code class="language-shell"><script type="text/template">$ ./org.rodinp.releng/scripts/run-maven.sh
 </script></code></pre>
-				</li>
-			</ul>
+	</li>
+</ul>
 
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<div id="orange-block">
-				Publier une nouvelle version de Rodin
-			</div>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Transfert des binaires générés</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>Créer un dossier de la nouvelle version dans
-					<a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/"
-						target="_blank">Core_Rodin_Platform de Source Forge</a>
-				</li>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">
+	Publier une nouvelle version de Rodin
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Transfert des binaires générés</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>Créer un dossier de la nouvelle version dans
+		<a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/"
+			target="_blank">Core_Rodin_Platform de Source Forge</a>
+	</li>
 
-				<li>Copier les binaires du dossier <cs-code>org.rodinp.platform.repository/target/product/</cs-code>
-					vers le dossier créé </li>
+	<li>Copier les binaires du dossier <cs-code>org.rodinp.platform.repository/target/product/</cs-code>
+		vers le dossier créé </li>
 
-				<li>Copier également le <cs-code>org.rodinp.dev</cs-code> à partir du dossier
-					<cs-code>org.rodinp.dev/target/</cs-code> vers le dossier créé
-				</li>
+	<li>Copier également le <cs-code>org.rodinp.dev</cs-code> à partir du dossier
+		<cs-code>org.rodinp.dev/target/</cs-code> vers le dossier créé
+	</li>
 
-				<li>Vérifier que le téléchargement par défaut de Rodin est sur la nouvelle version </li>
-			</ul>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Mise à jour du Update site</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>Mettre à jour le script <cs-code>org.rodinp.releng/coreUpdates/compSite.xml</cs-code></li>
+	<li>Vérifier que le téléchargement par défaut de Rodin est sur la nouvelle version </li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Mise à jour du Update site</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>Mettre à jour le script <cs-code>org.rodinp.releng/coreUpdates/compSite.xml</cs-code></li>
 
-				<li>Générer le <b>Update site</b> en exécutant dans <b>Eclipse</b> <cs-code>Run as > Ant Build ...</cs-code></li>
+	<li>Générer le <b>Update site</b> en exécutant dans <b>Eclipse</b> <cs-code>Run as > Ant Build ...</cs-code></li>
 
-				<li>Sélectionner l'option <b>"Run in the same JRE as the workspace"</b> </li>
+	<li>Sélectionner l'option <b>"Run in the same JRE as the workspace"</b> </li>
 
-				<li>Créer un dossier de la nouvelle version dans <a
-						href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
-						target="_blank">Core_Update_Site de Source Forge</a></li>
+	<li>Créer un dossier de la nouvelle version dans <a
+			href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
+			target="_blank">Core_Update_Site de Source Forge</a></li>
 
-				<li>Copier le contenu de <cs-code>org.rodinp.platform.repository/target/repository/</cs-code>
-					vers le dossier créé</li>
+	<li>Copier le contenu de <cs-code>org.rodinp.platform.repository/target/repository/</cs-code>
+		vers le dossier créé</li>
 
-				<li>Copier les fichiers générés dans <cs-code>/tmp/compo</cs-code> vers la racine de <a
-						href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
-						target="_blank">Core_Update_Site de Source Forge</a></li>
-			</ul>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<h2>Communication</h2>
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<ul>
-				<li>
-					Effectuer les vérifications décrites dans
-					<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless#Last_operations_to_perform"
-						target="_blank">
-						ce lien
-					</a>
-				</li>
-			</ul>
+	<li>Copier les fichiers générés dans <cs-code>/tmp/compo</cs-code> vers la racine de <a
+			href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Update_Site/"
+			target="_blank">Core_Update_Site de Source Forge</a></li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h2>Communication</h2>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<ul>
+	<li>
+		Effectuer les vérifications décrites dans
+		<a href="https://wiki.event-b.org/index.php/Building_Rodin_Headless#Last_operations_to_perform"
+			target="_blank">
+			ce lien
+		</a>
+	</li>
+</ul>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+	ANR EBRP <span style="text-align: right;float: right;">Développement de la Platform Rodin</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
 
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-			<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		</div>
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<hr>
-		<div style="padding: 0.5em;">
-			ANR EBRP <span style="text-align: right;float: right;">Développement de la Platform Rodin</span>
-		</div>
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-		<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	</div>
 </body>
-
 </html>
