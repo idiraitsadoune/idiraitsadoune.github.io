@@ -156,7 +156,7 @@
         <tr>
           <td >LDR$_0$ #val</td>
           <td >PP $\to$ ALU(A) $\to$ ADMR <br> ALUC = A (T1) <br> HADMR=1 (P1) </td>
-          <td >MO(RAM) $\to$ ALU(A) $\to$ IR <br> ALUC = A (T2) <br> HIR=1 (P2) <br> --- <br> PP=PP+1 <br> HPP=1, CPP=0 (P2)</td>
+          <td >MO(RAM) $\to$ ALU(A) $\to$ IR <br> ALUC = A (T2) <br> HIR=1 (P2) <br> --- <br> PP=PP+1 <br> CPP=0 (T2) <br> HPP=1 (P2)</td>
           <td >IR $\to$ ALU(A) $\to$ AC0 <br> ALUC = A (T3) <br> HAC0=1 (P3) </td>
           <td ></td>
         </tr>
@@ -178,7 +178,7 @@
           <td >JMP addr</td>
           <td >$//$</td>
           <td >$//$</td>
-          <td >IR $\to$ ALU(A) $\to$ PP <br> ALUC = A (T3) <br> HPP=1, CPP=1 (P3)</td>
+          <td >IR $\to$ ALU(A) $\to$ PP <br> ALUC = A (T3) <br> CPP=1 (T3) <br> HPP=1 (P3) </td>
           <td ></td>
         </tr>
       </tbody>
