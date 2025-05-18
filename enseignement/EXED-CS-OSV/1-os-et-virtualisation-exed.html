@@ -669,7 +669,6 @@
 	<img data-id="hh" src="./../CS-3A-OS/img/history_3.svg" height="auto" width="70%" alt="">
 
 	<div class="left-content">
-
 		<p>Utiliser plusieurs composants en parallèle, ce qui nécessite:</p>
 
 		<ul>
@@ -822,7 +821,6 @@
 	<h2>Rôles du système d'exploitation</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ol style="width: 60%;">
 			<li class="fragment"><b>L'interface noyau-matériel</b> prend en charge la gestion et le partage
 				des ressources de la machine.</li>
@@ -833,7 +831,6 @@
 
 		<img data-id="box1" src="./../CS-3A-OS/img/os-components.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
@@ -924,7 +921,6 @@
 	<h2>Interface noyau-utilisateur</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 60%;">
 			<li>Présenter une <b>interface</b>
 				entre <br> le hardware et les applications.
@@ -954,7 +950,6 @@
 	<h2>Les appels systèmes</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 60%;">
 			<li>Fournir une <b>interface d'accès</b> <br> aux ressources matérielles.
 				<ul id="fleche">
@@ -1031,7 +1026,6 @@
 	<h2>Modes d'exécutions</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 65%;">
 			<li><b>Un programme utilisateur</b> s'exécute dans <br> un <b>mode utilisateur</b> :
 				<ul>
@@ -1059,7 +1053,6 @@
 	<h2>Commutations de contexte</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 60%;">
 			<li>A l'<i>appel d'une fonction du noyau</i>,<br> il y a
 				passage au <b>mode superviseur</b>
@@ -1087,7 +1080,6 @@
 	<h2>Les causes de commutations <br> de contexte</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ol style="width: 60%;">
 			<li class="fragment">appelle d'une <b>fonction système</b>.</li>
 			<li class="fragment skip">exécute une opération illicite <br> (<b>trappe</b> ou <b>exception</b>).</li>
@@ -1109,7 +1101,6 @@
 	<h2>Interpréteur de commande (shell)</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 60%;">
 			<li>
 				<b>Langage de commandes</b> : <br> l'interface de niveau utilisateur <br> avec
@@ -1154,7 +1145,6 @@
 	<h2>Noyau d'un système d'exploitation</h2>
 
 	<div style="display: flex; align-items: center;">
-
 		<ul style="width: 60%;">
 			<li class="fragment">
 				<b>Gestion des entrées/sorties (I/O)</b>
@@ -1191,7 +1181,6 @@
 
 		<img src="./../CS-3A-OS/img/noyau-os.svg" height="100%"
 			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
-
 	</div>
 
 </section>
@@ -1654,7 +1643,6 @@
 	</div>
 
 	<div class="fragment" style="display: flex; align-items: center;">
-
 		<div style="width: 50%;">
 			<img src="./../CS-3A-OS/img/f20-process-control-block.png" style="width: 90%;">
 		</div>
@@ -2393,17 +2381,17 @@
 	<h3>Conclusion</h3>
 
 	<div class="left-content">
-			<p><b>Situation de compétition</b> </p>
-			<ul id="fleche">
-					<li><b>erreur</b> dépendant de l'<u>enchaînement</u> temporel d'événements <br>
-									impliquant une <u>ressource partagée</u></li>
-					<li class="fragment skip">non déterministe</li>
-			</ul>
-			<br>
-			<ul id="ko">
-					<li class="fragment">difficile à détecter (<b>tests</b>)</li>
-					<li class="fragment">difficile à corriger (<b>debug</b>)</li>
-			</ul>
+		<p><b>Situation de compétition</b> </p>
+		<ul id="fleche">
+			<li><b>erreur</b> dépendant de l'<u>enchaînement</u> temporel d'événements <br>
+							impliquant une <u>ressource partagée</u></li>
+			<li class="fragment skip">non déterministe</li>
+		</ul>
+		<br>
+		<ul id="ko">
+			<li class="fragment">difficile à détecter (<b>tests</b>)</li>
+			<li class="fragment">difficile à corriger (<b>debug</b>)</li>
+		</ul>
 	</div>
 	
 </section>
@@ -2429,48 +2417,48 @@
 	<h2>Exclusion mutuelle</h2>
 
 	<ul>
-			<li>
-					Lorsqu'on déclare une <b>section critique</b>,
-					on doit garantir <br> qu'<b>au plus un seul</b> processus/thread est dans la section critique.
-					<ul id="fleche">
-							<li class="skip fragment">besoin de gérer l'<i>exclusion mutuelle</i> des
-									<b>sections critiques</b>.</li>
-							<li class="fragment"><b>une seule section critique</b> peut être exécutée à la fois.</li>
-					</ul>
-			</li>
-			<li class="fragment skip">Pour résoudre ce problème il faut un <b>système de
-							verrou</b>.</li>
+		<li>
+			Lorsqu'on déclare une <b>section critique</b>,
+			on doit garantir <br> qu'<b>au plus un seul</b> processus/thread est dans la section critique.
+			<ul id="fleche">
+					<li class="skip fragment">besoin de gérer l'<i>exclusion mutuelle</i> des
+							<b>sections critiques</b>.</li>
+					<li class="fragment"><b>une seule section critique</b> peut être exécutée à la fois.</li>
+			</ul>
+		</li>
+		<li class="fragment skip">Pour résoudre ce problème il faut un <b>système de
+				verrou</b>.</li>
 	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Les propriétés à respecter</h2>
+	<h2>Les propriétés à respecter</h2>
 
-    <ol>
-        <li class="fragment">
-            <b>Exclusion mutuelle</b> $\to$
-            si une thread effectue sa section critique, <br> alors <b>aucune autre
-            thread</b> ne peut entrer en section critique.
-        </li>
+	<ol>
+		<li class="fragment">
+				<b>Exclusion mutuelle</b> $\to$
+				si une thread effectue sa section critique, <br> alors <b>aucune autre
+				thread</b> ne peut entrer en section critique.
+		</li>
 
-        <li class="fragment skip">
-            <b>Déroulement</b> $\to$ 
-            une thread, qui souhaite entrer en section critique, <br> <b>ne
-            peut pas décider</b> qui doit rentrer en section critique.
-        </li>
+		<li class="fragment skip">
+				<b>Déroulement</b> $\to$ 
+				une thread, qui souhaite entrer en section critique, <br> <b>ne
+				peut pas décider</b> qui doit rentrer en section critique.
+		</li>
 
-        <li class="fragment skip">
-            <b>Vivacité</b> $\to$ 
-            une thread, qui souhaite entrer en section critique, <br> <b>y
-            rentre en temps borné</b>.
-        </li>
-    </ol>
+		<li class="fragment skip">
+				<b>Vivacité</b> $\to$ 
+				une thread, qui souhaite entrer en section critique, <br> <b>y
+				rentre en temps borné</b>.
+		</li>
+	</ol>
 
-    <div id="alert-block" class="fragment d-skip left-content" style="text-align: center;">
-        Il faut définir des <b>mécanismes</b> qui garantissent ces trois propriétés <br>
-    </div>
+	<div id="alert-block" class="fragment d-skip left-content" style="text-align: center;">
+			Il faut définir des <b>mécanismes</b> qui garantissent ces trois propriétés <br>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2504,8 +2492,8 @@
   <div class="left-content">
     <p><b>Un moniteur</b> est un module constitué de:</p>
     <ul>
-        <li>objets <u>inaccessibles</u> de l'extérieur</li>
-        <li><u>fonctions</u> manipulant l'objet en <u>exclusion mutuelle</u></li>
+			<li>objets <u>inaccessibles</u> de l'extérieur</li>
+			<li><u>fonctions</u> manipulant l'objet en <u>exclusion mutuelle</u></li>
     </ul>
   </div>
 
@@ -2571,20 +2559,20 @@
 	<a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra" target="_blank">Dijkstra - 1962</a></h2>
 
 	<ul>
-			<li class="fragment"><b>Un sémaphore</b> définit un objet <i>partagé</i>
-					<ul>
-							<li class="fragment">qu'on peut <i>acquérir</i>;</li>
-							<li class="fragment">qui <i>met en attente</i> ceux qui le demandent;</li>
-							<li class="fragment">qui donne la main dans <i>l'ordre des demandes</i>.</li>
-					</ul>
-			</li>
-			<li class="fragment skip">
-					Toutes les threads en <b>concurrence sur une ressource</b> partagent <br> <b>un même sémaphore</b>
-					<ul>
-							<li class="fragment">on <b>acquiert</b> le sémaphore <i>avant d'entrer</i> en <b>SC</b>;</li>
-							<li class="fragment">on <b>relâche</b> le sémaphore <i>en sortant</i> de la <b>SC</b>.</li>
-					</ul>
-			</li>
+		<li class="fragment"><b>Un sémaphore</b> définit un objet <i>partagé</i>
+			<ul>
+				<li class="fragment">qu'on peut <i>acquérir</i>;</li>
+				<li class="fragment">qui <i>met en attente</i> ceux qui le demandent;</li>
+				<li class="fragment">qui donne la main dans <i>l'ordre des demandes</i>.</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			Toutes les threads en <b>concurrence sur une ressource</b> partagent <br> <b>un même sémaphore</b>
+			<ul>
+				<li class="fragment">on <b>acquiert</b> le sémaphore <i>avant d'entrer</i> en <b>SC</b>;</li>
+				<li class="fragment">on <b>relâche</b> le sémaphore <i>en sortant</i> de la <b>SC</b>.</li>
+			</ul>
+		</li>
 	</ul>
 
 </section>
@@ -2617,12 +2605,12 @@
 
     <ul>
       <li class="fragment"><b>Vivacité</b> : on veut passer la main dans le bon ordre
-          <ul id="fleche"><li>utilisation d'une <i>file d'attente</i> des <b>PCB</b></li></ul>
+        <ul id="fleche"><li>utilisation d'une <i>file d'attente</i> des <b>PCB</b></li></ul>
       </li>
       <li class="fragment skip">
-          Les fonctions <cs-code>acquire</cs-code> et <cs-code>release</cs-code> 
-          doivent être <b>atomiques</b> !
-          <ul id="fleche"><li>elles sont elles-même des <b>SC</b> pour le sémaphore ...</li></ul>
+				Les fonctions <cs-code>acquire</cs-code> et <cs-code>release</cs-code> 
+				doivent être <b>atomiques</b> !
+				<ul id="fleche"><li>elles sont elles-même des <b>SC</b> pour le sémaphore ...</li></ul>
       </li>
     </ul>
   </div>
