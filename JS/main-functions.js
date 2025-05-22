@@ -116,7 +116,7 @@ function createDesignedBy(path = "./"){
     const a = createElement('a', {href : path + 'index.html'})
     const a_text = document.createTextNode("Idir AIT SADOUNE")
     a.appendChild(a_text)
-    const text2 = document.createTextNode(" - 2023");
+    const text2 = document.createTextNode(" - 2025");
     div.appendChild(text1)
     div.appendChild(a)
     div.appendChild(text2)

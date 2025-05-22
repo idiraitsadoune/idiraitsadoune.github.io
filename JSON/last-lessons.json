@@ -32,14 +32,14 @@
             "title" : "Développer des applications avec Java/Jakarta EE",
             "level" : "3A - Cursus Ingénieur - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "#",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=8667",
             "target" : "_blank"
-        },
+        }, 
         {
             "title" : "Computer architecture and software execution process",
             "level" : "1A - Cursus Bachelor - CentraleSupelec",
             "image" : "ensignement.jpg",
-            "link" : "#",
+            "link" : "https://centralesupelec.edunao.com/course/view.php?id=9257",
             "target" : "_blank"
         },
         {
@@ -50,12 +50,12 @@
             "target" : "_blank",
             "p-link" : "UPS-IUT-2A-QD",
             "p-target" : "_self"
-        },   
+        },  
         {
             "title" : "Systèmes d'exploitation \n et virtualisation",
             "level" : "Master Spécialisé ASI - CS EXED",
             "image" : "ensignement.jpg",
-            "link" : "#",
+            "link" : "https://csee.edunao.com/course/view.php?id=1885",
             "target" : "_blank"
         }
     ]
