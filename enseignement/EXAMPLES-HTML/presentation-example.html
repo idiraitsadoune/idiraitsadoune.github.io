@@ -399,100 +399,6 @@
 	</div>
 
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Event-B code</h2>
-
-	<!-- Il faut le mettre dans un div tag-->
-	<div>
-<pre id="eb" class="eb-code">
-<b>MACHINE</b> mch_integer_version
-	...
-<b>EVENTS</b>
-	...
-	get_speed $\mathrel{\widehat=}$ 
-		<i>any</i> p t
-			<u>grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
-			<u>grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
-		<i>then</i>
-			<u>act1:</u> traveled_distance $:=$ p $-$ starting_position
-			<u>act2:</u> measured_time $:=$ t $-$ starting_time
-			<u>act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
-		<i>end</i>
-	...
-<b>END</b>
-</pre>
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Une vue schématique <br> du modèle</h2>
-	
-	<div class="start-divs">
-		<div style="flex: 1;">
-<pre id="eb" class="eb-code">
-<b>CONTEXT</b> $ctx_1$
-<b>EXTENDS</b> $ctx_2$
-
-<b>SETS</b> $s$
-<b>CONSTANTS</b> $c$
-<b>AXIOMS</b>
-	$A(s,c)$
-<b>THEOREMS</b>
-	$T(s,c)$
-<b>END</b>
-</pre>
-		</div>
-	
-		<div style="flex: 1;">
-<pre id="eb" class="eb-code">
-<b>MACHINE</b> $mch_1$
-<b>REFINES</b> $mch_2$
-<b>SEES</b> $ctx_i$
-
-<b>VARIABLES</b> $v$
-<b>INVARIANTS</b>
-	$I(s,c,v)$
-<b>THEOREMS</b>
-	$T(s,c,v)$
-<span class="fragment"><b>EVENTS</b>
-	$[events\_list]$</span>
-<b>END</b>
-</pre>
-		</div>
-	
-		<div style="flex: 1;">
-<pre id="eb" class="eb-code fragment">
-$event$ $\mathrel{\widehat=}$
-	<i>any</i> $x$
-	<i>where</i>
-		$G(s,c,v,x)$
-	<i>then</i>
-		$BA(s,c,v,x,v')$
-	<i>end</i>
-</pre>
-		</div>
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Math code</h2>
-
-<pre id="eb" class="math-code" style="width: 55%;">
-...
-<b>INVARIANTS</b> 
-	<u>inv1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
-	<u>inv2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
-	...
-<b>END</b>
-</pre>
-
-</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -625,6 +531,100 @@ $event$ $\mathrel{\widehat=}$
 		\end{aligned}
 		$$
 	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Event-B code</h2>
+
+	<!-- Il faut le mettre dans un div tag-->
+	<div>
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+	...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<i>any</i> p t
+			<u>grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<u>grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<i>then</i>
+			<u>act1:</u> traveled_distance $:=$ p $-$ starting_position
+			<u>act2:</u> measured_time $:=$ t $-$ starting_time
+			<u>act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<i>end</i>
+	...
+<b>END</b>
+</pre>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Une vue schématique <br> du modèle</h2>
+	
+	<div class="start-divs">
+		<div style="flex: 1;">
+<pre id="eb" class="eb-code">
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="flex: 1;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<span class="fragment"><b>EVENTS</b>
+	$[events\_list]$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="flex: 1;">
+<pre id="eb" class="eb-code fragment">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Math code</h2>
+
+<pre id="eb" class="math-code" style="width: 55%;">
+...
+<b>INVARIANTS</b> 
+	<u>inv1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+	<u>inv2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+	...
+<b>END</b>
+</pre>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
