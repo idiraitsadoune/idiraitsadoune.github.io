@@ -5,6 +5,11 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
+:root {
+	--r-main-font-size: 32px;
+	--r-code-font: 'Monaco';
+}
+
 /* ****************************************************** */
 /* main logo */
 
@@ -14,17 +19,11 @@
 	left: 30px;
 	height: 10%;
 	width : auto;
-	opacity: 30%;
+	opacity: 50%;
 }
 
 /* ****************************************************** */
 /* general definitions */
-:root {
-	--r-main-font-size: 32px;
-	--r-code-font: 'Monaco';
-	--r-link-color: #0271FF;
-}
-
 .reveal .slides>section {
 	padding-left: 80px !important;
 	padding-right: 80px !important;
@@ -231,6 +230,7 @@
 	text-align: left;
 	/*box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);*/
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+	color:black;
 }
 
 #default-block b{
@@ -261,6 +261,7 @@
 	text-align: left;
 	/*box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);*/
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+	color:black;
 }
 
 #alert-block b{
@@ -291,6 +292,7 @@
 	text-align: left;
 	/*box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);*/
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+	color:black;
 }
 
 #green-block b{
@@ -342,7 +344,7 @@
 	width: 80px;
 	height: 80px;
 	border-radius: 50%;
-	border-color: black;
+	border-color: var(--r-main-color);
 	text-align: center;
 	border-width: 1px;
 }
