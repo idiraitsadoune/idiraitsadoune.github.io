@@ -245,16 +245,16 @@
 				<li class="skip fragment">Le <strong>test</strong>.</li>
 				<li class="skip fragment fade-in">
 					<span class="fragment highlight-blue">Les <strong>méthodes formelles</strong></span>
-					<span class="fragment fade-up">
- 							$\to$ <b>méthode d'ingénierie</b> basée sur  
+					<ul id="fleche" class="fragment fade-up">
+						<li>
+							<b>méthodes d'ingénierie</b> basées sur  
 							des <i>approches mathématiques</i> utilisées pour développer <br>
 							et analyser des systèmes (logiciels).
-							<ul id="fleche">
-								<li>
-									<i>démarche globale</i> (langages et outils <br> de vérification).
-								</li>
-							</ul>
-					</span>
+						</li>
+						<li>
+							<b>démarche globale</b> (langages et outils <br> de vérification).
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</div>
@@ -304,7 +304,7 @@
 			du comportement attendu d'un système (logiciel).
 			<ul id="fleche">
 				<li class="fragment">
-					modèle mathématique décrivant ce que doit faire le système (logiciel).
+					modèle mathématique décrivant <i>ce que doit faire</i> le système (logiciel).
 				</li>
 				<li class="fragment">
 					modélisation par un <i>langage mathématique</i> (syntaxe, logique, sémantique...).
@@ -316,7 +316,7 @@
 			<b>La conception formelle</b> $\to$ <b>description rigoureuse</b> et <b>non ambiguë</b> <br> de la réalisation du système (logiciel).
 			<ul id="fleche">
 				<li class="fragment">
-					modèle mathématique décrivant la construction du système (logiciel).
+					modèle mathématique décrivant <i>la construction</i> du système (logiciel).
 				</li>
 				<li class="fragment">
 					modélisation par un <i>langage mathématique</i> (syntaxe, logique, sémantique...).
@@ -354,58 +354,116 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Qui recommande <br> les méthodes formelles ?</h2>
 
-	<ul>
-		<li class="fragment"><b>Normes européennes</b><br>
-			L'utilisation de spécifications formelles seule rend <i>les exigences <br> non ambiguës</i>.
-		</li>
-		<li class="fragment skip"><b>Normes de l'aéronautique</b><br>
-			L'utilisation de méthodes formelles a pour but d'<i>éliminer les erreurs <br> 
-				de spécification</i>, de <i>conception</i> et de <i>codage</i> lors du développement.
-		</li>
-		<li class="fragment skip"><b>Normes du ferroviaire</b><br>
-			Pour les spécifications, des méthodes formelles sont recommandées<br> 
-			car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>cohérence</i>.
-		</li>
-	</ul>
+	<table style="font-size: 25px;">
+		<thead>
+			<tr>
+				<th>Secteur/Domaine</th>
+				<th>Norme principale</th>
+				<th>Brève description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (rail)</td>
+				<td>EN 50128 $\to$ EN 50716 (2023)</td>
+				<td>Logiciels de contrôle : <br> SIL ; agile, modélisation, IA/ML (2023)</td>
+			</tr>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (rolling stock)</td>
+				<td>EN 50657 (2017)</td>
+				<td>Logiciels embarqués sur matériel roulant</td>
+			</tr>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (cybersécurité)</td>
+				<td>CLC/TS 50701 (2021)</td>
+				<td>Spécification pour sécurité IT/OT (données/opérations) dans le ferroviaire</td>
+			</tr>
+			<tr class="fragment">
+				<td>Aéronautique</td>
+				<td>DO-178C/ED-12C</td>
+				<td>Logiciels avioniques - cycle complet et certification</td>
+			</tr>
+			<tr class="fragment">
+				<td>Industrie générique/sécurité</td>
+				<td>IEC 61508</td>
+				<td>Cadre générique pour sécurité fonctionnelle <br> (cycle de vie + SIL)</td>
+			</tr>
+			<tr class="fragment">
+				<td>Automobile</td>
+				<td>ISO 26262</td>
+				<td>Sécurité fonctionnelle pour véhicules</td>
+			</tr>
+			<tr class="fragment">
+				<td>Dispositifs médicaux</td>
+				<td>IEC 62304 (EN 62304)</td>
+				<td>Logiciel médical : <br> cycle de vie, maintenance, gestion des risques</td>
+			</tr>
+		</tbody>
+	</table>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemples de normes</h2>
+	<h2>Exemples de normes $\to$ ferroviaire</h2>
 
-	<ul>
-		<li>Les <b>normes européennes</b> <i>EN 50126</i>, <i>EN 50128</i>, <i>EN 50129</i>
-			<ul id="fleche">
-				<li class="fragment">des <b>standards</b> utilisés dans le <b>domaine ferroviaire</b>.</li>
-				<li class="fragment">requises pour les fournisseurs d'<i>équipements de
-						contrôle-commande</i>.</li>
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul>
+				<li class="fragment"><b>EN 50128</b> <i>Software for railway control and protection system</i>
+					<ul><li>norme européenne très connue pour les logiciels critiques dans le ferroviaire</li></ul>
+				</li>
+
+				<li class="fragment"><b>EN 50657:2017</b>
+					<ul><li>logiciel embarqué dans le matériel roulant (rolling stock)</li></ul>
+				</li>
+
+				<li class="fragment"><b>EN 50716:2023</b> (remplaçant <b>EN 50128</b>)
+					<ul><li>introduit des approches itératives (agile), l'usage de modèles (UML, SysML), 
+						voire l'intégration de l'IA/ML dans le cycle de développement</li></ul>
+				</li>
+
+				<li class="fragment"><b>CLC/TS 50701:2021</b>
+					<ul><li>spécification axée sur la cybersécurité dans les applications ferroviaires</li></ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
-	<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
 
+		<div style="flex: 2;">
+			<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les méthodes formelles <br> recommandées</h2>
+	<h2>Exemples de normes $\to$ ferroviaire</h2>
+	<h3>Les méthodes formelles <br> recommandées</h3>
 
-	<ul>
-		<li>Quelques <b>méthodes formelles</b> recommandées par les <b>normes</b> :
-			<ul id="fleche">
-				<li class="fragment">"CSP, HOL, LOTOS, <b>Temporal Logic</b>, <b>B Method</b>, <b>Model
-						Checking</b> ..."</li>
-				<li class="fragment"><i>page 103</i> de la norme <b>EN 50128</b></li>
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul class="fragment">
+				<li>Quelques <b>méthodes formelles</b> recommandées par les <b>normes</b> :
+					<ul id="fleche">
+						<li>"CSP, HOL, LOTOS, <b>Temporal Logic</b>, <b>B Method</b>, <b>Model
+								Checking</b> ..."</li>
+						<li><i>page 103</i> de la norme <b>EN 50128</b></li>
+					</ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
+		</div>
+
+		<div style="flex: 2;">
+			<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Qui utilise les méthodes <br> formelles?</h2>
+	<h2>Quelques acteurs utilisant <br> les méthodes formelles</h2>
 
 	<div
 		style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
@@ -424,25 +482,42 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Evaluation Assurance Level (EAL)</h2>
+	<h2>Evaluation Assurance Level (EAL) <br> selon les <a href="https://fr.wikipedia.org/wiki/Crit%C3%A8res_communs" target="_blank">Critères Communs</a></h2>
 	
 	<ul>
-		<li><b>7 niveaux d'assurance</b> d'évaluation selon 
-			<a href="https://fr.wikipedia.org/wiki/Crit%C3%A8res_communs" target="_blank">les critères communs</a>
-			<ul>
-				<li class="fragment"><b>EAL1</b> : testé fonctionnellement</li>
-				<li class="fragment"><b>EAL2</b> : testé structurellement</li>
-				<li class="fragment"><b>EAL3</b> : testé et vérifié méthodiquement</li>
-				<li class="fragment"><b>EAL4</b> : conçu, testé et vérifié méthodiquement</li>
-				<li class="fragment"><b>EAL5</b> : conçu de façon semi-formelle et testé</li>
-				<li class="fragment"><b>EAL6</b> : conception vérifiée de façon semi-formelle et système
-					testé</li>
-				<li class="fragment"><b>EAL7</b> : conception vérifiée de façon formelle et système testé
-				</li>
-			</ul>
+		<li class="fragment"><b>EAL1</b> $\to$ <i>testé fonctionnellement</i> (les risques sont faibles)
+			<ul><li>Vérifications basiques, sans grande analyse de conception.</li></ul>
 		</li>
-		<li class="fragment skip"><b>Les applications civiles</b> : les EAL sont généralement de 1 à 4 (4+).</li>
-		<li class="fragment"><b>Les applications militaires</b> : les EAL sont de 5 à 7.</li>
+		<li class="fragment"><b>EAL2</b> $\to$ <i>testé structurellement</i> (une certaine sécurité sans forte menace)
+			<ul><li>Analyse de conception limitée + vérifications fonctionnelles.</li></ul>
+		</li>
+		<li class="fragment"><b>EAL3</b> $\to$ <i>testé et vérifié méthodiquement</i> (des risques modérés)
+			<ul><li>Vérification méthodique de la conception et des tests</li></ul>
+		</li>
+		<li class="fragment"><b>EAL4</b> $\to$ <i>conçu, testé et vérifié méthodiquement</i> (banques, administrations...)
+			<ul><li>Analyse approfondie de la conception, documentation détaillée, vérifications...</li></ul>
+		</li>
+		<li class="fragment"><b>EAL5</b> $\to$ <i>conçu de façon semi-formelle et testé</i> (systèmes sensibles aux attaques)
+			<ul><li>Introduction de méthodes semi-formelles dans la conception.</li></ul>
+		</li>
+		<li class="fragment"><b>EAL6</b> $\to$ <i>conception vérifiée de façon semi-formelle et système testé</i> (défense)
+			<ul><li>Analyse poussée avec vérifications de sécurité avancées.</li></ul>
+		</li>
+		<li class="fragment"><b>EAL7</b> $\to$ <i>conception vérifiée formellement et système testé</i> (produits militaires)
+			<ul><li>Niveau le plus strict : preuves formelles et exhaustives.</li></ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Evaluation Assurance Level (EAL) <br> selon les <a href="https://fr.wikipedia.org/wiki/Crit%C3%A8res_communs" target="_blank">Critères Communs</a></h2>
+	<h3>En pratique</h3>
+
+	<ul>
+		<li><b>EAL4</b> $\to$ est souvent le niveau maximum recherché dans le commerce <br> (bon compromis coût/sécurité).</li>
+		<li class="fragment skip"><b>EAL5 à EAL7</b> $\to$ concernent des systèmes de défense, gouvernementaux <br> ou infrastructures critiques.</li>
 	</ul>
 
 </section>
@@ -455,12 +530,13 @@
 	<ul>
 		<li>L'utilisation des méthodes formelles <b>produit un logiciel parfait</b> ?
 			<ul id="fleche" class="fragment">
-				<li>non-sens, une spécification formelle est un modèle du monde réel</li>
+				<li><red-b>non-sens</red-b>, une spécification formelle est un modèle du monde réel</li>
 				<li class="fragment">peut inclure des erreurs, des omissions et des malentendus</li>
 			</ul>
 		</li>
 	</ul>
-	<img src="./img/gestion-projet-balancoire.jpg" alt="">
+
+	<div><img src="./img/gestion-projet-balancoire.jpg" alt=""></div>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -471,13 +547,16 @@
 	<ul>
 		<li>Utiliser les méthodes formelles $\approx$ faire de <b>la preuve de programme</b> ?
 			<ul id="fleche">
-				<li class="fragment">la modélisation d'un système est valable sans vérification de
-					programmes</li>
-				<li class="fragment">la spécification formelle force à une analyse détaillée du système</li>
+				<li class="fragment">la modélisation d'un système est valable sans vérification de programmes</li>
+				<li class="fragment">la spécification formelle force à <red-b>une analyse détaillée du système</red-b></li>
 			</ul>
 		</li>
 	</ul>
-	<img src="./img/prog.jpg" alt="" height="300px"><img src="./img/automate.png" alt="" height="300px">
+	
+	<div>
+		<img src="./img/prog.jpg" alt="" height="300px">
+		<img src="./img/automate.png" alt="" height="300px">
+	</div>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -489,15 +568,15 @@
 		<li>Les méthodes formelles que pour <b>les systèmes critiques</b> ?
 			<ul id="fleche">
 				<li class="fragment">l'expérience industrielle montre que les coûts de développement <br>
-					sont réduits pour tous les types de systèmes. <br>
+					sont réduits pour <red-b>tous les types de systèmes</red-b>. <br>
 					<span class="fragment">(IHM multimodales, microservices, validation de données,
 						...)</span>
 				</li>
 			</ul>
 		</li>
 	</ul>
-	<div
-		style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
 		<img src="./img/info1.png" height="200px" width="auto">
 		<img src="./img/info4.jpg" height="200px" width="auto">
 		<img src="./img/informatique2.jpg" height="200px" width="auto">
@@ -512,11 +591,14 @@
 	<ul>
 		<li>Les méthodes formelles sont uniquement pour <b>les mathématiciens</b> ?
 			<ul id="fleche">
-				<li class="fragment">non-sens, les mathématiques employées sont élémentaires.</li>
+				<li class="fragment"><red-b>non-sens</red-b>, les mathématiques employées sont élémentaires.</li>
 			</ul>
 		</li>
 	</ul>
-	<img src="./img/maths.jpg" alt="" height="300px">
+
+	<div>
+		<img src="./img/maths.jpg" alt="" height="300px">
+	</div>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -527,12 +609,15 @@
 	<ul>
 		<li>Les méthodes formelles <b>augmentent les coûts de développement</b> ?
 			<ul id="fleche">
-				<li class="fragment">non-prouvé, il y a un déplacement des coûts vers les premières étapes.
+				<li class="fragment"><red-b>non-prouvé</red-b>, il y a un déplacement des coûts vers les premières étapes.
 				</li>
 			</ul>
 		</li>
 	</ul>
-	<img src="./img/cout-logiciel.jpg" alt="" height="300px">
+
+	<div>
+		<img src="./img/cout-logiciel.jpg" alt="" height="300px">
+	</div>
 	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -543,13 +628,13 @@
 	<ul>
 		<li>Les clients <b>ne peuvent pas comprendre</b> les spécifications formelles.
 			<ul id="fleche">
-				<li class="fragment">il faut les paraphraser en langage naturel, ou utiliser le prototypage.
+				<li class="fragment">il faut les paraphraser en langage naturel, ou utiliser <red-b>le prototypage</red-b>.
 				</li>
 			</ul>
 		</li>
 	</ul>
-	<div
-		style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
 		<img src="./img/avion.jpg" height="200px" width="auto">
 		<img src="./img/maquette.jpg" height="200px" width="auto">
 		<img src="./img/automate.png" height="200px" width="auto">
@@ -560,6 +645,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le cadre de la ST</h2>
+
 	<div class="r-stack">
 		<img class="fragment fade-in-then-out" src="./img/cadre-st5-1.svg" height="auto" width="auto" alt="">
 		<img class="fragment fade-in-then-out" src="./img/cadre-st5-2.svg" height="auto" width="auto" alt="">
@@ -575,7 +661,7 @@
 
 	<div>
 		<b>Comment exprimer (modéliser) et vérifier <br>
-			les propriétés comportementales  des systèmes critiques ?</b>
+			les propriétés comportementales des systèmes critiques ?</b>
 	</div>
 
 	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 25px;">
@@ -589,6 +675,16 @@
 	</div>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'objectif de la ST est-il claire <br> pour tout le monde ?</h2>
+
+	<div>
+		<img src="./img/boy.jpg" alt="" height="400px" width="auto">
+	</div>
+	
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -601,7 +697,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Planning</h2>
 
-	<b>Lundi 16 septembre 2024 - Amphi sa.108, Bouygues</b>
+	<b>Lundi 15 septembre 2025 - Amphi sa.108, Bouygues</b>
 
 	<table class="skip">
 		<tbody>
@@ -630,7 +726,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Planning</h2>
 
-	<b>Lundi 23 septembre 2024 - Amphi sa.108, Bouygues</b>
+	<b>Lundi 22 septembre 2025 - Amphi sa.108, Bouygues</b>
 
 	<table class="skip">
 		<tbody>
@@ -660,7 +756,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Planning</h2>
 
-	<b>Mardi 24 septembre 2024 - Amphi sa.108, Bouygues</b>
+	<b>Mardi 23 septembre 2025 - Amphi sa.108, Bouygues</b>
 
 	<table class="skip">
 		<tbody>
@@ -678,7 +774,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td>Thierry LECOMTE (ClearSy)</td>
+				<td>Émeric TOURNIAIRE (ClearSy)</td>
 			</tr>
 		</tbody>
 	</table>
@@ -688,6 +784,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>La synthèse des séminaires</h2>
+	
 	<ul>
 		<li>Rédaction d'un <b>résumé</b> de <i>10 lignes maximum</i> par <b>séminaire</b>.
 			<ul>
