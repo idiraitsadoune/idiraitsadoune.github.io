@@ -333,33 +333,34 @@
   <div class="left-content">
     <ul>
       <li class="skip fragment">Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> <br> est satisfaite 
-          <span class="fragment">($\Rightarrow$ <b>trouver la PostCondition la plus générale</b>)</span></li>
-      
-      <div class="r-stack">
-        <li class="fragment fade-in-then-out"><strong>Exemple</strong> $\to$ programme de tri 
-          <ul>
+          <span class="fragment">$\Rightarrow$ trouver la <b>PreCondition</b> qui permet d'aboutir à la <b>PostCondition</b></span></li>
+      <div class="left-content">
+        <div class="r-stack">
+          <li class="fragment fade-in-then-out"><strong>Exemple</strong> $\to$ programme de tri 
+            <ul>
+                <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
+                <li>Result : <span style="float:right;"> Sorted Array $T$ of size $N$</span></li>
+                <li>Post-Condition : 
+                    <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] \leq T[m]$ </span>
+                </li>
+                <li>
+                    Pre-Condition :  <span style="float:right;"><b>True (nothing)</b></span>
+                </li>
+            </ul>
+          </li>
+          <li class="fragment fade-in"><strong>Exemple</strong> $\to$ programme de tri 
+            <ul>
               <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
               <li>Result : <span style="float:right;"> Sorted Array $T$ of size $N$</span></li>
-              <li>Post-Condition : 
-                  <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] \leq T[m]$ </span>
+              <li>Post-Condition :
+                  <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
               </li>
               <li>
-                  Most general Pre-Condition :  <span style="float:right;"><b>True (nothing)</b></span>
+                  Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
               </li>
-          </ul>
-        </li>
-        <li class="fragment fade-in"><strong>Exemple</strong> $\to$ programme de tri 
-          <ul>
-            <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
-            <li>Result : <span style="float:right;"> Sorted Array $T$ of size $N$</span></li>
-            <li>Post-Condition :
-                <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
-            </li>
-            <li>
-                Most general Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
-            </li>
-          </ul>
-        </li>
+            </ul>
+          </li>
+        </div>
       </div>
     </ul>
   </div>
@@ -376,10 +377,10 @@
       <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
       <li>Result : <span style="float:right;"> Sorted Array $T$ of size $N$</span></li>
       <li>Post-Condition :
-          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
+          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
       </li>
       <li>
-          Most general Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
+          Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
   </div>
@@ -410,10 +411,10 @@
       <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
       <li>Result : <span style="float:right;"> Sorted Array $T$ of size $N$</span></li>
       <li>Post-Condition :
-          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
+          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
       </li>
       <li>
-          Most general Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
+          Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
   </div>
@@ -436,16 +437,16 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	 <h2>Question</h2>
+  <h2>Question ?</h2>
 
-   <div id="default-block">
+  <div id="default-block">
     <b>Spécification</b> $\to$ programme de tri <br>
     <ul style="font-size: 0.8em !important;">
       <li>Post-Condition :
-          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~\forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
+          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
       </li>
       <li>
-          Most general Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
+          Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
   </div>
@@ -465,247 +466,252 @@
   </div>
 
   <div id="alert-block" style="font-size: 0.9em !important;">
-$\Rightarrow$ Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> est satisfaite
+    $\Rightarrow$ Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> est satisfaite
   </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>The Hoare Proof System</h2>
+	<h2>Le système de preuve de Hoare</h2>
 
-    <div id="default-block">
-        The Hoare Proof System provides for each type of instructions an <b>Axiom</b>/Rule  <br>
-        to find 
-        the most general pre-condition $\varphi$ (general form : <b>{$\varphi$}$~P~${$\psi$} </b>)
+  <ul>
+    <li>
+      Le système de preuve de <b>Hoare</b> fournit pour chaque type d'instruction <i>une règle</i> pour trouver 
+        la <b>PreCondition</b> la plus générale  <i>$P$</i> (la forme générale : <b>{$P$}$~I~${$Q$} </b>)
+    </li>
+
+    <li class="skip fragment">
+      Le triplet <b>{$P$}$~I~${$Q$} </b> exprime la propriété suivante :
+          <ul id="fleche">
+            <li>Si <i>$P$</i> (<b>PreCondition</b>) est vérifiée avant l'exécution de <i>$I$</i>,</li>
+            <li class="fragment">alors <i>$Q$</i> (<b>PostCondition</b>) est vérifiée après son exécution.</li>
+          </ul>
+    </li>
+
+    <li class="skip fragment">
+      Une règle de <b>Hoare</b> est constituée :
+      <ul>
+        <li>d'hypothèses $H_1, ..., H_n$</li>
+        <li>d'une conclusion $C$</li>
+      </ul>
+      $$ \frac{H_1, ..., H_n}{C}$$
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>La règle de la séquence</h3>
+  
+  <div>
+    $$ \frac{\{P\}~I~\{R\}~~~~~~~~\{R\}~J~\{Q\}}{\{P\}~I~;~J~\{Q\}} $$
+  </div>
+  
+  <div class="fragment">
+    $$ \frac{\{x>0\}~x:=x+1~\{x>1\}~~~~~~~~\{x>1\}~y:=2*x~\{y>2\}}{\{x>0\}~x:=x+1~;~y:=2*x~\{y>2\}} $$
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>La règle de la conditionnelle</h3>
+
+  <div>
+    $$ \frac{\{P \land C\}~I~\{Q\}~~~~~~~~\{P \land \neg C\}~J~\{Q\}}{\{P\}~\text{if}~C~\text{then}~I~\text{else}~J~\{Q\}} $$
+  </div>
+
+  <div class="fragment">
+    $$ \frac{\{true \land y \geq 0\}~x := y~\{x \geq 0\}~~~~~~~~\{true \land \neg (y \geq 0)\}~x := 0~\{x \geq 0\}}{\{true\}~\text{if}~y \geq 0~\text{then}~x := y~\text{else}~x := 0~\{x \geq 0\}} $$
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>La règle de la boucle</h3>
+
+  <div>
+    $$ \frac{\{P \land C\}~I~\{P\}}{\{P\}~\text{while}~C~\text{do}~I~\{P \land \neg C\}} $$
+  </div>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      $$  
+      \frac{~~~~
+          \frac{~~~~}
+                {~~~~}
+          }
+          {\{x \leq b\}~\text{while}~x < b~\text{do}~x := x + 1~\{x = b\}}  
+      $$
+    </div>
+    <div class="fragment fade-in-then-out">
+      $$  
+      \frac{~~~~
+          \frac{~~~~}
+                {\{x \leq b\}~\text{while}~x < b~\text{do}~x := x + 1~\{x \leq b \land x \geq b\}~~~~~( x \leq b \land x \geq b ~\Rightarrow~ x = b)}
+          }
+          {\{x \leq b\}~\text{while}~x < b~\text{do}~x := x + 1~\{x = b\}}  
+      $$
+    </div>
+    <div class="fragment fade-in">
+      $$  
+      \frac{
+          \frac{\{x \leq b \land x < b\}~x := x + 1~\{x \leq b\}}
+                {\{x \leq b\}~\text{while}~x < b~\text{do}~x := x + 1~\{x \leq b \land x \geq b\}}
+          }
+          {\{x \leq b\}~\text{while}~x < b~\text{do}~x := x + 1~\{x = b\}}  
+      $$
+    </div>
+  </div>
+  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>La règle de l'affectation</h3>
+
+  <div>
+    $$
+    \frac{}{\{Q[ x \gets E]\}~x := E~\{Q\} }
+    $$
+  </div>
+
+  <div class="fragment left-content">
+    <i>Raisonnement arrière</i> $\to$ pourque $Q$ soit vraie après cette affectation, <br> il faut qu'elle soit
+    déjà vraie pour la valeur que va prendre $x$.
+  </div>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      $$
+      \frac{}{\{~~~~~~~~~~~~~~~~\}~x := x + 2~\{x > 2\} }
+      $$
+    </div>
+    <div class="fragment fade-in">
+      $$
+      \frac{}{\{x + 2 > 2\}~x := x + 2~\{x > 2\} }
+      $$
+    </div>
+  </div>
+  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>Les Règles logiques</h3>
+
+  <div>
+    $$ \frac{P \Rightarrow P'~~~~~~~~ \{P'\}~I~\{Q'\} ~~~~~~~~ Q' \Rightarrow Q}{\{P\}~I~\{Q\}} $$
+  </div>
+
+  <div class="fragment">
+    $$ \frac{\{true \land y \geq 0\}~x := y~\{x \geq 0\}~~~~~~~~\{true \land \neg (y \geq 0)\}~x := 0~\{x \geq 0\}}{\{true\}~\text{if}~y \geq 0~\text{then}~x := y~\text{else}~x := 0~\{x \geq 0\}} $$
+  </div>
+
+  <div class="center-divs">
+    <div style="flex: 1; font-size: 20px;" class="fragment">
+      $$
+      \frac{
+        \{true \land y \geq 0\} \Rightarrow \{y \geq 0\} ~~~~~~~\{y \geq 0\}~x := y~\{x \geq 0\}
+      }
+      {
+        \{true \land y \geq 0\}~x := y~\{x \geq 0\}
+      }
+      $$
     </div>
 
-    <ul class="d-skip fragment">
-        <li>
-            Assignment axiom : <span style="float:right;">$~~~~~~~~~~~~~~$ {$\varphi[expr/x]$}$~x = expr~${$\varphi$} </span>
-            <ul>
-                <li class="fragment">ex : <span style="float:right;"> {$y == 5$}$~x = y + 5~${$x == 10$} </span></li>
-                <li class="fragment">ex : <span style="float:right;"> {$x^2~<~4$}$~x = x * x~${$x~<~4$} </span></li>
-            </ul>
-        </li>
-        <li class="skip fragment">
-            Loop axiom : <span style="float:right;"> {$\varphi$}$~$while($C$)$~P~${$\varphi \wedge \neg C$} </span>
-            <ul>
-                <li class="fragment">if $\varphi$ is a loop <b>invariant</b> : <span style="float:right;">{$\varphi  \wedge  C$}$~P~${$\varphi$}</span></li>
-            </ul>
-        </li>
-        <li class="skip fragment">
-            Choice axiom : <span style="float:right;"> {$\varphi$}$~$if($C$)$~P1~$else$~P2~${$\psi$} </span>
-            <ul>
-                <li class="fragment">if : <span style="float:right;">{$\varphi  \wedge  C$}$~P1~${$\psi$}</span></li>
-                <li class="fragment">else : <span style="float:right;">{$\varphi \wedge \neg C$}$~P2~${$\psi$}</span></li>
-            </ul>
-        </li>
+    <div style="flex: 1; font-size: 20px;" class="fragment">
+      $$
+      \frac{
+        \{true \land \neg(y \geq 0)\} \Rightarrow \{0 \geq 0\} ~~~~~~~\{0 \geq 0\}~x := 0~\{x \geq 0\}
+      }
+      {
+        \{true \land \neg(y \geq 0)\}~x := 0~\{x \geq 0\}
+      }
+      $$
+    </div>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La logique du premier ordre (FOL)</h2>
+
+  <ul>
+    <li>La <i>preuve du programme</i> est basée sur le <b>système formel</b> <br> de la <b>logique du premier ordre</b> (<b>FOL</b>)
+      <ul><li>PreConditions, PostConditions, Invariants, Assertions $\ldots$</li></ul>
+    </li>
+
+    <li class="fragment skip"><b>FOL</b> est <b>la logique</b> que vous avez l'habitude d'utiliser en <i>mathématiques</i></li>
+
+    <li class="fragment skip">La syntaxe : <br>
+      $t~~ ::= ~~c ~~|~~ x ~~ | ~~ f(t,\ldots,t)  $ <br>
+      $\phi~~ ::= ~~ true ~~ | ~~a ~~ | ~~ t~ = ~t ~~|~~ P(t,\ldots,t) ~~ | ~~ \phi ~ \wedge ~ \phi ~~ | ~~ \neg~\phi ~~ |~~ \exists   x.~\phi~$
+    </li>
+
+    <li class="fragment skip">
+      La <b>sémantique</b> est l'interprétation habituelle utilisée en <b>mathématiques</b>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le système de preuve de Hoare</h2>
+  <h3>En pratique ...</h3>
+
+  <div class="left-content fragment">Le système de <b>Hoare</b> est complexe à utiliser : <br>
+    <ul id="ko">
+      <li class="fragment">règles lourdes à appliquer</li>
+      <li class="fragment">taille des arbres de preuve</li>
     </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proof Example</h2>
-
-<div class="eb-code">
-
-<pre id="eb">
-<u>pre-condition:</u>  <span class="fragment" data-fragment-index="8">$n \ge 0$</span>  <u>// initial data : $n$</u>
-</pre> 
-
-<pre id="eb" class="fragment" data-fragment-index="7">
-<i>$0 == 0 \wedge 0\le n$ </i>   
-<i>$\sum_{k=0}^{0}{k} == 0 \wedge 0\le n$</i>
-</pre>
-
-<pre id="eb">
-i = 0;    
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="6">
-<i>$\sum_{k=0}^{i}{k} == 0 \wedge i\le n$</i>
-</pre>
-
-<pre id="eb">
-res = 0;    
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="1">
-<i>$\sum_{k=0}^{i}{k} == res \wedge i\le n$</i> <u>// $\varphi$ </u>
-</pre>
-
-<pre id="eb">
-<b>while</b> (i $<$ n) { <u>// $C$</u>
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="4">
-    <i>$(\sum_{k=0}^{i}{k} == res \wedge i\le n) \wedge i < n$</i> <u>// $\varphi \wedge C$</u>
-    <i>$\sum_{k=0}^{i}{k} == res \wedge i < n$</i>
-    <i>$\sum_{k=0}^{i+1}{k} == res + i + 1 \wedge (i+1) \le n$</i>
-</pre>
-
-<pre id="eb">
-    i = i + 1;
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="3">
-    <i>$\sum_{k=0}^{i}{k} == res + i \wedge i\le n$</i>
-</pre>
-
-
-<pre id="eb">
-    res = res + i;
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="2">
-    <i>$\sum_{k=0}^{i}{k} == res \wedge i\le n$</i> <u>// $\varphi$</u>
-</pre>
-
-<pre id="eb">
-}
-</pre>
-
-<pre id="eb" class="fragment" data-fragment-index="1">
-<i>$( \sum_{k=0}^{i}{k} == res \wedge i\le n ) \wedge i\ge n$</i> <u>// $\varphi \wedge \neg C$</u>
-<i>$\sum_{k=0}^{i}{k} == res \wedge i == n$</i>
-</pre>
-
-<pre id="eb">
-<u>post-condition:</u>  $\sum_{k=0}^{n}{k} == res$  <u>// result : $res$</u>
-</pre> 
-</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="First Order Logic"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>First Order Logic</h2>
-
-    <ul>
-        <li>Program Proof is based on the Formal System of the First Order Logic (FOL)
-            <ul><li>pre-conditions, post-conditions, invariants, assertions $\ldots$</li></ul>
-        </li>
-
-        <li class="fragment skip">FOL is the logic you are used to use in mathematics</li>
-
-        <li class="fragment skip">The syntax : <br>
-            $t~~ ::= ~~c ~~|~~ x ~~ | ~~ f(t,\ldots,t)  $ <br>
-            $\phi~~ ::= ~~ true ~~ | ~~a ~~ | ~~ t~ = ~t ~~|~~ P(t,\ldots,t) ~~ | ~~ \phi ~ \wedge ~ \phi ~~ | ~~ \neg~\phi ~~ |~~ \exists   x.~\phi~$
-        </li>
-
-        <li class="fragment skip">
-            The semantics are as usual in mathematics
-        </li>
+    <br>
+    <ul id="ok">
+      <li class="fragment">mieux adapté à une preuve automatisée (ex. <b>Méthode B</b>)</li>
     </ul>
+  </div>
+
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Le principe du Model-Checking"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>FOL Formal System</h2>
+    <h2>Histoire des méthodes <br> de vérification formelle</h2>
 
     <div id="default-block">
-        <b>Definition</b> <br>
+        <b>Avant $\ldots$</b> <br>
         <ul>
-            <li>A Formal System consists of a set of <b>axioms</b> and a set of <b>inference rules</b> (reasoning) 
-                that are combined to <b>derive well formed formulas</b></li> 
-            <li>A derivation that leads to a wff $\mathcal{F}$ is called a <b>proof</b> of $\mathcal{F}$ </li>
-        </ul>
-    </div>
-
-    <div class="d-skip" style="display:grid; grid-template-columns: repeat(2,1fr);">
-        <div class="fragment" style="font-size: 25px;">
-            <b>Axioms</b>
-            $$
-            \begin{aligned}
-            (ax1)~ & A_x(t) ~\Rightarrow~ \exists x. ~A\\
-            (ax2)~ & x=x\\
-            (ax3)~ & x=y \Rightarrow (A \Rightarrow A_x(y))\\
-            (ax4)~ & A \Rightarrow (B \Rightarrow A)\\
-            (ax5)~ & \neg \neg A \Rightarrow A\\
-            (ax6)~ & (A \Rightarrow (B \Rightarrow C)) \Rightarrow ((A \Rightarrow B)\Rightarrow(A \Rightarrow C))
-            \end{aligned}
-            $$
-        </div>
-        <div class="fragment" style="font-size: 25px;">
-            <b>Rules</b>
-            $$
-            \begin{aligned}
-            (r1)~ & A,~ A \Rightarrow B & \vdash & ~B \\
-            (r2)~ & A \Rightarrow B    & \vdash & ~\exists x.A \Rightarrow B\\
-            \end{aligned}
-            $$
-        </div>
-    </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>FOL Formal System</h2>
-
-    <div id="default-block">
-        <b>Soundness</b> <br>
-      A formal system is sound if each derived formula is valid i.e. 
-      semantically true. <br> 
-      A valid formula is called a <b>theorem</b> <br> <br>
-      <span class="fragment"><b>Completeness</b> <br>
-        A formal system is complete if each valid formula could be derived, <br>
-        i.e. it exists a proof leading to the theorem</span>
-    </div>
-
-    <ul class="fragment skip">
-        <li>First Order Logic is sound and <b>complete</b>!</li>
-        <li class="fragment">An automatic program prover tries many possible derivations (<i>infinite</i>) <br>
-            and after a time limit :
-            <ul>
-                <li class="fragment">option 1/2 : it reaches the formula to prove $\to$ <b>YES!</b></li>
-                <li class="fragment">option 2/2 : it doesn't (it needs some help) $\to$ <i>Inconclusive</i></li>
-            </ul>
-        </li>
-        <li class="fragment">First Order Logic is <b>semi-decidable</b>! </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch4" name="Principle of Model-Checking"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>History of Formal Verification Methods</h2>
-
-    <div id="default-block">
-        <b>Before $\ldots$</b> <br>
-        <ul>
-            <li>Software code was sequential</li>
-            <li>Properties were expressed in <b>First-Order Predicate Logic</b></li>
-            <li><b>Theorem provers</b> : partial/total correctness</li>
-            <li>e.g. B Method</li>
-            <li>Hardly automated : <b>semi-decidable</b></li>
+            <li>Le code du logiciel était séquentiel</li>
+            <li>Les propriétés sont exprimées en utilisant la <b>logique du premier ordre</b></li>
+            <li><b>La preuve de théorème</b> : ex. la méthode B</li>
+            <li>Difficilement automatisé : <b>semi-décidable</b></li>
         </ul>
     </div>
 
     <div id="green-block" class="fragment">
-        <b>After 80's</b> <br>
+        <b>Après les années 80</b> <br>
         <ul>
-            <li>Software is <b>concurrent</b> and reactive</li>
-            <li>Properties are expressed in <b>Temporal Logic</b></li>
-            <li>Solving accurate properties like safety, liveness, fairness $\ldots$</li>
-            <li>e.g. Model Checking</li>
-            <li>Push-Button : <b>decidable</b></li>
+            <li>Le logiciel est <b>concurrent</b> et réactif</li>
+            <li>Les propriétés sont exprimées en <b>logique temporelle</b></li>
+            <li>Démontrer des propriétés telles que la sécurité, la vivacité et l'équité $\ldots$</li>
+            <li>ex. Model Checking</li>
+            <li>Méthodes automatisées : <b>décidable</b></li>
         </ul>
     </div>
 
@@ -713,17 +719,13 @@ res = 0;
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La formalisation de la vérification</h2>
-
-  <div id="default-block" class="left-content">
-    Verification has to be <b>provable</b>!
-  </div>
+  <h2>La formalisation de la vérification <br> d'un modèle</h2>
 
   <div class="left-content d-skip fragment">
-    The formal form of the verification problem is <b>$M \models^? \varphi$</b> where: <br>
+    La forme formelle du problème de vérification est <b>$M \models^? \varphi$</b> avec: <br>
     <ul>
-      <li><b>$M$</b> is the formal representation of the system under observation</li>
-      <li><b>$\varphi$</b> is the formal representation of the property to be verified</li>
+      <li><b>$M$</b> est la représentation formelle du système observé</li>
+      <li><b>$\varphi$</b> est la représentation formelle de la propriété à vérifier</li>
     </ul>
   </div>
     
@@ -731,275 +733,275 @@ res = 0;
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Principle of Model-Checking</h2>
+	<h2>Principe du Model-Checking</h2>
 
+  <div>
     <img src="./img/model_checking.svg" alt="" width="650px">
+  </div>  
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch5" name="System Modeling"></section>
+<section id="ch4" name="La modélisation d'un logiciel/système"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Principle of Model-Checking</h2>
+	<h2>Principe du Model-Checking</h2>
 
-    <div class="r-stack">
-        <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
-        <img class="fragment fade-in" src="./img/system_modeling.svg" alt="" width="650px">
-    </div>
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
+    <img class="fragment fade-in" src="./img/system_modeling.svg" alt="" width="650px">
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Transition Systems</h2>
+	<h2>Systèmes de transition </h2>
 
-    <ul>
-        <li><b>model</b> to describe the <i>behaviour of systems</i></li>
+  <ul>
+    <li><b>modèle</b> pour décrire le <i>comportement des systèmes</i></li>
 
-        <li class="skip fragment" data-fragment-index="1"><b>digraphs</b> where <b>nodes</b> represent <i>states</i>, 
-            and <b>edges</b> represent <i>transitions</i></li>
+    <li class="skip fragment" data-fragment-index="1"><b>digraphes</b> où les <b>nœuds</b> représentent les <i>états</i> 
+        et les <b>arêtes</b> représentent <br> les <i>transitions</i></li>
 
-        <li class="skip fragment" data-fragment-index="2">
-            <b>states</b> :      
-            <ul>
-                <li>the current colour of a traffic light : red, green, orange.</li>
-                <li class="fragment" data-fragment-index="3"><b>software :</b> the current values of all program variables + the program counter</li>
-                <li class="fragment" data-fragment-index="4"><b>hardware :</b> the current value of the registers together with the values of the input bits</li>
-            </ul>
-        </li>
+    <li class="skip fragment" data-fragment-index="2">
+      <b>états</b> :      
+      <ul>
+        <li>la couleur actuelle d'un feu de circulation : rouge, vert, orange.</li>
+        <li class="fragment" data-fragment-index="3"><b>software :</b> tles valeurs actuelles de toutes les variables du programme...</li>
+        <li class="fragment" data-fragment-index="4"><b>hardware :</b> la valeur actuelle des registres ainsi que les valeurs des bits d'entrée</li>
+      </ul>
+    </li>
 
-        <li class="skip fragment" data-fragment-index="2">
-            <b>transitions</b> : ("state change")
-            <ul>
-                <li>a switch from one colour to another</li>
-                <li class="fragment" data-fragment-index="3"><b>software :</b> the execution of a program statement</li>
-                <li class="fragment" data-fragment-index="4"><b>hardware :</b> the change of the registers and output bits for a new input</li>
-            </ul>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Formal definition</h2>
-
-    <ul>
-        <li>
-            A <b>transition system</b> $TS$ is a tuple $(S, \delta, I, AP, \mathcal{L})$ where
-            <ul>
-                <li class="fragment skip">$S$ is a set of <i>states</i></li>
-
-                <li class="fragment skip">$\delta \subseteq S \times S$ is a <i>transition relation</i><br>
-                    Notation: $s \rightarrow s'$ instead of $(s,s') \in \delta$</li>
-
-                <li class="fragment skip">$I \subseteq S$ is a set of <i>initial states</i></li>
-
-                <li class="fragment skip">$AP$ is a set of <i>Atomic Propositions</i></li>
-
-                <li class="fragment skip">$\mathcal{L} : S \longrightarrow 2^{AP}$ is a <i>Labeling function</i></li>
-            </ul>
-        </li>
-    </ul>
+    <li class="skip fragment" data-fragment-index="2">
+      <b>transitions</b> : ("changement d'états")
+      <ul>
+        <li>un passage d'une couleur à une autre</li>
+        <li class="fragment" data-fragment-index="3"><b>software :</b> l'exécution d'une instruction de programme</li>
+        <li class="fragment" data-fragment-index="4"><b>hardware :</b> le changement des registres et des bits de sortie pour une nouvelle entrée</li>
+      </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Example</h2>
+  <h2>Systèmes de transition </h2>
+	<h3>La définition formelle</h3>
 
-    <div>
-        <img src="./img/coffee-model.svg" alt="" width="500px">
-    </div>
+  <ul>
+    <li>
+      Un <b>systèmes de transition</b> $TS$ est un tuple $(S, \delta, I, AP, \mathcal{L})$ avec :
+      <ul>
+        <li class="fragment skip">$S$ est un ensemble d'<i>états</i></li>
+
+        <li class="fragment skip">$\delta \subseteq S \times S$ est une <i>relation de transition</i><br>
+            Notation: $s \rightarrow s'$ au lieu de $(s,s') \in \delta$</li>
+
+        <li class="fragment skip">$I \subseteq S$ est un ensemble d'<i>états initiaux</i></li>
+
+        <li class="fragment skip">$AP$ est un ensemble de <i>propositions atomiques</i></li>
+
+        <li class="fragment skip">$\mathcal{L} : S \longrightarrow 2^{AP}$ est une <i>fonction d'étiquetage</i></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes de transition </h2>
+  <h3>Example</h3>
+
+  <div>
+    <img src="./img/coffee-model.svg" alt="" width="400px">
+  </div>
    
-    <ul>
-        <li class="fragment"><b>States</b> : <span style="float:right;">$S = \{pay, select, tea, coffee\}$</span></li>
-        <li class="fragment skip"><b>Initial states</b> : <span style="float:right;">$I= \{pay\}$</span></li>
-        <li class="fragment skip"><b>Atomic Propositions, Labeling function</b> :
-            <ul>
-                <li>suppose $AP = S$, <span style="float:right;">$\mathcal{L}(s)=\{s\}$</span></li>
-                <li class="fragment">
-                    suppose $AP = \{pay, drink\}$, <span style="float:right;">$~~~~~~~~\mathcal{L}(tea)=\mathcal{L}(coffee)=\{drink\}$</span> <br>
-                    <span style="float:right;">$\mathcal{L}(pay)=\{pay\}$, $~~~\mathcal{L}(select) = \emptyset$</span>
-                </li>
-            </ul>
+  <ul>
+    <li class="fragment"><b>Ensemble d'états</b> : <span style="float:right;">$S = \{\text{pay}, \text{select}, \text{tea}, \text{coffee}\}$</span></li>
+    <li class="fragment skip"><b>Les états initiaux</b> : <span style="float:right;">$I= \{\text{pay}\}$</span></li>
+    <li class="fragment skip"><b>Les propositions atomiques, La fonction d'étiquetage</b> :
+      <ul>
+        <li>cas 1: $AP = S$, <span style="float:right;">$\mathcal{L}(s)=\{s\}$</span></li>
+        <li class="fragment">
+            cas 2: $AP = \{\text{pay}, \text{drink}\}$, <span style="float:right;">$~~~~~~~~\mathcal{L}(\text{tea})=\mathcal{L}(\text{coffee})=\{\text{drink}\}$</span> <br>
+            <span style="float:right;">$\mathcal{L}(\text{pay})=\{\text{pay}\}$, $~~~\mathcal{L}(\text{select}) = \emptyset$</span>
         </li>
-    </ul>
+      </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>From programming languages <br> to transition systems</h2>
+	<h2>Des langages de programmation <br>aux systèmes de transition</h2>
 
-    <img class="fragment" src="./img/prog-to-modelsvg.svg" alt="" height="300px" style="float: right; margin-bottom: 20px; margin-left: 20px;" data-fragment-index="3">
+  <div>
+    <img class="fragment" src="./img/prog-to-modelsvg.svg" alt="" height="300px" style="float: right; margin-bottom: 20px; margin-left: 20px;" data-fragment-index="2">
+  </div>
+    
+  <ul style="display: block;">
+    <li>Les systèmes de transition sont un langage de modélisation <i>élémentaire</i>
+      <ul>
+        <li>décrit <i>tous</i> les états que le système peut atteindre</li>
+        <li>décrit le comportement du système (transitions)</li>
+      </ul>
+    </li>
 
-    <ul style="display: block;">
-        <li>Transition systems are an <i>elementary</i> modeling language
-            <ul>
-                <li>describe <i>all</i> the states that the system may reach</li>
-                <li>describe the behavior of the system (transitions)</li>
-            </ul>
-        </li>
+    <li class="skip fragment" data-fragment-index="1">Même un système de base peut avoir des milliers d’états !
+      <ul>
+        <li><cs-code>int i=0; while(i<1000) i++; </cs-code></li>
+        <li>la modélisation peut être fastidieuse !</li>
+      </ul>
+    </li>
 
-        <li class="skip fragment" data-fragment-index="1">Even a basic system may have thousands of states!
-            <ul>
-                <li><cs-code>int i=0; while(i<1000) i++; </cs-code></li>
-                <li>modeling could be tedious !</li>
-            </ul>
-        </li>
-
-        <li class="skip fragment" data-fragment-index="2">What if the transition system is <i>automatically generated</i> from the system's program ?
-            <ul>
-                <li class="fragment" data-fragment-index="3">modeling would be automatic !</li>
-                <li class="fragment" data-fragment-index="4">many tools exist from <b>C</b>, <b>Java</b> $\ldots$ to <i>TS</i></li>
-            </ul>
-        </li>
-    </ul>
+    <li class="skip fragment" data-fragment-index="2">Et si le système de transition était <i>généré automatiquement</i> <br> à partir du programme du système ?
+      <ul>
+        <li class="fragment" data-fragment-index="3">la modélisation serait automatique !</li>
+        <li class="fragment" data-fragment-index="4">de nombreux outils existent, de <b>C</b>, <b>Java</b> $\ldots$ à <i>TS</i></li>
+      </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Determinism and Nondeterminism</h2>
+	<h2>Déterminisme et non-déterminisme</h2>
 
-    <ul>
-        <li>Let $TS = (S, \delta, I, AP, \mathcal{L})$ be a transition system, $TS$ is <b>deterministic</b>
-            <ul>
-                <li class="fragment">iff $~~~\forall~s,s'_1,s'_2 \in S,$ <span style="float:right;">$s \rightarrow s'_1, s \rightarrow s'_2 \in \delta \Rightarrow s'_1 = s'_2$</span></li>
-                <li class="fragment">iff $~~~\forall~s \in S,$ <span style="float:right;">$\#(\delta(s)) \le 1$</span></li>
-            </ul>
-        </li>
-    </ul>
+  <ul>
+    <li>Soit $TS = (S, \delta, I, AP, \mathcal{L})$ un système de transition, $TS$ est <b>déterministe</b>
+      <ul>
+        <li class="fragment">iff $~~~\forall~s,s'_1,s'_2 \in S,$ <span style="float:right;">$s \rightarrow s'_1, s \rightarrow s'_2 \in \delta \Rightarrow s'_1 = s'_2$</span></li>
+        <li class="fragment">iff $~~~\forall~s \in S,$ <span style="float:right;">$\#(\delta(s)) \le 1$</span></li>
+      </ul>
+    </li>
+  </ul>
 
-    <div class="fragment d-skip">
-        <img  src="./img/determinism.svg" alt="" width="500px">
-    </div>
+  <div class="fragment d-skip">
+    <img  src="./img/determinism.svg" alt="" width="500px">
+  </div>
  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Sources of Nondeterminism</h2>
+	<h2>Sources du non-déterminisme</h2>
 
+  <div>
+    <img  src="./img/determinism.svg" alt="" width="500px">
+  </div>
+
+  <ul class="skip">
+    <li>Informations incomplètes sur l'environnement du système
+      <ul>
+        <li class="fragment">Sélection de l'utilisateur</li>
+        <li class="fragment">Événements déclenchés</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Entrelacement <br> de systèmes concurrents</h2>
+
+  <ul>
+    <li>le système est composé de nombreux composants concurrents</li>
+    <li class="skip fragment"><b>un système de transition</b> pour modéliser le comportement d'<b>un composant</b></li>
+    <li class="skip fragment">ex. le threading, les algorithmes distribués et les protocoles de communication</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Principe d'entrelacement</h2>
+
+  <ul>
+    <li>Les actions des composants indépendants sont <i>entrelacées</i>
+      <ul>
+        <li class="fragment">un seul processeur est disponible</li>
+        <li class="fragment">sur lequel chaque composant s'exécute pendant un quantum de temps</li>
+      </ul>
+    </li>
+
+    <li class="fragment skip">Aucune hypothèse n'est faite sur l'ordre des exécutions
+      <ul>
+        <li class="fragment">ordres possibles pour des composants indépendants infinis <br>
+            $Loop(P) \parallel Loop(Q)$:
+            $$
+            \begin{aligned}
+            P~~ Q~~ P~~ Q~~ P~~ Q~~ P~~ Q~~ P~~ Q \ldots\\
+          P~~ P~~ Q~~ P~~ P~~ Q~~ P~~ P~~ Q~~ P \ldots\\
+          P~~ Q~~ P~~ P~~ Q~~ P~~ P~~ P~~ Q~~ P \ldots\\             
+          \end{aligned}
+            $$
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <div id="default-block" class="fragment left-content">
+    source principale de <b>non-déterminisme</b> qui peut être évitée en ajoutant <br> 
+    un <b>ordonnanceur</b> avec une stratégie particulière
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Principe d'entrelacement</h2>
+	<h3>Exemple d'entrelacement</h3>
+
+  <div>
+    <img src="./img/interleaving-example.svg" alt="" width="800px">
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'entrelacement $~~~~TS_1 \parallel TS_2$</h2>
+  <h3>Définition formelle</h3>
+
+  <div class="left-content">
     <div>
-        <img  src="./img/determinism.svg" alt="" width="500px">
+        Soient $~~TS_i = (S_i, \delta_i, I_i, AP_i, \mathcal{L}_i), i=1,2~~$ deux systèmes de transition.
     </div>
 
-    <ul class="skip">
-        <li>Incomplete information on the system environment
-            <ul>
-                <li class="fragment">User selection</li>
-                <li class="fragment">Triggered events</li>
-            </ul>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Interleaving of concurrent systems</h2>
-
-    <ul>
-        <li>the system is composed by many concurrent components</li>
-        <li class="skip fragment"><b>one</b> transition system for modeling <b>one</b> component behavior</li>
-        <li class="skip fragment">e.g. threading, distributed algorithms and communication protocols</li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Interleaving principle</h2>
-
-    <ul>
-        <li>Actions of independent components are <i>interleaved</i>
-            <ul>
-                <li class="fragment">a single processor is available</li>
-                <li class="fragment">on which each component executes for a quantum of time</li>
-            </ul>
-        </li>
-
-        <li class="fragment skip">No assumptions are made on the order of executions
-            <ul>
-                <li class="fragment">possible orders for non-terminating independent components <br>
-                    $Loop(P) \parallel Loop(Q)$:
-                    $$
-                    \begin{aligned}
-                    P~~ Q~~ P~~ Q~~ P~~ Q~~ P~~ Q~~ P~~ Q \ldots\\
-                  P~~ P~~ Q~~ P~~ P~~ Q~~ P~~ P~~ Q~~ P \ldots\\
-                  P~~ Q~~ P~~ P~~ Q~~ P~~ P~~ P~~ Q~~ P \ldots\\             
-                 \end{aligned}
-                    $$
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-    <div id="default-block" class="fragment" style="width: 76%;">
-        main source of <b>nondeterminism</b> that can be avoided by adding a <b>scheduler</b> with a particular strategy
+    <div class="fragment skip">
+        Le <b>produit entrelacé</b> (<b>produit asynchrone</b>) est le système de transition :
+        $$TS_1 \parallel TS_2 = (S_1 \times S_2, \delta, I_1 \times I_2, AP_1 \cup AP_2, \mathcal{L}) $$
     </div>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Interleaving example</h2>
-
-    <div>
-        <img src="./img/interleaving-example.svg" alt="" width="750px">
+    <div class="fragment">
+        où $\delta$ vérifie :
+        $$
+        \frac{s_1 \longrightarrow s'_1}
+        {\langle s_1,s_2 \rangle \longrightarrow \langle s'_1,s_2\rangle}
+        ~~~and~~~
+        \frac{s_2 \longrightarrow s'_2}
+        {\langle s_1, s_2 \rangle \longrightarrow \langle s_1,s'_2\rangle}
+        $$
     </div>
 
-    <ul class="skip">
-        <li>Justification for interleaving:
-            <ul>
-                <li>the effect of <b>concurrently</b> executed independent actions equals the effect <br>
-                    when they are <b>successively</b> executed in <b>arbitrary</b> order</li>
-            </ul>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Interleaving $~~~~TS_1 \parallel TS_2$ <br> Formal definition </h2>
-
-    <div class="left-content">
-        <div>
-            Let $~~TS_i = (S_i, \delta_i, I_i, AP_i, \mathcal{L}_i), i=1,2~~$ be two transition systems.
-        </div>
-
-        <div class="fragment skip">
-            The <b>Interleaving Product</b> (<b>Asynchronous product</b>) is the transition system:
-            $$TS_1 \parallel TS_2 = (S_1 \times S_2, \delta, I_1 \times I_2, AP_1 \cup AP_2, \mathcal{L}) $$
-        </div>
-
-        <div class="fragment">
-            where $\delta$ verifies:
-            $$
-            \frac{s_1 \longrightarrow s'_1}
-            {\langle s_1,s_2 \rangle \longrightarrow \langle s'_1,s_2\rangle}
-            ~~~and~~~
-            \frac{s_2 \longrightarrow s'_2}
-            {\langle s_1, s_2 \rangle \longrightarrow \langle s_1,s'_2\rangle}
-            $$
-        </div>
-
-        <div class="fragment">
-            and $\mathcal{L}$ verifies : 
-            $$
-            \mathcal{L}(\langle s_1,s_2\rangle) = \mathcal{L}_1(s_1) \cup \mathcal{L}_2(s_2)
-            $$
-        </div>
+    <div class="fragment">
+        et $\mathcal{L}$ vérifie :
+        $$
+        \mathcal{L}(\langle s_1,s_2\rangle) = \mathcal{L}_1(s_1) \cup \mathcal{L}_2(s_2)
+        $$
     </div>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1007,13 +1009,13 @@ res = 0;
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Semaphore-based mutual exclusion</h2>
 
-    <div>
-        <img src="./img/semaphore-1.svg" alt="" width="700px">
-    </div>
+  <div>
+    <img src="./img/semaphore-1.svg" alt="" width="700px">
+  </div>
 
-    <p class="fragment">
-        $y=0$ means “lock is currently possessed”; $y=1$ means “lock is free”
-    </p>
+  <p class="fragment">
+    $y=0$ signifie "le verrou est actuellement possédé"; <br> $y=1$ signifie "le verrou est libre"
+  </p>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1021,14 +1023,14 @@ res = 0;
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Interleaving product</h2>
 
-    <div>
-        <img src="./img/interleaving-product.png" alt="" width="800px">
-    </div>
+  <div>
+    <img src="./img/interleaving-product.png" alt="" width="750px"> <br>
+    <span style="font-size: 17px;">$n_i$ : $noncrit_i$, $w_i$ : $wait_i$, $c_i$ : $crit_i$</span>
+  </div>
 
-    <div id="alert-block" class="fragment" style="width: 55%; text-align: center;">
-        <b>Typical source of state explosion</b><br>
-        suppose there were 3 concurrent components
-    </div>
+  <div id="alert-block" class="fragment left-content" style="font-size: 25px;">
+    <b>Source typique d'explosion d'état</b> $ \to$ supposons qu'il y ait 3 composants concurrents 
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1127,14 +1129,14 @@ res = 0;
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h1>Thank you</h1>
+	<h1>Merci</h1>
 	<p>
-		<a href="./1-introduction.pdf" target="_blank">PDF version of the slides</a>
+		<a href="./1-introduction.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
-		<a href="#">Back to the begin</a>
-		- <a href="#/plan">Back to the outline</a>
-	</p>	
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
