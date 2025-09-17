@@ -17,30 +17,29 @@
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
-	<img id="logo" src="../resources/img/cs.png" alt="">
+	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
-	
-	<div class="header-logo">
-		<div class="left-logo">
-			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
-			</a>
-		</div>
-		<div class="right-logo">
-			<a href="https://www.centralesupelec.fr" target="_blank">
-				<img src="../resources/img/cs.png" alt="">
-			</a>
-		</div>
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
 	</div>
 	
 	<div style="text-align: left">
@@ -52,7 +51,7 @@
 		<span ><span class="fa fa-graduation-cap">&#160;</span>2A Cursus Ingénieurs
 			- ST5 : Modélisation fonctionnelle et régulation</span><br>
 		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec -
-			Université Paris-Saclay - 2024/2025</span>
+			Université Paris-Saclay - 2025/2026</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -81,475 +80,539 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Principle of Model-Checking</h2>
+	<h2>Principe du Model-Checking</h2>
 
-    <div class="r-stack">
-        <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
-        <img class="fragment fade-in" src="./img/properties_modeling.svg" alt="" width="650px">
-    </div>
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
+    <img class="fragment fade-in" src="./img/system_modeling.svg" alt="" width="650px">
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Rappel</h2>
+
+  <ul>
+    <li class="fragment">Un <b>systèmes de transition</b> $TS$ est un tuple $(S, \delta, I, AP, \mathcal{L})$</li>
+
+    <li class="fragment skip">Un <b>fragment de chemin infini</b> $\pi$ est une séquence d'états infinie :<br>
+        $\pi = s_0 s_1 s_2\ldots~$ tel que $\forall i \geq 0, s_i \longrightarrow s_{i+1} \in \delta$</li>
+
+    <li class="fragment skip">
+      La <b>trace du chemin</b> $\pi = s_0 s_1 s_2\ldots$ <i>$\in S^{\omega}$</i> avec <i>$\mathcal{L} : S \longrightarrow 2^{AP}$</i>
+      <ul>
+        <li> $trace(\pi) = \sigma = \mathcal{L}(s_0) \mathcal{L}(s_1) \mathcal{L}(s_2)\ldots$ <i>$\in (2^{AP})^{\omega}$</i></li>
+      </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch1" name="LTL Temporal Logics"></section>
+<section id="ch1" name="La logique temporelle LTL"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Principe du Model-Checking</h2>
+
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
+    <img class="fragment fade-in" src="./img/properties_modeling.svg" alt="" width="650px">
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Logiques temporelles</h2>
+  <h3>Pourquoi ?</h3>
+
+  <ul>
+    <li class="fragment">Permettent d'exprimer des <i>propriétés</i> sur des <i>séquences d'observations</i></li>
+
+    <li class="skip fragment">Utilisation de <i>connecteurs temporels</i> et de <i>quantificateurs</i> sur les <i>chemins</i></li>
+  
+    <li class="skip fragment">On pourrait utiliser <b>la logique du premier ordre</b>. <br>
+    $\phi ~~~~ ::= ~~~~ true ~~~~ | ~~~~ a ~~~~ | ~~~~ \phi ~~~~ \wedge ~~~~ \phi ~~~~ | ~~~~ \neg~\phi ~~~~ | ~~~~ \exists   x.~\phi~ ~~~~ | ~~~~ ...$
+      <ul>
+        <li class="skip fragment"> <strong>Exemple</strong> : "toute requête sera un jour satisfaite"</li>
+        <li class="fragment">$ \forall t . (\text{requete} \to \exists t' \geq t . (\text{reponse}))$</li>
+      </ul>
+      <ul id="ko">
+        <li class="skip fragment">difficile à écrire/comprendre</li>
+        <li class="fragment">vérification peu efficace</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Logiques temporelles</h2>
+  <h3>Pourquoi ?</h3>
+
+  <ul>
+    <li><i>Pas de variable pour gérer le temps</i> (instants implicites)</li>
+
+    <li class="fragment skip"><b>Temporel</b> $\neq$ <b>temporisé</b> <br> la logiques
+          temporelles ne quantifient pas écoulement du temps.</li>
+
+    <li class="fragment skip">Deux approches :
+      <ol>
+        <li><b>temps linéaire</b> : propriétés des <i>séquences d'exécutions</i> (futur déterminé)</li>
+        <li class="fragment"><b>temps arborescent</b> : propriétés de l'<i>arbre d'exécutions</i> (tous les futurs possibles)</li>
+      </ol>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Propositional <span class="fragment" data-fragment-index="1">Linear Temporal</span> logic <span class="fragment" data-fragment-index="1">(LTL)</span></h2>
 	
+  <div>
+    $\phi ~~~~ ::= ~~~~ true ~~~~ | ~~~~ a ~~~~ | ~~~~ \phi ~~~~ \wedge ~~~~ \phi ~~~~ | ~~~~ \neg~\phi ~~~~ $
+    <span class="fragment" data-fragment-index="1">$| ~~~~ \bigcirc~\phi ~~~~ $</span>
+    <span class="fragment" data-fragment-index="2">$| ~~~~ \square~\phi ~~~~ $</span>
+  </div>
+
+  <div class="skip">
+    avec $a \in AP$  
+    <span class="fragment" data-fragment-index="1">$~~~~~~~~~~~~~~~~~~~~~~~~ \bigcirc$ $\equiv$ $\text{X}$ (next)</span>
+    <span class="fragment" data-fragment-index="2">$~~~~~ \square$ $\equiv$ $\text{G}$ (always)</span>
+  </div>
+
+  <div class="left-content">
     <div>
-        $\phi ~~~~ ::= ~~~~ true ~~~~ | ~~~~ a ~~~~ | ~~~~ \phi ~~~~ \wedge ~~~~ \phi ~~~~ | ~~~~ \neg~\phi ~~~~ $
-        <span class="fragment" data-fragment-index="1">$| ~~~~ \bigcirc~\phi ~~~~ $</span>
-        <span class="fragment" data-fragment-index="2">$| ~~~~ \square~\phi ~~~~ $</span>
+      <span style="margin-right: 50px;">$\sigma \models a ~~~~~$</span>  
+      <img src="./img/trace-1.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
-
-    <div class="skip">
-        where $a \in AP$  
-        <span class="fragment" data-fragment-index="1">$~~~~~~~~~~~~~~~~~~~~~~~~ \bigcirc$ (next)</span>
-        <span class="fragment" data-fragment-index="2">$~~~~~ \square$ (always)</span>
+    <div class="fragment" data-fragment-index="1">
+      <span style="margin-right: 50px;">$\sigma \models \bigcirc~a$</span>  
+      <img src="./img/trace-2.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
-
-    <div class="left-content">
-        <div>
-            <span style="margin-right: 50px;">$\sigma \models a ~~~~~$</span>  
-            <img src="./img/trace-1.svg" alt="" width="70%" style="vertical-align:-30px;">
-        </div>
-        <div class="fragment" data-fragment-index="1">
-            <span style="margin-right: 50px;">$\sigma \models \bigcirc~a$</span>  
-            <img src="./img/trace-2.svg" alt="" width="70%" style="vertical-align:-30px;">
-        </div>
-        <div class="fragment" data-fragment-index="2" data-id="t1">
-            <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
-            <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
-        </div>
+    <div class="fragment" data-fragment-index="2" data-id="t1">
+      <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
+      <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
+  </div>
     
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Derived Temporal Operators</h2>
+  <h2>Opérateurs temporels dérivés</h2>
 
-    <div style="display:grid; grid-template-columns: repeat(4,1fr);">
-        <div>
-            $\square~\phi$ <br>
-            (always)
-        </div>
-        <div class="fragment" data-fragment-index="1">
-            $\Diamond ~ \phi \equiv \neg \square \neg \phi$ <br>
-            (eventually)
-        </div>
-        <div class="fragment" data-fragment-index="2">
-            $\Diamond \square ~\phi$ <br>
-            (persistence)
-        </div>
-        <div class="fragment" data-fragment-index="3">
-            $\square \Diamond ~\phi \equiv \neg \Diamond \square \neg  \phi$ <br>
-            (infinitely many)
-        </div>
-    </div>
-
-    <div class="left-content">
-        <div data-id="t1">
-            <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
-            <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    
-         <div class="fragment" data-fragment-index="1">
-            <span style="margin-right: 50px;">$\sigma \models \Diamond~a~~$</span> 
-            <img src="./img/trace-4.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    
-         <div class="fragment" data-fragment-index="2">
-            <span style="margin-right: 50px;">$\sigma \models \Diamond \square~a$</span>
-            <img src="./img/trace-5.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    
-         <div class="fragment" data-fragment-index="3">
-            <span style="margin-right: 50px;">$\sigma \models \square \Diamond~a$</span>
-            <img src="./img/trace-6.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    </div>
-    
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Example of Temporal Properties</h2>
-
-    <ul>
-        <li>
-            <b>Safety</b>
-            <ul>
-                <li class="fragment" style="padding-top: 10px;">mutual exclusion : <span style="float:right;">$\square \neg (crit_1 \wedge crit_2)$</span></li>
-                <li class="fragment" style="padding-top: 10px;">elevator : <span style="float:right;">$\square (moving \Rightarrow doors_{closed})$</span></li>
-                <li class="fragment" style="padding-top: 10px;">traffic light : <span style="float:right;">$\square (yellow \Rightarrow \bigcirc red)$</span></li>
-            </ul>
-        </li>
-        <li class="d-skip fragment">
-            <b>Liveness</b>
-            <ul>
-                <li class="fragment" style="padding-top: 10px;">progress : <span style="float:right;">$\Diamond~progress$</span></li>
-                <li class="fragment" style="padding-top: 10px;">response : <span style="float:right;">$~~~~~~~~~~~~~~\square (try\_to\_send \Rightarrow \Diamond ~delivered)$</span></li>
-                <li class="fragment" style="padding-top: 10px;">termination : <span style="float:right;">$\Diamond\square~terminated$</span></li>
-            </ul>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Example of Temporal Properties</h2>
-
-    <ul>
-        <li>
-            <b>Safety</b> <span style="float:right;">nuclear plant</span>
-            <ul>
-                <li class="fragment" style="padding-top: 10px;">cooling : <span style="float:right;">$\square \neg (temp_{high} \wedge cooling_{low})$</span></li>
-                <li class="fragment" style="padding-top: 10px;">alarm : <span style="float:right;">$\square (temp_{high} \Rightarrow alarm)$</span></li>
-                <li class="fragment" style="padding-top: 10px;">saving : <span style="float:right;">$\square (temp_{high} \Rightarrow \bigcirc react_{low})$</span></li>
-            </ul>
-        </li>
-        <li class="d-skip fragment">
-            <b>Liveness</b> <span style="float:right;">nuclear plant</span>
-            <ul>
-                <li class="fragment" style="padding-top: 10px;">reactivity : <span style="float:right;">$\square \Diamond~react_{high}$</span></li>
-                <li class="fragment" style="padding-top: 10px;">temperature : <span style="float:right;">$~~~~~~~~~~~~~~~~~~~\square (react_{low} \Rightarrow \Diamond temp_{low})$</span></li>
-            </ul>
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Until Operator</h2>
-
+  <div style="display:grid; grid-template-columns: repeat(4,1fr);">
     <div>
-        $\phi ~~~ ::= ~~~ true ~~~ | ~~~ a ~~~ | ~~~ \phi ~~~ \wedge ~~~ \phi ~~~ | ~~~ \neg~\phi ~~~ 
-        | ~~~ \bigcirc~\phi ~~~ | ~~~ \square~\phi ~~~ $
-        <span class="fragment" data-fragment-index="1">$| ~~~ \phi ~~~ \bigcup ~~~ \phi$</span>
+        $\square~\phi \equiv \text{G}~\phi$<br>
+        (always)
+    </div>
+    <div class="fragment" data-fragment-index="1">
+        $\Diamond ~ \phi \equiv \text{F}~\phi  \equiv \neg \square \neg \phi$ <br>
+        (eventually)
+    </div>
+    <div class="fragment" data-fragment-index="2">
+        $\Diamond \square ~\phi$ <br>
+        (persistence)
+    </div>
+    <div class="fragment" data-fragment-index="3">
+        $\square \Diamond ~\phi \equiv \neg \Diamond \square \neg  \phi$ <br>
+        (infinitely many)
+    </div>
+  </div>
+
+  <div class="left-content">
+    <div data-id="t1">
+      <span style="margin-right: 50px;">$\sigma \models \square~a$</span> 
+      <img src="./img/trace-3.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
 
-    <div class="left-content">
-        <div>
-            <span style="margin-right: 50px;">$try \Rightarrow \bigcirc~deliv$</span>  
-            <img src="./img/trace-7.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    
-         <div>
-            <span style="margin-right: 50px;">$try \Rightarrow \Diamond~deliv$</span> 
-            <img src="./img/trace-8.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
-    
-         <div class="fragment" data-fragment-index="1">
-            <span style="margin-right: 50px;">$~~~try~\bigcup~deliv$</span> 
-            <img src="./img/trace-9.svg" alt="" width="70%" style="vertical-align:-30px;">
-         </div>
+    <div class="fragment" data-fragment-index="1">
+      <span style="margin-right: 50px;">$\sigma \models \Diamond~a~~$</span> 
+      <img src="./img/trace-4.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
 
-     <div class="d-skip fragment" data-fragment-index="2">
-        $\Diamond~\phi~\equiv~true~\cup~\phi~~~~$  <span class="fragment" data-fragment-index="3">and $~~~~\square~\phi \equiv \neg \Diamond \neg \phi$</span>
-     </div>
+    <div class="fragment" data-fragment-index="2">
+      <span style="margin-right: 50px;">$\sigma \models \Diamond \square~a$</span>
+      <img src="./img/trace-5.svg" alt="" width="70%" style="vertical-align:-30px;">
+    </div>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="Examples of LTL Temporal Logics"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>properties of a trace</h2>
-
-    <img src="./img/example-1.png" alt="" width="40%">
-
-    <p class="fragment">
-        have a path $~~~~~ \pi ~= ~$ Off On Err Err Err $~\ldots = ~$ Off On Err$^\omega$
-    </p>
-
-    <ul>
-        <li class="fragment"> $\pi ~\vDash$ Off 
-            <span class="fragment">$~~~~~~~~~~$ but $\pi ~\nvDash$ On</span>
-            <span class="fragment">$~~~~~~~~~~$ so $\pi ~\vDash~ \neg$On</span></li>
-        
-        <li class="fragment">$\pi ~\vDash~ \bigcirc$ On </li>
-        <li class="fragment">$\pi ~\vDash~ \bigcirc  \bigcirc$ Err </li>
-        <li class="fragment">$\pi ~\vDash~ $( Off $ \vee $ On )$~\cup$ Err </li>
-        <li class="fragment">$\pi ~\vDash~ \square  ($ Err $  \Rightarrow \bigcirc $ Err $)$ </li>
-        <li class="fragment">$\pi ~\vDash~ \square  ($ Err $ \Rightarrow \square $ Err $)$ </li>
-        <li class="fragment">$\pi ~\vDash~ \Diamond \square $ Err (persistence) </li>
-        <li class="fragment">$\pi ~\vDash~ \bigcirc \bigcirc ~\square $ Err </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>properties of a trace</h2>
-
-    <img src="./img/example-2.png" alt="" width="40%">
-
-    <p class="fragment">
-        have a path $~~~~~ \pi ~= ~$ Off On Off On Off $~\ldots =~$ (Off On)$^\omega$
-    </p>
-
-    <ul>
-        <li class="fragment">$\pi~$ <span class="fragment">$\nvDash$</span> $~($ Off $\vee $ On $ )~\cup~$Err</li>
-        <li class="fragment">
-            $\pi~$ <span class="fragment">$\vDash$</span> $~\Diamond$ Err $\Rightarrow (($ Off $\vee$ On $)~\cup~ $Err ) 
-            <span class="fragment">$~~~~~~$ as $~~\pi ~\nvDash~ \Diamond $ Err</span>
-        </li>
-        <li class="fragment">$\pi~$ <span class="fragment">$\vDash$</span> $~\square ($ On $\vee$ Off $)$</li>
-        <li class="fragment">$\pi~$ <span class="fragment">$\vDash$</span> $~\square \Diamond$ On $\wedge ~ \square \Diamond$ Off $~~~~~~$ (infinitely many)</li>
-        <li class="fragment">$\pi~$ <span class="fragment">$\nvDash$</span> $~\Diamond \square$ On $\vee ~\Diamond \square$ Off $~~~~~~$ (persistence)</li>
-        <li class="fragment">$\pi~$ <span class="fragment">$\vDash$</span> $~\square$ (Off $\Rightarrow \bigcirc$ On) $\wedge ~ \square$ (On $\Rightarrow \bigcirc$ Off)</li>
-    </ul>
+    <div class="fragment" data-fragment-index="3">
+      <span style="margin-right: 50px;">$\sigma \models \square \Diamond~a$</span>
+      <img src="./img/trace-6.svg" alt="" width="70%" style="vertical-align:-30px;">
+    </div>
+  </div>
     
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="Property Specification"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Linear Time Property</h2>
-
-    <ul>
-        <li>Linear-Time properties specify the <b>admissible</b> behaviour <br> of the system under consideration
-            <ul class="fragment"><li>LT-property specifies the traces that a $TS$ can exhibit</li></ul>
-            <div id="default-block" class="fragment skip">
-                <b>Formal definition</b> <br>
-                <ul>
-                    <li>A Linear Time Property $P$ over $AP$ is a subset of  $(2^{AP})^{\omega}$</li>
-                    <li class="fragment">$TS$ <b>satisfies</b> $P$ (over $AP$):
-                        <ul>
-                            <li>$TS \vDash P$ $~~~~~~~~~~~~~$ if and only if $~~~~~~~~~~~~~$ $Traces(TS) \subseteq P$ $\subseteq (2^{AP})^{\omega}$</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="d-skip fragment">We will use the <b>Linear Time Logic</b> (<b>LTL</b>) to formalize $P$</li>
-    </ul>
-
-</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>LTL Semantics (recall)</h2>
+  <h2>L'opérateur Until</h2>
 
-    <ul>
-        <li>
-            $\phi~~::= ~~ true ~~ | ~~ a ~~ | ~~ \phi_1 ~~ \wedge ~~ \phi_2 ~~ | ~~ \neg~\phi ~~ | ~~ \bigcirc\phi ~~ | ~~ \square~\phi ~~ | ~~ \Diamond ~\phi ~~ | ~~ \phi_1 ~~ \bigcup ~~ \phi_2$
-        </li>
-        <li class="fragment skip">
-            for $~~\sigma = A_0A_1A_2\dots \in (2^{AP})^{\omega}$ :
-            <ul style="list-style: none;">
-                <li class="fragment skip">$\sigma \vDash true $</li>
-                <li class="fragment">$\sigma \vDash a ~~~~~~~~~~~~~~~~$  <b>iff</b>  $~~~~~~ a \in A_0$</li>
-                <li class="fragment">$\sigma \vDash  \phi_1 \wedge \phi_2 ~~~~~~$ <b>iff</b> $~~~~~~ \sigma \vDash  \phi_1 ~~$ and $~~ \sigma \vDash \phi_2$</li>
-                <li class="fragment">$\sigma \vDash \neg~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \sigma \nvDash \phi$</li>
-                <li class="fragment">$\sigma \vDash \bigcirc~\phi ~~~~~~~~~~~$ <b>iff</b> $~~~~~~ A_1A_2A_3\dots \vDash  \phi$</li>
-                <li class="fragment">$\sigma \vDash \square~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \forall~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</li>
-                <li class="fragment">$\sigma \vDash \Diamond~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \exists~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</li>
-                <li class="fragment">$\sigma \vDash \phi_1 \bigcup \phi_2 ~~~~~~$ <b>iff</b> $~~~~~~ \exists~ j \geq 0, ~A_jA_{j+1}A_{j+2}\dots \vDash \phi_2~~~$ and<br>
-                                     $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\forall ~0 \leq i < j , ~A_iA_{i+1}A_{i+2}\dots \vDash \phi_1$</li>
-            </ul>
-        </li>
-    </ul>
+  <div>
+    $\phi ~~~ ::= ~~~ true ~~~ | ~~~ a ~~~ | ~~~ \phi ~~~ \wedge ~~~ \phi ~~~ | ~~~ \neg~\phi ~~~ 
+    | ~~~ \bigcirc~\phi ~~~ | ~~~ \square~\phi ~~~ $
+    <span class="fragment" data-fragment-index="2">$| ~~~ \phi ~~~ \bigcup ~~~ \phi$</span>
+  </div>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>How to specify mutual exclusion?</h2>
-
-    <div id="green-block" style="text-align: center; width: 80%;">
-        <b>Mutual Exclusion</b> <br>
-        There is at most one process in the critical section
-    </div>
-
-    <ul>
-        <li class="skip fragment">Let $AP = \{crit_1, crit_2\}$
-            <ul><li>other atomic propositions are not of any relevance for this property</li></ul>
-        </li>
-        <li class="skip fragment">LTL formalization of the LT property
-            <ul style="list-style: none;"><li><b>$P_{mutex} = \square~\neg~(crit_1 \wedge crit_2)$</b></li></ul>
-        </li>
-        <li class="skip fragment"><b>Does the semaphore-based algorithm satisfy $P_{mutex}$ ?</b></li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Does semaphore-based algorithm <br> satisfy $P_{mutex}$ ?</h2>
-
-    <img src="./img/path1.png" alt="" width="800px">
-
-    <div class="fragment"><b>YES!</b> as there is no reachable state labeled with
-        $\{crit_1,crit_2\}$</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>How to specify starvation freedom?</h2>
-
-    <div id="green-block" style="text-align: center; width: 80%;">
-        <b>Starvation Freedom</b> <br>
-        A process that wants to enter the critical section <br> is eventually able to do so
-    </div>
-
-    <ul>
-        <li class="skip fragment">Let $AP = \{wait_1, crit_1, wait_2, crit_2\}$</li>
-
-        <li class="skip fragment">LTL formalization of the LT property
-            <ul style="list-style: none;"><li><b>$P_{nostarve} = \square~(wait_1 \Rightarrow \Diamond~crit_1) \wedge \square~(wait_2
-                \Rightarrow \Diamond~crit_2)$</b></li></ul>
-        </li>
-
-        <li class="skip fragment">
-            <b>Does the semaphore-based algorithm satisfy $P_{nostarve}$ ?</b>
-        </li>
-    </ul>    
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Does semaphore-based algorithm <br> satisfy $P_{nostarve}$ ?</h2>
-
-    <img src="./img/path1.png" alt="" width="800px">
-
-    <div class="fragment"><b>NO!</b> process one or process two may starve!</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Process one starves</h2>
-
-    <img src="./img/path1.png" alt="" width="800px">
-
+  <div class="left-content">
     <div>
-        let $~~~~~~$ $\sigma = \emptyset (\{wait_1\} \{wait_1,wait_2\} \{wait_1,crit_2\})^{\omega} \in Traces(TS)$ <br>
-        but $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ $\sigma \vDash \Diamond(wait_1 \wedge \square\neg~crit_1) \Rightarrow \sigma \notin P_{nostarve}$
+      <span style="margin-right: 50px;">$try \Rightarrow \bigcirc~deliv$</span>  
+      <img src="./img/trace-7.svg" alt="" width="70%" style="vertical-align:-30px;">
     </div>
+
+    <div class="fragment" data-fragment-index="1">
+      <span style="margin-right: 50px;">$try \Rightarrow \Diamond~deliv$</span> 
+      <img src="./img/trace-8.svg" alt="" width="70%" style="vertical-align:-30px;">
+    </div>
+
+    <div class="fragment" data-fragment-index="2">
+      <span style="margin-right: 50px;">$~~~try~\bigcup~deliv$</span> 
+      <img src="./img/trace-9.svg" alt="" width="70%" style="vertical-align:-30px;">
+    </div>
+  </div>
+
+  <div class="d-skip fragment" data-fragment-index="3">
+    $\Diamond~\phi~\equiv~true~\cup~\phi~~~~$  <span class="fragment" data-fragment-index="4">et $~~~~\square~\phi \equiv \neg \Diamond \neg \phi$</span>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Process two starves</h2>
+  <h2>La sémantique des opérateurs LTL</h2>
 
-    <img src="./img/path1.png" alt="" width="800px">
-
-    <div>
-        let $~~~~~~$ $\sigma = \emptyset (\{wait_2\} \{wait_1,wait_2\} \{crit_1,wait_2\})^{\omega} \in Traces(TS)$ <br>
-        but $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ $\sigma \vDash \Diamond(wait_2 \wedge \square\neg~crit_2) \Rightarrow \sigma \notin P_{nostarve}$
-    </div>
+  <ul>
+      <li>
+          $\phi~~::= ~~ true ~~ | ~~ a ~~ | ~~ \phi_1 ~~ \wedge ~~ \phi_2 ~~ | ~~ \neg~\phi ~~ | ~~ \bigcirc\phi ~~ | ~~ \square~\phi ~~ | ~~ \Diamond ~\phi ~~ | ~~ \phi_1 ~~ \bigcup ~~ \phi_2$
+      </li>
+      <li class="fragment skip">
+          for $~~\sigma = A_0A_1A_2\dots \in (2^{AP})^{\omega}$ :
+          <ul style="list-style: none;">
+              <li class="fragment skip">$\sigma \vDash true $</li>
+              <li class="fragment">$\sigma \vDash a ~~~~~~~~~~~~~~~~$  <b>iff</b>  $~~~~~~ a \in A_0$</li>
+              <li class="fragment">$\sigma \vDash  \phi_1 \wedge \phi_2 ~~~~~~$ <b>iff</b> $~~~~~~ \sigma \vDash  \phi_1 ~~$ and $~~ \sigma \vDash \phi_2$</li>
+              <li class="fragment">$\sigma \vDash \neg~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \sigma \nvDash \phi$</li>
+              <li class="fragment">$\sigma \vDash \bigcirc~\phi ~~~~~~~~~~~$ <b>iff</b> $~~~~~~ A_1A_2A_3\dots \vDash  \phi$</li>
+              <li class="fragment">$\sigma \vDash \square~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \forall~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</li>
+              <li class="fragment">$\sigma \vDash \Diamond~\phi ~~~~~~~~~~~~$ <b>iff</b> $~~~~~~ \exists~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</li>
+              <li class="fragment">$\sigma \vDash \phi_1 \bigcup \phi_2 ~~~~~~$ <b>iff</b> $~~~~~~ \exists~ j \geq 0, ~A_jA_{j+1}A_{j+2}\dots \vDash \phi_2~~~$ and<br>
+                                    $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\forall ~0 \leq i < j , ~A_iA_{i+1}A_{i+2}\dots \vDash \phi_1$</li>
+          </ul>
+      </li>
+  </ul>
 
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Exemples de proriétés LTL"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Invariants</h2>
+  <h2>Propriété du temps linéaire</h2>
 
-    <ul>
-        <li>
-            Typical safety property: mutual exclusion property
-            <ul><li>the <b>bad thing</b> (having $> 1$ process in the critical section) <b>never occurs</b></li></ul>
-        </li>
-        <li class="fragment skip">
-            Another typical safety property verifies variable bounds (overflow)
-        </li>
-    </ul>
-
-    <div class="d-skip fragment">
-        These properties are <b>Invariants</b>
-    </div>
-
-    <div id="green-block" class="d-skip fragment">
+  <ul>
+    <li>Les propriétés du temps linéaire spécifient le comportement <b>admissible</b> <br> du système considéré
+      <ul class="fragment"><li>La propriété LT spécifie les traces qu'un $TS$ peut exhiber</li></ul>
+      <div id="default-block" class="fragment skip">
+        <b>Définition formelle</b> <br>
         <ul>
-            <li>An <b>Invariant</b> is an LT property
-                <ul>
-                    <li class="fragment">that is given by a <b>condition $\phi$</b> over $AP$</li>
-                    <li class="fragment">requires that <b>condition $\phi$</b> holds <b>for all states</b> (reachable ones)</li>
-                    <li class="fragment">e.g. for mutual exclusion property <b>$\phi = \neg(crit_1 \wedge crit_2)$</b></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Formal Definition</h2>
-
-    <ul>
-        <li>An LT property $P_{inv}$ over $AP$ is an <b>Invariant</b> if there is a <b>pure propositional</b>
-            formula $\phi$ over $AP$ such that: 
-                <b> $$ P_{inv} = \square~\phi $$ </b>
-            <ul><li class="fragment"><b>$\phi$</b> is called an <b>invariant condition</b> of $P_{inv}$</li></ul>
-        </li>
-
-        <li class="fragment skip">Note that: <br>
-            <b>$TS \models P_{inv}$</b> $~~~~~~~~$ if and only if $~~~~~~~~$ <b>$\forall s \in Reach(TS),~  \mathcal{L}(s)
-            \vDash_{prop} \phi$</b>
-        </li>
-
-        <li class="fragment skip">
-            $\phi$ has to be fulfilled by all initial states and satisfaction of $\phi$ is invariant
-	  under all transitions in the reachable fragment of $TS$  
-        </li>
-    </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Safety properties</h2>
-
-    <ul>
-        <li>Safety properties: <b>“nothing bad should happen”</b>
-            <ul><li class="fragment">an Invariant property is a <b>particular</b> safety property</li></ul>
-        </li>
-
-        <li class="fragment skip">
-            Safety properties may impose requirements on <b>finite</b> path fragments and <i>cannot
-                be verified by only considering the reachable states</i>
-        </li>
-
-        <li class="fragment skip">
-            A safety property which is not an invariant
+          <li>Une propriété temporelle linéaire $P$ sur $AP$ est un sous-ensemble de $(2^{AP})^{\omega}$</li>
+          <li class="fragment">$TS$ <b>satisfait</b> $P$ (sur $AP$) :
             <ul>
-                <li class="fragment">consider a cash dispenser</li>
-                <li class="fragment">property “money can only be withdrawn once a correct PIN has been provided”</li>
-                <li class="fragment"><b>not an invariant, since it is not a state property</b></li>
+              <li>$TS \vDash P$ $~~~~~~~~~~~~~$ si et seulement si $~~~~~~~~~~~~~$ $Traces(TS) \subseteq P$ $\subseteq (2^{AP})^{\omega}$</li>
             </ul>
-        </li>
-        <li class="fragment skip">
-            a typical LTL example: <b>Bounded Response</b>
-            $$
-            \square (request \Rightarrow \bigvee_{i=n}^m  \bigcirc^i response)
-            $$
-        </li>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="d-skip fragment">Nous utiliserons la <b>logique temporelle linéaire</b> (<b>LTL</b>) pour formaliser $P$</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Exemple I</h2>
+
+  <div>
+    <img src="./img/example-1.png" alt="" width="40%">
+  </div>
+  
+  <p class="fragment">
+      Prenant la trace $~~~~~ \sigma ~= ~$ Off On Err Err Err $~\ldots = ~$ Off On Err$^\omega$
+  </p>
+
+  <ul>
+    <li class="fragment"> $\sigma ~\vDash$ Off 
+        <span class="fragment">$~~~~~~~~~~$ mais $\sigma ~\nvDash$ On</span>
+        <span class="fragment">$~~~~~~~~~~$ alors $\sigma ~\vDash~ \neg$On</span></li>
+    
+    <li class="fragment">$\sigma ~\vDash~ \text{X}$ On </li>
+    <li class="fragment">$\sigma ~\vDash~ \text{X}  \text{X}$ Err </li>
+    <li class="fragment">$\sigma ~\vDash~ $( Off $ \vee $ On )$~\text{U}$ Err </li>
+    <li class="fragment">$\sigma ~\vDash~ \text{G}  ($ Err $  \Rightarrow \text{X} $ Err $)$ </li>
+    <li class="fragment">$\sigma ~\vDash~ \text{G}  ($ Err $ \Rightarrow \text{G} $ Err $)$ </li>
+    <li class="fragment">$\sigma ~\vDash~ \text{F} \text{G} $ Err </li>
+    <li class="fragment">$\sigma ~\vDash~ \text{X} \text{X} ~\text{G} $ Err </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Exemple II</h2>
+
+  <div>
+    <img src="./img/example-2.png" alt="" width="40%">
+  </div>
+    
+  <p class="fragment">
+    Prenant la trace $~~~~~ \sigma ~= ~$ Off On Off On Off $~\ldots =~$ (Off On)$^\omega$
+  </p>
+
+  <ul>
+      <li class="fragment">$\sigma~$ <span class="fragment">$\nvDash$</span> $~($ Off $\vee $ On $ )~\text{U}~$Err</li>
+      <li class="fragment">
+          $\sigma~$ <span class="fragment">$\vDash$</span> $~\text{F}$ Err $\Rightarrow (($ Off $\vee$ On $)~\text{U}~ $Err ) 
+          <span class="fragment">$~~~~~~$ car $~~\sigma ~\nvDash~ \text{F} $ Err</span>
+      </li>
+      <li class="fragment">$\sigma~$ <span class="fragment">$\vDash$</span> $~\text{G} ($ On $\vee$ Off $)$</li>
+      <li class="fragment">$\sigma~$ <span class="fragment">$\vDash$</span> $~\text{G} \text{F}$ On $\wedge ~ \text{G} \text{F}$ Off </li>
+      <li class="fragment">$\sigma~$ <span class="fragment">$\nvDash$</span> $~\text{F} \text{G}$ On $\vee ~\text{F} \text{G}$ Off </li>
+      <li class="fragment">$\sigma~$ <span class="fragment">$\vDash$</span> $~\text{G}$ (Off $\Rightarrow \text{X}$ On) $\wedge ~ \text{G}$ (On $\Rightarrow \text{X}$ Off)</li>
+  </ul>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Spécification de propriétés"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rappel de l'Exemple</h2>
+
+  <div>
+    <img src="./img/semaphore-1.svg" alt="" width="700px">
+  </div>
+
+  <p class="fragment">
+    $y=0$ signifie "le verrou est actuellement possédé"; <br> $y=1$ signifie "le verrou est libre"
+  </p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rappel de l'Exemple</h2>
+
+  <div>
+    <img src="./img/interleaving-product.png" alt="" width="750px"> <br>
+    <span style="font-size: 25px;">$n_i$ : $noncrit_i$, $~~~w_i$ : $wait_i$, $~~~c_i$ : $crit_i$</span>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Comment spécifier <br> l'exclusion mutuelle ?</h2>
+
+  <div id="green-block" class="left-content">
+    <b>L'exclusion mutuelle</b> <br>
+    Il y a au plus un processus dans la section critique
+  </div>
+
+  <ul>
+    <li class="skip fragment">Soit $AP = \{crit_1, crit_2\}$
+      <ul><li>les autres propositions atomiques n'ont aucune pertinence pour cette propriété</li></ul>
+    </li>
+    <li class="skip fragment">Formalisation LTL de la propriété LT
+      <ul style="list-style: none;"><li><b>$P_{mutex} = \text{G}~\neg~(crit_1 \wedge crit_2)$</b></li></ul>
+    </li>
+    <li class="skip fragment"><b>L'algorithme basé sur le sémaphore satisfait-il $P_{mutex}$ ?</b></li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La réponse</h2>
+
+  <div>
+    <img src="./img/path1.png" alt="" width="800px">
+  </div>
+
+  <div class="fragment"><b>OUI !</b> car il n'existe aucun état accessible étiqueté avec
+$\{crit_1,crit_2\}$</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Comment spécifier <br> l'absence de famine ?</h2>
+
+  <div id="green-block" class="left-content">
+    <b>L'absence de famine</b> <br>
+    Un processus qui veut entrer dans la section critique <br> est finalement capable de le faire
+  </div>
+
+  <ul>
+    <li class="skip fragment">Soit $AP = \{wait_1, crit_1, wait_2, crit_2\}$</li>
+
+    <li class="skip fragment">Formalisation LTL de la propriété LT
+      <ul style="list-style: none;"><li><b>$P_{nostarve} = \text{G}~(wait_1 \Rightarrow \text{F}~crit_1) \wedge \text{G}~(wait_2
+          \Rightarrow \text{F}~crit_2)$</b></li></ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>L'algorithme basé sur le sémaphore satisfait-il $P_{nostarve}$ ?</b>
+    </li>
+  </ul>    
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La réponse</h2>
+
+  <div>
+    <img src="./img/path1.png" alt="" width="800px">
+  </div>
+
+  <div class="fragment"><b>NON !</b> Le processus un ou le processus deux risquent de mourir de faim !</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La réponse</h2>
+
+  <div>
+    <img src="./img/path1.png" alt="" width="800px">
+  </div>
+
+  <div>
+    prenant $~~~~~~$ $\sigma = \emptyset (\{wait_1\} \{wait_1,wait_2\} \{wait_1,crit_2\})^{\omega} \in Traces(TS)$ <br>
+    mais $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ $\sigma \vDash \text{F}(wait_1 \wedge \text{G}\neg~crit_1) \Rightarrow \sigma \notin P_{nostarve}$
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La réponse</h2>
+
+  <div>
+    <img src="./img/path1.png" alt="" width="800px">
+  </div>
+
+  <div>
+      prenant $~~~~~~$ $\sigma = \emptyset (\{wait_2\} \{wait_1,wait_2\} \{crit_1,wait_2\})^{\omega} \in Traces(TS)$ <br>
+      mais $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ $\sigma \vDash \text{F}(wait_2 \wedge \text{G}\neg~crit_2) \Rightarrow \sigma \notin P_{nostarve}$
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La propriété d'Invariants</h2>
+
+  <ul>
+    <li>
+      <b>Propriété de sécurité</b> typique $\to$ propriété d'exclusion mutuelle
+      <ul><li>la <b>mauvaise chose</b> (avoir $ > 1$ processus dans la section critique) <b>ne se produit jamais</b></li></ul>
+    </li>
+    <li class="fragment skip">
+      Une autre <b>propriété de sécurité</b> typique $\to$ vérifie les limites des variables (dépassement)
+    </li>
+  </ul>
+
+  <div class="d-skip fragment">
+    Ces propriétés sont des <b>invariants</b>
+  </div>
+
+  <div id="green-block" class="d-skip fragment left-content">
+    <ul>
+      <li>Un <b>invariant</b> est une propriété LT
+        <ul>
+          <li class="fragment">qui est donné par une <b>condition $\phi$</b> sur $AP$</li>
+          <li class="fragment">exige que la <b>condition $\phi$</b> soit vraie <b>pour tous les états</b> (atteignables)</li>
+          <li class="fragment"><b>exemple</b> : la propriété d'exclusion mutuelle <b>$\phi = \neg(crit_1 \wedge crit_2)$</b></li>
+        </ul>
+      </li>
     </ul>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>La propriété d'Invariants</h2>
+  <h3>Définition formelle</h3>
+
+  <ul>
+    <li>Une propriété LT $P_{inv}$ sur $AP$ est un <b>invariant</b> s'il existe une formule <b>pure propositionnelle</b> $\phi$ sur $AP$ telle que : 
+          <b> $$ P_{inv} = \text{G}~\phi $$ </b>
+      <ul><li class="fragment"><b>$\phi$</b> est appelé une <b>condition invariante</b> de <b>$P_{inv}$</b></li></ul>
+    </li>
+
+    <li class="fragment skip">Notez que : <br>
+      <b>$TS \models P_{inv}$</b> $~~~~~~~~$ si et seulement si $~~~~~~~~$ <b>$\forall s \in Reach(TS),~ \mathcal{L}(s)
+      \vDash_{prop} \phi$</b>
+    </li>
+
+    <li class="fragment skip">
+      $\phi$ doit être satisfait par tous les états initiaux et tous les états atteignables de $TS$
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Propriétés de sécurité</h2>
+
+  <ul>
+    <li>Propriétés de sécurité (<b>safety property</b>) $\to$ <b>"rien de mauvais ne devrait arriver"</b>
+      <ul><li class="fragment">une <b>propriété invariante</b> est une <b>propriété de sécurité particulière</b></li></ul>
+    </li>
+
+    <li class="fragment skip">
+      Les propriétés de sécurité peuvent imposer des exigences sur des fragments de chemin <b>finis</b> 
+      et <i>ne peuvent pas être vérifiées en considérant uniquement les états atteignables</i>
+    </li>
+
+    <li class="fragment skip">
+      A safety property which is not an invariant
+      <ul>
+        <li class="fragment">consider a cash dispenser</li>
+        <li class="fragment">property “money can only be withdrawn once a correct PIN has been provided”</li>
+        <li class="fragment"><b>not an invariant, since it is not a state property</b></li>
+      </ul>
+    </li>
+    <li class="fragment skip">
+      a typical LTL example: <b>Bounded Response</b>
+      $$
+      \square (request \Rightarrow \bigvee_{i=n}^m  \bigcirc^i response)
+      $$
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -601,18 +664,67 @@
     </ul>
 
 </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example of Temporal Properties</h2>
+
+    <ul>
+        <li>
+            <b>Safety</b>
+            <ul>
+                <li class="fragment" style="padding-top: 10px;">mutual exclusion : <span style="float:right;">$\square \neg (crit_1 \wedge crit_2)$</span></li>
+                <li class="fragment" style="padding-top: 10px;">elevator : <span style="float:right;">$\square (moving \Rightarrow doors_{closed})$</span></li>
+                <li class="fragment" style="padding-top: 10px;">traffic light : <span style="float:right;">$\square (yellow \Rightarrow \bigcirc red)$</span></li>
+            </ul>
+        </li>
+        <li class="d-skip fragment">
+            <b>Liveness</b>
+            <ul>
+                <li class="fragment" style="padding-top: 10px;">progress : <span style="float:right;">$\Diamond~progress$</span></li>
+                <li class="fragment" style="padding-top: 10px;">response : <span style="float:right;">$~~~~~~~~~~~~~~\square (try\_to\_send \Rightarrow \Diamond ~delivered)$</span></li>
+                <li class="fragment" style="padding-top: 10px;">termination : <span style="float:right;">$\Diamond\square~terminated$</span></li>
+            </ul>
+        </li>
+    </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+    <h2>Example of Temporal Properties</h2>
+
+    <ul>
+        <li>
+            <b>Safety</b> <span style="float:right;">nuclear plant</span>
+            <ul>
+                <li class="fragment" style="padding-top: 10px;">cooling : <span style="float:right;">$\square \neg (temp_{high} \wedge cooling_{low})$</span></li>
+                <li class="fragment" style="padding-top: 10px;">alarm : <span style="float:right;">$\square (temp_{high} \Rightarrow alarm)$</span></li>
+                <li class="fragment" style="padding-top: 10px;">saving : <span style="float:right;">$\square (temp_{high} \Rightarrow \bigcirc react_{low})$</span></li>
+            </ul>
+        </li>
+        <li class="d-skip fragment">
+            <b>Liveness</b> <span style="float:right;">nuclear plant</span>
+            <ul>
+                <li class="fragment" style="padding-top: 10px;">reactivity : <span style="float:right;">$\square \Diamond~react_{high}$</span></li>
+                <li class="fragment" style="padding-top: 10px;">temperature : <span style="float:right;">$~~~~~~~~~~~~~~~~~~~\square (react_{low} \Rightarrow \Diamond temp_{low})$</span></li>
+            </ul>
+        </li>
+    </ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h1>Thank you</h1>
+	<h1>Merci</h1>
 	<p>
 		<a href="./2-logique-ltl.pdf" target="_blank">PDF version of the slides</a>
 	</p>
 	<p>
-		<a href="#">Back to the begin</a>
-		- <a href="#/plan">Back to the outline</a>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
 	</p>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -622,9 +734,11 @@
 		</div>
 	</div>
 
-	<script src="../resources/js/plan-en.js"></script>
+	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/math/math.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -651,7 +765,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMath.MathJax3]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
