@@ -3,34 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>TD - Modélisation et logique temporelle CTL-LTL</title>
+	<title>TD - Présentation des logiques temporelles : LTL, CTL </title>
 
-	<link rel="stylesheet" href="../resources/css/document-theme.css">
+  <link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
 	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	<script>
-		MathJax = {
-			tex: {
-				inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: { load: ['ui/lazy'] }
-		};
-	</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
-  <script>
-      function display_correction(my_id) {
-          var x = document.getElementById(my_id);
-          if (x.style.display === "none") {
-              x.style.display = "block";
-          } else {
-              x.style.display = "none";
-          }
-      }
-  </script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -42,7 +26,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2024/2025</span>
+    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2025/2026</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -54,7 +38,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <h1>
 	Travaux dirigés - TD<br>
-	Modélisation et logique temporelle <br> CTL-LTL
+	Présentation des logiques temporelles<br> CTL-LTL
 </h1>
 <!-- #################################################### -->
 <!-- #################################################### -->
@@ -85,7 +69,7 @@
         qui en respecte les propriétés.</li>
 </ul>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
 	<div id="exo1" style="display: none; margin-top: 20px;">
     <ul>
@@ -106,7 +90,7 @@
                 <li>
                     changement de batterie d'un état à l'état suivant. <br>
                     <i>pas possible avec une formule propositionnelle</i> <br>
-                    $\bigvee_{i \neq j \neq k \in \{1,2,3\}} (b_i \wedge \neg b_j \wedge \neg b_k) \Rightarrow \bigcirc (\neg b_i \wedge  b_j \wedge \neg b_k)$
+                    $\bigvee_{i \neq j \neq k \in \{1,2,3\}} (b_i \wedge \neg b_j \wedge \neg b_k) \Rightarrow \text{X} (\neg b_i \wedge  b_j \wedge \neg b_k)$
                 </li>
             </ul>
         </li>
@@ -118,46 +102,46 @@
 </div>
 <!-- #################################################### -->
 <!-- #################################################### -->
-<h2>Logique temporelle</h2>
+<h2>Logiques temporelles</h2>
 <div id="orange-block">Exercice 2 : LTL</div>
 
 <!-- ############## -->
 <h3>Question 1</h3>
 <p>Ecrire les formules LTL caractérisant les 2 phrases suivantes :
-    <ul>
-        <li><b>Equité faible.</b> : "Si une action $a$ est finalement pour toujours activée, alors elle sera infiniment souvent exécutée"</li>
-        <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent activée, alors elle sera infiniment souvent exécutée"</li>
-    </ul>
+  <ul>
+    <li><b>Equité faible.</b> : "Si une action $a$ est finalement pour toujours activée, alors elle sera infiniment souvent exécutée"</li>
+    <li><b>Equité forte.</b> : "Si une action $a$ est infiniment souvent activée, alors elle sera infiniment souvent exécutée"</li>
+  </ul>
     On dénotera le fait qu'une action $a$ est possible par la variable propositionnelle $enabled_a$ et le fait 
 qu'elle sera prise en compte, par la variable propositionnelle $executed_a$.
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo2-1')">Click here to display or hide the correction</button>
 	<div id="exo2-1" style="display: none; margin-top: 20px;">
     <ul>
-        <li><b>Equité faible.</b> : $\Diamond \square(enabled_a) \Rightarrow \square \Diamond(executed_a)$</li>
-        <li><b>Equité forte.</b> : $\square \Diamond(enabled_a)  \Rightarrow \square \Diamond(executed_a)$</li>
+      <li><b>Equité faible.</b> : $\text{F} \text{G}(enabled_a) \Rightarrow \text{G} \text{F}(executed_a)$</li>
+      <li><b>Equité forte.</b> : $\text{G} \text{F}(enabled_a)  \Rightarrow \text{G} \text{F}(executed_a)$</li>
     </ul>
-    </div>
+  </div>
 </div>
 <!-- ############## -->
 <h3>Question 2</h3>
 
 <p>
-    On va voir que certains connecteurs sont redondants.
-    <ul>
-        <li>Exprimer le connecteur $\square$ en fonction des connecteurs $\neg$, et $\Diamond$.</li>
-        <li>Exprimer le connecteur $\Diamond$ en fonction du connecteur $\bigcup$.</li>
-    </ul>
+  On va voir que certains connecteurs sont redondants.
+  <ul>
+    <li>Exprimer le connecteur $\text{G}$ en fonction des connecteurs $\neg$, et $\text{F}$.</li>
+    <li>Exprimer le connecteur $\text{F}$ en fonction du connecteur $\bigcup$.</li>
+  </ul>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo2-2')">Click here to display or hide the correction</button>
 	<div id="exo2-2" style="display: none; margin-top: 20px;">
     <ul>
-        <li>$\square ~\phi \equiv \neg \Diamond ~ \neg \phi$</li>
-        <li>$\Diamond ~ \phi \equiv True ~ \bigcup ~ \phi$</li>
+      <li>$\text{G} ~\phi \equiv \neg \text{F} ~ \neg \phi$</li>
+      <li>$\text{F} ~ \phi \equiv True ~ \bigcup ~ \phi$</li>
     </ul>
   </div>
 </div>
@@ -171,9 +155,9 @@ qu'elle sera prise en compte, par la variable propositionnelle $executed_a$.
 soit vraie, mais $\varphi_2$ n'est pas forcément vraie à un moment. Dans ce cas-là, $\varphi_1$ doit être vraie 
 tout le long de l'exécution.</li> 
 
-<li>$\Diamond^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
+<li>$\text{F}^\infty~\varphi$ (infiniment souvent) signifie que $\varphi$ est infiniment vraie au long de l'exécution.</li>
 
-<li>$\square^\infty~\varphi$ (presque toujours ou finalement pour toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
+<li>$\text{G}^\infty~\varphi$ (presque toujours ou finalement pour toujours) signifie que $\varphi$ est toujours vraie à partir d'un moment donné.</li>
 
 <li>$\varphi_1~\bigcup_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
 soit vraie, et $\varphi_2$ est vraie dans au plus $k$ états consécutifs de l'exécution.</li>
@@ -184,15 +168,15 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     Exprimer ces nouveaux connecteurs en fonction des connecteurs de LTL.
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo2-3')">Click here to display or hide the correction</button>
 	<div id="exo2-3" style="display: none; margin-top: 20px;">
     <ul>
-        <li>$\varphi_1~W~\varphi_2 \equiv \square \varphi_1 \vee (\varphi_1~\bigcup~\varphi_2)$</li>
-        <li>$\Diamond^\infty \varphi \equiv \square \Diamond \varphi$</li>
-        <li>$\square^\infty \varphi \equiv \Diamond \square \varphi$</li>
-        <li>$\varphi_1~\bigcup_{\leq k}~\varphi_2 \equiv (\varphi_1~\bigcup~\varphi_2) \wedge (\square \neg (\bigwedge_{i \leq k} \bigcirc^{i} \varphi_2)) $</li>
-        <li>$\varphi_1~R~\varphi_2 \equiv \varphi_2~W~(\varphi_1 \wedge \varphi_2)$</li>
+      <li>$\varphi_1~W~\varphi_2 \equiv \text{G} \varphi_1 \vee (\varphi_1~\bigcup~\varphi_2)$</li>
+      <li>$\text{F}^\infty \varphi \equiv \text{G} \text{F} \varphi$</li>
+      <li>$\text{G}^\infty \varphi \equiv \text{F} \text{G} \varphi$</li>
+      <li>$\varphi_1~\bigcup_{\leq k}~\varphi_2 \equiv (\varphi_1~\bigcup~\varphi_2) \wedge (\text{G} \neg (\bigwedge_{i \leq k} \text{X}^{i} \varphi_2)) $</li>
+      <li>$\varphi_1~R~\varphi_2 \equiv \varphi_2~W~(\varphi_1 \wedge \varphi_2)$</li>
     </ul>
     </div>
 </div>
@@ -203,7 +187,7 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
 <p>
     Dans cet exercice, on va exprimer des propriétés dans la logique LTL où les formules élémentaires seront de simples 
     variables propositionnelles (i.e. des variables dont les valeurs sont vrai ou faux) choisies dans l'ensemble $\{p,q,p_1,p_2,q_1,q_2\}$. 
-    Ainsi pour exprimer la propriété en LTL "Un jour il y aura $p$", on écrit la formule $\Diamond p$. Exprimer en LTL les propriétés suivantes :
+    Ainsi pour exprimer la propriété en LTL "Un jour il y aura $p$", on écrit la formule $\text{F} p$. Exprimer en LTL les propriétés suivantes :
     <ul>
 <li>Il y a toujours $p$.</li>
 <li>Il y a $p$ une infinité de fois.</li>
@@ -215,26 +199,26 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     </ul>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo2-4')">Click here to display or hide the correction</button>
 	<div id="exo2-4" style="display: none; margin-top: 20px;">
     <ul>
         <li>Il y a toujours $p$ : <br> 
-            $\square ~ p$</li>
+            $\text{G} ~ p$</li>
         <li>Il y a $p$ une infinité de fois : <br>
-            $\square \Diamond ~ p$</li>
+            $\text{G} \text{F} ~ p$</li>
         <li>Il n'y a jamais $p$ et $q$ simultanément : <br> 
-            $\square \neg (p \land q)$</li>
+            $\text{G} \neg (p \land q)$</li>
         <li>Après chaque occurrence de $p$ il y a au moins une occurrence de $q$ : <br> 
-            $\square (p \Rightarrow \Diamond ~q)$</li>
+            $\text{G} (p \Rightarrow \text{F} ~q)$</li>
         <li>S'il y a une infinité de $p_1$ et une infinité de $p_2$ alors toute occurrence de $q_1$ est suivie d'une occurrence de $q_2$ :  <br>
-            $\square \Diamond ~ p_1 \wedge \square \Diamond ~ p_2 \Rightarrow \square(q_1 \Rightarrow \Diamond ~ q_2)$</li>
+            $\text{G} \text{F} ~ p_1 \wedge \text{G} \text{F} ~ p_2 \Rightarrow \text{G}(q_1 \Rightarrow \text{F} ~ q_2)$</li>
         <li>Avant chaque occurrence de $p$ il y a au moins une occurrence de $q$ : <br> 
-            $\square(\neg (\neg q~\bigcup~p))$</li>
+            $\text{G}(\neg (\neg q~\bigcup~p))$</li>
         <li>Entre chaque paire d'occurrence de $p$ il y a au moins une occurrence de $q$ : <br>
-            $\square (p \Rightarrow \bigcirc(\neg p~W~q))$<br>
-            $\square (p \wedge \bigcirc \Diamond ~ p \Rightarrow \bigcirc(\neg p~\bigcup~q))$<br>
-            $\square (p \Rightarrow \bigcirc(\square \neg p \vee (\Diamond ~p \Rightarrow \bigcirc(\neg p~\bigcup~q))))$
+            $\text{G} (p \Rightarrow \text{X}(\neg p~W~q))$<br>
+            $\text{G} (p \wedge \text{X} \text{F} ~ p \Rightarrow \text{X}(\neg p~\bigcup~q))$<br>
+            $\text{G} (p \Rightarrow \text{X}(\text{G} \neg p \vee (\text{F} ~p \Rightarrow \text{X}(\neg p~\bigcup~q))))$
         </li>
     </ul>
     </div>
@@ -279,7 +263,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 </ul>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo3-1')">Click here to display or hide the correction</button>
 	<div id="exo3-1" style="display: none; margin-top: 20px;">
     <ul>
@@ -312,7 +296,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ol>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo3-2')">Click here to display or hide the correction</button>
 	<div id="exo3-2" style="display: none; margin-top: 20px;">
     <b>2.1</b> TO DO <br>
@@ -337,7 +321,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ol>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo3-3')">Click here to display or hide the correction</button>
 	<div id="exo3-3" style="display: none; margin-top: 20px;">
     <ol>
@@ -377,7 +361,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ul>
 </p>
 
-<div id="green-block">
+<div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo3-4')">Click here to display or hide the correction</button>
 	<div id="exo3-4" style="display: none; margin-top: 20px;">
     <ul>
@@ -403,7 +387,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2024/2025</span>
+    2A ST5 - Cursus Ingénieurs CentraleSupelec <span style="text-align: right;float: right;">Conception et vérification de systèmes critiques - 2025/2026</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
