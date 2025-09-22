@@ -1,0 +1,1362 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Systèmes d'exploitation : Introduction aux systèmes d'exploitation</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+	</div>
+
+	<div style="text-align: left">
+		<h2>Systèmes d'exploitation</h2>
+		<h3>Introduction aux systèmes d'exploitation</h3>
+	</div>
+
+	<div class="description" >
+		<span><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
+		<span><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2025/2026</span>
+	</div>
+		
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Architecture des ordinateurs"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'informatique</h2>
+
+	<ul>
+		<li><a href="https://fr.wikipedia.org/wiki/Informatique" target="_blank">L'informatique</a> 
+			est la science du <b>traitement automatique de l'information</b>.
+		</li>
+		<li class="skip fragment">
+			Le traitement automatique de l'information s'effectue 
+			avec des <b>programmes informatiques</b> exécutés par des <b>machines</b>
+			<ul>
+				<li class="fragment"><b>les programmes</b> (<i>software</i>) décrivent le traitement à réaliser,</li>
+				<li class="fragment"><b>les machines</b> (<i>hardware</i>) exécutent <b>les programmes</b>.</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div>
+		<img src="./img/informatique.png" height="auto" width="45%" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La notion d'ordinateur</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/ordinateur1.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur2.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur3.jpg" height="170px" width="auto">
+	</div>
+
+	<ul class="skip">
+		<li><a href="https://fr.wikipedia.org/wiki/Ordinateur"
+				target="_blank">L'ordinateur</a> désigne <b>un équipement
+				informatique</b> permettant de traiter <br> des informations en <b>exécutant des
+				instructions</b>.
+			<ul id="fleche">
+				<li class="skip fragment">On lui donne <b>des instructions</b> (programme/logiciel)</li>
+				<li class="fragment">On lui donne <b>des données</b> (information)</li>
+				<li class="fragment">Il <i>transforme</i> les données</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://fr.wikipedia.org/wiki/ENIAC" target="_blank">ENIAC</a> - 1946</h2>
+
+	<div style="display: flex; align-items: center;">
+		<div style="width:70%;">
+			<ul>
+				<li>Construit de <i>1943</i> à <i>1946</i>
+					par <a href="https://fr.wikipedia.org/wiki/John_William_Mauchly" target="_blank">John Mauchley</a>  <br> et
+					<a href="https://fr.wikipedia.org/wiki/John_Eckert" target="_blank">John Eckert</a> à l'université de Pennsylvanie
+				</li>
+				<li class="fragment skip">Premier ordinateur <b>entièrement électronique</b> <br>
+					(utilise des <b>tubes à vide</b>).</li>
+				<li class="fragment skip">Programmé pour résoudre tous <br> <b>les problèmes calculatoires</b>.</li>
+			</ul>
+		</div>
+		<div style="width:30%;">
+			<img src="./img/Eniac.jpg" height="auto" width="100%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://fr.wikipedia.org/wiki/HP_3000" target="_blank">HP 3000</a> - 1972</h2>
+
+	<div style="display: flex;align-items: center;">
+		<div style="width:70%;">
+			<ul>
+				<li>Le <b>mini-ordinateur</b> a été une innovation <br> des
+					années <i>1970</i>. </li>
+				<li class="fragment skip">L'intégration de <b>circuits intégrés
+						à grande échelle</b>
+					conduisit au développement des <b>micro-processeurs</b>.</li>
+			</ul>
+		</div>
+		<div style="width:30%;">
+			<img src="./img/hp3000.jpeg" height="auto" width="100%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://fr.wikipedia.org/wiki/Apple_II" target="_blank">Apple II</a> - 1977</h2>
+
+	<div style="display: flex;align-items: center;">
+		<div style="width:70%;">
+			<ul>
+				<li>Un des premiers <b>ordinateurs personnels</b> <br> à
+					<b>micro-processeur</b> fabriqué à grande échelle</li>
+
+				<li class="fragment skip">Conçu par 
+					<a href="https://fr.wikipedia.org/wiki/Steve_Wozniak" target="_blank">Steve Wozniak</a>, 
+					commercialisé <br> le <i>10 juin 1977</i> par <b>Apple</b></li>
+			</ul>
+		</div>
+		<div style="width:30%;">
+			<img src="./img/appleII.jpeg" height="auto" width="80%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les ordinateurs d'aujourd'hui</h2>
+
+	<div style="display: flex;align-items: center;">
+		<div style="width:70%;">
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_sur_une_puce"
+						target="_blank">System on a Chip</a>
+					(<b>SOC</b>) : un système complet <br> <i>embarqué</i> dans une puce (<b>circuit
+						intégré</b>).</li>
+				<li class="fragment skip">Un <b>circuit intégré</b> peut comprendre :
+					<ul>
+						<li>un ou plusieurs microprocesseurs</li>
+						<li>de la mémoire</li>
+						<li>des périphériques d'interface</li>
+						<li>ou tout autre composant</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="width:30%;">
+			<img src="./img/ipad.jpg" height="auto" width="100%">
+		</div>
+	</div>
+
+	<div class="fragment" style="display: inline-grid; grid-template-columns: auto auto auto auto;align-items:center; column-gap: 30px;">
+		<img src="./img/pc.jpg" height="150px" width="auto">
+		<img src="./img/tablette.jpg" height="150px" width="auto">
+		<img src="./img/pcportable.jpeg" height="150px" width="auto">
+		<img src="./img/smartphone.jpeg" height="150px" width="auto">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'architecture de Von Neumann</h2>
+
+	<div style="display: flex; align-items: center;">
+		<div style="width:60%;">
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann"
+						target="_blank">L'architecture de von Neumann</a> : <br>
+					un <b>modèle</b> pour un ordinateur avec <br>
+					une <b>mémoire unique</b> pour conserver
+					<ul>
+						<li>les instructions</li>
+						<li>et les données</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="width:40%;">
+			<img data-id="img-nv" src="./img/archi-Von-Neumann.svg" height="auto" width="90%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Von Neumann / l'ordinateur moderne</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:end; column-gap: 50px;">
+		<div>
+			<img data-id="img-nv" src="./img/archi-Von-Neumann-v2.svg" height="auto" width="350px"> <br>
+			<span style="font-size: 30px;">Von Neumann</span>
+		</div>
+		<div class="fragment">
+			<img src="./img/archi-eniac.svg" height="auto" width="350px"> <br>
+			<span style="font-size: 30px;">ENIAC</span>
+		</div>
+		<div class="fragment">
+			<img src="./img/archi-ordinateur-moderne.svg" height="auto" width="350px"> <br>
+			<span style="font-size: 30px;">Ordinateur personnel</span>
+		</div>
+	</div>
+
+	<p><small>source : <a href="http://alexandrebrunet.com/these_chapitre_1_13.html" target="_blank">la thèse
+			d'Alexandre Brunet</a></small></p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Structure générale <br> d'un ordinateur</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/f3-architecture-carte-mere.jpg" height="auto" width="95%">
+		<img src="./img/archi-ordi.png" height="auto" width="100%">	
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'architecture <br> d'un microprocesseur</h2>
+
+	<div style="display: flex; align-items: center;">
+		<div style="width:60%;">
+			<ul>
+				<li><b>Le microprocesseur</b> (<b>CPU</b>) <i>exécute <br>
+						les instructions machines</i> placées <br> en mémoire centrale.</li>
+				<li class="fragment skip"><b>Le CPU</b> est constitué de quatre parties
+					<ol>
+						<li class="fragment">l'unité arithmétique et logique (<b>UAL</b>), </li>
+						<li class="fragment">les registres,</li>
+						<li class="fragment">l'unité de commande,</li>
+						<li class="fragment">le bus de communication interne.</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+		<div style="width:40%;">
+			<img src="./img/archi-processeur.png" height="auto" width="100%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le fonctionnement <br> de l'ordinateur</h2>
+
+	<div>
+		Comment fonctionne un ordinateur ?
+	</div>
+
+	<div class="skip r-stack">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_2.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_3.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_2.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_4.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_5.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in-then-out" src="./img/fonc_ordinateur_6.svg" height="auto" width="80%" alt="">
+		<img class="fragment fade-in" src="./img/fonc_ordinateur_1.svg" height="auto" width="80%" alt="">
+	</div>
+
+	<div class="fragment">
+		Tout cela n'est que des fils électriques ... <br>
+		<span class="fragment">... qu'on allume et qu'on éteint.</span>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Qu'est-ce qu'un système d'exploitation"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Autrefois : <a href="https://fr.wikipedia.org/wiki/ENIAC" target="_blank">ENIAC</a></h2>
+
+	<img style="float: right; margin-bottom: 10px; margin-left: 10px;" src="./img/Eniac.jpg"
+		height="auto" width="400px">
+
+	<ul style="display: block;">
+		<li>
+			Premier ordinateur <b>entièrement électronique</b> :
+			<ul>
+				<li>18 000 tubes à vide</li>
+				<li>1 500 relais</li>
+				<li>20 registres de 10 chiffres décimaux </li>
+				<li>programmé à l'aide de 6 000 commutateurs</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			<b>La programmation</b> se faisait directement <br> <b>en langage machine</b>
+		</li>
+		<li class="fragment skip">
+			<b>Un seul programme</b> à la fois pouvait s'exécuté.
+		</li>
+		<li class="fragment skip">
+			L'absence d'un OS obligeait le programmeur à <b>charger manuellement <br>
+				le programme</b>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Autrefois : <a href="https://fr.wikipedia.org/wiki/IBM_RAMAC_305" target="_blank">IBM RAMAC 305</a></h2>
+
+	<img style="float: left; margin-bottom: 10px; margin-right: 60px;" src="./img/ibm_ramac_305.jpg"
+		height="auto" width="400px">
+
+	<ul style="display: block;">
+		<li>
+			<b>Premier ordinateur à disque dur</b> (l'<b>IBM 350</b>) commercialisé en <i>septembre 1956</i>
+			par <b>IBM</b>.
+		</li>
+		<li class="fragment skip">
+			Composé des éléments suivants : <br> unité de traitement, imprimante, console, alimentation,
+			disque dur, mémoire 5Mo.
+		</li>
+		<li class="fragment skip">
+			<b>L'unité de traitement</b> est basée sur un tambour magnétique sur lequel est
+			stocké le programme.
+		</li>
+		<li class="fragment skip">
+			<b>Un opérateur</b> programme à l'aide de <b>cartes perforées</b> et inscrit les
+			données sur <br> le tambour.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Automatiser les tâches</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/ibm_ramac_305.jpg" height="170px" width="auto">
+		<img src="./img/Eniac.jpg" height="170px" width="auto">
+	</div>
+
+	<ul>
+		<li>Comment <b>automatiser les tâches</b> des opérateurs <br> et des programmeurs ?
+		</li>
+		<li class="fragment skip">Écrire un <b>programme informatique</b> qui:
+			<ul id="fleche">
+				<li class="fragment">décide qui fait quoi et à quel moment</li>
+				<li class="fragment">fait le lien entre les applications et le matériel</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Définition</h2>
+
+	<div id="default-block" style="text-align: center;">
+		<em>&ldquo;<b>Un système d'exploitation</b> est un ensemble de programmes
+			réalisant l'interface entre le matériel et les utilisateurs.&rdquo;</em>
+	</div>
+	
+	<div style="display: flex; align-items: center; margin-top:50px;">
+		<ul style="width:50%">
+			<li class="fragment">gère la partie <b>matérielle</b></li>
+			<li class="fragment">sert de socle pour les <b>applications</b></li>
+		</ul>
+		<div style="width:50%" >
+			<img src="./img/os-schema.svg" width="80%" alt="">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_1.svg" height="auto" width="70%" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_2.svg" height="auto" width="70%" alt="">
+
+	<ul>
+		<li><b>Les systèmes batch</b> sont basés sur deux programmes :
+			<ol>
+				<li class="fragment"><i>le chargeur</i> : charger les programmes dans la mémoire centrale
+					depuis <br> les
+					cartes perforées
+					ou le dérouleur de bandes.</li>
+				<li class="fragment"><i>le moniteur d'enchaînement de traitements</i> : permettre
+					l'enchaînement <br>
+					des travaux soumis à la place de l'opérateur.</li>
+			</ol>
+		</li>
+		<li class="fragment skip">
+			<b>Les systèmes batch</b> automatisent les tâches de préparation <br> des travaux et exploitent
+			efficacement le processeur.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_3.svg" height="auto" width="70%" alt="">
+
+	<div class="left-content">
+
+		<p>Utiliser plusieurs composants en parallèle, ce qui nécessite:</p>
+
+		<ul>
+			<li class="fragment"><b>Gestion de la priorité</b> (<em>quel processus peut accéder à la ressource</em>)
+				<ul id="fleche">
+					<li>ordonnancement</li>
+				</ul>
+			</li>
+			<li class="fragment">
+				<b>Mémoire partagée</b> (<em>gérer des informations de plusieurs processus</em>)
+				<ul id="fleche">
+					<li>adressage et mémoire</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p class="fragment">
+			<b>Exemple</b> : <a href="https://fr.wikipedia.org/wiki/Multics" target="_blank">MULTICS</a>
+		</p>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_4.svg" height="auto" width="70%" alt="">
+
+	<div class="left-content">
+		<p><b>Plusieurs processus actifs</b> alternant sur le processeur</p>
+		<ul>
+			<li class="fragment">Gestion des interruptions</li>
+			<li class="fragment">Cycle de vie du processus</li>
+			<li class="fragment">Synchronisation de processus et programmation concurrente</li>
+		</ul>
+
+		<p class="fragment">
+			<b>Exemple</b> : <a href="https://en.wikipedia.org/wiki/Unix" target="_blank">UNICS</a>
+			ou <a href="https://en.wikipedia.org/wiki/Unix" target="_blank">UNIX</a>
+		</p>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_5.svg" height="auto" width="70%" alt="">
+
+	<ul>
+		<li><b>Gestion des délais</b>: contrainte de <b>temps de réponse</b>
+			<ul id="fleche" class="fragment">
+				<li>les processus doivent répondre vite</li>
+			</ul>
+		</li>
+		<li class="fragment">Apparition des <b>micro-ordinateurs</b>
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Control_Program/Monitor" target="_blank">CP/M</a>
+					$\rightarrow$
+					<a href="https://fr.wikipedia.org/wiki/IBM_PC" target="_blank">IBM PC</a>
+					(<a href="https://fr.wikipedia.org/wiki/MS-DOS" target="_blank">MSDOS</a>)
+				</li>
+			</ul>
+		</li>
+		<li class="fragment">
+			Apparition des <b>interfaces graphiques</b>
+			<ul>
+				<li><a href="https://fr.wikipedia.org/wiki/Xerox" target="_blank">Xerox</a>
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Apple
+						Macintosh</a> 1984,
+					<a href="https://fr.wikipedia.org/wiki/Windows_95" target="_blank">Windows 95</a>,
+					<a href="https://fr.wikipedia.org/wiki/Linux" target="_blank">Linux</a> 1991
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_6.svg" height="auto" width="70%" alt="">
+	
+	<ul>
+		<li><b>Les ordinateurs communiquent</b> pour échanger des données !
+			<ul>
+				<li class="fragment skip"><a href="https://fr.wikipedia.org/wiki/ARPANET"
+						target="_blank">Arpanet</a> (1967) conçu par
+					la <a href="https://fr.wikipedia.org/wiki/Defense_Advanced_Research_Projects_Agency"
+						target="_blank">DARPA</a></li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/Courrier_%C3%A9lectronique"
+						target="_blank">E-mail</a> (1972)
+					avec <a href="https://fr.wikipedia.org/wiki/Ray_Tomlinson" target="_blank">Ray
+						Tomlinsonn</a></li>
+				<li class="fragment"><a
+						href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet" target="_blank">TCP/IP</a>(1972)
+				</li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/Client-serveur"
+						target="_blank">Clients-Serveur</a> années 80 $\rightarrow$
+					<a href="https://fr.wikipedia.org/wiki/Network_File_System" target="_blank">NFS - Network File System</a>
+					(<a href="https://fr.wikipedia.org/wiki/Sun_Microsystems" target="_blank">Sun</a>, 1984)
+				</li>
+				<li class="fragment"><a href="https://fr.wikipedia.org/wiki/ARPANET"
+						target="_blank">Arpanet</a> ouvert fin 80
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/World_Wide_Web"
+						target="_blank">Web</a> début 90
+					(<a href="https://fr.wikipedia.org/wiki/Organisation_europ%C3%A9enne_pour_la_recherche_nucl%C3%A9aire"
+						target="_blank">CERN</a> ,
+					<a href="https://fr.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank">Tim
+						Berners-Lee</a>)
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Historique/Types des OS</h2>
+
+	<img data-id="hh" src="./img/history_7.svg" height="auto" width="70%" alt="">
+
+	<ul>
+		<li><b>Les ordinateurs de poche</b> existent depuis <i>les années 80</i> <br>
+			<ul>
+				<li class="fragment skip"><i>1986</i> : sortie des <a
+						href="https://fr.wikipedia.org/wiki/Assistant_personnel" target="_blank">PDA</a>
+					$\rightarrow$ <a href="https://fr.wikipedia.org/wiki/Palm_OS" target="_blank">
+						PalmOS</a></li>
+
+				<li class="fragment"><i>2007</i> : sortie des <a href="https://fr.wikipedia.org/wiki/Smartphone"
+						target="_blank">smartphones</a> $\rightarrow$ <a
+						href="https://fr.wikipedia.org/wiki/Android" target="_blank">android OS</a></li>
+				<li class="fragment"><i>2007</i> : sortie de l'<a href="https://fr.wikipedia.org/wiki/IPhone"
+						target="_blank">iPhone</a> $\rightarrow$ <a href="https://fr.wikipedia.org/wiki/IOS"
+						target="_blank">iOS</a></li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Rôles du système d'exploitation"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rôles du système d'exploitation</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ol style="width: 60%;">
+			<li class="fragment"><b>L'interface noyau-matériel</b> prend en charge la gestion et le partage
+				des ressources de la machine.</li>
+			<li class="fragment skip"><b>L'interface noyau-utilisateur</b> construit <br> une machine virtuelle
+				plus facile d'emploi et plus conviviale.</li>
+			<li class="fragment skip"><b>Le noyau</b> assure plusieurs grandes fonctionnalités.</li>
+		</ol>
+
+		<img data-id="box1" src="./img/os-components.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interface noyau-matériel</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 60%;">
+			<li class="fragment"><b>Gérer l'accès et le partage</b> des ressources matérielles (<i>arbitrage</i>).
+				<ul>
+					<li>processeur</li>
+					<li>mémoire centrale</li>
+					<li>périphériques</li>
+					<li>...</li>
+				</ul>
+			</li>
+			<li class="fragment skip">Cet arbitrage doit assurer:
+				<ul>
+					<li class="fragment"><b>l'équité</b> d'accès aux ressources</li>
+					<li class="fragment"><b>la protection</b> de l'accès aux ressource</li>
+					<li class="fragment"><b>la cohérence</b> des états des ressources</li>
+				</ul>
+			</li>
+		</ul>
+
+		<img data-id="box1" src="./img/interface-noyau-mat.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interruption - IRQ</h2>
+
+	<ul>
+		<li>L'OS s'<i>interface avec la couche matérielle</i>, par le biais du
+			mécanisme <br> des <b>interruptions</b> (<b>Interrupt ReQuest</b> ou <b>IRQ</b>).
+			<ul id="fleche">
+				<li class="fragment">prendre connaissance des <i>événements survenant sur le matérielle</i></li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">
+			L'<b>IRQ</b> est <b>un signal</b> (<i>code</i>) permettant à un dispositif externe
+			d'interrompre <br> le processeur pour lancer un traitement particulier.
+			<ul>
+				<li class="fragment">à chaque code correspond <b>une routine de traitement</b> de l'OS.</li>
+				<li class="fragment">les adresses des routines sont dans <b>une table</b> placée en
+					mémoire <br> (<b>la table des vecteurs d'interruptions</b>).</li>
+				<li class="fragment"><b>les routines d'interruptions</b> sont chargées
+					en mémoire au moment du chargement <br> de l'OS et exécutées en <b>mode
+						superviseur</b>.
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Prise en compte d'une IRQ</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 60%;">
+			
+			<li>Enregistrer $\rightarrow$ <b>pile de l'OS</b>
+				<ul>
+					<li>l'adresse d'<i>instruction interrompue</i></li>
+					<li>l'<i>état du processeur</i> (registres)</li>
+				</ul>
+			</li>
+			<li class="fragment skip">Passer en <b>mode superviseur</b></li>
+			<li class="fragment skip">Charger la <b>routine</b> correspondant <br> à <b>l'interruption</b></li>
+		</ul>
+
+		<img src="./img/prise-en-compte-IT.png" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interface noyau-utilisateur</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li>Présenter une <b>interface</b>
+				entre <br> le hardware et les applications.
+				<ul id="fleche">
+					<li>une <b>interface
+							simplifiée et unifiée</b>.</li>
+				</ul>
+			</li>
+
+			<li class="fragment skip">
+				Présenter au-dessus de la machine physique, <b>une machine virtuelle</b> plus simple
+				et plus conviviale.
+
+			</li>
+			<li class="fragment skip">Créer <b>l'illusion de vrais ressources physiques</b> (processeur,
+				mémoire, périphérique ...).</li>
+		</ul>
+
+		<img data-id="box1" src="./img/interface-noyau-user.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les appels systèmes</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li>Fournir une <b>interface d'accès</b> <br> aux ressources matérielles.
+				<ul id="fleche">
+					<li>par le biais de <b>fonctions prédéfinies</b> (<b>appels/routines
+							systèmes</b>).</li>
+					<li>les points d'entrées aux <b>fonctionnalités <br> de l'OS</b>. </li>
+
+				</ul>
+			</li>
+		</ul>
+
+		<img data-id="box1" src="./img/appels-sys-schema.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemples d'appels systèmes</h2>
+
+	<ul>
+		<li><b>Contrôle de processus</b>
+			<ul>
+				<li class="fragment"><cs-code>sys_fork</cs-code> : créer un processus</li>
+				<li class="fragment"><cs-code>sys_wait</cs-code> : attendre la terminaison d'un processus</li>
+				<li class="fragment"><cs-code>sys_exit</cs-code> : terminer l'exécution d'un processus</li>
+				<li class="fragment"><cs-code>sys_kill</cs-code> : Envoyer un signal à un processus</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			<b>Gestion des fichiers </b>
+			<ul>
+				<li class="fragment"><cs-code>sys_open/sys_close</cs-code> : ouvrir/fermer un fichier</li>
+				<li class="fragment"><cs-code>sys_read/sys_write</cs-code> : lire/écrire des données dans un
+					fichier</li>
+				<li class="fragment"><cs-code>sys_mkdir/sys_rmdir</cs-code> : créer/supprimer un répertoire</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'appel système <cs-code>fork()</cs-code></h2>
+
+	<img src="./img/f18-fork.jpeg" height="100%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple sous UNIX</h2>
+
+	<ul>
+		<li>
+			L'instruction <cs-code>os.chdir(path)</cs-code> permet
+			de <i>changer le répertoire courant</i> <br> d'un programme <b>Python</b> en cours d'exécution.
+		</li>
+		<li class="skip fragment">
+			La commande <cs-code>cd path</cs-code> permet
+			de <i>changer le répertoire courant</i> depuis <br> l'<b>interpréteur de commandes</b> (<b>Shell</b>).
+		</li>
+		<li class="skip fragment">
+			Les deux exécutent <b>la routine système</b> <cs-code>sys_chdir</cs-code>.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Modes d'exécutions</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 65%;">
+			<li><b>Un programme utilisateur</b> s'exécute dans <br> un <b>mode utilisateur</b> :
+				<ul>
+					<li class="fragment">un Jeu d'<i>instructions restreint</i> <br> pour protéger la machine.
+					<ul><li class="fragment"><b>ex.</b> manipulation des IRQs interdite.</li></ul>
+					</li>
+				</ul>
+			</li>
+
+			<li class="fragment skip">L'<b>OS</b> s'exécute dans <br> <b>un mode privilégié</b>
+				(<b>mode superviseur</b>):
+				<ul>
+					<li class="fragment"><i>aucune restriction</i> de droits n'existe.</li>
+				</ul>
+			</li>
+		</ul>
+		<img src="./img/modes-exec.svg" height="100%"
+			style="width: 35%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Commutations de contexte</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li>A l'<i>appel d'une fonction du noyau</i>,<br> il y a
+				passage au <b>mode superviseur</b>
+				(<i>commutation de contexte</i>).
+			</li>
+			<li class="fragment skip">
+				<i>A la fin</i> de l'exécution de la fonction <br> du noyau,
+				<i>le programme repasse</i> <br> au <b>mode utilisateur</b>.
+				<ul>
+					<li class="fragment">commutation de contexte avec <i>restauration du contexte
+							utilisateur</i>.</li>
+					<li class="fragment">reprise de l'exécution du programme utilisateur</li>
+				</ul>
+			</li>
+
+		</ul>
+		<img src="./img/cumutation-contexte.png" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les causes de commutations <br> de contexte</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ol style="width: 60%;">
+			<li class="fragment">appelle d'une <b>fonction système</b>.</li>
+			<li class="fragment skip">exécute une opération illicite <br> (<b>trappe</b> ou <b>exception</b>).</li>
+			<li class="fragment skip">prise en compte d'une <b>interruption matérielle</b>.</li>
+		</ol>
+		<img src="./img/causes-c-c.png" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+	<div id="green-block" class="fragment" style="font-size: 80%; width: 75%; text-align: center;">
+		<b>Trappes et appels systèmes</b> sont parfois qualifiés <b>d'interruptions logicielles</b> <br> par
+			opposition aux interruptions matérielles.
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interpréteur de commande (shell)</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li>
+				<b>Langage de commandes</b> : <br> l'interface de niveau utilisateur <br> avec
+				le système d'exploitation.
+			</li>
+
+			<li class="skip fragment">
+				<b>Interpréteur de commandes</b> : <br> exécuter <i>
+					des commandes de l'utilisateur</i> <br>
+				en appellant <b>la routine système</b> appropriée.
+			</li>
+		</ul>
+
+		<img src="./img/shell-schema.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Interpréteur de commande (shell)</h2>
+
+	<ul>
+		<li>Chaque système d'exploitation a son propre <b>langage <br> de commandes </b>:
+			<ul>
+				<li class="fragment"><b>MSDOS/Unix</b> : console + clavier</li>
+				<li class="fragment"><b>Mac/Windows</b> : souris + clavier</li>
+				<li class="fragment"><b>iOS/Android</b> : boutons + écran tactile</li>
+			</ul>
+		</li>
+	</ul>
+	<div style="display: inline-grid; grid-template-columns: auto auto auto; align-items:center; column-gap: 20px;">
+		<img src="./img/f14-ligne-cmd.png" height="300px">
+		<img src="./img/f14-windows.jpg" height="300px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Noyau d'un système d'exploitation</h2>
+
+	<div style="display: flex; align-items: center;">
+
+		<ul style="width: 60%;">
+			<li class="fragment">
+				<b>Gestion des entrées/sorties (I/O)</b>
+				<ul>
+					<li>contrôleurs, pilotes, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Gestion des processus</b>
+				<ul>
+					<li>ordonnancement, synchronisation, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Gestion mémoire</b>
+				<ul>
+					<li>allocation, gestion des espaces, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Gestion du stockage secondaire</b>
+				<ul>
+					<li>système de fichiers, ...</li>
+				</ul>
+			</li>
+
+			<li class="skip fragment">
+				<b>Gestion de la sécurité</b>
+			</li>
+		</ul>
+
+		<img src="./img/noyau-os.svg" height="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Structure d'un Système d'exploitation"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Organisation générale de l'OS</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 65%;">
+			<li class="fragment">
+				<b>Interruptions</b> : évènements produits <br>
+				par le matériel.
+			</li>
+			<li class="fragment">
+				<b>Exceptions</b> : événements
+				générés <br> par le processeur.
+			</li>
+			<li class="fragment">
+				<b>Pilotes (drivers)</b> : applications contrôlant <br> les périphériques.
+			</li>
+			<li class="fragment">
+				<b>Noyau (kernel)</b> : application rendant <br> des services généraux.
+			</li>
+
+			<li class="fragment">
+				<b>Appels Systèmes</b> : demandes <br> de services.
+			</li>
+		</ul>
+
+		<img src="./img/f16-noyau-os.png" height="100%"
+			style="width: 35%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Structure des OS</h2>
+
+	<div id="default-block" class="left-content">
+		<ul>
+			<li>Comment organiser les différentes fonctions d'un <b>OS</b> ?
+				<ul id="fleche">
+					<li class="fragment skip">Qu'est-ce qui est dans le <b>noyau</b> (en <b>mode Superviseur</b>) ?</li>
+					<li class="fragment">Comment interagissent les <i>différents composants</i> ?</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Noyaux monolithiques</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 60%;">
+			<li>
+				L'ensemble des fonctions/pilotes sont regroupés dans <b>un seul bloc</b>.
+			</li>
+			<li class="fragment skip">
+				<b>Ex.</b> anciennes versions de <b>Linux</b> <br> ou certains <b>vieux Unix</b>.
+			</li>
+			<li class="fragment skip">
+				Les OS <b>monolithiques</b> sont rapides mais délicats à maintenir.
+			</li>
+		</ul>
+		<img src="./img/Architecture_noyau-monolithique.png" width="100%"
+			style="width: 40%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+
+	<div class="d-skip" style="font-size: 20px;">source : <a
+			href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation#Diff%C3%A9rents_types_de_noyaux"
+			target="_blank">https://fr.wikipedia.org</a></div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Noyaux monolithiques modulaires</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 70%;">
+			<li>Seules <b>les parties fondamentales</b> de l'OS sont regroupées dans <b>un
+					bloc unique</b>.</li>
+			<li class="fragment skip">Les autres fonctions (<b>ex.</b> les pilotes) sont regroupées dans des
+				<b>modules séparés</b>.
+			</li>
+			<li class="fragment skip"><b>Ex.</b> Linux ou <a
+					href="https://fr.wikipedia.org/wiki/Solaris_(syst%C3%A8me_d%27exploitation)"
+					target="_blank">Solaris</a>.</li>
+			<li class="fragment skip">
+				Les OS <b>monolithiques modulaires</b> ne sont pas faciles à concevoir (dépendances multiples).
+			</li>
+		</ul>
+		<img src="./img/Noyau_monolithique_modulaire.svg" height="100%"
+			style="width: 30%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+	<div style="font-size: 20px;">source : <a
+			href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation#Diff%C3%A9rents_types_de_noyaux"
+			target="_blank">https://fr.wikipedia.org</a></div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes à micro-noyaux</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 75%;">
+			<li><b>Minimiser les fonctionnalités dépendantes</b><br>
+				du noyau en plaçant des services l'extérieur.
+			</li>
+			<li class="fragment skip"><b>Éloigner les services « à risque »</b> des parties critiques <br> de
+				l'OS regroupées dans le noyau.</li>
+
+			<li class="fragment skip"><b>Ex.</b> <a href="https://fr.wikipedia.org/wiki/Mach_(noyau)"
+					target="_blank">Mach</a> de <b>Mac OS X</b>.</li>
+
+			<li class="fragment skip">
+				Les OS à <b>micro-noyaux</b> pur sont trop lents.
+			</li>
+		</ul>
+		<img src="./img/Micro_noyau_simplifie.svg" height="100%"
+			style="width: 25%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+	<div style="font-size: 20px;">source : <a
+			href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation#Diff%C3%A9rents_types_de_noyaux"
+			target="_blank">https://fr.wikipedia.org</a></div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes à noyaux hybrides</h2>
+
+	<div style="display: flex; align-items: center;">
+		<ul style="width: 75%;">
+			<li>
+				Combiner des noyaux <b> monolithiques</b> et des <b>micro-noyaux</b> 
+				pour avoir les avantages des deux.
+			</li>
+
+			<li class="fragment skip"><b>Ex.</b> <a href="https://fr.wikipedia.org/wiki/XNU?"
+					target="_blank">XNU</a> de <b>Mac OS X</b>.</li>
+
+		</ul>
+		<img src="./img/Micro_noyau_hybride_simplifie.svg" height="100%"
+			style="width: 25%; margin-bottom: 20px; margin-right: 60px;">
+	</div>
+	<div style="font-size: 20px;">source : <a
+			href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation#Diff%C3%A9rents_types_de_noyaux"
+			target="_blank">https://fr.wikipedia.org</a></div>
+
+	<div id="green-block" class="fragment left-content" style="text-align: center;">
+		Les OS avec un micro-noyau étendus en fonctionnalités par d'autres <br>
+		composants sont les plus utilisés.
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Chargement d'un OS</h2>
+
+	<ul>
+		<li>
+			L'<b>OS</b> est le <i>premier programme exécuté</i> lors de la mise en marche <br>
+			de l'ordinateur, après l'amorçage (<b>boot</b>).
+		</li>
+		<li class="skip fragment">
+			Le <b>boot</b> (<b>boostrap</b>) désigne les <i>étapes successives du démarrage</i>.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les étapes du boot</h2>
+
+	<ol>
+		<li>le <b>POST</b> test - <b>Power On Self Test</b>
+			<ul>
+				<li class="fragment">après un start ou un reset,
+					le processeur charge <b>les premières instructions</b> <br> à partir de la <b>ROM</b> du
+					<b>BIOS</b> situées
+					à l'adresse <i>FFFF0</i>.
+				</li>
+				<li class="fragment">des instructions de <i>branchement vers un programme</i> du <b>BIOS</b>
+					<br> qui <i>initialise et teste les fonctions vitales du hardware</i>
+				</li>
+			</ul>
+		</li>
+		<li class="skip fragment">le chargement du <b>MBR</b> - <b>Master Boot Record</b>
+			<ul>
+				<li class="fragment">si le <b>POST</b> réussit, il consultera
+					la <a href="https://en.wikipedia.org/wiki/Nonvolatile_BIOS_memory" target="_blank">RAM
+						CMOS</a> pour identifier le <b>disque système</b> <br> dont le premier secteur
+					est appelé <b>MBR</b>.</li>
+				<li id="fleche" class="fragment">le code du <b>MBR</b> teste la table de partition pour
+					charger la partition contenant <br> le secteur d'amorçage avec l'<b>IPL</b> - <b>Initial Program
+						Load</b>.
+					<ul class="fragment">
+						<li>l'<b>IPL</b> charge l'<b>OS</b>
+							ou le <b>bootmanager</b> en RAM.</li>
+						<li>l'<b>OS</b> est lancé</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ol>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch5" name="Synthèse"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Synthèse</h2>
+    <ul>
+        <li class="fragment">Un système d'exploitation est un ensemble de programmes réalisant l'interface 
+            entre le matériel et les utilisateurs.</li>
+
+        <li class="fragment skip">
+            Les deux objectifs principaux de cette interface sont :
+            <ol>
+                <li class="fragment">construire au-dessus du matériel d'une machine virtuelle plus facile 
+                    d'emploi et plus conviviale (accessible par des <b>appels système</b>);</li>
+                <li class="fragment">prendre en charge de la gestion de plus en plus complexe des ressources
+                    et le partage de celles-ci (gestion basée sur les <b>interruptions</b>).</li>
+            </ol>
+        </li>
+
+        <li class="fragment skip">
+            Les fonctionnalités du système d'exploitation sont accessibles <br>
+            par le biais des commandes ou des appels système.
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Synthèse</h2>
+    <ul>
+        <li>
+            Le <b>mode superviseur</b> est le mode d'exécution du noyau
+            du système d'exploitation.
+        </li>
+
+        <li class="fragment skip">Le passage du <b>mode utilisateur</b> vers le mode superviseur peut être 
+            provoqué par un appel système, une trappe, ou par une <b>IRQ</b>.</li>
+
+        <li class="fragment skip">Il s'accompagne d'une commutation de contexte qui consiste à :
+            <ul>
+                <li>sauvegarder le contexte utilisateur</li>
+                <li>changer le mode d'exécution</li>
+                <li>restituer le contexte utilisateur</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="./1-os-introduction-20252026.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
