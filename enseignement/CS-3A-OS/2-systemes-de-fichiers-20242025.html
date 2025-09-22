@@ -12,34 +12,34 @@
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
-	<!-- Theme used for syntax highlighting of code -->
+  <!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
-	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
-
-	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
-	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
-	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
+	<img id="logo" src="../resources/img/cs.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
-		<a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a>
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
 	</div>
 
 	<div style="text-align: left">
@@ -48,8 +48,8 @@
 	</div>
 
 	<div class="description" >
-		<span><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
-		<span><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2025/2026</span>
+		<span ><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
+		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2024/2025</span>
 	</div>
 		
 	<div class="hero-card-id">
@@ -194,7 +194,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>File Control Block - FCB</h2>
 
-  <div id="default-block" class="left-content">
+  <div id="default-block" style="text-align: center; width: 88%;">
     <b>Structure de données</b> de l'<b>OS</b> pour stocker 
     les informations nécessaires <br> à la <i>gestion des fichiers</i>
   </div>
@@ -435,7 +435,7 @@
 
       <ul id="ko">
         <li>
-          <red-b>Problème</red-b>
+          <b style="color: red;">Problème</b>
         </li>
       </ul>
       <br>
@@ -450,7 +450,7 @@
       <br>
       <ul id="ok" class="fragment skip">
         <li>
-          <green-b>Solution</green-b>
+          <b style="color: green;">Solution</b>
         </li>
       </ul>
       <br>
@@ -549,9 +549,16 @@
     <li class="skip fragment">
       <b>Partition</b> $\to$ <i>Structure logique</i> (disque "<b>virtuel</b>)
       <ul>
-        <li>Base $\to$ 1 disque = 1 partition</li>
+        <li>Base : 1 disque = 1 partition</li>
         <li>1 disque = N partitions</li>
         <li>1 partition = 1 ou N disques (selon <b>OS</b>)</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      <b>Répertoire</b> $\to$ Un répertoire par partition $\to$ l'ensemble des <b>FCB</b>
+      <ul id="fleche">
+        <li>Nom/identifiant $\to$ <b>FCB</b></li>
       </ul>
     </li>
   </ul>
@@ -567,29 +574,25 @@
   </div>
   
   <div class="left-content">
-    <ul>
+      <ul>
         <li>
-        <b>Répertoire</b> $\to$ Un répertoire par partition $\to$ l'ensemble des <b>FCB</b>
-        <ul>
-          <li>Nom/identifiant $\to$ <b>FCB</b>
+          Nom $\to$ <b>FCB</b>
           <ul>
             <li><strong>Exemple</strong>: <i>MSDOS</i> et <i>Windows</i> $\to$ 11 octets (8 nom + 3 extension)</li>
             <li><strong>Exemple</strong>: <i>Unix</i> et <i>Mac</i> $\to$ 255 octets</li>
           </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <br>
-    <ul id="ko" class="skip fragment">
-      <li>Taille du répertoire proportionnelle au nombre de fichiers</li>
-    </ul> 
-    <br>
-    <ul class="fragment"><ul id="fleche"><li>borner le nombre de fichiers $\ldots$</li></ul></ul>
-    <br>
-    <ul id="ko" class="fragment">
-      <li>Utilisateur: organiser les fichiers, unicité de nom, $\ldots$</li>
-    </ul>
+        </li>
+      </ul>
+      <br>
+      <ul id="ko" class="skip fragment">
+        <li>Taille du répertoire proportionnelle au nombre de fichiers</li>
+      </ul> 
+      <br>
+      <ul class="fragment"><ul id="fleche"><li>borner le nombre de fichiers $\ldots$</li></ul></ul>
+      <br>
+      <ul id="ko" class="fragment">
+        <li>Utilisateur: organiser les fichiers, unicité de nom, $\ldots$</li>
+      </ul>
   </div>
 
 </section>
@@ -876,7 +879,7 @@
         </li>
     
         <li class="fragment skip">
-          Selon les technologies, la <b>création des blocs</b> <i>émule</i> 
+          Selon les technologies, la <b>création des blocs</b> et <b>émule</b> 
           toujours celle des <b>disques durs</b>.
         </li>
     
@@ -894,8 +897,8 @@
         </li>
       </ul>
 
-      <div id="alert-block" class="d-skip fragment left-content">
-        Le découpage en blocs génère de <b>la fragmentation <br> interne</b> (l'espace inutilisé du dernier bloc).
+      <div id="alert-block" class="d-skip fragment" style="width: 85%;">
+        Le découpage en blocs génère de <b>la fragmentation interne</b> (l'espace inutilisé du dernier bloc).
       </div>
     </div>
 
@@ -1430,7 +1433,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
-		<a href="./2-systemes-de-fichiers-20252026.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./2-systemes-de-fichiers.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
@@ -1446,9 +1449,8 @@
 
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1475,7 +1477,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMath.MathJax3, RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
