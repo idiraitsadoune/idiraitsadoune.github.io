@@ -69,7 +69,7 @@
         qui en respecte les propriétés.</li>
 </ul>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
 	<div id="exo1" style="display: none; margin-top: 20px;">
     <ul>
@@ -116,7 +116,7 @@
 qu'elle sera prise en compte, par la variable propositionnelle $executed_a$.
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2-1')">Click here to display or hide the correction</button>
 	<div id="exo2-1" style="display: none; margin-top: 20px;">
     <ul>
@@ -132,16 +132,16 @@ qu'elle sera prise en compte, par la variable propositionnelle $executed_a$.
   On va voir que certains connecteurs sont redondants.
   <ul>
     <li>Exprimer le connecteur $\text{G}$ en fonction des connecteurs $\neg$, et $\text{F}$.</li>
-    <li>Exprimer le connecteur $\text{F}$ en fonction du connecteur $\bigcup$.</li>
+    <li>Exprimer le connecteur $\text{F}$ en fonction du connecteur $\text{U}$.</li>
   </ul>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2-2')">Click here to display or hide the correction</button>
 	<div id="exo2-2" style="display: none; margin-top: 20px;">
     <ul>
       <li>$\text{G} ~\phi \equiv \neg \text{F} ~ \neg \phi$</li>
-      <li>$\text{F} ~ \phi \equiv True ~ \bigcup ~ \phi$</li>
+      <li>$\text{F} ~ \phi \equiv True ~ \text{U} ~ \phi$</li>
     </ul>
   </div>
 </div>
@@ -168,14 +168,14 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     Exprimer ces nouveaux connecteurs en fonction des connecteurs de LTL.
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2-3')">Click here to display or hide the correction</button>
 	<div id="exo2-3" style="display: none; margin-top: 20px;">
     <ul>
       <li>$\varphi_1~W~\varphi_2 \equiv \text{G} \varphi_1 \vee (\varphi_1~\bigcup~\varphi_2)$</li>
       <li>$\text{F}^\infty \varphi \equiv \text{G} \text{F} \varphi$</li>
       <li>$\text{G}^\infty \varphi \equiv \text{F} \text{G} \varphi$</li>
-      <li>$\varphi_1~\bigcup_{\leq k}~\varphi_2 \equiv (\varphi_1~\bigcup~\varphi_2) \wedge (\text{G} \neg (\bigwedge_{i \leq k} \text{X}^{i} \varphi_2)) $</li>
+      <li>$\varphi_1~\bigcup_{\leq k}~\varphi_2 \equiv (\varphi_1~\bigcup~\varphi_2) \wedge (\text{G} \neg (\bigwedge_{i \in 0..k} \text{X}^{i} \varphi_2)) $</li>
       <li>$\varphi_1~R~\varphi_2 \equiv \varphi_2~W~(\varphi_1 \wedge \varphi_2)$</li>
     </ul>
     </div>
@@ -199,7 +199,7 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
     </ul>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2-4')">Click here to display or hide the correction</button>
 	<div id="exo2-4" style="display: none; margin-top: 20px;">
     <ul>
@@ -214,7 +214,8 @@ $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jou
         <li>S'il y a une infinité de $p_1$ et une infinité de $p_2$ alors toute occurrence de $q_1$ est suivie d'une occurrence de $q_2$ :  <br>
             $\text{G} \text{F} ~ p_1 \wedge \text{G} \text{F} ~ p_2 \Rightarrow \text{G}(q_1 \Rightarrow \text{F} ~ q_2)$</li>
         <li>Avant chaque occurrence de $p$ il y a au moins une occurrence de $q$ : <br> 
-            $\text{G}(\neg (\neg q~\bigcup~p))$</li>
+            $\text{G}(\neg (\neg q~\bigcup~p))$ <br>
+            $\neg~p ~W~ q$</li>
         <li>Entre chaque paire d'occurrence de $p$ il y a au moins une occurrence de $q$ : <br>
             $\text{G} (p \Rightarrow \text{X}(\neg p~W~q))$<br>
             $\text{G} (p \wedge \text{X} \text{F} ~ p \Rightarrow \text{X}(\neg p~\bigcup~q))$<br>
@@ -263,7 +264,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
 </ul>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3-1')">Click here to display or hide the correction</button>
 	<div id="exo3-1" style="display: none; margin-top: 20px;">
     <ul>
@@ -296,10 +297,10 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ol>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3-2')">Click here to display or hide the correction</button>
 	<div id="exo3-2" style="display: none; margin-top: 20px;">
-    <b>2.1</b> TO DO <br>
+    <b>2.1</b> Plusieurs solutions possibles (voir la correction donnée par le chargé de TD en classe) <br>
     <b>2.2</b> <i>Quoique je fasse maintenant (i.e. quelque soit la transition que je passe), je garde la possibilité de vérifier $p$ dans le futur.</i> <br>
     $$AXEF ~p$$
     </div>
@@ -321,7 +322,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ol>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3-3')">Click here to display or hide the correction</button>
 	<div id="exo3-3" style="display: none; margin-top: 20px;">
     <ol>
@@ -361,7 +362,7 @@ d'invariance, de sûreté et de vivacité dont on rappelle les définitions ici:
     </ul>
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3-4')">Click here to display or hide the correction</button>
 	<div id="exo3-4" style="display: none; margin-top: 20px;">
     <ul>
