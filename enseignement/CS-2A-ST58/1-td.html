@@ -161,6 +161,14 @@ tout le long de l'exécution.</li>
 
 <li>$\varphi_1~\bigcup_{\leq_k}~\varphi_2$ (until borné) signifie que $\varphi_1$ est vraie jusqu'à ce que $\varphi_2$ 
 soit vraie, et $\varphi_2$ est vraie dans au plus $k$ états consécutifs de l'exécution.</li>
+<!-- La borne devrait être définie sur phi1 et non phi2
+ $$
+\varphi ~ U^{\leq n}  \psi 
+ \equiv 
+\bigvee_{i=0}^{n} X^{i} \left(\psi  \wedge  \bigwedge_{j=0}^{i-1} X^{j}\varphi \right)
+
+ $$
+ -->
 
 <li>$\varphi_1~R~\varphi_2$ (release) signifie que $\varphi_2$ est vraie jusqu'au (et inclus) premier état où 
 $\varphi_1$ est vraie, sachant que $\varphi_1$ n'est pas forcément vraie un jour. </li>
