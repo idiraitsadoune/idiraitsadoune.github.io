@@ -39,7 +39,10 @@ function render() {
     //console.log(canvas.width)
     //console.log(canvas.height)
 
-    var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/255) ;
+    // 16/9
+    // var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/255) ;
+    // 16/10
+    var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/283.464) ;
     
     //var viewport = page.getViewport(ratio);
     //var viewport = page.getViewport(myState.zoom);
@@ -60,6 +63,7 @@ function render() {
     //var vide = ((document.getElementById('body').getBoundingClientRect().height - canvas.height) * 0.5);
     //document.getElementById('pdf_renderer').style.marginTop = vide.toString().concat("px");
     //document.getElementById('pdf_renderer').style.marginBottom = vide.toString().concat("px");
+
   });
 }
 
