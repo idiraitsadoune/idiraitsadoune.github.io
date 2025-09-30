@@ -2,37 +2,21 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>TP - Système de fichiers sous UNIX</title>
+<meta charset="utf-8">
+<title>TP - Système de fichiers sous UNIX</title>
 
-    <link rel="stylesheet" href="../resources/css/document-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
-	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+<link rel="stylesheet" href="../resources/css/document-theme.css">
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
-	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
-	<script>hljs.highlightAll();</script>
-	<script>
-		MathJax = {
-			tex: {
-				inlineMath: [['$', '$'], ['\\(', '\\)']]
-			},
-			loader: { load: ['ui/lazy'] }
-		};
-	</script>
-	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
-  <script>
-      function display_correction(my_id) {
-          var x = document.getElementById(my_id);
-          if (x.style.display === "none") {
-              x.style.display = "block";
-          } else {
-              x.style.display = "none";
-          }
-      }
-  </script>
+<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+<script type="text/javascript" src="../resources/js/correction.js"></script>
 
-	<link rel="icon" href="../resources/img/favicon.ico" />
+<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
@@ -42,8 +26,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
-        2024/2025</span>
+  3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
+    2025/2026</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -51,87 +35,87 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div class="section-form">
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<h1>
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <h1>
     Travaux Pratiques - TP<br>
     Système de fichiers sous UNIX
-</h1>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="default-block">
-    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
-    <b style="color: navy;">Consignes</b>
+  </h1>
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
+    <b style="color: navy;">Consigne 1</b>
     <p>
-        Ce TP fait l'objet d'une notation. Vous travaillerez seul et vous devrez rendre
-        un compte-rendu. Les TP sont à remettre <b style="color: red;">pour le lundi 14 octobre 2024</b> sur EDUNAO.
-        Vous devez envoyer un fichier au format <b>PDF</b> qui devrait être nommé avec la convention
-        suivante : <b>NOM1-TP1.pdf</b>. Pour chaque question, vous devez fournir le commande tapée et la réponse
-        renvoyée par le shell.
+      Ce TP fait l'objet d'une notation. Vous travaillerez seul et vous devrez rendre
+      un compte-rendu. Les TP sont à remettre <b style="color: red;">pour le mardi 14 octobre 2025</b> sur EDUNAO.
+      Vous devez envoyer un fichier au format <b>PDF</b> qui devrait être nommé avec la convention
+      suivante : <b>NOM1-TP1.pdf</b>. 
+      
     </p>
-</div>
+  </div>
 
-<div id="default-block">
-    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i> 
+  <div id="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
     <b style="color: navy;">Note</b>
     <p>
-        Les étudiants possédant une machine avec <b>Windows</b> comme OS devraient utiliser une
-        des solutions proposées dans les deux liens suivants, ou proposer une solution alternative, pour émuler un système <b>UNIX</b>.
-    
-        <ul>
-            <li><b>Installer Linux sur Windows avec WSL</b> :
-                <a href="https://learn.microsoft.com/fr-fr/windows/wsl/install"
-                    target="_blank">https://learn.microsoft.com/fr-fr/windows/wsl/install</a>
-            </li>
-            <li><b>Git bash</b> : <a href="https://gitforwindows.org/"
-                    target="_blank">https://gitforwindows.org/</a></li>
-        </ul>
-    </p>  
-</div>
+      Les étudiants possédant une machine avec <b>Windows</b> comme OS devraient utiliser une
+      des solutions proposées dans les deux liens suivants, ou proposer une solution alternative, pour émuler un
+      système <b>UNIX</b>.
 
-<div class="subsection-title">
+    <ul>
+      <li><b>Installer Linux sur Windows avec WSL</b> :
+        <a href="https://learn.microsoft.com/fr-fr/windows/wsl/install"
+          target="_blank">https://learn.microsoft.com/fr-fr/windows/wsl/install</a>
+      </li>
+      <li><b>Git bash</b> : <a href="https://gitforwindows.org/" target="_blank">https://gitforwindows.org/</a></li>
+    </ul>
+    </p>
+  </div>
+
+  <h2>
     Introduction
-</div>
+  </h2>
 
-<p>
+  <p>
     Le système de gestion de fichiers (SGF) d'Unix procure à l'utilisateur
     un moyen efficace pour conserver et manipuler aisément des
     informations. En outre, il offre un système de sécurité, notamment sur
     les droits d'accès aux fichiers.
-</p>
+  </p>
 
-<p>
+  <p>
     Il existe trois principaux types de fichiers :
-<ul>
+  <ul>
     <li>les fichiers de données (ordinary files), </li>
     <li>les répertoires (directories), </li>
     <li>les périphériques (devices). </li>
-</ul>
-</p>
+  </ul>
+  </p>
 
-<p>
+  <p>
     Ce SGF est simple et permet de manipuler de manière uniforme les
     fichiers comme les périphériques. Sous Unix, on a coutume de dire que
     "tout est fichier !". Par ailleurs, le SGF d'Unix ne fait aucune
     supposition sur l'organisation interne des fichiers. Tout fichier est
     vu comme une simple suite d'octets.
-</p>
+  </p>
 
-<p>
+  <p>
     Le système de gestion de fichiers utilise une structure hiérarchique
     (arborescence) composée de répertoires et de fichiers. Chaque
     répertoire contient des fichiers ordinaires ou d'autres répertoires.
-</p>
+  </p>
 
-<p>
+  <p>
     Voici un exemple classique d'organisation d'un SGF Unix.
-</p>
+  </p>
 
-<img src="./img/unix.svg" alt="">
+  <img src="./img/unix.svg" alt="">
 
-<ul>
+  <ul>
     <li><b>bin</b> : les programmes exécutables standards </li>
     <li><b>etc</b> : les fichiers de configuration</li>
     <li><b>home</b> : les utilisateurs "locaux"</li>
@@ -142,409 +126,456 @@
     <li><b>dev</b> : les fichiers spéciaux représentant les périphériques</li>
     <li><b>tmp</b> : les fichiers temporaires</li>
     <li> ...</li>
-</ul>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  </ul>
+
+    <div id="default-block">
+    <i class="fa fa-bell-o" style="color: navy; font-weight: bold;"></i>
+    <b style="color: navy;">Consigne 2</b>
+    <p>
+    Pour chaque question, vous devez fournir le commande tapée et la réponse renvoyée par le shell.
+    <pre><code class="language-shell"><script type="text/template">$ ls -al              
+</script></code></pre>
+    <pre><code class="language-shell"><script type="text/template">total 528
+drwxr-x---+ 47 idir.ait-sadoune  staff    1504 Sep 30 11:33 .
+drwxr-xr-x   6 root              admin     192 Sep 30 10:40 ..
+-rw-r--r--@  1 idir.ait-sadoune  staff   18436 Sep 30 10:35 .DS_Store
+drwx------+ 95 idir.ait-sadoune  staff    3040 Sep 29 15:14 .Trash
+drwxr-xr-x@  5 idir.ait-sadoune  staff     160 May 30 12:43 .config
+drwx------   3 idir.ait-sadoune  staff      96 Jan 16  2025 .cups
+drwxr-xr-x@ 12 idir.ait-sadoune  staff     384 Jun 25 14:49 .docker
+...             
+</script></code></pre>
+    </p>
+  </div>
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 1 : Les répertoires et les fichiers
-</div>
+  </div>
 
-<div class="subsection-title">
+  <h2>
     Les répertoires
-</div>
+  </h2>
 
-<div>
+  <div>
     Il existe un certains nombre de répertoires particuliers :
     <ul>
-        <li><code class="listing">/</code> désigne la racine de l'arborescence,</li>
-        <li><code class="listing">.</code> désigne le répertoire courant,</li>
-        <li><code class="listing">..</code> désigne le répertoire père du répertoire courant,</li>
-        <li><code class="listing">~</code> désigne votre répertoire utilisateur (home directory).</li>
+      <li><cs-code>/</cs-code> désigne la racine de l'arborescence,</li>
+      <li><cs-code>.</cs-code> désigne le répertoire courant,</li>
+      <li><cs-code>..</cs-code> désigne le répertoire père du répertoire courant,</li>
+      <li><cs-code>~</cs-code> désigne votre répertoire utilisateur (home directory).</li>
     </ul>
-</div>
+  </div>
 
-<p>
-    La variable <code class="listing">$HOME</code> pointe également sur votre répertoire utilisateur,
-également appelé répertoire de connexion. Il s'agit en quelque sorte de
-votre maison, là où vous pouvez stocker vos fichiers.
-</p>
+  <p>
+    La variable <cs-code>$HOME</cs-code> pointe également sur votre répertoire utilisateur,
+    également appelé répertoire de connexion. Il s'agit en quelque sorte de
+    votre maison, là où vous pouvez stocker vos fichiers.
+  </p>
 
-<ul><li>
-    <b>question 1.1</b> : Pour afficher le contenu de la variable <code class="listing">HOME</code>, dans un terminal
-    tapez la commande : 
-</li></ul>
+  <ul>
+    <li>
+      <b>question 1.1</b> : Pour afficher le contenu de la variable <cs-code>HOME</cs-code>, dans un terminal
+      tapez la commande :
+    </li>
+  </ul>
 
-<pre><code class="language-shell"><script type="text/template">$ echo $HOME              
+  <pre><code class="language-shell"><script type="text/template">$ echo $HOME              
 </script></code></pre>
 
-<div id="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Remarque</b>
+  <div id="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i>
+    <b style="color: green;">Remarque</b>
     <p>
-        Le symbole <code class="listing">$</code> placé devant le nom de la variable signifie
-        que vous souhaitez accéder à la valeur de la variable. 
+      Le symbole <cs-code>$</cs-code> placé devant le nom de la variable signifie
+      que vous souhaitez accéder à la valeur de la variable.
     </p>
-</div>
+  </div>
 
-<div class="subsection-title">
+  <h2>
     Nom de Fichier
-</div>
-<p>
+  </h2>
+  <p>
     Les noms de fichiers sont limités à 256 caractères sous Unix. De
-préférence, n'utilisez pas d'espace mais <code class="listing">"_"</code> à la place. Evitez les
-caractères spéciaux (<code class="listing">&</code>, <code class="listing">@</code>, <code class="listing">$</code>, <code class="listing">#</code>, ...). Le plus simple est de toujours
-utiliser des lettres et des chiffres.
-</p>
+    préférence, n'utilisez pas d'espace mais <cs-code>"_"</cs-code> à la place. Evitez les
+    caractères spéciaux (<cs-code>&</cs-code>, <cs-code>@</cs-code>, <cs-code>$</cs-code>, <cs-code>#</cs-code>,
+    ...). Le plus simple est de toujours
+    utiliser des lettres et des chiffres.
+  </p>
 
-<p>
+  <p>
     Attention le système Unix fait la différence entre majuscules et
-minuscules ! Les fichiers <code class="listing">toto</code>, <code class="listing">Toto</code> et <code class="listing">TOTO</code> ont des noms différents.
-</p>
+    minuscules ! Les fichiers <cs-code>toto</cs-code>, <cs-code>Toto</cs-code> et <cs-code>TOTO</cs-code> ont des
+    noms différents.
+  </p>
 
-<p>
+  <p>
     L'extension ou suffixe (optionnel) fait partie du nom, il commence par
-    <code class="listing">"."</code> et n'a pas de limite de taille (<code class="listing">.txt</code>, <code class="listing">.html</code>, 
-    <code class="listing">.tar.gz</code>, <code class="listing">.ps.gz</code>,
-etc.). Il permet d'indiquer le type du fichier. Il ne s'agit que d'une
-convention sous Unix.
-</p>
+    <cs-code>"."</cs-code> et n'a pas de limite de taille (<cs-code>.txt</cs-code>, <cs-code>.html</cs-code>,
+    <cs-code>.tar.gz</code>, <cs-code>.ps.gz</cs-code>,
+      etc.). Il permet d'indiquer le type du fichier. Il ne s'agit que d'une
+      convention sous Unix.
+  </p>
 
-<p>
+  <p>
     Pour connaître le type d'un fichier, il faut utiliser la commande
-<code class="listing">file</code>. Par exemple :
-<pre><code class="language-shell"><script type="text/template">$ file ~/Downloads/TP1.pdf
+    <cs-code>file</cs-code>. Par exemple :
+  <pre><code class="language-shell"><script type="text/template">$ file ~/Downloads/TP1.pdf
 ~/Downloads/TP1.pdf: PDF document, version 1.5            
 </script></code></pre>
-</p>
+  </p>
 
-<div class="subsection-title">
+  <h2>
     Commandes et Aide en Ligne
-</div>
+  </h2>
 
-<p>
+  <p>
     Voici la syntaxe classique d'une commande Unix :
-</p>
-<pre><code class="language-shell"><script type="text/template">$ cmd [-opt1] [-opt2] ... [--] arg1 arg2 ...
+  </p>
+  <pre><code class="language-shell"><script type="text/template">$ cmd [-opt1] [-opt2] ... [--] arg1 arg2 ...
 </script></code></pre>
 
-<p>
-où:
-<ul>
-    <li><code class="listing">cmd</code> correspond au nom de la commande,</li>
-    <li><code class="listing">-opt</code> correspond à une option possible,</li>
-    <li><code class="listing">arg</code> correspond à un argument.</li>
-</ul>
-</p>
+  <p>
+    où:
+  <ul>
+    <li><cs-code>cmd</cs-code> correspond au nom de la commande,</li>
+    <li><cs-code>-opt</cs-code> correspond à une option possible,</li>
+    <li><cs-code>arg</cs-code> correspond à un argument.</li>
+  </ul>
+  </p>
 
-<p>
+  <p>
     Notons que les arguments sont le plus souvent un nom de fichier que la
-commande manipule. On peut utiliser <code class="listing">"--"</code> pour séparer explicitement
-les options des arguments quand la commande est ambiguë.
-</p>
+    commande manipule. On peut utiliser <cs-code>"--"</cs-code> pour séparer explicitement
+    les options des arguments quand la commande est ambiguë.
+  </p>
 
-<p>
+  <p>
     Pour obtenir l'aide en ligne sur une commande, il suffit d'utiliser le
-    <code class="listing">man</code>. Pour obtenir l'aide sur la commande <code class="listing">cmd</code>, il suffit de taper :    
-<pre><code class="language-shell"><script type="text/template">$ man cmd
+    <cs-code>man</cs-code>. Pour obtenir l'aide sur la commande <cs-code>cmd</cs-code>, il suffit de taper :
+  <pre><code class="language-shell"><script type="text/template">$ man cmd
 </script></code></pre>
-</p>
+  </p>
 
-<div id="green-block">
-    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
-	<b style="color: green;">Remarque</b>
+  <div id="green-block">
+    <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i>
+    <b style="color: green;">Remarque</b>
     <p>
-        L'aide est écrite en anglais et les version traduites sont
-        souvent de moindre qualité. <br>
-        Un conseil : s'habituer dès maintenant à
-        lire la documentation en anglais ;-)
+      L'aide est écrite en anglais et les version traduites sont
+      souvent de moindre qualité. <br>
+      Un conseil : s'habituer dès maintenant à
+      lire la documentation en anglais ;-)
     </p>
-</div>
+  </div>
 
-<ul>
-    <li><b>question 1.2 :</b> Demander l'aide de la commande <code class="listing">mkdir</code> <br>
-        Faire défiler avec les flèches haut/bas, utiliser <code class="listing">q</code> pour quitter.</li>
-</ul>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  <ul>
+    <li><b>question 1.2 :</b> Demander l'aide de la commande <cs-code>mkdir</cs-code> <br>
+      Faire défiler avec les flèches haut/bas, utiliser <cs-code>q</cs-code> pour quitter.</li>
+  </ul>
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 2 : Gestion de l'arborescence
-</div>
+  </div>
 
-<ul>
-    <li><b>question 1.3 :</b> Dans un terminal, utilisez la commande <code class="listing">mkdir</code> pour créer le
-        répertoire <code class="listing">TOTO</code>. </li>
+  <ul>
+    <li><b>question 1.3 :</b> Dans un terminal, utilisez la commande <cs-code>mkdir</cs-code> pour créer le
+      répertoire <cs-code>TOTO</cs-code>. </li>
 
-    <li><b>question 1.4 :</b> Grâce à la commande <code class="listing">ls</code>, vérifiez que vous avez bien créé ce répertoire.</li>
+    <li><b>question 1.4 :</b> Grâce à la commande <cs-code>ls</cs-code>, vérifiez que vous avez bien créé ce
+      répertoire.</li>
 
-    <li><b>question 1.5 :</b> Détruisez ce répertoire en utilisant la commande <code class="listing">rmdir</code>.</li>
+    <li><b>question 1.5 :</b> Détruisez ce répertoire en utilisant la commande <cs-code>rmdir</cs-code>.</li>
 
-    <li><b>question 1.6 :</b> Tapez la commande <code class="listing">cd</code>. Quel est l'effet de cette commande sans paramètre ?</li>
-</ul>
-<p>
+    <li><b>question 1.6 :</b> Tapez la commande <cs-code>cd</cs-code>. Quel est l'effet de cette commande sans
+      paramètre ?</li>
+  </ul>
+  <p>
     Vous allez maintenant vous servir des premières commandes de base qui
     vous permettront de gérer votre espace de travail (donc votre
     arborescence). Pour cela, vous allez utiliser les commandes suivantes
-    : <code class="listing">pwd</code>, <code class="listing">ls</code>, <code class="listing">cd</code>, <code class="listing">mkdir</code> et <code class="listing">rmdir</code>. 
+    : <cs-code>pwd</cs-code>, <cs-code>ls</cs-code>, <cs-code>cd</cs-code>, <cs-code>mkdir</cs-code> et
+    <cs-code>rmdir</cs-code>.
     À vous d'utiliser ces commandes pour répondre aux questions suivantes.
-</p>
+  </p>
 
-<ul>
+  <ul>
     <li><b>question 1.7</b> : Dans quel répertoire vous trouvez-vous ?</li>
-    <li><b>question 1.8</b> : Créez le répertoire <code class="listing">$HOME/Unix/TP1</code>.</li>
+    <li><b>question 1.8</b> : Créez le répertoire <cs-code>$HOME/Unix/TP1</cs-code>.</li>
     <li><b>question 1.9</b> : Vérifiez qu'il a bien été créé.</li>
-    <li><b>question 1.10</b> : Toujours depuis ce répertoire, créez le répertoire <code class="listing">$HOME/Unix/TP1/rep</code>.</li>
-    <li><b>question 1.11</b> : Déplacez-vous dans le répertoire <code class="listing">TP1</code> et détruisez le répertoire <code class="listing">rep</code>.</li>
-    <li><b>question 1.12</b> : Qu'y a-t-il dans le répertoire <code class="listing">$HOME/..</code> ? </li>
-</ul>
+    <li><b>question 1.10</b> : Toujours depuis ce répertoire, créez le répertoire
+      <cs-code>$HOME/Unix/TP1/rep</cs-code>.</li>
+    <li><b>question 1.11</b> : Déplacez-vous dans le répertoire <cs-code>TP1</cs-code> et détruisez le répertoire
+      <cs-code>rep</cs-code>.</li>
+    <li><b>question 1.12</b> : Qu'y a-t-il dans le répertoire <cs-code>$HOME/..</cs-code> ? </li>
+  </ul>
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 3 : Lister les Fichiers
-</div>
+  </div>
 
-<p>
+  <p>
     Vous allez maintenant voir un peu plus en détail comment lister les
-fichiers contenus dans un répertoire. La commande utile pour cet
-exercice est <code class="listing">ls</code>.
-</p>
-<p>
-    Dans le répertoire <code class="listing">/bin</code> (ou <code class="listing">/usr/bin</code>)
-    <ul>
-        <li><b>question 1.13</b> : listez les fichiers ;</li>
-        <li><b>question 1.14</b> : listez tous les fichiers y compris les fichiers cachés ;</li>
-        <li><b>question 1.15</b> : listez les fichiers en format long ;</li>
-        <li><b>question 1.16</b> : listez les fichiers en format long dans l'ordre inverse de l'ordre alphabétique ;</li>
-        <li><b>question 1.17</b> : listez les fichiers du plus ancien au plus récent en format long ;</li>
-    </ul>
-</p>
+    fichiers contenus dans un répertoire. La commande utile pour cet
+    exercice est <cs-code>ls</cs-code>.
+  </p>
+  <p>
+    Dans le répertoire <cs-code>/bin</cs-code> (ou <cs-code>/usr/bin</cs-code>)
+  <ul>
+    <li><b>question 1.13</b> : listez les fichiers ;</li>
+    <li><b>question 1.14</b> : listez tous les fichiers y compris les fichiers cachés ;</li>
+    <li><b>question 1.15</b> : listez les fichiers en format long ;</li>
+    <li><b>question 1.16</b> : listez les fichiers en format long dans l'ordre inverse de l'ordre alphabétique ;
+    </li>
+    <li><b>question 1.17</b> : listez les fichiers du plus ancien au plus récent en format long ;</li>
+  </ul>
+  </p>
 
-<p>
+  <p>
     Les caractères suivants ont une signification particulière pour
-l'interpréteur de commandes (i.e. le shell) : <code class="listing">?*[]~\ </code>. Ces
-caractères peuvent néanmoins être utilisés dans des noms de fichiers
-ou répertoires (pas conseillé) en les despécialisant à l'aide du
-caractère <code class="listing">\</code>. Par exemple, si l'argument qu'on veut faire passer
-à l'interpréteur de commande est <code class="listing">]*do?re\mi[</code> on écrira
-<code class="listing">\]\*do\?re\\mi\[</code>
-</p>
+    l'interpréteur de commandes (i.e. le shell) : <cs-code>?*[]~\ </cs-code>. Ces
+    caractères peuvent néanmoins être utilisés dans des noms de fichiers
+    ou répertoires (pas conseillé) en les despécialisant à l'aide du
+    caractère <cs-code>\</cs-code>. Par exemple, si l'argument qu'on veut faire passer
+    à l'interpréteur de commande est <cs-code>]*do?re\mi[</cs-code> on écrira
+    <cs-code>\]\*do\?re\\mi\[</cs-code>
+  </p>
 
-<ul>
-    <li>le caractère <code class="listing">?</code> permet de remplacer un caractère quelconque ; par
-exemple, la commande <code class="listing">ls fic?</code> donnera tous les noms de quatre
-lettres dont les trois premières sont <code class="listing">fic</code> ;</li>
+  <ul>
+    <li>le caractère <cs-code>?</cs-code> permet de remplacer un caractère quelconque ; par
+      exemple, la commande <cs-code>ls fic?</cs-code> donnera tous les noms de quatre
+      lettres dont les trois premières sont <cs-code>fic</cs-code> ;</li>
 
-<li>le caractère <code class="listing">*</code> remplace n'importe quelle chaîne de caractères (y
-compris la chaîne vide) ; par exemple, la commande <code class="listing">ls fic*</code> donnera
-tous les noms de trois lettres ou plus, dont les trois premières
-lettres sont <code class="listing">fic</code> ;</li>
+    <li>le caractère <cs-code>*</cs-code> remplace n'importe quelle chaîne de caractères (y
+      compris la chaîne vide) ; par exemple, la commande <cs-code>ls fic*</cs-code> donnera
+      tous les noms de trois lettres ou plus, dont les trois premières
+      lettres sont <cs-code>fic</cs-code> ;</li>
 
-<li>une suite de caractères entre crochets <code class="listing">[ ]</code> désigne un seul
-caractère de la suite ; par exemple, en supposant que vous disposiez
-dans votre répertoire courant des fichiers <code class="listing">fic1</code>, <code class="listing">fic2</code> et <code class="listing">fic3</code>, alors
-<code class="listing">ls fic[123]</code> sera équivalent à <code class="listing">ls fic1 fic2 fic3</code> ; </li>
+    <li>une suite de caractères entre crochets <cs-code>[ ]</cs-code> désigne un seul
+      caractère de la suite ; par exemple, en supposant que vous disposiez
+      dans votre répertoire courant des fichiers <cs-code>fic1</cs-code>, <cs-code>fic2</cs-code> et <cs-code>fic3</cs-code>, alors
+      <cs-code>ls fic[123]</cs-code> sera équivalent à <cs-code>ls fic1 fic2 fic3</cs-code> ;
+    </li>
 
-<li>  deux caractères séparés par un <code class="listing">-</code> entre crochets <code class="listing">[ ]</code> (par exemple
-<code class="listing">[a-e]</code>) désigne un seul caractère de l'intervalle de caractères ; par
-exemple, en supposant que vous disposiez dans votre répertoire
-courant des fichiers<code class="listing">fica</code>, <code class="listing">ficb</code>, <code class="listing">ficc</code>, <code class="listing">ficd</code>, et <code class="listing">fice</code>, alors la
-commande<code class="listing">ls fic[a-e]</code> est équivalente à <code class="listing">ls fica ficb ficc ficd fice</code>.</li>
+    <li> deux caractères séparés par un <cs-code>-</cs-code> entre crochets <cs-code>[ ]</cs-code> (par exemple
+      <cs-code>[a-e]</cs-code>) désigne un seul caractère de l'intervalle de caractères ; par
+      exemple, en supposant que vous disposiez dans votre répertoire
+      courant des fichiers <cs-code>fica</cs-code>, <cs-code>ficb</cs-code>, <cs-code>ficc</cs-code>, <cs-code>ficd</cs-code>, et <cs-code>fice</cs-code>, alors
+      la
+      commande <cs-code>ls fic[a-e]</cs-code> est équivalente à <cs-code>ls fica ficb ficc ficd fice</cs-code>.
+    </li>
 
-<li> le caractère <code class="listing">~</code> désigne le nom du répertoire utilisateur de
-l'utilisateur courant.</li>
-</ul>
+    <li> le caractère <cs-code>~</cs-code> désigne le nom du répertoire utilisateur de
+      l'utilisateur courant.</li>
+  </ul>
 
-<p>
-    <ul>
-        <li><b>question 1.18</b> : Listez tous les fichiers dont le nom :
-            <ol>
-                <li>commence par <code class="listing">r</code> ;</li>
-                <li>finit par <code class="listing">e</code> ;</li>
-                <li>commence par <code class="listing">n</code> et finit par <code class="listing">e</code> ;</li>
-                <li>contient exactement quatre caractères quelconques ;</li>
-                <li>contient au moins quatre caractères ;</li>
-                <li>contient au moins un <code class="listing">z</code> ;</li>
-                <li>commence par un chiffre.</li>
-            </ol>
-        </li>
+  <p>
+  <ul>
+    <li><b>question 1.18</b> : Listez tous les fichiers dont le nom :
+      <ol>
+        <li>commence par <cs-code>r</cs-code> ;</li>
+        <li>finit par <cs-code>e</cs-code> ;</li>
+        <li>commence par <cs-code>n</cs-code> et finit par <cs-code>e</cs-code> ;</li>
+        <li>contient exactement quatre caractères quelconques ;</li>
+        <li>contient au moins quatre caractères ;</li>
+        <li>contient au moins un <cs-code>z</cs-code> ;</li>
+        <li>commence par un chiffre.</li>
+      </ol>
+    </li>
 
-        <li><b>question 1.19</b> : La commande <code class="listing">touch</code> permet de modifier la date de la dernière
-            modification d'un fichier. Cette commande, appliquée à un nom de
-            fichier n'existant pas, permet de créer ce fichier avec une taille de
-            <code class="listing">0</code> octets. Avec cette commande, créez un fichier de nom <code class="listing">m</code> et un
-            deuxième de nom <code class="listing">r</code>.</li>
+    <li><b>question 1.19</b> : La commande <cs-code>touch</cs-code> permet de modifier la date de la
+      dernière
+      modification d'un fichier. Cette commande, appliquée à un nom de
+      fichier n'existant pas, permet de créer ce fichier avec une taille de
+      <cs-code>0</cs-code> octets. Avec cette commande, créez un fichier de nom <cs-code>m</cs-code> et un
+      deuxième de nom <cs-code>r</cs-code>.
+    </li>
 
-        <li><b>question 1.20</b> : Créez le fichier <code class="listing">[mr]</code>. Vérifier que le nom du fichier est
-            bien <code class="listing">[mr]</code>.</li>
+    <li><b>question 1.20</b> : Créez le fichier <cs-code>[mr]</cs-code>. Vérifier que le nom du fichier
+      est
+      bien <cs-code>[mr]</cs-code>.</li>
 
-        <li><b>question 1.21</b> : À l'aide de la commande <code class="listing">mv</code>, 
-            renommez le fichier <code class="listing">[mr]</code> en <code class="listing">?</code>.</li>
+    <li><b>question 1.21</b> : À l'aide de la commande <cs-code>mv</cs-code>,
+      renommez le fichier <cs-code>[mr]</cs-code> en <cs-code>?</cs-code>.</li>
 
-    </ul>
-</p>
+  </ul>
+  </p>
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 4 : Manipulation de Fichiers
-</div>
+  </div>
 
-<p>
-    Les commandes <code class="listing">cp</code>, <code class="listing">rm</code>, <code class="listing">more</code>, <code class="listing">cat</code>, 
+  <p>
+    Les commandes <cs-code>cp</cs-code>, <cs-code>rm</cs-code>, <cs-code>more</cs-code>, <cs-code>cat</cs-code>,
     vous permettront de répondre aux questions suivantes.
-</p>
+  </p>
 
-<ul>
-    <li><b>question 1.22</b> : Revenez, s'il y a lieu, dans le répertoire <code class="listing">$HOME/Unix/TP1</code>.</li>
+  <ul>
+    <li><b>question 1.22</b> : Revenez, s'il y a lieu, dans le répertoire <cs-code>$HOME/Unix/TP1</cs-code>.</li>
 
-    <li><b>question 1.23</b> : Copiez le fichier <code class="listing">/etc/hosts</code> dans le répertoire <code class="listing">$HOME</code> que vous
-        désignerez par son chemin absolu.</li>
+    <li><b>question 1.23</b> : Copiez le fichier <cs-code>/etc/hosts</cs-code> dans le répertoire <cs-code>$HOME</cs-code> que vous
+      désignerez par son chemin absolu.</li>
 
-    <li><b>question 1.24</b> : Copiez le fichier <code class="listing">hosts</code> depuis votre répertoire racine vers le
-répertoire courant (<code class="listing">$HOME/Unix/TP1</code>) en utilisant cette fois des
-chemins relatifs. Détruisez le fichier <code class="listing">$HOME/hosts</code>.</li>
+    <li><b>question 1.24</b> : Copiez le fichier <cs-code>hosts</cs-code> depuis votre répertoire racine
+      vers le
+      répertoire courant (<cs-code>$HOME/Unix/TP1</cs-code>) en utilisant cette fois des
+      chemins relatifs. Détruisez le fichier <cs-code>$HOME/hosts</cs-code>.</li>
 
-    <li><b>question 1.25</b> : Créez un fichier de nom <code class="listing">-i</code>, et essayez de l'effacer.</li>
+    <li><b>question 1.25</b> : Créez un fichier de nom <cs-code>-i</cs-code>, et essayez de l'effacer.
+    </li>
 
     <li><b>question 1.26</b> : Trouvez deux commandes permettant de visualiser le contenu du
-    fichier <code class="listing">hosts</code>.</li>
-</ul>
+      fichier <cs-code>hosts</cs-code>.</li>
+  </ul>
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 5 : Droit d'Accès aux Fichiers
-</div>
+  </div>
 
-<p>
+  <p>
     A chaque fichier est associé un ensemble de permissions qui détermine
     qui a le droit de lire, écrire, effacer ou exécuter un fichier. Ces
     droits d'accès sont résumés par des lettres :
-    <ul>
-        <li> <code class="listing">r</code> : autorisé en lecture.</li>
-        <li> <code class="listing">w</code> : autorisé en écriture-effacement.</li>
-        <li> <code class="listing">x</code> : autorisé en exécution.</li>
-    </ul>
-</p>
+  <ul>
+    <li> <cs-code>r</cs-code> : autorisé en lecture.</li>
+    <li> <cs-code>w</cs-code> : autorisé en écriture-effacement.</li>
+    <li> <cs-code>x</cs-code> : autorisé en exécution.</li>
+  </ul>
+  </p>
 
-<p>
+  <p>
     Ces trois permissions peuvent être appliquées au propriétaire du
-fichier (la personne qui l'a créé ), aux membres du groupe,
-et à tous les autres utilisateurs du système. En résumé :
-<ul>
-    <li> <code class="listing">u</code> : user (le propriétaire du fichier).</li>
-    <li> <code class="listing">g</code> : group (le groupe auquel est rattaché le fichier).</li>
-    <li> <code class="listing">o</code> : others (tous les autres utilisateurs).</li>
-    <li> <code class="listing">a</code> : all (le propriétaire, le group, et les autres)</li>
-</ul>
-</p>
+    fichier (la personne qui l'a créé ), aux membres du groupe,
+    et à tous les autres utilisateurs du système. En résumé :
+  <ul>
+    <li> <cs-code>u</cs-code> : user (le propriétaire du fichier).</li>
+    <li> <cs-code>g</cs-code> : group (le groupe auquel est rattaché le fichier).</li>
+    <li> <cs-code>o</cs-code> : others (tous les autres utilisateurs).</li>
+    <li> <cs-code>a</cs-code> : all (le propriétaire, le group, et les autres)</li>
+  </ul>
+  </p>
 
-<p>
+  <p>
     Par exemple, si on affiche les permissions associées à un fichier
-qui s'appelle <code class="listing">mon_fichier</code>, supposons qu'on obtienne
+    qui s'appelle <cs-code>mon_fichier</cs-code>, supposons qu'on obtienne
 
-<pre><code class="language-shell"><script type="text/template">-rwxrwxrwx 1 toto miage 124 2010-09-08 17:59 mon_fichier
+  <pre><code class="language-shell"><script type="text/template">-rwxrwxrwx 1 toto miage 124 2010-09-08 17:59 mon_fichier
 </script></code></pre>
-</p>
+  </p>
 
-<p>
-    Cela signifie que l'utilisateur <code class="listing">toto</code> possède un fichier de <code class="listing">124</code> octets qui
-s'appelle <code class="listing">mon_fichier</code> créé le 8 septembre de l'année 2010 à 17h59 et
-qui appartient au groupe <code class="listing">miage</code>. Dans <code class="listing">-rwxrwxrwx</code>, les caractères numéro 2,3,4
-correspondent à <code class="listing">u</code>, les caractères numéro 5,6,7 à <code class="listing">g</code> et les trois derniers à <code class="listing">o</code>.
-Ainsi, <code class="listing">mon_fichier</code> est autorisé en lecture, écriture et exécution
-pour le propriétaire (<code class="listing">u=rwx</code>), le groupe (<code class="listing">g=rwx</code>) et les autres utilisateurs (<code class="listing">o=rwx</code>).
-</p>
+  <p>
+    Cela signifie que l'utilisateur <cs-code>toto</cs-code> possède un fichier de <cs-code>124</cs-code> octets qui
+    s'appelle <cs-code>mon_fichier</cs-code> créé le 8 septembre de l'année 2010 à 17h59 et
+    qui appartient au groupe <cs-code>miage</cs-code>. Dans <cs-code>-rwxrwxrwx</cs-code>, les
+    caractères numéro 2,3,4
+    correspondent à <cs-code>u</cs-code>, les caractères numéro 5,6,7 à <ccs-code>g</cs-code> et
+    les trois derniers à <cs-code>o</cs-code>.
+    Ainsi, <cs-code>mon_fichier</cs-code> est autorisé en lecture, écriture et exécution
+    pour le propriétaire (<cs-code>u=rwx</cs-code>), le groupe (<cs-code>g=rwx</cs-code>) et les
+    autres utilisateurs (<cs-code>o=rwx</cs-code>).
+  </p>
 
-<p>
+  <p>
     La commande Unix vous permettant de changer les permissions d'accès
-aux fichiers est : <code class="listing">chmod</code>. Pour changer les permissions de l'exemple
-précédent afin d'obtenir les permissions de l'exemple suivant,
-<pre><code class="language-shell"><script type="text/template">-rwxr-xr-- 1 toto miage 124 2010-09-08 17:59 mon_fichier
+    aux fichiers est : <cs-code>chmod</cs-code>. Pour changer les permissions de l'exemple
+    précédent afin d'obtenir les permissions de l'exemple suivant,
+  <pre><code class="language-shell"><script type="text/template">-rwxr-xr-- 1 toto miage 124 2010-09-08 17:59 mon_fichier
 </script></code></pre>
-</p>
+  </p>
 
-<p>
+  <p>
     l'utilisateur toto utilisera la commande :
-<pre><code class="language-shell"><script type="text/template">$ chmod g-w,o-wx mon_fichier
+  <pre><code class="language-shell"><script type="text/template">$ chmod g-w,o-wx mon_fichier
 </script></code></pre>
-</p>
+  </p>
 
-<p>
-    signifie que <code class="listing">mon_fichier</code> est autorisé en lecture,
-écriture et exécution pour le propriétaire (<code class="listing">u=rwx</code>), en lecture et
-exécution seulement pour le groupe (<code class="listing">g=r-x</code>) et en lecture seule pour
-les autres utilisateurs (<code class="listing">o=r--</code>).
-</p>
+  <p>
+    signifie que <cs-code>mon_fichier</cs-code> est autorisé en lecture,
+    écriture et exécution pour le propriétaire (<cs-code>u=rwx</cs-code>), en lecture et
+    exécution seulement pour le groupe (<cs-code>g=r-x</cs-code>) et en lecture seule pour
+    les autres utilisateurs (<cs-code>o=r--</cs-code>).
+  </p>
 
-<p>
+  <p>
     Pour retrouver les permissions du premier exemple, le propriétaire du
-fichier utilise la commande 
-<pre><code class="language-shell"><script type="text/template">$ chmod g+w,o+wx mon_fichier
+    fichier utilise la commande
+  <pre><code class="language-shell"><script type="text/template">$ chmod g+w,o+wx mon_fichier
 </script></code></pre>
-</p>
+  </p>
 
-<p>
-    Il pourrait aussi utiliser la commande : 
-<pre><code class="language-shell"><script type="text/template">$ chmod u=rwx,g=rwx,o=rwx mon_fichier
+  <p>
+    Il pourrait aussi utiliser la commande :
+  <pre><code class="language-shell"><script type="text/template">$ chmod u=rwx,g=rwx,o=rwx mon_fichier
 </script></code></pre>
-</p>
+  </p>
 
-<p>
+  <p>
     Vous pouvez aussi positionner des permissions (pour vous, le groupe et
-les autres) sur vos répertoires. Dans ce cas, les lettres <code class="listing">r</code>,<code class="listing">w</code> et <code class="listing">x</code>
- ont la signification suivante.
-<ul>
-<li> <code class="listing">r</code> : autorisé à lister le contenu du répertoire.</li>
-<li> <code class="listing">w</code> : autorisé à créer ou détruire des fichiers dans le répertoire.</li>
-<li> <code class="listing">x</code> : autorisé à traverser ce répertoire.</li>
-</ul>
-</p>
+    les autres) sur vos répertoires. Dans ce cas, les lettres <cs-code>r</cs-code>,<cs-code>w</cs-code> et <cs-code>x</cs-code>
+    ont la signification suivante.
+  <ul>
+    <li> <cs-code>r</cs-code> : autorisé à lister le contenu du répertoire.</li>
+    <li> <cs-code>w</cs-code> : autorisé à créer ou détruire des fichiers dans le répertoire.</li>
+    <li> <cs-code>x</cs-code> : autorisé à traverser ce répertoire.</li>
+  </ul>
+  </p>
 
-<ul>
-    <li><b>question 1.27</b> : Affichez les permissions du répertoire <code class="listing">$HOME</code>.</li>
+  <ul>
+    <li><b>question 1.27</b> : Affichez les permissions du répertoire <cs-code>$HOME</cs-code>.</li>
 
-    <li><b>question 1.28</b> : Copiez le fichier <code class="listing">hosts</code> dans le fichier <code class="listing">hosts.bis</code>.</li>
+    <li><b>question 1.28</b> : Copiez le fichier <cs-code>hosts</cs-code> dans le fichier <cs-code>hosts.bis</cs-code>.</li>
 
-    <li><b>question 1.29</b> : Modifiez les protections de votre fichier <code class="listing">hosts</code> pour que vous,
-        propriétaire du fichier, puissiez le lire mais pas l'effacer.</li>
+    <li><b>question 1.29</b> : Modifiez les protections de votre fichier <cs-code>hosts</cs-code> pour que
+      vous,
+      propriétaire du fichier, puissiez le lire mais pas l'effacer.</li>
 
     <li><b>question 1.30</b> : Essayez de l'effacer.</li>
 
-    <li><b>question 1.31</b> : Modifiez les protections de votre fichier <code class="listing">hosts.bis</code> pour que les
-        utilisateurs de votre groupe puissent le lire et le détruire.</li>
-</ul>
+    <li><b>question 1.31</b> : Modifiez les protections de votre fichier <cs-code>hosts.bis</cs-code> pour
+      que les
+      utilisateurs de votre groupe puissent le lire et le détruire.</li>
+  </ul>
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<div id="orange-block">
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <div id="orange-block">
     Exercice 6 : Les Liens Symboliques
-</div>
-<ul><li><b>question 1.32</b> : Déplacez-vous dans votre répertoire <code class="listing">~/Unix/TP1</code></li></ul>
+  </div>
+  <ul>
+    <li><b>question 1.32</b> : Déplacez-vous dans votre répertoire <cs-code>~/Unix/TP1</cs-code></li>
+  </ul>
 
-<p>
-    Créez un fichier <code class="listing">source</code> en tapant dans un terminal les commandes suivantes :
-<pre><code class="language-shell"><script type="text/template">$ cat > source
+  <p>
+    Créez un fichier <cs-code>source</cs-code> en tapant dans un terminal les commandes suivantes :
+  <pre><code class="language-shell"><script type="text/template">$ cat > source
 Hello World!
 [Ctrl]-d
 </script></code></pre>
-</p>
-<p>
-    Ce fichier est créé a l'aide de la commande <code class="listing">cat</code> et d'un mécanisme de
-redirection (<code class="listing">></code>).
-</p>
-<ul>
-<li> <b>question 1.33</b> : Lisez la page de manuel de la commande <code class="listing">ln</code>.</li>
-<li> <b>question 1.34</b> : Visualisez le contenu du fichier <code class="listing">source</code>.</li>
-<li> <b>question 1.35</b> : Créez un lien symbolique (<code class="listing">ln -s</code>) de <code class="listing">source</code> vers <code class="listing">source.sym</code>.</li>
-<li> <b>question 1.36</b> : Listez à l'aide de la commande <code class="listing">ls -l</code> le contenu du répertoire <code class="listing">~/Unix/TP1</code>.</li>
-<li> <b>question 1.37</b> : Vérifiez avec la commande <code class="listing">cat</code> que ces deux fichiers ont le même contenu.</li>
-<li> <b>question 1.38</b> : Renommez le fichier <code class="listing">source</code> en <code class="listing">source.bis</code>. Qu'en est-il du lien symbolique ?</li>
-</ul>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  </p>
+  <p>
+    Ce fichier est créé a l'aide de la commande <cs-code>cat</cs-code> et d'un mécanisme de
+    redirection (<cs-code>></cs-code>).
+  </p>
+  <ul>
+    <li> <b>question 1.33</b> : Lisez la page de manuel de la commande <cs-code>ln</cs-code>.</li>
+    <li> <b>question 1.34</b> : Visualisez le contenu du fichier <cs-code>source</cs-code>.</li>
+    <li> <b>question 1.35</b> : Créez un lien symbolique (<cs-code>ln -s</cs-code>) de <cs-code>source</cs-code> vers <cs-code>source.sym</cs-code>.</li>
+    <li> <b>question 1.36</b> : Listez à l'aide de la commande <cs-code>ls -l</cs-code> le contenu du
+      répertoire <cs-code>~/Unix/TP1</cs-code>.</li>
+    <li> <b>question 1.37</b> : Vérifiez avec la commande <cs-code>cat</cs-code> que ces deux fichiers ont
+      le même contenu.</li>
+    <li> <b>question 1.38</b> : Renommez le fichier <cs-code>source</cs-code> en <cs-code>source.bis</cs-code>. Qu'en est-il du lien symbolique ?</li>
+  </ul>
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -552,8 +583,8 @@ redirection (<code class="listing">></code>).
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-    3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
-        2024/2025</span>
+  3A - CentraleSupelec <span style="text-align: right;float: right;">Systèmes d'exploitation -
+    2025/2026</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -562,4 +593,5 @@ redirection (<code class="listing">></code>).
 </div>
 
 </body>
+
 </html>
