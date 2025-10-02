@@ -224,7 +224,7 @@
     <ol>
       <li class="fragment">Prendre le logiciel (<b>Conception</b>)</li>
       <li class="fragment">Déterminer ce que le logiciel est censé faire (<b>Spécification</b>)</li>
-      <li class="fragment">Démontrer que le logiciel (<b>Conception</b>) fait ce qu'il est censé faire (<b>Vérification</b>)</li>
+      <li class="fragment">Démontrer que le logiciel fait ce qu'il est censé faire (<b>Vérification</b>)</li>
     </ol>
   </div>
 
@@ -390,7 +390,7 @@
 <pre id="eb" class="eb-code">
 <b>input</b> T : array [N] of <b>integer</b>
 <b>for</b> i=0 <b>to</b> N-1 <b>do</b>
-  <b>for</b> j=0 <b>to</b> N-i-2 <b>do</b>
+  <b>for</b> j=0 <b>to</b> N-i-1 <b>do</b>
     <b>if</b> T[j] > T[j + 1] <b>do</b>
       T[j], T[j + 1] = T[j + 1], T[j]
     <b>end</b>
