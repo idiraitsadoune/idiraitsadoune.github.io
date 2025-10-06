@@ -28,6 +28,7 @@
 	padding-left: 80px !important;
 	padding-right: 80px !important;
 	width: 1120px !important;
+	/*height: 720px !important;*/
 }
 
 .reveal ul ul,
@@ -77,7 +78,7 @@
 	padding:0;
 	border:0;
 	font-family: var(--r-code-font);
-	font-size: 0.85em !important;
+	font-size: 0.9em !important;
   color:coral !important;
 	text-transform: none !important;
 }
@@ -104,7 +105,7 @@
 /* custom class definitions */
 
 .listing{
-  font-size: 0.85em !important;
+  font-size: 0.9em !important;
   color:coral !important;
 }
 

@@ -15,41 +15,41 @@
 	<!-- Theme used for syntax highlighting of code -->
 	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
-	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
-
-	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
-	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
 <body>
-	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
+	<img id="logo" src="../resources/img/cs.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
-		<a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a>
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr" target="_blank">
+				<img src="../resources/img/cs.png" alt="">
+			</a>
+		</div>
 	</div>
 
 	<div style="text-align: left">
 		<h2>Systèmes d'exploitation</h2>
-		<h3>Manipulation des processus sous Unix/Linux</h3>
+		<h3>Manipulation des processus sous Unix</h3>
 	</div>
 	
 	<div class="description" >
-		<span><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
-		<span><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2025/2026</span>
+		<span ><span class="fa fa-graduation-cap">&#160;</span>3A - Cursus Ingénieurs - Dominante Informatique et Numérique</span><br>
+		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2024/2025</span>
 	</div>
 		
 	<div class="hero-card-id">
@@ -77,120 +77,85 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch1" name="Les systèmes Unix/Linux"></section>
+<section id="ch1" name="Le système Unix"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les OS Unix/Linux</h2>
+	<h2>Systèmes d'exploitation</h2>
 
-	<div class="left-content">
-		<ul>
-			<li>Un <b>système d'exploitation</b> est un ensemble de <b>programmes informatiques</b> servant d'<b>interface</b> entre le <i>matériel</i>
-				et les <i>applications utilisateurs</i>/<i>utilisateurs</i>.
-				<ul><li class="fragment"><b style="color: black;">ex.</b> : <b>Windows</b> (..., XP, 7, ...,10, 11), famille <b>Unix</b> 
-						(<b>Linux</b>, <b>Mac-OS</b>, ...).</li></ul>
-      </li>
-		</ul>
+	<ul>
+        <li>Ensemble de <b>programmes informatiques</b> servant d'<b>interface</b> entre <br>
+            le <i>matériel</i> et les <i>applications utilisateurs</i>.
+            <ul><li class="fragment"><b style="color: black;">ex.</b> : <b>Windows</b> (XP, 7, ...,10), famille <b>Unix</b> 
+                (<b>Linux</b>, <b>Mac-OS</b>, ...).</li></ul>
+        </li>
 
-		<div class="center-divs skip">
-			<div style="flex: 1;">
-				<ul>
-					<li class="fragment">
-						<b>Linux</b> (ou <b>GNU/Linux</b>) est un <b>OS</b> <i>open source</i> de type <b>Unix</b>
-						<ul>
-							<li  class="fragment">
-								équipe une très <i>faible part</i> des ordinateurs personnels - <b>PC</b>
-							</li>
-						</ul>
-					</li>
-					<li class="skip fragment"><b>Linux</b> domine dans le <i>calcul intensif</i>
-						<ul>
-							<li>
-								<i>100 %</i> des calculateurs du <i>TOP 500</i> <br> $\to$ 
-								<a href="https://itsfoss.com/linux-runs-top-supercomputers/" target="_blank">Classement 2020</a>
-							</li>
-							<li  class="skip fragment">
-								largement utilisé sur les serveurs, téléphones mobiles, systèmes embarqués, les superordinateurs, ...
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-
-			<div style="flex: 1; text-align: center; line-height : 0.4" >
-				<img src="./img/Operating_systems_used_on_top_500_supercomputers.svg" width="100%" ><br>
-				<span style="font-size: 15px;">source : <a href="https://en.wikipedia.org/wiki/TOP500" target="_blank">https://en.wikipedia.org/wiki/TOP500</a></span>
-			</div>
-		</div>
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
-
-	<div>
-		<img data-id="im1" src="./img/historique-unix-1.svg" alt="" width="900px">
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
-
-	<div>
-		<img data-id="im1" src="./img/historique-unix-2.svg" alt="" width="900px"> 
-	</div>
+        <li class="fragment skip"><b>Linux</b> domine dans le <i>calcul intensif</i>
+            <ul><li class="fragment">
+                plus de <i>97 %</i> des calculateurs du <i>TOP 500</i> $\to$ 
+                <a href="https://hpc.developpez.com/actu/266678/Linux-alimente-desormais-tous-les-500-meilleurs-supercalculateurs-du-monde-d-apres-le-TOP500-de-juin-2019/" target="_blank">Classement 2019</a>
+            </li></ul>
+        </li>
+    </ul>
     
-	<div class="left-content">
-		<p><a href="https://fr.wikipedia.org/wiki/Multics" target="_blank"><b>MULTICS</b></a> </p>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2>
 
-		<ul>
-				<li class="fragment"><b>MULT</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice</li>
-				<li class="fragment">laboratoires <b>Bell</b>, <b>MIT</b>, <b>General Electric</b></li>
-				<li class="fragment"><i>temps partagé</i>, multi-utilisateurs</li>
-				<li class="fragment">système de fichier hiérarchique, segmentation et mémoire virtuelle</li>
-				<li class="fragment">système d'<i>invite de commande</i>, contrôle par un terminal distant</li>
-		</ul>
-	</div>
+    <img data-id="im1" src="./img/historique-unix-1.svg" alt="" width="900px">
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
+	<h2>L'historique d'Unix</h2> 
 
-	<div>
-		<img data-id="im1" src="./img/historique-unix-3.svg" alt="" width="900px"> 
-	</div>
-    
+    <img data-id="im1" src="./img/historique-unix-2.svg" alt="" width="900px"> 
 
-  <div class="left-content">
-		<p>
-			<a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNICS</b></a> or <a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNIX</b></a> 
-		</p>
-			<ul>
-					<li class="fragment"><b>UN</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice </li>
-					<li class="fragment"><b>Ken Thompson</b>, laboratoires <b>Bell</b></li>
-					<li class="fragment">portable, <i>multi-tâches</i>, multi-utilisateurs</li>
-					<li class="fragment">système d'invite de commande utilisant le système de <i>pipes</i></li>
-					<li class="fragment">principes publiés dans <b>The Unix Programmer's manual</b> en <i>1971</i></li>
-			</ul>
+    <div class="left-content">
+        <p><a href="https://fr.wikipedia.org/wiki/Multics" target="_blank"><b>MULTICS</b></a> </p>
+
+        <ul>
+            <li class="fragment"><b>MULT</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice</li>
+            <li class="fragment">laboratoires <b>Bell</b>, <b>MIT</b>, <b>General Electric</b></li>
+            <li class="fragment"><i>temps partagé</i>, multi-utilisateurs</li>
+            <li class="fragment">système de fichier hiérarchique, segmentation et mémoire virtuelle</li>
+            <li class="fragment">système d'<i>invite de commande</i>, contrôle par un terminal distant</li>
+        </ul>
     </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
+	<h2>L'historique d'Unix</h2> 
 
-	<div>
-		<img data-id="im1" src="./img/historique-unix-4.svg" alt="" width="900px"> 
-	</div>
+    <img data-id="im1" src="./img/historique-unix-3.svg" alt="" width="900px"> 
+
+    <div class="left-content">
+		<p>
+			<a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNICS</b></a> or <a href="https://fr.wikipedia.org/wiki/Unix" target="_blank"><b>UNIX</b></a> 
+		</p>
+        <ul>
+            <li class="fragment"><b>UN</b>iplexed <b>I</b>nformation and <b>C</b>omputing <b>S</b>ervice </li>
+            <li class="fragment"><b>Ken Thompson</b>, laboratoires <b>Bell</b></li>
+            <li class="fragment">portable, <i>multi-tâches</i>, multi-utilisateurs</li>
+            <li class="fragment">système d'invite de commande utilisant le système de <i>pipes</i></li>
+            <li class="fragment">principes publiés dans <b>The Unix Programmer's manual</b> en <i>1971</i></li>
+        </ul>
+    </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>L'historique d'Unix</h2> 
+
+    <img data-id="im1" src="./img/historique-unix-4.svg" alt="" width="900px"> 
 
 	<div class="left-content">
 		<p>
@@ -204,7 +169,6 @@
 				<a href="https://en.wikipedia.org/wiki/Debian" target="_blank">Debian</a>, 
 				<a href="https://en.wikipedia.org/wiki/Fedora_Linux" target="_blank">Fedora</a>, 
 				<a href="https://en.wikipedia.org/wiki/Ubuntu" target="_blank">Ubuntu</a>, ... </li>
-			<li class="fragment">le <b>shell Unix</b> est toujours disponible, quelle que soit la distribution.</li>
 		</ul>
     </div>
 
@@ -212,24 +176,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
+	<h2>L'historique d'Unix</h2> 
 
-	<div>
-		<img data-id="im1" src="./img/historique-unix-5.svg" alt="" width="900px"> 
-	</div>
-    
+    <img data-id="im1" src="./img/historique-unix-5.svg" alt="" width="900px"> 
+
 	<div class="left-content">
 		<p>
-			<a href="https://fr.wikipedia.org/wiki/MacOS" target="_blank"><b>MacOS</b></a>
+			<a href="https://fr.wikipedia.org/wiki/MacOS"><b>MacOS</b></a>
 		</p>
 		
 		<ul>
-			<li class="fragment">un OS partiellement propriétaire annoncé par <b>Apple</b> en <i>1998</i></li>
-			<li class="fragment">destiné exclusivement aux matériels de <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Macintosh</a>/<a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Mac</a></li>
-			<li class="fragment">son noyau <b>XNU</b> est un <i>noyau hybride</i> compatible avec la norme <a href="https://fr.wikipedia.org/wiki/POSIX" target="_blank">POSIX</a>. </li>
 			<li class="fragment">fondé sur le noyau <a href="https://fr.wikipedia.org/wiki/Mach_(noyau)" target="_blank">Mach</a> 
 				 et sur l'implémentation <a href="https://fr.wikipedia.org/wiki/Berkeley_Software_Distribution" target="_blank">BSD</a> d'<b>Unix</b></li>
-			<li class="fragment">les versions successives de <b>MacOS</b> ont reçu la <i>certification</i> <b>Unix</b></li>
+			<li class="fragment">adapté à l'architecture matérielle de <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Macintosh</a> ou de <a href="https://fr.wikipedia.org/wiki/Macintosh" target="_blank">Mac</a></li>
 		</ul>
 	</div>
 
@@ -237,24 +196,18 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>L'historique d'Unix/Linux</h2> 
+	<h2>L'historique d'Unix</h2> 
 
-	<div>
-		<img data-id="im1" src="./img/historique-unix-6.svg" alt="" width="900px"> 
-	</div>
-    
+    <img data-id="im1" src="./img/historique-unix-6.svg" alt="" width="900px"> 
 
 	<div class="left-content">
 		<p>
-			<a href="https://fr.wikipedia.org/wiki/Android" target="_blank"><b>Android</b></a>
+			<a href="https://fr.wikipedia.org/wiki/Android"><b>Android</b></a>
 		</p>
 
 		<ul>
-			<li class="fragment">un <b>OS mobile</b> open source fondé sur le noyau <b>Linux</b> </li>
-			<li class="fragment">il a été lancé en <i>2007</i> pour les smartphones et les tablettes</li>
-			<li class="fragment">défini comme étant <i>une pile de logiciels</i> comprenant un noyau <b>Linux</b></li>
-			<li class="fragment">l'<b>OS mobile</b> le plus utilisé (plus de 70% de tous les appareils mobiles)</li>
-			<li class="fragment">la version <b>Android TV</b> est embarquée dans des télévisions, box TV, ...</li>
+			<li class="fragment">fondé sur le noyau <b>Linux</b> </li>
+			<li class="fragment">système d'exploitation pour les <i>appareils mobiles</i> </li>
 		</ul>
 	</div>
 
@@ -280,19 +233,30 @@
 		</li>
 
         <li class="fragment skip"><b>Shell</b> est l'interface utilisateur du système d'exploitation.
-			<ul><li><cs-code>bash</cs-code> : <b>B</b>ourne <b>A</b>gain <b>SH</b>ell 
-				(<cs-code>sh</cs-code> : shell historique de <b>Bourne</b>)</li></ul>
+			<ul><li><code class="listing">bash</code> : <b>B</b>ourne <b>A</b>gain <b>SH</b>ell 
+				(<code class="listing">sh</code> : shell historique de <b>Bourne</b>)</li></ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Caractéristiques du Shell</h2> 
+	<ul>
+		<li><b>Shell</b> est l'interface utilisateur du système d'exploitation.
+			<ul><li><code class="listing">bash</code> : <b>B</b>ourne <b>A</b>gain <b>SH</b>ell 
+				(<code class="listing">sh</code> : shell historique de <b>Bourne</b>)</li></ul>
 		</li>
 
-		<li class="fragment skip">L'interpréteur de commandes (<b>Shell</b>) intègre <b>un langage <br>
+        <li class="skip">L'interpréteur de commandes (<b>Shell</b>) intègre <b>un langage <br>
         de programmation</b> (<i>variables</i>, <i>structures de contrôle</i>, <i>fonctions</i> ...)
-      <ul>
+        	<ul>
 				<li class="fragment"><b>programmes interprétés</b> = fichiers de commandes = <b>shell-scripts</b></li>
 				<li class="fragment">création de commandes par l'utilisateur </li>
 			</ul>
 		</li>
 	</ul>
-
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -317,7 +281,7 @@
 		</ul>
 	</div>
 	
-	<div id="default-block" class="fragment d-skip left-content">
+	<div id="default-block" class="fragment d-skip" style="text-align: center; width: 70%;">
 		Découverte et manipulation à l'occasion du <b>TP 1</b>
 	</div>
 </section>
@@ -325,7 +289,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="Redirection et gestion de flux"></section>
+<section id="ch2" name="Redirection"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1390,9 +1354,8 @@
 
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1419,11 +1382,11 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMath.MathJax3, RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
-
 </body>
+
 </html>
