@@ -78,7 +78,7 @@
 	padding:0;
 	border:0;
 	font-family: var(--r-code-font);
-	font-size: 0.9em !important;
+	font-size: 0.87em !important;
   color:coral !important;
 	text-transform: none !important;
 }
@@ -100,12 +100,11 @@
 .reveal green-i{
 	color: green;
 }
-
 /* ****************************************************** */
 /* custom class definitions */
 
 .listing{
-  font-size: 0.9em !important;
+  font-size: 0.87em !important;
   color:coral !important;
 }
 
