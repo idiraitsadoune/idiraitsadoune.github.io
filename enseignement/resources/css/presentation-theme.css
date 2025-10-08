@@ -100,18 +100,6 @@
 .reveal green-i{
 	color: green;
 }
-
-.reveal cs-section{
-	display: inline-block !important;
-	height: 620px !important; 
-	align-content: center !important;
-}
-
-.reveal cs-subsection{
-	display: inline-block !important;
-	height: 540px !important; 
-	align-content: center !important;
-}
 /* ****************************************************** */
 /* custom class definitions */
 
