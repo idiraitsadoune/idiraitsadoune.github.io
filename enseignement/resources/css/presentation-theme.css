@@ -24,11 +24,13 @@
 
 /* ****************************************************** */
 /* general definitions */
-.reveal .slides>section {
-	padding-left: 80px !important;
-	padding-right: 80px !important;
+.reveal .slides section,
+.reveal .slides section > section  {
+	/*padding-left: 80px !important;
+	padding-right: 80px !important;*/
 	width: 1120px !important;
-	/*height: 720px !important;*/
+	margin-left: 80px !important;
+	margin-right: 80px !important;
 }
 
 .reveal ul ul,
@@ -39,7 +41,7 @@
 }
 
 .reveal pre {
-	font-size: 0.55em !important;
+	font-size: 0.6em !important;
 	line-height: 1.4em !important;
 }
 
@@ -103,7 +105,7 @@
 
 /*avec un titre */
 .reveal body-1{
-	height: 700px !important; 
+	height: 629px !important; 
 	align-content: center !important; 
 	text-align: left !important; 
 	display: inline-block !important;
@@ -111,7 +113,7 @@
 
 /*avec un titre sur deux lignes */
 .reveal body-2{
-	height: 640px !important; 
+	height: 560px !important; 
 	align-content: center !important; 
 	text-align: left !important; 
 	display: inline-block !important;
@@ -119,7 +121,7 @@
 
 /*avec un titre et un sous-titre */
 .reveal body-3{
-	height: 630px !important; 
+	height: 560px !important; 
 	align-content: center !important; 
 	text-align: left !important; 
 	display: inline-block !important;

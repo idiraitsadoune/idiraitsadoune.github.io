@@ -40,9 +40,9 @@ function render() {
     //console.log(canvas.height)
 
     // 16/9
-    // var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/255) ;
+    var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/255) ;
     // 16/10
-    var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/283.464) ;
+    // var ratio = Math.min(elem.getBoundingClientRect().width/453.543, elem.getBoundingClientRect().height/283.464) ;
     
     //var viewport = page.getViewport(ratio);
     //var viewport = page.getViewport(myState.zoom);
