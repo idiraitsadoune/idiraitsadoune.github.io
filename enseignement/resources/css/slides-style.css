@@ -6,7 +6,8 @@
 }
 
 :root {
-	--r-main-font-size: 32px;
+	--r-heading-margin: 0 0 10px 0;
+	--r-main-font-size: 34px;
 	--r-code-font: 'Monaco';
 }
 
@@ -28,9 +29,11 @@
 .reveal .slides section > section  {
 	/*padding-left: 80px !important;
 	padding-right: 80px !important;*/
-	width: 1120px !important;
+/*width: 1120px !important;
 	margin-left: 80px !important;
-	margin-right: 80px !important;
+	margin-right: 80px !important;*/
+  line-height: 1.4;
+  font-weight: inherit;
 }
 
 .reveal ul ul,
@@ -381,7 +384,7 @@
 	margin: 10px 30px;
 	padding-left: 50px;
 	padding-right: 10px;
-	padding-top: 5px;
+	padding-top: 3px;
 	padding-bottom: 5px;
 }
 .item::before{
@@ -399,7 +402,7 @@
 	position: relative;
 	z-index: 10;
 	padding: 5px 10px ;
-	margin-top: 10px !important;
+	/*margin-top: 10px !important;*/
 }
 
 .item::after{
