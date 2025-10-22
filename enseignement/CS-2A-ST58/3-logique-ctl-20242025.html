@@ -1,0 +1,595 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Conception et vérification de systèmes critiques : La spécification des propriétés avec la logique CTL</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+	</div>
+	
+	<div style="text-align: left">
+		<h2>Conception et vérification <br> de systèmes critiques</h2>
+		<h3>La spécification des propriétés avec la logique CTL</h3>
+	</div>
+
+	<div class="description">
+		<span ><span class="fa fa-graduation-cap">&#160;</span>2A Cursus Ingénieurs
+			- ST5 : Modélisation fonctionnelle et régulation</span><br>
+		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec -
+			Université Paris-Saclay - 2025/2026</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Principe du Model-Checking</h2>
+
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="./img/model_checking.svg" alt="" width="650px">
+    <img class="fragment fade-in" src="./img/properties_modeling.svg" alt="" width="650px">
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Logiques temporelles</h2>
+  <h3>Pourquoi ?</h3>
+
+  <ul>
+    <li><i>Pas de variable pour gérer le temps</i> (instants implicites)</li>
+
+    <li class="skip"><b>Temporel</b> $\neq$ <b>temporisé</b> <br> la logiques
+          temporelles ne quantifient pas écoulement du temps.</li>
+
+    <li class="skip">Deux approches :
+      <ol>
+        <li><b>temps linéaire</b> : propriétés des <i>séquences d'exécutions</i> (futur déterminé)</li>
+        <li class="fragment"><span style="color: red; "><strong>temps arborescent</strong> : propriétés de l'arbre d'exécutions (tous les futurs possibles)</span></li>
+      </ol>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Arbre de calcul"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Arbre de calcul</h2>
+
+	<ul>
+		<li>
+			Soit $\mathcal{T} = (S, \to, s^0)$ un système de transition. <br> 
+			<span class="fragment">Intuitivement, l'<b>arbre de calcul</b> de $\mathcal{T}$ est 
+				le <i>dépliage acyclique</i> de $\mathcal{T}$.</span>
+		</li>
+		
+		<li class="fragment skip">
+			Formellement, le dépliage est le plus petit système de transition 
+			$(U, \to', u^0)$ (éventuellement infini) avec un étiquetage <i>$l : U \to S$</i> tel que :
+			<ul>
+				<li class="fragment skip">
+					<i>$u^0 \in U$</i> et <i>$l(u^0) = s^0$</i>
+				</li>
+				<li class="fragment skip">
+					si <i>$u \in U$</i>, <i>$l(u)=s$</i>, et <i>$s \to s'$</i> pour certains <i>$u, s, s'$</i> <br> 
+					alors il existe <i>$u' \in U$</i> avec <i>$u \to' u'$</i> et <i>$l(u') = s'$</i>
+				</li>
+				<li class="fragment skip">
+					<i>$u^0$</i> n'a <i>pas de prédécesseur direct</i>, et tous <i>les autres états</i> de <i>$U$</i> 
+					ont exactement <br> <i>un prédécesseur direct</i>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+   <h2>Arbre de calcul</h2>
+	 <h3>Exemple</h3>
+
+	<div>Un système de transition et son arbre de calcul <br> (étiquetage <i>$l$</i> donné en bleu)</div>
+
+	<div>
+		<img src="./img/CTL-example.png" alt="" width="50%">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Arbre de calcul</h2>
+	<h3>Remarques</h3>
+
+	<ul>
+		<li class="fragment">
+			Pour la <i>vérification de propriétés</i> <b>CTL</b>, la construction de l'arbre de calcul <br> 
+			n'est <i>pas nécessaire</i> ($\to$ voir le cours du Model-Checking). 
+		</li>
+		<li class="fragment skip">Cependant, cette définition permet de <i>clarifier les concepts</i> sous-jacents <br> 
+			aux <b>opérateurs de la logique CTL</b>.</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Présentation de la logique CTL"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>LTL <span style="text-transform: lowercase;">vs</span> CTL</h2>
+
+	<ul>
+		<li><b>LTL - (Linear-Time Logic)</b>
+			<ul>
+				<li>Décrit les propriétés des exécutions individuelles.</li>
+				<li>Sémantique définie comme un ensemble d'exécutions.</li>
+			</ul>
+		</li>
+
+		<li class="fragment skip"><b>CTL - (Computation Tree Logic)</b>
+			<ul>
+				<li class="fragment">Décrit les propriétés d'un arbre de calcul.
+					<ul id="fleche"><li>les formules peuvent traiter plusieurs exécutions simultanément.</li></ul>
+				</li>
+				<li class="fragment">Sémantique définie en termes d'états.</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Computation Tree Logic - CTL</h2>
+	<h3>Aperçu</h3>
+
+	<ul>
+		<li>Combine les <i>opérateurs temporels</i> avec une <i>quantification</i> sur les exécutions</li>
+
+		<li class="fragment skip">Les opérateurs ont la forme suivante $\to$ <b>$Q~T$</b>
+			<div class="center-divs" style="align-items: start;">
+				<div class="skip fragment" style="flex: 1;" > 
+					<ul>
+						<li><b>$Q$</b> 
+							<ul id="fleche">
+								<li><i>$E$</i> : there <b>exists</b> an execution</li>
+								<li><i>$A$</i> : for <b>all</b> executions</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="skip fragment" style="flex: 1;"> 
+					<ul>
+						<li><b>$T$</b>
+							<ul id="fleche">
+								<li><i>$X \equiv \bigcirc$</i> : next</li>
+								<li><i>$F \equiv \Diamond$</i> : finally</li>
+								<li><i>$G \equiv \square$</i> : globally</li>
+								<li><i>$U \equiv \bigcup$</i> : until</li>
+								<li>(et peut-être d'autres)</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Computation Tree Logic - CTL</h2>
+	<h3>La syntaxe</h3>
+
+	<ul>
+		<li>Nous définissons d'abord <i>une syntaxe minimale</i>. Nous définissons ensuite <br> des opérateurs supplémentaires 
+			à l'aide de <i>cette syntaxe minimale</i>.</li>
+
+		<li class="fragment d-skip">
+			Soit <i>$AP$</i> un ensemble de propositions atomiques.<br> 
+			L'ensemble des <i>formules CTL</i> sur <i>$AP$</i> est le suivant :
+			<ul style="list-style: none;">
+				<li class="fragment skip">si <i>$a \in AP$</i>, alors <i>$a$</i> est une formule CTL ;</li>
+				<li class="fragment skip">si <i>$\phi_1,~\phi_2$</i> sont des formules CTL, alors le sont aussi
+					<ul style="list-style: none;">
+						<li><i>$\neg \phi_1,~~~~~~~~ \phi_1 \lor \phi_2,$</i></li>
+						<li><i>$EX~ \phi_1,~~~~~~~~ EG~ \phi_1, ~~~~~~~~ E~(\phi_1~ U ~\phi_2),$</i></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Computation Tree Logic - CTL</h2>
+	<h3>La sémantique</h3>
+
+	<ul>
+		<li>soit <i>$\mathcal{K} = (S, \to, s^0, AP, v)$</i> une structure de <b>Kripke</b>.
+			<ul><li>$S$ : un ensemble d'états, $\to~\in S \times S$ : une relation entre états, 
+				$s^0$ : l'état initial, <br> 
+				$AP$ : ensemble des propositions atomiques, $v \in S \to 2^{AP}$ : une fonction d'étiquetage</li></ul>
+		</li>
+
+		<li class="fragment skip">
+			Nous définissons la sémantique de chaque formule CTL $\phi$ sur $AP$ <br>  par rapport à $\mathcal{K}$ 
+			comme un ensemble d'états $[\![ \phi ]\!] _{\mathcal{K}}$, comme suit :
+		</li>
+	</ul>
+
+		<div class="fragment" style="font-size: 24px;">
+			$$
+			\begin{aligned}
+			~[\![ a ]\!] _{\mathcal{K}}         &amp; = \{ s ~|~ a \in v(s)	 \} ~~~~~~~~ a \in AP\\
+			[\![ \neg \phi_1 ]\!] _{\mathcal{K}} &amp; = S \backslash [\![ \phi_1 ]\!] _{\mathcal{K}} \\
+			[\![ \phi_1 \lor \phi_2 ]\!] _{\mathcal{K}}&amp; = [\![ \phi_1 ]\!]  \cup  [\![ \phi_2 ]\!] _{\mathcal{K}}\\
+			[\![ EX~ \phi_1 ]\!] _{\mathcal{K}}&amp; = \{ s ~|~ \text{il existe un état} ~t~ \text{tel que} ~ s \to t ~\text{et}~ t \in [\![ \phi_1 ]\!] _{\mathcal{K}}\} \\
+			[\![ EG~ \phi_1 ]\!] _{\mathcal{K}}&amp; = \{ s ~|~ \text{il existe un chemin} ~\sigma~ \text{tel que} ~\sigma(0)=s~ 
+		                                                  \text{et} ~ \sigma(i) \in [\![ \phi_1 ]\!] _{\mathcal{K}} ~\forall i \geq 0\}\\
+			[\![ E~(\phi_1~ U ~\phi_2) ]\!] _{\mathcal{K}}&amp; = \{ s ~|~ \text{il existe un chemin} ~\sigma~ \text{tel que} ~\sigma(0)=s~ 
+			                                              \text{et} ~ k \geq 0, ~\sigma(i) \in [\![ \phi_1 ]\!] _{\mathcal{K}} ~\forall i < k, 
+														  ~\sigma(k) \in [\![ \phi_2 ]\!] _{\mathcal{K}}\}\\
+			\end{aligned}
+			$$
+		</span>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Computation Tree Logic - CTL</h2>
+	<h3>Opérateurs supplémentaires</h3>
+
+	$$
+	\begin{aligned}
+	false  &amp; \equiv \neg true \\
+	\phi_1 \land \phi_2 &amp; \equiv \neg (\neg \phi_1 \lor \neg \phi_2) \\
+	\phi_1 \Rightarrow \phi_2 &amp; \equiv \neg \phi_1 \lor \phi_2 \\
+	EF~ \phi &amp; \equiv E~(true ~U~ \phi) \\
+	AX~ \phi &amp; \equiv \neg EX~\neg \phi \\
+	AG~ \phi &amp; \equiv \neg EF~\neg \phi \\
+	AF~ \phi &amp; \equiv \neg EG~\neg \phi \\
+	A~ (\phi_1 ~U~ \phi_2)  &amp; \equiv \neg E~ \neg (\phi_1 ~U~ \phi_2)
+	\end{aligned}
+	$$
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Opérateurs CTL et arbres de calcul</h2>
+
+	<p>
+		Nous utilisons l'arbre de calcul suivant comme exemple d'exécution <br>
+		(avec des distributions variables des états <b>rouge</b> et <b>noir</b>).
+	</p>
+
+	<img src="./img/ctl-example-2.png" alt="" width="30%">
+	
+	<p>
+		Dans les diapositives suivantes, l'état le plus élevé satisfait une formule donnée <br> 
+		Les états <b>noirs satisfont $p$</b> et les états <b>rouges satisfont $q$</b>.
+	</p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/EX_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/AX_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/EF_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/AF_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/EG_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/AG_p.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/E_p_U_q.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+
+	<img src="./img/A_p_U_q.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Exemple : le dîner des philosophes"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>La spécification</h2>
+
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; height: 300px;">
+		<img src="./img/dinning-philo.png"  height="100%" >
+	</div>
+
+	<div>
+		<ul style="display: block;">
+			<li class="fragment">
+				Le problème du dîner des philosophes est un problème <br> de <b>synchronisation</b> introduit par <b>Dijkstra</b> en <i>1965</i>.
+			</li>
+
+			<li class="skip fragment">
+				Il illustre les problèmes du <b>partage des ressources</b> dans <br> la <b>programmation concurrente</b>.
+				<ul><li>le blocage, la famine et l'exclusion mutuelle...</li></ul>
+			</li>
+
+			<li class="skip fragment">
+				Énoncé du problème :
+				<ul>
+					<li>$K$ ($K = 5$) philosophes sont assis autour d'une table ronde.</li>
+					<li>chaque philosophe alterne entre réflexion et repas.</li>
+					<li>il y a une baguette entre chaque philosophe ($K$ baguettes au total).</li>
+					<li>un philosophe doit prendre deux baguettes (gauche et droite) pour manger.</li>
+					<li>un seul philosophe peut utiliser une baguette à la fois.</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Quelques propriétés CTL</h2>
+
+	<ul>
+		<li>Supposons les propositions atomiques suivantes :
+			<ul>
+				<li>$e_i \to$ le philosophe $i$ est en train de manger</li>
+				<li>$f_i \to$ le philosophe $i$ vient de finir de manger</li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">Les philosophes 1 et 4 ne mangeront jamais en même temps.
+			<span class="fragment">$$ AG ~ \neg(e_1 \land e_4)$$</span>
+		</li>
+		<li class="fragment">Chaque fois que le philosophe 4 a fini de manger, 
+			il ne peut plus manger tant que le philosophe 3 n'a pas mangé.
+			<span class="fragment">$$ AG ~(f_4 \Rightarrow A~(\neg e_4 ~W~ e_3))$$</span>
+		</li>
+		<li class="fragment">
+			Le philosophe 2 sera le premier à manger.
+			<span class="fragment">$$ A (\neg(e_1 \lor e_3 \lor e_4 \lor e_5) ~U~ e_2) $$</span>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Résolution de formules CTL"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple de formules imbriquées</h2>
+
+	<div>
+		$ s^0 \in  [\![ AF AG ~x ]\!] $ ?
+	</div>
+
+	<div>
+		<img src="./img/ctl-example-3.png" alt="" width="50%">
+	</div>
+
+	<ul>
+		<li class="fragment">
+			Pour calculer la sémantique des formules avec des <b>opérateurs imbriqués</b>, 
+			<ul id="fleche">
+				<li>nous calculons d'abord les états satisfaisant les <i>formules les plus internes</i> ; </li>
+				<li>ensuite, nous utilisons ces résultats pour résoudre <i>les formules englobantes</i>.</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			Dans cet exemple, nous calculons $ [\![ x ]\!]$, $ [\![AG ~x ]\!]$ et $ [\![AF AG ~x ]\!]$, dans cet ordre
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple de formules imbriquées</h2>
+	<h3>calcul de $ [\![ ~x~ ]\!]$</h3>
+
+	<img src="./img/ctl-s1.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple de formules imbriquées</h2>
+	<h3>calcul de $  [\![AG ~x~ ]\!]$ ou de $  [\![\neg EF \neg x~ ]\!]$</h3>
+
+	<img src="./img/ctl-s2.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exemple de formules imbriquées</h2>
+	<h3>calcul de $  [\![AF AG ~x~ ]\!]$ ou de $  [\![\neg EG \neg AG ~x~ ]\!]$</h3>
+
+	<img src="./img/ctl-s3.png" alt="" width="60%">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="./3-logique-ctl-20252026.pdf" target="_blank">PDF version of the slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>

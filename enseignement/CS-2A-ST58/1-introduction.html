@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../resources/css/slides-style.css">
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
@@ -111,7 +109,7 @@
           <li><i>mortelle ou/et extrêmement coûteuse</i></li>
       </ul>
 
-      <div class="d-skip fragment">
+      <div class="skip fragment">
         Quelques défaillances spectaculaires de logiciels critiques : 
         <ul>
           <li><a href="https://fr.wikipedia.org/wiki/Vol_501_d%27Ariane_5" target="_blank">Crash of Ariane 5</a></li>
@@ -222,14 +220,14 @@
   <div id="default-block">
     <b>Le processus de vérification</b> <br>
     <ol>
-      <li class="fragment">Prendre le logiciel (<b>Conception</b>)</li>
       <li class="fragment">Déterminer ce que le logiciel est censé faire (<b>Spécification</b>)</li>
+      <li class="fragment">Prendre le logiciel (<b>Conception</b>)</li>
       <li class="fragment">Démontrer que le logiciel fait ce qu'il est censé faire (<b>Vérification</b>)</li>
     </ol>
   </div>
 
   <div id="alert-block" class="d-skip fragment">
-    Imposée par les organismes de certification ($\Longrightarrow$ <a href="./introduction-a-la-st5-20252026.html#/14/0/6" target="_blank">quelques examples</a>)
+    Imposée par les organismes de certification ($\Longrightarrow$ <a href="./introduction-a-la-st5.html#/14/0/6" target="_blank">quelques examples</a>)
   </div>
 
 </section>
@@ -272,7 +270,7 @@
   <h2>La nécissité des méthodes formelles</h2>
 
   <div id="default-block" class="left-content">
-    $\Longrightarrow$ <a href="./introduction-a-la-st5-20252026.html#/11" target="_blank">les slides de la présentation de la ST58</a> 
+    $\Longrightarrow$ <a href="./introduction-a-la-st5.html#/11" target="_blank">les slides de la présentation de la ST58</a> 
   </div>
     
 </section>
@@ -320,7 +318,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	 <h2>Vérification formelle <br> des programmes séquentiels</h2>
+	<h2>Vérification formelle <br> des programmes séquentiels</h2>
 
   <div id="green-block">
       <b>Définitions</b> <br>
@@ -330,9 +328,9 @@
       </ul>
   </div>
 
-  <div class="left-content">
+  
     <ul>
-      <li class="skip fragment">Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> <br> est satisfaite 
+      <li class="fragment">Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> <br> est satisfaite 
           <span class="fragment">$\Rightarrow$ trouver la <b>PreCondition</b> qui permet d'aboutir à la <b>PostCondition</b></span></li>
       <div class="left-content">
         <div class="r-stack">
@@ -363,15 +361,15 @@
         </div>
       </div>
     </ul>
-  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	 <h2>Vérification formelle <br> des programmes séquentiels</h2>
+	<h2>Vérification formelle <br> des programmes séquentiels</h2>
 
-   <div id="default-block">
+  <div class="left-content">
+
     <b>Spécification</b> $\to$ programme de tri <br>
     <ul style="font-size: 0.8em !important;">
       <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
@@ -383,11 +381,12 @@
           Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
-  </div>
 
-  <div id="green-block" class="fragment">
-    <b>Conception</b> $\to$ programme de tri <br>
-<pre id="eb" class="eb-code">
+    <p class="fragment">
+      <b>Conception</b> $\to$ programme de tri
+    </p>
+    
+<pre id="eb" class="eb-code fragment">
 <b>input</b> T : array [N] of <b>integer</b>
 <b>for</b> i=0 <b>to</b> N-1 <b>do</b>
   <b>for</b> j=0 <b>to</b> N-i-1 <b>do</b>
@@ -397,15 +396,16 @@
   <b>end</b>
 <b>end</b>
 </pre>
-  </div>
+
+</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	 <h2>Vérification formelle <br> des programmes séquentiels</h2>
+	<h2>Vérification formelle <br> des programmes séquentiels</h2>
 
-   <div id="default-block">
+  <div class="left-content">
     <b>Spécification</b> $\to$ programme de tri <br>
     <ul style="font-size: 0.8em !important;">
       <li>Initial data : <span style="float:right;"> Array $T$ of size $N$</span></li>
@@ -417,10 +417,10 @@
           Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
-  </div>
 
-  <div id="green-block">
-    <b>Implémentation</b> $\to$ programme de tri <br>
+    <p>
+      <b>Implémentation</b> $\to$ programme de tri 
+    </p>
     <pre><code class="language-python hljs" data-trim data-line-numbers>
       <script type="text/template">
       def bubble_sort(T):
@@ -437,35 +437,39 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Question ?</h2>
+  <h2>Vérification formelle</h2>
+  <h3>Question ?</h3>
 
-  <div id="default-block">
+  <div class="left-content">
+
     <b>Spécification</b> $\to$ programme de tri <br>
     <ul style="font-size: 0.8em !important;">
       <li>Post-Condition :
-          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
+          <span style="float:right;">$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  \forall n,m \in [1..N],~n < m \Longrightarrow T[n] < T[m]$ </span>
       </li>
       <li>
           Pre-Condition : <span style="float:right;">$\forall n,m \in [1..N],~n \neq m \Longrightarrow T[n] \neq T[m]$</span>
       </li>
     </ul>
-  </div>
 
-  <div id="green-block">
-    <b>Conception</b> $\to$ programme de tri <br>
+    <p>
+      <b>Conception</b> $\to$ programme de tri
+    </p>
+    
 <pre id="eb" class="eb-code">
 <b>input</b> T : array [N] of <b>integer</b>
 <b>for</b> i=0 <b>to</b> N-1 <b>do</b>
-  <b>for</b> j=0 <b>to</b> N-i-2 <b>do</b>
+  <b>for</b> j=0 <b>to</b> N-i-1 <b>do</b>
     <b>if</b> T[j] > T[j + 1] <b>do</b>
       T[j], T[j + 1] = T[j + 1], T[j]
     <b>end</b>
   <b>end</b>
 <b>end</b>
 </pre>
-  </div>
 
-  <div id="alert-block" style="font-size: 0.9em !important;">
+</div>
+
+  <div id="alert-block" class="left-content" style="font-size: 0.9em !important;">
     $\Rightarrow$ Prouver que si la <b>PreCondition</b> est satisfaite, alors la <b>PostCondition</b> est satisfaite
   </div>
 
@@ -692,7 +696,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-    <h2>Histoire des méthodes <br> de vérification formelle</h2>
+    <h2>Histoire de la vérification formelle</h2>
 
     <div id="default-block">
         <b>Avant $\ldots$</b> <br>
@@ -1132,7 +1136,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
-		<a href="./1-introduction-20252026.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./1-introduction.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
@@ -1167,7 +1171,8 @@
 			// The "normal" size of the presentation, aspect ratio will
 			// be preserved when the presentation is scaled to fit different
 			// resolutions. Can be specified using percentage units.
-			width: 1280,
+			//width: 1280,
+			width: 1120,
 			height: 720,
 
 			// Add the current slide number to the URL hash so that reloading the
