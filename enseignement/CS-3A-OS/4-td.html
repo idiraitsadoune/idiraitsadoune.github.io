@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
 	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/highlight/styles/monokai.min.css">
 
 	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
@@ -58,7 +58,7 @@ f2.pdf : Fichier PDF
 f3.txt : Ni DOC, ni PDF
 </script></code></pre>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo1')">Click here to display or hide the correction</button>
 	<div id="exo1" style="display: none; margin-top: 20px;">
 <pre><code class="language-bash"><script type="text/template">for fic in $*  
@@ -100,7 +100,7 @@ done
     </ul>   
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
 	<div id="exo2" style="display: none; margin-top: 20px;">
 <pre><code class="language-bash"><script type="text/template">if test $# -eq 0
@@ -125,9 +125,16 @@ cd $rep
     
 for nomfic in $(ls) 
 do 
-    nouveauNom=$( echo $nomfic | tr '[A-Z]' '[a-z]' ) > /dev/null 
-	echo $nouveauNom 
-    mv $nomfic "./$nouveauNom" 
+	if [ nomfic = $0 ]
+		then
+			continue
+	fi
+	if [ ! -d $rep ] 
+		then
+  		nouveauNom=$( echo $nomfic | tr '[A-Z]' '[a-z]' ) > /dev/null 
+			echo $nouveauNom 
+  		mv $nomfic "./$nouveauNom" 
+		fi
 done
 </script></code></pre>
 	</div>
@@ -172,7 +179,7 @@ L'utilisateur olivier n'a pas de processus
 daniel n'est pas un utilisateur valide 
 </script></code></pre>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
 	<div id="exo3" style="display: none; margin-top: 20px;">
 <pre><code class="language-bash"><script type="text/template">if test $# -eq 0 
@@ -243,7 +250,7 @@ done
     </ul>  
 </p>
 
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo4')">Click here to display or hide the correction</button>
 	<div id="exo4" style="display: none; margin-top: 20px;">
 <pre><code class="language-bash"><script type="text/template">if test $# -eq 0
@@ -264,14 +271,14 @@ do
 	then 
 		while true  
 		do  
-			echo "\nConsulter le fichier $fic ? o/n - q pour quitter \c" 
+			echo "\nConsulter le fichier $fic ? o/n - q pour quitter \n" 
 			read reponse 
 			case $reponse in 
 				o|O|oui|OUI)  
 					more $fic 
 					break    
 					;; 
-				n|n|non|NON)  
+				n|N|non|NON)  
 					break    
 					;;  
 				q|quit)  
