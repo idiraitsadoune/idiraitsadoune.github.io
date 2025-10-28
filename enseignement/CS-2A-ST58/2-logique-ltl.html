@@ -296,15 +296,15 @@
         $\phi~~::= ~~ true ~~ | ~~ a ~~ | ~~ \phi_1 ~~ \wedge ~~ \phi_2 ~~ | ~~ \neg~\phi ~~ | ~~ \text{X}~\phi ~~ | ~~ \text{G}~\phi ~~ | ~~ \text{F} ~\phi ~~ | ~~ \phi_1 ~~ \text{U} ~~ \phi_2$
     </li>
     <li class="fragment skip">
-      Pour $~~\sigma = A_0A_1A_2\dots \in (2^{AP})^{\omega}$ :
-        <span class="fragment">$\sigma \vDash true $</span> <br>
-        <span class="fragment">$\sigma \vDash a ~~~~~~~~~~~~~~~$  <b>iff</b>  $~a \in A_0$</span> <br>
-        <span class="fragment">$\sigma \vDash  \phi_1 \wedge \phi_2 ~~~~~$ <b>iff</b> $~\sigma \vDash  \phi_1 ~~$ and $~~ \sigma \vDash \phi_2$</span> <br>
-        <span class="fragment">$\sigma \vDash \neg~\phi ~~~~~~~~~~~$ <b>iff</b> $~\sigma \nvDash \phi$</span> <br>
-        <span class="fragment">$\sigma \vDash \text{X}~\phi ~~~~~~~~~~~$ <b>iff</b> $~ A_1A_2A_3\dots \vDash  \phi$</span> <br>
-        <span class="fragment">$\sigma \vDash \text{G}~\phi ~~~~~~~~~~$ <b>iff</b> $~ \forall~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</span> <br>
-        <span class="fragment">$\sigma \vDash \text{F}~\phi ~~~~~~~~~~$ <b>iff</b> $~ \exists~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</span> <br>
-        <span class="fragment">$\sigma \vDash \phi_1 ~\text{U}~ \phi_2 ~~~~$ <b>iff</b> $~ \exists~ j \geq 0, ~A_jA_{j+1}\dots \vDash \phi_2 ~$ et $~ \forall ~0 \leq i < j , ~A_iA_{i+1}\dots \vDash \phi_1$</span>
+      Pour $~~\sigma = A_0A_1A_2\dots \in (2^{AP})^{\omega}$ : <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash true $</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash a ~~~~~~~~~~~~~~~$  <b>iff</b>  $~a \in A_0$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash  \phi_1 \wedge \phi_2 ~~~~~$ <b>iff</b> $~\sigma \vDash  \phi_1 ~~$ and $~~ \sigma \vDash \phi_2$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash \neg~\phi ~~~~~~~~~~~$ <b>iff</b> $~\sigma \nvDash \phi$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash \text{X}~\phi ~~~~~~~~~~~$ <b>iff</b> $~ A_1A_2A_3\dots \vDash  \phi$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash \text{G}~\phi ~~~~~~~~~~$ <b>iff</b> $~ \forall~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash \text{F}~\phi ~~~~~~~~~~$ <b>iff</b> $~ \exists~ i \geq 0, ~A_iA_{i+1}A_{i+2}\dots \vDash \phi$</span> <br>
+        <span class="fragment" style="font-size: 0.9em;">$\sigma \vDash \phi_1 ~\text{U}~ \phi_2 ~~~~$ <b>iff</b> $~ \exists~ j \geq 0, ~A_jA_{j+1}\dots \vDash \phi_2 ~$ et $~ \forall ~0 \leq i < j , ~A_iA_{i+1}\dots \vDash \phi_1$</span>
     </li>
   </ul>
 
@@ -644,19 +644,19 @@ $\{crit_1,crit_2\}$</div>
 
   <ul>
     <li>Revenons à notre algorithme basé sur les sémaphores avec
-        $ AP = \{wait_1, crit_1, wait_2, crit_2\} $
+        $$ AP = \{wait_1, crit_1, wait_2, crit_2\} $$
     </li>
 
     <li class="fragment skip"><b>Finalement</b> (<b>Eventually</b>) :
-        $ \text{F}~crit_1 \wedge \text{F}~crit_2 $
+        $$ \text{F}~crit_1 \wedge \text{F}~crit_2 $$
     </li>
 
     <li class="fragment skip"><b>Finalement répété</b> (<b>Repeated eventually)</b> : 
-        $ \text{G} \text{F}~crit_1 \wedge \text{G} \text{F}~crit_2 $
+        $$ \text{G} \text{F}~crit_1 \wedge \text{G} \text{F}~crit_2 $$
     </li>
 
     <li class="fragment skip"><b>Absence de famine</b> : 
-        $ \text{G}~(wait_1 \Rightarrow \text{F}~crit_1) \wedge \text{G}~(wait_2 \Rightarrow \text{F}~crit_2) $
+        $$ \text{G}~(wait_1 \Rightarrow \text{F}~crit_1) \wedge \text{G}~(wait_2 \Rightarrow \text{F}~crit_2) $$
     </li>
   </ul>
 

@@ -1,9 +1,10 @@
 MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
   },
   options:{
-    skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea'],
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea'],
   },
   loader: { load: ['ui/lazy'] }
 };
