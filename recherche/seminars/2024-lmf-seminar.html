@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../enseignement/resources/css/slides-style.css">
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/github-dark.css">
 	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
@@ -22,26 +22,22 @@
 </head>
 
 <body>
-	<img id="logo" src="./img/lmf.png" alt="">
+	<img id="logo" src="../../enseignement/resources/img/lmf-logo-black-rgb.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-transition="fade-in fade-out" data-background="#fff">
-	
-	<div class="header-logo">
-		<div class="left-logo">
-			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
-			</a>
-		</div>
-		<div class="right-logo">
-			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img src="./img/lmf.png" alt="">
-			</a>
-		</div>
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
 	</div>
 	
 	<div style="text-align: left">
@@ -225,7 +221,7 @@ $event$ $\mathrel{\widehat=}$
 		</div>
 	</div>
 
-	<div class="skip left-content">
+	<div class="skip left-content" style="font-size: 0.8em;">
 		<span class="fragment" data-fragment-index="5">$A(s,c) ~~~\vdash~~~ T(s,c) $</span><br>
 		<span class="fragment" data-fragment-index="5">$A(s,c) \land I(s,c,v) ~~~\vdash~~~ T(s,c,v)$</span><br>
 		<span class="fragment" data-fragment-index="6">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  ~~~\vdash~~~ \exists v'.BA(s,c,v,x,v')$</span><br>
@@ -400,9 +396,9 @@ Now, with the Theory component, an Event-B model can be specified using three co
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>A simple example</h2>
 		
-	<ul>
-		<li>System that continuously calculates <b>a moving object's speed</b></li>
-	</ul>
+	<p>
+		System that continuously calculates <b>a moving object's speed</b>
+	</p>
 
 	<div class="d-skip">
 		<img src="./img/motivating-example.svg" alt="" width="80%">
@@ -476,7 +472,7 @@ mainly when we use integer variables to handle small values and expressions that
 		</li>
 	</ul>
 
-<div class="left-content skip" style="width: 65%;">
+<div class="left-content skip" style="width: 75%;">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_integer_version
 ...
@@ -507,7 +503,7 @@ when the seventh invariant formalises the PROP 2.
 	<h2>The Event-B model</h2>
 		
 <div class="r-stack">				
-<div class="fragment fade-out" style="width: 75%" data-fragment-index="0">
+<div class="fragment fade-out" style="width: 80%" data-fragment-index="0">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_integer_version
 ...
@@ -526,7 +522,7 @@ when the seventh invariant formalises the PROP 2.
 <b>END</b>
 </pre>
 </div>
-<div class="fragment" style="width: 75%" data-fragment-index="0">
+<div class="fragment" style="width: 80%" data-fragment-index="0">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_integer_version
 ...
@@ -716,7 +712,7 @@ and some axioms and theorems that characterise the proposed modelling.
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>The power operator</h2>
 
-	<div class="left-content" style="width: 82%;">
+	<div>
 <pre id="eb" class="eb-code" >
 <b>THEORY</b> thy_power_operator
 
@@ -791,7 +787,7 @@ the power rule, and the multiplying exponents rule.
 	<h2>The floating-point numbers theory</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.55em !important;">
 <b>THEORY</b> thy_floating_point_numbers
 
 <b>DATATYPES</b>
@@ -849,7 +845,7 @@ By this way, we have defined the operators (=, >, >=, <, <=) comparing two float
 	<h2>The floating-point numbers theory</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.55em !important;">
 <b>THEORY</b> thy_floating_point_numbers
 ...
 <b>OPERATORS</b>
@@ -946,7 +942,7 @@ The same reasoning is done for the division operator.
 	<h2>The case of <cs-code>inv</cs-code> and <cs-code>div</cs-code> operators</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.55em !important;">
 <b>THEORY</b> thy_floating_point_numbers
 ...
 <b>OPERATORS</b>
@@ -995,7 +991,7 @@ The same reasoning is done for the division operator.
 	<h2>The floating-point numbers theory</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.55em !important;">
 <b>THEORY</b> thy_floating_point_numbers
 ...
 <b>THEOREMS</b>
@@ -1086,7 +1082,7 @@ When this theory is refined towards any implementation (the IEEE Standard 754, f
 			<cs-code>PFLOAT_Type</cs-code> set <br> containing <i>positive floating-point numbers</i>.
 	</p>
 
-	<div class="left-content" style="width: 60%;">
+	<div class="left-content" style="width: 70%;">
 <pre id="eb" class="eb-code">
 <b>THEORY</b> thy_floating_point_numbers
 	...
@@ -1180,7 +1176,7 @@ of the division operator used to formalise the speed of the moving object.
 	<h2>Revisiting our example II</h2>
 		
 <div class="r-stack">
-<div class="fragment fade-out" style="width: 85%;" data-fragment-index="0">
+<div class="fragment fade-out" style="width: 90%;" data-fragment-index="0">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_integer_version
 ...
@@ -1200,7 +1196,7 @@ of the division operator used to formalise the speed of the moving object.
 </pre>	
 </div>
 
-<div class="fragment current-visible" style="width: 85%;" data-fragment-index="0">
+<div class="fragment current-visible" style="width: 90%;" data-fragment-index="0">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_floating_point_version
 ...
@@ -1220,7 +1216,7 @@ of the division operator used to formalise the speed of the moving object.
 </pre>
 </div>
 
-<div class="fragment" style="width: 85%;">
+<div class="fragment" style="width: 90%;">
 <pre id="eb" class="eb-code">
 <b>MACHINE</b> mch_floating_point_version
 ...
@@ -1391,6 +1387,8 @@ I think that such theories will help many Event-B developers to model and verify
 	<script src="../../enseignement/resources/js/plan-en.js"></script>
 	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
 	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -1407,7 +1405,8 @@ I think that such theories will help many Event-B developers to model and verify
 			// The "normal" size of the presentation, aspect ratio will
 			// be preserved when the presentation is scaled to fit different
 			// resolutions. Can be specified using percentage units.
-			width: 1280,
+			//width: 1280,
+			width: 1120,
 			height: 720,
 
 			// Add the current slide number to the URL hash so that reloading the
@@ -1417,7 +1416,7 @@ I think that such theories will help many Event-B developers to model and verify
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });

@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../../enseignement/resources/css/presentation-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../enseignement/resources/css/slides-style.css">
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/github-dark.css">
 	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
@@ -28,14 +28,15 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-transition="fade-in fade-out" data-background="#fff">
-	
-	<div class="header-logo">
-		<div class="left-logo">
-			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../../enseignement/resources/img/logo-aff.png" alt="">
-			</a>
-		</div>
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
 	</div>
 	
 	<div style="text-align: left">
@@ -70,9 +71,7 @@
 	
 	<ul>
 		<li>System that continuously calculates <b>a moving object's speed</b> <br>
-				<div style="display: block; margin: auto; width: 80%;">
-					<img src="./img/motivating-example.svg" alt="">
-				</div>
+			<img class="center-content" src="./img/motivating-example.svg" alt="" height="200px">
     </li>
     <li class="fragment skip">Analysing <b>two functional properties</b>:
 			<ul>
@@ -115,7 +114,7 @@
 	<h2>The Event-B model</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
 <b>MACHINE</b> mch_car_speed
 ...
 <b>INVARIANTS</b>
@@ -149,7 +148,7 @@
 	<h2>The Event-B model</h2>
 
 	<div>
-<pre id="eb" class="eb-code">
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
 <b>MACHINE</b> mch_car_speed
 ...
 <b>INVARIANTS</b>
@@ -201,7 +200,7 @@
 		</li>
 	</ul>
 
-  <div id="green-block" class="d-skip fragment" style="width: 60%;">
+  <div id="green-block" class="d-skip fragment left-content">
 		<b>Refinement</b> is an excellent solution to decompose a complex proof.
 	</div>
 
@@ -255,7 +254,7 @@ get_speed $\mathrel{\widehat=}$
 	<h2>The refinement model</h2>
 
 	<div>
-<pre id="eb"  class="eb-code">
+<pre id="eb"  class="eb-code" style="font-size: 0.5em !important;">
 <b>MACHINE</b> mch_2 <b>REFINES</b> mch_1 
 ...
 <b>INVARIANTS</b>
@@ -292,7 +291,7 @@ get_speed $\mathrel{\widehat=}$
 	<h2>The annotated model</h2>
 
 	<div>
-<pre id="eb"  class="eb-code">
+<pre id="eb"  class="eb-code" style="font-size: 0.5em !important;">
 <b>MACHINE</b> mch_3 <b>REFINES</b> mch_2
 ...
 <b>INVARIANTS</b>
@@ -361,8 +360,10 @@ get_speed $\mathrel{\widehat=}$
 	<script src="../../enseignement/resources/js/plan-en.js"></script>
 	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
 	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
 
-	<script>
+		<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
 		// - https://revealjs.com/config/
@@ -377,7 +378,8 @@ get_speed $\mathrel{\widehat=}$
 			// The "normal" size of the presentation, aspect ratio will
 			// be preserved when the presentation is scaled to fit different
 			// resolutions. Can be specified using percentage units.
-			width: 1280,
+			//width: 1280,
+			width: 1120,
 			height: 720,
 
 			// Add the current slide number to the URL hash so that reloading the
@@ -387,7 +389,7 @@ get_speed $\mathrel{\widehat=}$
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
