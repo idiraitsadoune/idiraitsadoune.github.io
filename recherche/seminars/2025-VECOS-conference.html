@@ -1,0 +1,531 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> A Generic Event-B Theory for the Formalisation of the International System of Units</title>
+
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/slides-style.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/logo_vecos.jpg" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 100px; grid-template-columns: auto auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+
+    <a href="https://vecos-world.org/2025/" target="_blank">
+			<img src="./img/logo_vecos.jpg" height="80px">
+		</a>
+	</div>
+
+	<div style="text-align: left">
+		<h3>A Generic Event-B Theory for the Formalisation <br> of the International System of Units</h3>
+		<div class="description">This work was supported by a grant from the French national research agency <a href="https://anr.fr/Projet-ANR-19-CE25-0010" target="_blank">ANR ANR-19-CE25-0010</a> (<a href="https://www.irit.fr/EBRP/" target="_blank">EBRP Project</a>).</div>
+	</div>
+
+	<div class="description">
+		<span><span class="fa fa-graduation-cap">&#160;</span>$18^{th}$ International Conference on Verification and Evaluation of Computer and Communication Systems</span><br>
+		<span><span class="fa fa-university">&#160;</span>Centre d'intégration Nano-INNOV - CEA-LIST, Palaiseau, France</span>
+    &#160;
+		<span ><span class="fa fa-calendar">&#160;</span>5-6 November 2025</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idiraitsadoune@lmf.cnrs.fr" target="_blank">
+				<span class="hero-email">idiraitsadoune@lmf.cnrs.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="The context of the work"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Event-B method</h2>
+
+	<img src="./img/Event-B-book.jpg" style="position: absolute; bottom:0px; right:160px;">
+	
+	<ul style="display: block;">
+		<li>The <b>Event-B method</b> is an evolution of the <i>classical</i>
+				<b>B method</b>.
+			<ul><li>modeling a system by a <i>set of events</i> instead of <i>operations</i>.</li></ul>
+		</li>
+
+		<li class="fragment skip">The <b>Event-B method</b> is a <i>formal method</i> based on <br>
+			<i>first-order logic</i> and <i>set theory</i>.</li>
+
+		<li class="fragment skip">The <b>Event-B method</b> is based on :
+			<ul>
+				<li>the notions of <i>pre-conditions</i> and <i>post-conditions</i> (<b>Hoare</b>),</li>
+				<li>the <i>weakest pre-condition</i> (<b>Dijkstra</b>),</li>
+				<li>and the <i>calculus of substitution</i> (<b>Abrial</b>).</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Using Event-B method</h2>
+
+	<ul>
+		<li>
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support<br> 
+			the construction and verification of <b>Event-B models</b>.
+		</li>
+		<li class="fragment skip">The use of the <b>Event-B method</b> has continued to increase.
+			<ul>
+				<li>applied to various applications and domains.</li>
+				<li>railway, automotive, aeronautics, cybersecurity, nuclear-energy,  ...</li>
+			</ul>
+		</li>
+		<li class="fragment skip">The <b>Event-B method</b> is adapted to analyse <i>discrete systems</i>.
+			<ul><li>offers the possibility of modelling <b>discrete behaviors</b>.</li></ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Event-B method</h2>
+
+	<div class="start-divs">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+<span class="fragment" data-fragment-index="2">
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+<span class="fragment" data-fragment-index="3">
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code fragment" data-fragment-index="4">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+		</div>
+	</div>
+
+	<div class="skip left-content" style="font-size: 0.8em;">
+		<span class="fragment" data-fragment-index="5">$A(s,c) ~~~\vdash~~~ T(s,c) $</span><br>
+		<span class="fragment" data-fragment-index="5">$A(s,c) \land I(s,c,v) ~~~\vdash~~~ T(s,c,v)$</span><br>
+		<span class="fragment" data-fragment-index="6">$A(s,c) \land I(s,c,v) \land G(s,c,v,x)  ~~~\vdash~~~ \exists v'.BA(s,c,v,x,v')$</span><br>
+		<span class="fragment" data-fragment-index="7">$A(s,c) \land I(s,c,v) \land G(s,c,v,x) \land BA(s,c,v,x,v') ~~~\vdash~~~ I(s,c,v')$</span><br>
+		<span class="fragment" data-fragment-index="7">$...$</span>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>Static Type Checking</h3>
+
+	<ul>
+		<li>
+			<b>Event-B</b> support <i>static type checking</i> using tools 
+			such as <b>Rodin</b> or <b>AtelierB</b>.
+		</li>
+
+		<li class="fragment skip">
+			These tools generate <i>proof obligations</i> (<b>POs</b>) 
+			for arithmetic operations - known as <b>Well-Defined</b> (<b>WD</b>) <b>POs</b>.
+		</li>
+
+		<li class="fragment skip">
+			<b>WD POs</b> ensure that expressions (axioms, theorems, invariants, guards, actions, etc.) 
+			are <i>mathematically well-defined</i>.
+		</li>
+
+		<li class="fragment skip">
+			<strong>Example</strong> $\to$ For the expression <i>$E \div F$</i>, 
+			a <b>WD PO</b> ensures that <i>$F \neq 0$</i>.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>The theory plugin</h3>
+
+	<ul>
+		<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <b>the Event-B mathematical language</b> and <b>
+			the Rodin proving infrastructure</b>.</li>
+
+		<li class="fragment skip">An <b>Event-B theory</b> can contain : 
+			<ul>
+				<li>new datatype definitions,</li>
+				<li>new polymorphic operator definitions,</li>
+				<li>axiomatic definitions,</li>
+				<li>theorems,</li>
+				<li>associated rewrite and inference rules.</li>
+			</ul>
+		</li>
+
+		<li style="font-size: 15px; margin-top: 80px;">
+			Michael J. Butler and Issam Maamria. <br> <span style="font-style: italic;">Practical theory extension in Event-B.</span> 
+			<a href="https://link.springer.com/chapter/10.1007/978-3-642-39698-4_5" target="_blank">Theories of Programming and Formal Methods. 2013</a>.
+		</li>
+
+		<li style="font-size: 15px;">
+			Thai Son Hoang, Laurent Voisin, Asieh Salehi, Michael J. Butler, Toby Wilkinson, and Nicolas Beauger. <br>
+			<span style="font-style: italic;">Theory plug-in for Rodin 3.x. </span> 
+			<a href="https://arxiv.org/abs/1701.08625" target="_blank">CoRR, abs/1701.08625, 2017</a>.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>The theory plugin</h3>
+
+	<div class="start-divs">
+		<div class="fragment" style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>THEORY</b> $thy_1$
+<b>IMPORT</b> $thy_2$
+
+<b>DATATYPES</b> 
+	$DT_1,...,DT_n$
+<b>OPERATORS</b> 
+	$OP_{11},...,OP_{1n}$
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		$OP_{21},...,OP_{2n}$
+	<i>axioms</i>
+		$A$
+<b>THEOREMS</b>
+	$T$
+<b>PROOF RULES</b>
+	$PR$
+<b>END</b>
+</pre>			
+	</div>
+
+	<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$
+<b>END</b>
+</pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="The motivating example"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A simple example</h2>
+		
+	<p>
+		System that continuously calculates <b>a moving object's speed</b>
+	</p>
+
+	<div class="skip">
+		<img src="./img/motivating-example.svg" alt="" width="80%">
+	</div>
+
+	<ul>
+		<li class="fragment">Analysing <b>two functional properties</b>:
+			<ul>
+				<li class="fragment"><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-i>$distance\_travelled$</cs-i> <br>
+					divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).</li>
+				<li class="fragment"><strong>PROP-2</strong> : when the <cs-code>$distance\_travelled$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
+					of the moving object must also be <i>strictly positive</i>.
+					<ul><li> <b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li></ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A simple example</h2>
+
+	<ul>
+		<li>Analysing <b>two functional properties</b>:
+			<ul>
+				<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-i>$distance\_travelled$</cs-i> <br>
+					divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).</li>
+				<li><strong>PROP-2</strong> : when the <cs-code>$distance\_travelled$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
+					of the moving object must also be <i>strictly positive</i>.
+					<ul><li> <b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li></ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div id="green-block" class="skip left-content">
+		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <red-b>problems</red-b> :<br> 
+		<ul>
+			<li class="fragment">
+				using <b>integer</b> variables to handle <b>small values</b>.
+			</li>
+			<li class="fragment">analysing <b>physical phenomena</b>.
+				<ul><li>expressions that come from <i>the physics laws</i>.</li></ul>
+			</li>
+			
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Challenges in Modelling CPS Systems</h2>
+
+	<ul>
+		<li>
+			Cyber-Physical Systems (CPS) models require numerical variables 
+			representing physical measurements.
+		</li>
+
+		<li class="skip fragment">
+			Event-B does not support physical unit annotations for such variables.
+		</li>
+
+		<li class="skip fragment">
+			Formal verification of CPS systems requires a physical measurement model, 
+			e.g. the International System of Units (SI).
+		</li>
+
+		<li class="skip fragment">
+			Using explicit units improves rigour by ensuring unit compatibility in computations.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Proposed Approach</h2>
+
+	<ul>
+		<li>
+			<b>Objective</b> 
+			<ul>
+				<li>
+					Formally annotate numerical variables with measurement units in Event-B.
+				</li>
+				<li class="fragment">
+					Provide automatic checking of correct unit usage in arithmetic expressions.
+				</li>
+
+				<li class="fragment">
+					Define Well-Defined Proof Obligations (WD POs) to ensure unit consistency.
+				</li>
+
+				<li class="fragment">
+					Example: $b = v / 2 a_{max, brake}$ <br>
+					$\to$ must ensure that the unit of $b$ matches that of $v / 2 a_{max, brake}$.
+				</li>
+			</ul>
+		</li>
+
+		<li class="skip fragment">
+			<b>Proposal</b>
+			<ul>
+				<li class="fragment">
+				Develop a measurement units theory using the Theory plugin.
+				</li>
+
+				<li class="fragment">
+				Extend the Event-B type-checking system to handle reasoning about measurement units.
+				</li>
+
+				<li class="fragment">
+				Introduce a formal method for annotating Event-B variables with their associated units of measurement.
+				</li>
+			</ul>
+		</li>
+
+		
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="The proposed approach"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="./2025-VECOS-conference.pdf" target="_blank">PDF version of the slides</a>
+	</p>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			//width: 1280,
+			width: 1120,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
