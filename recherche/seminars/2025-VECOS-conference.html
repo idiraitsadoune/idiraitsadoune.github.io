@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<img id="logo" src="./img/logo_vecos.jpg" alt="">
+	<img id="logo" src="./img/vecos.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -40,7 +40,7 @@
 		</a>
 
     <a href="https://vecos-world.org/2025/" target="_blank">
-			<img src="./img/logo_vecos.jpg" height="80px">
+			<img src="./img/vecos.png" height="80px">
 		</a>
 	</div>
 
@@ -200,23 +200,23 @@ $event$ $\mathrel{\widehat=}$
 
 	<ul>
 		<li>
-			<b>Event-B</b> support <i>static type checking</i> using tools 
+			<b>Event-B</b> supports <i>static type checking</i> using tools 
 			such as <b>Rodin</b> or <b>AtelierB</b>.
 		</li>
 
 		<li class="fragment skip">
-			These tools generate <i>proof obligations</i> (<b>POs</b>) 
-			for arithmetic operations - known as <b>Well-Defined</b> (<b>WD</b>) <b>POs</b>.
+			These tools generate <i>proof obligations</i> (<b>POs</b>) to check <i>the correct use of arithmetic operations</i> 
+			(<b>Well-Defined</b> <i>proof obligations</i> - <b>WD POs</b>).
 		</li>
 
 		<li class="fragment skip">
-			<b>WD POs</b> ensure that expressions (axioms, theorems, invariants, guards, actions, etc.) 
+			<b>WD POs</b> ensure that expressions (<i>axioms</i>, <i>theorems</i>, <i>invariants</i>, <i>guards</i>, <i>actions</i>, etc.) 
 			are <i>mathematically well-defined</i>.
 		</li>
 
 		<li class="fragment skip">
-			<strong>Example</strong> $\to$ For the expression <i>$E \div F$</i>, 
-			a <b>WD PO</b> ensures that <i>$F \neq 0$</i>.
+			<strong>Example</strong> $\to$ for the expression <i>$x \div y$</i>, 
+			a <b>WD PO</b> ensures that <i>$y \neq 0$</i>.
 		</li>
 	</ul>
 
@@ -354,53 +354,25 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>A simple example</h2>
-
-	<ul>
-		<li>Analysing <b>two functional properties</b>:
-			<ul>
-				<li><strong>PROP-1</strong> : <b>the speed of the moving object</b> is equal to the <cs-i>$distance\_travelled$</cs-i> <br>
-					divided by the <cs-code>$measured\_time$</cs-code>  (<cs-code>$v = d/t$</cs-code>).</li>
-				<li><strong>PROP-2</strong> : when the <cs-code>$distance\_travelled$</cs-code> <i>is strictly positive</i>, the <cs-code>$speed$</cs-code> <br> 
-					of the moving object must also be <i>strictly positive</i>.
-					<ul><li> <b>the object moves</b> when its <cs-code>$speed$</cs-code> is different from zero.</li></ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-
-	<div id="green-block" class="skip left-content">
-		<b>Objectives</b> $\to$ showing some <b>modelling and verification</b> <red-b>problems</red-b> :<br> 
-		<ul>
-			<li class="fragment">
-				using <b>integer</b> variables to handle <b>small values</b>.
-			</li>
-			<li class="fragment">analysing <b>physical phenomena</b>.
-				<ul><li>expressions that come from <i>the physics laws</i>.</li></ul>
-			</li>
-			
-		</ul>
-	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Challenges in Modelling CPS Systems</h2>
+
+	<div>
+		<img src="./img/motivating-example.svg" alt="" width="60%">
+	</div>
 
 	<ul>
 		<li>
-			Cyber-Physical Systems (CPS) models require numerical variables 
-			representing physical measurements.
+			More generally, <b>Cyber-Physical Systems</b> (<b>CPS</b>) models often require 
+			<i>variables</i>/<i>expressions</i>, formalising <b>measurements</b>/<b>physics and mechanics laws</b>.
 		</li>
 
 		<li class="skip fragment">
-			Event-B does not support physical unit annotations for such variables.
+			<b>Event-B</b> does not support <i>physical unit annotations</i> for such variables.
 		</li>
 
 		<li class="skip fragment">
-			Formal verification of CPS systems requires a physical measurement model, 
-			e.g. the International System of Units (SI).
+			Formal verification of CPS systems requires a physical measurement model, <br>
+			<strong>e.g.</strong> <i>the International System of Units</i> (<b>SI</b>).
 		</li>
 
 		<li class="skip fragment">
