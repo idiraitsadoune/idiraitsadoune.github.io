@@ -371,12 +371,13 @@ $event$ $\mathrel{\widehat=}$
 		</li>
 
 		<li class="skip fragment">
-			Formal verification of CPS systems requires a physical measurement model, <br>
+			Formal verification of CPS systems requires a physical measurement <b>model</b>, <br>
 			<strong>e.g.</strong> <i>the International System of Units</i> (<b>SI</b>).
 		</li>
 
 		<li class="skip fragment">
-			Using explicit units improves rigour by ensuring unit compatibility in computations.
+			Using <b>explicit units</b> improves the <b>CPS</b> <i>validation process</i> by ensuring <b>unit compatibility</b> 
+			in arithmetic expressions.
 		</li>
 	</ul>
 
@@ -384,48 +385,24 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Proposed Approach</h2>
+	<h2>Proposed Approach - Objective</h2>
 
 	<ul>
 		<li>
-			<b>Objective</b> 
-			<ul>
-				<li>
-					Formally annotate numerical variables with measurement units in Event-B.
-				</li>
-				<li class="fragment">
-					Provide automatic checking of correct unit usage in arithmetic expressions.
-				</li>
-
-				<li class="fragment">
-					Define Well-Defined Proof Obligations (WD POs) to ensure unit consistency.
-				</li>
-
-				<li class="fragment">
-					Example: $b = v / 2 a_{max, brake}$ <br>
-					$\to$ must ensure that the unit of $b$ matches that of $v / 2 a_{max, brake}$.
-				</li>
-			</ul>
+			Formally annotate numerical variables with measurement units in Event-B.
+		</li>
+		<li class="skip fragment">
+			Provide automatic checking of correct unit usage in arithmetic expressions.
 		</li>
 
 		<li class="skip fragment">
-			<b>Proposal</b>
-			<ul>
-				<li class="fragment">
-				Develop a measurement units theory using the Theory plugin.
-				</li>
-
-				<li class="fragment">
-				Extend the Event-B type-checking system to handle reasoning about measurement units.
-				</li>
-
-				<li class="fragment">
-				Introduce a formal method for annotating Event-B variables with their associated units of measurement.
-				</li>
-			</ul>
+			Define Well-Defined Proof Obligations (WD POs) to ensure unit consistency.
 		</li>
 
-		
+		<li class="skip fragment">
+			Example: $d = v / 2 \times a$ <br>
+			$\to$ must ensure that the unit of $d$ matches that of $v / 2 \times a$.
+		</li>
 	</ul>
 
 </section>
@@ -433,13 +410,36 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="The proposed approach"></section>
+<section id="ch3" name="SI units formalisation"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Proposed approach</h2>
 
+	<img src="./img/theories.png" alt="">
 
+</section>
+
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Conclusion - Proposal</h2>
+
+	<ul>
+		<li class="fragment">
+		Develop a measurement units theory using the Theory plugin.
+		</li>
+
+		<li class="fragment">
+		Extend the Event-B type-checking system to handle reasoning about measurement units.
+		</li>
+
+		<li class="fragment">
+		Introduce a formal method for annotating Event-B variables with their associated units of measurement.
+		</li>
+	</ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
