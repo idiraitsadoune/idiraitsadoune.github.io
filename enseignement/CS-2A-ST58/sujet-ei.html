@@ -54,7 +54,7 @@
 
 <p class="text-justify">
     Le logiciel étudié est un contrôleur qui pilote un ascenseur. Le système de l'ascenseur comprend les parties suivantes :
-    <ul>
+  <ul>
     <li> une cabine, </li>
     <li>  une porte pour la cabine,</li>
     <li>  un câble et un moteur pour déplacer la cabine,</li>
@@ -65,7 +65,7 @@
     <li>  un bouton sur chaque étage pour appeler la cabine,</li>
     <li>  $N + 1$ boutons dans la cabine pour choisir les étages,</li>
     <li>  un contrôleur qui pilote le système.</li>
-</ul>
+  </ul>
 </p>
 
 <p class="text-justify">
@@ -87,17 +87,6 @@
             <li>la commande des voyants des boutons (allumé ou éteint).</li>
 </ul>
 </p>
-<p class="text-justify">
-Les propriétés de sûreté : 
-<ul>
-<li>Pour que l'utilisateur sache que le système a mémorisé sa demande, un petit voyant
-est associé à tous les boutons. Cette lumière doit être allumée lorsque l'utilisateur appuie
-sur le bouton correspondant. Inversement, il devrait être désactivé une fois la demande servie.</li>
-<li>Pour éviter les accidents, l'ascenseur doit toujours se déplacer avec le moteur de la porte
-en marche vers la fermeture des portes : ceci afin d'empêcher les utilisateurs d'ouvrir les portes
-lorsque la cabine de l'ascenseur est en mouvement.</li>
-</ul>
-</p>
 
 <div class="subsection-title">
     Méthodologie
@@ -117,7 +106,7 @@ lorsque la cabine de l'ascenseur est en mouvement.</li>
 </div>
 <p class="text-justify">
     Après animation et validation du comportement de votre modèle en utilisant le model-checker ProB, 
-    exprimez et vérifiez les propriétés LTL suivantes :
+    exprimez et vérifiez les propriétés suivantes en utilisant la logique  LTL/CTL  :
     
    <ul>
     <li>Si un étage est demandé, il est mémorisé et l'ascenseur finira par le servir.</li>
@@ -133,9 +122,28 @@ lorsque la cabine de l'ascenseur est en mouvement.</li>
 </div>
 <p class="text-justify">
     Les différentes commandes de votre système doivent être implémentées dans des modules CSP
-<ul>
-    <li>découvrir un processus de conception en allant de la modélisation à la génération de code</li>
-</ul>
+  <ul>
+    <li>
+      découvrir un processus de conception en allant de la modélisation à la génération de code
+    </li>
+    <li>pour chaque signal activé par une operation de la forme suivante : 
+<pre><code class="language-java"><script type="text/template">operation_name = 
+  SELECT c1 and c2 and (c3 or c4) ...
+  THEN signal := v1
+  END
+</script></code></pre>
+on écrira une équation de la forme suivante :
+<cs-code>signal_v1 = c1 and c2 and (c3 or c4) ...</cs-code>
+    </li>
+    <li>
+      cette dernière forme sera utilisée pour être programmée dans la <b>CSP</b>
+    </li>
+    <li>
+      un boitier de la <b>CSP</b> utilise 3 entrées et génère 2 sorties. Pour chaque signal, 
+      il faut utiliser plusieurs boitiers (si le signal nécessite plus de 3 conditions en entrée
+      $\to$ <a href="./EI/IMG_20211112_112949002.jpg" target="_blank">branchement de plusieurs CSP</a>)
+    </li>
+  </ul>
 </p>
 
 <!-- #################################################### -->
@@ -146,67 +154,67 @@ lorsque la cabine de l'ascenseur est en mouvement.</li>
   <i class="fa fa-bell-o" style="color: green; font-weight: bold;"></i> 
 	<b style="color: green;">Liens importants</b>
   <p>
-      <ul>
-          <li><a href="./EI/langage-methode-b.pdf" target="_blank">Les concepts de base de la méthode B</a></li>
-          <li><a href="./EI/methode-b.pdf" target="_blank">La modélisation avec de la méthode B</a> </li>
-          <li><a href="./EI/symboles1.8.6.fr.pdf" target="_blank">Les codes ASCII des opérateurs de la méthode B</a></li>
-          <li><a href="https://prob.hhu.de/w/index.php?title=Download" target="_blank">Installation de ProB</a></li>
-          <li><a href="https://prob.hhu.de/w/index.php?title=Download#ProB2-UI_(based_on_JavaFX)" target="_blank">Installation de ProB2-UI (based on JavaFX)</a></li>
-          <li><a href="https://prob.hhu.de/w/index.php?title=LTL_Model_Checking" target="_blank">LTL and CTL with ProB</a></li>
-      </ul>
+    <ul>
+      <li><a href="./EI/langage-methode-b.pdf" target="_blank">Les concepts de base de la méthode B</a></li>
+      <li><a href="./EI/methode-b.pdf" target="_blank">La modélisation avec de la méthode B</a> </li>
+      <li><a href="./EI/symboles1.8.6.fr.pdf" target="_blank">Les codes ASCII des opérateurs de la méthode B</a></li>
+      <li><a href="https://prob.hhu.de/w/index.php?title=Download" target="_blank">Installation de ProB</a></li>
+      <li><a href="https://prob.hhu.de/w/index.php?title=Download#ProB2-UI_(based_on_JavaFX)" target="_blank">Installation de ProB2-UI (based on JavaFX)</a></li>
+      <li><a href="https://prob.hhu.de/w/index.php?title=LTL_Model_Checking" target="_blank">LTL and CTL with ProB</a></li>
+    </ul>
   </p>	
 </div>
 
 <p class="text-justify">
     <ul>
-        <li><b>Premier jour</b> : 
+      <li><b>Premier jour</b> : 
+        <ul>
+          <li>Présentation de l'étude à faire</li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1V_jTNVu4zvqKJP_C4N6dQVxFFL3ekKR9lZ6GDRRlEpI/edit?gid=0#gid=0" target="_blank">Constitution des groupes</a></li>
+          <li><a href="./EI/methode-b.pdf" target="_blank">Présentation de la méthode B</a> </li>
+          <li>Installation et prise en main de l'outils <a href="https://prob.hhu.de/w/index.php?title=Download" target="_blank">ProB</a></li>
+          <li>Reprendre un exercice du TD de timed automata (Cycle de vie d'une moustique) en utilisant la méthode B</li>
+          <li><a href="./EI/EI-code-B.zip" target="_blank">Codes B des exemples vus le $1^e$ jour</a></li>
+          <li>Commencer la conception de l'étude</li>
+        </ul>
+      </li>
+      <li style="margin-top: 20px;"><b>Deuxième jour</b> : 
+        <ul>
+          <li>Développement des modèles B
             <ul>
-                <li>Présentation de l'étude à faire</li>
-                <li><a href="https://docs.google.com/spreadsheets/d/1V_jTNVu4zvqKJP_C4N6dQVxFFL3ekKR9lZ6GDRRlEpI/edit?gid=0#gid=0" target="_blank">Constitution des groupes</a></li>
-                <li><a href="./EI/methode-b.pdf" target="_blank">Présentation de la méthode B</a> </li>
-                <li>Installation et prise en main de l'outils <a href="https://prob.hhu.de/w/index.php?title=Download" target="_blank">ProB</a></li>
-                <li>Reprendre un exercice du TD de timed automata (Cycle de vie d'une moustique) en utilisant la méthode B</li>
-                <li><a href="./EI/EI-code-B.zip" target="_blank">Codes B des exemples vus le $1^e$ jour</a></li>
-                <li>Commencer la conception de l'étude</li>
+              <li>Machine 1 : Modélisation du déplacement de la cabine</li>
+              <li>Machine 2 : Gestion des demandes en intégrant les voyants associés aux boutons</li>
+              <li>Machine 3 (optionnelle) : La gestion des demandes en FIFO</li>
+              <li>Machine 4 : Modélisation de l'état de la porte</li>
             </ul>
-        </li>
-        <li style="margin-top: 20px;"><b>Deuxième jour</b> : 
-            <ul>
-                <li>Développement des modèles B
-                    <ul>
-                        <li>Machine 1 : Modélisation du déplacement de la cabine</li>
-                        <li>Machine 2 : Gestion des demandes en intégrant les voyants associés aux boutons</li>
-                        <li>Machine 3 (optionnelle) : La gestion des demandes en FIFO</li>
-                        <li>Machine 4 : Modélisation de l'état de la porte</li>
-                    </ul>
-                </li>
-                <li>Validation et vérification des modèles B</li>
-            </ul>
-        </li>
-        <li style="margin-top: 20px;"><b>Troisième jour</b> : 
-            <ul>
-                <li>Premier bilan</li>
-                <li><a href="https://www.youtube.com/watch?v=QtmzVYNe0Fo" target="_blank">Présentation de la CSP</a></li>
-                <li>La <b>CSP</b> pour <b style="color: red;">Windows seulement</b> (<a href="https://nextcloud.centralesupelec.fr/s/irfczFwbbgDLNT3" target="_blank">à télécharger depuis NextCloud</a>)</li>
-                <li>Installation et prise en main de la <a href="https://www.clearsy.com/outils/clearsy-safety-platform/" target="_blank">CSP</a> : <a href="./EI/installation_procedure.pdf" target="_blank">Procédure d'installation</a></li>
-                <li><a href="./EI/CSSP_User_Manual.pdf" target="">Manuel d'utilisation</a></li>
-                <li><a href="https://www.youtube.com/watch?v=vCe3fHKFKAw&t=470s" target="_blank">Comment programmer la CSP</a></li>
-            </ul>
-        </li>
-        <li style="margin-top: 20px;"><b>Quatrième jour</b> : 
-            <ul>
-                <li>Finalisation des développements</li>
-                <li><a href="./EI/IMG_20211112_112949002.jpg" target="_blank">Branchement de plusieurs CSP</a></li>
-                <li>Préparation des présentations</li>
-            </ul>
-        </li>
-        <li style="margin-top: 20px;"><b>Dernier jour</b> : 
-            <ul>
-                <li>Préparation des présentations</li>
-                <li>Présentation des travaux des différents groupes</li>
-            </ul>
-        </li>
-    </ul>
+          </li>
+          <li>Validation et vérification des modèles B</li>
+        </ul>
+      </li>
+      <li style="margin-top: 20px;"><b>Troisième jour</b> : 
+        <ul>
+          <li>Premier bilan</li>
+          <li><a href="https://www.youtube.com/watch?v=QtmzVYNe0Fo" target="_blank">Présentation de la CSP</a></li>
+          <li>La <b>CSP</b> pour <b style="color: red;">Windows seulement</b> (<a href="https://nextcloud.centralesupelec.fr/s/irfczFwbbgDLNT3" target="_blank">à télécharger depuis NextCloud</a>)</li>
+          <li>Installation et prise en main de la <a href="https://www.clearsy.com/outils/clearsy-safety-platform/" target="_blank">CSP</a> : <a href="./EI/installation_procedure.pdf" target="_blank">Procédure d'installation</a></li>
+          <li><a href="./EI/CSSP_User_Manual.pdf" target="">Manuel d'utilisation</a></li>
+          <li><a href="https://www.youtube.com/watch?v=vCe3fHKFKAw&t=470s" target="_blank">Comment programmer la CSP</a></li>
+        </ul>
+      </li>
+      <li style="margin-top: 20px;"><b>Quatrième jour</b> : 
+        <ul>
+          <li>Finalisation des développements</li>
+          <li><a href="./EI/IMG_20211112_112949002.jpg" target="_blank">Branchement de plusieurs CSP</a></li>
+          <li>Préparation des présentations</li>
+        </ul>
+      </li>
+      <li style="margin-top: 20px;"><b>Dernier jour</b> : 
+        <ul>
+          <li>Préparation des présentations</li>
+          <li>Présentation des travaux des différents groupes</li>
+        </ul>
+      </li>
+  </ul>
 </p>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
