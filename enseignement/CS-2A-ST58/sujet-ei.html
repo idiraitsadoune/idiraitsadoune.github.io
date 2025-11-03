@@ -118,8 +118,11 @@ lorsque la cabine de l'ascenseur est en mouvement.</li>
     exprimez et vérifiez les propriétés LTL suivantes :
     
    <ul>
-    <li>Si un étage est demandé, l'ascenseur finira par le servir</li>
-    <li>La commande de la porte n'est jamais en ouverture si l'ascenseur est en mouvement</li>
+    <li>Si un étage est demandé, il est mémorisé et l'ascenseur finira par le servir.</li>
+    <li>La commande de la porte n'est jamais en ouverture si l'ascenseur est en mouvement.</li>
+    <li>Si la cabine est en mouvement, la moteur de la porte est toujours en fermeture.</li>
+    <li>La cabine ne bougera pas si la porte n'est pas complètement fermée.</li>
+    <li>Si la porte n'est pas fermée et la cabine est en mouvement, le moteur s'arrêtera immédiatement.</li>
     <li> ...</li>
 </ul>
 </p>
@@ -179,7 +182,6 @@ lorsque la cabine de l'ascenseur est en mouvement.</li>
             </ul>
         </li>
         <li style="margin-top: 20px;"><b>Troisième jour</b> : 
-            
             <ul>
                 <li>Premier bilan</li>
                 <li><a href="https://www.youtube.com/watch?v=QtmzVYNe0Fo" target="_blank">Présentation de la CSP</a></li>
