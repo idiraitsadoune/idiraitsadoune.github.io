@@ -606,7 +606,48 @@ $event$ $\mathrel{\widehat=}$
 			<li>The <b>operators</b> defined in the theory involve <b>no precision loss</b>.</li>
 		</ul>
 	</div>
+
+	<ul class="skip">
+		<li style="font-size: 15px;">
+			Idir AIT SADOUNE, <span style="font-style: italic;">A Floating-Point Numbers Theory for Event-B.</span>  <br> 
+			<a href="https://link.springer.com/chapter/10.1007/978-3-031-49333-1_3" target="_blank">12th International Conference on Model and Data Engineering, MEDI 2023</a>.
+		</li>
+	</ul>
 	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The floating-point numbers theory</h2>
+
+	<div>
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
+<b>THEORY</b> thy_floating_point_numbers
+
+<b>DATATYPES</b>
+	FLOAT_Type $\mathrel{\widehat=}$ NEW_FLOAT(s $\in$ $\mathbb Z$, e $\in$ $\mathbb Z$) <u>// $x = s(x) \times 10^{e(x)}$</u>
+<span class="fragment"><b>OPERATORS</b>
+	F0 $\mathrel{\widehat=}$ NEW_FLOAT(0,0) <u>// 0</u>
+	F1 $\mathrel{\widehat=}$ NEW_FLOAT(1,0) <u>// 10$^{0}$ = 1</u>
+	$\dots$</span>
+	<span class="fragment">MILLI $\mathrel{\widehat=}$ NEW_FLOAT(1,-3) <u>// 10$^{-3}$</u>
+	CENTI $\mathrel{\widehat=}$ NEW_FLOAT(1,-2) <u>// 10$^{-2}$</u>
+	DECI $\mathrel{\widehat=}$ NEW_FLOAT(1,-1) <u>// 10$^{-1}$</u>
+	DECA $\mathrel{\widehat=}$ NEW_FLOAT(1,1) <u>// 10$^{1}$</u>
+	HECTO $\mathrel{\widehat=}$ NEW_FLOAT(1,2) <u>// 10$^{2}$</u>
+	KILO $\mathrel{\widehat=}$ NEW_FLOAT(1,3) <u>// 10$^{3}$</u>
+	$\dots$</span>
+	<span class="fragment">eq(x $\in$ FLOAT_Type, y $\in$ FLOAT_Type) <strong>INFIX</strong> $\mathrel{\widehat=}$ ...
+	gt(x $\in$ FLOAT_Type, y $\in$ FLOAT_Type) <strong>INFIX</strong> $\mathrel{\widehat=}$ ...
+	$\dots$
+	plus(x $\in$ FLOAT_Type, y $\in$ FLOAT_Type) <strong>INFIX</strong> $\mathrel{\widehat=}$ ...
+	mult(x $\in$ FLOAT_Type, y $\in$ FLOAT_Type) <strong>INFIX</strong> $\mathrel{\widehat=}$ ...
+	$\dots$</span>
+<b>END</b>
+</pre>
+	</div>
+
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -614,6 +655,73 @@ $event$ $\mathrel{\widehat=}$
 	<h2>Proposed approach</h2>
 
 	<img src="./img/theories-2.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Dimensions formalisation</h2>
+
+	<ul>
+		<li>
+			<b>SI System</b> $\to$ a coherent system of measurement based on <i>seven base quantities</i>.
+		</li>
+		<li class="fragment skip">
+			<b>Base Quantities</b>: <br>
+			Time ($T$), Length ($L$), Mass ($M$), Electric current ($I$),
+			Thermodynamic temperature ($\Theta$), Amount of substance ($N$), Luminous intensity ($J$).
+		</li>
+		<li class="fragment skip">
+			Each <b>base quantity</b> corresponds to <b>a base dimension</b>.
+		</li>
+		<li class="fragment skip">
+			<i>Physical quantities</i> are organized in a <i>system of dimensions</i>.
+		</li>
+		<li class="fragment skip">
+			<b>The dimension</b> of any <i>quantity</i> $Q$ is expressed as:
+			$$dim~Q = T^{\alpha} L^{\beta} M^{\gamma} I^{\delta} \Theta^{\varepsilon} N^{\zeta} J^{\eta}$$ 
+			<ul id="fleche">
+				<li class="fragment">
+					the exponents $\alpha, \beta, \gamma, \delta, \varepsilon, \zeta$ and $\eta$ 
+					are <b>the dimensional exponents</b> <br> (can be positive, negative, or zero).
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Dimensions formalisation</h2>
+
+<div>
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
+<b>DATATYPES</b>
+	SI_DIMENSION_Type $\mathrel{\widehat=}$ SI_DIMENSION(
+		exp_d1 $\in$ $\mathbb Z$, <u>// length dimension</u>
+		exp_d2 $\in$ $\mathbb Z$, <u>// mass dimension</u>
+		exp_d3 $\in$ $\mathbb Z$, <u>// time dimension</u>
+		exp_d4 $\in$ $\mathbb Z$, <u>// electric current dimension</u>
+		exp_d5 $\in$ $\mathbb Z$, <u>// thermodynamic temperature dimension</u>
+		exp_d6 $\in$ $\mathbb Z$, <u>// amount of substance dimension</u>
+		exp_d7 $\in$ $\mathbb Z$) <u>// luminous intensity dimension</u>
+<span class="fragment"><b>OPERATORS</b>
+	L_DIM (exp_d $\in$ $\mathbb Z$) $\mathrel{\widehat=}$  SI_DIMENSION(exp_d,0,0,0,0,0,0) <u>// length quantity</u>
+	M_DIM (exp_d $\in$ $\mathbb Z$) $\mathrel{\widehat=}$ SI_DIMENSION(0,exp_d,0,0,0,0,0) <u>// mass quantity</u>
+	T_DIM (exp_d $\in$ $\mathbb Z$) $\mathrel{\widehat=}$ SI_DIMENSION(0,0,exp_d,0,0,0,0) <u>// time quantity</u>
+	$\dots$</span>
+	<span class="fragment">DIM_MULT(dim1 $\in$ SI_DIMENSION_Type, dim2 $\in$ SI_DIMENSION_Type) $\mathrel{\widehat=}$ 
+		SI_DIMENSION($\dots$, exp_di(dim1)$+$exp_di(dim2)), $\dots$)
+	
+	DIM_DIV(dim1 $\in$ SI_DIMENSION_Type, dim2 $\in$ SI_DIMENSION_Type) $\mathrel{\widehat=}$ 
+		SI_DIMENSION($\dots$, exp_di(dim1)$-$exp_di(dim2)), $\dots$)</span>
+		
+	<span class="fragment">HAVE_SAME_EXP_DIMENSIONS(dim1 $\in$ SI_DIMENSION_Type, dim2 $\in$ SI_DIMENSION_Type) $\mathrel{\widehat=}$ 
+		dim1$=$dim2
+	$\dots$</span>
+</pre>
+</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -627,9 +735,98 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Unit of a quantity</h2>
+
+	<ul>
+		<li>
+			A <b>unit</b> is formalised using a product of a <i>multiplier</i> with <i>dimension</i> <br>
+			shifted by an <i>offset</i>:   
+				$$ unit = multiplier \times dimension + offset$$
+		</li>
+
+		<li class="fragment skip">
+			<i>Multiplier</i>
+			<ul>
+				<li>represents <i>prefixes</i> applied to base units.</li>
+				<li><strong>examples</strong>: <i>milli</i>, <i>centi</i>, <i>deci</i>, <i>deca</i>, <i>kilo</i>, etc.</li>
+				<li>used to express <i>multiples</i> or <i>submultiples</i> of a <b>base unit</b> (e.g., $1 km$ = $1000 m$).</li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">
+			<i>Offset</i>
+			<ul>
+				<li>defines a <i>shift</i> relative to a <b>base unit</b>.</li>
+				<li><strong>example</strong>: the <i>degree Celsius</i> is offset by $273.15$ from the <i>Kelvin</i> ($K$) unit.</li>
+				<li>useful for units that are not directly proportional to their base unit.</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Unit of a quantity</h2>
+	
+<div>
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
+<b>DATATYPES</b> 		
+	SI_UNIT_Type $\mathrel{\widehat=}$ SI_UNIT(multiplier $\in$ FLOAT_Type, dimension $\in$ SI_DIMENSION_Type, offset $\in$ FLOAT_Type)
+	<span class="fragment">MEASURE_Type $\mathrel{\widehat=}$ MEASURE(value $\in$ FLOAT_Type, unit $\in$ SI_UNIT_Type)</span>
+<b>OPERATORS</b>
+	UNIT_MULT(u1 $\in$ SI_UNIT_Type, u2 $\in$ SI_UNIT_Type) $\mathrel{\widehat=}$ 
+		SI_UNIT(multiplier(u1) mult multiplier(u2), DIM_MULT(dimension(u1), dimension(u2)), F0)
+	UNIT_DIV(u1 $\in$ SI_UNIT_Type, u2 $\in$ SI_UNIT_Type) $\mathrel{\widehat=}$ 
+		SI_UNIT(multiplier(u1) div multiplier(u2), DIM_DIV(dimension(u1), dimension(u2)), F0)
+	$\dots$
+	<span class="fragment">SI_MEASURE_Type(t $\in$ SI_UNIT_Type) $\mathrel{\widehat=}$ {x $\cdot$ x $\in$ MEASURE_Type $\land$ unit(x) $=$ t $\mid$ x}</span>
+	<span class="fragment">HAVE_THE_SAME_UNIT(m1 $\in$ MEASURE_Type, m2 $\in$ MEASURE_Type) $\mathrel{\widehat=}$ unit(m1) = unit(m2)</span>
+	
+	<span class="fragment">SI_EQ(m1 $\in$ MEASURE_Type, m2 $\in$ MEASURE_Type) $\mathrel{\widehat=}$
+		<i>wd :</i> HAVE_THE_SAME_UNIT(m1,m2)
+		<i>def :</i> value(m1) eq value(m2)
+	$\dots$</span>
+	<span class="fragment">SI_PLUS(m1 $\in$ MEASURE_Type, m2 $\in$ MEASURE_Type) $\mathrel{\widehat=}$
+		<i>wd :</i> HAVE_THE_SAME_UNIT(m1,m2)
+		<i>def :</i> MEASURE(value(m1) plus value(m2), unit(m1))
+	$\dots$</span>
+	<span class="fragment">SI_MULT(m1 $\in$ MEASURE_Type, m2 $\in$ MEASURE_Type) $\mathrel{\widehat=}$ 
+		MEASURE(value(m1) mult value(m2), UNIT_MULT(unit(m1), unit(m2)))
+	$\dots$</span>
+	<span class="fragment">SI_CONVERT(u $\in$ SI_UNIT_Type, m $\in$ MEASURE_Type) $\mathrel{\widehat=}$
+		<i>wd :</i> HAVE_SAME_EXP_DIMENSIONS(dimension(unit(m)),dimension(u))
+		<i>def :</i> <u>// v2 $=$ (v1 $-$ o1) $\times$ (m1 $\times$ d1)$/$(m2 $\times$ d2) $+$ o2</u></span>
+</pre>
+</div>
+
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proposed approach</h2>
 
 	<img src="./img/theories-4.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>SI base units formalisation</h2>
+
+<div>
+<pre id="eb" class="eb-code">
+<b>OPERATORS </b>		
+	METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, L_DIM(1), F0) <u>// m</u>
+	KILO_GRAM_UNIT $\mathrel{\widehat=}$ SI_UNIT(KILO, M_DIM(1), F0) <u>// kg</u>
+	SECOND_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, T_DIM(1), F0) <u>// s</u>
+	AMPERE_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, I_DIM(1), F0) <u>// A</u>
+	KELVIN_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, O_DIM(1), F0) <u>// K</u>
+	MOLE_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, N_DIM(1), F0) <u>// mol</u>
+	CANDELA_UNIT $\mathrel{\widehat=}$ SI_UNIT(F1, J_DIM(1), F0) <u>// cd</u>
+</pre>
+</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -643,9 +840,71 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>length units formalisation</h2>
+
+<div>
+<pre id="eb" class="eb-code">
+<b>OPERATORS </b>		
+	MILLI_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(MILLI, L_DIM(1), F0) <u>// mm</u>
+	CENTI_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(CENTI, L_DIM(1), F0) <u>//cm</u>
+	DECI_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(DECI, L_DIM(1), F0) <u>//dm</u>
+	DECA_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(DECA, L_DIM(1), F0) /<u>/dam</u>
+	HECTO_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(HECTO, L_DIM(1), F0) <u>//hm</u>
+	KILO_METRE_UNIT $\mathrel{\widehat=}$ SI_UNIT(KILO, L_DIM(1), F0) <u>//km</u>
+	$\dots$	
+</pre>
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proposed approach</h2>
 
 	<img src="./img/theories-6.png" alt="">
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The named derived unit formalisation</h2>
+
+	<ul>
+		<li>
+			<b>Derived units</b> $\to$ defined as products of powers of base units (dimensions).
+		</li>
+
+		<li class="fragment skip">
+			<b>Coherent derived units</b> $\to$ occur when the numerical factor in the product is one.
+		</li>
+
+		<li class="fragment skip">
+			<b>Special coherent derived units</b> $\to$  22 units in the SI have <i>special names</i>, <br> 
+			<strong>e.g.</strong> <i>radian</i>, <i>hertz</i>, <i>coulomb</i>, <i>degree Celsius</i>, etc.
+		</li>
+
+		<li class="fragment skip">
+			These 22 named units are defined by <i>combining the seven base units</i>.
+		</li>
+
+		<li class="fragment skip">
+			These 22 coherent derived units + 7 base units form <i>the core</i> 
+			of the <b>International System of Units</b> (<b>SI</b>).
+		</li>
+	</ul>
+
+<div class="fragment">
+<pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
+<b>OPERATORS </b>		
+	HERTZ_UNIT $\mathrel{\widehat=}$ <u>// 1/s</u>
+		UNIT_INV(SECOND_UNIT)  
+	COULOMB_UNIT $\mathrel{\widehat=}$ <u>// s A</u>
+		UNIT_MULT(SECOND_UNIT, AMPERE_UNIT) 
+	NEWTON_UNIT $\mathrel{\widehat=}$ <u>// kg m / s^2</u>
+		UNIT_MULT(KILO_GRAM_UNIT, UNIT_DIV(METRE_UNIT, UNIT_MULT(SECOND_UNIT,SECOND_UNIT))) 
+	$\dots$
+</pre>
+</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -658,6 +917,61 @@ $event$ $\mathrel{\widehat=}$
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The other derived unit formalisation</h2>
+
+	<p>
+		The <b>seven base units</b> and <b>twenty-two units with special names</b> may 
+		be combined <br> to express the units of <i>other derived physical quantities</i>.
+	</p>
+
+	<div class="fragment">
+<pre id="eb" class="eb-code">
+<b>OPERATORS </b>		
+	SQUARE_METRE_UNIT $\mathrel{\widehat=}$ <u>//area m^2</u>
+		UNIT_MULT(METRE_UNIT, METRE_UNIT) 
+	CUBIC_METRE_UNIT $\mathrel{\widehat=}$ <u>// volume m^3	</u>
+		UNIT_MULT(SQUARE_METRE_UNIT, METRE_UNIT) 
+	METRE_PER_SECOND_UNIT $\mathrel{\widehat=}$ <u>// speed, velocity m/s</u>
+		UNIT_DIV(METRE_UNIT, SECOND_UNIT)  
+	METRE_PER_SECOND_SQUARED_UNIT $\mathrel{\widehat=}$ <u>// acceleration m/s^2</u>
+		UNIT_DIV(METRE_UNIT, UNIT_MULT(SECOND_UNIT, SECOND_UNIT))  
+	$\dots$
+	COULOMB_PER_CUBIC_METRE_UNIT $\mathrel{\widehat=}$ <u>// electric charge density </u>
+		UNIT_DIV(COULOMB_UNIT, CUBIC_METRE_UNIT) // coulomb/m^3 = s.A/m^3 
+	$\dots$
+</pre>
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Non-SI units formalisation</h2>
+
+	<p>
+		The most used <b>Non-SI units</b> that accepted for use with the SI Units 
+		and that we can find in <i>the official SI Brochure</i>, 
+		can be formalised as a <cs-code>SI_UNIT_Type</cs-code> datatype
+	</p>
+
+<div class="fragment">
+<pre id="eb" class="eb-code">
+<b>OPERATORS </b>			
+	NONSI_UNIT(v $\in$ FLOAT_Type, u $\in$ SI_UNITE_Type) $\mathrel{\widehat=}$
+			SI_UNIT(v mult multiplier(u), dimension(u), offset(u))
+
+	MINUTE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(60), SECOND_UNIT)
+	HOUR_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(3600), SECOND_UNIT)
+	HECTARE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(10000), SQUARE_METRE_UNIT)
+	LITRE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(NEW_FLOAT(1,-3), CUBIC_METRE_UNIT)
+	$\dots$
+</pre>
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section id="ch4" name="Revisiting the motivating example"></section>
@@ -665,7 +979,15 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Refinement based approach</h2>
 
+	<div id="default-block" class="left-content">
+		We have used the <b>Event-B refinement</b> to deal separately with the problem <br> of <i>using small values</i> 
+		and the problem of <i>correctly using measurement units</i>.
+	</div>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
