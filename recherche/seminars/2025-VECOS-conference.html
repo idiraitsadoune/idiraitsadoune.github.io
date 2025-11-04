@@ -115,12 +115,15 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Using Event-B method</h2>
 
-	<ul>
+	<div style="float: right; margin-bottom: 10px; margin-left: 10px; height: 250px;">
+		<img src="./img/splash.bmp" height="100%" >
+	</div>
+	<ul style="display: block;">
 		<li>
-			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) is intended to support<br> 
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) <br> is intended to support 
 			the construction and verification of <b>Event-B models</b>.
 		</li>
-		<li class="fragment skip">The use of the <b>Event-B method</b> has continued to increase.
+		<li class="fragment skip">The use of the <b>Event-B method</b> has continued <br> to increase.
 			<ul>
 				<li>applied to various applications and domains.</li>
 				<li>railway, automotive, aeronautics, cybersecurity, nuclear-energy,  ...</li>
@@ -135,7 +138,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>The Event-B method</h2>
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>Models and proof obligations</h3>
 
 	<div class="start-divs">
 		<div style="width: 33%;">
@@ -291,7 +295,7 @@ $event$ $\mathrel{\widehat=}$
 	<h3>The theory plugin</h3>
 
 	<div class="start-divs">
-		<div class="fragment" style="width: 33%;">
+		<div style="width: 33%;">
 <pre id="eb" class="eb-code">
 <b>THEORY</b> $thy_1$
 <b>IMPORT</b> $thy_2$
@@ -394,9 +398,9 @@ $event$ $\mathrel{\widehat=}$
 <b>MACHINE</b> mch_integer_version
 ...
 <b>INVARIANTS</b>
-	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
-	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
-	<u>@inv3:</u> speed $\in$ $\mathbb N$
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$ 		<u>// km</u>
+	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$ 				<u>// s</u>
+	<u>@inv3:</u> speed $\in$ $\mathbb N$ 								<u>// km/h</u>
 	<u>@inv4:</u> starting_position $\in$ $\mathbb N$
 	<u>@inv5:</u> starting_time $\in$ $\mathbb N$<span class="fragment">
 	<u>@inv6:</u> speed $=$ distance_travelled $\div$ measured_time <u>// PROP-1</u>
@@ -462,31 +466,36 @@ $event$ $\mathrel{\widehat=}$
 	<h2>generated and proven POs</h2>
 
 	<img src="./img/fig1.png" height="400px"
-		style="float: right; margin-bottom: 10px; margin-left: 10px;">
+		style="float: right;">
 
 	<ul style="display: block;">
 		<li><b>All POs are green</b> <red-b>except</red-b> the one for maintaining <br> the <green-i>$@inv7$</green-i> 
 			invariant by the <cs-code>$get\_speed$</cs-code> event.</li>
 
-		<li class="fragment skip">This invariant formalises the <b>PROP 2</b> property.
-			<ul><li><b>the object moves</b> (<cs-code>$distance\_travelled \neq 0$</cs-code>) <br> 
-				when <cs-code>$speed \neq 0$</cs-code>.</li></ul>
-		</li>
-
-		<li class="fragment skip">The <cs-code>$get\_speed$</cs-code> event calculates the new value <br> 
-			of <cs-code>$distance\_travelled$</cs-code>
-				that can be <cs-code>$\lt$</cs-code> the new value <br> 
-				of <cs-code>$measured\_time$</cs-code>.
-			<ul id="fleche" class="fragment">
-				<li>the new value of <cs-code>$speed$</cs-code> <br>
-					(<cs-code>$distance\_travelled \div measured\_time$</cs-code>) <br> 
-					can be	<cs-code>$= 0$</cs-code> while <cs-code>$distance\_travelled \neq 0$</cs-code> 
-				</li>
+		<li class="fragment skip">
+			<b>PROP 2</b> $\to$ <cs-code>$distance\_travelled \neq 0$</cs-code>
+				when <cs-code>$speed \neq 0$</cs-code>.
+			<ul>
 				<li class="fragment">
-					<cs-code>$\div$</cs-code> makes <b>an integer division</b>
+					the value of <cs-code>$distance\_travelled$</cs-code>
+					can be <cs-code>$\lt$</cs-code> the  value of <cs-code>$measured\_time$</cs-code>.
+				</li>
+				<li class="fragment">the value of <cs-code>$speed$</cs-code> can be	<cs-code>$= 0$</cs-code> <br>
+					(<cs-code>$distance\_travelled \div measured\_time$</cs-code>)  
+					while <cs-code>$distance\_travelled \neq 0$</cs-code> 
 				</li>
 			</ul>
 		</li>
+
+		<li class="skip fragment">
+			<b>No possibility</b> to check the consistency of formulas annotated with measurement units.
+			<ul>
+				<li><strong>Example</strong>: is the unit of  <cs-code>speed</cs-code> (<cs-code>km/h</cs-code>) the same 
+					with the unit of the expression <cs-code>distance_travelled $\div$ measured_time</cs-code> (<cs-code>km $\div$ s</cs-code>) ?</li>
+			</ul>
+		</li>
+
+		
 	</ul>
 
 </section>
@@ -495,10 +504,6 @@ $event$ $\mathrel{\widehat=}$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Challenges in Modelling CPS Systems</h2>
 
-	<div>
-		<img src="./img/motivating-example.svg" alt="" width="60%">
-	</div>
-
 	<ul>
 		<li>
 			More generally, <b>Cyber-Physical Systems</b> (<b>CPS</b>) models often require 
@@ -506,7 +511,12 @@ $event$ $\mathrel{\widehat=}$
 		</li>
 
 		<li class="skip fragment">
-			<b>Event-B</b> does not support <i>physical unit annotations</i> for such variables.
+			<b>Event-B</b> does not support <i>measurements unit annotations</i> for such variables <br>
+			and using <b>integer</b> variables is not sufficient to handle <b>small values</b> ($0 < v < 1$).
+			<ul class="fragment">
+				<li>converting from the smallest point of view to the most significant ones</li>
+				<li>from <cs-code>Milli</cs-code> to <cs-code>Kilo</cs-code>, for example</li>
+			</ul>
 		</li>
 
 		<li class="skip fragment">
@@ -575,6 +585,31 @@ $event$ $\mathrel{\widehat=}$
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>floating-point numbers</h2>
+
+	<div>
+		$$
+			x = 3.14159265359 = 
+			\underset{\text{significand}}{\underbrace{314159265359}} \times 
+			\underset{\text{base}}{\underbrace{10}}^{\overset{\text{exponent}}{\overbrace{-11}}}
+		$$
+	</div>
+
+	<div id="default-block" class="fragment skip left-content">
+		<b>We have chosen that the base always equals ten in our models.</b>
+		$$
+			x = s(x) \times 10^{e(x)}
+		$$
+		<ul class="fragment">
+			<li>The proposed theory <b>does not model limited precision</b>.</li>
+			<li>The <b>operators</b> defined in the theory involve <b>no precision loss</b>.</li>
+		</ul>
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Proposed approach</h2>
 
