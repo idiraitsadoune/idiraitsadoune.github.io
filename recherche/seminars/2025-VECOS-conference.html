@@ -227,21 +227,51 @@ $event$ $\mathrel{\widehat=}$
 	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
 	<h3>The theory plugin</h3>
 
-	<ul>
-		<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <b>the Event-B mathematical language</b> and <b>
-			the Rodin proving infrastructure</b>.</li>
-
-		<li class="fragment skip">An <b>Event-B theory</b> can contain : 
+	<div class="center-divs">
+		<div style="flex: 2;">
 			<ul>
-				<li>new datatype definitions,</li>
-				<li>new polymorphic operator definitions,</li>
-				<li>axiomatic definitions,</li>
-				<li>theorems,</li>
-				<li>associated rewrite and inference rules.</li>
-			</ul>
-		</li>
+				<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <br>
+					<b>the Event-B mathematical language</b> and <b>
+					the Rodin proving infrastructure</b>.</li>
 
-		<li style="font-size: 15px; margin-top: 80px;">
+				<li class="fragment skip">An <b>Event-B theory</b> can contain : 
+					<ul>
+						<li>new datatype definitions,</li>
+						<li>new polymorphic operator definitions,</li>
+						<li>axiomatic definitions,</li>
+						<li>theorems,</li>
+						<li>associated rewrite and inference rules.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 1;">
+<div>
+<pre id="eb" class="eb-code">
+<b>THEORY</b> $thy_1$
+<b>IMPORT</b> $thy_2$
+
+<b>DATATYPES</b> 
+	$DT_1,...,DT_n$
+<b>OPERATORS</b> 
+	$OP_{11},...,OP_{1n}$
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		$OP_{21},...,OP_{2n}$
+	<i>axioms</i>
+		$A$
+<b>THEOREMS</b>
+	$T$
+<b>PROOF RULES</b>
+	$PR$
+<b>END</b>
+</pre>			
+	</div>
+		</div>
+	</div>
+
+	<ul>
+		<li style="font-size: 15px;">
 			Michael J. Butler and Issam Maamria. <br> <span style="font-style: italic;">Practical theory extension in Event-B.</span> 
 			<a href="https://link.springer.com/chapter/10.1007/978-3-642-39698-4_5" target="_blank">Theories of Programming and Formal Methods. 2013</a>.
 		</li>
@@ -349,6 +379,116 @@ $event$ $\mathrel{\widehat=}$
 		</ul>
 	</div>
 	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Event-B model</h2>
+
+	<div>
+		<img src="./img/motivating-example.svg" alt="" width="60%">
+	</div>
+
+	<div class="left-content skip" style="width: 75%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
+	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
+	<u>@inv3:</u> speed $\in$ $\mathbb N$
+	<u>@inv4:</u> starting_position $\in$ $\mathbb N$
+	<u>@inv5:</u> starting_time $\in$ $\mathbb N$<span class="fragment">
+	<u>@inv6:</u> speed $=$ distance_travelled $\div$ measured_time <u>// PROP-1</u>
+	<u>@inv7:</u> distance_travelled $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$ <u>// PROP-2</u></span>
+</pre>
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Event-B model</h2>
+
+	<div>
+		<img src="./img/motivating-example.svg" alt="" width="50%">
+	</div>
+		
+<div class="r-stack">				
+<div class="fragment fade-out" style="width: 80%" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>EVENTS</b>
+	...
+	get_starting_point $\mathrel{\widehat=}$
+		<i>any</i> p t 
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ $\mathbb N_1$
+			<u>@grd2:</u> t $\in$ $\mathbb N_1$
+		<i>then</i>
+			<u>@act1:</u> starting_position $:=$ p
+			<u>@act2:</u> starting_time $:=$ t
+		<i>end</i>
+	...
+<b>END</b>
+</pre>
+</div>
+<div class="fragment" style="width: 80%" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$
+		<i>any</i> p t 
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<u>@grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p $-$ starting_position
+			<u>@act2:</u> measured_time $:=$ t $-$ starting_time
+			<u>@act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<i>end</i>
+<b>END</b>
+</pre>
+</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>generated and proven POs</h2>
+
+	<img src="./img/fig1.png" height="400px"
+		style="float: right; margin-bottom: 10px; margin-left: 10px;">
+
+	<ul style="display: block;">
+		<li><b>All POs are green</b> <red-b>except</red-b> the one for maintaining <br> the <green-i>$@inv7$</green-i> 
+			invariant by the <cs-code>$get\_speed$</cs-code> event.</li>
+
+		<li class="fragment skip">This invariant formalises the <b>PROP 2</b> property.
+			<ul><li><b>the object moves</b> (<cs-code>$distance\_travelled \neq 0$</cs-code>) <br> 
+				when <cs-code>$speed \neq 0$</cs-code>.</li></ul>
+		</li>
+
+		<li class="fragment skip">The <cs-code>$get\_speed$</cs-code> event calculates the new value <br> 
+			of <cs-code>$distance\_travelled$</cs-code>
+				that can be <cs-code>$\lt$</cs-code> the new value <br> 
+				of <cs-code>$measured\_time$</cs-code>.
+			<ul id="fleche" class="fragment">
+				<li>the new value of <cs-code>$speed$</cs-code> <br>
+					(<cs-code>$distance\_travelled \div measured\_time$</cs-code>) <br> 
+					can be	<cs-code>$= 0$</cs-code> while <cs-code>$distance\_travelled \neq 0$</cs-code> 
+				</li>
+				<li class="fragment">
+					<cs-code>$\div$</cs-code> makes <b>an integer division</b>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

@@ -129,11 +129,11 @@
     <li>pour chaque signal activé par une operation de la forme suivante : 
 <pre><code class="language-java"><script type="text/template">operation_name = 
   SELECT c1 and c2 and (c3 or c4) ...
-  THEN signal := v1
+  THEN ... || cmd := v1 || ...
   END
 </script></code></pre>
 on écrira une équation de la forme suivante :
-<cs-code>signal_v1 = c1 and c2 and (c3 or c4) ...</cs-code>
+<cs-code>cmd_v1 = c1 and c2 and (c3 or c4) ...</cs-code>
     </li>
     <li>
       cette dernière forme sera utilisée pour être programmée dans la <b>CSP</b>
