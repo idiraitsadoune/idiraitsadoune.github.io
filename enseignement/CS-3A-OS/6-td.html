@@ -57,8 +57,7 @@
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>Thread_1</b>
+<pre><b>Thread_1</b>
 <b>while</b> (<span class="mf">true</span>) <b>do</b>
     calcul_1();
     barriere_1();
@@ -68,8 +67,7 @@
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>Thread_2</b>
+<pre><b>Thread_2</b>
 <b>while</b> (<span class="mf">true</span>) <b>do</b>
     calcul_2();
     barriere_2();
@@ -87,12 +85,12 @@
             (et réciproquement).</li>
 
 <!-- CORRECTION ################# -->
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo1.1')">Click here to display or hide the correction</button>
 	<div id="exo1.1" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
-<pre >Semaphore s1 = <span class="kd">new</span> Semaphore(0);
+<pre>Semaphore s1 = <span class="kd">new</span> Semaphore(0);
 Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 </pre>
 </div>
@@ -101,8 +99,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>barriere_1()</b>
+<pre><b>barriere_1()</b>
   s1.release();
   s2.acquire();
 </pre></div>
@@ -110,8 +107,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>barriere_2()</b>
+<pre><b>barriere_2()</b>
   s2.release();
   s1.acquire();
 </pre>
@@ -126,7 +122,7 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
         <li>Généralisez au cas de <cs-code>N</cs-code> threads</li>
 
 <!-- CORRECTION ################# -->
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo1.2')">Click here to display or hide the correction</button>
 	<div id="exo1.2" style="display: none; margin-top: 20px;">
 
@@ -153,12 +149,12 @@ Semaphore s2 = <span class="kd">new</span> Semaphore(0);
             atteint sa barrière, et débloque les <cs-code>N</cs-code> threads en attente lorsque tous se sont présentés à leur barrière. </li>
 
 <!-- CORRECTION ################# -->
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo1.3')">Click here to display or hide the correction</button>
 	<div id="exo1.3" style="display: none; margin-top: 20px;">
 
 <div class="highlight">
-<pre >Semaphore s_c = <span class="kd">new</span> Semaphore(0);
+<pre>Semaphore s_c = <span class="kd">new</span> Semaphore(0);
 Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 </pre>
 </div>
@@ -167,8 +163,7 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>barriere_i()</b>
+<pre><b>barriere_i()</b>
   s_i.release();
   s_c.acquire();
 </pre></div>
@@ -176,8 +171,7 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>coordinateur()</b>
+<pre><b>coordinateur()</b>
   <span class="kd">for</span> k := 1 <span class="kd">to</span> n <span class="kd">do</span>
     s_i.acquire();
   <span class="kd">end</span>
@@ -214,7 +208,7 @@ Semaphore s_i = <span class="kd">new</span> Semaphore(0);
 </p>
 
 <!-- CORRECTION ################# -->
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo2')">Click here to display or hide the correction</button>
 	<div id="exo2" style="display: none; margin-top: 20px;">
 
@@ -320,12 +314,11 @@ Vous pouvez introduire toute structure de données qui vous paraît utile, sous 
 </div>
 
 <!-- CORRECTION ################# -->
-<div id="green-block" hidden>
+<div id="green-block">
 	<button class="button_display" onclick="display_correction('exo3')">Click here to display or hide the correction</button>
 	<div id="exo3" style="display: none; margin-top: 20px;">
 
-<div class="highlight"><pre>
-<span class="kd">int</span>[] bal = <span class="kd">new</span> <span class="kd">int</span>[N]();
+<div class="highlight"><pre><span class="kd">int</span>[] bal = <span class="kd">new</span> <span class="kd">int</span>[N]();
 <span class="kd">int</span> i_prod = 0;
 <span class="kd">int</span>[] i_cons = <span class="kd">new</span> <span class="kd">int</span>[C]();
 Semaphore[] place_dispo = <span class="kd">new</span> Semaphore[N](C); <span class="cm">// N semaphores initialisés à C ;</span>
@@ -348,8 +341,7 @@ Semaphore[] msg_dispo = <span class="kd">new</span> Semaphore[N](0); <span class
 <div style="width: 10%;"></div>
 
 <div style="width: 35%;" class="highlight">
-<pre>
-<b>consommateur(int i)</b>
+<pre><b>consommateur(int i)</b>
   msg_dispo[i_cons[i]].acquire();
   <span class="kd">int</span> msg = bal[i_cons[i]];
   place_dispo[i_cons[i]].release();
