@@ -46,7 +46,7 @@
 
 	<div style="text-align: left">
 		<h3>A Generic Event-B Theory for the Formalisation <br> of the International System of Units</h3>
-		<div class="description">This work was supported by a grant from the French national research agency <a href="https://anr.fr/Projet-ANR-19-CE25-0010" target="_blank">ANR ANR-19-CE25-0010</a> (<a href="https://www.irit.fr/EBRP/" target="_blank">EBRP Project</a>).</div>
+		<div class="description">This work was supported by a grant from the French national research agency <a href="https://anr.fr/Projet-ANR-19-CE25-0010" target="_blank">ANR-19-CE25-0010</a> (<a href="https://www.irit.fr/EBRP/" target="_blank">EBRP Project</a>).</div>
 	</div>
 
 	<div class="description">
@@ -494,8 +494,6 @@ $event$ $\mathrel{\widehat=}$
 					with the unit of the expression <cs-code>distance_travelled $\div$ measured_time</cs-code> (<cs-code>km $\div$ s</cs-code>) ?</li>
 			</ul>
 		</li>
-
-		
 	</ul>
 
 </section>
@@ -623,7 +621,6 @@ $event$ $\mathrel{\widehat=}$
 	<div>
 <pre id="eb" class="eb-code" style="font-size: 0.5em !important;">
 <b>THEORY</b> thy_floating_point_numbers
-
 <b>DATATYPES</b>
 	FLOAT_Type $\mathrel{\widehat=}$ NEW_FLOAT(s $\in$ $\mathbb Z$, e $\in$ $\mathbb Z$) <u>// $x = s(x) \times 10^{e(x)}$</u>
 <span class="fragment"><b>OPERATORS</b>
@@ -648,6 +645,41 @@ $event$ $\mathrel{\widehat=}$
 	</div>
 
 
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The floating-point numbers theory</h2>
+
+	<div>
+<pre id="eb" class="eb-code" style="font-size: 0.55em !important;">
+<b>THEORY</b> thy_floating_point_numbers
+...
+<b>THEOREMS</b>
+	<u>@thm1:</u> $\forall$ x,y $\cdot$ ($...$ $\mathbin\Rightarrow$ x eq y $\mathbin\Leftrightarrow$ y eq x)
+	<u>@thm2:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x geq x $\land$ x leq x)
+	<u>@thm3:</u> $\forall$ x,y $\cdot$ ($...$ x leq y $\land$ y leq x $\mathbin\Rightarrow$ x eq y)
+	<u>@thm4:</u> $\forall$ x,y $\cdot$ ($...$ $\mathbin\Rightarrow$ x leq y $\lor$ y leq x)
+	<u>@thm5:</u> $\forall$ x,y,z $\cdot$ ($...$ x leq y $\land$ y leq z $\mathbin\Rightarrow$ x leq z)
+	<u>@thm6:</u> $\forall$ x,y,z $\cdot$ ($...$ x leq y $\mathbin\Rightarrow$ (x plus z) leq (y plus z))
+	<u>@thm7:</u> $\forall$ x,y,z $\cdot$ ($...$ x leq y $\mathbin\Rightarrow$ (x mult z) leq (y mult z))
+	<u>@thm8:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x plus F0 eq x)
+	<u>@thm9:</u> $\forall$ x,y $\cdot$ ($...$ $\mathbin\Rightarrow$ x plus y $=$ y plus x)
+	<u>@thm10:</u> $\forall$ x,y $\cdot$ ($...$ $\mathbin\Rightarrow$ x plus neg(y) $=$ y minus x)	
+	<u>@thm11:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x minus F0 eq x)
+	<u>@thm12:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x minus x eq F0)
+	<u>@thm13:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x mult F0 eq F0)
+	<u>@thm14:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x mult F1 $=$ x)
+	<u>@thm15:</u> $\forall$ x,y $\cdot$ ($...$ $\mathbin\Rightarrow$ x mult y $=$ y mult x)
+	<u>@thm16:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ inv(x) $=$ F1 div x)
+	<u>@thm17:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x div F1 $=$ x)
+	<u>@thm18:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x div x $=$ F1)
+	<u>@thm19:</u> $\forall$ x $\cdot$ ($...$ $\mathbin\Rightarrow$ x mult inv(x) $=$ F1)
+	...	
+<b>END</b>
+</pre>	
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -961,11 +993,11 @@ $event$ $\mathrel{\widehat=}$
 	NONSI_UNIT(v $\in$ FLOAT_Type, u $\in$ SI_UNITE_Type) $\mathrel{\widehat=}$
 			SI_UNIT(v mult multiplier(u), dimension(u), offset(u))
 
-	MINUTE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(60), SECOND_UNIT)
+	<span class="fragment">MINUTE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(60), SECOND_UNIT)
 	HOUR_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(3600), SECOND_UNIT)
 	HECTARE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(FLOAT(10000), SQUARE_METRE_UNIT)
 	LITRE_UNIT $\mathrel{\widehat=}$ NONSI_UNIT(NEW_FLOAT(1,-3), CUBIC_METRE_UNIT)
-	$\dots$
+	$\dots$</span>
 </pre>
 </div>
 
@@ -985,6 +1017,256 @@ $event$ $\mathrel{\widehat=}$
 	<div id="default-block" class="left-content">
 		We have used the <b>Event-B refinement</b> to deal separately with the problem <br> of <i>using small values</i> 
 		and the problem of <i>correctly using measurement units</i>.
+		<ul>
+			<li class="fragment"><b>Refinement</b> is an excellent solution to decompose a complex proof.</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Revisiting our example I</h2>
+
+<div class="r-stack">
+
+<div class="fragment fade-out" style="width: 70%;" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version 
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ $\mathbb N$
+	<u>@inv2:</u> measured_time $\in$ $\mathbb N_1$
+	<u>@inv3:</u> speed $\in$ $\mathbb N$  
+	<u>@inv4:</u> starting_position $\in$ $\mathbb N$ 
+	<u>@inv5:</u> starting_time $\in$ $\mathbb N$ 
+	<u>@inv6:</u> speed = distance_travelled $\div$ measured_time 
+	<u>@inv7:</u> distance_travelled $>$ $0$ $\mathbin\Rightarrow$ speed $>$ $0$
+...
+<b>END</b>
+</pre>
+</div>
+
+<div class="fragment current-visible" style="width: 70%;" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_floating_point_version 
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ PFLOAT_Type
+	<u>@inv2:</u> measured_time $\in$ PFLOAT1_Type 
+	<u>@inv3:</u> speed $\in$ PFLOAT_Type 
+	<u>@inv4:</u> starting_position $\in$ PFLOAT_Type 
+	<u>@inv5:</u> starting_time $\in$ PFLOAT_Type
+	<u>@inv7:</u> speed eq distance_travelled div measured_time
+	<u>@inv8:</u> distance_travelled gt F0 $\mathbin\Rightarrow$ speed gt F0
+...
+<b>END</b>
+</pre>
+</div>
+
+<div class="fragment" style="width: 70%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_floating_point_version 
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> distance_travelled $\in$ PFLOAT_Type
+	<u>@inv2:</u> measured_time $\in$ PFLOAT1_Type 
+	<u>@inv3:</u> speed $\in$ PFLOAT_Type 
+	<u>@inv4:</u> starting_position $\in$ PFLOAT_Type 
+	<u>@inv5:</u> starting_time $\in$ PFLOAT_Type
+	<span style="color: orangered;">@inv6: div_WD(distance_travelled, measured_time)</span>
+	<u>@inv7:</u> speed eq distance_travelled div measured_time
+	<u>@inv8:</u> distance_travelled gt F0 $\mathbin\Rightarrow$ speed gt F0
+...
+<b>END</b>
+</pre>
+</div>
+
+</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Revisiting our example II</h2>
+		
+<div class="r-stack">
+<div class="fragment fade-out" style="width: 90%;" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_integer_version
+...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<i>any</i> p t
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ $\mathbb N_1$ $\land$ p $>$ starting_position
+			<u>@grd2:</u> t $\in$ $\mathbb N_1$ $\land$ t $>$ starting_time
+		<i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p $-$ starting_position
+			<u>@act2:</u> measured_time $:=$ t $-$ starting_time
+			<u>@act3:</u> speed $:=$ (p $-$ starting_position) $\div$ (t $-$ starting_time)
+		<i>end</i>
+<b>END</b>
+</pre>	
+</div>
+
+<div class="fragment current-visible" style="width: 90%;" data-fragment-index="0">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_floating_point_version
+...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<i>any</i> p t
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<u>@grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+		<i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p minus starting_position
+			<u>@act2:</u> measured_time $:=$ t minus starting_time
+			<u>@act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<i>end</i>
+<b>END</b>	
+</pre>
+</div>
+
+<div class="fragment" style="width: 90%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> mch_floating_point_version
+...
+<b>EVENTS</b>
+	...
+	get_speed $\mathrel{\widehat=}$ 
+		<i>any</i> p t
+		<i>where</i>
+			<u>@grd1:</u> p $\in$ PFLOAT_Type $\land$ p gt starting_position
+			<u>@grd2:</u> t $\in$ PFLOAT_Type $\land$ t gt starting_time
+			<span style="color: orangered;">@grd3: div_WD(p minus starting_position, t minus starting_time)</span>
+		<i>then</i>
+			<u>@act1:</u> distance_travelled $:=$ p minus starting_position
+			<u>@act2:</u> measured_time $:=$ t minus starting_time
+			<u>@act3:</u> speed $:=$ (p minus starting_position) div (t minus starting_time)
+		<i>end</i>
+<b>END</b>
+</pre>
+</div>
+</div>
+
+</section>	
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>generated and proven POs</h2>
+
+	<div style="display: flex;">
+		<img src="./img/fig2.png" alt="" height="auto" style="float: right; margin-bottom: 10px; margin-left: 10px; width: 30%;">
+
+		<div  style="width: 70%;">
+			<ul>
+				<li>All generated POs have been proven.</li>
+				<li class="fragment skip">The <b>get_speed/inv8/INV</b> 
+					PO becomes <green-i>&#10004;</green-i>.
+					<ul id="fleche">
+						<li>thanks to handling small values (<cs-code>$]0..1[$</cs-code>),</li>
+						<li>and to the <i>new arithmetic operators specifications</i>.</li>
+					</ul>
+				</li>
+			</ul>
+			<div id="green-block" class="fragment d-skip" style="text-align: center; width: 80%;">
+				<b>The floating-point numbers theory is more suitable than the basic integers of Event-B.</b>
+			</div>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+	<h2>The annotated model</h2>
+
+	<div>
+<pre date-id="m1" id="eb"  class="eb-code" style="font-size: 0.5em !important;">
+<b>MACHINE</b> mch_annotated_version <b>REFINES</b> mch_floating_point_version
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> si_distance_travelled $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv2:</u> si_measured_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@inv3:</u> si_speed $\in$ SI_MEASURE_Type(METRE_PER_SECOND_UNIT)
+	<u>@inv4:</u> si_starting_position $\in$ SI_MEASURE_Type(METRE_UNIT) 
+	<u>@inv5:</u> si_starting_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<span class="fragment"><u>@glueing-1:</u> value(si_distance_travelled) $=$ distance_travelled
+	<u>@glueing-2:</u> value(si_measured_time) $=$ measured_time
+	<u>@glueing-3:</u> value(si_speed) $=$ speed
+	...</span>
+<b>EVENTS</b>
+...
+<span class="fragment">get_speed $\mathrel{\widehat=}$ 
+	<i>any</i> si_p si_t
+	<i>where</i>
+		<u>@grd1:</u> si_p $\in$ SI_MEASURE_Type(METRE_UNIT) $\land$ si_p SI_GT si_starting_position
+		<u>@grd2:</u> si_t $\in$ SI_MEASURE_Type(SECOND_UNIT) $\land$ si_t SI_GT si_starting_time
+		<u>@grd3:</u> div_WD(...)
+	<i>with</i>
+		value(si_p) $=$ p $\land$ value(si_t) $=$ t
+	<i>then</i>
+		<u>@act1:</u> si_distance_travelled $:=$ si_p SI_MINUS si_starting_position
+		<u>@act2:</u> si_measured_time $:=$ si_t SI_MINUS si_starting_time
+		<u>@act3:</u> si_speed $:=$ (si_p SI_MINUS si_starting_position) SI_DIV (si_t SI_MINUS si_starting_time)
+	<i>end</i></span>
+<b>END</b>
+</pre>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-transition="fade-in fade-out">
+	<h2>The annotated model</h2>
+
+	<div class="center-divs">
+		<div style="flex: 3;">
+<div>
+<pre date-id="m1" id="eb"  class="eb-code" style="font-size: 0.3em !important;">
+<b>MACHINE</b> mch_annotated_version <b>REFINES</b> mch_floating_point_version
+...
+<b>INVARIANTS</b>
+	<u>@inv1:</u> si_distance_travelled $\in$ SI_MEASURE_Type(METRE_UNIT)
+	<u>@inv2:</u> si_measured_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@inv3:</u> si_speed $\in$ SI_MEASURE_Type(METRE_PER_SECOND_UNIT)
+	<u>@inv4:</u> si_starting_position $\in$ SI_MEASURE_Type(METRE_UNIT) 
+	<u>@inv5:</u> si_starting_time $\in$ SI_MEASURE_Type(SECOND_UNIT)
+	<u>@glueing-1:</u> value(si_distance_travelled) $=$ distance_travelled
+	<u>@glueing-2:</u> value(si_measured_time) $=$ measured_time
+	<u>@glueing-3:</u> value(si_speed) $=$ speed
+	...
+<b>EVENTS</b>
+...
+get_speed $\mathrel{\widehat=}$ 
+	<i>any</i> si_p si_t
+	<i>where</i>
+		<u>@grd1:</u> si_p $\in$ SI_MEASURE_Type(METRE_UNIT) $\land$ si_p SI_GT si_starting_position
+		<u>@grd2:</u> si_t $\in$ SI_MEASURE_Type(SECOND_UNIT) $\land$ si_t SI_GT si_starting_time
+		<u>@grd3:</u> div_WD(...)
+	<i>with</i>
+		value(si_p) $=$ p $\land$ value(si_t) $=$ t
+	<i>then</i>
+		<u>@act1:</u> si_distance_travelled $:=$ si_p SI_MINUS si_starting_position
+		<u>@act2:</u> si_measured_time $:=$ si_t SI_MINUS si_starting_time
+		<u>@act3:</u> si_speed $:=$ (si_p SI_MINUS si_starting_position) SI_DIV (si_t SI_MINUS si_starting_time)
+	<i>end</i>
+<b>END</b>
+</pre>
+</div>
+<div id="green-block">
+<b>Rodin</b> generates a large number of <b>WD POs</b>, verifying <i>the correct use of measurement 
+units</i> associated with variables that appear in different arithmetic expressions.
+</div>
+
+		</div>
+		<div style="flex: 1;">
+			<img src="./img/si_op.png" alt="" width="200px">
+		</div>
 	</div>
 
 </section>
@@ -998,21 +1280,35 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Conclusion - Proposal</h2>
+	<h2>Conclusion and future work</h2>
 
-	<ul>
-		<li class="fragment">
-		Develop a measurement units theory using the Theory plugin.
-		</li>
-
-		<li class="fragment">
-		Extend the Event-B type-checking system to handle reasoning about measurement units.
-		</li>
-
-		<li class="fragment">
-		Introduce a formal method for annotating Event-B variables with their associated units of measurement.
-		</li>
-	</ul>
+	<div class="left-content">
+		<b>Proposed Approach</b> <br>
+		<ul>
+			<li class="fragment">Extension of the Event-B type-checking system using the Theory plugin</li>
+			<li class="fragment">Integration of standard units of measurement (SI units)</li>
+			<li class="fragment">A generic theory as a support for :
+				<ul>
+					<li>the seven base units</li>
+					<li>derived units (named or not)</li>
+					<li>arithmetic operators adapted for unit-based expressions</li>
+				</ul>
+			</li>
+		</ul>
+		<br><br>
+		<b>Future Work</b> <br>
+		<ul>
+			<li class="fragment">
+				Application to a more complex case study (autonomous vehicles)
+			</li>
+			<li class="fragment">
+				Planned integration into our framework <b>OntoEventB</b>
+				<ul>
+					<li>for automatic generation of Event-B models from ontologies</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1021,9 +1317,6 @@ $event$ $\mathrel{\widehat=}$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Thank you</h1>
-	<p>
-		<a href="./2025-VECOS-conference.pdf" target="_blank">PDF version of the slides</a>
-	</p>
 	<p>
 		<a href="#">Back to the begin</a>
 		- <a href="#/plan">Back to the outline</a>
