@@ -1,0 +1,122 @@
+\documentclass[aspectratio=168]{beamer}
+
+\newif\ifwhite
+\whitetrue
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PATH to the beamer-templates-v3 folder
+\def\cspath{../../../../../../Latex-workspace/}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main declarations for this slides
+\usepackage{\cspath beamer-templates-v3/theme}
+\usetikzlibrary{shapes,arrows.meta}
+
+\setbeamersize{text margin left=0cm}
+\setbeamersize{text margin right=0cm}
+
+\def\csminilogo{\cspath beamer-templates-v3/Figs/CentraleSupelec-Logo-V-color.png}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}    
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+
+\centering
+\scalebox{1.6}{
+\begin{tikzpicture}
+    \tikzstyle{dev-step}=[rectangle, draw,  rounded corners=3pt, minimum width=3.0cm,  minimum height=0.6cm, very thick, font=\scriptsize\bfseries]
+    \tikzstyle{fleche}=[-Stealth, ultra thick]
+
+    \draw[fleche, line width=1mm, color=DeepSkyBlue4] (-5.2, 5.0) -- (-1.1,0.2);
+    \draw[fleche, line width=1mm, color=DeepSkyBlue4] (1.1,0.2) -- (5.2, 5.0);
+
+    \node[dev-step, color=Green3, fill=Green3] (codage) at (0,0) {\textcolor{white}{Codage}};
+
+    \node[dev-step, color=SeaGreen3, fill=SeaGreen3] (conception-detaillee) at (-2.4,1.1) {\textcolor{white}{Conception detaillée}};
+    \node[dev-step, color=SeaGreen3, fill=SeaGreen3] (tests-unitaires) at (2.4,1.1) {\textcolor{white}{Tests unitaires}};
+    \draw[<->, >= Stealth, ultra thick, color=SeaGreen3] (conception-detaillee) -- (tests-unitaires);
+
+    \node[dev-step, color=Turquoise3, fill=Turquoise3] (conception) at (-3,2.2) {\textcolor{white}{Conception}};
+    \node[dev-step, color=Turquoise3, fill=Turquoise3] (tests-integration) at (3,2.2) {\textcolor{white}{Tests d'intégration}};
+    \draw[<->, >= Stealth, ultra thick, color=Turquoise3] (conception) -- (tests-integration);
+
+    \node[dev-step, color=SteelBlue4, fill=SteelBlue4] (specification) at (-3.6,3.3) {\textcolor{white}{Spécification}};
+    \node[dev-step, color=SteelBlue4, fill=SteelBlue4] (tests-validation) at (3.6,3.3) {\textcolor{white}{Tests de validation}};
+    \draw[<->, >= Stealth, ultra thick, color=SteelBlue4] (specification) -- (tests-validation);
+
+    \node[dev-step, color=RoyalBlue4, fill=RoyalBlue4] (analyse) at (-4.2,4.4) {\textcolor{white}{Analyse}};
+    \node[dev-step, color=RoyalBlue4, fill=RoyalBlue4] (tests-acceptation) at (4.2,4.4) {\textcolor{white}{Tests d'acceptation}};
+    \draw[<->, >= Stealth, ultra thick, color=RoyalBlue4] (analyse) -- (tests-acceptation);
+\end{tikzpicture}
+}
+\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+
+\centering
+\scalebox{1.6}{
+\begin{tikzpicture}
+  \tikzstyle{dev-step}=[rectangle, draw,  rounded corners=3pt, minimum width=3.0cm,  minimum height=0.6cm, very thick, font=\scriptsize\bfseries]
+  \tikzstyle{fleche}=[-Stealth, ultra thick]
+
+  \draw[fleche, line width=1mm, color=DeepSkyBlue4] (-5.2, 5.0) -- (-1.1,0.2);
+  \only<1>{\draw[fleche, line width=1mm, color=Red1] (1.1,0.2) -- (5.2, 5.0);}
+  \only<2,3>{\draw[fleche, line width=1mm, color=Green4] (1.1,0.2) -- (5.2, 5.0);}
+
+  \only<1,2>{\node[dev-step, color=Green3, fill=Green3] (codage) at (0,0) {\textcolor{white}{Codage}};}
+  \only<3>{\node[dev-step, color=Green3, fill=Green3] (codage) at (0,0) {\textcolor{white}{Génération de code}};}
+
+  \only<1,2>{\node[dev-step, color=SeaGreen3, fill=SeaGreen3] (conception-detaillee) at (-2.4,1.1) {\textcolor{white}{Conception detaillée}};}
+  \only<3>{\node[dev-step, color=SeaGreen3, fill=SeaGreen3] (conception-detaillee) at (-2.4,1.1) {\textcolor{white}{Conception formelle detaillée}};}
+  \only<1>{
+      \node[dev-step, color=Red1, fill=Red1] (tests-unitaires) at (2.4,1.1) {\textcolor{white}{Erreurs}};
+      \draw[fleche, ultra thick, color=Red1] (tests-unitaires) -- (conception-detaillee);
+  }
+  \only<2,3>{
+      \node[dev-step, color=Green4, fill=Green4] (tests-unitaires) at (2.4,1.1) {\textcolor{white}{Méthodes formelles}};
+      \draw[fleche, ultra thick, color=Green4] (tests-unitaires) -- (conception-detaillee);
+  }
+
+  \only<1,2>{\node[dev-step, color=Turquoise3, fill=Turquoise3] (conception) at (-3,2.2) {\textcolor{white}{Conception}};}
+  \only<3>{\node[dev-step, color=Turquoise3, fill=Turquoise3] (conception) at (-3,2.2) {\textcolor{white}{Conception formelle}};}
+  \only<1>{
+      \node[dev-step, color=Red1, fill=Red1] (tests-integration) at (3,2.2) {\textcolor{white}{Erreurs}};
+      \draw[fleche, ultra thick, color=Red1] (tests-integration) -- (conception);
+  }
+  \only<2,3>{
+      \node[dev-step, color=Green4, fill=Green4] (tests-integration) at (3,2.2) {\textcolor{white}{Méthodes formelles}};
+      \draw[fleche, ultra thick, color=Green4] (tests-integration) -- (conception);
+  }
+
+  \only<1,2>{\node[dev-step, color=SteelBlue4, fill=SteelBlue4] (specification) at (-3.6,3.3) {\textcolor{white}{Spécification}};}
+  \only<3>{\node[dev-step, color=SteelBlue4, fill=SteelBlue4] (specification) at (-3.6,3.3) {\textcolor{white}{Spécification formelle}};}
+  \only<1>{
+      \node[dev-step, color=Red1, fill=Red1] (tests-validation) at (3.6,3.3) {\textcolor{white}{Erreurs}};
+      \draw[fleche, ultra thick, color=Red1] (tests-validation) -- (specification);
+  }
+  \only<2,3>{
+      \node[dev-step, color=Green4, fill=Green4] (tests-validation) at (3.6,3.3) {\textcolor{white}{Méthodes formelles}};
+      \draw[fleche, ultra thick, color=Green4] (tests-validation) -- (specification);
+  }
+
+  \node[dev-step, color=RoyalBlue4, fill=RoyalBlue4] (analyse) at (-4.2,4.4) {\textcolor{white}{Analyse}};
+  \only<1>{
+      \node[dev-step, color=Red1, fill=Red1] (tests-acceptation) at (4.2,4.4) {\textcolor{white}{Erreurs}};
+      \draw[fleche, ultra thick, color=Red1] (tests-acceptation) --  (analyse);
+  }
+  \only<2,3>{
+      \node[dev-step, color=Green4, fill=Green4] (tests-acceptation) at (4.2,4.4) {\textcolor{white}{Méthodes formelles}};
+      \draw[fleche, ultra thick, color=Green4] (tests-acceptation) --  (analyse);
+  }
+\end{tikzpicture}
+}
+\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

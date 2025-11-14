@@ -1,0 +1,82 @@
+\documentclass[aspectratio=169]{beamer}
+
+\newif\ifwhite
+\whitetrue
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PATH to the beamer-templates-v3 folder
+\def\cspath{../../../../../../Latex-workspace/}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main declarations for this slides
+\usepackage{\cspath beamer-templates-v3/theme}
+\usetikzlibrary{shapes,arrows.meta}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamersize{text margin left=0cm}
+\setbeamersize{text margin right=0cm}
+\def\csminilogo{\cspath beamer-templates-v3/Figs/CentraleSupelec-Logo-V-color.png}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}   
+% -----------------------------------------------------------------------------------------------------------
+% -----------------------------------------------------------------------------------------------------------
+% -----------------------------------------------------------------------------------------------------------
+% -----------------------------------------------------------------------------------------------------------
+\begin{frame}[plain]
+  
+\centering
+
+  \scalebox{1.0}{
+  \begin{tikzpicture}
+  
+  \node(im1) at (1.5,6.8) {\includegraphics[height=0.8cm]{Figs/avion.jpg}};
+  \node(im2) at (0,6.8) {\includegraphics[height=0.8cm]{Figs/train.jpg}};
+  \node(im3) at (-1.5,6.8) {\includegraphics[height=0.8cm]{Figs/chaine-prod.jpg}};
+  \node(e6) at (0,6.2) {\scriptsize \bf Systèmes complexes à~logiciels prépondérants};
+  
+  %%%%%%%%%
+  \onslide<2->{
+  \node(e8) at (-4.5,6.0) {\mcg{Automatique}};
+  \node(e8) at (-4.5,5.5) {\mcg{Modélisation de systèmes}};
+  \node(e5) at (-4.5,4.5) {\scriptsize \bf Modélisation de systèmes};
+  \node(im5) at (-5.0,3.5) {\includegraphics[width=2.0cm]{Figs/sysml.png}};
+  \draw[-Stealth, ultra thick] (e6) -- (e5);
+  \node(e3) at (-4.5,2.5) {\scriptsize \bf Vérification, analyse fonctionnelle, simulation, \ldots};
+  }
+  
+  \onslide<3->{
+  \node(e7) at (4.5,6.0) {\mcg{Informatique}};
+  \node(e4) at (4.5,4.5) {\scriptsize \bf Modélisation de logiciels};
+  \node(im4) at (5.0,3.5) {\includegraphics[width=2.0cm]{Figs/automate.png}};
+  \draw[-Stealth, ultra thick] (e6) -- (e4);
+  \node(e2) at (4.5,2.5) {\scriptsize \bf Vérification, model checking, preuve, \ldots};
+  }
+  
+  \onslide<4->{
+  \node(e9) at (0,4.2) {\scriptsize \bf données, mesures, évènements, \ldots};
+  \node(e10) at (0,3.2) {\scriptsize \bf commandes};
+  \draw[-Stealth, ultra thick] (-4.0,4.0) -- (4.0,4.0);
+  \draw[-Stealth, ultra thick] (4.0,3.0) -- (-4.0,3.0);
+  }
+  %%%%%%%%%
+  
+  \onslide<5->{
+  \node(e1) at (0,0.6) {\scriptsize \bf Intégration};
+  \node(im6) at (1.5,0.0) {\includegraphics[height=0.8cm]{Figs/embedded-software.jpg}};
+  \node(im7) at (0,0.0) {\includegraphics[height=0.8cm]{Figs/logiciel-train.jpeg}};
+  \node(im8) at (-1.5,0.0) {\includegraphics[height=0.8cm]{Figs/logiciel-chaine-prod.jpg}};
+  \draw[-Stealth, ultra thick] (e3) -- (e1); 
+  \draw[-Stealth, ultra thick] (e2) -- (e1);
+  }
+  
+  \end{tikzpicture}
+  }
+
+\end{frame}
+% -----------------------------------------------------------------------------------------------------------
+% ----------------------------------------------------------------------------------------------------------- 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

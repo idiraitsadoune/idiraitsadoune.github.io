@@ -27,6 +27,9 @@
 .reveal .slides section > section  {
   line-height: 1.4;
   font-weight: inherit;
+	width: 1120px !important;
+	padding-left: 80px !important;
+	padding-right: 80px !important;
 }
 
 .reveal ul ul,
