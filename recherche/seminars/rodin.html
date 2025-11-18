@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Event-B Rodin</title>
+
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/slides-style.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../../enseignement/resources/img/lmf-logo-black-rgb.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul style="display: block;">
+		<div style="float: right; margin-bottom: 10px; margin-left: 10px; height: 250px;">
+			<img src="./img/splash.bmp" height="100%" >
+		</div>
+
+		<li>
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) <br> is intended to support 
+			the construction and verification of <b>Event-B models</b>.
+			<ul>
+				<li>
+					provides effective support for <i>refinement</i> and <i>mathematical</i> proof.
+				</li>
+				<li><i>plugins</i> for éditing models, generating proof obligations, 
+					proving, animating, medel-cheking, code generating ...
+				</li>
+			</ul>
+		</li>
+
+    <li class="skip">
+      <b>Rodin Platform and Plug-in Installation</b>: 
+      <ul>
+        <li>Requires <b>Java JRE</b> (version 17 or later) $\to$ <a href="https://www.oracle.com/fr/java/technologies/downloads/" target="_blank">www.oracle.com/fr/java/</a>.</li>
+        <li>Download the Core  $\to$ <a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/" target="_blank">sourceforge.net/projects/rodin-b-sharp/</a>.</li>
+      </ul>
+    </li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rodin on Macs</h2>
+
+	<div class="left-content">
+		Procedure to run the <i>Intel version</i> of <b>Rodin</b> 
+			on <b>macs</b> with <i>Apple Silicon processors</i>: <br>
+		<ol>
+			<li class="skip fragment">
+				download <a href="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.11%2B9/OpenJDK17U-jre_x64_mac_hotspot_17.0.11_9.pkg">this JDK</a>  (it's a <b>Java 17</b> runtime for <b>Intel</b>)
+			</li>
+			<li>
+				install it by double-clicking it; the Java runtime is installed in <cs-code>/Library/Java/JavaVirtualMachines/temurin-17.jre</cs-code>
+			</li>
+			<li>
+				find the downloaded <cs-code>Rodin.app</cs-code> and modify the file <cs-code>Rodin.app/Contents/Eclipse/rodin.ini</cs-code>
+				<ul>
+					<li>
+					add the next two lines just before the one with <cs-code>-vmargs</cs-code>
+					</li>
+				</ul>
+				<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						-vm
+						/Library/Java/JavaVirtualMachines/temurin-17.jre/Contents/Home/bin/java
+					</script>
+					</code></pre>		
+			</li>
+			<li>
+				as with all other <b>Rodin</b> releases for <b>mac</b>, one also needs to execute 
+					<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						$ xattr -rc Rodin.app
+					</script>
+					</code></pre>
+			</li>
+		</ol>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul>
+		Required plugins for this tutorial : <br>
+		menu : <cs-code>Help -> Install New Software ...</cs-code>
+		<ul>
+			<li class="skip">
+				the <b>Atelier B Provers plugin</b> from the <b>Atelier B Provers</b> Update site. <br>
+				<cs-code>https://www.atelierb.eu/update_site/atelierb_provers</cs-code>
+			</li>
+			<li class="skip">
+				the <b>ProB plugin</b> from the <b>ProB</b> Update site. <br>
+				<cs-code>https://stups.hhu-hosting.de/rodin/prob1/release/</cs-code>
+			</li>
+			<li class="skip">
+				the <b>Theory plugin</b> from the <b>Rodin Plug-ins (archive)</b> Update site. <br>
+				<cs-code>https://rodin-b-sharp.sourceforge.net/updates-archive</cs-code>
+			</li>
+		</ul>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>

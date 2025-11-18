@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Atelier/tuto Event-B Rodin</title>
+
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../enseignement/resources/css/slides-style.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../enseignement/resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../../enseignement/resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../../enseignement/resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../../enseignement/resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../../enseignement/resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../../enseignement/resources/img/lmf-logo-black-rgb.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../../enseignement/resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+	</div>
+	
+	<div style="text-align: left">
+		<h2>Atelier/tuto Event-B/Rodin</h2>
+    <h3>Introduction à la méthode Event-B <br> et ses différents outils</h3>
+	</div>
+
+	<div class="description" >
+		<span ><span class="fa fa-graduation-cap">&#160;</span>TAPAS-ANR meeting</span><br>
+		<span ><span class="fa fa-university">&#160;</span>Laboratoire Méthodes Formelles - LMF, Paris-Saclay, 19 November 2025</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../../enseignement/resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul style="display: block;">
+		<div style="float: right; margin-bottom: 10px; margin-left: 10px; height: 250px;">
+			<img src="./img/splash.bmp" height="100%" >
+		</div>
+
+		<li>
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) <br> is intended to support 
+			the construction and verification of <b>Event-B models</b>.
+			<ul>
+				<li>
+					provides effective support for <i>refinement</i> and <i>mathematical</i> proof.
+				</li>
+				<li><i>plugins</i> for éditing models, generating proof obligations, 
+					proving, animating, medel-cheking, code generating ...
+				</li>
+			</ul>
+		</li>
+
+    <li class="skip fragment">
+      <b>Rodin Platform and Plug-in Installation</b>: 
+      <ul>
+        <li>Requires <b>Java JRE</b> (version 17 or later) $\to$ <a href="https://www.oracle.com/fr/java/technologies/downloads/" target="_blank">www.oracle.com/fr/java/</a>.</li>
+        <li>Download the Core  $\to$ <a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/" target="_blank">sourceforge.net/projects/rodin-b-sharp/</a>.</li>
+      </ul>
+    </li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rodin on Macs</h2>
+
+	<div class="left-content">
+		Procedure to run the <i>Intel version</i> of <b>Rodin</b> 
+			on <b>macs</b> with <i>Apple Silicon processors</i>: <br>
+		<ol>
+			<li class="skip fragment">
+				download <a href="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.11%2B9/OpenJDK17U-jre_x64_mac_hotspot_17.0.11_9.pkg">this JDK</a>  (it's a <b>Java 17</b> runtime for <b>Intel</b>)
+			</li>
+			<li class="fragment">
+				install it by double-clicking it; the Java runtime is installed in <cs-code>/Library/Java/JavaVirtualMachines/temurin-17.jre</cs-code>
+			</li>
+			<li class="fragment">
+				find the downloaded <cs-code>Rodin.app</cs-code> and modify the file <cs-code>Rodin.app/Contents/Eclipse/rodin.ini</cs-code>
+				<ul>
+					<li>
+					add the next two lines just before the one with <cs-code>-vmargs</cs-code>
+					</li>
+				</ul>
+				<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						-vm
+						/Library/Java/JavaVirtualMachines/temurin-17.jre/Contents/Home/bin/java
+					</script>
+					</code></pre>		
+			</li>
+			<li class="fragment">
+				as with all other <b>Rodin</b> releases for <b>mac</b>, one also needs to execute 
+					<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						$ xattr -rc Rodin.app
+					</script>
+					</code></pre>
+			</li>
+		</ol>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul>
+		Required plugins for this tutorial : <br>
+		menu : <cs-code>Help -> Install New Software ...</cs-code>
+		<ul>
+			<li class="skip fragment">
+				the <b>Atelier B Provers plugin</b> from the <b>Atelier B Provers</b> Update site. <br>
+				<cs-code>https://www.atelierb.eu/update_site/atelierb_provers</cs-code>
+			</li>
+			<li class="skip fragment">
+				the <b>ProB plugin</b> from the <b>ProB</b> Update site. <br>
+				<cs-code>https://stups.hhu-hosting.de/rodin/prob1/release/</cs-code>
+			</li>
+			<li class="skip fragment">
+				the <b>Theory plugin</b> from the <b>Rodin Plug-ins (archive)</b> Update site. <br>
+				<cs-code>https://rodin-b-sharp.sourceforge.net/updates-archive</cs-code>
+			</li>
+		</ul>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="The Event-B method"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Event-B method</h2>
+
+	<img src="./img/Event-B-book.jpg" style="position: absolute; bottom:0px; right:160px;">
+	
+	<ul style="display: block;">
+		<li>The <b>Event-B method</b> is an evolution of the <i>classical</i>
+				<b>B method</b>.
+			<ul><li>modeling a system by a <i>set of events</i> instead of <i>operations</i>.</li></ul>
+		</li>
+
+		<li class="fragment skip">The <b>Event-B method</b> is a <i>formal method</i> based on <br>
+			<i>first-order logic</i> and <i>set theory</i>.</li>
+
+		<li class="fragment skip">The <b>Event-B method</b> is based on :
+			<ul>
+				<li>the notions of <i>pre-conditions</i> and <i>post-conditions</i> (<b>Hoare</b>),</li>
+				<li>the <i>weakest pre-condition</i> (<b>Dijkstra</b>),</li>
+				<li>and the <i>calculus of substitution</i> (<b>Abrial</b>).</li>
+			</ul>
+		</li>
+
+    <li class="fragment skip">The <b>Event-B method</b> is adapted to analyse <i>discrete systems</i>.
+			<ul><li>offers the possibility of modelling <b>discrete behaviors</b>.</li></ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+  <h3>The State of a Model</h3>
+
+  <ul>
+    <li>A discrete model is first made of a <i>state</i></li>
+    <li class="fragment skip">The state is represented by some <i>constants</i> and <i>variables</i></li>
+    <li class="fragment skip">Constants are linked by some <i>properties</i></li>
+    <li class="fragment skip">Variables are linked by some <i>invariants</i></li>
+    <li class="fragment skip">Properties and invariants are written using <i>set-theoretic expressions</i></li>  
+  </ul>
+
+  </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+  <h3>The Events of a Model (Transitions)</h3>
+
+  <ul>
+    <li>A discrete model is also made of a number of <i>events</i></li>
+    <li class="fragment skip">An event is made of a <i>guard</i> and an <i>action</i></li>
+    <li class="fragment skip">The <i>guard</i> denotes the <i>enabling condition</i> of the event</li>
+    <li class="fragment skip">The <i>action</i> denotes the way the <i>state is modified</i> by the event</li>
+    <li class="fragment skip">Guards and actions are written using <i>set-theoretic expressions</i></li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>A Model Schematic View</h3>
+
+	<div class="start-divs">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+<span class="fragment" data-fragment-index="2">
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+<span class="fragment" data-fragment-index="3">
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$</span>
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code fragment" data-fragment-index="4">
+$event$ $\mathrel{\widehat=}$
+	<i>any</i> $x$
+	<i>where</i>
+		$G(s,c,v,x)$
+	<i>then</i>
+		$BA(s,c,v,x,v')$
+	<i>end</i>
+</pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>Operational Interpretation</h3>
+
+  <div class="left-content" style="width: 60%;">
+<pre id="eb" class="eb-code">
+Initialize; 
+<b>while</b> (some events have true guards) { 
+  Choose one such event; 
+  Modify the state accordingly
+}     
+</pre>
+  </div>
+
+  <ul>
+    <li class="skip">An event execution is supposed to <i>take no time</i></li>
+    <li class="fragment skip">Thus, <i>no two events can occur simultaneously</i></li>
+    <li class="fragment skip">When all events have false guards, the <i>discrete system stops</i></li>
+    <li class="fragment skip">When some events have true guards, <i>one of them</i> is chosen non-deterministically and <i>its action modifies the state</i></li>
+    <li class="fragment skip">The previous phase is <i>repeated</i> (if possible)</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>Comments on the Operational Interpretation</h3>
+
+  <ul>
+    <li>Stopping is not necessary: <i>a discrete system may run for ever</i></li>
+    <li class="fragment skip">This interpretation is just given here for <i>informal understanding</i></li>
+    <li class="fragment skip">The <i>meaning</i> of such a discrete system will be given by the  <br> <i>proofs which can be performed</i> on it</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Building Large Computerized Systems</h2>
+	<h3>Refinement</h3>
+
+  <ul>
+    <li>Refinement allows us to build model <i>gradually</i></li>
+    <li class="fragment skip">We shall build an <i>ordered sequence</i> of more precise models</li>
+    <li class="fragment skip">Each model is a <i>refinement</i> of the one preceding it</li>
+    <li class="fragment skip">A useful analogy: looking through a <i>microscope</i></li>
+    <li class="fragment skip"><i>Spatial</i> as well as <i>temporal</i> extensions</li>
+    <li class="fragment skip"><i>Data refinement</i></li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="The Pro-B animator/model-checker"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="The Theory plugin"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="./starting-template-en.pdf" target="_blank">PDF version of the slides</a>
+	</p>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../../enseignement/resources/js/plan-en.js"></script>
+	<script src="../../enseignement/reveal-js-framework/dist/reveal.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../../enseignement/reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
