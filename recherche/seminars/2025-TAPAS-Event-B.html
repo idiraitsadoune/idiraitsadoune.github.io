@@ -2446,8 +2446,8 @@ $n < d$
 </pre>
 
 <pre class="math-code" style="flex: 1;">
-    MON 
-    $\Longrightarrow$ 
+  MON 
+  $\Longrightarrow~$ 
 </pre>
 
 <pre class="math-code box" style="flex: 1;">
@@ -2459,8 +2459,8 @@ $n < d$
 </pre>
 
 <pre class="math-code" style="flex: 1;">
-    EQ_LR
-    $\Longrightarrow$ 
+  EQ_LR
+  $\Longrightarrow~$ 
 </pre>
 
 <pre class="math-code box" style="flex: 1;">
@@ -2471,8 +2471,8 @@ $n < d$
 </pre>
 
 <pre class="math-code" style="flex: 1;">
-    ARITH ...
-    $\Longrightarrow$ 
+  ARITH ...
+  $\Longrightarrow~$ 
 </pre>
   </div>
 
@@ -2784,13 +2784,239 @@ $0 < n$
 
 	</div>
 
-	<div id="default-block" class="skip fragment">
+	<div id="default-block" class="skip fragment left-content">
 		<ul>
 			<li>In the previous proof, we have used and additional inference rule</li>
 			<li>It says that a <i>false hypothesis entails any goal</i> $~~~~\bot \vdash P~~~~$ <cs-code>CNTR</cs-code></li>
 		</ul>
 	</div>
 
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Proof Obligation</h2>
+  <h3>Invariant Reﬁnement </h3>
+
+  	<div class="center-divs" style="width: 70%;">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\text{Abstract Invariants}$
+$\text{Concrete Invariants}$
+$\text{Concrete Guard}$
+$\vdash$ 
+$\text{Modified Concrete Invariant}$ 
+</pre>
+<pre class="math-code" style="width: 35%;">
+$A(c)$
+$I(c, v)$
+$J(c, v, w)$
+$H(c, w)$
+$\vdash$
+$J_j(c, E(c,v), F(c,w))$
+</pre>
+<pre class="math-code" style="width: 10%;">
+INV
+</pre>
+		</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Applying Invariant Reﬁnement<br> to Event <cs-code>ML_out</cs-code></h2>
+  <h3>Proof of <cs-code>ML_out/inv1_4/INV</cs-code></h3>
+
+  <div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$ <u>//abstract</u>
+	<i>when</i>
+		<u>grd0_1:</u> $n < d$
+	<i>then</i>
+		<u>act0_1:</u> $n := n + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+ML_out $\mathrel{\widehat=}$ <u>//concrete</u>
+	<i>when</i>
+		<u>grd1_1:</u> $a + b < d$
+		<u>grd1_2:</u> $c = 0$
+	<i>then</i>
+		<u>act1_1:</u> $a := a + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 15%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Applying Invariant Reﬁnement<br> to Event <cs-code>ML_out</cs-code></h2>
+  <h3>Proof of <cs-code>ML_out/inv1_4/INV</cs-code></h3>
+
+  <div class="center-divs">
+
+<pre class="math-code box" style="flex: 1;">
+$d \in \mathbb N$
+$0 < d$
+$n \in \mathbb N$
+$n \leq d$
+$a \in \mathbb N$
+$b \in \mathbb N$
+$c \in \mathbb N$
+$a + b + c = n$
+$a = 0 \lor c = 0$
+$a + b < d$
+$c = 0$
+$\vdash$
+$a + 1 + b + c = n + 1$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  MON 
+  $\Longrightarrow~$ 
+</pre>
+
+<pre class="math-code box" style="flex: 1;">
+$a + b + c = n$
+$\vdash$
+$a + 1 + b + c = n + 1$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  ARITH 
+  $\Longrightarrow~$ 
+</pre>
+
+<pre class="math-code box" style="flex: 1;">
+$a + b + c = n$
+$\vdash$
+$a + b + c + 1 = n + 1$
+</pre>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Applying Invariant Reﬁnement<br> to Event <cs-code>ML_out</cs-code></h2>
+  <h3>Proof of <cs-code>ML_out/inv1_4/INV</cs-code></h3>
+
+  <div class="center-divs">
+
+<pre class="math-code box" style="flex: 1;">
+$a + b + c = n$
+$\vdash$
+$a + b + c + 1 = n + 1$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  EQ_LR 
+  $\Longrightarrow~$ 
+</pre>
+  
+<pre class="math-code box" style="flex: 1;">
+$\vdash$
+$n + 1 = n + 1$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  EQL
+  $\surd$
+</pre>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Reﬁning the Initialization <br> Event <cs-code>init</cs-code></h2>
+
+  <ul>
+    <li>Concrete initialization</li>
+    <div>
+      <pre id="eb" class="math-code">
+<b>EVENTS</b>
+  INITIALISATION $\mathrel{\widehat=}$
+    $a := 0$
+    $b := 0$
+    $c := 0$
+      </pre>
+    </div>
+    <li class="fragment">Corresponding after predicate</li>
+      <div  class="fragment">
+        <pre id="eb" class="math-code">
+$a' = 0 \land b' = 0 \land c' = 0$          
+        </pre>
+      </div>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Proof Obligation</h2>
+  <h3>Initialization Reﬁnement</h3>
+
+  <ul>
+		<li>Constants <cs-i>$c$</cs-i> with <i>axioms</i> <cs-i>$A(c)$</cs-i></li>
+		<li class="skip fragment">Concrete invariant <cs-i>$J(c, v, w)$</cs-i></li>
+		<li class="skip fragment"><i>Abstract initialization</i> with <i>after predicate</i> <cs-i>$v' = K(c)$</cs-i></li>
+		<li class="skip fragment"><i>Concrete initialization</i> with <i>after predicate</i> <cs-i>$w' = L(c)$</cs-i></li>
+	</ul>
+
+  	<div class="center-divs skip fragment" style="width: 70%;">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\vdash$ 
+$\text{Modified concrete invariants}$ 
+</pre>
+<pre class="math-code" style="width: 35%;">
+$A(c)$
+$\vdash$
+$J_j(c, K(c), L(c))$
+</pre>
+<pre class="math-code" style="width: 10%;">
+INV
+</pre>
+		</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Proof Obligation</h2>
+  <h3>Initialization Reﬁnement</h3>
+
+<div class="center-divs">
+<div style="flex: 1;"></div>
+<pre class="math-code box" style="flex: 1;">
+$d \in \mathbb N$
+$0 < d$
+$\vdash$
+$0 + 0 + 0 = 0$
+$(a + b + c = n)$
+</pre>
+<div style="flex: 1;"></div>
+<pre class="math-code box" style="flex: 1;">
+$d \in \mathbb N$
+$0 < d$
+$\vdash$
+$0 = 0 \lor 0 = 0$
+$(a = 0 \lor c = 0)$
+</pre>
+<div style="flex: 1;"></div>
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Adding new Events</h2>
+  
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2801,7 +3027,61 @@ $0 < n$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>The ProB <br> animator and model checker</h2>
 
+  <ul>
+    <li><b>ProB</b> is an animator, constraint solver and model checker<br> for the <b>Event-B Method</b>.</li>
+    <li class="fragment skip"><b>ProB</b>'s animation features allow developers to <i>control</i><br> and <i>validate the behavior of their specifications</i>.</li>
+    <li class="fragment skip"><i>Animation features</i> are useful for infinite state machines, <br>not for verification, but for <i>debugging</i> and <i>testing</i>.</li>
+  </ul>
+
+  <p>
+    <a href="https://prob.hhu.de/w/index.php?title=The_ProB_Animator_and_Model_Checker" target="_blank">ProB main web page</a>
+  </p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Model-checking with ProB</h2>
+
+  <ul>
+    <li>
+      The <b>ProB plugin</b> allows <i>automatic verification</i> of the consistency
+      of <b>Event-B</b> machines through <i>animation</i> and <i>model checking</i>.
+    </li>
+
+    <li class="fragment skip">
+      For exhaustive model verification, the given sets must be <i>limited
+      to finite sets</i>.
+      <ul id="fleche"><li>allows ProB to browse through the reachable states of the machine.</li></ul>
+    </li>
+
+     <li class="fragment skip">
+      The <b>ProB plugin</b> graphically displays <i>a counterexample</i> when it discovers <br>
+      <red-i>a property violation</red-i>.
+     </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>The ProB plugin</h2>
+
+  <div class="center-content">
+		<img src="./img/model-checking.png" height="250px" width="auto" style="margin-right: 50px;">
+		<img src="./img/ltl-checking.png" height="250px" width="auto">
+	</div>
+
+  <ul>
+    <li><a href="https://prob.hhu.de/w/index.php?title=Tutorial_Rodin_First_Step" target="_blank">Tutorial Rodin First Step</a></li>
+    <li class="fragment skip"><a href="https://prob.hhu.de/w/index.php?title=Tutorial_First_Model_Checking" target="_blank">Tutorial First Model Checking</a></li>
+    <li class="fragment skip"><a href="https://prob.hhu.de/w/index.php?title=LTL_Model_Checking" target="_blank">LTL/CTL Model Checking</a></li>
+  </ul>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2811,7 +3091,139 @@ $0 < n$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>The theory plugin</h3>
 
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li><b>Theory Plug-in</b> provides capabilities to <i>extend</i> <br>
+					<b>the Event-B mathematical language</b> and <b>
+					the Rodin proving infrastructure</b>.</li>
+
+				<li class="fragment skip">An <b>Event-B theory</b> can contain : 
+					<ul>
+						<li>new datatype definitions,</li>
+						<li>new polymorphic operator definitions,</li>
+						<li>axiomatic definitions,</li>
+						<li>theorems,</li>
+						<li>associated rewrite and inference rules.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 1;">
+<div>
+<pre id="eb" class="eb-code">
+<b>THEORY</b> $thy_1$
+<b>IMPORT</b> $thy_2$
+
+<b>DATATYPES</b> 
+	$DT_1,...,DT_n$
+<b>OPERATORS</b> 
+	$OP_{11},...,OP_{1n}$
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		$OP_{21},...,OP_{2n}$
+	<i>axioms</i>
+		$A$
+<b>THEOREMS</b>
+	$T$
+<b>PROOF RULES</b>
+	$PR$
+<b>END</b>
+</pre>			
+	</div>
+		</div>
+	</div>
+
+	<ul>
+		<li style="font-size: 15px;">
+			Michael J. Butler and Issam Maamria. <br> <span style="font-style: italic;">Practical theory extension in Event-B.</span> 
+			<a href="https://link.springer.com/chapter/10.1007/978-3-642-39698-4_5" target="_blank">Theories of Programming and Formal Methods. 2013</a>.
+		</li>
+
+		<li style="font-size: 15px;">
+			Thai Son Hoang, Laurent Voisin, Asieh Salehi, Michael J. Butler, Toby Wilkinson, and Nicolas Beauger. <br>
+			<span style="font-style: italic;">Theory plug-in for Rodin 3.x. </span> 
+			<a href="https://arxiv.org/abs/1701.08625" target="_blank">CoRR, abs/1701.08625, 2017</a>.
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>The theory plugin</h3>
+
+	<div class="start-divs">
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>THEORY</b> $thy_1$
+<b>IMPORT</b> $thy_2$
+
+<b>DATATYPES</b> 
+	$DT_1,...,DT_n$
+<b>OPERATORS</b> 
+	$OP_{11},...,OP_{1n}$
+<b>AXIOMATIC DEFINITIONS</b>
+	<i>operators</i>
+		$OP_{21},...,OP_{2n}$
+	<i>axioms</i>
+		$A$
+<b>THEOREMS</b>
+	$T$
+<b>PROOF RULES</b>
+	$PR$
+<b>END</b>
+</pre>			
+	</div>
+
+	<div style="width: 33%;">
+<pre id="eb" class="eb-code" >
+<b>CONTEXT</b> $ctx_1$
+<b>EXTENDS</b> $ctx_2$
+
+<b>SETS</b> $s$
+<b>CONSTANTS</b> $c$
+<b>AXIOMS</b>
+	$A(s,c)$
+<b>THEOREMS</b>
+	$T(s,c)$
+<b>END</b>
+</pre>
+		</div>
+	
+		<div style="width: 33%;">
+<pre id="eb" class="eb-code">
+<b>MACHINE</b> $mch_1$
+<b>REFINES</b> $mch_2$
+<b>SEES</b> $ctx_i$
+
+<b>VARIABLES</b> $v$
+<b>INVARIANTS</b>
+	$I(s,c,v)$
+<b>THEOREMS</b>
+	$T(s,c,v)$
+<b>EVENTS</b>
+	$[events\_list]$
+<b>END</b>
+</pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">The Event-B method</h2>
+	<h3>The theory plugin</h3>
+
+  <h1>DEMO</h1>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -2819,7 +3231,7 @@ $0 < n$
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Thank you</h1>
 	<p>
-		<a href="./starting-template-en.pdf" target="_blank">PDF version of the slides</a>
+		<a href="2025-TAPAS-Event-B.pdf" target="_blank">PDF version of the slides</a>
 	</p>
 	<p>
 		<a href="#">Back to the begin</a>
