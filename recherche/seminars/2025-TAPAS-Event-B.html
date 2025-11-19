@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Atelier/tuto Event-B Rodin</title>
+	<title>Atelier Event-B/Rodin</title>
 
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../../enseignement/reveal-js-framework/dist/reveal.css">
@@ -41,7 +41,7 @@
 	</div>
 	
 	<div style="text-align: left">
-		<h2>Atelier/tuto Event-B/Rodin</h2>
+		<h2>Atelier Event-B/Rodin</h2>
     <h3>Introduction à la méthode Event-B <br> et ses différents outils</h3>
 	</div>
 
@@ -3017,6 +3017,419 @@ $(a = 0 \lor c = 0)$
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Adding new Events</h2>
   
+  <ul>
+    <li>new events add transitions that have <i>no abstract counterpart</i></li>
+    <li class="fragment skip">can be seen as a kind of <i>internal steps</i> (w.r.t. abstract model)</li>
+    <li class="fragment skip">can only be seen by an <i>observer</i> who is <em>"zooming in"</em></li>
+    <li class="fragment skip"><i>temporal refinement</i>: reﬁned model has a finer time granularity</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>New Event <cs-code>IL_in</cs-code></h2>
+
+  <div>
+    <img src="./img/IL_in.png" alt="" width="400px">
+  </div>
+
+  	<div class="center-divs">
+		<div style="width: 33%;"></div>
+<pre id="eb" class="math-code" style="width: 34%;">
+IL_in $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < a$
+	<i>then</i>
+		<u>act1_1:</u> $a := a - 1$
+    <u>act1_2:</u> $b := b + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 33%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>New Event <cs-code>IL_out</cs-code></h2>
+
+  <div>
+    <img src="./img/IL_out.png" alt="" width="400px">
+  </div>
+
+  	<div class="center-divs">
+		<div style="width: 33%;"></div>
+<pre id="eb" class="math-code" style="width: 34%;">
+IL_out $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < b$
+    <u>grd1_2:</u> $a = 0$
+	<i>then</i>
+		<u>act1_1:</u> $b := b - 1$
+    <u>act1_2:</u> $c := c + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 33%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Before-after predicates</h2>
+
+    <div class="center-divs">
+	<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 35%;">
+IL_in $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < a$
+	<i>then</i>
+		<u>act1_1:</u> $a := a - 1$
+    <u>act1_2:</u> $b := b + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 35%;">
+IL_out $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < b$
+    <u>grd1_2:</u> $a = 0$
+	<i>then</i>
+		<u>act1_1:</u> $b := b - 1$
+    <u>act1_2:</u> $c := c + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+	</div>
+
+  <div id="default-block" class="skip fragment left-content">
+    $a' = a - 1 \land b' = b + 1 \land c' = c$ <br>
+    $a' = a \land b' = b - 1 \land c' = c + 1$
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>The empty assignment <cs-code>skip</cs-code></h2>
+
+  <ul>
+    <li>The before-after predicate of <cs-code>skip</cs-code> in the <i>initial model</i> $$ n' = n$$</li>
+    
+    <li class="fragment">The before-after predicate of <cs-code>skip</cs-code> in the <i>first reﬁnement</i> 
+    $$ a' = a \land b' = b \land c' = c $$</li>
+
+    <li class="fragment">The guard of the <cs-code>skip</cs-code> event is <cs-code>true</cs-code>.</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Refinement Proof Obligations <br> for New Events</h2>
+
+  <ul>
+    <li>A new event must <i>refine an implicit event</i>, made of a <cs-code>skip</cs-code> <i>action</i>
+      <ul>
+        <li>Guard strengthening is <i>trivial</i></li>
+        <li>Need to prove <i>invariant reﬁnement</i></li>
+      </ul>
+    </li>
+
+    <li class="fragment skip">The new events <i>must not diverge</i>
+      <ul>
+        <li>To prove this we have to exhibit a <i>variant</i></li>
+        <li>The variant yields a <i>natural number</i> (could be more complex)</li>
+        <li>Each new event must <i>decrease this variant</i></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Event <cs-code>IL_in</cs-code> refines <cs-code>skip</cs-code></h2>
+
+  <div class="center-divs">
+		<div style="width: 33%;"></div>
+<pre id="eb" class="math-code" style="width: 34%;">
+IL_in $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < a$
+	<i>then</i>
+		<u>act1_1:</u> $a := a - 1$
+    <u>act1_2:</u> $b := b + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 33%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Proof of <cs-code>IL_in/inv1_4/INV</cs-code></h2>
+
+  <div class="center-divs">
+<pre class="math-code box" style="flex: 1;">
+$d \in \mathbb N$
+$0 < d$
+$n \in \mathbb N$
+$n \leq d$
+$a \in \mathbb N$
+$b \in \mathbb N$
+$c \in \mathbb N$
+$a + b + c = n$
+$a = 0 \lor c = 0$
+$0 < a$
+$\vdash$
+$a -1 + b + 1 + c = n$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  MON 
+  $\Longrightarrow~$ 
+</pre>
+
+<pre class="math-code box" style="flex: 1;">
+$a + b + c = n$
+$\vdash$
+$a - 1 + b + 1 + c = n$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  ARITH
+  $\Longrightarrow~$ 
+</pre>
+
+<pre class="math-code box" style="flex: 1;">
+$a + b + c = n$
+$\vdash$
+$a + b + c = n$
+</pre>
+
+<pre class="math-code" style="flex: 1;">
+  HYP
+  $\surd$
+</pre>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Proof Obligation</h2>
+  <h3>Convergence of New Events</h3>
+
+  <ul>
+    <li>Axioms <cs-code>A(c)</cs-code>, invariants <cs-code>I(c,v)</cs-code>, concrete invariant <cs-code>J(c,v,w)</cs-code></li>
+
+    <li class="skip">New event with guard <cs-code>H(c,w)</cs-code></li>
+
+    <li class="skip">Variant <cs-code>V(c,w)</cs-code></li>
+  </ul>
+
+	<div class="center-divs skip" style="width: 70%;">
+<pre class="math-code" style="width: 55%;">
+$\text{Axioms}$ 
+$\text{Abstract Invariants}$
+$\text{Concrete Invariants}$
+$\text{Concrete Guard}$
+$\vdash$ 
+$\text{Variant} \in \mathbb N$ 
+</pre>
+<pre class="math-code" style="width: 25%;">
+$A(c)$
+$I(c, v)$
+$J(c, v, w)$
+$H(c, w)$
+$\vdash$
+$V(c, w) \in \mathbb N$
+</pre>
+<pre class="math-code" style="width: 20%;">
+NAT
+</pre>
+		</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Proof Obligation</h2>
+  <h3>Convergence of New Events</h3>
+
+  <ul>
+    <li>Axioms <cs-code>A(c)</cs-code>, invariants <cs-code>I(c,v)</cs-code>, concrete invariant <cs-code>J(c,v,w)</cs-code></li>
+
+    <li class="skip">New event with guard <cs-code>H(c,w)</cs-code> and <i>b-a predicate</i> <cs-code>w'=F(c,w)</cs-code></li>
+
+    <li class="skip">Variant <cs-code>V(c,w)</cs-code></li>
+  </ul>
+
+	<div class="center-divs skip" style="width: 80%;">
+<pre class="math-code" style="width: 40%;">
+$\text{Axioms}$ 
+$\text{Abstract Invariants}$
+$\text{Concrete Invariants}$
+$\text{Concrete Guard}$
+$\vdash$ 
+$\text{Modified Var} < \text{Var}$ 
+</pre>
+<pre class="math-code" style="width: 40%;">
+$A(c)$
+$I(c, v)$
+$J(c, v, w)$
+$H(c, w)$
+$\vdash$
+$V(c,F(c,w)) < V(c,w)$
+</pre>
+<pre class="math-code" style="width: 20%;">
+VAR
+</pre>
+		</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Proposed Variant</h2>
+
+  <p><i>Weighted</i> sum of $a$ and $b$</p>
+
+  <div class="left-content">
+<pre id="eb" class="math-code">
+<b>VARIANT</b> 
+	<u>variant_1:</u> $2 \times a + b$ 
+</pre>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Decreasing of the Variant <br> by Event <cs-code>IL_in</cs-code></h2>
+
+	<div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+IL_in $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < a$
+	<i>then</i>
+		<u>act1_1:</u> $a := a - 1$
+    <u>act1_2:</u> $b := b + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code box" style="width: 40%;">
+$d \in \mathbb N$
+$0 < d$
+$n \in \mathbb N$
+$n \leq d$
+$a \in \mathbb N$
+$b \in \mathbb N$
+$c \in \mathbb N$
+$a + b + c = n$
+$a = 0 \lor c = 0$
+$0 < a$
+$\vdash$
+$2 \times (a-1) + (b+1) < 2 \times a + b$
+</pre>
+<div style="width: 5%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Decreasing of the Variant <br> by Event <cs-code>IL_out</cs-code></h2>
+
+	<div class="center-divs">
+		<div style="width: 15%;"></div>
+<pre id="eb" class="math-code" style="width: 30%;">
+IL_out $\mathrel{\widehat=}$ 
+	<i>when</i>
+		<u>grd1_1:</u> $0 < b$
+    <u>grd1_2:</u> $a = 0$
+	<i>then</i>
+		<u>act1_1:</u> $b := b - 1$
+    <u>act1_2:</u> $c := c + 1$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code box" style="width: 35%;">
+$d \in \mathbb N$
+$0 < d$
+$n \in \mathbb N$
+$n \leq d$
+$a \in \mathbb N$
+$b \in \mathbb N$
+$c \in \mathbb N$
+$a + b + c = n$
+$a = 0 \lor c = 0$
+$0 < a$
+$\vdash$
+$2 \times a + (b-1) < 2 \times a + b$
+</pre>
+<div style="width: 10%;"></div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Superposition <br> (not covered in this tutorial)</h2>
+
+<div class="center-divs">
+	<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 35%;">
+Abstract_Event $\mathrel{\widehat=}$ 
+	<i>when</i>
+		$G(c,u,v)$
+	<i>then</i>
+		$u := E(c,u,v)$
+    <b>$v := M(c,u,v)$</b>
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+<pre id="eb" class="math-code" style="width: 35%;">
+Concrete_Event $\mathrel{\widehat=}$ 
+	<i>when</i>
+		$H(c,v,w)$
+	<i>then</i>
+		<b>$v := N(c,v,w)$</b>
+    $w := F(c,v,w)$
+	<i>end</i>
+</pre>
+		<div style="width: 10%;"></div>
+	</div>
+
+	<div class="center-divs skip" style="width: 80%;">
+<pre class="math-code" style="width: 40%;">
+$\text{Axioms}$ 
+$\text{Abstract Invariants}$
+$\text{Concrete Invariants}$
+$\text{Concrete Guard}$
+$\vdash$ 
+$\text{Same actions in}$ 
+$\text{common variables}$ 
+</pre>
+<pre class="math-code" style="width: 40%;">
+$A(c)$
+$I(c, v)$
+$J(c, v, w)$
+$H(c, w)$
+$\vdash$
+$M(c,u,v) = N(c,v,w)$
+</pre>
+<pre class="math-code" style="width: 20%;">
+SIM
+</pre>
+		</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3036,9 +3449,9 @@ $(a = 0 \lor c = 0)$
     <li class="fragment skip"><i>Animation features</i> are useful for infinite state machines, <br>not for verification, but for <i>debugging</i> and <i>testing</i>.</li>
   </ul>
 
-  <p>
+  <div id="default-block" class="d-skip left-content">
     <a href="https://prob.hhu.de/w/index.php?title=The_ProB_Animator_and_Model_Checker" target="_blank">ProB main web page</a>
-  </p>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -3230,6 +3643,10 @@ $(a = 0 \lor c = 0)$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Thank you</h1>
+  <div id="default-block" class="left-content">
+    Une grande partie de cette présentation a été réalisée en utilisant le livre <br>
+    <a href="https://www.event-b.org/abook.html" target="_blank">Modeling in Event-B: System and Software Engineering</a> 
+  </div>
 	<p>
 		<a href="2025-TAPAS-Event-B.pdf" target="_blank">PDF version of the slides</a>
 	</p>
