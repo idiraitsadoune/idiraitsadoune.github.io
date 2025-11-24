@@ -41,13 +41,13 @@
 	</div>
 
 	<div style="text-align: left">
-		<h2>The main title of the lecture <br> in two lines</h2>
-		<h3>The title of the chapter in one line</h3>
+		<h2>The main title of the lecture</h2>
+		<h3>The title of the chapter</h3>
 	</div>
 
 	<div class="description">
-		<span><span class="fa fa-graduation-cap">&#160;</span>The program name</span><br>
-		<span><span class="fa fa-university">&#160;</span>The university name - 2025/2026</span>
+		<span class="fa fa-graduation-cap"></span> The program name<br>
+		<span class="fa fa-university"></span> The university name - 2025/2026
 	</div>
 
 	<div class="hero-card-id">
@@ -56,7 +56,7 @@
 		</a>
 		<div class="hero-desc">
 			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+				<span class="hero-name"><strong>Idir AIT SADOUNE</strong></span>
 			</a>
 			<br>
 			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
@@ -133,15 +133,15 @@
 
 	<ul>
 		<li class="fragment">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Maecenas egestas</b> nulla 
-			at nibh volutpat. Lorem ipsum dolor sit amet. 
+			<b>Maecenas egestas</b> nulla at nibh volutpat. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. 
 			<ul>
 				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit amet.</li>
+					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. </li>
 				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit <i>$2006$</i> </li>
+					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit <i>$2006$</i> Lorem ipsum dolor sit amet. </li>
 			</ul>
 		</li>
+
 		<li class="fragment skip">
 			Action de présenter quelque chose au <b>public</b> :
 			<ul>
@@ -149,9 +149,10 @@
 				<li class="fragment">ranger des objets &#10144; dans un sac par exemple, </li>
 			</ul>
 		</li>
+
 		<li class="fragment d-skip">
 			<cs-code>void assertEquals(Object e, Object a)</cs-code><br>
-			vérifie l'égalité entre deux objets : <cs-i>$A = B$</cs-i>.
+			vérifie l'égalité entre deux objets $\to$ <cs-i>$A = B$</cs-i>.
 		</li>
 	</ul>
 
@@ -164,35 +165,39 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Le titre de la slide</h2>
 
-	<ul id="fleche">
+	<div class="left-content">
+		<ul id="fleche">
 		<li>Lorem ipsum dolor sit amet, <i>consectetur</i> adipiscing elit. <b>Maecenas egestas</b> nulla
 			at nibh volutpat. Lorem ipsum dolor sit amet.
-			<ul>
-				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-			</ul>
 		</li>
-	</ul>
-	<br>
+	</ul><br>
+	<ul>
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+		</ul>
+	</ul><br>
 
 	<ul id="ok">
 		<li class="skip fragment">Lorem ipsum dolor sit amet, <green-i>consectetur</green-i> adipiscing elit. <green-b>Maecenas egestas</green-b> nulla
 			at nibh volutpat. Lorem ipsum dolor sit amet.
-			<ul>
-				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-			</ul>
 		</li>
-	</ul>
-	<br>
+	</ul><br>
+	<ul>
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+		</ul>
+	</ul><br>
 
 	<ul id="ko">
 		<li class="skip fragment">Lorem ipsum dolor sit amet, <red-i>consectetur</red-i> adipiscing elit. <red-b>Maecenas egestas</red-b> nulla 
 			at nibh volutpat. Lorem ipsum dolor sit amet.
-			<ul>
-				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-			</ul>
 		</li>
-	</ul>
-	<br>
+	</ul><br>
+	<ul>
+		<ul>
+			<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+		</ul>
+	</ul><br>
 
 	<ul>
 		<li class="skip fragment">Lorem ipsum dolor sit amet, <cs-i>consectetur</cs-i> adipiscing elit. <em>Maecenas egestas</em> nulla
@@ -202,7 +207,8 @@
 			</ul>
 		</li>
 	</ul>
-
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -215,25 +221,22 @@
 			<li>
 				<red-b>Problème</red-b>
 			</li>
-		</ul>
-		<br>
-
+		</ul><br>
+		
 		<ul class="fragment">
 			<ul>
 				<li>Nécessité d'<i>accéder au</i> <b>FCB</b> à <i>chaque opération</i> sur le fichier</li>
 				<li>Le <b>FCB</b> est stocké dans le répertoire du périphérique</li>
 				<li>Très coûteux en <i>accès disque</i> (donc en temps)!</li>
 			</ul>
-		</ul>
-		<br>
-
+		</ul><br>
+		
 		<ul id="ok" class="fragment skip">
 			<li>
 				<green-b>Solution</green-b>
 			</li>
-		</ul>
-		<br>
-
+		</ul><br>
+		
 		<ul class="fragment">
 			<ul>
 				<li>L'appel système <cs-code>open</cs-code> permet de <i>charger</i> le <b>FCB</b> <i>en mémoire</i>.
@@ -302,7 +305,7 @@
 	<h2>Block à la taille d'un texte</h2>
 
 	<div id="green-block">
-		<b>Solution</b> $\to$ paginer la table des pages  <br>
+		<b>Solution</b> $\to$ paginer la table des pages 
 	
 		<ul id="fleche" class="skip">
 			<li>ne charger que les tables utiles</li>
