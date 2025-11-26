@@ -291,20 +291,6 @@
 
 /* ****************************************************** */
 /* main page style */
-.header-logo{
-	height: 90px; 
-	margin-bottom: 60px; 
-	display: flex; 
-	justify-content: space-between; 
-}
-
-.left-logo{
-	text-align: left;
-}
-
-.right-logo{
-	text-align: right;
-}
 
 .description{
 	font-size: 18px;
