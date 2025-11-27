@@ -284,32 +284,160 @@
 
 	<ul>
 		<li class="fragment">
-			<b>Nature des enseignements</b>
+			<b>Nature des enseignements et supports</b>
 			<ul>
 				<li>cours/TD/TP $\to$ 9 séances $\times$ 4h</li>
-				<li>Supports du cours $\to$ <a href="https://cours.iut-orsay.fr/course/view.php?id=4063" target="_blank">la page du cours</a></li>
+				<li>supports et ressources $\to$ la page du cours sur <a href="https://cours.iut-orsay.fr/course/view.php?id=4063" target="_blank">cours.iut-orsay.fr</a></li>
 			</ul>
 		</li>
 		<li class="fragment skip">
-			<b>Questions</b>
+			<b>Interactions et communication</b>
 			<ul>
-				<li>Avant, pendant et après le cours</li>
-				<li class="fragment">En dehors du cours
-					<ul id="fleche">
-						<li><a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">idir.ait-sadoune@universite-paris-saclay.fr</a></li>
-					</ul>
-				</li>
+				<li>en présentiel $\to$ avant, pendant et après les cours </li>
+				<li class="fragment">en dehors du cours $\to$ <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">idir.ait-sadoune@universite-paris-saclay.fr</a></li>
 			</ul>
 		</li>
 		<li class="fragment skip"><b>Evaluation</b>
-			<ul id="fleche">
-				<li>$N_1$ = Moyenne des TPs</li>
-				<li>$N_2$ = (DS1 + DS2) / 2</li>
-        <li>Note finale = ($N_1$ $\times$ $0.4$) + ($N_2$ $\times$ $0.6$)</li>
+			<ul>
+				<li>$N_1$ $=$ Moyenne des TPs</li>
+				<li>$N_2$ $=$ ($DS_1$ $+$ $DS_2$) $/$ $2$</li>
+        <li>note finale $=$ ($N_1$ $\times$ $0.4$) $+$ ($N_2$ $\times$ $0.6$)</li>
 			</ul>
 		</li>
   </ul>
     
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Qu'est ce qu'un modèle ?</h2>
+
+	<ul>
+		<li class="fragment">Un <b>modèle</b> est une <i>représentation/simplification/abstraction</i> de la réalité
+			<ul><li>mieux comprendre le sujet (le problème) étudié</li></ul>
+		</li>
+
+		<li class="skip fragment">Différents modèles d'un avion</li>	
+	</ul>
+	<div class="fragment" style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
+		<img src="./img/schema.jpg" height="200px">
+		<img src="./img/maquette.jpg" height="200px">
+		<img src="./img/simulateur.jpg" height="200px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Qu'est ce qu'un modèle <br> en informatique ?</h2>
+
+	<ul>
+		<li>
+			Un <b>modèle</b> est une <i>représentation d'un système</i>, établie dans un objectif.
+		</li> 
+
+		<li class="fragment skip">
+			Un <b>modèle</b> doit permettre de <i>répondre à des questions</i> sur le système.
+			<ul>
+				<li>mieux comprendre les systèmes complexes.</li>
+			</ul>
+		</li>
+
+
+		<li class="fragment skip">
+			Un <b>modèle</b> a pour objectif de <i>structurer</i>:
+			<ul>
+				<li><i>les informations</i> (données)</li>
+				<li>et les <i>activités</i> (traitements) d'un système.</li>
+			</ul>
+		</li>
+		
+		<li class="fragment skip">
+			L'<b>activité de modélisation</b> consiste à <i>décrire de manière non ambiguë</i><br>  le fonctionnement futur du système afin d'en faciliter la réalisation ;
+			<ul>
+				<li class="fragment"><i>Spécification du système</i> $\to$ description des fonctionnalités du système ;</li>
+				<li class="fragment"><i>Conception de l'architecture</i> $\to$ description de la structure générale du système ; </li>
+				<li class="fragment"><i>Conception détaillée</i> $\to$ description des algorithmes et des structures de données ;</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes de conception</h2>
+
+	<ul>
+		<li><b>Une méthode de conception</b> est une démarche qui a pour objectif<br> 
+		la <i>formalisation des différentes étapes du développement</i> d'un système.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> vise à produire un système le plus fidèle<br> aux besoins du client.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> fournit une <i>méthodologie</i>.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> fournit également des <i>notations standards</i> permettant de concevoir des logiciels de qualité.</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes de conception</h2>
+
+	<ul>
+		<li>
+			Il existe différentes manières pour classer les méthodes de conception. <br>
+			Nous citons les approches <b>fonctionnelle</b> et <b>orientée objet</b>:
+			<ul>
+				<li class="fragment">
+					<b>la conception fonctionnelle (procédurale)</b><br>
+					un système est vu comme un ensemble hiérarchique de fonctions. 
+					<img class="center-content" src="../TEX-figures/func_approach.svg" height="110px">
+				</li>
+
+				<li class="fragment">
+					<b>la conception orientée objet</b><br>
+					un système est un ensemble d'objets en interaction. 
+					<img class="center-content" src="../TEX-figures/oo_approach.svg" height="170px">
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Concepts importants <br> de l'approche objet</h2>
+
+	<div>
+		<img src="../TEX-figures/oo_concepts.svg" alt="" height="300px">
+	</div>
+
+	<div id="default-block" class="fragment left-content">
+		<ul>
+			<li><b>UML</b> est <i>une méthode de conception</i> orientée objet</li>
+			<li class="fragment"><b>Java</b> est <i>un langage de programmation</i> orienté objet</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Exercice d'évaluation</h2>
+
+	<div class="left-content">
+		L'objectif de cet exercice est de proposer un diagramme de classes représentant aussi fidèlement que possible le domaine décrit ci-dessous.
+		<ul>
+			<li>Une école élémentaire est située dans une commune (nom, code postal), <br>elle est constituée de plusieurs classes.</li>
+			<li>Une classe regroupe des élèves d'un seul niveau : CP, CE1, CE2, CM1, CM2.</li>
+			<li>À chaque classe est affecté un professeur.</li>
+			<li>Parmi les professeurs qui enseignent dans cette école, il y a le directeur<br> ou la directrice de cette école.</li>
+			<li>Chaque élève a un ou deux responsables identifiés.</li>
+			<li>Le programme d'une classe est fixée par son niveau ; un programme est un ensemble de compétences.</li>
+			<li>À la fin de l'année scolaire, chaque élève d'une classe se voit attribuer une note, par le professeur de la classe, pour chaque compétence correspondant à son niveau.</li>
+		</ul>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
