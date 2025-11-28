@@ -3,18 +3,20 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Qualité de développement : Diagramme UML de cas d'utilisation</title>
+	<title>Conception Orientée Objet - COO : Diagramme UML de cas d'utilisation</title>
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../resources/css/slides-style.css">
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -27,46 +29,45 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
-    
-  <div class="header-logo">
-    <div class="left-logo">
-      <a href="https://lmf.cnrs.fr/" target="_blank">
-        <img  src="../resources/img/logo-aff.png" alt="">
-      </a>
-    </div>
-    <div class="right-logo">
-      <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-        <img src="./img/iut-logo.png" alt="">
-      </a>
-    </div>
-  </div>
-  
-  <div style="text-align: left">
-    <h2>Qualité de développement</h2>
-    <h3>Diagramme UML de cas d'utilisation</h3>
-  </div>
-      
-  <div class="description">
-    <span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
-    <span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
-  </div>
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
 
-  <div class="hero-card-id">
-    <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-      <img src="../resources/img/idir.png" class="hero-user">
-    </a>
-    <div class="hero-desc">
-      <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-        <span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
-      </a>
-      <br>
-      <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-      </a>
-    </div>
-  </div>
-   
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
+    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
+		</a>
+    <a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a> 
+	</div>
+
+	<div style="text-align: left">
+		<h2>Conception Orientée Objet - COO</h2>
+		<h3>Diagramme UML de cas d'utilisation</h3>
+	</div>
+
+	<div class="description">
+		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
+		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+			</a>
+		</div>
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -83,17 +84,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Cycle de développement</h2>
+	<h2>Cycle de développement</h2>
 
-	<div class="r-stack">
-		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_1.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_2.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_3.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_4.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in" src="./../CS-2A-ST58/img/cycle_v_5.svg" height="auto" width="900px" alt="">
+	<div>
+		<img src="../TEX-figures/cycle-en-v/cycle-en-v-1.svg" height="auto" width="1064px" alt="">
 	</div>
 
-	<div class="fragment">
+  <div class="fragment">
 		Ce cours se positionne dans les étapes <b>Analyse</b> et <b>Spécification</b>.
 	</div>
 
@@ -104,10 +101,12 @@
   <h2>Cas d'utilisation</h2>
   
   <ul>
-    <li><b>Objectif</b> : Comprendre les <i>besoins du client</i> pour rédiger <br> 
-        le <i>cahier des charges fonctionnel</i>.</li>
+    <li><b>Objectif</b>
+      <ul><li>comprendre les <i>besoins du client</i> pour rédiger
+        le <i>cahier des charges fonctionnel</i>.</li></ul>
+      </li>
 
-    <li class="fragment skip"><b>Questions</b> :
+    <li class="fragment skip"><b>Questions</b>
       <ol>
         <li class="fragment">à quoi sert le système ? (<i>les utilisations principales</i>)</li>
         <li class="fragment">qui va utiliser ou interagir avec le système ? (<i>l'environnement</i>)</li>
@@ -129,13 +128,13 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="Diagramme de cas d'utilisation"></section>
+<section id="ch2" name="Diagrammes de cas d'utilisation"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
+  <h2>Les cas d'utilisation</h2>
 
   <p class="fragment">
       Les <b>cas d'utilisation</b> constituent 
@@ -151,7 +150,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
+  <h2>Les utilisateurs des cas d'utilisation</h2>
 
   <p>
       Un <b>cas d'utilisation</b> permet de <u>décrire l'interaction</u> <br>
@@ -166,7 +165,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
+  <h2>relation entre acteurs et cas d'utilisation</h2>
     
   <ul>
     <li>La représentation d'un <b>cas d'utilisation</b> met en jeu <i>trois concepts</i> : 
@@ -186,8 +185,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
-  <h3>Les associations</h3>
+  <h2 style="margin-bottom: 5px;">relation entre acteurs et cas d'utilisation</h2>
+  <h3>relation d'inclusion</h3>
 
   <p>
       <b>Une relation d'inclusion</b> : un cas d'utilisation A <u>inclut</u><br> 
@@ -202,8 +201,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
-  <h3>Les associations</h3>
+  <h2 style="margin-bottom: 5px;">relation entre acteurs et cas d'utilisation</h2>
+  <h3>relation d'extension</h3>
 
   <p>
       <b>Une relation d'extension</b> : un cas d'utilisation A <u>peut être déclenché</u> <br>
@@ -218,8 +217,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Diagramme de cas d'utilisation</h2>
-  <h3>Les associations</h3>
+  <h2 style="margin-bottom: 5px;">relation entre acteurs et cas d'utilisation</h2>
+  <h3>relation de généralisation</h3>
 
   <p>
       <b>Une relation de généralisation</b> : un cas d'utilisation peut être définie <br>
@@ -235,12 +234,37 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Conseils</h2>
+
+  <div class="left-content">
+    <b>Rester lisible</b><br>
+    <ul>
+      <li class="fragment skip">Pas de plus de 6 à 8 cas dans un duagramme</li>
+      <li class="fragment skip">Au besoin, faire plusieurs diagrammes <br>
+      (si cas disjoints entre acteurs, pour détailler un cas, ...)</li>
+      <li class="fragment skip">Relations entre cas seulement si nécessaires et pas trop lourdes</li>
+    </ul>
+    <br><br>
+    <span class="fragment skip">Pour les détails, <i>privilégier la description textuelle</i></span>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Scénarios détaillés"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
   <h2>Bilan</h2>
   
   <ul>
-    <li class="fragment"><b>Diagrammes de cas d'utilisation</b>
-      <ul id="ok"><li><b style="color: green; ">Utiles</b> pour la discussion avec le client (intuitifs et concis)</li></ul>
-      <ul id="ko"><li><b style="color: red; ">Pas suffisant</b> pour l'équipe de développement</li></ul>
+    <li><b>Diagrammes de cas d'utilisation</b>
+      <ul id="ok"><li><green-b>Utiles</green-b> pour la discussion avec le client (intuitifs et concis)</li></ul>
+      <ul id="ko"><li><red-b>Pas suffisant</red-b> pour l'équipe de développement</li></ul>
     </li>
 
     <li class="fragment skip"><b>Que faire ?</b>
@@ -253,32 +277,55 @@
         </li>
         <li class="fragment skip">
           <b>Objectif</b> :  détailler <u>la chronologie des interactions</u> 
-          entre les acteurs<br> et le système pour réaliser un cas d'utilisation
+          entre les acteurs et le système<br> pour réaliser un cas d'utilisation
         </li>
       </ul>
     </li>
   </ul>
 
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="Description textuelle"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
+  <h2>Cas d'utilisation détaillé</h2>
   
+  <div class="left-content" >
+    <div style="float: right; height: auto; width: 480px;">
+      <img src="./img/text-use-case.jpg" alt="">
+    </div>
+    Description textuelle d'un cas d'utilisation
+      <ul style="display: block;">
+        <li><i>Nom</i> du cas d'utilisation</li>
+        <li>Brève description</li>
+        <li><i>Acteurs</i></li>
+        <li><i>Context</i></li>
+        <li class="fragment">Données en entrée et pré-conditions</li>
+        <li class="fragment">Données en sortie et post-condition</li>
+        <li class="fragment"><i>Scénario principal</i> pour ce cas d'utilisation : étapes à suivre pour réaliser ce cas</li>
+        <li class="fragment"><i>Variantes, cas d'erreur</i> : dérivation des étapes du scénario principal, scénario alternatifs, scénarios d'erreur</li>
+      </ul>
+  </div>
+  
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Exemple</h2>
+
   <ul>
-    <li class="fragment"><b>La fiche descriptive</b> se compose de <i>4 parties</i> :
+    <li><i>Nom</i> : Commander</li>
+    <li><i>Acteur</i> : Client</li>
+    <li><i>Données d'éntrée</i> : Produits sélectionnés par le client</li>
+    <li>Le cas d'utilisation commence lorsque le client clique sur le bouton <em>"Commander"</em></li>
+    <li class="fragment">
+      <i>Scénario principal</i>
       <ol>
-        <li>l'identification</li>
-        <li>la description des scénarios</li>
-        <li>la fin et les postes-condition</li>
-        <li>les compléments </li>
+        <li>Le système demande au client de saisir son identifiant et son mot de passe</li>
+        <li>Le client saisit son identifiant et son mot de passe et valide</li>
+        <li>Le système demande au client de choisir son adresse de livraison parmi sa liste d'adresses ou d'en saisir une nouvelle</li>
+        <li>Le client choisit une adresse de livraison et valide</li>
+        <li>Le système demande au client de choisir un mode d'expédition parmi une liste prédéfinie (à préciser)</li>
+        <li>Le client choisit un mode d'expédition et valide</li>
       </ol>
     </li>
   </ul>
@@ -287,22 +334,19 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>1 - L'identification</h3>
+  <h2>Exemple</h2>
 
   <ul>
-    <li>La partie identification contient les informations suivantes :
-      <ul>
-        <li class="fragment skip"><b>Cas numéro</b> : le numéro du cas d'utilisation ;</li>
-        <li class="fragment"><b>Nom</b> : le nom du cas d'utilisation ;</li>
-        <li class="fragment"><b>Acteur(s)</b> : l'acteur (ou les acteurs) ;</li>
-        <li class="fragment"><b>Description</b> : une description succincte du cas d'utilisation ;</li>
-        <li class="fragment"><b>Auteur(s) et Date(s)</b> : la date de rédaction de la fiche et l'auteur, <br>
-            les dates de mise à jour et les auteurs successifs ;</li>
-        <li class="fragment"><b>Pré-conditions</b> : les conditions obligatoires au bon déroulement <br>
-            du cas d'utilisation ;</li>
-        <li class="fragment"><b>Démarrage</b> : les événements à l'origine du démarrage du cas d'utilisation;</li>
-      </ul>
+    <li>
+      <i>Scénario principal</i>
+      <ol start="6">
+        <li>...</li>
+        <li>Le système affiche un récapitulatif de la commande, indique le montant total de la livraison et demande au client de choisir un mode de paiement parmi une liste prédéfinie (à préciser)</li>
+        <li>Le client choisit un mode de paiement et valide</li>
+        <li>Le système demande au client de saisir ses informations de paiement</li>
+        <li>Le client saisit ses informations de paiement et valide</li>
+        <li>Le système informe le client que la transaction s'est effectuée correctement et un e-mail récapitulatif de la commande est envoyé au client</li>
+      </ol>
     </li>
   </ul>
 
@@ -310,329 +354,154 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>1 - L'identification - exemple</h3>
+  <h2>Exemple</h2>
 
-  <ul>
-    <li class="fragment"><b>Cas numéro</b> : 1</li>
-    <li class="fragment"><b>Nom</b> : Consulter catalogue produits;</li>
-    <li class="fragment"><b>Acteur(s)</b> : Acheteur</li>
-    <li class="fragment"><b>Description</b> : La consultation du catalogue doit être possible <br>
-        pour un client ainsi que pour les commerciaux de l'entreprise;</li>
-    <li class="fragment"><b>Auteur(s) et Date(s)</b> : Idir AS (10/11/2023);</li>
-    <li class="fragment"><b>Pré-conditions</b> : L'utilisateur doit être authentifié en tant que client <br>
-        ou commercial;</li>
-    <li class="fragment"><b>Démarrage</b> : L'utilisateur a demandé la page "Consultation catalogue";</li>
-  </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>2 - La description des scénarios</h3>
-
-  <div class="left-content">
-    <p>La partie scénarios contient 3 catégories :</p>
-    <ol>
-      <li class="fragment skip"><b>Le scénario nominal</b> : décrire le scénario principal
-          pour la réalisation <br> de la fonction;</li>
-      <li class="fragment skip"><b>Les scénarios alternatifs</b> : décrire les actions alternatives liées <br>
-          aux choix/comportements de l'utilisateur (liées à des <u>conditions</u>).</li>
-      <li class="fragment skip"><b>Les scénarios d'exception</b> : décrire les actions à faire <br>
-          lorsqu'un scénario est perturbé par <u>un événement non désiré</u>.</li>
-    </ol>
+  <div style="font-size: 20px;"> 
+    <ul>
+      <li>
+        <i>Scénario principal</i>
+        <ol>
+          <li>Le système demande au client de saisir son identifiant et son mot de passe</li>
+          <li>Le client saisit son identifiant et son mot de passe et valide</li>
+          <li>Le système demande au client de choisir son adresse de livraison parmi sa liste d'adresses ou d'en saisir une nouvelle
+            <ul>
+              <li><red-i>Scénario d'erreur</red-i> : Client inconnu <br>
+              3.a - Le client n'est pas connu du système. Le système affiche un message d'erreur <br>
+              Retour à l'étape 1</li>
+            </ul>
+          </li>
+          <li>Le client choisit une adresse de livraison et valide
+            <ul>
+              <li><green-i>Scénario alternatif</green-i> : Nouvelle adresse de livraison <br>
+              4-a - Le client saisit une nouvelle adresse de livraison et valide</li>
+            </ul>
+          </li>
+          <li>Le système demande au client de choisir un mode d'expédition parmi une liste prédéfinie (à préciser)</li>
+          <li>Le client choisit un mode d'expédition et valide</li>
+          <li>Le système affiche un récapitulatif de la commande, indique le montant total de la livraison et demande au client de choisir un mode de paiement parmi une liste prédéfinie (à préciser)</li>
+          <li>Le client choisit un mode de paiement et valide
+            <ul>
+              <li><green-i>Scénario alternatif</green-i> : Modification des choix de livraison<br>
+                8-a - Le client demande à modifier son adresse de livraison<br>
+              Retour à l'étape 3.<br>
+                8-b - Le client demande à modifier le mode de livraison<br>
+              Retour à l'étape 5.</li>
+            </ul>
+          </li>
+          <li>Le système demande au client de saisir ses informations de paiement</li>
+          <li>Le client saisit ses informations de paiement et valide</li>
+          <li>Le système informe le client que la transaction s'est effectuée correctement et un e-mail récapitulatif de la commande est envoyé au client
+            <ul>
+              <li><red-i>Scénario d'erreur</red-i> : Transaction impossible<br>
+              11-a - Le système informe le client que ses informations de paiement sont incorrectes<br>
+            Retour à l'étape 9.</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
   </div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>Exemple d'un scénario nominal</h3>
-   
-  <ol>
-    <li class="fragment">Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
-    <li class="fragment">L'<b>utilisateur</b> sélectionne une des catégories.</li>
-    <li class="fragment">Le <b>système</b> recherche les produits de la catégorie sélectionnée.</li>
-    <li class="fragment">Le <b>système</b> affiche une description et une photo par produit.</li>
-    <li class="fragment">L'<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
-    <li class="fragment">Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
-    <li class="fragment">L'<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
-    <li class="fragment">Retour à l'étape 4  </li>
-  </ol>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>Exemples de scénarios alternatifs</h3>
-
-  <ol>
-    <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
-    <li>L'<b>utilisateur</b> sélectionne une des catégories.
-      <ul id="fleche">
-        <li><b>2.a</b> L'<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
-        <li><b>2.b</b> L'<b>utilisateur</b> quitte la consultation du catalogue.</li>
-      </ul>
-    </li>
-    <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.</li>
-    <li>Le <b>système</b> affiche une description et une photo par produit.</li>
-    <li>L'<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
-    <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
-    <li>L'<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
-    <li>Retour à l'étape 4  </li>
-  </ol>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>Exemple de scénarios d'exception</h3>
   
-  <ol>
-    <li>Le <b>système</b> affiche la page de la liste les catégories de produits.</li>
-    <li>L'<b>utilisateur</b> sélectionne une des catégories.
-      <ul id="fleche">
-        <li><b>2.a</b> L'<b>utilisateur</b> quitte la consultation de la catégorie de produits. </li>
-        <li><b>2.b</b> L'<b>utilisateur</b> quitte la consultation du catalogue.</li>
-      </ul>
-    </li>
-    <li>Le <b>système</b> recherche les produits de la catégorie sélectionnée.
-      <ul id="ko">
-        <li><b>3.a</b> La connexion à la BDD échoue : le <b>système</b> affiche une erreur.</li>
-      </ul>
-    </li>
-    <li>Le <b>système</b> affiche une description et une photo par produit.</li>
-    <li>L'<b>utilisateur</b> peut sélectionner un produit parmi ceux affichés.</li>
-    <li>Le <b>système</b> affiche les informations détaillées du produit choisi.</li>
-    <li>L'<b>utilisateur</b> peut ensuite quitter cette description détaillée.</li>
-    <li>Retour à l'étape 4  </li>
-  </ol>
-
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>3 - La fin et les post-conditions</h3>
- 
-  <ul>
-    <li class="fragment">
-      <b>La fin</b> : décrit les actions qui terminent le cas d'utilisation.
-      <ul>
-        <li class="fragment"><b>Exemple</b> : les étapes <b>2</b>, <b>5</b> et <b>7</b> dans le sénarios nominal
-          <ul id="fleche">
-            <li>L'<b>utilisateur</b> ferme la fenêtre.</li>
-          </ul>
+  <h2>Exemple de liens entre diagramme et texte</h2>
+
+  <div class="center-divs">
+    <div style="flex: 2;">
+			<img src="../TEX-figures/cas_utilisation/commander.svg" alt="" style="width: 90%;">
+		</div>
+
+		<div style="flex: 2; font-size: 28px;">
+			<ul>
+				<li><em>"Commander"</em></li>
+        <li>Acteur : Client</li>
+        <li>Le cas commence lorsque le client clique sur "Commander"</li>
+        <li>Scénario principal
+          <ol>
+            <li>Déclenchement du cas <em>"S'identifier"</em></li>
+            <li>Fin du cas <em>"S'identifier"</em></li>
+            <li>...
+              <ul>
+                <li>Scénario alternatif <br>
+                  3.a - Le client choisit de prendre une assurance<br>
+                Déclenchement du cas <em>"Souscrire une assurance"</em></li>
+              </ul>
+            </li>
+          </ol>
+           <ul>
+                <li>4.1 - L'objet de la commande est un produit<br>
+                Déclechement du cas <em>"Commander un produit"</em></li>
+                <li>4.2 - L'objet de la commande est un service<br>
+                Déclechement du cas <em>"Commander un service"</em></li>
+              </ul>
         </li>
-      </ul>
-    </li>
+			</ul>
+		</div>
 
-    <li class="fragment skip">
-      <b>Les post-conditions</b> : définissent les résultats 
-      et les conditions <br> à vérifier après l'exécution du cas d'utilisation.
-      <ul>
-        <li class="fragment"><b>Exemple</b> : les préférences de l'utilisateur ont été mis 
-            à jours avec la liste <br> des produits visités.
-        </li>
-      </ul>
-    </li>
-  </ul>
+   
+	</div>
 
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>La fiche descriptive</h2>
-  <h3>4 - Les compléments</h3>
-    
-  <ul>
-    <li class="fragment">
-      Les <b>compléments</b> peuvent porter sur des sujets variés :
-      <ul id="fleche"><li> ergonomie, performances, questions non résolues, ... </li></ul>
-    </li>
 
-    <li class="skip fragment">
-      <b>Exemples :</b>
-      <ul>
-        <li class="fragment">
-          <b>Ergonomie</b>
-          <ul>
-              <li>l'affichage des produits d'une catégorie par groupe de 15. </li>
-              <li>l'utilisateur pourra choisir des pages avec 30, 45 ou 60 produits.</li>
-          </ul>
-        </li>
-        <li class="fragment">
-          <b>Performances</b>
-          <ul><li>la recherche et l'affichage des produits doivent se faire en moins
-              de 10 sec.</li></ul>
-        </li>
-        <li class="fragment">
-          <b>Questions non résolues</b>
-          <ul><li>le critère d'affichage (prix, taille, disponibilité, ...)</li></ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch4" name="Exemple détaillé"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Enregistrer un achat</h2>
-
-  <div>
-    <img src="./img/11-uml-09.svg" height="400px"/>
-  </div>
-    
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-markdown data-auto-animate data-transition="fade-in fade-out">
-  <script type="text/template">
-    ## Identification
-
-    - **Cas numéro** : 2;
-    - **Nom** : Enregistrer un achat;
-    - **Acteur(s)** : Utilisateur;
-    - **Description** : L'enregistrement d'un achat doit être en ligne,\
-      par un client ou par les commerciaux de l'entreprise.\
-    L'enregistrement comprend les produits demandés et le règlement;
-    - **Auteur(s) et Date(s)** : Idir AS (10/11/2013);
-    - **Pré-conditions** : L'utilisateur doit être authentifié en tant que client\
-      ou commercial;
-    - **Démarrage** : L'utilisateur demande la page "Enregistrer des achats";            
-  </script>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-markdown data-auto-animate data-transition="fade-in fade-out">
-  <script type="text/template">
-    ## Le scénario nominal
-
-    1. Le **système** vérifie le type d'utilisateur connecté
-    1. Le **système** affiche des informations concernant le client
-    1. Le **système** fait appel au cas d'utilisation interne\
-    "Constituer panier"
-    1. Le **système** fait appel au cas d'utilisation interne\
-    "Saisir information pour livraison"
-    1. Le **système** fait appel au cas d'utilisation interne\
-    "Enregistrer le règlement"
-    1. Le **système** enregistre définitivement l'achat
-    1. Le **système** affiche le récapitulatif de l'achat.                  
-  </script>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-markdown data-auto-animate data-transition="fade-in fade-out">
-  <script type="text/template">
-    ## Le scénario alternatif
-
-    - **2.a** Si l'utilisateur est le commercial,\
-    le **système** fait appel au cas d'utilisation interne "sélectionner un client"                            
-  </script>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-markdown data-auto-animate data-transition="fade-in fade-out">
-  <script type="text/template">
-    ## Les scénarios d'exception
-
-    - **2.b** Le **système** n'affiche aucun utilisateur sélectionné : 
-        - Le **système** affiche "Veuillez sélectionner le client concerné\
-          par l'achat" (*retour à l'étape 2*).
-    - **5.a** L'enregistrement du règlement échoue : 
-        - Le **système** récapitule les informations dans un message envoyé\
-          au département commercial (*arrêt du cas d'utilisation*).
-    - **6.a** L'enregistrement définitif de l'achat échoue : 
-        - Le **système** récapitule les informations dans un message envoyé\
-          au département commercial (*arrêt du cas d'utilisation*).                     
-  </script>
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-markdown data-auto-animate data-transition="fade-in fade-out">
-  <script type="text/template">
-    ## La fin et les posts-condition 
-
-    - **Fin** :
-        - *scénario nominal* : l'étape **7**  
-        - *scénarios d'exception* : les étapes **5.a** et **6.a** 
-
-    - **Posts-condition** :
-        - *scénario nominal* : l'achat et son règlement enregistrés dans la base\
-          de données.
-        - *scénarios d'exception* : l'achat récapitulé dans un message envoyé\
-          au service commercial.                      
-  </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h1>Merci</h1>
+	<h1>Merci</h1>
 	<p>
-		<a href="./1-uml-diagramme-cas-utilisation.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./1-uml-diagramme-cas-utilisation.html" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>		
+	</p>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    </div>
-  </div>
+		</div>
+	</div>
+	
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 
-  <script src="../resources/js/plan.js"></script>
-  <script src="../reveal-js-framework/dist/reveal.js"></script>
-  <script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
-  <script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
-  <script src="../reveal-js-framework/plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
 
-  <script>
-    // More info about initialization & config:
-    // - https://revealjs.com/initialization/
-    // - https://revealjs.com/config/
-    Reveal.initialize({
-      // Display presentation control arrows
-      controls: true,
-      // Display a presentation progress bar
-      progress: true,
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
 
-      // Vertical centering of slides
-      center: true,
-      // The "normal" size of the presentation, aspect ratio will
-      // be preserved when the presentation is scaled to fit different
-      // resolutions. Can be specified using percentage units.
-      width: 1280,
-      height: 720,
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
 
-      // Add the current slide number to the URL hash so that reloading the
-      // page/copying the URL will return you to the same slide
-      hash: true,
+			slideNumber: 'c/t',
 
-      slideNumber: 'c/t',
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
 
-      // Learn about plugins: https://revealjs.com/plugins/
-      plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight]
-    });
-
-    Reveal.configure({ pdfSeparateFragments: false });
-  </script>
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
 
 </body>
 </html>

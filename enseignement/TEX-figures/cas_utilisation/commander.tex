@@ -1,0 +1,50 @@
+\documentclass{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[default,semibold]{../../../../../../Latex-workspace/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+
+\usepackage{pict2e}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{../../../../../../Latex-workspace/beamer-templates-v3/tikz-uml}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tikzpicture} 
+  \begin{umlsystem}{system name} 
+\umlactor[x=-5, y=0]{Internaute}
+
+\umlusecase[x=0, y=0,name=u1, width=2cm]{Commander}
+\umlusecase[x=0, y=-3,name=u2, width=2cm]{Souscrire une assurance}
+\umlusecase[x=5, y=3,name=u3, width=2cm]{S'identifier}
+\umlusecase[x=5, y=0,name=u4, width=2cm]{Commander un produit}
+\umlusecase[x=5, y=-3,name=u5, width=2cm]{Commander un service}
+
+\umlassoc{Internaute}{u1}
+
+\umlinclude{u1}{u3}
+\umlextend{u2}{u1}
+
+
+\umlinherit{u4}{u1}
+\umlinherit{u5}{u1}
+
+  \end{umlsystem}
+\end{tikzpicture}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
