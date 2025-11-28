@@ -21,24 +21,24 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tikzpicture} 
+\begin{tikzpicture}
   \begin{umlsystem}{system name} 
-\umlactor[x=-5, y=0]{Internaute}
+  \umlactor[x=-5, y=0, very thick]{Internaute}
 
-\umlusecase[x=0, y=0,name=u1, width=2cm]{Commander}
-\umlusecase[x=0, y=-3,name=u2, width=2cm]{Souscrire une assurance}
-\umlusecase[x=5, y=3,name=u3, width=2cm]{S'identifier}
-\umlusecase[x=5, y=0,name=u4, width=2cm]{Commander un produit}
-\umlusecase[x=5, y=-3,name=u5, width=2cm]{Commander un service}
+  \umlusecase[x=0, y=0,name=u1, width=2cm, very thick]{\bf Commander}
+  \umlusecase[x=0, y=-3,name=u2, width=2cm, very thick]{\bf Souscrire une assurance}
+  \umlusecase[x=5, y=3,name=u3, width=2cm, very thick]{\bf S'identifier}
+  \umlusecase[x=5, y=0,name=u4, width=2cm, very thick]{\bf Commander un produit}
+  \umlusecase[x=5, y=-3,name=u5, width=2cm, very thick]{\bf Commander un service}
 
-\umlassoc{Internaute}{u1}
+  \umlassoc[very thick]{Internaute}{u1}
 
-\umlinclude{u1}{u3}
-\umlextend{u2}{u1}
+  \umlinclude[very thick]{u1}{u3}
+  \umlextend[very thick]{u2}{u1}
 
 
-\umlinherit{u4}{u1}
-\umlinherit{u5}{u1}
+  \umlinherit[very thick]{u4}{u1}
+  \umlinherit[very thick]{u5}{u1}
 
   \end{umlsystem}
 \end{tikzpicture}
