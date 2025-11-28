@@ -24,11 +24,11 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tikzpicture}
-\node[draw, rounded corners=3pt](s0) at (0,0) {mainFunc};
+\begin{tikzpicture}[ultra thick]
+\node[draw, rounded corners=3pt](s0) at (0,0) {\bf mainFunc};
 
-\node[draw, rounded corners=3pt](s1) at (1,-1) {func1};
-\node[draw, rounded corners=3pt](s2) at (-1,-1) {func2};
+\node[draw, rounded corners=3pt](s1) at (1,-1) {\bf func1};
+\node[draw, rounded corners=3pt](s2) at (-1,-1) {\bf func2};
 
 \draw[->,>=latex] (s0) -- (s1);
 \draw[->,>=latex] (s0) -- (s2);

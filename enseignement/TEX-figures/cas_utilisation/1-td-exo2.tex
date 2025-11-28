@@ -1,0 +1,87 @@
+\documentclass{standalone}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[default,semibold]{../../../../../../Latex-workspace/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage{fontspec}
+\setmainfont{SourceSansPro}
+
+\usepackage{pict2e}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{../../../../../../Latex-workspace/beamer-templates-v3/tikz-uml}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The main document 
+\begin{document}     
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+
+\begin{umlsystem}[x=0, y=0]{Caisse} 
+
+\umlactor[x=-6, y=0]{Responsable}
+\umlusecase[x=0, y=0,name=u1]{Initialiser la caisse}
+\umlassoc{Responsable}{u1}
+
+\umlactor[x=-6, y=-6]{Caissier}
+\umlusecase[x=0, y=-6,name=u4]{Traiter passage en caisse}
+\umlusecase[x=2, y=-4,name=u3]{Enregistrer CPU}
+\umlinclude{u4}{u3}
+\umlusecase[x=8, y=-4,name=u5]{Afficher Infos}
+\umlinclude{u3}{u5}
+\umlusecase[x=7, y=-2,name=u2]{Enregistrer quantité}
+\umlextend{u2}{u3}
+\umlassoc{Caissier}{u4}
+
+\umlusecase[x=6, y=-8,name=u6]{Enregistrer coupon réduction}
+
+\umlextend{u6}{u4}
+
+\umlusecase[x=3, y=-10,name=u7]{Terminer vente}
+\umlusecase[x=6, y=-11.5,name=u8]{Afficher total}
+\umlinclude{u4}{u7}
+\umlinclude{u7}{u8}
+
+\umlusecase[x=-1, y=-14,name=u9]{Enregistrer payement}
+\umlinclude{u4}{u9}
+
+\umlusecase[x=-2, y=-16,name=u10]{Imprimer Ticket}
+\umlusecase[x=2, y=-16,name=u11]{Enregistrer vente}
+\umlinclude{u9}{u10}
+\umlinclude{u9}{u11}
+
+\umlusecase[x=5, y=-13,name=u12]{payer en espèces}
+\umlusecase[x=5, y=-14,name=u13]{payer en chèque}
+\umlusecase[x=5, y=-15,name=u14]{payer en CB}
+
+\umlinherit{u12}{u9}
+\umlinherit{u13}{u9}
+\umlinherit{u14}{u9}
+
+\umlusecase[x=12, y=-13,name=u15]{afficher monnaie}
+\umlinclude{u12}{u15}
+\umlusecase[x=12, y=-15,name=u16]{contacter CA}
+\umlinclude{u13}{u16}
+\umlinclude{u14}{u16}
+
+\umlactor[x=16, y=-15]{Centre autorisation}
+\umlactor[x=16, y=-17]{Systeme gestion stock}
+
+\umlassoc{u16}{Centre autorisation}
+\umlassoc{u11}{Systeme gestion stock}
+
+\end{umlsystem}
+
+\end{tikzpicture}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

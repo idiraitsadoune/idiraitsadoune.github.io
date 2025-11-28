@@ -22,24 +22,47 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tikzpicture}[ultra thick]
-  \begin{umlsystem}{system name} 
-  \umlactor[x=-5, y=0]{Internaute}
+  \begin{umlsystem}[x=0, y=0]{Gestion de bibliothèque} 
 
-  \umlusecase[x=0, y=0,name=u1, width=2cm]{\bf Commander}
-  \umlusecase[x=0, y=-3,name=u2, width=2cm]{\bf Souscrire une assurance}
-  \umlusecase[x=5, y=3,name=u3, width=2cm]{\bf S'identifier}
-  \umlusecase[x=5, y=0,name=u4, width=2cm]{\bf Commander un produit}
-  \umlusecase[x=5, y=-3,name=u5, width=2cm]{\bf Commander un service}
+\umlactor[x=-4, y=0]{Gestionnaire}
+\umlusecase[x=0, y=1,name=u1]{Inscrir}
+\umlusecase[x=0, y=-1,name=u2]{Relancer}
+\umlusecase[x=2, y=3,name=u3]{Payer les droits}
 
-  \umlassoc{Internaute}{u1}
+\umlassoc{Gestionnaire}{u1}
+\umlassoc{Gestionnaire}{u2}
+\umlinclude{u1}{u3}
 
-  \umlinclude{u1}{u3}
-  \umlextend{u2}{u1}
+\umlactor[x=6, y=0]{Etudiant}
+\umlassoc{Etudiant}{u1}
 
-  \umlinherit{u4}{u1}
-  \umlinherit{u5}{u1}
+\umlactor[x=9, y=0]{Etudiant Externe}
+\umlinherit{Etudiant Externe}{Etudiant}
 
-  \end{umlsystem}
+\umlactor[x=-4, y=-5]{Bibliothecaire}
+\umlusecase[x=0, y=-3,name=u4]{Emprunter}
+\umlusecase[x=0, y=-5,name=u5]{Restituter}
+\umlusecase[x=0, y=-7,name=u6]{Acquérir}
+\umlusecase[x=0, y=-9,name=u7]{Consulter}
+\umlusecase[x=3, y=-2,name=u8]{Prolonger}
+\umlinherit{u8}{u4}
+
+\umlassoc{Bibliothecaire}{u4}
+\umlassoc{Bibliothecaire}{u5}
+\umlassoc{Bibliothecaire}{u6}
+\umlassoc{Bibliothecaire}{u7}
+%\umlassoc{Bibliothecaire}{u8}
+
+\umlactor[x=6, y=-5]{Abonne}
+\umlassoc{Abonne}{u4}
+\umlassoc{Abonne}{u5}
+\umlassoc{Abonne}{u7}
+%\umlassoc{Abonne}{u8}
+\umlactor[x=9, y=-5]{Enseignant}
+\umlinherit{Etudiant}{Abonne}
+\umlinherit{Enseignant}{Abonne}
+
+\end{umlsystem}
 \end{tikzpicture}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
