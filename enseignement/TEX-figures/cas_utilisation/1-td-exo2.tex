@@ -21,52 +21,52 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+\begin{tikzpicture}[thick, scale=0.7, every node/.style={transform shape}]
 
 \begin{umlsystem}[x=0, y=0]{Caisse} 
 
 \umlactor[x=-6, y=0]{Responsable}
-\umlusecase[x=0, y=0,name=u1]{Initialiser la caisse}
+\umlusecase[x=0, y=0,name=u1, thick]{Initialiser la caisse}
 \umlassoc{Responsable}{u1}
 
 \umlactor[x=-6, y=-6]{Caissier}
-\umlusecase[x=0, y=-6,name=u4]{Traiter passage en caisse}
-\umlusecase[x=2, y=-4,name=u3]{Enregistrer CPU}
+\umlusecase[x=0, y=-6,name=u4, thick]{Traiter passage en caisse}
+\umlusecase[x=2, y=-4,name=u3, thick]{Enregistrer CPU}
 \umlinclude{u4}{u3}
-\umlusecase[x=8, y=-4,name=u5]{Afficher Infos}
+\umlusecase[x=8, y=-4,name=u5, thick]{Afficher Infos}
 \umlinclude{u3}{u5}
-\umlusecase[x=7, y=-2,name=u2]{Enregistrer quantité}
+\umlusecase[x=7, y=-2,name=u2, thick]{Enregistrer quantité}
 \umlextend{u2}{u3}
 \umlassoc{Caissier}{u4}
 
-\umlusecase[x=6, y=-8,name=u6]{Enregistrer coupon réduction}
+\umlusecase[x=6, y=-8,name=u6, thick]{Enregistrer coupon réduction}
 
 \umlextend{u6}{u4}
 
-\umlusecase[x=3, y=-10,name=u7]{Terminer vente}
-\umlusecase[x=6, y=-11.5,name=u8]{Afficher total}
+\umlusecase[x=3, y=-10,name=u7, thick]{Terminer vente}
+\umlusecase[x=6, y=-11.5,name=u8, thick]{Afficher total}
 \umlinclude{u4}{u7}
 \umlinclude{u7}{u8}
 
-\umlusecase[x=-1, y=-14,name=u9]{Enregistrer payement}
+\umlusecase[x=-1, y=-14,name=u9, thick]{Enregistrer payement}
 \umlinclude{u4}{u9}
 
-\umlusecase[x=-2, y=-16,name=u10]{Imprimer Ticket}
-\umlusecase[x=2, y=-16,name=u11]{Enregistrer vente}
+\umlusecase[x=-2, y=-16,name=u10, thick]{Imprimer Ticket}
+\umlusecase[x=2, y=-16,name=u11, thick]{Enregistrer vente}
 \umlinclude{u9}{u10}
 \umlinclude{u9}{u11}
 
-\umlusecase[x=5, y=-13,name=u12]{payer en espèces}
-\umlusecase[x=5, y=-14,name=u13]{payer en chèque}
-\umlusecase[x=5, y=-15,name=u14]{payer en CB}
+\umlusecase[x=5, y=-13,name=u12, thick]{payer en espèces}
+\umlusecase[x=5, y=-14,name=u13, thick]{payer en chèque}
+\umlusecase[x=5, y=-15,name=u14, thick]{payer en CB}
 
 \umlinherit{u12}{u9}
 \umlinherit{u13}{u9}
 \umlinherit{u14}{u9}
 
-\umlusecase[x=12, y=-13,name=u15]{afficher monnaie}
+\umlusecase[x=12, y=-13,name=u15, thick]{afficher monnaie}
 \umlinclude{u12}{u15}
-\umlusecase[x=12, y=-15,name=u16]{contacter CA}
+\umlusecase[x=12, y=-15,name=u16, thick]{contacter CA}
 \umlinclude{u13}{u16}
 \umlinclude{u14}{u16}
 

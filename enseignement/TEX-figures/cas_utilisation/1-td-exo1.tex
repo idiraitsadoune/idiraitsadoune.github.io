@@ -21,13 +21,13 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tikzpicture}[ultra thick]
+\begin{tikzpicture}[thick]
   \begin{umlsystem}[x=0, y=0]{Gestion de bibliothèque} 
 
 \umlactor[x=-4, y=0]{Gestionnaire}
-\umlusecase[x=0, y=1,name=u1]{Inscrir}
-\umlusecase[x=0, y=-1,name=u2]{Relancer}
-\umlusecase[x=2, y=3,name=u3]{Payer les droits}
+\umlusecase[x=0, y=1,name=u1, thick]{Inscrir}
+\umlusecase[x=0, y=-1,name=u2, thick]{Relancer}
+\umlusecase[x=2, y=3,name=u3, thick]{Payer les droits}
 
 \umlassoc{Gestionnaire}{u1}
 \umlassoc{Gestionnaire}{u2}
@@ -40,11 +40,11 @@
 \umlinherit{Etudiant Externe}{Etudiant}
 
 \umlactor[x=-4, y=-5]{Bibliothecaire}
-\umlusecase[x=0, y=-3,name=u4]{Emprunter}
-\umlusecase[x=0, y=-5,name=u5]{Restituter}
-\umlusecase[x=0, y=-7,name=u6]{Acquérir}
-\umlusecase[x=0, y=-9,name=u7]{Consulter}
-\umlusecase[x=3, y=-2,name=u8]{Prolonger}
+\umlusecase[x=0, y=-3,name=u4, thick]{Emprunter}
+\umlusecase[x=0, y=-5,name=u5, thick]{Restituter}
+\umlusecase[x=0, y=-7,name=u6, thick]{Acquérir}
+\umlusecase[x=0, y=-9,name=u7, thick]{Consulter}
+\umlusecase[x=3, y=-2,name=u8, thick]{Prolonger}
 \umlinherit{u8}{u4}
 
 \umlassoc{Bibliothecaire}{u4}
