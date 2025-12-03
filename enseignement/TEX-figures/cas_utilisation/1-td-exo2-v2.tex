@@ -21,25 +21,40 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tikzpicture}[thick]
-  \begin{umlsystem}{system name} 
-  \umlactor[x=-5, y=0]{Internaute}
+\begin{tikzpicture}[thick, scale=0.7, every node/.style={transform shape}]
 
-  \umlusecase[x=0, y=0,name=u1, width=2cm]{\bf Commander}
-  \umlusecase[x=0, y=-3,name=u2, width=2cm]{\bf Souscrire une assurance}
-  \umlusecase[x=5, y=3,name=u3, width=2cm]{\bf S'identifier}
-  \umlusecase[x=5, y=0,name=u4, width=2cm]{\bf Commander un produit}
-  \umlusecase[x=5, y=-3,name=u5, width=2cm]{\bf Commander un service}
+\begin{umlsystem}[x=0, y=0]{Caisse} 
 
-  \umlassoc{Internaute}{u1}
+\umlactor[x=-6, y=-6]{Caissier}
+\umlusecase[x=0, y=-6,name=u4, thick]{Traiter passage en caisse}
+\umlusecase[x=2, y=-4,name=u3, thick]{Enregistrer CPU}
+\umlinclude{u4}{u3}
+\umlusecase[x=7, y=-2,name=u2, thick]{Enregistrer quantité}
+\umlextend{u2}{u3}
+\umlassoc{Caissier}{u4}
 
-  \umlinclude{u1}{u3}
-  \umlextend{u2}{u1}
+\umlusecase[x=6, y=-8,name=u6, thick]{Enregistrer coupon réduction}
 
-  \umlinherit{u4}{u1}
-  \umlinherit{u5}{u1}
+\umlextend{u6}{u4}
 
-  \end{umlsystem}
+\umlusecase[x=3, y=-10,name=u7, thick]{Terminer vente}
+\umlinclude{u4}{u7}
+
+\umlusecase[x=-1, y=-14,name=u9, thick]{Enregistrer payement}
+\umlinclude{u4}{u9}
+
+\umlusecase[x=-2, y=-16,name=u10, thick]{Imprimer Ticket}
+\umlusecase[x=2, y=-16,name=u11, thick]{Enregistrer vente}
+\umlinclude{u9}{u10}
+\umlinclude{u9}{u11}
+
+
+\umlactor[x=16, y=-17]{Systeme gestion stock}
+
+\umlassoc{u11}{Systeme gestion stock}
+
+\end{umlsystem}
+
 \end{tikzpicture}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
