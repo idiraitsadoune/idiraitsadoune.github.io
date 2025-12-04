@@ -3,20 +3,19 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Conception Orientée Objet - COO : Diagramme UML d'activités</title>
+	<title>Qualité de développement : Diagramme UML d'activités</title>
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/slides-style.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
-
-	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
-	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
@@ -29,68 +28,63 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+    
+  <div class="header-logo">
+    <div class="left-logo">
+      <a href="https://lmf.cnrs.fr/" target="_blank">
+        <img  src="../resources/img/logo-aff.png" alt="">
+      </a>
+    </div>
+    <div class="right-logo">
+      <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+        <img src="./img/iut-logo.png" alt="">
+      </a>
+    </div>
+  </div>
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
-    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
-		</a>
-    <a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a> 
-	</div>
+  <div style="text-align: left">
+    <h2>Qualité de développement</h2>
+    <h3>Diagramme UML d'activités</h3>
+  </div>
 
-	<div style="text-align: left">
-		<h2>Conception Orientée Objet - COO</h2>
-		<h3>Diagramme UML d'activités</h3>
-	</div>
-
-	<div class="description">
-		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
-		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
-	</div>
-
-	<div class="hero-card-id">
-		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-			<img src="../resources/img/idir.png" class="hero-user">
-		</a>
-		<div class="hero-desc">
-			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
-				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
-			</a>
-			<br>
-			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-			</a>
-		</div>
-	</div>
+  <div class="description">
+    <span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+    <span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
+  </div>
+      
+  <div class="hero-card-id">
+    <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+      <img src="../resources/img/idir.png" class="hero-user">
+    </a>
+    <div class="hero-desc">
+      <a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+        <span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+      </a>
+      <br>
+      <a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
+    </div>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="plan"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch1" name="Introduction"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Cycle de développement</h2>
+  <h2>Cycle de développement</h2>
 
-	<div>
-		<img src="../TEX-figures/cycle-en-v/step-1-2.svg" height="auto" width="1064px" alt="">
+	<div class="r-stack">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_1.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_3.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_4.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in" src="./../CS-2A-ST58/img/cycle_v_5.svg" height="auto" width="900px" alt="">
 	</div>
 
-  <div>
+	<div class="fragment">
 		Ce cours se positionne dans les étapes <b>Analyse</b> et <b>Spécification</b>.
 	</div>
 
@@ -102,14 +96,14 @@
   
   <ul>
     <li class="fragment"><b>Diagrammes de cas d'utilisation</b>
-      <ul id="ok"><li class="fragment"><green-b>Utiles</green-b> pour la discussion avec le client (intuitifs et concis)</li></ul>
-      <ul id="ko"><li class="fragment"><red-b>Pas suffisant</red-b> pour l'équipe de développement</li></ul>
+      <ul id="ok"><li class="fragment"><b style="color: green; ">Utiles</b> pour la discussion avec le client (intuitifs et concis)</li></ul>
+      <ul id="ko"><li class="fragment"><b style="color: red;">Pas suffisant</b> pour l'équipe de développement</li></ul>
     </li>
     
     <li class="fragment skip"><b>Descriptions textuelles</b>
       <ul id="ko">
         <li class="fragment">
-          <red-b>Absence de  vision globale</red-b> des actions décrites dans 
+          <b style="color:red; ">Absence de  vision globale</b> des actions décrites dans 
           <u>les scénarios</u> 
         </li>
       </ul>
@@ -128,15 +122,8 @@
   </div>
   
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch2" name="Les éléments de Spécification"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Activité et actions</h2>
 
@@ -156,8 +143,8 @@
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Interfaces d'activité</h2>
 
-  <p>
-    Les <b>interfaces d'activité</b> représentent les différents
+  <p class="left-content">
+    Les <b>interfaces d'activité</b> représentent les différents <br>
     <i>flux traversant une activité</i> 
   </p>
 
@@ -165,7 +152,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Interfaces d'activité</h2>
+  <h2>Interfaces d'activité</h2>
   <h3>Flux de contrôle</h3>
 
   <p class="left-content">
@@ -180,7 +167,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Interfaces d'activité</h2>
+  <h2>Interfaces d'activité</h2>
   <h3>Flux d'objets</h3>
 
   <ul><li><b>Flux d'objets</b> modélise :</li> 
@@ -199,7 +186,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœud initial</h3>
 
   <p class="left-content">
@@ -215,7 +202,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœuds d'objets</h3>
 
   <p class="left-content">
@@ -231,7 +218,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœud final</h3>
 
   <p class="left-content">
@@ -248,7 +235,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœud décisionnel et Nœud de confluence</h3>
 
   <ul>
@@ -268,7 +255,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœud fourches et Nœud de jonction</h3>
 
   <ul>
@@ -290,7 +277,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nœuds d'activité</h2>
+  <h2>Nœuds d'activité</h2>
   <h3>Nœud final de flux</h3>
 
   <p class="left-content">
@@ -318,15 +305,6 @@
   </div>
 
 </section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch3" name="Les lien avec les cas d'utilisation"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
@@ -343,28 +321,25 @@
   <script type="text/template">
     ## Le scénario nominal
 
-    1. L'**utilisateur** saisit les information de connexion et valide
-    1. Le **système** vérifie le type d'utilisateur connecté et affiche des informations concernant le client
-    1. L'**utilisateur** constitue son panier
-    1. Le **système** fait appel au cas d'utilisation interne "Constituer panier"
-    1. L'**utilisateur** valide son panier
-    1. Le **système** fait appel au cas d'utilisation interne "Saisir information pour livraison"
-    1. L'**utilisateur** saisit les information de livraison et valide
-    1. Le **système** fait appel au cas d'utilisation interne "Enregistrer le règlement"
-    1. L'**utilisateur** saisit les informations de paiement et valide
-    1. Le **système** enregistre définitivement l'achat et affiche le récapitulatif de l'achat.                   
+    1. Le **système** vérifie le type d'utilisateur connecté
+    1. Le **système** affiche des informations concernant le client
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Constituer panier"
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Saisir information pour livraison"
+    1. Le **système** fait appel au cas d'utilisation interne\
+    "Enregistrer le règlement"
+    1. Le **système** enregistre définitivement l'achat
+    1. Le **système** affiche le récapitulatif de l'achat.                   
   </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-markdown data-auto-animate data-transition="fade-in fade-out">
   <script type="text/template">
-    ## Le scénario alternatif 
-    
-    Si l'utilisateur est le commercial,
-    - **2.a** le **système**  vérifie le type d'utilisateur connecté et fait appel au cas d'utilisation interne "sélectionner un client"     
-    - **2.b** l'**utilisateur** sélectionne un client parmi les liste des clients 
-    - **2.c** le **système** affiche des informations concernant le client         
+    ## Le scénario alternatif
+    - **2.a** Si l'utilisateur est le commercial,\
+    le **système** fait appel au cas d'utilisation interne "sélectionner un client"                   
   </script>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -373,13 +348,13 @@
   <script type="text/template">
     ## Les scénarios d'exception
 
-    - **2.c** Le **système** n'affiche aucun utilisateur sélectionné : 
+    - **2.b** Le **système** n'affiche aucun utilisateur sélectionné : 
         - Le **système** affiche "Veuillez sélectionner le client concerné\
-          par l'achat" (*retour à l'étape 2.b*).
-    - **10** L'enregistrement du règlement échoue : 
+          par l'achat" (*retour à l'étape 2*).
+    - **5.a** L'enregistrement du règlement échoue : 
         - Le **système** récapitule les informations dans un message envoyé\
           au département commercial (*arrêt du cas d'utilisation*).
-    - **10** L'enregistrement définitif de l'achat échoue : 
+    - **6.a** L'enregistrement définitif de l'achat échoue : 
         - Le **système** récapitule les informations dans un message envoyé\
           au département commercial (*arrêt du cas d'utilisation*).                           
   </script>
@@ -406,7 +381,7 @@
 	<p>
 		<a href="#">Retour à l'accueil</a>
 		- <a href="#/plan">Retour au plan</a>
-	</p>	
+	</p>
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -414,12 +389,12 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	
+
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+  <script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/math/math.js"></script>
 
 	<script>
 		// More info about initialization & config:
@@ -446,7 +421,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMath.MathJax3, RevealMarkdown, RevealHighlight]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
