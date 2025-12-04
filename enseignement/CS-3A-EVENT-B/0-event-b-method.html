@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../resources/css/slides-style.css">
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
@@ -24,38 +22,34 @@
 </head>
 
 <body>
-	<img id="logo" src="../resources/img/cs.png" alt="">
+	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
 	<div class="reveal">
 		<div class="slides">
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
 
-	<div class="header-logo">
-		<div class="left-logo">
-			<a href="https://lmf.cnrs.fr/" target="_blank">
-				<img  src="../resources/img/logo-aff.png" alt="">
-			</a>
-		</div>
-		<div class="right-logo">
-			<a href="https://www.centralesupelec.fr" target="_blank">
-				<img src="../resources/img/cs.png" alt="">
-			</a>
-		</div>
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
 	</div>
-	
+
 	<div style="text-align: left">
-		<h2>Développement de systèmes critiques <br> avec la méthode Event-B</h2>
+		<h2>Développement de systèmes critiques<br> avec la méthode Event-B</h2>
 		<h3>Présentation de l'électif</h3>
 	</div>
-	
+
 	<div class="description">
-		<span ><span class="fa fa-graduation-cap">&#160;</span>3A cursus ingénieurs - Mention Sciences du Logiciel</span><br>	
-		<span ><span class="fa fa-university">&#160;</span>CentraleSupelec - Université Paris-Saclay - 2024/2025</span>
+		<span class="fa fa-graduation-cap"></span> 3A cursus ingénieurs - Mention Sciences du Logiciel<br>
+		<span class="fa fa-university"></span> CentraleSupelec - Université Paris-Saclay - 2025/2026
 	</div>
-		
+
 	<div class="hero-card-id">
 		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
 			<img src="../resources/img/idir.png" class="hero-user">
@@ -85,26 +79,37 @@
 		</div>
 
 		<ul style="flex: 4">
-			<li class="fragment">
-				<b>Docteur en Informatique</b> diplômé par l'<a href="https://www.ensma.fr/"
-					target="_blank">ENSMA</a> en <i>2010</i>.
+			<li>
+				<i>2010</i> - <b>Docteur en Informatique</b> diplômé par l'<a href="https://www.ensma.fr/" target="_blank">ENSMA</a>.
 				<ul>
-					<li class="fragment">
+					<li>
 						<a href="https://www.theses.fr/2010ESMA0016" target="_blank">Thèse</a> sur la
-						modélisation et la vérification des services <br>
-						par une approche basée sur le raffinement et sur la preuve.
+						<b>modélisation</b> et la <b>vérification</b> des services <br>
+						par une approche utilisant le <b>raffinement</b> et la <b>preuve</b>.
 					</li>
 				</ul>
 			</li>
-			<li class="fragment skip">
-				<b>Enseignant</b> au sein du département <b>informatique</b> <br>
+			<li class="fragment skip" data-fragment-index="1">
+				<b>Enseignant</b> au sein du <b>département informatique</b> <br>
 				de <a href="https://www.centralesupelec.fr/" target="_blank">CentraleSupelec - Université Paris-Saclay</a>.
 			</li>
-			<li class="fragment skip">
-				<b>Chercheur</b> membre des pôles <b>Modèles</b> et <b>Preuve</b> <br>
+			<li class="fragment skip" data-fragment-index="2">
+				<b>Chercheur</b> membre des <b>pôles</b> <b>Modèles</b> et <b>Preuve</b> <br>
 				du <a href="https://lmf.cnrs.fr/" target="_blank">LMF - Laboratoire Méthodes Formelles</a>.
 			</li>
 		</ul>
+	</div>
+
+	<div style="display: inline-grid; margin-top: 30px ; column-gap: 100px; grid-template-columns: auto auto auto;">
+		<a href="https://lmf.cnrs.fr/" target="_blank" class="fragment" data-fragment-index="2">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank" class="fragment" data-fragment-index="1">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+		<a href="https://www.ensma.fr/" target="_blank">
+			<img src="../resources/img/logo_ensma_color.png" height="80px">
+		</a>
 	</div>
 
 </section>
@@ -131,12 +136,8 @@
 	<h2>Cycle de développement</h2>
 
 	<div class="r-stack">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_1.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_2.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_3.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_4.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_5.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in" src="./img/cycle_v_err.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-1.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade" src="../TEX-figures/cycle-en-v/cycle-en-v-2.svg" height="auto" width="1064px" alt="">
 	</div>
 
 	<div class="fragment">
@@ -157,13 +158,14 @@
 
 		<li class="fragment skip">Exemple du calculateur de bord d'<b>Ariane 5</b>
 			<ul id="fleche">
-				<li><a href="https://fr.wikipedia.org/wiki/Ariane_5#Quatre-vingt-dix-septi%C3%A8me_vol_(vol_241_/_5101)"
-						target="_blank">Vol 241/5101 du 25 janvier 2018</a></li>
+				<li><a href="https://fr.wikipedia.org/wiki/Vol_501_d%27Ariane_5"
+						target="_blank">Vol 501 du 4 juin 1996</a></li>
 			</ul>
+			<div>
+				<img src="./img/ariane.jpg" height="300px" style="display: block; margin-left: auto; margin-right: auto;" alt="">
+			</div>
 		</li>
 	</ul>
-
-	<img class="fragment" src="./img/ariane.jpg" alt="" height="300px">
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -171,7 +173,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Situations à éviter !!!</h2>
 
-	<div style="display: inline-grid; grid-template-columns: auto auto;align-items:center; column-gap: 25px;">
+	<div style="display: inline-grid; grid-template-columns: auto auto; column-gap: 25px;">
 		<img src="./img/a-eviter-1.jpg" height="400px" width="auto">
 		<img src="./img/a-eviter-2.jpg" height="400px" width="auto">
 	</div>
@@ -182,13 +184,45 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Solutions</h2>
 
-	<ul>
-		<li class="fragment">Les <strong>règles</strong> et les <strong>techniques</strong> de programmation.</li>
-		<li class="skip fragment">Le <strong>support</strong> des langages de programmation.</li>
-		<li class="skip fragment">Les <strong>méthodologies de conception</strong> et de développement.</li>
-		<li class="skip fragment">Le <strong>test</strong>.</li>
-		<li class="skip fragment fade-in"><span class="fragment highlight-blue">Les <strong>méthodes formelles</strong>.</span></li>
-	</ul>
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul>
+				<li class="fragment">Les <strong>règles</strong> et les <strong>techniques</strong> de programmation.</li>
+				<li class="skip fragment">Le <strong>support</strong> des langages de programmation.</li>
+				<li class="skip fragment">Les <strong>méthodologies de conception</strong> <br> et de <strong>développement</strong>.</li>
+				<li class="skip fragment">Le <strong>test</strong>.</li>
+				<li class="skip fragment fade-in">
+					<span class="fragment highlight-blue">Les <strong>méthodes formelles</strong></span>
+					<ul id="fleche" class="fragment fade-up">
+						<li><b>méthodes d'ingénierie</b> basées sur  
+							des <i>approches mathématiques</i> utilisées pour développer <br>
+							et analyser des systèmes (logiciels).
+						</li>
+						<li><b>démarche globale</b> (langages et outils <br> de vérification).</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div style="flex: 2;">
+			<img src="../CS-2A-ST58/img/solutions.png" alt="">
+
+			<div class="fragment">
+				<a href="https://link.springer.com/book/10.1007/978-3-030-38800-3" target="_blank">
+					<div style="display: flex; align-items: center;" >
+						<div>
+							<img src="../CS-2A-ST58/img/formal-methods-for-software-engineering.png" alt="" width="100px">
+						</div>
+						<div class="hero-desc">
+							<b style="font-size: 20px;">Formal Methods for Software Engineering</b> <br>
+							<i style="font-size: 16px;">Languages, Methods, Application Domains</i> <br>
+							<span style="font-size: 12px;">Springer 2022</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -197,11 +231,30 @@
 	<h2>La place des méthodes formelles</h2>
 
 	<div class="r-stack">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_err.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in-then-out" src="./img/cycle_v_fm_1.svg" height="auto" width="900px" alt="">
-		<img class="fragment fade-in" src="./img/cycle_v_fm_2.svg" height="auto" width="900px" alt="">
+		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-2.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-3.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade-in" src="../TEX-figures/cycle-en-v/cycle-en-v-4.svg" height="auto" width="1064px" alt="">
 	</div>
+
 	<div class="fragment">Utiliser les <b>méthodes formelles</b> dans <b>toutes les étapes</b>.</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Objectif des méthodes formelles</h2>
+
+	<ul id="fleche">
+			<li>Aider les <b>ingénieurs</b> à effectuer la <b>transformation</b> suivante :</li>
+	</ul>
+
+  <div>
+    <img src="./img/transfo.svg" alt="">
+  </div>
+	
+	<p class="fragment">
+		ne semble pas différent de <b>la programmation</b> ordinaire
+	</p>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -209,52 +262,110 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Qui recommande <br> les méthodes formelles ?</h2>
 
-	<ul>
-		<li class="fragment"><b>Normes européennes</b><br>
-			L'utilisation de spécifications formelles seule rend <i>les exigences <br> non ambiguës</i>.
-		</li>
-		<li class="fragment skip"><b>Normes de l'aéronautique</b><br>
-			L'utilisation de méthodes formelles a pour but d'<i>éliminer les erreurs <br> 
-				de spécification</i>, de <i>conception</i> et de <i>codage</i> lors du développement.
-		</li>
-		<li class="fragment skip"><b>Normes du ferroviaire</b><br>
-			Pour les spécifications, des méthodes formelles sont recommandées<br> 
-			car le modèle formel fournit <i>précision</i>, <i>non ambiguïté</i> et <i>cohérence</i>.
-		</li>
-	</ul>
+	<table style="font-size: 25px;">
+		<thead>
+			<tr>
+				<th>Secteur/Domaine</th>
+				<th>Norme principale</th>
+				<th>Brève description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (rail)</td>
+				<td>EN 50128 $\to$ EN 50716 (2023)</td>
+				<td>Logiciels de contrôle : <br> SIL ; agile, modélisation, IA/ML (2023)</td>
+			</tr>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (rolling stock)</td>
+				<td>EN 50657 (2017)</td>
+				<td>Logiciels embarqués sur matériel roulant</td>
+			</tr>
+			<tr class="fragment">
+				<td>Ferroviaire <br> (cybersécurité)</td>
+				<td>CLC/TS 50701 (2021)</td>
+				<td>Spécification pour sécurité IT/OT (données/opérations) dans le ferroviaire</td>
+			</tr>
+			<tr class="fragment">
+				<td>Aéronautique</td>
+				<td>DO-178C/ED-12C</td>
+				<td>Logiciels avioniques - cycle complet et certification</td>
+			</tr>
+			<tr class="fragment">
+				<td>Industrie générique/sécurité</td>
+				<td>IEC 61508</td>
+				<td>Cadre générique pour sécurité fonctionnelle <br> (cycle de vie + SIL)</td>
+			</tr>
+			<tr class="fragment">
+				<td>Automobile</td>
+				<td>ISO 26262</td>
+				<td>Sécurité fonctionnelle pour véhicules</td>
+			</tr>
+			<tr class="fragment">
+				<td>Dispositifs médicaux</td>
+				<td>IEC 62304 (EN 62304)</td>
+				<td>Logiciel médical : <br> cycle de vie, maintenance, gestion des risques</td>
+			</tr>
+		</tbody>
+	</table>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Exemples de normes</h2>
+	<h2>Exemples de normes $\to$ ferroviaire</h2>
 
-	<ul>
-		<li>Les <b>normes européennes</b> <i>EN 50126</i>, <i>EN 50128</i>, <i>EN 50129</i>
-			<ul id="fleche">
-				<li class="fragment">des <b>standards</b> utilisés dans le <b>domaine ferroviaire</b>.</li>
-				<li class="fragment">requises pour les fournisseurs d'<i>équipements de
-						contrôle-commande</i>.</li>
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul>
+				<li class="fragment"><b>EN 50128</b> <i>Software for railway control and protection system</i>
+					<ul><li>norme européenne très connue pour les logiciels critiques dans le ferroviaire</li></ul>
+				</li>
+
+				<li class="fragment"><b>EN 50657:2017</b>
+					<ul><li>logiciel embarqué dans le matériel roulant (rolling stock)</li></ul>
+				</li>
+
+				<li class="fragment"><b>EN 50716:2023</b> (remplaçant <b>EN 50128</b>)
+					<ul><li>introduit des approches itératives (agile), l'usage de modèles (UML, SysML), 
+						voire l'intégration de l'IA/ML dans le cycle de développement</li></ul>
+				</li>
+
+				<li class="fragment"><b>CLC/TS 50701:2021</b>
+					<ul><li>spécification axée sur la cybersécurité dans les applications ferroviaires</li></ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
-	<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
 
+		<div style="flex: 2;">
+			<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
+	</div>
+	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Les méthodes formelles <br> recommandées</h2>
+	<h2  style="margin-bottom: 5px;">Exemples de normes $\to$ ferroviaire</h2>
+	<h3>Les méthodes formelles <br> recommandées</h3>
 
-	<ul>
-		<li>Quelques <b>méthodes formelles</b> recommandées par les <b>normes</b> :
-			<ul id="fleche">
-				<li class="fragment">"CSP, HOL, LOTOS, Temporal Logic, <b>B Method</b>, 
-					Model Checking ..."</li>
-				<li class="fragment"><i>page 103</i> de la norme <b>EN 50128</b></li>
+	<div class="center-divs">
+		<div style="flex: 3;">
+			<ul class="fragment">
+				<li>Quelques <b>méthodes formelles</b> recommandées par les <b>normes</b> :
+					<ul id="fleche">
+						<li>"CSP, HOL, LOTOS, <b>Temporal Logic</b>, <b>B Method</b>, <b>Model
+								Checking</b> ..."</li>
+						<li><i>page 103</i> de la norme <b>EN 50128</b></li>
+					</ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
+		</div>
+
+		<div style="flex: 2;">
+			<img src="./img/ferroviaire.jpg" alt="" height="300px">
+		</div>
+	</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -263,11 +374,11 @@
 	<h2>Les méthodes B <br> et Event-B</h2>
 
 	<ul>
-		<li class="fragment"><b>Méthodes formelles</b> permettant le  <b>développement de logiciels sûrs</b>.</li>
-		<li class="fragment skip">Conçue par le mathématicien français <a href="https://fr.wikipedia.org/wiki/Jean-Raymond_Abrial" target="_blank">J.R Abrial</a> en <i>1996</i>.</li>
-		<li class="fragment skip">Repose sur les travaux menés à l'université d'Oxford par <a href="https://fr.wikipedia.org/wiki/Charles_Antony_Richard_Hoare" target="_blank">C.A.R. Hoare</a>.</li>
+		<li class="fragment"><b>Méthodes formelles</b> permettant le  <b>développement<br> de logiciels sûrs</b>.</li>
+		<li class="fragment skip">Conçue par le mathématicien français <a href="https://fr.wikipedia.org/wiki/Jean-Raymond_Abrial" target="_blank">Jean-Raymond Abrial</a><br> en <i>1996</i>.</li>
+		<li class="fragment skip">Repose sur les travaux menés à l'université d'Oxford<br> par <a href="https://fr.wikipedia.org/wiki/Charles_Antony_Richard_Hoare" target="_blank">C.A.R. Hoare</a>.</li>
 		<li class="fragment skip"><a href="https://dl.acm.org/doi/10.5555/236705" target="_blank">The B-Book</a> et 
-				<a href="https://www.cambridge.org/core/books/modeling-in-eventb/F39FF5F1B60F0AA585718B8E6A4F9DD7" target="_blank">Modeling in Event-B</a> de J.R. Abrial sont les ouvrages fondamentaux
+				<a href="https://www.cambridge.org/core/books/modeling-in-eventb/F39FF5F1B60F0AA585718B8E6A4F9DD7" target="_blank">Modeling in Event-B</a> de Jean-Raymond Abrial<br> sont les ouvrages fondamentaux
 				des méthodes <b>B</b> et <b>Event-B</b>.</li>
   </ul>
 
@@ -278,12 +389,12 @@
 	<h2>Méthode B & Secteurs d'activités</h2>
 
 	<ul>
-		<li class="fragment">Premier métro autonome (<a href="https://fr.wikipedia.org/wiki/Meteor_(m%C3%A9tro)" target="_blank">Ligne 14 - Projet Meteor - 1998</a>)</li>
-		<li class="skip fragment">Ferroviaire : <a href="https://www.clearsy.com/services/ferroviaire/" target="_blank">exemples de projets</a></li>
-		<li class="fragment">Automobile :  <a href="https://www.clearsy.com/services/automobile/" target="_blank">exemples de projets</a></li>
-		<li class="fragment">Energie :  <a href="https://www.clearsy.com/services/energie/" target="_blank">exemples de projets</a></li>
-		<li class="fragment">Micro-électronique :  <a href="https://www.clearsy.com/services/microelectronique/" target="_blank">exemples de projets</a></li>
-		<li class="fragment">Défense :  <a href="https://www.clearsy.com/services/defense/" target="_blank">exemples de projets</a></li>
+		<li>Premier métro autonome (<a href="https://fr.wikipedia.org/wiki/Meteor_(m%C3%A9tro)" target="_blank">Ligne 14 - Projet Meteor - 1998</a>)</li>
+		<li class="skip fragment">Ferroviaire $\to$ <a href="https://www.clearsy.com/services/ferroviaire/" target="_blank">exemples de projets</a></li>
+		<li class="skip fragment">Automobile $\to$ <a href="https://www.clearsy.com/services/automobile/" target="_blank">exemples de projets</a></li>
+		<li class="skip fragment">Energie $\to$ <a href="https://www.clearsy.com/services/energie/" target="_blank">exemples de projets</a></li>
+		<li class="skip fragment">Micro-électronique $\to$ <a href="https://www.clearsy.com/services/microelectronique/" target="_blank">exemples de projets</a></li>
+		<li class="skip fragment">Défense $\to$ <a href="https://www.clearsy.com/services/defense/" target="_blank">exemples de projets</a></li>
 	</ul>
 
 </section>
@@ -293,7 +404,7 @@
 	<h2>Objectifs du cours</h2>
 
 	<ul>
-		<li class="fragment">Donner un aperçu sur les activités de <b>modélisation</b> et du <b>raisonnement formel</b></li>
+		<li>Donner un aperçu sur les activités de <b>modélisation</b> et du <b>raisonnement formel</b></li>
 		<li class="skip fragment">Montrer que les programmes peuvent être <b>corrects par construction</b></li>
 		<li class="skip fragment">Montrer que la modélisation peut être rendue <b>pratique</b></li>
 		<li class="skip fragment">Illustrer cette approche par de nombreux <b>exemples</b></li>
@@ -310,12 +421,127 @@
 
 		<ul id="fleche">
 			<li class="skip fragment">La <b>modélisation</b> (versus programmation)</li>
-			<li class="fragment">L'<b>abstraction</b> et le <b>raffinement</b></li>
-			<li class="fragment">Quelques <b>techniques mathématiques</b> utilisées pour le raisonnement</li>
-			<li class="fragment">La pratique de <b>la preuve</b> comme moyen de <b>construire des programmes</b></li>
-			<li class="fragment">L'utilisation de certains <b>outils de preuve</b></li>
+			<li class="skip fragment">L'<b>abstraction</b> et le <b>raffinement</b></li>
+			<li class="skip fragment">Quelques <b>techniques mathématiques</b> utilisées pour le raisonnement</li>
+			<li class="skip fragment">La pratique de <b>la preuve</b> comme moyen de <b>construire des programmes</b></li>
+			<li class="skip fragment">L'utilisation de certains <b>outils de preuve</b></li>
 		</ul>
 	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Le programme</h2>
+
+  <ol>
+    <li>Les concepts de base de <b>la méthode Event-B</b> (cours + TD)</li>
+    <li class="skip fragment">La modélisation par <b>raffinement</b> (cours + TD)</li>
+    <li class="skip fragment">?  (cours + TD)</li>
+    <li class="skip fragment">Validation par animation et <b>model-checking</b> (cours + TD)</li>
+    <li class="skip fragment">La modélisation par la <b>spécification de théories</b> (cours + TD)</li>
+    <li class="d-skip fragment"><b>Projet</b> - Séance 1</li>
+    <li class="skip fragment"><b>Projet</b> - Séance 2</li>
+  </ol>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul style="display: block;">
+		<div style="float: right; margin-bottom: 10px; margin-left: 10px; height: 250px;">
+			<img src="../../recherche/seminars/img/splash.bmp" height="100%" >
+		</div>
+
+		<li>
+			The <b>Rodin</b> platform (an <i>Eclipse-based IDE</i>) <br> is intended to support 
+			the construction and verification of <b>Event-B models</b>.
+			<ul>
+				<li>
+					provides effective support for <i>refinement</i> and <i>mathematical</i> proof.
+				</li>
+				<li><i>plugins</i> for éditing models, generating proof obligations, 
+					proving, animating, medel-cheking, code generating ...
+				</li>
+			</ul>
+		</li>
+
+    <li class="skip fragment">
+      <b>Rodin Platform and Plug-in Installation</b>: 
+      <ul>
+        <li>Requires <b>Java JRE</b> (version 17 or later) $\to$ <a href="https://www.oracle.com/fr/java/technologies/downloads/" target="_blank">www.oracle.com/fr/java/</a>.</li>
+        <li>Download the Core  $\to$ <a href="https://sourceforge.net/projects/rodin-b-sharp/files/Core_Rodin_Platform/" target="_blank">sourceforge.net/projects/rodin-b-sharp/</a>.</li>
+      </ul>
+    </li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Rodin on Macs</h2>
+
+	<div class="left-content">
+		Procedure to run the <i>Intel version</i> of <b>Rodin</b> 
+			on <b>macs</b> with <i>Apple Silicon processors</i>: <br>
+		<ol>
+			<li class="skip fragment">
+				download <a href="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.11%2B9/OpenJDK17U-jre_x64_mac_hotspot_17.0.11_9.pkg">this JDK</a>  (it's a <b>Java 17</b> runtime for <b>Intel</b>)
+			</li>
+			<li class="fragment">
+				install it by double-clicking it; the Java runtime is installed in <cs-code>/Library/Java/JavaVirtualMachines/temurin-17.jre</cs-code>
+			</li>
+			<li class="fragment">
+				find the downloaded <cs-code>Rodin.app</cs-code> and modify the file <cs-code>Rodin.app/Contents/Eclipse/rodin.ini</cs-code>
+				<ul>
+					<li>
+					add the next two lines just before the one with <cs-code>-vmargs</cs-code>
+					</li>
+				</ul>
+				<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						-vm
+						/Library/Java/JavaVirtualMachines/temurin-17.jre/Contents/Home/bin/java
+					</script>
+					</code></pre>		
+			</li>
+			<li class="fragment">
+				as with all other <b>Rodin</b> releases for <b>mac</b>, one also needs to execute 
+					<pre><code class="language-shell hljs" data-trim>
+					<script type="text/template">
+						$ xattr -rc Rodin.app
+					</script>
+					</code></pre>
+			</li>
+		</ol>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Required plugins</h2>
+
+	<ul>
+		Required plugins for this tutorial : <br>
+		menu : <cs-code>Help -> Install New Software ...</cs-code>
+		<ul>
+			<li class="skip fragment">
+				the <b>Atelier B Provers plugin</b> from the <b>Atelier B Provers</b> Update site. <br>
+				<cs-code>https://www.atelierb.eu/update_site/atelierb_provers</cs-code>
+			</li>
+			<li class="skip fragment">
+				the <b>ProB plugin</b> from the <b>ProB</b> Update site. <br>
+				<cs-code>https://stups.hhu-hosting.de/rodin/prob1/release/</cs-code>
+			</li>
+			<li class="skip fragment">
+				the <b>Theory plugin</b> from the <b>Rodin Plug-ins (archive)</b> Update site. <br>
+				<cs-code>https://rodin-b-sharp.sourceforge.net/updates-archive</cs-code>
+			</li>
+		</ul>
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -323,14 +549,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h1>Merci</h1>
+	<h1>Thank you</h1>
 	<p>
-		<a href="./0-event-b-method.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./0-event-b-method.pdf" target="_blank">PDF version of the slides</a>
 	</p>
 	<p>
-		<a href="#">Retour à l'accueil</a>
-		- <a href="#/plan">Retour au plan</a>
-	</p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -341,7 +567,8 @@
 
 	<script src="../resources/js/plan-en.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
-  <script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 
 	<script>
@@ -369,7 +596,7 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealHighlight, RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });

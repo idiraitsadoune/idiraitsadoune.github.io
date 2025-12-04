@@ -6,7 +6,6 @@
 	<title>Développement de systèmes critiques avec la méthode Event-B - Conception d'un système de commande sûr pour un ascenseur</title>
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 
@@ -26,7 +25,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2024/2025</span>
+    3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2025/2026</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -53,7 +52,7 @@
 </div>
 
 <p class="text-justify">
-  Le logiciel étudié est un contrôleur qui pilote un ascenseur. Le système de l’ascenseur comprend les parties suivantes :
+    Le logiciel étudié est un contrôleur qui pilote un ascenseur. Le système de l'ascenseur comprend les parties suivantes :
   <ul>
     <li> une cabine, </li>
     <li>  une porte pour la cabine,</li>
@@ -69,51 +68,49 @@
 </p>
 
 <p class="text-justify">
-  Les entrées du système :
-  <ul>
-    <li>l’état du moteur du câble (enroulement, déroulement ou arrêt), </li>
-    <li>l’état du moteur de la porte (ouverture, fermeture ou arrêt),</li>
-    <li>l’état des capteurs d’étage (numéro de l’étage atteint par l’ascenseur ou $-1$ si l’ascenseur est
+    Les entrées du système :
+   <ul>
+    <li>l'état du moteur du câble (enroulement, déroulement ou arrêt), </li>
+    <li>l'état du moteur de la porte (ouverture, fermeture ou arrêt),</li>
+    <li>l'état des capteurs d'étage (numéro de l'étage atteint par l'ascenseur ou $-1$ si l'ascenseur est
     situé entre deux étages ; les étages sont comptés de $0$ à $N$),</li>
-    <li>l’état des capteurs de porte (complètement ouvert, à moitié ouvert ou fermé),</li>
-    <li>l’état des boutons (enfoncé ou non).</li>
-  </ul>
+    <li>l'état des capteurs de porte (complètement ouvert, à moitié ouvert ou fermé),</li>
+    <li>l'état des boutons (enfoncé ou non).</li>
+</ul>
 </p>
 <p class="text-justify">
-  Les commandes du système :
-  <ul>
-    <li>la commande du moteur à câble (enroulement, déroulement ou arrêt), </li>
-    <li>la commande du moteur de porte (ouverture, fermeture ou arrêt),</li>
-    <li>la commande des voyants des boutons (allumé ou éteint).</li>
-  </ul>
+    Les commandes du système :
+    <ul>
+        <li>la commande du moteur à câble (enroulement, déroulement ou arrêt), </li>
+        <li>la commande du moteur de porte (ouverture, fermeture ou arrêt),</li>
+            <li>la commande des voyants des boutons (allumé ou éteint).</li>
+</ul>
 </p>
+
+<div class="subsection-title">
+    Méthodologie
+</div>
 <p class="text-justify">
-  Les propriétés de sûreté : 
+    Le développement B doit être structuré de la façon suivante :
   <ul>
-    <li>Pour que l’utilisateur sache que le système a mémorisé sa demande, un petit voyant
-    est associé à tous les boutons. Cette lumière doit être allumée lorsque l’utilisateur appuie
-    sur le bouton correspondant. Inversement, il devrait être désactivé une fois la demande servie.</li>
-    <li>Pour éviter les accidents, l’ascenseur doit toujours se déplacer avec le moteur de la porte
-    en marche vers la fermeture des portes : ceci afin d’empêcher les utilisateurs d'ouvrir les portes
-    lorsque la cabine de l’ascenseur est en mouvement.</li>
+    <li>Machine 1 : Modélisation du déplacement de la cabine</li>
+    <li>Machine 2 : Gestion des demandes en intégrant les voyants associés aux boutons</li>
+    <li>Machine 3 : Modélisation de l'état de la porte</li>
+    <li>Machine 4 : La gestion des demandes en FIFO</li>
   </ul>
 </p>
 
-<h2>
-  Méthodologie
-</h2>
+<div class="subsection-title">
+   Les propriétés de sûreté 
+</div>
 <p class="text-justify">
-  Le développement Event-B doit être structuré de la façon suivante :
   <ul>
-    <li>Développement des modèles Event-B
-      <ul>
-        <li>Machine 1 : Modélisation du déplacement de la cabine</li>
-        <li>Machine 2 : Gestion des demandes en intégrant les voyants associés aux boutons</li>
-        <li>Machine 3 (optionnelle) : La gestion des demandes en FIFO</li>
-        <li>Machine 4 : Modélisation de l'état de la porte</li>
-      </ul>
-    </li>
-    <li>Validation et vérification des modèles Event-B</li>
+    <li>Pour que l'utilisateur sache que le système a mémorisé sa demande, un petit voyant
+    est associé à tous les boutons. Cette lumière doit être allumée lorsque l'utilisateur appuie
+    sur le bouton correspondant. Inversement, il devrait être désactivé une fois la demande servie.</li>
+    <li>Pour éviter les accidents, l'ascenseur doit toujours se déplacer avec le moteur de la porte
+    en marche vers la fermeture des portes : ceci afin d'empêcher les utilisateurs d'ouvrir les portes
+    lorsque la cabine de l'ascenseur est en mouvement.</li>
   </ul>
 </p>
 
@@ -145,7 +142,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2024/2025</span>
+	3A - Mention Sciences du Logiciel - CentraleSupelec <span style="text-align: right;float: right;">Électif Méthode Event-B - 2025/2026</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
