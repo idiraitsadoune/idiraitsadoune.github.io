@@ -10,9 +10,9 @@ function main_plan() {
         }
     }
 
-
     const section_element = document.getElementById("plan");
     section_element.setAttribute("data-transition", "fade-in fade-out");
+    section_element.setAttribute("style", "text-align: center !important;");
 
     const h2_element = document.createElement("h2");
     h2_element.appendChild(document.createTextNode("Outline"));
@@ -60,7 +60,6 @@ function main_plan() {
     const home = document.createTextNode("Back to the begin");
     a2_element.appendChild(home);
     p_element.appendChild(a2_element);
-
 }
 
 function at_begin_section() {
@@ -78,6 +77,7 @@ function at_begin_section() {
     for (let j = 0; j < sections_name.length; j++) {
         const section_element = document.getElementById("ch".concat(j + 1));
         section_element.setAttribute("data-transition", "fade-in fade-out");
+        section_element.setAttribute("style", "text-align: center !important;");
 
         const h2_element = document.createElement("h2");
         h2_element.appendChild(document.createTextNode("Outline"));

@@ -2,17 +2,14 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[default,semibold]{../../../../../Latex-workspace/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
+\usepackage[default,semibold]{../../../../../../Latex-workspace/beamer-templates-v3/sourcesanspro/tex/sourcesanspro}
 \usepackage{fontspec}
 \setmainfont{SourceSansPro}
 
+\usepackage{pict2e}
 \usepackage{tikz}
 \usetikzlibrary{shapes}
-\usetikzlibrary{decorations.pathreplacing}
-\usetikzlibrary{arrows,automata,positioning}
-\usetikzlibrary{shapes.symbols}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{shapes,snakes}
+\usepackage{../../../../../../Latex-workspace/beamer-templates-v3/tikz-uml}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,14 +22,10 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tikzpicture}[thick]
-\node[draw, rounded corners=3pt](o1) at (0,1) {\bf obj1};
-\node[draw, rounded corners=3pt](o2) at (0,-1) {\bf obj2};
-\node[draw, rounded corners=3pt](o3) at (-1,0) {\bf obj3};
-\node[draw, rounded corners=3pt](o4) at (1,0) {\bf obj4};
-\draw[<->,>=latex] (o1) -- (o2);
-\draw[<->,>=latex] (o1) -- (o4);
-\draw[<->,>=latex] (o2) -- (o3);
-\draw[<->,>=latex] (o2) -- (o4);
+\umlclass
+{NomClasse}
+{ListeAttributs}
+{ListeOpérations}
 \end{tikzpicture}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -53,6 +53,20 @@ cs-code{
 	text-align: left;
 }
 
+#default-block b{
+	color: navy ; 
+	font-weight: bold !important; 
+}
+
+#default-block i{
+  color: navy !important; 
+}
+
+#default-block em{
+  color: navy ;
+	font-style: italic !important;
+}
+
 #alert-block {
 	border: solid;
 	border-width: 3px;
@@ -63,6 +77,20 @@ cs-code{
 	margin-top: 15px;
 	margin-bottom: 15px;
 	text-align: left;
+}
+
+#alert-block b{
+	color: red ; 
+	font-weight: bold !important; 
+}
+
+#alert-block i{
+  color: red !important; 
+}
+
+#alert-block em{
+  color: red ;
+	font-style: italic !important;
 }
 
 #green-block {
@@ -92,6 +120,20 @@ cs-code{
 	font-size: 32px;
 	font-family: 'Inter Semi Bold' !important;
 	font-size: 32px;
+}
+
+#green-block b{
+	color: green ; 
+	font-weight: bold !important; 
+}
+
+#green-block i{
+  color: green !important; 
+}
+
+#green-block em{
+  color: green ;
+	font-style: italic !important;
 }
 
 .button_display{

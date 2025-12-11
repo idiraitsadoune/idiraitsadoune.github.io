@@ -1,0 +1,482 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Conception Orientée Objet - COO : Diagramme UML de classes</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/slides-style.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/iut-logo.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
+    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
+		</a>
+    <a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a> 
+	</div>
+
+	<div style="text-align: left">
+		<h2>Conception Orientée Objet - COO</h2>
+		<h3>Diagramme UML de classes</h3>
+	</div>
+
+	<div class="description">
+		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
+		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
+				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="La modélisation en informatique"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Qu'est ce qu'un modèle ?</h2>
+
+	<ul>
+		<li class="fragment">Un <b>modèle</b> est une <i>représentation/simplification/abstraction</i> de la réalité
+			<ul><li>mieux comprendre le sujet (le problème) étudié</li></ul>
+		</li>
+	</ul>
+
+	<div class="skip fragment">
+		<b>Différents modèles d'un avion</b>	
+		<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
+			<img src="./img/schema.jpg" height="200px">
+			<img src="./img/maquette.jpg" height="200px">
+			<img src="./img/simulateur.jpg" height="200px">
+		</div>
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Qu'est ce qu'un modèle <br> en informatique ?</h2>
+
+	<ul>
+		<li>
+			Un <b>modèle</b> est une <i>représentation d'un système</i>, établie dans un objectif.
+		</li> 
+
+		<li class="fragment skip">
+			Un <b>modèle</b> doit permettre de <i>répondre à des questions</i> sur le système.
+			<ul>
+				<li>mieux comprendre les systèmes complexes.</li>
+			</ul>
+		</li>
+
+		<li class="fragment skip">
+			Un <b>modèle</b> a pour objectif de <i>structurer</i>:
+			<ul>
+				<li><i>les informations</i> (données)</li>
+				<li>et les <i>activités</i> (traitements) d'un système.</li>
+			</ul>
+		</li>
+		
+		<li class="fragment skip">
+			L'<b>activité de modélisation</b> consiste à <i>décrire de manière non ambiguë</i><br>  le fonctionnement futur du système afin d'en faciliter la réalisation ;
+			<ul>
+				<li class="fragment"><i>spécification du système</i> $\to$ description des fonctionnalités du système ;</li>
+				<li class="fragment"><i>conception de l'architecture</i> $\to$ description de la structure générale du système ; </li>
+				<li class="fragment"><i>conception détaillée</i> $\to$ description des algorithmes et des structures de données ;</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes de conception</h2>
+
+	<ul>
+		<li><b>Une méthode de conception</b> est une démarche qui a pour objectif<br> 
+		la <i>formalisation des différentes étapes du développement</i> d'un système.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> vise à produire un système le plus fidèle<br> aux besoins du client.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> fournit une <i>méthodologie</i>.</li>
+		<li class="fragment skip"><b>Une méthode de conception</b> fournit également des <i>notations standards</i> permettant de concevoir des logiciels de qualité.</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les méthodes de conception</h2>
+
+	<ul>
+		<li>
+			Il existe différentes manières pour classer les méthodes de conception. <br>
+			Nous citons les approches <b>fonctionnelle</b> et <b>orientée objet</b>:
+			<ul>
+				<li class="fragment">
+					<b>la conception fonctionnelle (procédurale)</b><br>
+					un système est vu comme un ensemble hiérarchique de fonctions. 
+					<img class="center-content" src="../TEX-figures/func_approach.svg" height="110px">
+				</li>
+
+				<li class="fragment">
+					<b>la conception orientée objet</b><br>
+					un système est un ensemble d'objets en interaction. 
+					<img class="center-content" src="../TEX-figures/oo_approach.svg" height="170px">
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Concepts importants <br> de l'approche objet</h2>
+
+	<div>
+		<img src="../TEX-figures/oo_concepts.svg" alt="" height="300px">
+	</div>
+
+	<div id="default-block" class="fragment left-content">
+		<b>UML</b> est <i>une méthode de conception</i> orientée objet
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Unified Modeling Language (UML)"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2 style="margin-bottom: 5px;">Pourquoi UML ?</h2>
+  <h3>Historique</h3>
+
+  <ul>
+    <li><i>1980 - 1994</i> $\to$ apparition des langages orientés objets puis de nombreuses méthodes permettant de modéliser la conception.</li>
+    <li class="fragment skip"><i>1995</i> $\to$ proposition d'une méthode commune $\to$ Unified Method (UM).</li>
+    <li class="fragment skip"><i>1996</i> $\to$ la méthode est significativement améliorée et est maintenant appelée Unified Modeling Language (UML).</li>
+    <li class="fragment skip"><i>1997</i> $\to$ UML est adopté par l'Object Management Group (OMG) comme standard (UML 1.0).</li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Qui est UML ?</h2>
+
+	<ul>
+		<li><b>UML</b> (<i>Unified Modeling Language</i>) est un langage (<i>une notation graphique<br> et une sémantique</i>) 
+			de modélisation basé sur la <i>notion d'objets</i>.</li>
+		<li class="skip fragment"><b>UML</b> est considéré comme un outil pour :
+			<ul>
+			<li>présenter l'analyse d'un système ou les pré-requis le concernant ;</li> 
+			<li>spécifier et concevoir des systèmes ;</li>
+			<li>communiquer sur des processus logiciels ou d'entreprise ; </li>
+			<li>documenter un système, un processus ou une organisation existants.</li>
+			</ul>
+		</li>
+		<li class="skip fragment"><b>UML</b> se présente sous forme d'un <i>ensemble de diagrammes</i> qui peuvent 
+			être utilisés à différents niveaux d'un cycle de vie d'un logiciel.</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les diagrammes d'UML I</h2>
+
+	<div class="left-content">
+		<b>Diagrammes de structure ou diagrammes statiques</b><br>
+		<ul>
+			<li>Diagramme de classes (class diagram)</li>
+			<li>Diagramme d'objets (object diagram)</li> 
+			<li>Diagramme de composants (component diagram)</li>
+			<li>Diagramme de déploiement (deployment diagram)</li>
+			<li>Diagramme des paquets (package diagram)</li>
+			<li>Diagramme de structure composite (composite structure diagram)</li>
+		</ul>
+		<div class="skip fragment">
+		<b>Diagrammes de comportement</b><br>
+		<ul>
+			<li>Diagramme des cas d'utilisation (use-case diagram)</li>
+			<li>Diagramme états-transitions (state machine diagram)</li>
+			<li>Diagramme d'activité (activity diagram)</li>
+		</ul>
+		</div>
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Les diagrammes d'UML II</h2>
+
+	<div class="left-content">
+		<b>Diagrammes d'interaction ou diagrammes dynamiques</b><br>
+		<ul>
+			<li>Diagramme de séquence (sequence diagram)</li>
+			<li>Diagramme de communication (collaboration) (communication diagram)</li>
+			<li>Diagramme global d'interaction (interaction overview diagram)</li>
+			<li>Diagramme de temps (timing diagram) </li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Diagramme UML de classes"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>C'est quoi un diagramme de classes</h2>
+
+	<div id="default-block" class="left-content">
+		<b>Diagramme de classes</b> <br>
+		décrit <i>les entités</i> (classes et interfaces) 
+		constituant le système à modéliser<br> et <i>les relations statiques</i> entre celles-ci.
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Définition d'un Classe UML</h2>
+
+	<div class="left-content">
+		<b>Classe et Objet</b><br>
+		<ul>
+			<li class="fragment">Une <i>classe</i> regroupe des <i>objets</i></li>
+			<li class="fragment">Les <i>objets</i> d'une même <i>classe</i> possédent un état et un comportement communs.</li>
+			<li class="fragment">Une <i>classe</i> peut représenter :
+				<ul>
+					<li>un <i>concept concret</i> (voiture, facture ...) </li>
+					<li>un <i>concept abstrait</i> (stratégie ...)</li>
+				</ul>
+			</li>
+			<li class="fragment">En <b>UML</b>, une <i>classe</i> représente un type de <i>classificateur</i>.</li>
+		</ul>
+		<div class="skip fragment">
+			<b>Exemple</b><br>
+			<ul>
+				<li><i>Une classe</i> : Personne</li>
+				<li><i>Des objets</i> : Jean, Marc, Marie, ...</li>
+			</ul>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Définition d'un Classe UML</h2>
+
+	<div class="left-content">
+		En <b>UML</b>, une classe est définie par un cadre rectangulaire comportant 3 zones:<br>
+		<ol>
+			<li>Zone contenant le <i>nom de la classe</i></li>
+			<li>Zone contenant les <i>attributs de la classe</i></li>
+			<li>Zone contenant les <i>opérations de la classe</i></li>
+		</ol>
+	</div>
+
+	<div class="skip">
+		<b>Représentation d'une classe en UML</b><br>
+		<img src="./../TEX-figures/diag-class/classe.svg" alt="" width="250px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Les éléments de la Classe en UML</h2>
+	<h3>Les attributs d'une classe UML</h3>
+
+	<ul>
+		<li>Les <i>caractéristiques</i> (propriétés) sont représentées sous la forme d'<i>attributs</i>.</li>
+
+		<li class="fragment skip">Un <i>attribut</i> peut être représenté au moyen de deux notations différentes:
+			<ol>
+				<li><i>en ligne</i> pour des données primitives simples (entiers, réels, ...),</li>
+				<li><i>relation</i> pour exprimer des liens avec d'autres classes (<em>voir la section suivante</em>).</li>
+			</ol>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Les éléments de la Classe en UML</h2>
+	<h3>Les attributs en ligne</h3>
+
+	<ul>
+		<li>
+			La forme générale d'un <i>attribut en ligne</i> dans une classe : <br>
+			<cs-code>visibilité/nom : type multiplicité = valeur-initiale {propriétés} </cs-code>
+		</li>
+
+		<li class="skip fragment">
+			Visibilité (par défaut <i>public</i>) <br>
+			<cs-code>+</cs-code>(<i>public</i>), <cs-code>-</cs-code>(<i>private</i>), <cs-code>#</cs-code>(<i>protected</i>), <cs-code>~</cs-code>(<i>package</i>)
+		</li>
+
+		<li class="skip fragment">
+			Un attribut dérivé <cs-code>/</cs-code> <br>
+			c'est un attribut qui peut être calculé à partir d'autres attributs de la classe
+		</li>
+
+		<li class="skip fragment">
+			Multiplicité (par défaut <cs-code>1</cs-code>)
+			<ul>
+				<li><cs-code>[val]</cs-code> $\to$ il y a <cs-code>val</cs-code> fois cet attribut</li>
+				<li><cs-code>[min..max]</cs-code> $\to$ il y a entre <cs-code>min</cs-code> et  <cs-code>max</cs-code> fois cet attribut</li>
+				<li><cs-code>[min..*]</cs-code> $\to$ il y a au moins <cs-code>min</cs-code> fois cet attribut</li>
+				<li><cs-code>[*]</cs-code> $\to$ il y a un nombre indéterminé d'occurrence de cet attribut</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Les éléments de la Classe en UML</h2>
+	<h3>Les Propriétés</h3>
+
+	<ul>
+		<li><cs-code>readOnly</cs-code> $\to$ valeur constante</li>
+		<li class="fragment skip"><cs-code>static</cs-code> $\to$ attribut partagé entre tous les objets (attribut souligné)</li>
+		<li class="fragment skip"><cs-code>unique</cs-code> $\to$ si multiplicité <i>$>$ $1$</i>, valeurs distinctes</li>
+		<li class="fragment skip"><cs-code>ordered</cs-code> $\to$ si multiplicité <i>$>$ $1$</i>, valeurs ordonnées	</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Les éléments de la Classe en UML</h2>
+	<h3>Exemples</h3>
+
+	<div>
+		<img src="./../TEX-figures/diag-class/example.svg" alt="" width="600px">
+	</div>
+
+ </section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="./starting-template.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
