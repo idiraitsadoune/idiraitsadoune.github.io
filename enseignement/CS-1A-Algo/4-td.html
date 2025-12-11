@@ -1,0 +1,408 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Algorithmique et Complexité : TD 4/6 -- Méthodes gloutonnes et d'approximation</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/slides-style.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+
+	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 150px; grid-template-columns: auto auto; ">
+		<a href="https://lmf.cnrs.fr/" target="_blank">
+			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
+		</a>
+		<a href="https://www.centralesupelec.fr/" target="_blank">
+			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
+		</a>
+	</div>
+
+	<div style="text-align: left">
+		<h2>Algorithmique et Complexité</h2>
+		<h3>TD 4/6 - Méthodes gloutonnes et d'approximation</h3>
+	</div>
+
+	<div class="description">
+		<span class="fa fa-graduation-cap"></span> 1A Cursus Ingénieurs - CentraleSupelec<br>
+		<span class="fa fa-university"></span> CentraleSupelec - Université Paris-Saclay - 2025/2026
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Retour sur le problème de bin-packing"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>BIN PACKING</h2>
+
+	<div class="left-content">
+    Le problème d'optimisation que l'on souhaite résoudre est le problème du Bin-Packing, vu au TD précédent : <br>
+		<b>BIN PACKING</b> <br>
+    <ul>
+      <li><b>Entrées</b>
+        <ul>
+          <li>un ensemble $O$ de $N$ objets de taille $o_i \in {\mathbb N}$</li>
+          <li>$B \in \mathbb{N}$ une taille de sac</li>
+        </ul>
+      </li>
+      <li><b>Question</b>
+        <ul>
+          <li>
+            trouver une affectation ($f: [\!\!|1,N|\!\!] \rightarrow \mathbb{N}$)
+             vérifiant $\forall j \in img(f). ~~ \sum_{i \in f^{-1}(\{j\})} o_i \leq B$, <br>
+             et minimisant le nombre de sacs : $obj(f) = card(img(f))$. <br>
+            On note $img(f)$ l'ensemble image de $f$.
+          </li>
+        </ul>
+      </li>
+    </ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Questions</h2>
+
+<ol>
+  <li>
+    Cherchez un algorithme <b>glouton</b> pour résoudre ce problème. Il en existe plusieurs. Combien pouvez-vous en proposer ?
+</li>
+<li class="skip">
+  Écrivez cet algorithme (en pseudo-code ou en python) et donnez sa complexité.
+</li>
+<li class="skip">
+Testez cet algorithme sur l'instance suivante où la taille des sacs est 10 et la taille des éléments est :
+	$$4, 4, 5, 5, 5, 4, 4, 6, 6, 2, 2, 3, 3, 7, 7, 2, 2, 5, 5, 8, 8, 4, 4, 5$$
+</li>
+</ol>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>First-fit</h2>
+
+<div class="left-content">
+  ajouter les objets, les uns après les
+  autres, dans le premier sac possible (celui qui porte le plus petit
+  numéro et dans lequel il y a suffisamment de place). S'il n'existe
+  aucun sac avec suffisamment de place disponible, en ouvrir un
+  nouveau.
+</div>
+
+	<pre><code class="language-python hljs" data-trim data-line-numbers>
+		<script type="text/template">
+	def FirstFit(O, B):
+    Aff = []
+    for o in O:
+      for bin in Aff:
+        if sum(bin) + o <= B :
+          bin.append(o)   # si on trouve un sac ou ca rentre
+          break
+      else:
+        Aff.append([o])     # sinon on cree un nouveau sac
+
+    return Aff
+		</script>
+	</code></pre>
+
+  <p>La complexité de l'algorithme FF est $\mathcal{O}(N^2)$.</p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Best-fit</h2>
+
+<div class="left-content">
+  on met un élément dans le sac qui est le plus
+  rempli et dans lequel il y a suffisamment de place ; on continue
+  jusqu'à l'épuisement des éléments.
+</div>
+
+	<pre><code class="language-python hljs" data-trim data-line-numbers>
+		<script type="text/template">
+def BestFit(O,B):
+  Aff = []
+  for o in O:
+    idx_bin = None
+    min_space = B
+    for idx in range(len(Aff)):
+      space = B - sum(Aff[idx])
+      # if it has enough room for the object, it becomes the new best fit
+      if o <= space and space < min_space : 
+        idx_bin = idx
+        min_space = space
+    if idx_bin == None: # If we found no bin for our object, use a new bin                           
+      Aff.append([o])
+    else:
+      Aff[idx_bin].append(o)
+
+    return Aff
+		</script>
+	</code></pre>
+
+   <p>La complexité de l'algorithme BF est $\mathcal{O}(N^2)$.</p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Autres algorithmes</h2>
+
+<div class="left-content">
+  Les deux algorithmes ci-dessus peuvent être utilisés/améliorés en ayant préalablement 
+  trié les objets par ordre décroissant de taille. 
+  On obtient les algorithmes <i>First Fit Descreasing (FFD)</i> et <i>Best Fit Decreasing (BFD)</i>.
+
+  <br><br>
+  La complexité au pire de ces algorithmes ne change pas car le coût d'un tri $\mathcal{O}(N \log(N))$ est inférieur à la complexité du reste  $\mathcal{O}(N^2)$.
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Question 4</h2>
+
+<ul>
+  <li>
+    Pouvez-vous proposer un autre algorithme glouton pour ce problème, plus efficace en termes de complexité temporelle ?
+  </li>
+  <li class="fragment skip">
+<b>NextFit (NF)</b> : on met l'élément dans le dernier sac ouvert quand il y reste suffisamment de place ; sinon on ouvre
+  un nouveau sac.
+	<pre><code class="language-python hljs" data-trim data-line-numbers>
+		<script type="text/template">
+def NextFit(O,B):
+  Aff = [[]]
+  for o in O:
+    # verifier s'il reste de la place dans le dernier sac
+    if sum(Aff[-1]) + o > B : 
+      Aff.append([o]) # ouvrir un nouveau sac et y ajouter l'objet
+    else :
+      Aff[-1].append(o) # ajouter l'objet au dernier sac
+
+  return Aff
+		</script>
+	</code></pre>
+  La complexité de cet algorithme est $\mathcal{O}(N)$
+  </li>
+</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Simulation</h2>
+
+<div class="left-content">
+  Testez cet algorithme sur l'instance suivante où la taille des sacs est 10 et la taille des éléments est :
+	$$4, 4, 5, 5, 5, 4, 4, 6, 6, 2, 2, 3, 3, 7, 7, 2, 2, 5, 5, 8, 8, 4, 4, 5$$
+</div>
+
+<ul>
+ <li>NF $\to$ 14 sacs</li> 
+<li>FF $\to$ 13 </li>
+<li>FFD $\to$ 11! optimal (car la somme des objets est égale à 110)  </li>
+<li>BF $\to$ 12</li>
+<li>BFD $\to$ 11! optimal </li>
+</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Question 5</h2>
+
+<div class="left-content">
+  Essayez d'estimer les performances de votre algorithme : de combien de
+fois au pire une solution renvoyée par votre algorithme dépasse le
+nombre minimal de serveurs.
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>la preuve FF</h2>
+
+<div class="left-content">
+Pour cette estimation il est pratique de supposer que chaque sac peut
+  contenir le poids~$1$. Le poids des objets est normalisé en référence
+  à la capacité des sacs : $p_i \longleftarrow \frac{o_i}{B}$. 
+
+  <br><br>
+  Combien de sacs <i>au moins</i> faudra-t-il ?
+</div>
+
+<div class="left-content skip">
+  La réponse est $\lceil \sum_{i=1}^{n} p_i \rceil$. On ne
+  pourra jamais avoir moins que $\lceil \sum_{i=1}^{n} p_i \rceil$
+  sacs. Cette réponse est notamment vraie pour n'importe quel
+  algorithme, pas uniquement FF.
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>la preuve FF</h2>
+
+<div class="left-content">
+Combien de sacs <i>au plus</i> faudra-t-il ?
+
+<br><br>
+  <b>Observation :</b> il y a au plus un sac non-vide dans lequel
+  l'espace disponible est supérieur ou égal à $\frac{1}{2}$.
+</div>
+
+<div class="left-content skip fragment">
+Supposons que nous avons deux sacs $i$, $j$, $i \lt j$ qui
+  sont plus qu'à moitié vides. Nous constatons que les éléments dans le
+  sac $j$ auraient pu avoir de la place dans le sac $i$ (dont le numéro
+  est inférieur) et FF aurait dû les mettre dans le sac $i$.  Notre
+  observation est donc vraie.
+<br>
+  Nous avons donc tous les sacs (sauf, peut-être, un) remplis au moins à
+  moitié. Par conséquent, nous n'avons jamais besoin de plus de $\lceil
+  2\sum_{i=1}^{n} p_i \rceil$ sacs.
+<br>
+  <b>Conclusion :</b> Nous sommes sûrs qu'une solution avec FF ne
+  dépasse jamais deux fois la solution optimale : $k^\ast \leq k <
+  2k^\ast $ où $k$ notre solution et $k^\ast$ la solution optimale.
+</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Cavalier : parcours de toutes les cases (tour du cavalier)"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>tour du cavalier</h2>
+
+<div class="left-content">
+  On considère un échiquier $m\times n$ ($m,n\ge 4$). On note <i>tour du cavalier</i> 
+  un chemin <b>simple</b> (sans répétition de cases) 
+  qui visite toutes les cases en n'utilisant que des coups légaux du cavalier.
+
+  <br><br>
+  Modéliser le problème. Préciser ce que signifie « trouver un tour ».
+</div>
+
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Merci</h1>
+	<p>
+		<a href="./starting-template.pdf" target="_blank">Version PDF des slides</a>
+	</p>
+	<p>
+		<a href="#">Retour à l'accueil</a>
+		- <a href="#/plan">Retour au plan</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+	
+	<script src="../resources/js/plan.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
