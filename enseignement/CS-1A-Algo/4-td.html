@@ -340,10 +340,57 @@ Supposons que nous avons deux sacs $i$, $j$, $i \lt j$ qui
   un chemin <b>simple</b> (sans répétition de cases) 
   qui visite toutes les cases en n'utilisant que des coups légaux du cavalier.
 
-  <br><br>
+  <br>
   Modéliser le problème. Préciser ce que signifie « trouver un tour ».
 </div>
 
+	<ul class="fragment skip">
+		<li><b>Entrées</b>
+			<ul>
+				<li>Graphe non orienté $G=(V,E)$ <br> où $V$ est l'ensemble des cases <br>
+et $\{u,v\}\in E$ ssi un cavalier peut aller de $u$ à $v$ en un coup.</li>
+			</ul>
+		</li>
+		<li><b>Question</b>
+			<ul>
+				<li>
+					Un tour est un <b>chemin hamiltonien</b> dans $G$
+					<br> (cycle hamiltonien si l'on exige le retour à la case initiale).
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+<h2>Solution exacte (backtracking)</h2>
+
+<ul><li>Décrire une méthode exacte pour trouver un tour du cavalier sur un $m\times n$. <br>
+	Quel est son coût (pire cas) ?</li></ul>
+
+		<pre class="fragment"><code class="language-python hljs" data-trim data-line-numbers>
+		<script type="text/template">
+def tour_cavalier(echiquier, position, visitees, chemin):
+	if len(chemin) == echiquier.taille_totale:
+		return chemin  # Tour complet trouvé
+	for coup in echiquier.coups_possibles(position):
+		if coup not in visitees:
+			visitees.add(coup)
+			chemin.append(coup)
+			resultat = tour_cavalier(echiquier, coup, visitees, chemin)
+			if resultat is not None:
+				return resultat  # Tour trouvé
+			visitees.remove(coup)  # Backtrack
+			chemin.pop()
+	return None  # Aucun tour trouvé à partir de cette position
+		</script>
+	</code></pre> 
+
+	<p class="fragment">
+		Le pire cas est exponentiel en $mn$ (nombre de cases).
+	</p>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
