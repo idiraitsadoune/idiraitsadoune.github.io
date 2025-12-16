@@ -3,16 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Conception Orientée Objet - COO : Diagramme UML de paquetages</title>
+	<title>Qualité de développement : Diagramme UML de paquetages</title>
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/slides-style.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
@@ -29,28 +31,29 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
-    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
-		</a>
-    <a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a> 
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
 	</div>
-
+	
 	<div style="text-align: left">
-		<h2>Conception Orientée Objet - COO</h2>
+		<h2>Qualité de développement</h2>
 		<h3>Diagramme UML de paquetages</h3>
 	</div>
 
-	<div class="description">
-		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
-		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
+	<div class="description" >
+		<span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -63,24 +66,10 @@
 			</a>
 			<br>
 			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-			</a>
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
-
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-  <h2>Cycle de développement</h2>
-
-	<div>
-		<img src="../TEX-figures/cycle-en-v/step-3-4.svg" height="auto" width="1064px" alt="">
-	</div>
-
-	<div>
-		Ce cours se positionne dans les étapes <b>Conception</b> et <b>Conception détaillée</b>.
-  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -88,6 +77,26 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Cycle de développement</h2>
+
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_1.svg" height="auto" width="900px" alt="">
+    <img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_2.svg" height="auto" width="900px" alt="">
+    <img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_3.svg" height="auto" width="900px" alt="">
+    <img class="fragment fade-in-then-out" src="./../CS-2A-ST58/img/cycle_v_4.svg" height="auto" width="900px" alt="">
+    <img class="fragment fade-in" src="./../CS-2A-ST58/img/cycle_v_5.svg" height="auto" width="900px" alt="">
+  </div>
+
+  <div class="fragment">
+    Ce cours se positionne dans les étapes <b>Conception</b> et <b>Conception détaillée</b>.
+  </div>
+
+</section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -110,29 +119,23 @@
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Définitions</h2>
 
-  <div style="float: right; margin-bottom: 10px; margin-left: 10px; height: 250px; width:auto;">
-    <img src="./img/15-uml-01.svg" />
-  </div>
-
-  <div>
-    <ul style="display: block;">
-      <li>
-          Un <b>paquetage</b> regroupe des éléments de la modélisation appelés <i>membres</i>,
-          portant sur<br> <b>un sous-ensemble du système</b>.
-      </li>
-      <li class="fragment skip">
-          <i>Le découpage en paquetage</i> doit traduire <b>un découpage logique</b>
-          du système correspondant<br> à <i>des espaces de nommage homogènes</i>.
-      </li>
-      <li class="fragment skip">
-          Un <b>paquetage</b> permet de grouper <i>n'importe quelle élément</i> de modélisation d'<b>UML</b>
-          dans des éléments de <i>plus haut niveau</i>. 
-        <ul>
-          <li class="fragment"> cas d'utilisation, objets, classes, composants, ..., et d'autres paquetages.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li>
+        Un <b>paquetage</b> regroupe des éléments de la modélisation appelés <br> <i>membres</i>,
+        portant sur <b>un sous-ensemble du système</b>.
+    </li>
+    <li class="fragment skip">
+        <i>Le découpage en paquetage</i> doit traduire <b>un découpage logique</b> <br>
+        du système correspondant à <i>des espaces de nommage homogènes</i>.
+    </li>
+    <li class="fragment skip">
+        Un <b>paquetage</b> permet de grouper <i>n'importe quelle éléments d'UML</i> <br>
+        dans des unités de plus haut niveau. 
+      <ul>
+        <li class="fragment">classes, composants, cas d'utilisation, ..., et d'autres paquetages.</li>
+      </ul>
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -152,15 +155,13 @@
 
   <ul>
     <li>
-        Chaque <i>paquetage</i> doit avoir un <i>nom différent</i>.
-    </li>
-
-    <li class="skip fragment">
-      Un <i>paquetage</i> définit un <b>espace de nommage</b> (<i>name space</i>).
+        Chaque <i>paquetage</i> doit avoir 
+        un <i>nom différent</i> (<b>espace de nommage</b>).
     </li>
 
     <li class="fragment skip">
-        Les <i>membres d'un paquetage</i> appartiennent au <i>paquetage englobant</i>:
+        Les éléments contenus dans un paquetage se distinguent 
+        par leur <i>appartenance</i> au <i>paquetage englobant</i>.
       <ul id="fleche">
         <li class="fragment"><i>deux éléments</i> dans <i>deux paquetages</i> 
             peuvent porter <i>le même nom</i>.
@@ -176,7 +177,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Nom d'un paquetage</h2>
+  <h2>Nom d'un paquetage</h2>
   <h3>Exemple</h3>
 
   <div>
@@ -192,24 +193,23 @@
   <div>
     <img src="./img/15-uml-04.svg" />
   </div>
-
+  
   <ul>
-    <li>
-      Le <i>nom</i> d'un élément est <b>simple</b> s'il est utilisé <i>seul</i>. 
+    <li class="fragment">
+      Le <i>nom</i> d'un élément est dit <b>simple</b> s'il est utilisé <i>seul</i>. 
       <ul id="fleche">
         <li>la classe <cs-code>Roue</cs-code></li>
       </ul>
     </li>
 
     <li class="fragment skip">
-        Le <i>nom</i> d'un élément est <b>complet</b> s'il est précédé par<br> <i>les noms 
-        des paquetages englobants</i> (<i>name space</i>). 
+        Le <i>nom</i> d'un élément est dit <b>complet</b> s'il est précédé par <i>les noms <br>
+            des paquetages englobants</i> (<b>name space</b>). 
       <ul id="fleche">
         <li>la classe <cs-code>voiture::systeme-acceleration::Roue</cs-code></li>
       </ul>
     </li>
   </ul>
-
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -217,11 +217,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>La visibilité</h2>
 
-  <div>
-    <img class="fragment" src="./img/15-uml-05.svg" />
-  </div>
-
-  <ul class="d-skip">
+  <ul>
     <li>Les éléments d'un <i>paquetage</i> peuvent avoir une <i>visibilité</i> déclarée:
       <ul>
         <li class="fragment">de type <b>public</b> (par défaut) $\to$ visible dans tout le modèle.</li>
@@ -231,6 +227,10 @@
     </li>
   </ul>
   
+  <div>
+    <img class="skip fragment" src="./img/15-uml-05.svg" />
+  </div>
+    
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -245,23 +245,23 @@
   <h2>Relation de dépendances</h2>
 
   <ul>
-    <li><b>Une relation de dépendance</b> entre deux paquetages existe dès que 
-        <i>deux éléments de modélisation</i> issus de deux paquetages sont <i>associés</i>.
-        <ul id="fleche"><li>hormis les cas de <i>dépendances implicites</i> (emboîtement de paquetages)</li></ul>
+    <li><b>Une relation de dépendance</b> doit exister dès que 
+        <i>deux éléments issus <br> de deux paquetages sont associés</i>.
+        <ul id="fleche"><li>hormis les cas de dépendances implicites (<i>emboîtement de paquetages</i>)</li></ul>
     </li>
 
-    <li class="fragment skip"><b>La dépendance</b> est une <i>relation unidirectionnelle</i> entre <i>paquetages</i>. 
+    <li class="fragment skip">C'est une <i>relation unidirectionnelle</i> entre <i>paquetages</i>. 
       <ul id="fleche"><li>une modification de la cible peut impliquer une modification de la source</li></ul>
     </li>
 
-    <li class="fragment skip">Une relation de <b>dépendance</b> se représente par <i>une flèche en pointillé</i>.</li>
+    <li class="fragment skip">Une relation de dépendance se représente par <i>une flèche en pointillé</i>.</li>
   </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Relation de dépendances</h2>
+  <h2>Relation de dépendances</h2>
   <h3>Exemple</h3>
 
   <div>
@@ -275,14 +275,13 @@
   <h2>Importation de paquetage</h2>
     
   <ul>
-    <li>Pour <i>utiliser</i>  des éléments de modélisation définis dans un autre paquetage, <br>
-        on peut utiliser la relation d'<b>importation</b>.
+    <li>Pour <i>simplifier l'utilisation des éléments</i> contenus dans un autre <br> paquetage, 
+        on peut utiliser l'<b>importation</b>.
       <ul id="fleche"><li class="fragment">permet d'<i>importer l'espace de nommage</i> d'un autre paquetage.</li></ul>
     </li>
     <li class="fragment skip">
-        Les <i>éléments de modélisation</i> du paquetage importé deviennent <i>accessible</i> <br>
-        à tous les memebres du paquetage réalisant l'importation. 
-      <ul id="fleche"><li>référençable <i>sans utiliser explicitement le nom du paquetage importé</i>.</li></ul>
+        Tous les membres d'un paquetage ont <i>accès à tous les membres <br> du paquetage importé</i>. 
+      <ul id="fleche"><li>sans utiliser explicitement le nom du paquetage importé.</li></ul>
     </li>
   </ul>
 
@@ -290,7 +289,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Importation de paquetage</h2>
+  <h2>Importation de paquetage</h2>
   <h3>Exemple 1</h3>
 
   <div>
@@ -301,7 +300,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Importation de paquetage</h2>
+  <h2>Importation de paquetage</h2>
   <h3>Exemple 2</h3>
     
   <div>
@@ -319,15 +318,15 @@
   <h2>Accès à un paquetage</h2>
 
   <ul>
-    <li>Il est possible d'<i>accéder</i> aux éléments de modélisation d'un paquetage à partir d'un autre 
-          paquetage en <i>utilisant</i> le <b>nom complet</b> de l'élément.
-      <ul id="fleche"><li>utilisation de <i>l'espace de nommage</i> d'un autre paquetage
+    <li>Pour <i>accéder</i> aux éléments d'un paquetage à partir d'un autre 
+          paquetage, <br>il faut <i>utiliser le nom complet</i>.
+      <ul id="fleche"><li>permet à un paquetage d'avoir <i>accès à l'espace de nommage 
+          d'un autre paquetage</i>
       </li></ul>
     </li>
     <li class="fragment skip">
-        L'<i>accès à un élément</i> d'un autre espace de nommage <i>n'est pas une importation</i><br> 
-        et ne peut être transmis 
-        à d'autres paquetages par transitivité. 
+        L'espace de nommage n'est <i>pas importé et ne peut être transmis 
+            à d'autres paquetages</i> par transitivité. 
     </li>
   </ul>
 
@@ -335,7 +334,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Accès à un paquetage</h2>
+  <h2>Accès à un paquetage</h2>
   <h3>Exemple 1</h3>
 
   <div>
@@ -346,7 +345,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Accès à un paquetage</h2>
+  <h2>Accès à un paquetage</h2>
   <h3>Exemple 2</h3>
 
   <div>
@@ -379,8 +378,8 @@
         s'appuie <br> sur <i>deux principes</i> fondamentaux : 
     
       <ol>
-        <li class="fragment"><b>la cohérence</b> $\to$ <i>regrouper</i> les éléments <i>proches sémantiquement</i>.</li>
-        <li class="fragment"><b>l'indépendance</b> $\to$ <i>minimiser les dépendances</i> entre les paquetages. </li>
+        <li class="fragment"><b>La cohérence</b> $\to$ <i>regrouper</i> les éléments <i>proches sémantiquement</i>.</li>
+        <li class="fragment"><b>L'indépendance</b> $\to$ <i>minimiser les dépendances</i> entre les paquetages. </li>
       </ol>
     </li>
   </ul>
@@ -439,7 +438,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Un découpage qui avantage <br> l'indépendance</h2>
 
-  <div id="default-block" class="left-content" style="text-align: center !important">
+  <div id="default-block" class="left-content" style="text-align: center;">
       Est ce qu'on peut faire mieux que le résultat obtenu à partir <br> des découpages précédents ?
   </div>
 
@@ -508,7 +507,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-  <h2 style="margin-bottom: 5px;">Inverser une dépendance</h2>
+  <h2>Inverser une dépendance</h2>
 	<h3>Exemple</h3>
 
 	<div class="skip">
@@ -537,7 +536,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 		</div>
 	</div>
-	
+
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
