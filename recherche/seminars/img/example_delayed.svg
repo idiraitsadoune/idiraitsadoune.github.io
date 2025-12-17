@@ -1,0 +1,97 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 451 100'>
+  <defs>
+    <marker id='arrow-head' orient='auto' markerWidth='6' markerHeight='6' refX='0' refY='3'>
+      <path d='M0,0 V6 L6,3 Z' fill='black'/>
+    </marker>
+  </defs>
+  <style type='text/css'>
+  <![CDATA[
+    .clockline {
+      stroke-width: 1px;
+      stroke: black;
+    }
+    .timeline {
+      stroke-width: 1px;
+      stroke: black;
+      marker-end: url(#arrow-head);
+    }
+    .clockname {
+      font-family: sans-serif;
+      font-size:80%;
+      text-anchor: end;
+    }
+    .ticklabel {
+      font-family: sans-serif;
+      font-size:60%;
+      text-anchor: middle;
+      /* 2014-05: baseline-shift does not work in Firefox (OK in Chrome and Safari) */
+      /* baseline-shift: -1em; */
+      transform: translate(0px, 1em);  /* For Firefox */
+      -webkit-transform: translate(0px, 1em); /* For Chrome, Safari */
+    }
+    .tickmark {
+      stroke: black;
+      stroke-width: 2px;
+    }
+    .tickhelper {
+      stroke: black;
+      stroke-width: 1px;
+      stroke-dasharray: 2 5;
+    }
+  ]]>
+  </style>
+
+  <svg id='clocknames' x='0.0' y='0.0'>
+    <text class='clockname' x='60.00' y='20.00'>master</text>
+    <text class='clockname' x='60.00' y='40.00'>counting</text>
+    <text class='clockname' x='60.00' y='60.00'>slave</text>
+  </svg>
+  <svg id='chrono' x='70.0' y='0.0'>
+    <line class='clockline' x1='0' y1='20.00' x2='375.00' y2='20.00'/>
+    <line class='clockline' x1='0' y1='40.00' x2='375.00' y2='40.00'/>
+    <line class='clockline' x1='0' y1='60.00' x2='375.00' y2='60.00'/>
+    <line class='timeline' x1='0' y1='80.00' x2='375.00' y2='80.00'/>
+    <line class='tickhelper' x1='50.00' y1='0.00' x2='50.00' y2='80.00'/>
+    <line class='tickmark' x1='50.00' y1='80.00' x2='50.00' y2='74.00'/>
+    <text class='ticklabel' x='50.00' y='84.00'>0.50</text>
+    <line class='tickmark' x1='50.00' y1='20.00' x2='50.00' y2='10.00'/>
+    <line class='tickhelper' x1='75.00' y1='0.00' x2='75.00' y2='80.00'/>
+    <line class='tickmark' x1='75.00' y1='80.00' x2='75.00' y2='74.00'/>
+    <text class='ticklabel' x='75.00' y='84.00'>1</text>
+    <line class='tickmark' x1='75.00' y1='40.00' x2='75.00' y2='30.00'/>
+    <line class='tickhelper' x1='125.00' y1='0.00' x2='125.00' y2='80.00'/>
+    <line class='tickmark' x1='125.00' y1='80.00' x2='125.00' y2='74.00'/>
+    <text class='ticklabel' x='125.00' y='84.00'>2</text>
+    <line class='tickmark' x1='125.00' y1='40.00' x2='125.00' y2='30.00'/>
+    <line class='tickhelper' x1='150.00' y1='0.00' x2='150.00' y2='80.00'/>
+    <line class='tickmark' x1='150.00' y1='80.00' x2='150.00' y2='74.00'/>
+    <text class='ticklabel' x='150.00' y='84.00'>2.50</text>
+    <line class='tickmark' x1='150.00' y1='20.00' x2='150.00' y2='10.00'/>
+    <line class='tickhelper' x1='175.00' y1='0.00' x2='175.00' y2='80.00'/>
+    <line class='tickmark' x1='175.00' y1='80.00' x2='175.00' y2='74.00'/>
+    <text class='ticklabel' x='175.00' y='84.00'>3</text>
+    <line class='tickmark' x1='175.00' y1='60.00' x2='175.00' y2='50.00'/>
+    <line class='tickmark' x1='175.00' y1='40.00' x2='175.00' y2='30.00'/>
+    <line class='tickhelper' x1='225.00' y1='0.00' x2='225.00' y2='80.00'/>
+    <line class='tickmark' x1='225.00' y1='80.00' x2='225.00' y2='74.00'/>
+    <text class='ticklabel' x='225.00' y='84.00'>4</text>
+    <line class='tickmark' x1='225.00' y1='40.00' x2='225.00' y2='30.00'/>
+    <line class='tickhelper' x1='250.00' y1='0.00' x2='250.00' y2='80.00'/>
+    <line class='tickmark' x1='250.00' y1='80.00' x2='250.00' y2='74.00'/>
+    <text class='ticklabel' x='250.00' y='84.00'>4.50</text>
+    <line class='tickmark' x1='250.00' y1='20.00' x2='250.00' y2='10.00'/>
+    <line class='tickhelper' x1='275.00' y1='0.00' x2='275.00' y2='80.00'/>
+    <line class='tickmark' x1='275.00' y1='80.00' x2='275.00' y2='74.00'/>
+    <text class='ticklabel' x='275.00' y='84.00'>5</text>
+    <line class='tickmark' x1='275.00' y1='60.00' x2='275.00' y2='50.00'/>
+    <line class='tickmark' x1='275.00' y1='40.00' x2='275.00' y2='30.00'/>
+    <line class='tickhelper' x1='325.00' y1='0.00' x2='325.00' y2='80.00'/>
+    <line class='tickmark' x1='325.00' y1='80.00' x2='325.00' y2='74.00'/>
+    <text class='ticklabel' x='325.00' y='84.00'>6</text>
+    <line class='tickmark' x1='325.00' y1='40.00' x2='325.00' y2='30.00'/>
+    <line class='tickhelper' x1='350.00' y1='0.00' x2='350.00' y2='80.00'/>
+    <line class='tickmark' x1='350.00' y1='80.00' x2='350.00' y2='74.00'/>
+    <text class='ticklabel' x='350.00' y='84.00'>6.50</text>
+    <line class='tickmark' x1='350.00' y1='20.00' x2='350.00' y2='10.00'/>
+  </svg>
+</svg>
