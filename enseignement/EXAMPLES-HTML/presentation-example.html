@@ -78,14 +78,16 @@
 			<img class="hero-user" style="width: 150px !important ; height: 150px !important; margin-right: 20px;" src="../resources/img/idir.png">
 		</div>
 
-		<ul style="flex: 4">
+		<ul style="flex: 3">
 			<li>
-				<i>2010</i> - <b>Docteur en Informatique</b> diplômé par l'<a href="https://www.ensma.fr/" target="_blank">ENSMA</a>.
+				<i>2010</i> - <a href="https://www.theses.fr/2010ESMA0016" target="_blank"><b>Docteur en Informatique</b></a> 
+				diplômé par l'<a href="https://www.ensma.fr/" target="_blank">ENSMA</a>.
 				<ul>
 					<li>
-						<a href="https://www.theses.fr/2010ESMA0016" target="_blank">Thèse</a> sur la
-						<b>modélisation</b> et la <b>vérification</b> des services <br>
-						par une approche utilisant le <b>raffinement</b> et la <b>preuve</b>.
+						<b>modélisation</b> et <b>vérification</b> des services <br>
+					</li>
+					<li>
+						approche utilisant le <b>raffinement</b> et la <b>preuve</b>
 					</li>
 				</ul>
 			</li>
@@ -133,12 +135,10 @@
 
 	<ul>
 		<li class="fragment">
-			<b>Maecenas egestas</b> nulla at nibh volutpat. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. 
+			<b>Maecenas egestas</b> nulla at nibh volutpat. Lorem ipsum dolor sit amet. 
 			<ul>
-				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. </li>
-				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Lorem ipsum dolor sit <i>$2006$</i> Lorem ipsum dolor sit amet. </li>
+				<li class="fragment">Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>.</li>
+				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit <i>$2006$</i>.</li>
 			</ul>
 		</li>
 
@@ -167,28 +167,40 @@
 
 	<div class="left-content">
 		<ul id="fleche">
-		<li>Lorem ipsum dolor sit amet, <i>consectetur</i> adipiscing elit. <b>Maecenas egestas</b> nulla
-			at nibh volutpat. Lorem ipsum dolor sit amet.
-		</li>
-	</ul><br>
+			<li>
+				Lorem ipsum dolor sit amet, <i>consectetur</i> adipiscing elit. <b>Maecenas egestas</b>.
+			</li>
+		</ul><br>
 
-	<ul id="ok">
-		<li class="skip fragment">Lorem ipsum dolor sit amet, <green-i>consectetur</green-i> adipiscing elit. <green-b>Maecenas egestas</green-b> nulla
-			at nibh volutpat. Lorem ipsum dolor sit amet.
-		</li>
-	</ul><br>
+		<ul id="ok">
+			<li class="skip fragment">
+				Lorem ipsum dolor sit amet, <green-i>consectetur</green-i> adipiscing elit. <green-b>Maecenas egestas</green-b>.
+			</li>
+		</ul><br>
 
-	<ul id="ko">
-		<li class="skip fragment">Lorem ipsum dolor sit amet, <red-i>consectetur</red-i> adipiscing elit. <red-b>Maecenas egestas</red-b> nulla 
-			at nibh volutpat. Lorem ipsum dolor sit amet.
-		</li>
-	</ul><br>
+		<ul id="ko">
+			<li class="skip fragment">
+				Lorem ipsum dolor sit amet, <red-i>consectetur</red-i> adipiscing elit. <red-b>Maecenas egestas</red-b>.
+			</li>
+		</ul><br>
 
-	<ul>
-		<li class="skip fragment">Lorem ipsum dolor sit amet, <cs-i>consectetur</cs-i> adipiscing elit. <em>Maecenas egestas</em> nulla
-			at nibh volutpat. Lorem ipsum dolor sit amet.
-		</li>
-	</ul>
+		<ul id="ok">
+			<li class="skip fragment">
+				Lorem ipsum dolor sit amet, <green-i>consectetur</green-i> adipiscing elit. <green-b>Maecenas egestas</green-b>.
+			</li>
+		</ul><br>
+
+		<ul id="ko">
+			<li class="skip fragment">
+				Lorem ipsum dolor sit amet, <red-i>consectetur</red-i> adipiscing elit. <red-b>Maecenas egestas</red-b>.
+			</li>
+		</ul><br>
+
+		<ul>
+			<li class="skip fragment">
+				Lorem ipsum dolor sit amet, <cs-i>consectetur</cs-i> adipiscing elit. <em>Maecenas egestas</em>.
+			</li>
+		</ul>
 	</div>
 	
 </section>
@@ -198,8 +210,8 @@
 	<h2>Le titre de la slide</h2>
 
 	<div class="left-content">
-		<p>Utiliser le tag <b>p</b> pour aligner un text à droite tout en restant au centre</p>
-		<ul id="ko">
+		Utiliser le tag <b>p</b> pour aligner un text à droite tout en restant au centre <br>
+		<ul id="ko" class="skip">
 			<li>
 				<red-b>Problème</red-b>
 			</li>
@@ -327,7 +339,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Une autre animation</h2>
 
-	<div class="r-stack">
+	<div class="r-stack" style="background-color: white;">
 		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-1.svg" height="auto" width="1064px" alt="">
 		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-2.svg" height="auto" width="1064px" alt="">
 		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-3.svg" height="auto" width="1064px" alt="">
@@ -439,18 +451,20 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Image dans le texte</h2>
 
-	<div style="float: right; margin-bottom: 20px; margin-left: 20px; height: 250px; width:auto;">
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; height: 300px; width:auto;">
 		<img src="../resources/img/CentraleSupelec-Logo-V_RVB.png">
 	</div>
 	
 	<div>
 		<ul style="display: block;">
-			<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
-				est un langage de modélisation graphique. </li>
+			<li>L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
 			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
 				Booch, OMT, OOSE.</li>
-			<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par l'OMG en
-				juillet 2005. Lorem ipsum dolor sit amet, consectetur.</li>
+			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
+			<li class="fragment skip">Le Langage de Modélisation Unifié (Unified Modeling Language - UML)
+				est un langage de modélisation graphique. </li>
 		</ul>
 	</div>
 
@@ -461,19 +475,21 @@
 	<h2>Deux colonnes</h2>
 
 	<div class="center-divs">
-		<div style="flex: 1;">
-			<img src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="" style="width: 90%;">
-		</div>
-
 		<div style="flex: 3;">
 			<ul>
-				<li class="fragment">Le Langage de Modélisation Unifié,(Unified Modeling Language - UML),
-					est un langage de modélisation graphique à base de pictogrammes. </li>
-				<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
-					Booch, OMT, OOSE.</li>
-				<li class="fragment skip">UML 1.0 a été normalisé en janvier 1997; UML 2.0 a été adopté par
-					l'OMG en juillet 2005.</li>
+				<li>L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
+			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
+			<li class="fragment skip">L'UML est une synthèse de langages de modélisation objet antérieurs :
+				Booch, OMT, OOSE.</li>
+			<li class="fragment skip">Le Langage de Modélisation Unifié (Unified Modeling Language - UML)
+				est un langage de modélisation graphique. </li>
 			</ul>
+		</div>
+
+		<div style="flex: 1;">
+			<img src="../resources/img/CentraleSupelec-Logo-V_RVB.png" alt="" style="width: 90%;">
 		</div>
 	</div>
 
