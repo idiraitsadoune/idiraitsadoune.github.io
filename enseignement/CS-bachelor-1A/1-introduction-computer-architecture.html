@@ -154,7 +154,7 @@
 			</li>
 			<li class="skip fragment">
 				<b>Understand program execution</b>.
-				<ul><li>how a processor interprets and executes a <b>Python program</b></li></ul>
+				<ul><li>how a processor interprets and executes a software (<strong>ex.</strong> <b>Python program</b>)</li></ul>
 			</li>
 		</ul>
 	</div>
@@ -223,7 +223,7 @@
 	<h2>Communication & Organization</h2>
 
 	<ul>
-		<li class="fragment">
+		<li>
 			<b>Course website</b>
       <ul id="fleche"><li><a href="https://centralesupelec.edunao.com/course/view.php?id=11381" target="_blank">centralesupelec.edunao.com</a></li></ul>
 		</li>
@@ -291,10 +291,10 @@
         to automatically<br> execute a <i>sequence of operations</i> (<b>program</b>).
 		</p>
     <ul>
-      <li>
+      <li class="fragment">
         We provide the computer with:
         <ul id="fleche">
-          <li class="fragment"><b>program</b> (software)</li>
+          <li><b>program</b> (software)</li>
           <li class="fragment"><b>data</b> (information)</li>
         </ul>
       </li>
@@ -333,7 +333,7 @@
 			<b>Two main categories of computers</b>
 			<ol>
 				<li class="fragment"><b>personal computer</b> <br>$\to$ (PCs)</li>
-				<li class="fragment"><b>on-board (embedded) computers</b> <br>$\to$ (train control systems, medical devices, TV, smartphone, ...)</li>
+				<li class="fragment"><b>on-board (embedded) computers</b> <br>$\to$ (train control systems, medical devices, smart TV, smartphone, ...)</li>
 			</ol>
 		</li>
 	</ul>
@@ -529,6 +529,10 @@
 		<img src="./img/computer_components.png" alt="" height="500px">
 	</div>
 
+	<div style="font-size: 20px;">
+		CPU = central processing unit
+	</div>
+
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -552,17 +556,17 @@
         All computer components are <b>electronic devices</b> that process and store information.
 			</li>
 			<li class="fragment skip">
-				<b>electronic devices</b> $\to$ circuits that perform logic & arithmetic operations.
+				<b>electronic devices</b> $\to$ circuits that perform <i>logic & arithmetic operations</i>.
 			</li>
 			<li class="fragment skip">
-				<b>electronic devices</b> $\to$  manipulate two logical values (<b>Binary digITs</b> - <b>bits</b>).
+				<b>electronic devices</b> $\to$  manipulate two <i>states</i> or <i>values</i> (<b>Binary digITs</b> - <b>bits</b>).
 				<ul>
-					<li><i>a weak signal</i> between 0V and 1V $\to$ value 0 or <i>bit 0</i>.</li>
-					<li><i>a high signal</i> between 2V and 5V $\to$ value 1 or <i>bit 1</i>.</li>
+					<li><i>a weak electrical signal</i> (between 0V and 1V) $\to$ <i>value 0</i> or <i>bit 0</i>.</li>
+					<li><i>a high electrical signal</i> (between 2V and 5V) $\to$ <i>value 1</i> or <i>bit 1</i>.</li>
 				</ul>
 			</li>
 			<li class="fragment skip">
-				<b>electronic devices</b> $\to$  manipulate a sequence of bits representing <b>numbers</b><br> or <b>complex data</b>.
+				<b>electronic devices</b> $\to$  manipulate <i>a sequence of bits</i> representing <b>numbers</b><br> or <b>complex data</b>.
 			</li>
 		</ul>
 	</div>
@@ -575,7 +579,11 @@
   <h3>Decimal $\to$ Binary of $235_{10}$</h3>
 
 	<div class="center-divs">
-		<div class="left-content" style="flex: 2;">
+    <div class="fragment" style="flex: 1;">
+      <img src="./img/bin.png" alt="" height="450px">
+    </div>
+
+		<div class="left-content fragment" style="flex: 1;">
 			$235 \div 2 = 117$ $\to$ remainder $= 1$ <br>
 			$117 \div 2 = 58$ $\to$ remainder $= 1$ <br>
 			$58 \div 2 = 29$ $\to$ remainder $= 0$ <br>
@@ -585,10 +593,6 @@
       $3 \div 2 = 1$ $\to$ remainder $= 1$ <br>
 			$1 \div 2 = 0$ $\to$ remainder $= 1$
 		</div>
-
-    <div>
-      <img src="./img/bin.png" alt="" height="450px">
-    </div>
   </div>
 
   <div class="fragment">
