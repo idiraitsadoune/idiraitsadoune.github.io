@@ -1,0 +1,1047 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Computer Architecture and Software Execution Process : Computer Architecture</title>
+
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- Theme used for syntax highlighting of code -->
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
+
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+	<img id="logo" src="./img/cs-essec.jpg" alt="">
+	<div class="reveal">
+		<div class="slides">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
+	
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.centralesupelec.fr/fr/bachelor-artificial-intelligence-data-and-management-sciences" target="_blank">
+				<img src="../resources/img/cs.png" alt=""><img style="padding: 5px;" height="80%" src="./img/essec_1.png" alt="">
+			</a>
+		</div>
+	</div>
+	
+	<div style="text-align: left">
+		<h2>Computer Architecture <br> and Software Execution Process</h2>
+		<h3>Introduction to Computer Architecture</h3>
+	</div>
+
+	<div class="description" >
+		<span><span class="fa fa-graduation-cap">&#160;</span>Bachelor in Artificial Intelligence, Data and Management Sciences</span><br>
+		<span><span class="fa fa-university">&#160;</span>CentraleSupelec and ESSEC Business School - 2024/2025</span>
+	</div>
+
+	<div class="hero-card-id">
+		<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+			<img src="../resources/img/idir.png" class="hero-user">
+		</a>
+		<div class="hero-desc">
+			<a href="https://wdi.centralesupelec.fr/aitsadoune/" target="_blank">
+				<span class="hero-name"><strong>Idir AIT SADOUNE </strong></span>
+			</a>
+			<br>
+			<a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">
+				<span class="hero-email">idir.aitsadoune@centralesupelec.fr</span>
+			</a>
+		</div>
+	</div>
+	
+	<aside class="notes">
+		First of all, before we begin, I wish you a very happy new year.
+	</aside>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Idir AIT SADOUNE</h2>
+
+	<div class="center-divs">
+		<div style="flex: 1;">
+			<img class="hero-user" style="width: 150px !important ; height: 150px !important; margin-right: 20px;" src="../resources/img/idir.png">
+		</div>
+		
+		<ul style="flex: 4">
+			<li>
+				<b>Associate-Professor</b> at the Computer Science Department <br>
+                of <a href="https://www.centralesupelec.fr/" target="_blank">CentraleSupelec - Paris-Saclay University</a>.
+				<ul id="fleche" class="fragment">
+					<li>
+						Teacher of Algorithmic and Complexity, Object-Oriented design and programming, 
+						Software Engineering, Operating Systems, Modelling and Verification using Formal Methods, etc.
+					</li>
+					<li>
+						Engineering program, Bachelor program, ...
+					</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				<b>Researcher</b> at the <b>Model</b> and <b>Proof</b> Teams <br> 
+					of <a href="https://lmf.cnrs.fr/" target="_blank">LMF - Formal Methods Laboratory</a> of Paris-Saclay.   
+				<ul id="fleche">
+					<li class="fragment">
+						<b>PhD thesis in Computer Science</b> graduated from <a href="https://www.ensma.fr/" target="_blank">ENSMA</a> in <i>2010</i> <br>
+						about <b>formal modelling</b> and <b>verifying</b> Services compositions. 
+					</li>
+					<li class="fragment">My research activities address the use of <i>formal methods</i> <br> 
+						for modelling and verifying systems using <i>refinement</i> <br>
+							and <i>proof-based approaches</i>.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="plan"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch1" name="Description of the course"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Learning outcomes and assessment</h2>
+
+	<div class="left-content">
+		<p><b>Main objective</b> $\to$ Demystify the computer and its components.</p>
+
+		<ul>
+			<li class="fragment">Analyze the <b>main components of a computer</b> and their role.
+				<ul><li>processor, memory, input/output devices, ...</li></ul>
+			</li>
+			<li class="skip fragment">
+				Describe the <b>organization</b> and operation of these entities.
+				<ul><li>how a processor, memory or other components work...</li></ul>
+			</li>
+			<li class="skip fragment">
+				<b>Understanding Program Execution</b>.
+				<ul><li>how does the processor understand and execute a Python program?</li></ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Syllabus</h2>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Chapter</th>
+				<th>Lecture</th>
+				<th>TD</th>
+				<th>Lab</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="fragment">
+				<td>Computer Architecture $\to$  Introduction</td>
+				<td>1h30</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="fragment">
+				<td>Operating systems</td>
+				<td>1h30</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="fragment">
+				<td>Data representation</td>
+				<td>1h30</td>
+				<td>1h30</td>
+				<td></td>
+			</tr>
+			<tr class="fragment">
+				<td>Internal Architecture of Microprocessors</td>
+				<td>1h30</td>
+				<td>1h30</td>
+				<td>6h00</td>
+			</tr>
+			<tr class="fragment">
+				<td>Memory management</td>
+				<td>1h30</td>
+				<td>1h30</td>
+				<td></td>
+			</tr>
+		</tbody>
+  </table>
+
+	<div id="default-block"  class="left-content skip fragment">
+		<b>Assessment of learning outcomes</b> <br> 
+		<ul>
+			<li class="fragment">The <i>practical exam</i> during the Lab sessions (<strong>40%</strong>)</li>	
+			<li class="fragment">The <i>final exam</i> (<strong>60%</strong>)</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Communication organisation</h2>
+
+	<ul>
+		<li class="fragment">
+			Course website $\to$ <a href="https://centralesupelec.edunao.com/course/view.php?id=9257" target="_blank">centralesupelec.edunao.com</a>
+		</li>
+		<li class="fragment skip">
+			You can ask me your questions <i>before, during and after</i> the sessions.
+		</li>
+		<li class="fragment skip">
+			You can contact me <i>outside of the class hours</i>. 
+			<ul id="fleche">
+				<li>using email $\to$ <a href="mailto:idir.aitsadoune@centralesupelec.fr" target="_blank">idir.aitsadoune@centralesupelec.fr</a></li>
+				<li>remotely by $\to$ <b>MS TEAMS</b></li>
+			</ul>	
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch2" name="Introduction to computer systems"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Computer science</h2>
+	
+	<ul>
+		<li><a href="https://en.wikipedia.org/wiki/Computer_science" target="_blank">Computer science</a> 
+			 is the science of <b>automatic information processing</b>.
+		</li>
+		<li class="skip fragment">
+			Automatic processing of information is done with <b>programs</b> executed<br> by <b>machines</b>. 
+			<ul>
+				<li class="fragment"><b>programs</b> (<i>software</i>) describe the process to be executed,</li>
+				<li class="fragment"><b>machines</b> (<i>hardware</i>) run <b>programs</b>.</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="skip">
+		<img src="./img/informatique.png" height="auto" width="45%" alt="">
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The concept of computer</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/ordinateur1.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur2.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur3.jpg" height="170px" width="auto">
+	</div>
+
+	<div class="left-content">
+		<p><a href="https://en.wikipedia.org/wiki/Computer"
+				target="_blank">The computer</a> is a machine that can be <i>programmed</i> 
+					to execute a <i>sequences <br> of operations</i> <b>automatically</b>.
+		</p>
+		<ul id="fleche">
+			<li class="fragment">we give him <b>program</b> (software)</li>
+			<li class="fragment">we give him <b>data</b> (information)</li>
+			<li class="fragment">the computer <i>transforms</i> the <b>data</b> by using the <b>program</b></li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The concept of computer</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto;align-items:center; column-gap: 50px;">
+		<img src="./img/ordinateur1.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur2.jpg" height="170px" width="auto">
+		<img src="./img/ordinateur3.jpg" height="170px" width="auto">
+	</div>
+
+	<ul>
+		<li class="skip">
+			But today a computer does much more than that ...
+		</li>
+		<li class="fragment skip">
+			Solve <b>problems</b> following a <b>program</b>.
+			<ul><li><b>Program</b> $\to$ a sequence of instructions describing how the problem is to be solved.</li></ul>
+		</li>
+		<li class="fragment skip">
+			Two categories of computers
+			<ol>
+				<li>personal computer or <b>PC</b></li>
+				<li><b>embedded system</b></li>
+			</ol>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Computer Architecture ?</h2>
+
+	<ul>
+		<li><b>Architecture</b>
+			<ul>
+				<li>a general term to <i>describe</i> buildings and other <i>physical structures</i></li>
+				<li>the art and <b>science</b> of <i>designing structures</i></li>
+			</ul>
+		</li>
+		<li class="skip fragment">
+			<b>Computer</b>
+			<ul>
+				<li>a machine that can be <i>programmed</i> to execute <i>sequences of operations</i> <i>automatically</i>. <br>
+					<span class="fragment">(personal computer (PC), computer on board an airplane, TV, smartphone, ...)</span>
+				</li>
+			</ul>
+		</li>
+		<li class="skip fragment">
+			<b>Computer Architecture </b>
+			<ul>
+				<li>a description of the structure of a computer system. </li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://en.wikipedia.org/wiki/ENIAC" target="_blank">ENIAC</a> - 1945</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>was designed in <i>1945</i> by 
+					<a href="https://en.wikipedia.org/wiki/John_William_Mauchly" target="_blank">John Mauchley</a>   
+					and <a href="hhttps://en.wikipedia.org/wiki/J._Presper_Eckert" target="_blank">John Eckert</a> <br>
+					at the University of Pennsylvania.
+				</li>
+
+				<li class="fragment skip">
+					was the first programmable, <b>electronic</b>, general-purpose digital computer. 
+				</li>
+
+				<li class="fragment skip">
+					was a large, modular computer with individual panels performing different <i>arithmetic functions</i>.
+				</li>
+			</ul>
+		</div>
+
+		<div style="flex: 2;">
+			<img src="./img/Eniac.jpg" height="auto" width="90%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://en.wikipedia.org/wiki/HP_3000" target="_blank">HP 3000</a> - 1972</h2>
+	
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					was designed to be the first <b>minicomputer</b> with full support <br> 
+					for <i>time-sharing</i>.</li>
+				<li class="fragment skip">
+					first implemented with <i>Transistor-transistor logic</i>.
+				</li>
+
+				<li class="fragment skip">
+					integrating <i>integrated circuits</i> <br>
+					on a large scale led to the development of <b>microprocessors</b>.</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/hp3000.jpeg" height="auto" width="90%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2><a href="https://en.wikipedia.org/wiki/Apple_II_series" target="_blank">Apple II</a> - 1977</h2>
+	
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>one of the first highly successful mass-produced 
+					<b>microcomputer</b> products. 
+				</li>
+
+				<li class="fragment skip">designed by  
+					<a href="https://en.wikipedia.org/wiki/Steve_Wozniak" target="_blank">Steve Wozniak</a>, <br>
+					and launched in <i>1977</i> by <b>Apple</b>. 
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/appleII.jpeg" height="auto" width="60%">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Today's computers</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li><a href="https://en.wikipedia.org/wiki/System_on_a_chip"
+						target="_blank">System on a Chip</a>
+					(<b>SOC</b>) : <br>
+					a complete system embedded in a chip	 (<b>integrated circuits</b>).</li>
+				<li class="fragment skip">An <b>integrated circuits</b> can contain:
+					<ul>
+						<li>one or more microprocessors,</li>
+						<li>memory,</li>
+						<li>interface devices,</li>
+						<li>or any other component</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/ipad.jpg" height="auto" width="90%">
+		</div>
+	</div>
+
+	<div class="fragment skip" style="display: inline-grid; grid-template-columns: auto auto auto auto;align-items:center; column-gap: 30px;">
+		<img src="./img/pc-2.jpg" height="150px" width="auto">
+		<img src="./img/tablette.jpg" height="150px" width="auto">
+		<img src="./img/pcportable.jpeg" height="150px" width="auto">
+		<img src="./img/smartphone.jpeg" height="150px" width="auto">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Layered organization</h2>
+
+	<div style="display: inline-grid; grid-template-columns: auto auto auto auto;align-items:center; column-gap: 30px;">
+		<img src="./img/pc-2.jpg" alt="" height="180px"> 
+		<img src="./img/smartphone.jpeg" alt="" height="180px"> 
+		<img src="./img/ordinateur2.jpg" alt="" height="180px"> 
+		<img src="./img/ordinateur3.jpg" alt="" height="180px">
+	</div>
+	
+	<div class="center-divs skip">
+		<div class="left-content" style="flex: 2;">
+			<p>All these systems are built <br> on a <b>single model</b></p>
+			<ul>
+				<li class="fragment">a hardware architecture</li>
+				<li class="fragment">a set of devices</li>
+				<li class="fragment">an operating system</li>
+				<li class="fragment">a set of applications</li>
+			</ul>
+		</div>
+		<div class="fragment" style="flex: 2;">
+			<b>Layered organization</b>
+			<img src="./img/os-schema.svg" width="80%" alt="">
+		</div>
+	</div>
+    
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>A hardware architecture</h2>
+	<h3>The computer components</h3>
+
+	<div>
+		<img src="./img/computer_components.png" alt="" height="500px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Representation of data in computer systems"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Binary system</h2>
+	
+	<div style="float: right; margin-bottom: 20px; margin-left: 20px; height: 200px;">
+		<img src="./img/processor.jpg" height="100%" > <br>
+	</div>
+
+	<div>
+		<ul style="display: block;">
+			<li>
+				The processor, memory or any other components <br> are <i>electronic circuits</i>.
+			</li>
+			<li class="fragment skip">
+				The processor contains electronic circuits that calculate <br> one or more <i>logic functions</i>.
+			</li>
+			<li class="fragment skip">
+				A logic circuit uses two logical values <br> (<b>bits</b> - <b>Binary digITs</b>).
+				<ul>
+					<li>a signal between 0V and 1V $\to$ <i>bit 0</i>.</li>
+					<li>a signal between 2V and 5V $\to$ <i>bit 1</i>.</li>
+				</ul>
+			</li>
+			<li class="fragment skip">
+				Electronic/Logic circuits manipulate <i>sequences of bits</i> that can correspond <br>
+				to numeric data or more complex objects. 
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Binary system</h2>
+
+	<div class="center-divs">
+		<div class="left-content" style="flex: 2;">
+			<b>Decimal $\to$ Binary</b> of $100_{10}$<br>
+			$100 \div 2 = 50$ $\to$ remainder $= 0$ <br>
+			$50 \div 2 = 25$ $\to$ remainder $= 0$ <br>
+			$25 \div 2 = 12$ $\to$ remainder $= 1$ <br>
+			$12 \div 2 = 6$ $\to$ remainder $= 0$ <br>
+			$6 \div 2 = 3$ $\to$ remainder $= 0$ <br>
+			$3 \div 2 = 1$ $\to$ remainder $= 1$ <br>
+			$1 \div 2 = 0$ $\to$ remainder $= 1$ <br>
+			<cs-i>$100_{10} = 1100100_2 =$</cs-i> <i>0b</i><cs-i>$1100100$</cs-i>
+		</div>
+		<div class="left-content fragment" style="flex: 2;">
+			<b>Binary $\to$ Decimal</b> of $1100100_2$ <br>
+			$0 \times 2^0 + $ <br>
+			$0 \times 2^1 + $ <br>
+			$1 \times 2^2 + $ ($=4$)<br>
+			$0 \times 2^3 + $ <br>
+			$0 \times 2^4 + $ <br>
+			$1 \times 2^5 + $ ($=32$)<br>
+			$1 \times 2^6$ ($=64$)<br>
+			<cs-i>$1100100_2 = 100_{10}$</cs-i>
+		</div>
+	</div>
+
+	<div id="green-block" class="skip fragment">
+		<b>Useful power of $2$ </b> <br>
+		<div class="center-divs">
+			<ul style="flex: 1;">
+				<li>2$^0$ = 1</li>
+				<li>2$^1$ = 2</li>
+				<li>2$^2$ = 4</li>
+			</ul>
+			<ul style="flex: 1;">
+				<li>2$^3$ = 8</li>
+				<li>2$^4$ = 16</li>
+				<li>2$^5$ = 32</li>
+			</ul>
+			<ul style="flex: 1;">
+				<li>2$^6$ = 64</li>
+				<li>2$^7$ = 128</li>
+				<li>2$^8$ = 256</li>
+			</ul>
+			<ul style="flex: 1;">
+				<li>2$^9$ = 512</li>
+				<li>2$^{10}$ = 1024</li>
+				<li>...</li>
+			</ul>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Binary system</h2>
+	<h3>Exercise</h3>
+
+	<ul>
+		<li>
+			Convert these decimal numbers to binary:
+			<ul>
+				<li>8, 13, 15, 2025, ... </li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Hexadecimal System</h2>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
+
+	<ul>
+		<li>
+			In computing systems, the <b>binary string</b> equivalents of <b>large 
+			decimal numbers</b> can become <b>quite long</b>.
+			<ul><li><strong>ex.</strong> $154863_{10} = 100101110011101111_2$</li></ul>
+		</li>
+		<li class="fragment skip">
+			The <b>hexadecimal system</b> contains 16 sequential numbers as base units. 
+			<ul>
+				<li>The first nine numbers (<b>0</b> to <b>9</b>) </li>
+				<li>The next six two-digit numbers (<b>10</b> to <b>15</b>) are represented 
+					by the letters <b>A</b>, <b>B</b>, <b>C</b>, <b>D</b>, <b>E</b>, <b>F</b>.</li>
+			</ul>
+		</li>
+		<li class="fragment skip">
+			The format of <b>hex numbers</b> is <i>more compact than binary numbers</i> because 
+			they can represent large binary numbers with fewer digits. 
+			<ul class="fragment">
+				<li><i>four digits of a binary number</i> can be represented by <i>a single hex digit</i></li>
+				<li><b>binary</b> $\Longleftrightarrow$ <b>hexadecimal</b> immediate translation</li>
+			</ul>
+			<table class="skip fragment" style="font-size: 20px;">
+				<tr>
+					<th>0000</th><th>0001</th><th>0010</th><th>0011</th><th>0100</th><th>0101</th><th>0110</th><th>0111</th><th>1000</th><th>1001</th><th>1010</th><th>1011</th><th>1100</th><th>1101</th><th>1110</th><th>1111</th>
+				</tr>
+				<tr>
+					<th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+				</tr>
+			</table>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Hexadecimal System</h2>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
+
+	<ul>
+		<li>
+			The format of <b>hex numbers</b> is <i>more compact than binary numbers</i> because 
+			they can represent large binary numbers with fewer digits. 
+			<ul>
+				<li><i>four digits of a binary number</i> can be represented by <i>a single hex digit</i></li>
+				<li><b>binary</b> $\Longleftrightarrow$ <b>hexadecimal</b> immediate translation</li>
+			</ul>
+			<table class="skip" style="font-size: 20px;">
+				<tr>
+					<th>0000</th><th>0001</th><th>0010</th><th>0011</th><th>0100</th><th>0101</th><th>0110</th><th>0111</th><th>1000</th><th>1001</th><th>1010</th><th>1011</th><th>1100</th><th>1101</th><th>1110</th><th>1111</th>
+				</tr>
+				<tr>
+					<th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+				</tr>
+			</table>
+			<ul class="skip">
+				<li><strong>ex.</strong> $154863_{10} = 100101110011101111_2$ <span class="fragment">$= 10-0101-1100-1110-1111_2$</span></li>
+				<table class="skip fragment">
+					<tr>
+						<th>10</th><th>0101</th><th>1100</th><th>1110</th><th>1111</th>
+					</tr>
+					<tr>
+						<th>2</th><th>5</th><th>C</th><th>E</th><th>F</th>
+					</tr>
+				</table>
+				<li class="skip fragment"><strong>ex.</strong> $154863_{10} = 100101110011101111_2 = 25CEF_{16} =$ <i>0x</i>$25CEF =$ <i>$</i>$25CEF$  </li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Hexadecimal System</h2>
+	<h3>Base 16 <span style="text-transform: lowercase;">or</span> hex system</h3>
+
+	<ul>
+		<li>
+			Convert these decimal numbers to hexadecimal:
+			<ul>
+				<li>8, 13, 15, 2025, ... </li>
+			</ul>
+		</li>
+	</ul>
+
+	<p>
+		<a href="https://sebastienguillon.com/test/javascript/convertisseur.html" target="_blank">link to a converter</a>
+	</p>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Data measurement unit</h2>
+
+	<ul>
+		<li>
+			In computer systems, a <i>unit of information</i> is used to describe the <i>capacity <br> 
+				of a digital data storage device</i>.
+		</li>
+		<li class="skip fragment">
+			A <b>byte</b> is a unit that computers use <b>to represent</b> a <i>character</i> such as a letter, number, or a typographic symbol 
+			(<strong>for example</strong>, “h”, “7”, or “$”)
+			<ul id="fleche" class="fragment"><li>will be discussed later in the <i>3rd chapter</i>.</li></ul>
+		</li>
+		<li class="skip fragment">
+			The <b>byte</b> is a <i>unit of digital information</i> that most commonly consists of <b>8 bits</b>. 
+			<ul>
+				<li>1 byte = 8 bits (binary digits)</li>
+			</ul>
+		</li>
+		<li class="skip fragment"><b>Multiples of byte</b>
+			<ul>
+				<li>1 <b>Kilobyte</b> 	(KB) = <cs-i>2$^{10}$</cs-i> bytes 	= 1 024 bytes $\approx$ <cs-i>10$^3$</cs-i> bytes</li>
+				<li>1 <b>Megabyte</b> (MB) 	= <cs-i>2$^{20}$</cs-i> bytes 	= 1 024 KB 	= 1 048 576 bytes $\approx$ <cs-i>10$^6$</cs-i> bytes</li>
+				<li>1 <b>Gigabyte</b> (GB) 	= <cs-i>2$^{30}$</cs-i> bytes 	= 1 024 MB 	= 1 073 741 824 bytes $\approx$ <cs-i>10$^9$</cs-i> bytes</li>
+				<li>1 <b>Terabyte</b> (TB) 	= <cs-i>2$^{40}$</cs-i> bytes 	= 1 024 GB	= 1 099 511 627 776 bytes $\approx$ <cs-i>10$^{12}$</cs-i> bytes</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Machine Language"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The computer components</h2>
+
+	<div>
+		<img src="./img/computer_components.png" alt="" height="500px">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The computer components</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					What can a computer (processor) do?
+					<ul id="fleche">
+						<li class="fragment"><b>copy values</b> between storage units</li>
+						<li class="fragment"><b>perform logical/arithmetic operations</b> between stored values</li>
+						<li class="fragment"><b>move within the program</b>, possibly conditionally</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<img src="./img/computer_components.png" alt="">
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Machine Language</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul>
+				<li>
+					A <b>processor</b> executes a <i>very low level language</i> (<b>Machine Language</b>)
+					<ul id="fleche">
+						<li class="fragment" data-fragment-index="2">the instructions of this kind of language execute <i>elementary operations</i>.</li>
+						<li class="fragment" data-fragment-index="3">machine instructions <i>control electronic/logic circuits</i>.</li>
+					</ul>
+				</li>
+		
+				<li class="skip fragment" data-fragment-index="4">
+					<b>Machine language</b> coding must be simple to decode and optimized 
+					<ul id="fleche">
+						<li class="fragment" data-fragment-index="4">each instruction is a <i>sequence of binary numbers</i> (bits).</li>
+						<li class="fragment" data-fragment-index="5">this coding is <i>not textual</i> $\to$ it is done at <i>bit level</i> (<b>binary code</b>)</li>
+						<li class="fragment" data-fragment-index="6">in practice, we represent these codes in <b>hexadecimal form</b></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="fragment" style="flex: 2;" data-fragment-index="4">
+			<img src="./img/exemple.svg" alt="" width="80%">
+			<pre class="fragment" data-fragment-index="6"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+				2B50: 12AE 2B1E
+				2B52: 12AF #0002
+				2B54: 13BE
+				2B55: 12BD 2B1E
+							...
+				2B1E:	0003
+			</script></code></pre>
+		</div>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Assembly language</h2>
+
+	<ul>
+		<li>
+			<red-b>Unreasonable</red-b> to want to <i>write/read binary machine</i> language <b>directly</b>.
+		</li>
+		<li class="skip fragment">Definition of an equivalent <b>symbolic representation</b> (<b>Assembly language</b>)
+			<ul>
+				<li><b>textual mnemonics</b> for operations/functions</li>
+				<li><b>textual writing</b> of the entire program</li>
+			</ul>
+			<div style="display: flex; align-items: center;">
+				<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+						mov eax, a
+						mov ebx, 2
+						add ecx, eax, ebx
+						mov a, ecx
+						...
+				@a:	memval 3
+				</script></code></pre>
+		
+				<pre style="width: 45%;"><code class="language-x86asm hljs" data-trim data-line-numbers><script type="text/template">
+					2B50: 12AE 2B1E
+					2B52: 12AF #0002
+					2B54: 13BE
+					2B55: 12BD 2B1E
+								...
+					2B1E:	0003
+				</script></code></pre>
+			</div>
+		</li>
+		<li class="skip fragment"><b>Assembly language</b>
+			<ul>
+				<li>very close to the <b>machine</b>, <i>very low level</i></li>
+				<li>you need to be well-known in the <i>technical details of the processor</i>.</li>
+				<li class="fragment"><b>Assembler</b> $\to$ translator from <b>assembly language</b> to <b>machine language</b>.</li>
+			</ul>
+		</li>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>High level programming language</h2>
+
+	<div style="float: right; width: 450px;">
+		<pre><code class="language-python hljs" data-trim data-line-numbers>
+			<script type="text/template">
+				# This program adds two numbers
+				num1 = 1.5
+				num2 = 6.3
+				
+				# Add two numbers
+				sum = num1 + num2
+			</script>
+		</code></pre>
+	</div>
+
+	<div>
+		<ul style="display: block;">
+			<li>
+				Most software is written in a <b>high-level programming language</b>. 
+				<ul>
+					<li><strong>example $\to$ </strong><b>Python</b>, <b>Java</b>, <b>C</b>, <b>C++</b>, ...</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				<b>High-level language</b> $\to$ expressing instructions using <i>words</i> and <i>mathematical symbols</i>.
+				<ul class="fragment">
+					<li>Easy to learn.</li>
+					<li>does not require knowledge of the machine's processor.</li>
+				</ul>
+			</li>
+			<li class="skip fragment">
+				High-level programming languages provide <b>abstract concepts</b> that are not present in machine language.
+				<ul class="fragment">
+					<li><b>data types</b> $\to$ integers, reals, strings ...</li>
+					<li><b>control structures</b> $\to$ <cs-code>if</cs-code>...<cs-code>then</cs-code>...<cs-code>else</cs-code>, <cs-code>while</cs-code>, <cs-code>for</cs-code>, functions.</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>high-level language <span style="text-transform: lowercase;">vs</span> low-level language</h2>
+
+	<div id="default-block">
+		<ul>
+			<li>
+				The programmer writes a program with <b>high-level language</b>, <br> 
+				and the processor executes a <b>low-level code</b> (<b>binary code</b>).
+			</li>
+			<li class="fragment skip">
+				How is a program written in a high-level programming language <b>executed</b>?
+				<ol class="fragment">
+					<li>a <b>compilation</b> process</li>
+					<li>an <b>interpretation</b> process</li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The compilation process</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<p><b>The compiler</b> is itself <b>a program</b></p>
+			<img src="./img/compilation.svg" alt="" width="80%">
+			<p class="fragment"><b>Compilation</b> is performed only once</p>
+		</div>
+		<div class="fragment" style="flex: 2;">
+			<img  src="./img/exemple.svg" alt="" width="80%">
+			<ul>
+				<li>No more need for source code</li>
+				<li>No more need for compiler</li>
+			</ul>
+		</div>
+	</div>
+
+	<ul class="fragment">
+		<li>The two most popular compiled languages are <b>C</b> and <b>C++</b>.
+			<ul><li>used in creating games, software, artificial intelligence, operating systems, and more.</li></ul>
+		</li> 
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The interpretation process</h2>
+
+	<div class="center-divs">
+		<div style="flex: 2;">
+			<ul class="fragment">
+				<li>Still need the source code</li>
+				<li>Still need the interpreter</li>
+				<li class="fragment"><b>No binary code created</b></li>
+			</ul>
+		</div>
+		<div style="flex: 2;">
+			<p><b>The interpreter</b> is itself <b>a program</b></p>
+			<img src="./img/interpretation.svg" alt="" width="80%">
+		</div>
+	</div>
+
+	<ul class="fragment">
+		<li>The two most popular compiled languages are <b>Python</b> and <b>Javascript</b>.
+			<ul><li>used in web development, data science, machine learning, and more.</li></ul>
+		</li> 
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h1>Thank you</h1>
+	<p>
+		<a href="./1-introduction-computer-architecture-20242025.pdf" target="_blank">PDF version of the slides</a>
+	</p>
+	<p>
+		<a href="#">Back to the begin</a>
+		- <a href="#/plan">Back to the outline</a>
+	</p>	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+		</div>
+	</div>
+
+	<script src="../resources/js/plan-en.js"></script>
+	<script src="../reveal-js-framework/dist/reveal.js"></script>
+	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
+	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
+	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
+
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			// Display presentation control arrows
+			controls: true,
+			// Display a presentation progress bar
+			progress: true,
+
+			// Vertical centering of slides
+			center: true,
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Add the current slide number to the URL hash so that reloading the
+			// page/copying the URL will return you to the same slide
+			hash: true,
+
+			slideNumber: 'c/t',
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		Reveal.configure({ pdfSeparateFragments: false });
+	</script>
+
+</body>
+</html>
