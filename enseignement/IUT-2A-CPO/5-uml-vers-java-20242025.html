@@ -3,16 +3,18 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Conception Orientée Objet - COO : Diagramme de classes UML vers Java</title>
+	<title>Qualité de développement : UML vers Java</title>
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../resources/css/slides-style.css">
+	<link rel="stylesheet" href="../resources/css/presentation-theme.css">
+	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
 
 	<!-- Theme used for syntax highlighting of code -->
-	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+	<!--<link rel="stylesheet" href="../reveal-js-framework/plugin/highlight/monokai.css">-->
+	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
 	<link rel="stylesheet" href="../resources/css/event-b-theme.css">
 
 	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
@@ -29,28 +31,29 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
-    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
-		</a>
-    <a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a> 
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
 	</div>
 	
 	<div style="text-align: left">
-		<h2>Conception Orientée Objet - COO</h2>
-		<h3>Diagramme de classes UML vers Java</h3>
+		<h2>Qualité de développement</h2>
+		<h3>UML vers Java</h3>
 	</div>
 
-	<div class="description">
-		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
-		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
+	<div class="description" >
+		<span ><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span ><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -63,8 +66,8 @@
 			</a>
 			<br>
 			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-			</a>
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
 
@@ -417,7 +420,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2 style="margin-bottom: 5px;">Transcription des collections</h2>
+	<h2>Transcription des collections</h2>
   <h3>Exemple</h3>
 
 	<div class="center-divs">
@@ -452,7 +455,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
-		<a href="./5-uml-vers-java.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./5-uml-vers-java-20242025.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
@@ -469,7 +472,6 @@
 	<script src="../resources/js/plan.js"></script>
 	<script src="../reveal-js-framework/dist/reveal.js"></script>
 	<script src="../reveal-js-framework/plugin/notes/notes.js"></script>
-	<script src="../reveal-js-framework/plugin/markdown/markdown.js"></script>
 	<script src="../reveal-js-framework/plugin/highlight/highlight.js"></script>
 
 	<script>
@@ -497,11 +499,12 @@
 			slideNumber: 'c/t',
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealHighlight, RevealNotes]
 		});
 
 		Reveal.configure({ pdfSeparateFragments: false });
 	</script>
+
 
 </body>
 </html>

@@ -3,19 +3,17 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>TD Qualité de développement : UML vers Java</title>
+	<title>TD Conception Orientée Objet - COO : Diagramme de classes UML vers Java</title>
 
 	<link rel="stylesheet" href="../resources/css/document-theme.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
-	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="../resources/highlight/styles/vs2015.min.css">
+  <link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
 
 	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
 	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
 	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
 	<script type="text/javascript" src="../resources/js/correction.js"></script>
-
 	<link rel="icon" href="../resources/img/favicon.ico" />
 </head>
 
@@ -26,7 +24,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <div style="padding: 0.5em;">
-    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+    2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Conception Orientée Objet - COO - 2025/2026</span>
 </div>
 <hr>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -39,18 +37,9 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <h1>
-    UML vers Java
+    Travaux dirigés - TD<br>
+    Diagramme de classe UML vers Java
 </h1>
-<!-- #################################################### -->
-<!-- #################################################### -->
-<h2>Le support de cours</h2>
-<div>
-  <iframe style="width: 100%; height: 770px; box-shadow: 0 15px 25px rgba(0,0, 0, 0.4);" 
-  				src="./5-uml-vers-java.html" frameborder="0"></iframe>
-</div>
-<!-- #################################################### -->
-<!-- #################################################### -->
-<h2>L'exercice</h2>
 <!-- #################################################### -->
 <!-- #################################################### -->
 <div id="orange-block">Un mini langage de programmation</div>
@@ -190,7 +179,7 @@ Ajoutez une méthode <cs-code>setValue(v : double)</cs-code> pour pouvoir modifi
                     <cs-code>getVariable( name : String ) : Variable</cs-code>.
                 </li>
                 <li>
-                    Un programme s'exécute (évalue chaque affectation dans l'ordre puis affiche la valeur de ses variables : 
+                    Un programme s'exécute (évalue chaque affectation dans l'ordre puis affiche la valeur de ses variables) : 
                     ajoutez l'opération <cs-code>run()</cs-code>.
                 </li>
                 <li>
@@ -208,36 +197,7 @@ Ajoutez une méthode <cs-code>setValue(v : double)</cs-code> pour pouvoir modifi
         </li>
     </ul>
 </p>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<h3>
-    Un peu de Git
-</h3>
 
-<p class="text-justify">
-    Commencez d'abord par configurer votre profil <cs-code>git</cs-code>.
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git config --global user.name "Prénom Nom"
-$ git config --global user.email "prenom.nom@universite-paris-saclay.fr"                            
-</script></code></pre>
-
-<p class="text-justify">
-    Pour récupérer la solution de cette partie, vous devriez cloner le dépôt de l'enseignant.
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git clone https://git.iut-orsay.fr/idir.ait-sadoune/td1-mini-langage-de-programmation.git 
-$ cd td1-mini-langage-de-programmation                           
-</script></code></pre>
-
-<p class="text-justify">
-    Créez une nouvelle branche sur votre machine locale et basculez dans cette branche.
-    Nommez cette branche en suivant la convention <cs-code>prenom_nom</cs-code> :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git checkout -b prenom_nom
-</script></code></pre>
-
-<br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <h2>
     Exercice 2 : réalisation en Java
@@ -287,22 +247,6 @@ p.run();
     Complétez le reste du code pour obtenir le comportement souhaité.
 </p>
 
-<p class="text-justify">
-    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git add --all
-$ git commit -m "Solution de l'exercice 2"
-</script></code></pre>
-
-<p class="text-justify">
-    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
-</script></code></pre>
-
-<br>
 <!-- #################################################### -->
 <div id="orange-block">
     Seconde itération : ajout des opérateurs
@@ -360,22 +304,6 @@ $ git commit -m "Solution de l'exercice 2"
     </ul>
 </p>
 
-<p class="text-justify">
-    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git add --all
-$ git commit -m "Solution de l'exercice 3"
-</script></code></pre>
-
-<p class="text-justify">
-    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
-</script></code></pre>
-
-<br>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <h2>
     Exercice 4 : Mise à jour du code Java et tests
@@ -396,21 +324,6 @@ $ git commit -m "Solution de l'exercice 3"
     </li>
   </ul>
 </p>
-
-<p class="text-justify">
-    Pour enregistrer votre travail dans le dépôt local, utilisez les commandes suivantes :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git add --all
-$ git commit -m "Solution de l'exercice 4"
-</script></code></pre>
-
-<p class="text-justify">
-    Pour envoyer votre branches sur le dépôt distant, utilisez la commande suivante :
-</p>
-
-<pre><code class="language-shell"><script type="text/template">$ git push origin prenom_nom
-</script></code></pre>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -422,7 +335,7 @@ $ git commit -m "Solution de l'exercice 4"
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <hr>
 <div style="padding: 0.5em;">
-	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Qualité de développement - 2024/2025</span>
+	2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Conception Orientée Objet - COO - 2025/2026</span>
 </div>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
