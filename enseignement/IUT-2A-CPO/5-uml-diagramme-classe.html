@@ -419,6 +419,38 @@
 		<img src="./../TEX-figures/diag-class/example.svg" alt="" width="600px">
 	</div>
 
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2 style="margin-bottom: 5px;">Les éléments de la Classe en UML</h2>
+	<h3>Les opérations d'une classe UML</h3>
+
+	<ul>
+		<li>
+			Une <i>opération</i> permet d'invoquer une <i>fonctionnalité</i> offerte par une <i>classe</i>.
+		</li>
+
+		<li class="skip fragment">La forme générale d'une <i>opération</i> dans une classe :<br>
+			<cs-code>visibilité nom (paramètres) : type-retourné {propriétés}</cs-code>
+		</li>
+		
+		<li class="skip fragment">
+			Un paramètre d'une opération est de la forme : <br>
+			<cs-code>direction nom : type multiplicité = valeur-initiale {propriétés}</cs-code>
+			<ul>
+				<li>la direction <cs-code>in</cs-code> $\to$ paramètre en entrée seule sans modification</li>  
+				<li>la direction <cs-code>out</cs-code> $\to$ paramètre renvoyé en sortie seule</li>
+				<li>la direction <cs-code>inout</cs-code> $\to$ paramètre en entrée avec possibilité de modification</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div id="alert-block" class="skip fragment">
+		La <b>visibilité</b> et les <b>propriétés</b> ont les mêmes définitions et les mêmes
+utilisations que dans le cas des attributs.
+	</div>
+
  </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

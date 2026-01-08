@@ -130,29 +130,41 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2 style="margin-bottom: 5px;">Le titre de la slide</h2>
-	<h3>Sub title example</h3>
+	<h2>Le titre de la slide</h2>
 
 	<ul>
 		<li class="fragment">
-			<b>Maecenas egestas</b> nulla at nibh volutpat. Lorem ipsum dolor sit amet. 
+			Un premier item pour introduire le point à aborder dans cette slide. 
+		</li>
+
+		<li class="fragment">
+			Un <b>deuxième item</b> pour parler d'un concept lancé en <i>2025</i>
 			<ul>
-				<li class="fragment">Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>.</li>
-				<li class="fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit <i>$2006$</i>.</li>
+				<li>un sous item pour détailler ce qui se passe au <red-b>premier semestre</red-b></li>
+				<li>
+					un autre sous item pour détailler ce qui se passe au <green-b>deuxième semestre</green-b>
+					<ul>
+						<li>juste pour préciser que la fin du deuxième semestre était <i>magnifique</i></li>
+						<li>un lien aussi vers un site à vister <a href="http://exemple.com" target="_blank">adipiscing elit</a></li>
+						<li>peut être un contact aussi <a href="mailto:personne@exemple.com" target="_blank">personne@exemple.com</a></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 
 		<li class="fragment skip">
-			Action de présenter quelque chose au <b>public</b> :
+			Un troisième item pour introduire le troisième point du cours
 			<ul>
-				<li class="fragment">Assurer la présentation du <em>journal télévisé</em>.</li>
-				<li class="fragment">ranger des objets &#10144; dans un sac par exemple, </li>
+				<li class="fragment">on commence par le début d'un <em>point important</em>.</li>
+				<li class="fragment">on termine aussi par un point important à ne pas négliger.</li>
 			</ul>
 		</li>
 
 		<li class="fragment d-skip">
-			<cs-code>void assertEquals(Object e, Object a)</cs-code><br>
-			vérifie l'égalité entre deux objets $\to$ <cs-i>$A = B$</cs-i>.
+			<cs-code>void assertEquals(Object e, Object a)</cs-code>
+			<ul id="fleche"><li>vérifie l'égalité entre deux objets $e = a$ or <cs-i>$e = a$</cs-i>.</li></ul>
+			<ul id="ok"><li>vérifie l'équivalence entre deux objets $e \equiv  a$ or <cs-i>$e \equiv a$</cs-i>.</li></ul>
+			<ul id="ko"><li>vérifie la différence entre deux objets $e \neq a$ or <cs-i>$e \neq a$</cs-i>.</li></ul>
 		</li>
 	</ul>
 
@@ -163,7 +175,8 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Le titre de la slide</h2>
+	<h2 style="margin-bottom: 5px;">Le titre de la slide</h2>
+	<h3>Sub title example</h3>
 
 	<div class="left-content">
 		<ul id="fleche">
