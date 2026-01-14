@@ -70,6 +70,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>resize an element like an image</h2>
+
+	<img class="r-stretch" src="../resources/img/construction.png">
+	
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Idir AIT SADOUNE</h2>
 
@@ -144,7 +152,6 @@
 				<li>
 					un autre sous item pour détailler ce qui se passe au <green-b>deuxième semestre</green-b>
 					<ul>
-						<li>juste pour préciser que la fin du deuxième semestre était <i>magnifique</i></li>
 						<li>un lien aussi vers un site à vister <a href="http://exemple.com" target="_blank">adipiscing elit</a></li>
 						<li>peut être un contact aussi <a href="mailto:personne@exemple.com" target="_blank">personne@exemple.com</a></li>
 					</ul>
@@ -156,7 +163,7 @@
 			Un troisième item pour introduire le troisième point du cours
 			<ul>
 				<li class="fragment">on commence par le début d'un <em>point important</em>.</li>
-				<li class="fragment">on termine aussi par un point important à ne pas négliger.</li>
+				<li class="fragment">on termine aussi par <i>un point important</i> à ne pas négliger.</li>
 			</ul>
 		</li>
 
@@ -197,18 +204,6 @@
 			</li>
 		</ul><br>
 
-		<ul id="ok">
-			<li class="skip fragment">
-				Lorem ipsum dolor sit amet, <green-i>consectetur</green-i> adipiscing elit. <green-b>Maecenas egestas</green-b>.
-			</li>
-		</ul><br>
-
-		<ul id="ko">
-			<li class="skip fragment">
-				Lorem ipsum dolor sit amet, <red-i>consectetur</red-i> adipiscing elit. <red-b>Maecenas egestas</red-b>.
-			</li>
-		</ul><br>
-
 		<ul>
 			<li class="skip fragment">
 				Lorem ipsum dolor sit amet, <cs-i>consectetur</cs-i> adipiscing elit. <em>Maecenas egestas</em>.
@@ -224,13 +219,13 @@
 
 	<div class="left-content">
 		Utiliser le tag <b>p</b> pour aligner un text à droite tout en restant au centre <br>
-		<ul id="ko" class="skip">
+		<ul id="ko" class="skip fragment" data-fragment-index="3">
 			<li>
 				<red-b>Problème</red-b>
 			</li>
 		</ul><br>
 		
-		<ul class="fragment">
+		<ul class="fragment" data-fragment-index="4">
 			<ul>
 				<li>Nécessité d'<i>accéder au</i> <b>FCB</b> à <i>chaque opération</i> sur le fichier</li>
 				<li>Le <b>FCB</b> est stocké dans le répertoire du périphérique</li>
@@ -238,13 +233,13 @@
 			</ul>
 		</ul><br>
 		
-		<ul id="ok" class="fragment skip">
+		<ul id="ok" class="fragment skip" data-fragment-index="1">
 			<li>
 				<green-b>Solution</green-b>
 			</li>
 		</ul><br>
 		
-		<ul class="fragment">
+		<ul class="fragment" data-fragment-index="2">
 			<ul>
 				<li>L'appel système <cs-code>open</cs-code> permet de <i>charger</i> le <b>FCB</b> <i>en mémoire</i>.
 				</li>
@@ -344,7 +339,7 @@
 		<img class="fragment fade-in" src="./img/cycle-dev-fm.svg" height="auto" width="1064px" alt="">
 	</div>
 
-	<div class="fragment skip" style="text-align: center;">Une belle <b>image</b> animée</div>
+	<div class="fragment skip">Une belle <b>image</b> animée</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -353,13 +348,13 @@
 	<h2>Une autre animation</h2>
 
 	<div class="r-stack" style="background-color: white;">
-		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-1.svg" height="auto" width="1064px" alt="">
-		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-2.svg" height="auto" width="1064px" alt="">
-		<img class="fragment fade-in-then-out" src="../TEX-figures/cycle-en-v/cycle-en-v-3.svg" height="auto" width="1064px" alt="">
-		<img class="fragment fade-in" src="../TEX-figures/cycle-en-v/cycle-en-v-4.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade-out" data-fragment-index="0" src="../TEX-figures/cycle-en-v/cycle-en-v-1.svg" height="auto" width="1064px" alt="">
+		<img class="fragment current-visible" data-fragment-index="0" src="../TEX-figures/cycle-en-v/cycle-en-v-2.svg" height="auto" width="1064px" alt="">
+		<img class="fragment current-visible" data-fragment-index="1" src="../TEX-figures/cycle-en-v/cycle-en-v-3.svg" height="auto" width="1064px" alt="">
+		<img class="fragment" src="../TEX-figures/cycle-en-v/cycle-en-v-4.svg" height="auto" width="1064px" alt="">
 	</div>
 
-	<div class="fragment" style="text-align: center;">Une belle <b>image</b> animée</div>
+	<div class="fragment">Une belle <b>image</b> animée</div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -426,24 +421,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch4" name="New Slides"></section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out">
-	<h2>New Slides</h2>
-
-	<div>
-		<img src="../resources/img/construction.png" alt="" height="500px" width="auto">
-	</div>
-	
-</section>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch5" name="Float, Flex or grid aligned images"></section>
+<section id="ch4" name="Float, Flex or grid aligned images"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -539,7 +517,7 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section id="ch6" name="A math example"></section>
+<section id="ch5" name="A math example"></section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Conception Orientée Objet - COO : Modèle d'architecture ''n-tier''</title>
+	<title>Qualité de développement : Modèle d'architecture ''n-tier''</title>
 
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reset.css">
 	<link rel="stylesheet" href="../reveal-js-framework/dist/reveal.css">
@@ -31,28 +31,29 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<section data-auto-animate data-transition="fade-in fade-out" data-background="var(--r-background-color)">
+<section data-auto-animate data-transition="fade-in fade-out" data-background="#fff">
 
-	<div style="display: inline-grid; margin-bottom: 30px ; column-gap: 50px; grid-template-columns: auto auto auto; ">
-    <a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
-			<img src="./img/IUT-D-ORSAY-h-rvb.svg" height="80px">
-		</a>
-    <a href="https://lmf.cnrs.fr/" target="_blank">
-			<img src="../resources/img/lmf-logo-black-rgb.png" height="80px">
-		</a>
-		<a href="https://www.centralesupelec.fr/" target="_blank">
-			<img src="../resources/img/CentraleSupelec-Logo-H_RVB.png" height="80px">
-		</a> 
+	<div class="header-logo">
+		<div class="left-logo">
+			<a href="https://lmf.cnrs.fr/" target="_blank">
+				<img  src="../resources/img/logo-aff.png" alt="">
+			</a>
+		</div>
+		<div class="right-logo">
+			<a href="https://www.iut-orsay.universite-paris-saclay.fr/" target="_blank">
+				<img src="./img/iut-logo.png" alt="">
+			</a>
+		</div>
 	</div>
 	
 	<div style="text-align: left">
-		<h2>Conception Orientée Objet - COO</h2>
+		<h2>Qualité de développement</h2>
 		<h3>Modèle d'architecture ''n-tier''</h3>
 	</div>
 
-	<div class="description">
-		<span class="fa fa-graduation-cap"></span> 2A - Bachelor Universitaire de Technologie<br>
-		<span class="fa fa-university"></span> IUT d'Orsay - Université Paris-Saclay - 2025/2026
+	<div class="description" >
+		<span><span class="fa fa-graduation-cap">&#160;</span>2A - Bachelor Universitaire de Technologie</span><br>
+		<span><span class="fa fa-university">&#160;</span>IUT d'Orsay - Université Paris-Saclay - 2024/2025</span>
 	</div>
 
 	<div class="hero-card-id">
@@ -65,8 +66,8 @@
 			</a>
 			<br>
 			<a href="mailto:idir.ait-sadoune@universite-paris-saclay.fr" target="_blank">
-				<span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
-			</a>
+        <span class="hero-email">idir.ait-sadoune@universite-paris-saclay.fr</span>
+      </a>
 		</div>
 	</div>
 
@@ -88,35 +89,26 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Introduction</h2>
 
-  <div class="center-divs">
-    <div style="flex: 3;">
-      <ul>
-        <li>Une pratique dans la <i>conception de logiciels</i> consiste à <i>décomposer le système en sous-systèmes</i>.
-            <ul id="fleche"><li>séparer les responsabilités.</li></ul>
-        </li>
+	<ul>
+		<li>Une pratique de base dans la <i>conception de logiciels</i> consiste <br> à <i>décomposer le système en sous-systèmes</i>.
+				<ul id="fleche"><li>séparer les responsabilités.</li></ul>
+		</li>
 
-        <li class="fragment skip">D'une manière général, le modèle décrivant <i>l'architecture d'un logiciel</i> 
-            se compose de <i>plusieurs packages</i> :
-          <ul>
-              <li>un package pour l'interface utilisateur,</li>
-              <li>un package pour l'accès aux bases de données,</li>
-              <li>etc.</li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div style="flex: 2;"> 
-      <img class="r-stretch" src="./img/sous-systemes.png" alt="">
-    </div>
-  </div>
+		<li class="fragment skip">D'un manière général, le modèle décrivant <i>l'architecture d'un logiciel</i> 
+				se compose de <i>plusieurs packages</i> :
+			<ul>
+					<li>un package pour l'interface utilisateur,</li>
+					<li>un package pour l'accès aux bases de données,</li>
+					<li>etc.</li>
+			</ul>
+		</li>
+	</ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
   <h2>Introduction</h2>
-
-	<img class="r-stretch" src="./img/diffArchi.png" alt="">
     
 	<ul>
 		<li>
@@ -128,12 +120,12 @@
 				Cette découpe est d'abord <i>logique</i>, puis éventuellement <i>physique</i> <br>
 					en termes de machines.
 		</li>
-  </ul>
 
-  <div id="green-block" class="fragment">
-<b>Objectif du cours</b> $\to$ faire passer quelques idées fondamentales <br>
+		<li class="fragment skip">
+				<b>Objectif du cours</b> : faire passer quelques idées fondamentales <br>
 					sur les <i>architectures en couches</i> dites <b>''n-tier''</b>.
-  </div>
+		</li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -219,7 +211,7 @@
 	<h2>Architecture 3-tier</h2>
 	
 	<div>
-		<img src="./img/diffArchi.png" alt="">
+		<img class="fragment" src="./img/diffArchi.png" alt="">
 	</div>
 
 	<ul>
@@ -245,13 +237,13 @@
 	<ul>
 		<li>Pour rendre les modèles plus précis et plus lisibles, <a href="https://fr.wikipedia.org/wiki/Ivar_Jacobson" target="_blank">Ivar Jacobson</a>, <br>
 			a proposé <i>de catégoriser les classes d'analyse/conception</i>.</li>
-		<img class="fragment center-content" src="./img/archiCouches.png" height="200px" alt="" data-fragment-index="1">
-		<li class="fragment" data-fragment-index="1">Trois catégories de classes ont été proposées  :
+		<img class="fragment center-content" src="./img/archiCouches.png" height="200px" alt="">
+		<li class="fragment">Trois catégories de classes ont été proposées  :
 			<ul>
-				<li class="fragment" data-fragment-index="2"><b>boundary</b> (frontière) : modélise les interactions entre un acteur externe <br> avec le système modélisé </li>
-				<li class="fragment" data-fragment-index="3"><b>control</b> (contrôle) : modélise la coordination, l'enchaînement et le contrôle <br> des  objets métier 
+				<li class="fragment"><b>boundary</b> (frontière) : modélise les interactions entre un acteur externe <br> avec le système modélisé </li>
+				<li class="fragment"><b>control</b> (contrôle) : modélise la coordination, l'enchaînement et le contrôle <br> des  objets métier 
 					(reliés à un cas d'utilisation particulier).</li>
-				<li class="fragment" data-fragment-index="4"><b>entity</b> (entité) : modélise les concepts métier manipulés</li>
+				<li class="fragment"><b>entity</b> (entité) : modélise les concepts métier manipulés</li>
 			</ul>
 		</li>
 	</ul>
@@ -389,7 +381,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
-		<a href="./6-modele-archi-ntier.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./6-modele-archi-ntier-20242025.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>
