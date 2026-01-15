@@ -150,6 +150,89 @@
 
   <div class="r-stack">
     <img class="fragment fade-in-then-out" src="../CS-2A-ST58/img/model_checking.svg" alt="" width="650px">
+    <img class="fragment fade-in" src="../CS-2A-ST58/img/system_modeling.svg" alt="" width="650px">
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Systèmes de transition </h2>
+
+  <ul>
+    <li><b>modèle</b> pour décrire le <i>comportement des systèmes</i></li>
+
+    <li class="skip fragment" data-fragment-index="1"><b>digraphes</b> où les <b>nœuds</b> représentent les <i>états</i> 
+        et les <b>arêtes</b> représentent <br> les <i>transitions</i></li>
+
+    <li class="skip fragment" data-fragment-index="2">
+      <b>états</b> :      
+      <ul>
+        <li>la couleur actuelle d'un feu de circulation : rouge, vert, orange.</li>
+        <li class="fragment" data-fragment-index="3"><b>software :</b> les valeurs actuelles de toutes les variables du programme...</li>
+        <li class="fragment" data-fragment-index="4"><b>hardware :</b> la valeur actuelle des registres ainsi que les valeurs des bits d'entrée</li>
+      </ul>
+    </li>
+
+    <li class="skip fragment" data-fragment-index="2">
+      <b>transitions</b> : ("changement d'états")
+      <ul>
+        <li>un passage d'une couleur à une autre</li>
+        <li class="fragment" data-fragment-index="3"><b>software :</b> l'exécution d'une instruction de programme</li>
+        <li class="fragment" data-fragment-index="4"><b>hardware :</b> le changement des registres et des bits de sortie pour une nouvelle entrée</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Modelling with Event-B</h2>
+
+  <ul>
+    <li>An <b>Event-B</b> specification contains: 
+      <ul>
+        <li class="fragment" data-fragment-index="2"><i>a state</i> (data, <i>sets</i>, relationships, ...)</li>
+        <li  class="fragment" data-fragment-index="3"><i>invariants, properties</i> (<i>first order</i> predicates <i>logic</i>)</li>
+        <li  class="fragment" data-fragment-index="4">transitions (<i>intialisation</i> and <i>events</i>) to update the state (<i>substitutions</i>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="r-stack" style="background-color: white;">
+		<img class="fragment fade-in-then-out" data-fragment-index="2" src="../TEX-figures/event-b/ts-1-1.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade-in-then-out" data-fragment-index="3" src="../TEX-figures/event-b/ts-1-2.svg" height="auto" width="1064px" alt="">
+		<img class="fragment fade-in" data-fragment-index="4" src="../TEX-figures/event-b/ts-1-3.svg" height="auto" width="1064px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The refinment of an Event-B model</h2>
+
+  <ul>
+    <li class="fragment" data-fragment-index="0">
+      <i>Refining a specification</i> consists of <i>enriching it</i> and <i>reformulating it</i> with another
+      <i>more concrete</i> specification.
+    </li>
+  </ul>
+
+  <div class="r-stack" style="background-color: white;">
+		<img class="fragment fade-out" data-fragment-index="0" data-fragment-index="1" src="../TEX-figures/event-b/ts-2-1.svg" height="auto" width="1064px" alt="">
+		<img class="fragment current-visible" data-fragment-index="0" src="../TEX-figures/event-b/ts-2-2.svg" height="auto" width="1064px" alt="">
+		<img class="fragment" src="../TEX-figures/event-b/ts-2-3.svg" height="auto" width="1064px" alt="">
+	</div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Principe du Model-Checking</h2>
+
+  <div class="r-stack">
+    <img class="fragment fade-in-then-out" src="../CS-2A-ST58/img/model_checking.svg" alt="" width="650px">
     <img class="fragment fade-in" src="../CS-2A-ST58/img/properties_modeling.svg" alt="" width="650px">
   </div>
 
@@ -353,41 +436,103 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>Invariants, safety and liveness properties</h2>
+
+  <ul>
+    <li>
+      <b>Safety properties</b> $\to$ <i>"nothing bad should happen"</i>
+      <ul>
+        <li>typical safety property: mutual exclusion property</li>
+        <li>the <i>bad thing</i> (having $> 1$ processes in the critical section) <i>never occurs</i></li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      An <b>invariant property</b> is a <i>particular</i> safety property
+      <ul>
+        <li>requires that <i>condition $\phi$</i> holds <i>for all states</i> (reachable ones $\to$ <i>Invariant</i>: $G~\phi$)</li>
+        <li>e.g. for mutual exclusion property <i>$\phi = \neg(crit_1 \land crit_2)$</i></li>
+      </ul>
+    </li>
+
+    <li class="skip fragment">
+      Safety properties are complemented by <b>Liveness properties</b>
+      <ul>
+        <li>that require some progress</li>
+        <li>that assert: <i>"something good" will happen eventually</i></li>
+        <li>e.g. <i>Eventually</i> : $F~crit_1 \land F~crit_2$</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
 	<h2>Principe du Model-Checking</h2>
 
-  <div class="r-stack">
-    <img class="fragment fade-in-then-out" src="../CS-2A-ST58/img/model_checking.svg" alt="" width="650px">
-    <img class="fragment fade-in" src="../CS-2A-ST58/img/system_modeling.svg" alt="" width="650px">
+  <div class="center-divs">
+    <div style="flex: 1;">
+      <ol>
+        <li>
+          <b>Modeling phase</b>
+          <ul>
+            <li>model the system under consideration into a formal representation</li>
+            <li>formalize the property to check unsing a temporal logic</li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          <b>Running phase</b>
+          <ul>
+            <li>run automatically the model checker to check the validity of the property</li>
+          </ul>
+        </li>
+
+        <li class="fragment">
+          <b>Analysis phase</b> (3 cases)
+          <ol>
+            <li><i>property satisfied</i>: check next property</li>
+            <li><i>property violated</i>: 
+              <ul>
+                <li>analyze generated counterexample</li>
+                <li>modify the model and repeat</li>
+              </ul>
+            </li>
+            <li><i>out of memory</i>: try to reduce the model</li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+    <div style="flex: 1;">
+      <img src="../CS-2A-ST58/img/model_checking.svg" alt="">
+    </div>
   </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Systèmes de transition </h2>
+	<h2>The pros of Model-Checking</h2>
 
-  <ul>
-    <li><b>modèle</b> pour décrire le <i>comportement des systèmes</i></li>
-
-    <li class="skip fragment" data-fragment-index="1"><b>digraphes</b> où les <b>nœuds</b> représentent les <i>états</i> 
-        et les <b>arêtes</b> représentent <br> les <i>transitions</i></li>
-
-    <li class="skip fragment" data-fragment-index="2">
-      <b>états</b> :      
-      <ul>
-        <li>la couleur actuelle d'un feu de circulation : rouge, vert, orange.</li>
-        <li class="fragment" data-fragment-index="3"><b>software :</b> les valeurs actuelles de toutes les variables du programme...</li>
-        <li class="fragment" data-fragment-index="4"><b>hardware :</b> la valeur actuelle des registres ainsi que les valeurs des bits d'entrée</li>
-      </ul>
+  <ul id="ok">
+    <li>
+      widely applicable (hardware, software, protocol systems, ...)
     </li>
-
-    <li class="skip fragment" data-fragment-index="2">
-      <b>transitions</b> : ("changement d'états")
-      <ul>
-        <li>un passage d'une couleur à une autre</li>
-        <li class="fragment" data-fragment-index="3"><b>software :</b> l'exécution d'une instruction de programme</li>
-        <li class="fragment" data-fragment-index="4"><b>hardware :</b> le changement des registres et des bits de sortie pour une nouvelle entrée</li>
-      </ul>
+    <li class="fragment skip">
+      potential "push-button" technology (software-tools)
+    </li>
+    <li class="fragment skip">
+      rapidly increasing industrial interest
+    </li>
+    <li class="fragment skip">
+      in case of property violation, a counter-example is provided
+    </li>
+    <li class="fragment skip">
+      sound and interesting mathematical foundations
+    </li>
+    <li class="fragment skip">
+      not baised to the most possible scenarios (such as testing)
     </li>
   </ul>
 
@@ -395,42 +540,142 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>Modelling with Event-B</h2>
+	<h2>The cons of Model-Checking</h2>
 
-  <ul>
-    <li>An <b>Event-B</b> specification contains: 
-      <ul>
-        <li class="fragment" data-fragment-index="2"><i>a state</i> (data, <i>sets</i>, relationships, ...)</li>
-        <li  class="fragment" data-fragment-index="3"><i>invariants, properties</i> (<i>first order</i> predicates <i>logic</i>)</li>
-        <li  class="fragment" data-fragment-index="4">transitions (<i>intialisation</i> and <i>events</i>) to update the state (<i>substitutions</i>)</li>
-      </ul>
+  <ul id="ko">
+    <li>
+      mainly focused on <i>control-intensive</i> systems <br>
+      $\to$ state explosion problem must be addressed to apply to data-oriented systems
+    </li>
+
+    <li class="fragment skip">
+      model checking is based on two <i>error-prone</i> activities: <br>
+      $\to$ system Modeling <br>
+      $\to$ property specification
     </li>
   </ul>
 
-  <div class="r-stack" style="background-color: white;">
-		<img class="fragment fade-in-then-out" data-fragment-index="2" src="../TEX-figures/event-b/ts-1-1.svg" height="auto" width="1064px" alt="">
-		<img class="fragment fade-in-then-out" data-fragment-index="3" src="../TEX-figures/event-b/ts-1-2.svg" height="auto" width="1064px" alt="">
-		<img class="fragment fade-in" data-fragment-index="4" src="../TEX-figures/event-b/ts-1-3.svg" height="auto" width="1064px" alt="">
-	</div>
+  <div id="alert-block" class="left-content fragment skip">
+    <b>doing things right $\nRightarrow$ doing the right thing</b>
+  </div>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch3" name="Model-Checking with ProB plugin"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>The ProB <br> animator and model checker</h2>
+
+  <ul>
+    <li><b>ProB</b> is an animator, constraint solver and model checker<br> for the <b>Event-B Method</b>.</li>
+    <li class="fragment skip"><b>ProB</b>'s animation features allow developers to <i>control</i><br> and <i>validate the behavior of their specifications</i>.</li>
+    <li class="fragment skip"><i>Animation features</i> are useful for infinite state machines, <br>not for verification, but for <i>debugging</i> and <i>testing</i>.</li>
+  </ul>
+
+  <div id="default-block" class="d-skip left-content">
+    <a href="https://prob.hhu.de/w/index.php?title=The_ProB_Animator_and_Model_Checker" target="_blank">ProB main web page</a>
+  </div>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <section data-auto-animate data-transition="fade-in fade-out">
-	<h2>The refinment of an Event-B model</h2>
+  <h2>Model-checking with ProB</h2>
 
   <ul>
-    <li class="fragment" data-fragment-index="0">
-      <i>Refining a specification</i> consists of <i>enriching it</i> and <i>reformulating it</i> with another
-      <i>more concrete</i> specification.
+    <li>
+      The <b>ProB plugin</b> allows <i>automatic verification</i> of the consistency
+      of <b>Event-B</b> machines through <i>animation</i> and <i>model checking</i>.
     </li>
+
+    <li class="fragment skip">
+      For exhaustive model verification, the given sets must be <i>limited
+      to finite sets</i>.
+      <ul id="fleche"><li>allows ProB to browse through the reachable states of the machine.</li></ul>
+    </li>
+
+     <li class="fragment skip">
+      The <b>ProB plugin</b> graphically displays <i>a counterexample</i> when it discovers <br>
+      <red-i>a property violation</red-i>.
+     </li>
   </ul>
 
-  <div class="r-stack" style="background-color: white;">
-		<img class="fragment fade-out" data-fragment-index="0" data-fragment-index="1" src="../TEX-figures/event-b/ts-2-1.svg" height="auto" width="1064px" alt="">
-		<img class="fragment current-visible" data-fragment-index="0" src="../TEX-figures/event-b/ts-2-2.svg" height="auto" width="1064px" alt="">
-		<img class="fragment" src="../TEX-figures/event-b/ts-2-3.svg" height="auto" width="1064px" alt="">
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+ <section data-auto-animate data-transition="fade-in fade-out">
+	<h2>The Rodin Platform</h2>
+
+	<ul>
+		Required plugins for this tutorial : <br>
+		menu : <cs-code>Help -> Install New Software ...</cs-code>
+		<ul>
+			<li class="skip">
+				the <b>Atelier B Provers plugin</b> from the <b>Atelier B Provers</b> Update site. <br>
+				<cs-code>https://www.atelierb.eu/update_site/atelierb_provers</cs-code>
+			</li>
+			<li class="skip">
+				the <b>ProB plugin</b> from the <b>ProB</b> Update site. <br>
+				<cs-code>https://stups.hhu-hosting.de/rodin/prob1/release/</cs-code>
+			</li>
+			<li class="skip">
+				the <b>Theory plugin</b> from the <b>Rodin Plug-ins (archive)</b> Update site. <br>
+				<cs-code>https://rodin-b-sharp.sourceforge.net/updates-archive</cs-code>
+			</li>
+		</ul>
+	</ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>The ProB plugin</h2>
+
+  <div class="center-content">
+		<img src="../../recherche/seminars/img/model-checking.png" height="250px" width="auto" style="margin-right: 50px;">
+		<img src="../../recherche/seminars/img/ltl-checking.png" height="250px" width="auto">
 	</div>
+
+  <ul>
+    <li><a href="https://prob.hhu.de/w/index.php?title=Tutorial_Rodin_First_Step" target="_blank">Tutorial Rodin First Step</a></li>
+    <li class="fragment skip"><a href="https://prob.hhu.de/w/index.php?title=Tutorial_First_Model_Checking" target="_blank">Tutorial First Model Checking</a></li>
+    <li class="fragment skip"><a href="https://prob.hhu.de/w/index.php?title=LTL_Model_Checking" target="_blank">LTL/CTL Model Checking</a></li>
+  </ul>
+
+</section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section id="ch4" name="Conclusion about ProB plugin"></section>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<section data-auto-animate data-transition="fade-in fade-out">
+  <h2>Conclusion about ProB</h2>
+
+  <ul>
+    <li>
+      The <b>ProB plugin</b> is useful in addition to the <i>proof tools</i>.
+    </li>
+
+    <li class="skip fragment">
+      As the interactive proof process can be quite long, the <b>ProB plugin</b> <br>
+      can be used as a <i>complement to the interactive proof</i>.
+    </li>
+
+    <li class="skip fragment">
+      <i>Some errors will be discovered sooner</i> and designers will waste<br> 
+      less effort proving <i>incorrect POs</i>.
+    </li>
+  </ul>
 
 </section>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -440,7 +685,7 @@
 <section data-auto-animate data-transition="fade-in fade-out">
 	<h1>Merci</h1>
 	<p>
-		<a href="./2-event-b-method.pdf" target="_blank">Version PDF des slides</a>
+		<a href="./3-event-b-model-checking.pdf" target="_blank">Version PDF des slides</a>
 	</p>
 	<p>
 		<a href="#">Retour à l'accueil</a>

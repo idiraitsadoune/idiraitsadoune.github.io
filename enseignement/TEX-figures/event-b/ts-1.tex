@@ -1,4 +1,4 @@
-\documentclass[aspectratio=168]{beamer}
+\documentclass[aspectratio=166]{beamer}
 
 \newif\ifwhite
 \whitetrue
@@ -32,7 +32,8 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
 
-\begin{center}
+\centering
+\scalebox{1.6}{
 \begin{tikzpicture}[->,>=stealth,shorten >=1pt,auto,node distance=2.8cm, semithick]
 \tikzstyle{every state}=[fill=red,draw=none,text=white]
   
@@ -46,7 +47,7 @@
 \path (A) edge     [bend left]         node {ev1} (B);
 \path (B) edge     [bend left]         node {ev2} (C);}
 \end{tikzpicture}
-\end{center}
+}
 
 \end{frame}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
