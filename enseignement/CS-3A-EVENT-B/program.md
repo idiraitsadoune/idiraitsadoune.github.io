@@ -1,7 +1,0 @@
-- Introduction + machine abstraite
-- Raffinement
-- ProB + génération de code
-- 
-- Création de théories
-- Projet
-- Projet
