@@ -5,7 +5,16 @@
     src: url('./monaco-font/Monaco.woff') format('woff');
 }
 
-.reveal pre.math-code, pre.math-doc{
+.reveal pre.math-code{
+	font-family: 'Monaco' !important; 
+	font-size: 0.8em !important;
+	tab-size: 2 !important ;
+	box-shadow:none !important;
+	margin: auto !important; 
+	padding: 10px !important;
+}
+
+pre.math-doc{
 	font-family: 'Monaco' !important; 
 	tab-size: 2 !important ;
 	box-shadow:none !important;
