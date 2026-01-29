@@ -129,27 +129,24 @@
     this.end = this.begin ;
   }
 
-  public DoubleLinkedList(int[] array) {
-    if(array.length == 0 || array == null) {
-      this.begin = null ;
-      this.end = null;
-    }
-    else if(array.length == 1) {
-      this.begin = new Element(array[0], null, null);
-      this.end = this.begin ;
-    }
-    else {
-      this.begin = new Element(array[0], null, null);
-      this.end = this.begin ;
-      
-      Element previous = this.begin;
-      for(int i=1;i<array.length;i++) {
-        this.end = new Element(array[i],previous,null);
-        previous.setNext(this.end);
-        previous = this.end ;
-      }
-    }
-  }
+	public DoubleLinkedList(int[] array) {
+		if(array.length == 0 || array == null) {
+			this.begin = null ;
+			this.end = null;
+		}
+		else {
+			Arrays.sort(array);
+			this.begin = new Element(array[0], null, null);
+			this.end = this.begin ;
+			
+			Element previous = this.begin;
+			for(int i=1;i<array.length;i++) {
+				this.end = new Element(array[i],previous,null);
+				previous.setNext(this.end);
+				previous = this.end ;
+			}
+		}
+	}
 
   public int size() {
     // TODO 
@@ -244,6 +241,11 @@ Créez des méthodes dans la classe <cs-code>DoubleLinkedListTest</cs-code> afin
 </ul>
 </p>
 
+<div id="green-block">
+La notation <cs-code>[1, 4, 5]</cs-code> fait référence au contenu d'une liste doublement chainée sauf pour 
+les résultats renvoyés par les méthodes <cs-code>getArray()</cs-code> et <cs-code>getReverseArray()</cs-code>
+</div>
+
 <div id="green-block" hidden>
 	<button class="button_display" onclick="display_correction('exo')">Click here to display or hide the correction</button>
 	<div id="exo" style="display: none; margin-top: 20px;">
@@ -261,28 +263,24 @@ Créez des méthodes dans la classe <cs-code>DoubleLinkedListTest</cs-code> afin
     this.end = this.begin ;
   }
 
-  public DoubleLinkedList(int[] array) {
-    if(array.length == 0 || array == null) {
-      this.begin = null ;
-      this.end = null;
-    }
-    else if(array.length == 1) {
-      this.begin = new Element(array[0], null, null);
-      this.end = this.begin ;
-    }
-    else {
-      this.begin = new Element(array[0], null, null);
-      this.end = this.begin ;
-      
-      Element previous = this.begin;
-      for(int i=1;i<array.length;i++) {
-        this.end = new Element(array[i],previous,null);
-        previous.setNext(this.end);
-        previous = this.end ;
-      }
-    }
-    
-  }
+	public DoubleLinkedList(int[] array) {
+		if(array.length == 0 || array == null) {
+			this.begin = null ;
+			this.end = null;
+		}
+		else {
+			Arrays.sort(array);
+			this.begin = new Element(array[0], null, null);
+			this.end = this.begin ;
+			
+			Element previous = this.begin;
+			for(int i=1;i<array.length;i++) {
+				this.end = new Element(array[i],previous,null);
+				previous.setNext(this.end);
+				previous = this.end ;
+			}
+		}
+	}
 
   public int size() {
     if(this.begin == null || this.end == null) return 0;
