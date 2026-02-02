@@ -36,7 +36,7 @@ export const VERSION = '5.2.1';
  * https://revealjs.com
  * MIT licensed
  *
- * Copyright (C) 2011-2022 Hakim El Hattab, https://hakim.se
+ * Copyright (C) 2011-2026 Hakim El Hattab, https://hakim.se
  */
 export default function( revealElement, options ) {
 
@@ -394,7 +394,7 @@ export default function( revealElement, options ) {
 
 		// Text node
 		if( node.nodeType === 3 ) {
-			text += node.textContent;
+			text += node.textContent.trim();
 		}
 		// Element node
 		else if( node.nodeType === 1 ) {
@@ -403,9 +403,24 @@ export default function( revealElement, options ) {
 			let isDisplayHidden = window.getComputedStyle( node )['display'] === 'none';
 			if( isAriaHidden !== 'true' && !isDisplayHidden ) {
 
+				// Capture alt text from img and video elements
+				if( node.tagName === 'IMG' || node.tagName === 'VIDEO' ) {
+					let altText = node.getAttribute( 'alt' );
+					if( altText ) {
+						text += ensurePunctuation( altText );
+					}
+				}
+
 				Array.from( node.childNodes ).forEach( child => {
 					text += getStatusText( child );
 				} );
+
+				// Add period after block-level text elements to improve
+				// screen reader experience
+				const textElements = ['P', 'DIV', 'UL', 'OL', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE'];
+				if( textElements.includes( node.tagName ) && text.trim() !== '' ) {
+					text = ensurePunctuation( text );
+				}
 
 			}
 
@@ -414,6 +429,22 @@ export default function( revealElement, options ) {
 		text = text.trim();
 
 		return text === '' ? '' : text + ' ';
+
+	}
+
+	/**
+	 * Ensures text ends with proper punctuation by adding a period
+	 * if it doesn't already end with punctuation.
+	 */
+	function ensurePunctuation( text ) {
+
+		const trimmedText = text.trim();
+
+		if( trimmedText === '' ) {
+			return text;
+		}
+
+		return !/[.!?]$/.test(trimmedText) ? trimmedText + '.' : trimmedText;
 
 	}
 
@@ -1377,6 +1408,7 @@ export default function( revealElement, options ) {
 		}
 
 		if( slideChanged ) {
+			slideContent.afterSlideChanged();
 			dispatchSlideChanged( origin );
 		}
 
@@ -1470,6 +1502,8 @@ export default function( revealElement, options ) {
 
 		// Start or stop embedded content like videos and iframes
 		if( slideChanged ) {
+			slideContent.afterSlideChanged();
+
 			if( previousSlide ) {
 				slideContent.stopEmbeddedContent( previousSlide );
 				slideContent.stopEmbeddedContent( previousSlide.slideBackgroundElement );
@@ -1540,6 +1574,8 @@ export default function( revealElement, options ) {
 		if( overview.isActive() ) {
 			overview.layout();
 		}
+
+		dispatchEvent({ type: 'sync' });
 
 	}
 
@@ -1782,14 +1818,16 @@ export default function( revealElement, options ) {
 
 		if( horizontalSlidesLength && typeof indexh !== 'undefined' ) {
 
+			const isOverview = overview.isActive();
+
 			// The number of steps away from the present slide that will
 			// be visible
-			let viewDistance = overview.isActive() ? 10 : config.viewDistance;
+			let viewDistance = isOverview ? 10 : config.viewDistance;
 
 			// Shorten the view distance on devices that typically have
 			// less resources
 			if( Device.isMobile ) {
-				viewDistance = overview.isActive() ? 6 : config.mobileViewDistance;
+				viewDistance = isOverview ? 6 : config.mobileViewDistance;
 			}
 
 			// All slides need to be visible when exporting to PDF
@@ -1822,7 +1860,7 @@ export default function( revealElement, options ) {
 
 				if( verticalSlidesLength ) {
 
-					let oy = getPreviousVerticalIndex( horizontalSlide );
+					let oy = isOverview ? 0 : getPreviousVerticalIndex( horizontalSlide );
 
 					for( let y = 0; y < verticalSlidesLength; y++ ) {
 						let verticalSlide = verticalSlides[y];
@@ -2844,6 +2882,9 @@ export default function( revealElement, options ) {
 
 		getComputedSlideSize,
 		setCurrentScrollPage,
+
+		// Allows for manually removign slides prior to reveal.js initialization
+		removeHiddenSlides,
 
 		// Returns the current scale of the presentation content
 		getScale: () => scale,
