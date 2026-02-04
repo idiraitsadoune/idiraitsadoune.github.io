@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Exemen du cours Conception Orientée Objet - Partie Java</title>
+
+	<link rel="stylesheet" href="../resources/css/document-theme.css">
+	<link rel="stylesheet" href="../../CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="../resources/highlight/styles/github-dark.css">
+
+	<script type="text/JavaScript" src="../resources/highlight/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	<script type="text/javascript" src="../resources/js/mathjax.js"></script>
+	<script type="text/javascript" id="MathJax-script" src="../resources/MathJax/es5/tex-mml-chtml.js"></script>
+	<script type="text/javascript" src="../resources/js/correction.js"></script>
+
+	<link rel="icon" href="../resources/img/favicon.ico" />
+</head>
+
+<body>
+<div class="container">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div style="padding: 0.5em;">
+2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Conception Orientée Objet - COO - 2025/2026</span>
+</div>
+<hr>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div class="section-form">
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<h1>
+	Exemen du cours Conception Orientée Objet <br>
+  Partie Java - durée 1h30 
+</h1>
+<!-- #################################################### -->
+<h2>Contexte général</h2>
+<p>
+  On souhaite développer une application <b>client/serveur TCP</b>. <br>
+  Le client envoie au serveur un message structuré selon le format suivant :
+</p>
+<pre><code class="language-shell"><script type="text/template">MSG;<auteur>;<contenu>
+</script></code></pre>
+
+<p>
+  <ul>
+    <li>
+Exemples de messages valides :
+<pre><code class="language-shell"><script type="text/template">MSG;Alice;Bonjour serveur
+MSG;Bob;Test
+</script></code></pre>
+    </li>
+
+    <li>
+Exemples de messages invalides :
+<pre><code class="language-shell"><script type="text/template">MSG;Alice
+HELLO;Bob;Salut
+MSG;;Bonjour
+</script></code></pre>
+    </li>
+  </ul>
+</p>
+
+
+
+
+<p>
+  Le serveur répond : 
+  <ul>
+    <li>
+      Message valide :
+<pre><code class="language-shell"><script type="text/template">OK;<auteur>;<longueur_contenu>
+</script></code></pre>
+    </li>
+
+    <li>
+      Message invalide :
+<pre><code class="language-shell"><script type="text/template">ERREUR;FORMAT_INVALIDE
+</script></code></pre>
+    </li>
+  </ul>
+  
+</p>
+
+<div id="green-block">
+	<i class="fa fa-bell-o"></i>
+	<b>Remarque</b>
+	<p>La méthode Java <cs-code>split()</cs-code> est utilisée pour diviser des chaînes de caractères (strings) en plusieurs sous-chaînes. 
+    Pour cela, un paramètre est défini, qui fait office de séparateur. </p>
+  <p><b>Exemple</b></p>
+<pre><code class="language-java"><script type="text/template">public class Main {
+    public static void main(String[] args) {
+        String x = "Ceci est un exemple";
+        String[] resultat = x.split(" ");
+        for (String y : resultat) {
+            System.out.println(y);
+        }
+    }
+}                             
+</script></code></pre>
+<p>Ce code produit la sortie suivante :</p>
+<pre><code class="language-shell"><script type="text/template">Ceci
+est
+un
+exemple
+</script></code></pre>
+</div>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">Exercice 1 – Format de message et logique métier (6 points)</div>
+<h2>Classe de validation du message</h2>
+
+<p>Créer une classe <cs-code>MessageParser</cs-code> contenant au minimum les méthodes suivantes :</p>
+<pre><code class="language-java"><script type="text/template">public class MessageParser {
+
+    public static boolean isValid(String message) {
+        // à implémenter
+    }
+
+    public static String buildResponse(String message) {
+        // à implémenter
+    }
+}                 
+</script></code></pre>
+<p>
+  Contraintes :
+  <ul>
+    <li>
+      <cs-code>isValid</cs-code> retourne <cs-code>true</cs-code> uniquement si le message respecte strictement le format imposé
+    </li>
+    <li>
+      <cs-code>buildResponse</cs-code> :
+      <ul>
+        <li>retourne <cs-code>ERREUR;FORMAT_INVALIDE </cs-code> si le message est invalide</li>
+        <li>retourne <cs-code>OK;&lt;auteur>;&lt;longueur_contenu></cs-code> si le message est valide</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+
+<h2>Tests manuels</h2>
+<p>
+  Écrire une méthode <cs-code>main</cs-code> simple permettant de :
+  <ul>
+    <li>Tester au moins deux messages valides</li>
+    <li>Tester au moins deux messages invalides</li>
+    <li>Afficher les résultats dans la console</li>
+  </ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">Exercice 2 – Communication réseau et concurrence (8 points)</div>
+<h2>Serveur TCP multi-clients</h2>
+
+<p>
+  Créer une classe <cs-code>MessageServer</cs-code> qui :
+  <ul>
+    <li>Écoute sur le port <cs-code>5000</cs-code></li>
+    <li>Accepte plusieurs connexions clientes</li>
+    <li>Crée une classe <cs-code>ClientHandler</cs-code> implémentant l'interface <cs-code>Runnable</cs-code></li>
+    <li>Délègue chaque client à un thread distinct</li>
+    <li>Le thread lit une ligne envoyée par le client</li>
+    <li>Le thread utilise <cs-code>MessageParser</cs-code> pour générer la réponse</li>
+    <li>Le thread envoie la réponse au client</li>
+    <li>Ferme correctement les ressources</li>
+  </ul>
+</p>
+
+<h2>Client TCP</h2>
+<p>
+  Créer une classe MessageClient qui :
+  <ul>
+    <li>Se connecte au serveur sur localhost et le port <cs-code>5000</cs-code></li>
+    <li>Envoie un message respectant (ou non) le format imposé</li>
+    <li>Lit la réponse envoyée par le serveur</li>
+    <li>Affiche la réponse dans la console</li>
+    <li>Ferme correctement la connexion</li>
+  </ul>
+Le message peut être :
+<ul>
+  <li>codé en dur</li>
+  <li>ou passé en paramètre du constructeur du client</li>
+</ul>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<div id="orange-block">Exercice 3 – Tests unitaires (6 points)</div>
+<h2>Tests de validation du format</h2>
+
+<p>
+  Écrire une classe <cs-code>MessageParserTest</cs-code> (<cs-code>JUnit</cs-code>) contenant au minimum cinq tests unitaires :
+<ul>
+  <li>Message valide</li>
+  <li>Message <cs-code>null</cs-code></li>
+  <li>Message avec mot-clé incorrect</li>
+  <li>Message avec auteur vide</li>
+  <li>Message incomplet</li>
+</ul>
+<cs-code></cs-code>
+
+Chaque test doit vérifier le comportement des méthodes <cs-code>isValid</cs-code> et/ou <cs-code>buildResponse</cs-code>.
+</p>
+
+<h2>Test de non-régression</h2>
+<p>
+  Ajouter un test vérifiant que tout message invalide retourne toujours exactement :
+<pre><code class="language-shell"><script type="text/template">ERREUR;FORMAT_INVALIDE
+</script></code></pre>
+</p>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<hr>
+<div style="padding: 0.5em;">
+2A BUT - IUT d'Orsay <span style="text-align: right;float: right;">Conception Orientée Objet - COO - 2025/2026</span>
+</div>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</div>
+
+</body>
+</html>
