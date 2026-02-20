@@ -1,0 +1,129 @@
+:root {
+    --primary: #1E3A5F;
+    --secondary: #2E5C8A;
+    --accent: #E67E22;
+    --light-bg: #F4F6F8;
+    --text-dark: #2C3E50;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.hero {
+    background: linear-gradient(rgba(30,58,95,0.85), rgba(30,58,95,0.85)),
+                url('../IMG/fond_ext1.jpg') center/cover;
+    color: var(--white);
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background-color: var(--accent);
+    border: none;
+    padding: 12px 25px;
+    color: var(--white);
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #cf6d17;
+}
+
+.section {
+    padding: 60px 10%;
+}
+
+.section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 6px;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
