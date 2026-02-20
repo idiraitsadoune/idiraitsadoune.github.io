@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recherche | Dr. Jean Dupont</title>
+<title>Recherche | Idir AIT SADOUNE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
@@ -17,43 +17,80 @@
     --white: #FFFFFF;
 }
 body {font-family:'Open Sans',sans-serif;background:var(--light-bg);margin:0;color:var(--text-dark);}
-header {background:var(--primary);color:white;padding:20px 10%;}
+header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
 h1 {font-family:'Montserrat',sans-serif;}
 .section {padding:60px 10%;}
 .card {background:white;padding:25px;border-radius:6px;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.05);}
 .card h3 {color:var(--secondary);}
 footer {background:var(--primary);color:white;text-align:center;padding:20px;margin-top:40px;}
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
 </style>
+
+<link rel="icon" href="./IMG/favicon.ico">
 </head>
 
 <body>
 
 <header>
 <h1>Recherche</h1>
+    <nav>
+        <a href="./">Accueil</a>
+        <a href="./recherche.html">Recherche</a>
+        <a href="./publications.html">Publications</a>
+        <a href="./enseignement.html">Enseignement</a>
+        <a href="./contact.html">Contact</a>
+    </nav>
 </header>
 
 <section class="section">
 
 <div class="card">
-<h3>Intelligence Artificielle</h3>
-<p>Développement de modèles prédictifs et systèmes intelligents appliqués aux données complexes.</p>
+<h3>Génie Logiciel</h3>
+<p>Intégration des modèles dans le processus de développement de systèmes.</p>
 </div>
 
 <div class="card">
-<h3>Apprentissage Automatique</h3>
-<p>Optimisation d’algorithmes supervisés et non supervisés pour l’analyse à grande échelle.</p>
+<h3>Méthodes formelles</h3>
+<p>Modélisation et Vérification formelles de systèmes à base d’événements.</p>
+</div>
+
+<div class="card">
+<h3>Vérification de systèmes</h3>
+<p>Vérification de systèmes par des approches basées sur le raffinement et sur la preuve.</p>
 </div>
 
 <div class="card">
 <h3>Projets en cours</h3>
-<p><strong>Projet ANR DataX</strong> — Analyse prédictive multi-sources (2024–2027)</p>
-<p><strong>Collaboration Européenne AI4Health</strong> — IA appliquée à la santé.</p>
+<p><strong>ANR TAPAS (2025-2029)</strong> — "Time-Aware Proof ASsistants"</p>
+<p><strong>ANR EBRP (2020-2026)</strong> — "Event-B Rodin Plus"</p>
+<p><strong>ANR IMPEX (2013-2018)</strong> — "IMPlicit and EXplicit semantics integration in proof based developments of discrete systems"</p>
 </div>
 
 </section>
 
 <footer>
-© 2026 Dr. Jean Dupont
+    © 2026 Idir AIT SADOUNE | Université Paris-Saclay, CentraleSupelec, Laboratoire Méthodes Formelles - LMF
 </footer>
 
 </body>

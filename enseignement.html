@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enseignement | Dr. Jean Dupont</title>
+<title>Enseignement | Idir AIT SADOUNE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
@@ -17,41 +17,77 @@
     --white:#FFFFFF;
 }
 body {font-family:'Open Sans',sans-serif;background:var(--light-bg);margin:0;color:var(--text-dark);}
-header {background:var(--primary);color:white;padding:20px 10%;}
+header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
 .section {padding:60px 10%;}
 .course {background:white;padding:20px;margin-bottom:20px;border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,0.05);}
 .course h3 {color:var(--secondary);}
 footer {background:var(--primary);color:white;text-align:center;padding:20px;margin-top:40px;}
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
 </style>
+
+<link rel="icon" href="./IMG/favicon.ico">
 </head>
 
 <body>
 
 <header>
 <h1>Enseignement</h1>
+    <nav>
+        <a href="./">Accueil</a>
+        <a href="./recherche.html">Recherche</a>
+        <a href="./publications.html">Publications</a>
+        <a href="./enseignement.html">Enseignement</a>
+        <a href="./contact.html">Contact</a>
+    </nav>
 </header>
 
 <section class="section">
 
 <div class="course">
-<h3>Machine Learning (Master 2)</h3>
-<p>Volume horaire : 30h CM + 20h TP</p>
+<h3>Conception de systèmes critiques avec la méthode Event-B (3A - Ingénieur CentraleSupelec)</h3>
+<p>Volume horaire : xxh CM + xxh TD/TP</p>
 </div>
 
 <div class="course">
-<h3>Introduction à l’Intelligence Artificielle (Licence 3)</h3>
-<p>Volume horaire : 24h CM</p>
+<h3>Systèmes d'exploitation (3A - Ingénieur CentraleSupelec)</h3>
+<p>Volume horaire : xxh CM + xxh TD/TP</p>
 </div>
 
 <div class="course">
-<h3>Encadrement de Thèses</h3>
-<p>3 doctorants encadrés en IA appliquée.</p>
+<h3>Conception et vérification de systèmes critiques (2A - Ingénieur CentraleSupelec)</h3>
+<p>Volume horaire : xxh CM + xxh TD/TP</p>
+</div>
+
+<div class="course">
+<h3>Computer Architecture and Software Execution Process (1A - Bachelor CentraleSupelec)</h3>
+<p>Volume horaire : xxh CM + xxh TD/TP</p>
 </div>
 
 </section>
 
 <footer>
-© 2026 Dr. Jean Dupont
+    © 2026 Idir AIT SADOUNE | Université Paris-Saclay, CentraleSupelec, Laboratoire Méthodes Formelles - LMF
 </footer>
 
 </body>
