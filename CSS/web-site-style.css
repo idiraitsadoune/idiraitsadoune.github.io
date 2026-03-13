@@ -184,18 +184,6 @@ button {
 button:hover {
     background:#cf6d17;}
 
-form {
-    background:white;
-    padding:30px;
-    border-radius:6px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);}
-input, textarea {
-    width:100%;
-    padding:10px;
-    margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:4px;}
-
 .pub {
     background:white;
     padding:20px;
