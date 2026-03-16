@@ -127,24 +127,24 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.card h3 {
+.card h3 , .course h3{
     font-size: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
     color: var(--primary);
 }
 
-.card h4 {
+.card h4 , .course h4{
     margin-bottom: 10px;
     margin-left: 10px;
     color: var(--secondary);
 }
 
-.card p {
+.card p , .course p{
     margin: 10px;
 }
 
-.card ul{
+.card ul, .course ul{
     padding-left: 30px;
 }
 
